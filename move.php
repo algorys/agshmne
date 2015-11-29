@@ -2,11 +2,15 @@
 
 class Deplacer {
 
-    // Coordonnées
+    /***************
+    * Coordonnées initiales du PJ
+    */
     var $x;
     var $y;
-    var $nomPj;
 
+    /*
+    * Quatres déplacements possible (est, ouest, sud, nord)
+    */
     function monter() {
 
         $this->y += 1;
@@ -33,7 +37,7 @@ class Deplacer {
 
         echo "x = : ".$this->x;
 
-        echo "y = : ".$this->y;
+        echo " y = : ".$this->y;
 
         echo '<br>';
     }
@@ -42,9 +46,11 @@ class Deplacer {
 
 $pj = new Deplacer();
 
+// Inititalisation des coordonnées
 $pj->x=0;
 $pj->y=0;
 
+// Position initiale
 $pj->afficherPosition();
     
 $pj->monter();
@@ -54,7 +60,6 @@ $pj->droite();
 $pj->droite();
 $pj->afficherPosition();
 
-echo '<br>';
 echo '<h4>Objet en cours</h4>';
 print_r($pj);
 
