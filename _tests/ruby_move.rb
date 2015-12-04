@@ -1,69 +1,47 @@
-#######################################""
-# Le but 
+<<-DOC
+OBJECTIF
+ Créer un personnage qui se déplace.
+DOC
 
+# @Position : Définit la direction du personnage et ses coordonnées
+# @pos correspond à l'objet "coordonnees"
+#
 class Position
-    private 
-    def initialize(x = 0, y = 0)
-        @x = x
-        @y = y
-    end
-    public
-    def move(direction)
-        case direction
-            when "NORTH"
-                @y += 1
-            when "EAST"
-                @x += 1
-            when "SOUTH"
-                @y -= 1
-            when "WEST"
-                @x -= 1
-            TODO
-            else
-                puts "Vous vous êtes trompé de direction !"
-        end
-    end
-    def get_x()
-        @x
-    end
-    def get_y()
-        @y
-    end
-end
-
-class Position2
     private
-    def initialize(z = 0)
-        @toto = z
+    def initialize(p = 0)
+        @pos = p
     end
     public
     def move(direction)
         case direction
             when "NORTH"
-                @toto += 5
+                @pos += 5
             when "EAST"
-                @toto += 1
+                @pos += 1
             when "SOUTH"
-                @toto -= 5
+                @pos -= 5
             when "WEST"
-                @toto -= 1
-            TODO
+                @pos -= 1
+            TODO Gerer ERROR
             else
                 puts "Vous vous êtes trompé de direction !"
         end
     end
     def get_x()
-        @toto % 5
+        @pos % 5
     end
     def get_y()
-        @toto / 5
+        @pos / 5
     end
 end
 
+# Personnage : Définit le personnage
+# TODO : Déplacer cet objet dans un fichier à part
+#
 class Personnage
     private
     def initialize()
-        @position = Position2.new
+        @position = Position.new
     end
     public
     def go_to(direction)
@@ -77,11 +55,30 @@ class Personnage
     end
 end
 
+class Dice
+    def self.d(n)
+        @n = rand(n)
+    end
+end
 
-#:arbre = "Arbre"
-#:route = "Route"
-#:prairie = "Prairie"
+class Terrain
+    private
+    def initialize()
+        @id_terrain
+    end
 
+    public
+    def id()
+        @genre = Dice.d(6)
+        puts @genre
+    end
+end
+
+terrain = Terrain.new
+terrain.id
+
+# Map : crée la carte
+#
 class Map
     private
     def initialize()
@@ -91,7 +88,13 @@ class Map
                     [:prairie,:arbre,:prairie],
                     [:arbre,:route,:arbre]]
     end
+    
     public
+    def get_content(content)
+        content[[terrain.id]]
+        puts content
+    end
+
     def get_case(x,y)
         @content[x % @width][y % @height]
     end
