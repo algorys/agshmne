@@ -69,8 +69,7 @@ class Terrain
     def initialize()
         @terrain = []
     end
-
-    public
+    private
     def lib_terrain()
         g = [
             :prairie,
@@ -92,6 +91,13 @@ terrain.type_terrain
 
 puts terrain.inspect
 
+tile0 = Terrain.new
+tile0.type_terrain
+grid = [tile0]
+tile1 = Terrain.new
+tile1.type_terrain
+grid += [tile1]
+puts grid.inspect
 # Map : crée la carte
 #
 class Map
