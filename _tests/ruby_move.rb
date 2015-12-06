@@ -41,6 +41,8 @@ end
 class Personnage
     private
     def initialize()
+        @vital = {'vie'=>0,'mana'=>0}
+        @carac = {'puissance'=>0,'defense'=>0}
         @position = Position.new
     end
     public
@@ -55,6 +57,7 @@ class Personnage
     end
 end
 
+# TODO : déplcer dans un fichierà part
 class Dice
     def self.d(n)
         @n = rand(n)
@@ -64,18 +67,30 @@ end
 class Terrain
     private
     def initialize()
-        @id_terrain
+        @terrain = []
     end
 
     public
-    def id()
-        @genre = Dice.d(6)
-        puts @genre
+    def lib_terrain()
+        g = [
+            :prairie,
+            :route,
+            :arbre,
+            :lac,
+            :foret,
+            :bois]
+        g[Dice.d(5)]
+    end
+    public
+    def type_terrain()
+        @terrain = lib_terrain()
     end
 end
 
 terrain = Terrain.new
-terrain.id
+terrain.type_terrain
+
+puts terrain.inspect
 
 # Map : crée la carte
 #
@@ -113,6 +128,7 @@ end
 
 map = Map.new
 pj = Personnage.new()
+puts pj.inspect
 
 (0..5).each do
     pj.go_to("NORTH")
