@@ -8,8 +8,15 @@ DOC
 #
 class Position
     private
-    def initialize(p = 0)
-        @pos = p
+    def initialize *args
+        case args.size
+        when 0
+            @pos = 0
+        when 1
+            @pos = args[0]
+        when 2
+            @pos = 5*args[1] + args[0]
+        end
     end
     public
     def move(direction)
@@ -22,7 +29,8 @@ class Position
                 @pos -= 5
             when "WEST"
                 @pos -= 1
-            TODO Gerer ERROR
+            #TODO Gerer ERROR
+                # utiliser raise
             else
                 puts "Vous vous êtes trompé de direction !"
         end
@@ -32,6 +40,9 @@ class Position
     end
     def get_y()
         @pos / 5
+    end
+    def get_pos()
+        @pos
     end
 end
 
@@ -64,38 +75,71 @@ class Dice
     end
 end
 
+class TypeTerrain
+    # TODO Fusionner avec Terrain
+    def initialize(type, aff)
+        @type = type
+        @affichage = aff
+    end
+    public
+    def get_type()
+        @type
+    end
+    def to_s()
+        @affichage
+    end
+end
+
 class Terrain
     private
     def initialize()
-        @terrain = []
+        @type = lib_terrain()
     end
-    private
+    @@list_terrain = [
+        :prairie,
+        :route,
+        :arbre,
+        :lac,
+        :foret,
+        :bois,
+        :hell]
     def lib_terrain()
-        g = [
-            :prairie,
-            :route,
-            :arbre,
-            :lac,
-            :foret,
-            :bois]
-        g[Dice.d(5)]
+        case @@list_terrain[Dice.d(@@list_terrain.size())]
+        when :prairie
+            @type = TypeTerrain.new(:prairie, '/')
+        when :route
+            @type = TypeTerrain.new(:route, '.')
+        when :arbre
+            @type = TypeTerrain.new(:arbre, '^')
+        when :lac
+            @type = TypeTerrain.new(:lac, 'o')
+        when :foret
+            @type = TypeTerrain.new(:foret, 'w')
+        when :bois
+            @type = TypeTerrain.new(:bois, 'v')
+        when :hell
+            @type = TypeTerrain.new(:hell, 'x')
+        end
     end
     public
-    def type_terrain()
-        @terrain = lib_terrain()
+    def get_type()
+        @type
+    end
+    def to_s()
+        @type.to_s
     end
 end
 
 terrain = Terrain.new
-terrain.type_terrain
+puts terrain.get_type
 
 puts terrain.inspect
 
 tile0 = Terrain.new
-tile0.type_terrain
+puts tile0.get_type
 grid = [tile0]
 tile1 = Terrain.new
-tile1.type_terrain
+puts tile1.get_type
 grid += [tile1]
 puts grid.inspect
 # Map : crée la carte
@@ -103,21 +147,28 @@ puts grid.inspect
 class Map
     private
     def initialize()
-        @width = 3
-        @height = 3
-        @content = [[:arbre,:route,:prairie],
-                    [:prairie,:arbre,:prairie],
-                    [:arbre,:route,:arbre]]
+        @content = {}
+        (0..24).each do |i|
+            @content[i] = Terrain.new
+        end
     end
     
     public
-    def get_content(content)
-        content[[terrain.id]]
-        puts content
+    def get_case_from_pos(pos)
+        @content[pos]
     end
-
-    def get_case(x,y)
-        @content[x % @width][y % @height]
+    def get_case(x, y)
+        get_case_from_pos(Position.new(x,y).get_pos)
+    end
+    def to_s()
+        ans = ""
+        4.downto(0) do |y|
+            (0..4).each do |x|
+                ans += get_case(x,y).to_s
+            end
+            ans += "\n"
+        end
+        ans
     end
 end
 
@@ -136,11 +187,17 @@ map = Map.new
 pj = Personnage.new()
 puts pj.inspect
 
-(0..5).each do
+(0..3).each do
     pj.go_to("NORTH")
     Util.affiche_pos(pj)
     Util.affiche_case(map, pj)
 end
+
+
+puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+puts map.to_s
+puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
 
 pj.go_to("NORTH")
 pj.go_to("NORTH")
@@ -153,6 +210,7 @@ Util.affiche_pos(pj)
 Util.affiche_case(map, pj)
 
 pj.go_to("droite")
+
 
 
 
