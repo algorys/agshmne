@@ -1,3 +1,5 @@
+require_relative 'utils'
+
 <<-DOC
 OBJECTIF
  Créer un personnage qui se déplace.
@@ -65,13 +67,6 @@ class Personnage
     end
     def get_y()
         @position.get_y
-    end
-end
-
-# TODO : déplcer dans un fichierà part
-class Dice
-    def self.d(n)
-        @n = rand(n)
     end
 end
 
