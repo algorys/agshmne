@@ -1,15 +1,26 @@
-# Agshmne
+# Conception
 
-> Nom du Jeu : Agshmne
+> **Nom du Jeu :** Agshmne
+
+> **Background :** ayant joué aux jeux cités ci-dessous et à de nombreux jeu de rôle sur table (Donjons et Dragons, Cyberpunk, Cthulhu pour ne citer qu'eux), je souhaite réaliser un jeu qui puisse se rejouer, se rejouer et se rejouer encore d'où de nombreux côtés aléatoires. J'espère aussi pouvoir apporté du texte fourni mais pas envahissant. 
 
 ## Informations Générales
-Le style général sera le Jeu de Rôle Solo, en se basant sur des titres comme Daggerfall ou encore Planescape Torment pour le système de jeu et l'univers. Le mode de déplacement et de vue se rapprochera plus des premiers Civilizations.
+Le style général sera le Jeu de Rôle en Solitaire, en se basant sur des titres comme Daggerfall ou encore Planescape Torment pour le système de jeu et l'univers. Les premières versions seront réduites au minimum et prendront de l'ampleur petit à petit. 
 
-Le jeu se déroulera sur une carte en 2D, avec des cases carrées. Le système de jeu sera au Tour par Tour. Le but est de proposer au joueur une histoire sans fin où il sera libre de continuer sa partie autant de temps qu'il le voudra. Le monde sera représenté par plusieurs régions de 256 cases générée aléatoirement puis les modifications seront sauvegardées au fur et à mesure.
+Le mode de déplacement et de vue se rapprochera plus des premiers Civilizations. Le jeu sera généré un maximum aléatoirement… du nom des régions aux objets trouvé, tout en passant par la nature de chaque cases et leur description. C'est un **risque** car l'aléatoire est dur à doser, mais en se basant sur des règles proche du JdR sur table cela doit être possible. Le but est de proposer au joueur une histoire sans fin où il sera libre de continuer sa partie autant de temps qu'il le voudra.
 
-Il proposera un maximum d'interactivité et surtout la possibilité de pouvoir modifier l'univers selon les désirs du joueur. La personnalisation du personnage, ainsi que la création d'objets, de différentes guildes, clans, royaumes dans l'univers apportera cette sensation.
+La plupart du jeu se déroulera sur une carte en 2D, avec des cases carrées. Le système de jeu sera au Tour par Tour (enclenchés par chaque mouvement sur la carte) et les combats par rounds.
+Le monde sera représenté par 9 régions de 256 cases générées aléatoirement (dans un premier temps, plus s'il le faut). Les modifications sur la carte (pour les Possessions par exemple - _voir plus bas_) seront sauvegardées au fur et à mesure.
 
-Enfin chaque monde sera généré aléatoirement… si les donjons existent, il en sera de même.
+Fonctionnaliés souhaités :
+* Personnalisation du personnage et biens matériels
+* Création d'objets et objets existants dans l'univers
+* Gestions et créations de Clans, Guilde, Royaumes (et Capitale) dans l'univers
+* Gestion des Régions
+* Quêtes
+* Donjons
+
+* Aspect Jeu de Rôle sur Table (Lancé de Dés, Enigmes, Compétences)
 
 La 2D ainsi que des graphismes légers seront privilégiés afin de ne pas être limité en terme de possibilité d'action comme le font trop souvent les jeux actuels (notamment les derniers Elders Scrolls et consort).
 
@@ -109,27 +120,7 @@ Voici les différents onglets :
 * **Équipement (Menu)**: affichera une silhouette du personnage et de ce qu'il porte actuellement. Les équipements possibles seront : Tête, Bras, Torse, Jambes, 2 anneaux, 2 mains, Sac-à-dos (pour la capacité) et 1 Compagnon (Pet).
   * Le Personnage pourra retirer des équipements via ce menu.
   * Le personnage pourra renommer son Pet et l'enlever.
-* **Compétences (Menu)**: les compétences seront les plus variées possibles afin de fournir au joueur le plus de combinaisons possibles. Le joueur aura tout de même certaines compétences de bases. Certaines compétences pourront être utilisés ici, comme Atelier.
-  * Compétences de Base (pour tout personnage créé!) :
-    * Cuisiner (Unités : repas))
-    * Fouiller (Jet DEX, Objet Trouvé)
-    * Boucherie (Unités : Viandes)
-    * Bûcheron (Unités : bois)
-    * Miner (Unités : métaux différents)
-    * Cultiver (Unités : Herbes)
-    * Pêcher (Unités : Poissons)
-    * Magie (Voir Personnage)
-  * Compétences à apprendre
-    * Feu de Camp (Existe sur Carte, utilise Unités : Feu)
-    * Atelier (pour les objets que l'on souhaite construire)
-    * Chasser (Unités Viande)
-    * Vole à la tire (Ville, Objet Trouvé)
-    * Négocier (Fais baisser les prix des magasins)
-    * Construction (pour les bâtiments)
-    * Commandement (pour commander des royaumes ou des guildes)
-    * Gérant (gère des magasins, rémunération)
-    * Cacher (Cacher un objet)
-Ces compétences pourront être agrandies par la suite et auront un NIVEAU.
+* **Compétences (Menu)**: les compétences seront le plus possibles variés afin de fournir au joueur le plus de combinaisons possibles. Le joueur aura certaines compétences de bases et d'autres qu'il pourra apprendre. Certaines compétences pourront être utilisés ici, comme Atelier.
 * **Carte (Menu)**: affichera la carte en plus grand (toutes les cases idéalement) et au minimum les types de Cases. Le Joueur pourra ajouter des marqueurs avec texte.
 * **Quêtes (Menu)** : montrera les quêtes acceptées par le personnage.
 * **Menu (Menu)** : permet de sauvegarder, charger, quitter une partie.
@@ -155,15 +146,15 @@ Le personnage sera le plus complet possible ou tout du moins laisser la possibil
 * 4 Vitales : Vie et Mana → dépensées par combat / compétences, Fatigue et Faim → incrémenté à chaque déplacement.
 * 1 caractéristique Position
 * 1 Équipement : Tête, Torse, Bras, Jambes, 2 Mains, 2 anneaux
-* 1 Sac-à-dos : espace limité par la Force
 * Compétences : celles de bases et celles apprises.
-* Expérience
-* Niveau
-* Argent
+* Expérience : augmentera selon les succès du joueur.
+* Niveau : augmentera selon les succès du joueur, apportera des bonus et des points à distribuer.
+* Argent : gagné de diverses façons.
 
 **Les Possessions :**
 Le personnage pourra avoir un animal, posséder un royaume, une guilde, etc. Ces différents états apporteront des bonus différents.
 
+* 1 Sac-à-dos : espace limité par la Force
 ### Combat
 Les règles seront simple mais nécessiteront une instance à part de la Zone de Jeu.
 
@@ -216,6 +207,32 @@ A chaque déplacement du personnage, c'est une « fin de tour ». C'est à dir
 * Tours : le nombre de tour fera avancer la date.
   * Générer la Date. 
 * Génération de la prochaine cases ? (A voir si toute la région est générée dès le début ou pas ?)
+
+### Compétences
+
+Ces compétences pourront être agrandies par la suite et auront un NIVEAU.
+Compétences souhaitées :
+  * Compétences de Base (pour tout personnage créé!) :
+    * Cuisiner (Unités : repas))
+    * Fouiller (DEX : Objet Trouvé)
+    * Boucherie (Unités : Viandes)
+    * Bûcheron (Unités : bois)
+    * Miner (Unités : métaux différents)
+    * Cultiver (Unités : Herbes)
+    * Pêcher (Unités : Poissons)
+    * Magie (INT : Voir Personnage)
+  * Compétences à apprendre
+    * Feu de Camp (Existe sur Carte, utilise Unités : Feu)
+    * Atelier (ATELIER : pour les objets que l'on souhaite construire)
+    * Chasser (Unités : Viandes)
+    * Vole à la tire (DEX : Ville, Objet Trouvé)
+    * Négocier (CHA : Fais baisser les prix des magasins)
+    * Construction (INT : pour les bâtiments)
+    * Commandement (CHA : pour commander des royaumes ou des guildes)
+    * Gérant (gère des magasins, rémunération)
+    * Crocheter (DEX : crocheter une serrure)
+    * Langues Anciennes (INT : déchiffrer des énigmes)
+
 
 > A faire
 
