@@ -211,7 +211,7 @@ A chaque déplacement du personnage, c'est une « fin de tour ». C'est à dir
 ### Personnage
 Le personnage aura beaucoup d'attributs et notamment des caractéritiques, de l'expérience, des possessions etc.
 
-Caractéristiques voulues (Création):
+Caractéristiques voulues (Création) :
 
 * 5 Caractéristiques (3-20) : Force (FOR), Dextérité (DEX), Constitution (CON), Intelligence (INT) et Charisme (CHA)
   * 10 points + points à attribuer.
@@ -225,8 +225,10 @@ Caractéristiques voulues (Création):
 * Sac-à-dos : espace Sac + FOR = nombre d'objets portés
 * Compétences : celles de bases toutes au niveau 1
 * Expérience : 0
-* Niveau: 1
+* Niveau : 1
 * Argent : 5po + 1d10
+
+Caractéristiques (En jeu) :
 
 Un lancer de caractéristique se fera avec 1d20. Il faudra que le résultat du dé soit inférieur à la caractéristique pour que ce soit réussi.
 
@@ -255,6 +257,13 @@ Compétences souhaitées :
     * Crocheter (DEX : crocheter une serrure)
     * Langues Anciennes (INT : déchiffrer des énigmes)
 
+Compétences (En jeu) :
+
+Les compétence auront une difficulté (DD = 15 facile, 20 moyen, 20 difficile etc.) à atteindre pour réussir et augmenter leur progression.
+
+Exemple : Jet Fouiller = 1d10 + (DEX - 10) + NIV Fouiller devra battre une difficulté de 15, 20, 25 etc.
+
+La compétence gagne n% pour n au dessus du DD en progression.
 
 > A faire
 
