@@ -208,6 +208,28 @@ A chaque déplacement du personnage, c'est une « fin de tour ». C'est à dir
   * Générer la Date. 
 * Génération de la prochaine cases ? (A voir si toute la région est générée dès le début ou pas ?)
 
+### Personnage
+Le personnage aura beaucoup d'attributs et notamment des caractéritiques, de l'expérience, des possessions etc.
+
+Caractéristiques voulues (Création):
+
+* 5 Caractéristiques (3-20) : Force (FOR), Dextérité (DEX), Constitution (CON), Intelligence (INT) et Charisme (CHA)
+  * 10 points + points à attribuer.
+* 4 Vitales : 
+  * Vie : CON + 10 + NIV
+  * Mana : INT + NIV
+  * Fatigue et Faim : CON + 10
+* Position : (0,0) 
+* Équipement : Tête, Torse, Bras, Jambes, 2 Mains, 2 anneaux.
+  * Départ : Epée ou Baton
+* Sac-à-dos : espace Sac + FOR = nombre d'objets portés
+* Compétences : celles de bases toutes au niveau 1
+* Expérience : 0
+* Niveau: 1
+* Argent : 5po + 1d10
+
+Un lancer de caractéristique se fera avec 1d20. Il faudra que le résultat du dé soit inférieur à la caractéristique pour que ce soit réussi.
+
 ### Compétences
 
 Ces compétences pourront être agrandies par la suite et auront un NIVEAU.
