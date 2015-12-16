@@ -21,5 +21,7 @@ public class Personnage {
 		return vital.get("vie");
 	}
 	
-	
+	public Integer getMana(){	
+		return vital.get("vie");
+	}
 }

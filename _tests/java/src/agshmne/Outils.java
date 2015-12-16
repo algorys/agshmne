@@ -1,7 +1,8 @@
 package agshmne;
 
 public class Outils {
-	public int Dice(d){
-		int dice = (int)random()*d;
+	public static int dice(int d){
+		int dice = (int)(Math.random()*d);
+		return dice;
 	}
 }
