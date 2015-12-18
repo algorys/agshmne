@@ -1,10 +1,10 @@
-package agshmne;
+package io.github.algorys.agshmne;
 
 public class Position {
-	public static final int MAX_X = 2;
-	public static final int MIN_X = -2;
-	public static final int MAX_Y = 2;
-	public static final int MIN_Y = -2;
+	public static final int MAX_X = 4;
+	public static final int MIN_X = -4;
+	public static final int MAX_Y = 4;
+	public static final int MIN_Y = -4;
 
 	private final int x;
 	private final int y;

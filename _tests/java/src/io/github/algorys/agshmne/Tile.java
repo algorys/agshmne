@@ -1,4 +1,4 @@
-package agshmne;
+package io.github.algorys.agshmne;
 
 import java.util.ArrayList;
 import java.util.Collections;

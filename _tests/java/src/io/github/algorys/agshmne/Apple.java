@@ -1,4 +1,4 @@
-package agshmne;
+package io.github.algorys.agshmne;
 
 public class Apple implements InventoryItem {
 

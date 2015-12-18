@@ -1,4 +1,4 @@
-package agshmne;
+package io.github.algorys.agshmne;
 
 import java.util.Arrays;
 
@@ -10,10 +10,11 @@ public class Region {
 
 	public Region() {
 		for (int i = 0; i < SIZE; i++) {
-			TileType type = TileType.values()[agshmne.Outils.dice(TileType.values().length)];
+			TileType type = TileType.values()[io.github.algorys.agshmne.Outils.dice(TileType.values().length)];
 			tiles[i] = new Tile(type);
 			while (Math.random() < .5) {
-				tiles[i].addItem(new Apple());
+				InventoryItem e = new Apple();
+				tiles[i].addItem(e);
 			}
 		}
 	}
