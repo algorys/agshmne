@@ -1,21 +1,46 @@
 package agshmne;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Tile {
-	public enum Tiles {
-		Ville,
-		Roche,
-		Terre,
-		Bois,
-		Eau,
-		Desert
+	private TileType type;
+	private List<InventoryItem> items = new ArrayList<>();
+
+
+	public Tile(TileType type) {
+		this.type = type;
+	}
+
+	public TileType getType() {
+		return type;
+	}
+
+	public void setType(TileType type) {
+		this.type = type;
 	}
 	
-	private Tiles typeCase = Tiles.values()[1];
-	
-	
-	public Tiles getType(){
-		return typeCase;
+	public boolean addItem(InventoryItem e) {
+		return items.add(e);
 	}
 	
+	public List<InventoryItem> getItems() {
+		return Collections.unmodifiableList(items);
+	}
 	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(type);
+		if(!items.isEmpty()) {
+			sb.append("(");
+			for(InventoryItem item: items) {
+				sb.append(item.getName());
+				sb.append(" ");
+			}
+			sb.append(")");
+		}
+		return sb.toString();
+	}
 }

@@ -12,13 +12,12 @@ public class Agshmne {
 		 * TEST OUTILS
 		 */
 		int d = Outils.dice(6);
-		System.out.println("Vous lancéz un dé : " + d);
-		/*
-		 * TEST MAP
-		 */
-		Tile tile = new Tile();
+		System.out.println("Vous lancez un dé : " + d);
 		
-		System.out.println("Vous etes sur une case : " + tile.getType());
+		Region map = new Region();
+		
+		System.out.println("Votre carte : " + map);
+		System.out.println("Vous etes sur une case : " + TileType.Ville);
 	}
 
 }
