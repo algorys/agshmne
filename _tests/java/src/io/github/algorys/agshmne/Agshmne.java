@@ -1,28 +1,38 @@
 package io.github.algorys.agshmne;
 
+import io.github.algorys.agshmne.Personnage.Direction;
+import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.world.DefaultWorldFactory;
+import io.github.algorys.agshmne.world.World;
+
 public class Agshmne {
 	public static void main(String[] args) {
 		/*
 		 * TEST PERSO
 		 */
-		Personnage pj = new Personnage();
-		// System.out.println("Le personnage a : " + pj.getVie()+ "PdVs et " +
-		// pj.getMana() + " en mana !");
-
-		/*
-		 * TEST OUTILS
-		 */
+		
+		World world = (new DefaultWorldFactory()).create();
+		Region map = world.getDefaultRegion();
+		Personnage pj = new Personnage(map);
+		
 		int d = Outils.dice(6);
 		System.out.println("Vous lancez un dé : " + d);
 
-		Region map = new Region();
 		MapUtils mapUtils = new MapUtils(map);
 
 		System.out.println("Votre carte : " + map);
-		System.out.println("Vous etes sur une case : " + TileType.Ville);
 
 		mapUtils.showStatus(pj);
-		pj.setPosition(new Position(1, 2));
+		pj.move(Direction.SOUTH);
 		mapUtils.showStatus(pj);
+		pj.move(Direction.NORTH);
+		mapUtils.showStatus(pj);
+		pj.move(Direction.EAST);
+		mapUtils.showStatus(pj);
+		pj.move(Direction.WEST);
+		mapUtils.showStatus(pj);
+		pj.move(Direction.EAST);
+		mapUtils.showStatus(pj);
+
 	}
 }

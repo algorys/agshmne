@@ -1,5 +1,7 @@
 package io.github.algorys.agshmne;
 
+import io.github.algorys.agshmne.region.Region;
+
 public class MapUtils {
 	private Region region;
 
