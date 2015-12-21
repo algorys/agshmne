@@ -10,7 +10,7 @@ public class World {
 		this.regions = regions;
 	}
 	
-	public Region getRegion(Region origin, Personnage.Direction direction) {
+	public Region getRegion(Region origin, Personnage direction) {
 		// TODO retrouver les coordonnées de la région <code>origin</origin> pour donner la bonne région de retour, ou envoyer une erreur pour mauvaises entrées
 		return null;
 	}
