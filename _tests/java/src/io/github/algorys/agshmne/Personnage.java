@@ -1,16 +1,11 @@
 package io.github.algorys.agshmne;
 
-import io.github.algorys.agshmne.deplacement.Move;
 import io.github.algorys.agshmne.region.Region;
 
 /*
  * Définit le Personnage
  */
 public class Personnage {
-	public enum Direction {
-		NORTH, EAST, SOUTH, WEST
-	}
-	private Direction direction;
 	private Position position = new Position(0, 0);
 	private Region region;
 	
@@ -26,15 +21,10 @@ public class Personnage {
 	public Region getRegion() {
 		return this.region;
 	}
-
-	public Direction getDirection() {
-		return direction;
-	}
-
-	public void setDirection(Direction direction) {
-		this.direction = direction;
-	}
 	
+	public void setPosition(Position position) {
+		this.position = position;
+	}
 //	public void move(Direction direction) {
 //		switch (direction) {
 //		case NORTH:
