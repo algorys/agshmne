@@ -46,7 +46,7 @@ public class JRegion extends JPanel {
 			// Si notre gardien n'a pas encore la tuile
 			try {
 				// on essaye de la charger
-				Image img = ImageIO.read(new File(type.name().toLowerCase() + ".png"));
+				Image img = ImageIO.read(new File("ressources/"+type.name().toLowerCase() + ".png"));
 				// et on la stocke
 				this.imagePerTileType.put(type, img);
 			} catch (IOException e) {
