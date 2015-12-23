@@ -1,9 +1,9 @@
 package io.github.algorys.agshmne.region;
 
-import io.github.algorys.agshmne.Apple;
-import io.github.algorys.agshmne.InventoryItem;
-import io.github.algorys.agshmne.Tile;
-import io.github.algorys.agshmne.TileType;
+import io.github.algorys.agshmne.inventory.InventoryItem;
+import io.github.algorys.agshmne.objets.Apple;
+import io.github.algorys.agshmne.tile.Tile;
+import io.github.algorys.agshmne.tile.TileType;
 
 public class DeserticRegionFactory implements RegionFactory {
 
@@ -12,7 +12,7 @@ public class DeserticRegionFactory implements RegionFactory {
 		TileType[] possibles = {TileType.Desert, TileType.Roche, TileType.Terre, TileType.Ville};
 		Tile[] tiles = new Tile[Region.SIZE];
 		for (int i = 0; i < Region.SIZE; i++) {
-			TileType type = possibles[io.github.algorys.agshmne.Outils.dice(possibles.length)];
+			TileType type = possibles[io.github.algorys.agshmne.outils.Outils.dice(possibles.length)];
 			tiles[i] = new Tile(type);
 			while (Math.random() < .2) {
 				InventoryItem e = new Apple();

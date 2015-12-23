@@ -8,7 +8,7 @@ public class Agshmne {
 		 * TEST PERSO
 		 */
 		Campagne campagne = new Campagne();
-		
+		campagne.run();
 
 	}
 }

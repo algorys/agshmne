@@ -1,8 +1,10 @@
-package io.github.algorys.agshmne;
+package io.github.algorys.agshmne.tile;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import io.github.algorys.agshmne.inventory.InventoryItem;
 
 public class Tile {
 	private TileType type;

@@ -1,6 +1,8 @@
-package io.github.algorys.agshmne;
+package io.github.algorys.agshmne.outils;
 
+import io.github.algorys.agshmne.personnage.Personnage;
 import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.tile.Tile;
 
 public class MapUtils {
 	private Region region;

@@ -1,5 +1,6 @@
-package io.github.algorys.agshmne;
+package io.github.algorys.agshmne.personnage;
 
+import io.github.algorys.agshmne.deplacement.Position;
 import io.github.algorys.agshmne.region.Region;
 
 /*
