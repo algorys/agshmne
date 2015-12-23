@@ -32,6 +32,9 @@ L'univers d'Agshmne sera un mélange de fantasy provenant de différents mondes 
 ## Etat d'avancement
 **!!! Aucune version Jouable, conception en cours !!!**
 
+Premier rendu de région
+![Region](/_doc/region.png)
+
 ## Licence
 [![Licence Creative Commons](https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-nd/4.0/)
 
