@@ -2,7 +2,8 @@
 
 > Code : Java <br>
 > IDE : Eclipse <br>
-> Style : RPG
+> Style : RPG <br>
+> Plateformes Envisagées : Desktop / Android
 
 ## Information Générales
 
