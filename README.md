@@ -5,32 +5,36 @@
 > **Style :** RPG <br>
 > **Plateformes Envisagées :** Desktop / Android
 
-## Information Générales
+# Information Générales
 
 > **Nom du Jeu :** Agshmne
 
-> **Background :** ayant joué aux jeux cités ci-dessous et à de nombreux jeu de rôle sur table (Donjons et Dragons, Cyberpunk, Cthulhu pour ne citer qu'eux), je souhaite réaliser un jeu qui puisse se rejouer, se rejouer et se rejouer encore d'où de nombreux côtés aléatoires. J'espère aussi pouvoir apporté du texte fourni mais pas envahissant.
+> **Background :** ayant joué aux jeux cités ci-dessous et à de nombreux jeu de rôle sur table (Donjons et Dragons, Cyberpunk, Cthulhu pour ne citer qu'eux), je souhaite réaliser un jeu qui puisse se jouer, se rejouer et se rejouer encore d'où de nombreux côtés aléatoires. J'espère aussi pouvoir apporté du texte fourni mais pas envahissant.
 
-## Informations Générales
-Le style général sera le Jeu de Rôle en Solitaire, en se basant sur des titres comme Daggerfall pour le systèeme de jeu ou encore Planescape Torment pour l'univers déjanté. Les premières versions seront réduites au minimum et prendront de l'ampleur et du détail petit à petit. Le mode de déplacement et de vue se rapprochera plus des premiers Civilizations. 
+Le style général sera le Jeu de Rôle en Solitaire, en se basant sur des titres comme Daggerfall pour le système de jeu ou encore Planescape Torment pour l'univers déjanté et original. Le Monde sortira quand même des sentiers battus sur certains aspects comme l'origine des races ou leurs pouvoirs. Le joueur aura un impact direct sur le Monde que ce soit au niveau de ses choix, de ses créations et des actions. Par exemple, si le joueur déclare la guerre à un Royaume, celui-ci le poursuivra et essaiera de détruire les bâtiment du joueur, etc...
+
+La Magie sera présente dans Agshmne. Le jeu comprendra des écoles de bases que le joueur pourra ensuite s'approprier ou modifier.
 
 
-**Fonctionnaliés souhaités :**
+## Fonctionnaliés souhaités
+
+**Générales :**
 
 * Personnalisation du personnage et biens matériels
 * Création d'objets et objets existants dans l'univers
 * Gestions et créations de Clans, Guilde, Royaumes (et Capitale) dans l'univers
 * Gestion des Régions
-* Quêtes
+* Quêtes et énigmes à résoudre
+* Gestion et création de sorts
 
 * Donjons (J'aimerais vraiment faire quelque chose de complet, donc prévus dans des versions plus avancées)
 
 **Système de Jeu :**
-Jeu de Rôle sur table 
+Jeu de Rôle sur table
 
 * Lancé de Dés
 * Compétences
-* Enigmes
+* Expérience et Niveaux
 
 **Aspect graphique :**
 Des graphismes légers seront privilégiés afin de ne pas être limité en terme de possibilité d'action comme le font trop souvent les jeux actuels (notamment les derniers Elders Scrolls et consort).
@@ -48,7 +52,7 @@ Le mode de déplacement et de vue se rapprochera plus des premiers Civilizations
 
 La plupart du jeu se déroulera sur une carte en 2D, avec des cases carrées. Le monde sera représenté par 9 régions de 256 cases générées aléatoirement (dans un premier temps, plus s'il le faut). Les modifications sur la carte (pour les Possessions par exemple - _voir plus bas_) seront sauvegardées au fur et à mesure.
 
-Le système de jeu sera au Tour par Tour (enclenchés par chaque mouvement sur la carte). Un déplacement équivaudra à un jour probabement et on passera ainsi de Montagnes Déchainés de Malarh aux Marais des Sans Sels. 
+Le système de jeu sera au Tour par Tour (enclenchés par chaque mouvement sur la carte). Un déplacement équivaudra à un jour probabement et on passera ainsi de Montagnes Déchainés de Malarh aux Marais des Sans Sels.
 
 Les combats se dérouleront par rounds, permettant d'effectuer une ou plusieurs actions.
 
