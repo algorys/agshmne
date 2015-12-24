@@ -1,111 +1,122 @@
-# Conception
+# DOCUMENT DE CONCEPTION
+
+## Jeu
+
+> **Code :** Java <br>
+> **IDE :** Eclipse <br>
+> **Style :** RPG <br>
+> **Plateformes Envisagées :** Desktop / Android
+
+# Information Générales
 
 > **Nom du Jeu :** Agshmne
 
-> **Background :** ayant joué aux jeux cités ci-dessous et à de nombreux jeu de rôle sur table (Donjons et Dragons, Cyberpunk, Cthulhu pour ne citer qu'eux), je souhaite réaliser un jeu qui puisse se rejouer, se rejouer et se rejouer encore d'où de nombreux côtés aléatoires. J'espère aussi pouvoir apporté du texte fourni mais pas envahissant. 
+> **Background :** ayant joué aux jeux cités ci-dessous et à de nombreux jeu de rôle sur table (Donjons et Dragons, Cyberpunk, Cthulhu pour ne citer qu'eux), je souhaite réaliser un jeu qui puisse se jouer, se rejouer et se rejouer encore d'où de nombreux côtés aléatoires. J'espère aussi pouvoir apporté du texte fourni mais pas envahissant.
 
-## Informations Générales
-Le style général sera le Jeu de Rôle en Solitaire, en se basant sur des titres comme Daggerfall ou encore Planescape Torment pour le système de jeu et l'univers. Les premières versions seront réduites au minimum et prendront de l'ampleur petit à petit. 
+Le style général sera le Jeu de Rôle en Solitaire, en se basant sur des titres comme Daggerfall pour le système de jeu ou encore Planescape Torment pour l'univers déjanté et original. Le Monde sortira quand même des sentiers battus sur certains aspects comme l'origine des races ou leurs pouvoirs. Le joueur aura un impact direct sur le Monde que ce soit au niveau de ses choix, de ses créations et des actions. Par exemple, si le joueur déclare la guerre à un Royaume, celui-ci le poursuivra et essaiera de détruire les bâtiment du joueur, etc...
 
-Le mode de déplacement et de vue se rapprochera plus des premiers Civilizations. Le jeu sera généré un maximum aléatoirement… du nom des régions aux objets trouvé, tout en passant par la nature de chaque cases et leur description. C'est un **risque** car l'aléatoire est dur à doser, mais en se basant sur des règles proche du JdR sur table cela doit être possible. Le but est de proposer au joueur une histoire sans fin où il sera libre de continuer sa partie autant de temps qu'il le voudra.
+La Magie sera présente dans Agshmne. Le jeu comprendra des écoles de bases que le joueur pourra ensuite s'approprier ou modifier.
 
-La plupart du jeu se déroulera sur une carte en 2D, avec des cases carrées. Le système de jeu sera au Tour par Tour (enclenchés par chaque mouvement sur la carte) et les combats par rounds.
-Le monde sera représenté par 9 régions de 256 cases générées aléatoirement (dans un premier temps, plus s'il le faut). Les modifications sur la carte (pour les Possessions par exemple - _voir plus bas_) seront sauvegardées au fur et à mesure.
+## Fonctionnaliés souhaités
 
-Fonctionnaliés souhaités :
+**Générales :**
+
 * Personnalisation du personnage et biens matériels
 * Création d'objets et objets existants dans l'univers
-* Gestions et créations de Clans, Guilde, Royaumes (et Capitale) dans l'univers
+* Gestion et création de Clans, Guilde, Royaumes (et Capitale) dans l'univers
 * Gestion des Régions
-* Quêtes
-* Donjons
+* Quêtes et énigmes à résoudre
+* Gestion et création de sorts
 
-* Aspect Jeu de Rôle sur Table (Lancé de Dés, Enigmes, Compétences)
+* Donjons (J'aimerais vraiment faire quelque chose de complet, donc prévus dans des versions plus avancées)
 
-La 2D ainsi que des graphismes légers seront privilégiés afin de ne pas être limité en terme de possibilité d'action comme le font trop souvent les jeux actuels (notamment les derniers Elders Scrolls et consort).
+**Système de Jeu :**
+Jeu de Rôle sur table
 
-## Description Détaillée
-### Contexte
+* Lancé de Dés
+* Compétences
+* Expérience et Niveaux
+
+**Aspect graphique :**
+Des graphismes légers seront privilégiés afin de ne pas être limité en terme de possibilité d'action comme le font trop souvent les jeux actuels (notamment les derniers Elders Scrolls et consort).
+
+* 2D
+* Système avec des cases
+* Vue de dessus
+* Dessins simplistes mais modernes
+
+## Détails
+
+> Les premières versions seront réduites au minimum et prendront de l'ampleur et du détail petit à petit.
+
+Le mode de déplacement et de vue se rapprochera plus des premiers Civilizations. Le jeu sera généré un maximum aléatoirement… du nom des régions aux objets trouvé, tout en passant par la nature de chaque cases et leur description. C'est un **risque** car l'aléatoire est dur à doser, mais en se basant sur un système de règles proches du JdR sur table cela doit être possible. Le but est de proposer au joueur une histoire sans fin où il sera libre de continuer sa partie autant de temps qu'il le voudra.
+
+La plupart du jeu se déroulera sur une carte en 2D, avec des cases carrées. Le monde sera représenté par 9 régions de 256 cases générées aléatoirement (dans un premier temps, plus s'il le faut). Les modifications sur la carte (pour les Possessions par exemple - _voir plus bas_) seront sauvegardées au fur et à mesure.
+
+Le système de jeu sera au Tour par Tour (enclenchés par chaque mouvement sur la carte). Un déplacement équivaudra à un jour probabement et on passera ainsi de Montagnes Déchainés de Malarh aux Marais des Sans Sels.
+
+Les combats se dérouleront par rounds, permettant d'effectuer une ou plusieurs actions.
+
+## Contexte
 L'univers d'Agshmne sera un mélange de fantasy provenant de différents mondes (Donjons & Dragons, Elders Scroll, Planescape Torment, Baldur's Gate, etc…) Cela ira du simple nain grognon à l'accès aux Plans Spirituelles ou Élémentaires, tout en passant par des lieux mystiques et légendaire ou des choses étranges comme de la technologie incomprise ou des choses innommables (Cthulhu).
 
-### Objectif du Jeu
+# Description Détaillée
+
+## Objectif du Jeu
 
 L'objectif d'Agshmne est inconnu ! Il variera selon l'envie du joueur. Si le joueur trouvent que les guildes marchandes ou bien la création d'un royaume du mal sont ses objectifs principaux, rien ne doit l'en empêcher.
 
 Les entités (guildes ou royaumes) par défaut du monde d'Agshmne doivent pouvoir un jour appartenir au joueur comme elle peuvent être alliées ou ennemis de celles qu'il aura créée.
 
-## Gameplay
-### Informations
-Le jeu sera accessible via une interface Web à l'aide de Ruby on Rails (ou un autre si besoin). Il y aura un système d'enregistrement pour que chaque joueur puisse sauvegarder ses personnages. Toutes les données du jeu seront sur serveur.
-Encore une fois les graphismes seront simples mais un minimum travaillés afin de toujours faire en sorte que chaque icône ou décor soit compréhensible.
+# Gameplay
 
-### Lancement du Jeu : 
-Le joueur arrivera sur une page d'accueil présentant l'entrée d'un Donjon ou la vue d'un paysage. Il aura alors différents choix : Démarrer une partie, Charger une partie, Configurer le jeu (peut-être la taille de la carte, mort permanente, etc...) ou bien Quitter le jeu (la session du joueur). Voici chaque choix plus en détails :
+## Informations
 
-* Démarrer une partie : Le joueur pourra ensuite Créer un personnage avec différentes parties personnalisables comme les caractéristiques, la race, etc., Continuer une Partie existante ou retourner en arrière :
+Le jeu sera développé en Java ce qui permettra d'avoir aussi bien une version en mode Desktop qu'une version Android. Il sera aussi censé fonctionner sur Windows ou sur Linux. Le style graphique du jeu sera simple mais le plus travaillé possible, afin de toujours faire en sorte que chaque icône ou décor soit compréhensible. De préférence les lieux les plus importants auront tous un Artwork principal.
+
+## Lancement du Jeu
+
+Le joueur arrivera sur un écran d'accueil présentant l'entrée d'un Donjon ou la vue d'un paysage. Il aura alors différents choix : Démarrer une partie, Charger une partie, Configurer le jeu (peut-être la taille de la carte, une mort permanente, un niveau de difficulté, etc...) ou bien Quitter le jeu.
+
+Voici chaque choix plus en détails :
+
+* Démarrer une partie : Le joueur arrivera sur l'écran de création de personnage avec différentes parties personnalisables : caractéristiques, race, etc. :
   * Créer un personnage : le joueur devra définir plusieurs choses parmi :
     * Choisir son nom et son sexe
-    * Choisir sa race 
-    * Donner un nom à la classe de son personnage. (Il n'y aura pas de classes de personnage prédéfinies.)
-    * Définir ses Caractéristiques : attribuer des points !
-  * De base le joueur aura :
-    * Un Équipement de départ
-    * Argent : 10 po par exemple
-  * Début : le Personnage sera sur une case (0,0) et sera une case de Type « Ville »)
-* Charger / Lancer / Continuer la partie : Une fois un personnage créé, le joueur pourra lancer la partie que ce soit avec un personnage fraîchement créé ou une sauvegarde existante.
+    * Choisir sa race
+    * Donner un nom à la classe de son personnage. (Il n'y aura pas de classes de personnage prédéfinies, vu que le joueur sera libre de faire évoluer son personnage comme il l'entend)
+    * Attribuer des points à ses caractéristiques.
+    * De base le joueur aura :
+      * Un Équipement de départ
+      * De l'Argent : 10 po par exemple.
+      * Des compétences (Voir plus bas).
+  * Une fois son personnage créé, le joueur pourra démarrer sa partie :
+    * Début : le Personnage sera sur une case (0,0), de Type « Ville ».
+* Charger / Lancer / Continuer la partie : Une fois un personnage créé, le joueur pourra reprendre sa partie que ce soit avec un personnage fraîchement créé ou une sauvegarde existante.
 * Configurer le Jeu : Le joueur aura accès à différents réglages… Les premier réglages à pouvoir être définis seront la taille de la carte et la possibilité de rendre la mort permanente (comme un Roguelike).
-* Quitter partie : Quitter la partie de fermer la session du joueur. Le joueur retournera alors à l'accueil.
+* Quitter la partie : Quitter la partie permet de quitter le jeu.
 
 ## La Carte
-La carte sera un des éléments principaux du jeu. Elle sera fractionnée entre différentes Régions qui seront nommée à l'avance, mais non calculées. Chaque région fera 256 cases. 
+La carte sera un des éléments principaux du jeu. Une carte de 1024 cases sera d'abord envisagée.
 
-> Algo : générer des noms parmi une liste
+Elle sera ensuite fractionnée entre 9 Régions. Le personnage commencera dans la région du centre et devra ensuite découvrir les autres par ses propres moyens. Chaque région aura de base 200 cases, dont une vingtaine aléatoires.
 
-Au début du jeu le personnage ne connaît aucune case et les découvre donc au fur et à mesure. Les cases non découvertes seront donc représenté par un point d'interrogation ou un fond noir. Elle sera composée de plusieurs cases (ou tuiles) ayant les caractéristiques suivantes :
+Au début du jeu le personnage ne connaît aucune case (hormis celle de départ) et les découvre donc au fur et à mesure. Un système de "brouillard" devra être mis en place. Les cases non découvertes seront donc représenté par un point d'interrogation ou un fond noir.
 
-**Type** : le type de la case
-**Noms** : les noms affichés
-**Actions** : les actions que le personnage pourra voir apparaître à l'écran. Ces actions peuvent aussi varier selon les compétences du personnage !
-
-Types prévus :
-
-* Type Ville : 
-  * Noms : Cité, Village, Ville, Capitale, Ferme
-  * Actions : Commercer (magasin standard, Dormir, Manger, Apprendre, Quêtes. (Gestion de la faim et de la fatigue : EPUISEMENT)
-  * Spécial : la case Ville sera spéciale et fera apparaître des onglets en plus. Algo : générer aléatoirement ces magasins)
-* Type Roche : 
-  * Noms : Montagne, Valée, Falaises.
-  * Actions : Miner
-* Type Herbe : 
-  * Noms : Plaine, Collines, prairies
-  * Actions : Cultiver
-* Type Bois :
-  * Noms : Bois, Forêt, Jungle
-  * Actions : Bûcheron
-* Type Eau : 
-  * Noms : Lac, Mer, Rivière
-  * Actions : Pêcher
-* Type Désert :
-  * Noms : désert, toundra
-  * Actions : -
-
-> Algo : Générer une carte de 256 cases.
+Chaque case aura des propriétés spécifique et représentera un lieu : Montagne, Plaines, Grottes, Chutes d'eau, Désert, etc...
 
 ## Événements
-Ensuite chaque case peut avoir des événements aléatoires et ainsi rajouter encore des actions possibles au personnage. Par exemple si un personnage tombe sur une fontaine de vie, il pourra régénérer ses points de vie ou encore si il rencontre un ennemi et qu'il le tue, il pourra récupérer la viande crue dessus. Ces actions peuvent aussi varier selon les compétences du personnage.
 
-* **Rencontre Amicale** : le joueur peut se voir proposer une quête ou apprendre une compétence. (30% - DANGER)
-* **Rencontre Hostile** : le joueur doit se battre ou monnayer sa fuite (si la rencontre le permet. Exemple : un joueur pourra marchander avec un bandit mais pas avec un loup). (20% + DANGER)
-* **Lieu-dit** :(7%)
-  * Aléatoire : Fontaine, Lieu Sacré ou maudit, Lieu hanté etc. Le Lieu-dit peut aussi bien être bénéfique ou maléfique. (Générés aléatoirement. Algo : liste / modif vie, mana, carac,...)
-* **Donjon** : le donjon sera certainement la dernière chose à voir dans ce projet car il demandera beaucoup de règles pour être bien fait : passage secret, monstres bien organisés, etc. En attendant, ce sera la rencontre avec un être puissant : Dragon, Archimage, Diable, Divinités, etc. (3%)
-* **Rien** : car de temps en temps il n'y a rien. (40%)
+Chaque case peut avoir des événements aléatoires et ainsi rajouter des actions possibles au personnage. Par exemple si un personnage se situe sur les Plaines du Grand Soir et tombe sur une fontaine de vie, il pourra régénérer ses points de vie ou encore si il rencontre un monstre ou une bête et qu'il le tue, il pourra récupérer de la viande crue dessus.
 
-> Algo : Générer ces événements aléatoirement. (Voir ci dessus)
+Ces actions peuvent aussi varier selon les compétences du personnage.
 
 ## Interface de l'Utilisateur
+
 ### Zone de Jeu
-La zone de jeu définit l'espace où le joueur va évoluer. Il comprend un bout de la carte (3 cases autour du joueur à peu près), les boutons Déplacement, les barres de vie, mana, épuisement, l'onglet Ville si c'est une cases ville et l'onglet Action.
+La zone de jeu définit l'espace où le joueur va évoluer. Il comprend un bout de la carte (3 cases autour du joueur), les boutons Déplacement, les barres de vie, mana, épuisement, l'onglet Ville si c'est une cases ville et l'onglet Action.
+
+La Carte restera toujours centrée sur le Personnage.
 
 * Onglet Action (Zone de Jeu) : permet d'accéder à des compétences si le cas se présente (Ex : si le personnage se trouve sur une case Bois et qu'il a une Hache = Bûcher). Ou bien Attaque, Marchander, Fuir si il a détecté / rencontré un monstre, etc.
 * Onglet Ville (Zone de Jeu) : Permet d'accéder au divers magasin, actions propres à la ville.
@@ -114,6 +125,7 @@ La zone de jeu définit l'espace où le joueur va évoluer. Il comprend un bout 
 ### Onglets Menu
 
 Voici les différents onglets :
+
 * **Magie (Menu / Combat)** : Liste les sorts du personnage. Possibilité pour le joueur de lancer certains sorts selon le contexte (En combat tous les sorts seront lançables / En Zone de jeu non !)
 * **Personnage (Menu)**: donnera un aperçu des caractéristiques du personnage. Cet onglet servira notamment aux passage de niveaux. (Bouton – et + pour les points)
 * **Inventaire (Menu)**: affichera la liste des objets que possède le personnage. Certains objets comme les potions offriront des actions supplémentaires (comme boire, manger, équiper, enchanter, etc.) via un bouton.
@@ -125,101 +137,162 @@ Voici les différents onglets :
 * **Quêtes (Menu)** : montrera les quêtes acceptées par le personnage.
 * **Menu (Menu)** : permet de sauvegarder, charger, quitter une partie.
 
-### Expérience
+## Expérience
+
 L'expérience du personnage augmentera au fur et à mesure des succès du personnage. Bien sûr il y aura différents palier pour les niveaux.
-Voici un aperçu :
-* Le personnage gagne de l'expérience après différentes actions (combat, découverte de lieux, etc.)
-* Gain de Niveau :
+
+* Le personnage gagne de l'expérience après différentes actions (combat, découverte des lieux spéciaux, etc.)
+* Gain de Niveau : le personnage ommencera au niveau 1 et à chaque passage de niveau :
   * Points à attribuer aux Caractéristiques.
 
-## Données
-### Gestion des Tours et du Danger
+# Données
+
+## Gestion des Tours et du Danger
+
 * **Tours / Jours** : Les tours (ou jours) évoluent comme suit :
 A chaque déplacement le tour est incrémenté, ainsi que le niveau de danger. Le Tour ne retombent jamais à 0 et continue tant que le personnage est en vie. (+1 à chaque déplacement)
 Le danger est un peu spécial et influera sur les événements.
 * **Danger** : Le Danger retombe à 0 après un combat. Si le personnage n'effectue aucun combat, le Danger s'incrémente à chaque déplacement. Le danger a un maximum de 20. Le danger ne s'incrémente jamais sur une case Ville.
 
-### Personnage
-Le personnage sera le plus complet possible ou tout du moins laisser la possibilité de la faire évoluer.
+## Personnage
+
+Le personnage sera le plus complet possible ou tout du moins, le jeu devra laisser la possibilité de le faire évoluer.
+
 **Le Vital :**
 * 5 Caractéristiques (Force, Dextérité, Constitution, Intelligence et Charisme)
 * 4 Vitales : Vie et Mana → dépensées par combat / compétences, Fatigue et Faim → incrémenté à chaque déplacement.
 * 1 caractéristique Position
 * 1 Équipement : Tête, Torse, Bras, Jambes, 2 Mains, 2 anneaux
 * Compétences : celles de bases et celles apprises.
-* Expérience : augmentera selon les succès du joueur.
-* Niveau : augmentera selon les succès du joueur, apportera des bonus et des points à distribuer.
+* Expérience et Niveau : augmentera selon les succès du joueur. Cela apportera des bonus et des points à distribuer.
 * Argent : gagné de diverses façons.
 
 **Les Possessions :**
 Le personnage pourra avoir un animal, posséder un royaume, une guilde, etc. Ces différents états apporteront des bonus différents.
 
 * 1 Sac-à-dos : espace limité par la Force
-### Combat
-Les règles seront simple mais nécessiteront une instance à part de la Zone de Jeu.
+* Un coffre : espace accessible sur toutes les cases "Ville".
+* Propriétés :
+  * Le joueur pourra avoir une Guilde, un royaume, un batiment...
 
-## Algorithmes
-### Monde
-Cet algo devra générer aléatoirement des noms de région parmi une liste. Dans l'idéal, il devrait y avoir au moins 9 Régions (Carré de 3 * 3). Chaque région contiendra une carte de 256 cases. 
+## Combat
 
-### Région
+Les règles seront simple mais nécessiteront une instance à part de la Zone de Jeu. Chaque combat sera découpé en round, laisant au joueur comme à l'adversaie la possibilité d'avoir une ou plusieurs actions.
+
+# Algorithmes
+
+## Monde
+Cet algorithme devra générer aléatoirement des noms de région parmi une liste. Dans l'idéal, il devrait y avoir au moins 9 Régions (Carré de 3 * 3). Chaque région contiendra une carte de 256 cases.
+
+## Région
+
 Cet algo devra générer une carte de 256 cases (carré de 16 cases * 16) ou bien pouvoir tirer au sort un type de case et l'écrire quelque part (BDD ou fichier). La carte possédera les attributs suivants :
+
 * Nom : Le nom de la région
 * Position : Où elle se trouve par rapport aux autres régions.
 * Possession : à quel Faction elle appartient.
 * Carte : L'intégrale de ses cases
 
-### Cases
+## Cases
+
 Cet Algo devra définir une case. Chaque case devra contenir les choses suivantes :
+
 * Événement : doit être généré en premier pour savoir ce qu'il arrive. (voir fin de tour)
 * Type : Le type de la case
+* Nom et Description : le nom de la case et sa description.
 * Actions : Les actions possibles, avec leurs conditions.
 * Sol : Les objets à terre
 * Possession : à quel Faction appartient la case.
 
-### Factions
+Chaque case (ou tuiles) aura les caractéristiques suivantes :
+
+**Type** : le type de la case
+**Noms** : les noms affichés
+**Actions** : les actions que le personnage pourra voir apparaître à l'écran. Ces actions peuvent aussi varier selon les compétences du personnage !
+
+Types prévus :
+
+* Type Ville :
+  * Noms : Cité, Village, Ville, Capitale, Ferme
+  * Actions : Commercer (magasin standard, Dormir, Manger, Apprendre, Quêtes. (Gestion de la faim et de la fatigue : EPUISEMENT)
+  * Spécial : la case Ville sera spéciale et fera apparaître des onglets en plus. Algo : générer aléatoirement ces magasins)
+* Type Roche :
+  * Noms : Montagne, Valée, Falaises.
+  * Actions : Miner
+* Type Herbe :
+  * Noms : Plaine, Collines, prairies
+  * Actions : Cultiver
+* Type Bois :
+  * Noms : Bois, Forêt, Jungle
+  * Actions : Bûcheron
+* Type Eau :
+  * Noms : Lac, Mer, Rivière
+  * Actions : Pêcher
+* Type Désert :
+  * Noms : désert, toundra
+  * Actions : -
+
+## Evénement
+
+Voici l'algorithme prévu :
+
+* **Rencontre Amicale** : le joueur peut se voir proposer une quête ou apprendre une compétence. (30% - DANGER)
+* **Rencontre Hostile** : le joueur doit se battre ou monnayer sa fuite (si la rencontre le permet. Exemple : un joueur pourra marchander avec un bandit mais pas avec un loup). (20% + DANGER)
+* **Lieu-dit** :(7%)
+  * Aléatoire : Fontaine, Lieu Sacré ou maudit, Lieu hanté etc. Le Lieu-dit peut aussi bien être bénéfique ou maléfique. (Générés aléatoirement. Algo : liste / modif vie, mana, carac,...)
+* **Donjon** : le donjon sera certainement la dernière chose à voir dans ce projet car il demandera beaucoup de règles pour être bien fait : passage secret, monstres bien organisés, etc. En attendant, ce sera la rencontre avec un être puissant : Dragon, Archimage, Diable, Divinités, etc. (3%)
+* **Rien** : car de temps en temps il n'y a rien. (40%)
+
+## Factions
 Les Factions seront très simple à gérer. Une Faction entend différents type :
 * Type : Guilde, Royaume, Clan
 * Location : Nom de la région à laquelle elle appartient
 * Puissance : Pour les combats de région. (Disponible quand il y a 2 région découvertes)
 * Cases : une fois la carte générée, les factions auront 20 % des cases d'une région.
 
-### Villes
-Les villes seront placés aléatoirement sur la carte. Chaque ville doit être espacée de 2 cases minimum. Elle généreront un menu supplémentaire à l'écran. Au moins un magasin (Bazar) vendra de tout ! 
+## Villes
 
-**Magasin Principal**
+Les villes seront placés aléatoirement sur la carte. Chaque ville doit être espacée de 2 cases minimum. Elle généreront un menu supplémentaire à l'écran. Au moins un magasin (Bazar) vendra de tout !
+
+**Magasin Principal (Bazar)**
 * Génération du contenu du magasin
 * Génération des objets :
   * Lorsqu'un personnage achète ou trouve un objet, il devra être créé aléatoirement et avoir un prix relatif à ses caractéristiques.
 
-Différents magasins supplémentaires seront proposés au joueur avec au moins un qui vent les bases. Chaque magasins apportera un ou plusieurs bonus en plus : 
+Différents magasins supplémentaires seront proposés au joueur avec au moins un qui vent les bases. Chaque magasins apportera un ou plusieurs bonus en plus :
 * Forge
-* Alchimiste 
+* Alchimiste
 * Thaumaturge
 * Auberge
 * Taverne
 * Cathédrale
 
-### Déplacement (Fin de tour)
-A chaque déplacement du personnage, c'est une « fin de tour ». C'est à dire que plusieurs état devront être vérifiés.
+## Déplacement (Fin de tour)
+
+A chaque déplacement du personnage, c'est une « fin de tour ». C'est à dire que plusieurs élément devront être vérifiés.
 * Danger : si le danger est à 20, il y a un combat.
 * Faim et Fatigue du personnage
 * Tours : le nombre de tour fera avancer la date.
-  * Générer la Date. 
-* Génération de la prochaine cases ? (A voir si toute la région est générée dès le début ou pas ?)
+  * Générer la Date.
 
-### Personnage
+## Personnage
+
 Le personnage aura beaucoup d'attributs et notamment des caractéritiques, de l'expérience, des possessions etc.
 
 Caractéristiques voulues (Création) :
 
-* 5 Caractéristiques (3-20) : Force (FOR), Dextérité (DEX), Constitution (CON), Intelligence (INT) et Charisme (CHA)
-  * 10 points + points à attribuer.
-* 4 Vitales : 
+* 5 Caractéristiques (MIN : 3 - MAX : 20) :
+  * Force (FOR) : impactera l'attaque au Corps à Corps, les actions demandant de la force (pousser, tirer, casser, etc...)
+  * Dextérité (DEX) : impactera l'attaque à distance, le Crochetage, les actions délicates (Crocheter, équilibre, etc...)
+  * Constitution (CON) : impactera les Points de Vie, la résitance aux poisons, aux maladies, etc...
+  * Intelligence (INT) : impactera les Points de Mana, les sorts, la résolution de problèmes.
+  * Charisme (CHA) : impactera les réactions aves les gens (Comme les négociations de prix).
+    * Chaque caratéristique aura 10 points + les points que le joueur attribuera.
+* 4 Vitales :
   * Vie : CON + 10 + NIV
   * Mana : INT + NIV
   * Fatigue et Faim : CON + 10
-* Position : (0,0) 
+* Position : (0,0)
 * Équipement : Tête, Torse, Bras, Jambes, 2 Mains, 2 anneaux.
   * Départ : Epée ou Baton
 * Sac-à-dos : espace Sac + FOR = nombre d'objets portés
@@ -232,9 +305,10 @@ Caractéristiques (En jeu) :
 
 Un lancer de caractéristique se fera avec 1d20. Il faudra que le résultat du dé soit inférieur à la caractéristique pour que ce soit réussi.
 
-### Compétences
+## Compétences
 
-Ces compétences pourront être agrandies par la suite et auront un NIVEAU.
+Ces compétences pourront être améliorées par la suite et auront donc un NIVEAU.
+
 Compétences souhaitées :
   * Compétences de Base (pour tout personnage créé!) :
     * Cuisiner (Unités : repas))
@@ -270,8 +344,4 @@ La compétence gagne n% pour n au dessus du DD en progression.
 Combat
 Monstres
 Quêtes
-Evènement spéciaux 
-
-
-
-
+Evènement spéciaux
