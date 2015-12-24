@@ -1,7 +1,7 @@
 # Jeu
 
-> Code : Java
-> IDE : Eclipse
+> Code : Java <br>
+> IDE : Eclipse <br>
 > Style : RPG
 
 ## Information Générales
@@ -32,17 +32,18 @@ Jeu de Rôle sur table
 * Enigmes
 
 **Aspect graphique :**
+Des graphismes légers seront privilégiés afin de ne pas être limité en terme de possibilité d'action comme le font trop souvent les jeux actuels (notamment les derniers Elders Scrolls et consort).
 
-* 2D, ainsi que des graphismes légers seront privilégiés afin de ne pas être limité en terme de possibilité d'action comme le font trop souvent les jeux actuels (notamment les derniers Elders Scrolls et consort).
+* 2D
 * Système avec des cases
 * Vue de dessus
 * Dessins simplistes mais modernes
 
 **Détails :**
 
-> Les premières versions seront réduites au minimum et prendront de l'ampleur et du détail petit à petit. Le mode de déplacement et de vue se rapprochera plus des premiers Civilizations. 
+> Les premières versions seront réduites au minimum et prendront de l'ampleur et du détail petit à petit.
 
-Par contre, le jeu sera généré un maximum aléatoirement… du nom des régions aux objets trouvé, tout en passant par la nature de chaque cases et leur description. C'est un **risque** car l'aléatoire est dur à doser, mais en se basant sur un système de règles proches du JdR sur table cela doit être possible. Le but est de proposer au joueur une histoire sans fin où il sera libre de continuer sa partie autant de temps qu'il le voudra.
+Le mode de déplacement et de vue se rapprochera plus des premiers Civilizations. Le jeu sera généré un maximum aléatoirement… du nom des régions aux objets trouvé, tout en passant par la nature de chaque cases et leur description. C'est un **risque** car l'aléatoire est dur à doser, mais en se basant sur un système de règles proches du JdR sur table cela doit être possible. Le but est de proposer au joueur une histoire sans fin où il sera libre de continuer sa partie autant de temps qu'il le voudra.
 
 La plupart du jeu se déroulera sur une carte en 2D, avec des cases carrées. Le monde sera représenté par 9 régions de 256 cases générées aléatoirement (dans un premier temps, plus s'il le faut). Les modifications sur la carte (pour les Possessions par exemple - _voir plus bas_) seront sauvegardées au fur et à mesure.
 
