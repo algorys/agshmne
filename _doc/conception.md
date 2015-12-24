@@ -206,33 +206,33 @@ Cet Algo devra définir une case. Chaque case devra contenir les choses suivante
 
 Chaque case (ou tuiles) aura les caractéristiques suivantes :
 
-**Type** : le type de la case
-**Noms** : les noms affichés
+**Type** : le type de la case <br>
+**Noms** : les noms affichés <br>
 **Actions** : les actions que le personnage pourra voir apparaître à l'écran. Ces actions peuvent aussi varier selon les compétences du personnage !
 
 Types prévus :
 
-* Type Ville :
+* **Ville :**
   * Noms : Cité, Village, Ville, Capitale, Ferme
   * Actions : Commercer (magasin standard, Dormir, Manger, Apprendre, Quêtes. (Gestion de la faim et de la fatigue : EPUISEMENT)
   * Spécial : la case Ville sera spéciale et fera apparaître des onglets en plus. Algo : générer aléatoirement ces magasins)
-* Type Roche :
+* **Roche :**
   * Noms : Montagne, Valée, Falaises.
   * Actions : Miner
-* Type Herbe :
+* **Herbe :**
   * Noms : Plaine, Collines, prairies
   * Actions : Cultiver
-* Type Bois :
+* **Bois :**
   * Noms : Bois, Forêt, Jungle
   * Actions : Bûcheron
-* Type Eau :
+* **Eau :**
   * Noms : Lac, Mer, Rivière
   * Actions : Pêcher
-* Type Désert :
+* **Désert :**
   * Noms : désert, toundra
   * Actions : -
 
-## Evénement
+## Evénements
 
 Voici l'algorithme prévu :
 
