@@ -60,6 +60,31 @@ Les combats se dérouleront par rounds, permettant d'effectuer une ou plusieurs 
 ## Contexte
 L'univers d'Agshmne sera un mélange de fantasy provenant de différents mondes (Donjons & Dragons, Elders Scroll, Planescape Torment, Baldur's Gate, etc…) Cela ira du simple nain grognon à l'accès aux Plans Spirituelles ou Élémentaires, tout en passant par des lieux mystiques et légendaire ou des choses étranges comme de la technologie incomprise ou des choses innommables (Cthulhu).
 
+## Une partie
+**...ou ce qu'elle devrait être !**
+
+Vous êtes dans la Cité de Saaron et vous venez de vous réveillé dans "l'Auberge des Frères Nofl". [Background]
+
+Vous décidez de passer au bazar acheter de l'équipement. Vous ne pouvez prendre qu'une pioche de maivaise qualité, car vous avez dépenser votre argent à la taverne la veille. [Commerce]
+
+Vous décidez donc de partir. [Voyage / Changement de case]
+
+Vous atteignez les Monts des Visions, le climat est au soleil fixe. [Climat]
+
+Pas de danger à l'horizon. Vous trouvez une grotte et fu minerai. Votre pioche va vous servir. [Interaction / Craft]
+
+Après avoir cassé votre pioche et récolter un peu de minerai. Vous quittez enfin les montagnes. [Changement de case]
+
+Vous entrez dans les Plaines des Sept Morts. Vous décider d'explorer les environs et de trouver une ville. Cela ne fait que vous fatiguer. [Fatigue]
+
+Vous persistez et une ruine d'une ancienne tour apparait au loin. En fouillant [Compétence], vous trouvez une cachette. 
+
+A l'intérieur, un livre parlant d'un Sceptre de Feu. En le ramenant ici, la puissance du Feu récompensera le sauveur. [Légende]
+
+Au cours de vos aventures, vous trouvez ce sceptre et vous le ramenez ici. Le Sceptre vous a servi et est vide. Vous le recharger grâce à la magie du feu. [Magie / Écoles].
+
+Vous posez le Sceptre. Un Dragonnet de Feu [Compagnon] propose de se joindre à vous...
+
 # Description Détaillée
 
 ## Objectif du Jeu
