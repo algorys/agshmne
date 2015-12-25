@@ -260,9 +260,10 @@ Les villes seront placés aléatoirement sur la carte. Chaque ville doit être e
   * Génération des objets :
     * Lorsqu'un personnage achète ou trouve un objet, il devra être créé aléatoirement et avoir un prix relatif à ses caractéristiques.
 * Auberge
-  * Manger / Boire
   * Dormir
 * Taverne
+  * Manger / Boire
+* Intendance
  * Le joueur pourra obtenir des Quêtes.
 * Bibliothèque
   * Le joueur pourra étendre ses compétences ou en apprendre de nouvelles. Une liste aléatoire devra être proposée.
@@ -270,10 +271,10 @@ Les villes seront placés aléatoirement sur la carte. Chaque ville doit être e
 **Magasins aléatoires :** Chaque magasins apportera un ou plusieurs bonus en plus :
 * Forge
 * Alchimiste
-* Thaumaturge
-* Auberge
-* Taverne
-* Cathédrale
+* Thaumaturge (à générer en fonction des écoles).
+* Observatoire
+* Lieu Saint (Église, Cathédrale, Temple, Monastère)
+* Archiviste
 
 **Propriétés du Joueur :** Le joueur aura de base un coffre et pourra ensuite avoir des batiments.
 * Coffre : permet de stocker des objets.
@@ -350,9 +351,13 @@ Exemple : Jet Fouiller = 1d10 + (DEX - 10) + NIV Fouiller devra battre une diffi
 
 La compétence gagne n% pour n au dessus du DD en progression.
 
-> A faire
+## Magie
 
-Combat
-Monstres
-Quêtes
-Evènement spéciaux
+## Combat
+
+## Ennemis et Monstres
+
+## Quêtes
+
+## Evènement spéciaux
+
