@@ -232,7 +232,7 @@ Types prévus :
   * Noms : désert, toundra
   * Actions : -
 
-## Evénements
+## Evénements Spéciaux
 
 Voici l'algorithme prévu :
 
@@ -265,13 +265,16 @@ Les villes seront placés aléatoirement sur la carte. Chaque ville doit être e
   * Manger / Boire
 * Intendance
  * Le joueur pourra obtenir des Quêtes.
-* Bibliothèque
+* Maitre de Compétence.
   * Le joueur pourra étendre ses compétences ou en apprendre de nouvelles. Une liste aléatoire devra être proposée.
 
 **Magasins aléatoires :** Chaque magasins apportera un ou plusieurs bonus en plus :
 * Forge
 * Alchimiste
-* Thaumaturge (à générer en fonction des écoles).
+* Bibliothèque
+  * offrira différents bonus ou des infos sur le monde.
+* Thaumaturge Spécialisé 
+  * à générer en fonction des écoles.
 * Observatoire
 * Lieu Saint (Église, Cathédrale, Temple, Monastère)
 * Archiviste
@@ -352,6 +355,23 @@ Exemple : Jet Fouiller = 1d10 + (DEX - 10) + NIV Fouiller devra battre une diffi
 La compétence gagne n% pour n au dessus du DD en progression.
 
 ## Magie
+La magie va avoir plusieurs écoles de base définis par les 6 éléments :
+* Feu : feu, chaleur, fusion, 
+* Terre : terre, végétal, animal,
+* Eau : eau, glace, froid
+* Air : climat, éthéré, 
+* Energie : vie, poussée, pression
+* Vide : mort, ombre, poison
+
+Chaque élément aura un niveau. Le niveau de base sera 0 pour toutes les écoles. Cela signifie qu'au début le personnage ratera souvent ses sorts.
+
+Une liste de sorts de base sera directement disponible.
+
+> Sorts TODO
+
+Par la suite le personnage pourra créer ses propres sorts en combinant ces différents éléments. Le joueur aura accès à la création de sorts chez le Thaumathurge ou bien dans une de ses propriétés si il dispose d'une bibliothèque.
+
+> Création de Sorts TODO
 
 ## Combat
 
@@ -359,5 +379,14 @@ La compétence gagne n% pour n au dessus du DD en progression.
 
 ## Quêtes
 
-## Evènement spéciaux
+Les Quêtes offriront différents scénarios. Il y aura bien sûr les quêtes standard : 
+
+* Va chercher _x_ objets au lieu _y_ 
+* Tue le monstre _m_ au lieu _z_
+
+Mais aussi des choses plus originales comme :
+* Construire un objet
+* Construire un batiment, 
+* Vole le batiment _b_ pour la faction _f_
+
 
