@@ -254,18 +254,29 @@ Les Factions seront très simple à gérer. Une Faction entend différents type�
 
 Les villes seront placés aléatoirement sur la carte. Chaque ville doit être espacée de 2 cases minimum. Elle généreront un menu supplémentaire à l'écran. Au moins un magasin (Bazar) vendra de tout !
 
-**Magasin Principal (Bazar)**
-* Génération du contenu du magasin
-* Génération des objets :
-  * Lorsqu'un personnage achète ou trouve un objet, il devra être créé aléatoirement et avoir un prix relatif à ses caractéristiques.
+**Magasins principaux :**
+* Bazar
+  * Génération du contenu du magasin
+  * Génération des objets :
+    * Lorsqu'un personnage achète ou trouve un objet, il devra être créé aléatoirement et avoir un prix relatif à ses caractéristiques.
+* Auberge
+  * Manger / Boire
+  * Dormir
+* Taverne
+ * Le joueur pourra obtenir des Quêtes.
+* Bibliothèque
+  * Le joueur pourra étendre ses compétences ou en apprendre de nouvelles. Une liste aléatoire devra être proposée.
 
-Différents magasins supplémentaires seront proposés au joueur avec au moins un qui vent les bases. Chaque magasins apportera un ou plusieurs bonus en plus :
+**Magasins aléatoires :** Chaque magasins apportera un ou plusieurs bonus en plus :
 * Forge
 * Alchimiste
 * Thaumaturge
 * Auberge
 * Taverne
 * Cathédrale
+
+**Propriétés du Joueur :** Le joueur aura de base un coffre et pourra ensuite avoir des batiments.
+* Coffre : permet de stocker des objets.
 
 ## Déplacement (Fin de tour)
 
