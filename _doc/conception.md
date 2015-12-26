@@ -65,7 +65,7 @@ L'univers d'Agshmne sera un mélange de fantasy provenant de différents mondes 
 
 Vous êtes dans la Cité de Saaron et vous venez de vous réveiller dans "l'Auberge des Frères Nofl". [Background]
 
-Vous décidez de passer au bazar acheter de l'équipement. Vous ne pouvez prendre qu'une pioche de maivaise qualité, car vous avez dépenser votre argent à la taverne la veille. [Commerces multiples]
+Vous décidez de passer au bazar acheter de l'équipement. Vous ne pouvez prendre qu'une pioche de mauvaise qualité, car vous avez dépenser votre argent à la taverne la veille. [Commerces multiples]
 
 Vous décidez donc de partir. [Voyage / Changement de case]
 
@@ -311,7 +311,8 @@ Les villes seront placés aléatoirement sur la carte. Chaque ville doit être e
 
 ## Déplacement (Fin de tour)
 
-A chaque déplacement du personnage, c'est une « fin de tour ». C'est à dire que plusieurs élément devront être vérifiés.
+A chaque déplacement du personnage, c'est une « fin de tour ». C'est à dire que plusieurs élément devront être vérifiés :
+
 * Danger : si le danger est à 20, il y a un combat.
 * Faim et Fatigue du personnage
 * Tours : le nombre de tour fera avancer la date.
@@ -392,15 +393,36 @@ La magie va avoir plusieurs écoles de base définis par les 6 éléments :
 
 Chaque élément aura un niveau. Le niveau de base sera 0 pour toutes les écoles. Cela signifie qu'au début le personnage ratera souvent ses sorts.
 
+### Liste de Sort
+
 Une liste de sorts de base sera directement disponible.
 
 > Sorts TODO
 
+### Lancer de Sort
+Pour lancer un Sort il faut de la Mana. Chaque Sort a un coût. Pour savoir si le sort est réussi, le joueur soit faire un jet proche des compétence : 
+
+* Lancer un Sort : 1D10 + (INT - 10) + Niv École devra être supérieur au DD du sort.
+
+### Création de Sort
 Par la suite le personnage pourra créer ses propres sorts en combinant ces différents éléments. Le joueur aura accès à la création de sorts chez le Thaumathurge ou bien dans une de ses propriétés si il dispose d'une bibliothèque.
 
 > Création de Sorts TODO
 
 ## Combat
+
+Les combats seront gérés avec un système de round. Pour savoir qui commence dans le combat, un jet d'initiative sera effectué :
+
+* Initiative : DEX + 1D20 : le plus grand commence.
+
+Ensuite, les actions dépendent des capacités du joueur. Voici celles bases ;
+
+* Attaque Corps à Corps : néssecite une arme de mêlée ou pas d'arme : Jet de FOR.
+* Attaque Distance : néssecite une arme de jet : Jet de DEX.
+* Magie : lancer un sort équivaut à une action. (Voir Magie)
+* Utiliser un Objet : potions, parchemin, objet magique, etc...
+
+Un combat se termine quand un des opposants a 0 PdV ou moins.
 
 ## Ennemis et Monstres
 
