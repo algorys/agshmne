@@ -1,10 +1,10 @@
 package io.github.algorys.agshmne.deplacement;
 
 public class Position {
-	public static final int MAX_X = 4;
-	public static final int MIN_X = -4;
-	public static final int MAX_Y = 4;
-	public static final int MIN_Y = -4;
+	public static final int MAX_X = 65;
+	public static final int MIN_X = -65;
+	public static final int MAX_Y = 65;
+	public static final int MIN_Y = -65;
 
 	private final int x;
 	private final int y;
