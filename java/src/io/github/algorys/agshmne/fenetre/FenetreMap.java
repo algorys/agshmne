@@ -4,9 +4,11 @@ import javax.swing.JFrame;
 
 import io.github.algorys.agshmne.world.World;
 
-public class Fenetre extends JFrame {
+public class FenetreMap extends JFrame {
+	
 	private World world;
-	public Fenetre(World world){
+
+	public FenetreMap(World world){
 		this.world = world;
 		this.setTitle("Agshmne running...");
 		this.setSize(800, 800);

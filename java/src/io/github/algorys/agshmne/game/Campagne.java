@@ -1,7 +1,9 @@
 package io.github.algorys.agshmne.game;
 
-import io.github.algorys.agshmne.deplacement.Direction;
-import io.github.algorys.agshmne.fenetre.Fenetre;
+import javax.swing.JFrame;
+
+import io.github.algorys.agshmne.fenetre.FenetreAccueil;
+import io.github.algorys.agshmne.fenetre.FenetreMap;
 import io.github.algorys.agshmne.outils.MapUtils;
 import io.github.algorys.agshmne.personnage.Personnage;
 import io.github.algorys.agshmne.region.Region;
@@ -24,7 +26,10 @@ public class Campagne {
 		//mapUtils.showStatus(pj);
 		
 		// TEST FENETRE
-		Fenetre fenetre = new Fenetre(world);
-		fenetre.setVisible(true);
+		FenetreMap fMap = new FenetreMap(world);
+		fMap.setVisible(true);
+		
+		FenetreAccueil fAccueil = new FenetreAccueil();
+		fAccueil.setVisible(false);
 	}
 }
