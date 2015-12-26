@@ -16,7 +16,7 @@ Le style général sera le Jeu de Rôle en Solitaire, en se basant sur des titre
 La Magie sera présente dans Agshmne. Le jeu comprendra des écoles de bases que le joueur pourra ensuite s'approprier ou modifier.
 
 
-## Fonctionnaliés souhaités
+## Fonctionnalités souhaités
 
 **Générales :**
 
@@ -50,14 +50,14 @@ Des graphismes légers seront privilégiés afin de ne pas être limité en term
 
 Le mode de déplacement et de vue se rapprochera plus des premiers Civilizations. Le jeu sera généré un maximum aléatoirement… du nom des régions aux objets trouvé, tout en passant par la nature de chaque cases et leur description. C'est un **risque** car l'aléatoire est dur à doser, mais en se basant sur un système de règles proches du JdR sur table cela doit être possible. Le but est de proposer au joueur une histoire sans fin où il sera libre de continuer sa partie autant de temps qu'il le voudra.
 
-La plupart du jeu se déroulera sur une carte en 2D, avec des cases carrées. Le monde sera représenté par 9 régions de 256 cases générées aléatoirement (dans un premier temps, plus s'il le faut). Les modifications sur la carte (pour les Possessions par exemple - _voir plus bas_) seront sauvegardées au fur et à mesure.
+La plupart du jeu se déroulera sur une carte en 2D, avec des cases carrées.
 
-Le système de jeu sera au Tour par Tour (enclenchés par chaque mouvement sur la carte). Un déplacement équivaudra à un jour probabement et on passera ainsi de Montagnes Déchainés de Malarh aux Marais des Sans Sels.
-
-Les combats se dérouleront par rounds, permettant d'effectuer une ou plusieurs actions.
+Le système de jeu sera au Tour par Tour (enclenchés par chaque mouvement sur la carte). Un déplacement équivaudra à un jour probabement et on passera ainsi des Montagnes Déchainés de Malarh aux Marais des Sans Sels.
 
 ## Contexte
 L'univers d'Agshmne sera un mélange de fantasy provenant de différents mondes (Donjons & Dragons, Elders Scroll, Planescape Torment, Baldur's Gate, etc…) Cela ira du simple nain grognon à l'accès aux Plans Spirituelles ou Élémentaires, tout en passant par des lieux mystiques et légendaire ou des choses étranges comme de la technologie incomprise ou des choses innommables (Cthulhu).
+
+> Pour en savoir plus lisez le [Document de Conception](/_doc/conception.md)
 
 ## Etat d'avancement
 **!!! Aucune version Jouable, conception en cours !!!**
