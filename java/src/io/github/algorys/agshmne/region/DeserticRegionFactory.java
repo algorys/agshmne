@@ -9,7 +9,7 @@ public class DeserticRegionFactory implements RegionFactory {
 
 	@Override
 	public Region create() {
-		TileType[] possibles = {TileType.Desert, TileType.Roche, TileType.Terre, TileType.Ville};
+		TileType[] possibles = {TileType.Desert, TileType.Montagne, TileType.Colline};
 		Tile[] tiles = new Tile[Region.SIZE];
 		for (int i = 0; i < Region.SIZE; i++) {
 			TileType type = possibles[io.github.algorys.agshmne.outils.Outils.dice(possibles.length)];

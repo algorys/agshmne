@@ -27,9 +27,9 @@ public class Campagne {
 		
 		// TEST FENETRE
 		FenetreMap fMap = new FenetreMap(world);
-		fMap.setVisible(false);
+		fMap.setVisible(true);
 		
 		FenetreAccueil fAccueil = new FenetreAccueil();
-		fAccueil.setVisible(true);
+		fAccueil.setVisible(false);
 	}
 }
