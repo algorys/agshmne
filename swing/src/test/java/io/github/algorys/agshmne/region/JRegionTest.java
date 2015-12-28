@@ -33,7 +33,7 @@ public class JRegionTest {
 
 			@Override
 			public void keyPressed(KeyEvent e) {
-				System.out.println("Touché!");
+				//System.out.println("Touché!");
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_LEFT:
 					personnage.setPosition(

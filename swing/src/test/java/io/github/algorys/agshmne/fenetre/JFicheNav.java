@@ -13,9 +13,18 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-public class JNavigate extends JPanel {
+public class JFicheNav extends JPanel {
+	/*
+* 5 Caractéristiques (Force, Dextérité, Constitution, Intelligence et Charisme)
+* 4 Vitales : Vie et Mana → dépensées par combat / compétences, Fatigue et Faim → incrémenté à chaque déplacement.
+* 1 caractéristique Position
+* 1 Équipement : Tête, Torse, Bras, Jambes, 2 Mains, 2 anneaux
+* Compétences : celles de bases et celles apprises.
+* Expérience et Niveau : augmentera selon les succès du joueur. Cela apportera des bonus et des points à distribuer.
+* Argent : gagné de diverses façons.
+	 */
 	public static enum Step {
-		GENDER, FACIAL, EQUIPMENT, STATS, CONFIRMATION
+		SOCIAL, CARAC, EQUIPMENT, COMPETENCES, RESUME, CONFIRMATION
 	}
 
 	private JLabel jlPane;
@@ -24,14 +33,14 @@ public class JNavigate extends JPanel {
 	private Action next;
 	private Action previous;
 
-	public JNavigate() {
+	public JFicheNav() {
 		next = new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (JNavigate.this.step == Step.CONFIRMATION) {
+				if (JFicheNav.this.step == Step.CONFIRMATION) {
 					System.out.println("FINI !!!");
 				} else {
-					JNavigate.this.next();
+					JFicheNav.this.next();
 				}
 			}
 		};
@@ -39,10 +48,10 @@ public class JNavigate extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (JNavigate.this.step == Step.GENDER) {
+				if (JFicheNav.this.step == Step.SOCIAL) {
 					System.out.println("Retour au menu principal");
 				} else {
-					JNavigate.this.previous();
+					JFicheNav.this.previous();
 				}
 			}
 		};
@@ -54,7 +63,7 @@ public class JNavigate extends JPanel {
 		this.add(new JButton(previous));
 		this.add(new JButton(next));
 	
-		this.setStep(Step.GENDER);
+		this.setStep(Step.SOCIAL);
 	}
 
 	public Action getNextAction() {
@@ -73,7 +82,7 @@ public class JNavigate extends JPanel {
 			this.next.putValue(Action.NAME, "Suivant");
 		}
 		
-		if(this.step == Step.GENDER) {
+		if(this.step == Step.SOCIAL) {
 			this.previous.setEnabled(false);
 		} else {
 			this.previous.setEnabled(true);
@@ -84,16 +93,19 @@ public class JNavigate extends JPanel {
 
 	public void next() {
 		switch (this.step) {
-		case GENDER:
-			this.setStep(Step.FACIAL);
+		case SOCIAL:
+			this.setStep(Step.CARAC);
 			break;
-		case FACIAL:
+		case CARAC:
 			this.setStep(Step.EQUIPMENT);
 			break;
 		case EQUIPMENT:
-			this.setStep(Step.STATS);
+			this.setStep(Step.COMPETENCES);
 			break;
-		case STATS:
+		case COMPETENCES:
+			this.setStep(Step.RESUME);
+			break;
+		case RESUME:
 			this.setStep(Step.CONFIRMATION);
 			break;
 		default:
@@ -103,17 +115,20 @@ public class JNavigate extends JPanel {
 
 	public void previous() {
 		switch (this.step) {
-		case FACIAL:
-			this.setStep(Step.GENDER);
+		case CARAC:
+			this.setStep(Step.SOCIAL);
 			break;
 		case EQUIPMENT:
-			this.setStep(Step.FACIAL);
+			this.setStep(Step.CARAC);
 			break;
-		case STATS:
+		case COMPETENCES:
 			this.setStep(Step.EQUIPMENT);
 			break;
+		case RESUME:
+			this.setStep(Step.COMPETENCES);
+			break;
 		case CONFIRMATION:
-			this.setStep(Step.STATS);
+			this.setStep(Step.RESUME);
 			break;
 		default:
 			throw new IllegalArgumentException("Pas de next !");
@@ -121,10 +136,10 @@ public class JNavigate extends JPanel {
 	}
 	
 	public static void main(String[] args) {
-		JFrame jf = new JFrame("toto");
+		JFrame jf = new JFrame("FicheNav");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JNavigate jToto = new JNavigate();
+		JFicheNav jToto = new JFicheNav();
 		jf.getContentPane().add(jToto);
 		
 		JMenuBar jmb = new JMenuBar();
