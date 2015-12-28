@@ -1,12 +1,14 @@
 package io.github.algorys.agshmne.personnage;
 
+import java.util.Observable;
+
 import io.github.algorys.agshmne.deplacement.Position;
 import io.github.algorys.agshmne.region.Region;
 
 /*
  * Définit le Personnage
  */
-public class Personnage {
+public class Personnage extends Observable {
 	private Position position = new Position(0, 0);
 	private Region region;
 	
@@ -24,7 +26,10 @@ public class Personnage {
 	}
 	
 	public void setPosition(Position position) {
+		System.out.println("Nouvelle position => " + position.getX() + ", " + position.getY());
 		this.position = position;
+		this.setChanged();
+		this.notifyObservers();
 	}
 }
 
