@@ -1,2 +1,5 @@
 *.swp
-java/bin/
+target/
+.classpath
+.project
+.settings/
