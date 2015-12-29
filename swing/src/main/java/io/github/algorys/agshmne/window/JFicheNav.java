@@ -40,6 +40,7 @@ public class JFicheNav extends JPanel {
 	private Action previous;
 	private JPanel jpPrincipal;
 	private JPanel jpSocial;
+	private JPanel jpCarac;
 	private JTextField jtfVerificationName;
 
 	public JFicheNav() {
@@ -74,14 +75,15 @@ public class JFicheNav extends JPanel {
 		jpPrincipal.setOpaque(false);
 		this.add(jpPrincipal, BorderLayout.CENTER);
 		
+		// SOCIAL
 		jpSocial = new JSocialPanel();
 		jpSocial.setOpaque(false);
 		jpPrincipal.add(jpSocial, Step.SOCIAL.name());
 
 		// CARACTERISTIQUES
-		JPanel jpCARAC = new JPanel();
-		jpCARAC.add(new JLabel("CARAC"));
-		jpPrincipal.add(jpCARAC, Step.CARAC.name());
+		jpCarac = new JCaracPanel();
+		jpCarac.setOpaque(false);
+		jpPrincipal.add(jpCarac, Step.CARAC.name());
 
 		// EQUIPEMENT
 		JPanel jpEQUIPMENT = new JPanel();
