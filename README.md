@@ -57,14 +57,14 @@ Le système de jeu sera au Tour par Tour (enclenchés par chaque mouvement sur l
 ## Contexte
 L'univers d'Agshmne sera un mélange de fantasy provenant de différents mondes (Donjons & Dragons, Elders Scroll, Planescape Torment, Baldur's Gate, etc…) Cela ira du simple nain grognon à l'accès aux Plans Spirituelles ou Élémentaires, tout en passant par des lieux mystiques et légendaire ou des choses étranges comme de la technologie incomprise ou des choses innommables (Cthulhu).
 
-> Pour en savoir plus lisez le [Document de Conception](/_doc/conception.md)
+> Pour en savoir plus lisez le [Document de Conception](/doc/conception.md)
 
 ## Etat d'avancement
 **!!! Aucune version Jouable, conception en cours !!!**
 
 Voici un premier rendu de région **nu** :
 
-![Region](/_doc/region.png)
+![Region](/doc/region.png)
 
 ## Licence
 [![Licence Creative Commons](https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-nd/4.0/)
