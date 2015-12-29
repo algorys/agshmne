@@ -1,44 +1,51 @@
 package io.github.algorys.agshmne.fenetre;
 
-import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 
 public class JFicheNav extends JPanel {
 	/*
-* 5 Caractéristiques (Force, Dextérité, Constitution, Intelligence et Charisme)
-* 4 Vitales : Vie et Mana → dépensées par combat / compétences, Fatigue et Faim → incrémenté à chaque déplacement.
-* 1 caractéristique Position
-* 1 Équipement : Tête, Torse, Bras, Jambes, 2 Mains, 2 anneaux
-* Compétences : celles de bases et celles apprises.
-* Expérience et Niveau : augmentera selon les succès du joueur. Cela apportera des bonus et des points à distribuer.
-* Argent : gagné de diverses façons.
+	 * 5 Caractéristiques (Force, Dextérité, Constitution, Intelligence et
+	 * Charisme) 4 Vitales : Vie et Mana → dépensées par combat / compétences,
+	 * Fatigue et Faim → incrémenté à chaque déplacement. 1 caractéristique
+	 * Position 1 Équipement : Tête, Torse, Bras, Jambes, 2 Mains, 2 anneaux
+	 * Compétences : celles de bases et celles apprises. Expérience et Niveau :
+	 * augmentera selon les succès du joueur. Cela apportera des bonus et des
+	 * points à distribuer. Argent : gagné de diverses façons.
 	 */
 	public static enum Step {
 		SOCIAL, CARAC, EQUIPMENT, COMPETENCES, RESUME, CONFIRMATION
 	}
 
-	private JLabel jlPane;
-	
+	//private JLabel jlPane;
+	private CardLayout cl;
 	private Step step;
 	private Action next;
 	private Action previous;
+	private JPanel jpPrincipal;
+	private JTextField jtfName;
+	private JTextField jtfVerificationName;
 
 	public JFicheNav() {
 		next = new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (JFicheNav.this.step == Step.CONFIRMATION) {
-					System.out.println("FINI !!!");
+						String name = jtfName.getText();
+						System.out.println("FINI !!!");
+						System.out.println("Je remplis la fiche de perso pour " + name);
 				} else {
 					JFicheNav.this.next();
 				}
@@ -56,13 +63,51 @@ public class JFicheNav extends JPanel {
 			}
 		};
 
-		this.setLayout(new GridLayout(0, 2));
-		
-		jlPane = new JLabel("Coucou");
-		this.add(jlPane);
-		this.add(new JButton(previous));
-		this.add(new JButton(next));
-	
+		this.setLayout(new BorderLayout());
+
+		cl = new CardLayout();
+		jpPrincipal = new JPanel(cl);
+		this.add(jpPrincipal, BorderLayout.CENTER);
+
+		JPanel jpSocial = new JPanel();
+		jpSocial.add(new JLabel("Social"));
+		jtfName = new JTextField();
+
+		jtfName.setPreferredSize(new Dimension(150, jtfName.getPreferredSize().height));
+		jpSocial.add(jtfName);
+		jpPrincipal.add(jpSocial, Step.SOCIAL.name());
+
+		JPanel jpCARAC = new JPanel();
+		jpCARAC.add(new JLabel("CARAC"));
+		jpPrincipal.add(jpCARAC, Step.CARAC.name());
+
+		JPanel jpEQUIPMENT = new JPanel();
+		jpEQUIPMENT.add(new JLabel("EQUIPMENT"));
+		jpPrincipal.add(jpEQUIPMENT, Step.EQUIPMENT.name());
+
+		JPanel jpCOMPETENCES = new JPanel();
+		jpCOMPETENCES.add(new JLabel("COMPETENCES"));
+		jpPrincipal.add(jpCOMPETENCES, Step.COMPETENCES.name());
+
+		JPanel jpRESUME = new JPanel();
+		jpRESUME.add(new JLabel("RESUME"));
+		jpPrincipal.add(jpRESUME, Step.RESUME.name());
+
+		JPanel jpCONFIRMATION = new JPanel();
+		jpCONFIRMATION.add(new JLabel("CONFIRMATION"));
+		jtfVerificationName = new JTextField();
+		jtfVerificationName.setEditable(false);
+		jpCONFIRMATION.add(jtfVerificationName);
+
+		jpPrincipal.add(jpCONFIRMATION, Step.CONFIRMATION.name());
+
+		cl.show(jpPrincipal, Step.SOCIAL.name());
+
+		JPanel jpButton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		jpButton.add(new JButton(previous));
+		jpButton.add(new JButton(next));
+		this.add(jpButton, BorderLayout.SOUTH);
+
 		this.setStep(Step.SOCIAL);
 	}
 
@@ -77,18 +122,19 @@ public class JFicheNav extends JPanel {
 	private void setStep(Step step) {
 		this.step = step;
 		if (this.step == Step.CONFIRMATION) {
+			jtfVerificationName.setText(jtfName.getText());
 			this.next.putValue(Action.NAME, "Valider");
 		} else {
 			this.next.putValue(Action.NAME, "Suivant");
 		}
-		
-		if(this.step == Step.SOCIAL) {
+
+		if (this.step == Step.SOCIAL) {
 			this.previous.setEnabled(false);
 		} else {
 			this.previous.setEnabled(true);
 		}
-		
-		this.jlPane.setText(this.step.name());
+
+		cl.show(jpPrincipal, this.step.name());
 	}
 
 	public void next() {
@@ -134,26 +180,5 @@ public class JFicheNav extends JPanel {
 			throw new IllegalArgumentException("Pas de next !");
 		}
 	}
-	
-	public static void main(String[] args) {
-		JFrame jf = new JFrame("FicheNav");
-		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		JFicheNav jToto = new JFicheNav();
-		jf.getContentPane().add(jToto);
-		
-		JMenuBar jmb = new JMenuBar();
-		JMenu jm = new JMenu("Menu");
-		JMenuItem item = new JMenuItem(jToto.getNextAction());
-		JMenuItem item2 = new JMenuItem(jToto.getPreviousAction());
-		
-		jm.add(item);
-		jm.add(item2);
-		jmb.add(jm);
-		
-		jf.setJMenuBar(jmb);
-		
-		jf.setSize(jf.getPreferredSize());
-		jf.setVisible(true);
-	}
+
 }

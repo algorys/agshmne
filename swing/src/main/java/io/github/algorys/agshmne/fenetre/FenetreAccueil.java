@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 public class FenetreAccueil extends JFrame {
 	private static final String MAIN_MENU = "Main Menu";
+	private static final String CHARACTER_SKILLS = "fiche";
 	private JPanel cardPanel;
 	private CardLayout cardLayout = new CardLayout();
 	private Action actionShowNewGame;
@@ -55,8 +56,10 @@ public class FenetreAccueil extends JFrame {
 		actionShowNewGame = new AbstractAction("Nouvelle Partie") {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				cardLayout.show(cardPanel, "2");
 				btLeft.setAction(actionMainMenu);
+				JFicheNav jToto = new JFicheNav();
+				cardPanel.add(jToto, CHARACTER_SKILLS);
+				cardLayout.show(cardPanel, CHARACTER_SKILLS);
 			}
 		};
 		actionMainMenu = new AbstractAction("Menu principal") {
