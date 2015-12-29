@@ -1,5 +1,6 @@
 package io.github.algorys.agshmne.region;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -11,6 +12,7 @@ import io.github.algorys.agshmne.personnage.Personnage;
 public class JRegionTest {
 	public static void main(String[] args) {
 		JFrame jf = new JFrame("JRegion test");
+		jf.setBackground(Color.BLACK);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		Region region = new Region();

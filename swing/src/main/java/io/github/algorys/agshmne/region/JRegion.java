@@ -80,8 +80,8 @@ public class JRegion extends JPanel implements Observer {
 		g.setPaintMode();
 		if(g instanceof Graphics2D) {
 			Graphics2D g2 = (Graphics2D)g;
-			g2.setStroke(new BasicStroke(5));
-			g2.setColor(Color.BLUE);
+			g2.setStroke(new BasicStroke(3));
+			g2.setColor(new Color(178, 102, 255));
 			g2.drawRoundRect(150, 150, 50, 50, 5, 5);
 		} else {
 			g.setColor(Color.BLUE);
