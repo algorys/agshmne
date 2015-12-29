@@ -5,6 +5,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import io.github.algorys.agshmne.window.JFicheNav;
+
 public class JFicheNavTest {
 	public static void main(String[] args) {
 		JFrame jf = new JFrame("FicheNav");

@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.fenetre;
+package io.github.algorys.agshmne.window;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class FenetreAccueil extends JFrame {
+public class JWelcome extends JFrame {
 	private static final String MAIN_MENU = "Main Menu";
 	private static final String CHARACTER_SKILLS = "fiche";
 	private JPanel cardPanel;
@@ -22,7 +22,7 @@ public class FenetreAccueil extends JFrame {
 	private Action actionMainMenu;
 	private JButton btLeft;
 
-	public FenetreAccueil() {
+	public JWelcome() {
 		setTitle("Agshmne running...");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);

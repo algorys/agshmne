@@ -66,6 +66,7 @@ public class JRegion extends JPanel implements Observer {
 				jtiles[i][j].setModel(tile);
 			}
 		}
+		this.invalidate();
 		this.repaint();
 	}
 

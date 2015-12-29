@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.fenetre;
+package io.github.algorys.agshmne.window;
 
 import java.awt.Graphics;
 import java.awt.Image;

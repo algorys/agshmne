@@ -1,14 +1,14 @@
-package io.github.algorys.agshmne.fenetre;
+package io.github.algorys.agshmne.window;
 
 import javax.swing.JFrame;
 
 import io.github.algorys.agshmne.world.World;
 
-public class FenetreMap extends JFrame {
+public class JMap extends JFrame {
 	
 	private World world;
 
-	public FenetreMap(World world){
+	public JMap(World world){
 		this.world = world;
 		this.setTitle("Agshmne running...");
 		this.setSize(800, 800);

@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.fenetre;
+package io.github.algorys.agshmne.window;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;

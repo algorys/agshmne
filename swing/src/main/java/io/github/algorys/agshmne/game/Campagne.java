@@ -2,11 +2,11 @@ package io.github.algorys.agshmne.game;
 
 import javax.swing.JFrame;
 
-import io.github.algorys.agshmne.fenetre.FenetreAccueil;
-import io.github.algorys.agshmne.fenetre.FenetreMap;
 import io.github.algorys.agshmne.outils.MapUtils;
 import io.github.algorys.agshmne.personnage.Personnage;
 import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.window.JWelcome;
+import io.github.algorys.agshmne.window.JMap;
 import io.github.algorys.agshmne.world.DefaultWorldFactory;
 import io.github.algorys.agshmne.world.World;
 
@@ -26,10 +26,10 @@ public class Campagne {
 		//mapUtils.showStatus(pj);
 		
 		// TEST FENETRE
-		FenetreMap fMap = new FenetreMap(world);
+		JMap fMap = new JMap(world);
 		fMap.setVisible(false);
 		
-		FenetreAccueil fAccueil = new FenetreAccueil();
+		JWelcome fAccueil = new JWelcome();
 		fAccueil.setVisible(true);
 	}
 }

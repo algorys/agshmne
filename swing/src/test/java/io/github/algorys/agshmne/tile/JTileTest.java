@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 public class JTileTest {
 
 	public static void main(String[] args) {
-		Tile tile = new Tile(TileType.Foret);
+		Tile tile = new Tile(TileType.Forest);
 		JFrame jf = new JFrame("Test JTile");
 		jf.getContentPane().add(new JTile(tile));
 		jf.setSize(jf.getPreferredSize());
