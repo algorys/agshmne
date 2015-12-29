@@ -55,16 +55,16 @@ La plupart du jeu se déroulera sur une carte en 2D, avec des cases carrées.
 Le système de jeu sera au Tour par Tour (enclenchés par chaque mouvement sur la carte). Un déplacement équivaudra à un jour probabement et on passera ainsi des Montagnes Déchainés de Malarh aux Marais des Sans Sels.
 
 ## Contexte
-L'univers d'Agshmne sera un mélange de fantasy provenant de différents mondes (Donjons & Dragons, Elders Scroll, Planescape Torment, Baldur's Gate, etc…) Cela ira du simple nain grognon à l'accès aux Plans Spirituelles ou Élémentaires, tout en passant par des lieux mystiques et légendaire ou des choses étranges comme de la technologie incomprise ou des choses innommables (Cthulhu).
+L'univers d'Agshmne sera un mélange de fantasy provenant de différents mondes (Donjons & Dragons, Elders Scroll, Planescape Torment, Baldur's Gate, etc…) Cela ira du simple nain grognon à l'accès aux Plans Spirituels ou Élémentaires, tout en passant par des lieux Mystiques et Légendaires ou des choses étranges comme de la technologie incomprise ou des choses innommables (comme dans Cthulhu).
 
-> Pour en savoir plus lisez le [Document de Conception](/doc/conception.md)
+> Pour en savoir plus lisez le [Document de Conception](/doc/conception.md) du jeu.
 
 ## Etat d'avancement
-**! Aucune version Jouable !**
+**Aucune version Jouable...**
 
 **! Conception en cours !**
 
-Voici un premier rendu de région **nu** :
+Voici un premier rendu de région **nue** :
 
 ![Region](/doc/region.png)
 
