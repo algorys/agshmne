@@ -2,18 +2,21 @@ package io.github.algorys.agshmne.window;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
+
+import io.github.algorys.agshmne.tile.JTile;
 
 public class JFicheNav extends JPanel {
 	/*
@@ -29,13 +32,14 @@ public class JFicheNav extends JPanel {
 		SOCIAL, CARAC, EQUIPMENT, COMPETENCES, RESUME, CONFIRMATION
 	}
 
+	private JSocialPanel socialPanel; 
 	//private JLabel jlPane;
 	private CardLayout cl;
 	private Step step;
 	private Action next;
 	private Action previous;
 	private JPanel jpPrincipal;
-	private JTextField jtfName;
+	private JPanel jpSocial;
 	private JTextField jtfVerificationName;
 
 	public JFicheNav() {
@@ -43,7 +47,7 @@ public class JFicheNav extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (JFicheNav.this.step == Step.CONFIRMATION) {
-						String name = jtfName.getText();
+						String name = socialPanel.getMyName();
 						System.out.println("FINI !!!");
 						System.out.println("Je remplis la fiche de perso pour " + name);
 				} else {
@@ -67,31 +71,32 @@ public class JFicheNav extends JPanel {
 
 		cl = new CardLayout();
 		jpPrincipal = new JPanel(cl);
+		jpPrincipal.setOpaque(false);
 		this.add(jpPrincipal, BorderLayout.CENTER);
-
-		JPanel jpSocial = new JPanel();
-		jpSocial.add(new JLabel("Social"));
-		jtfName = new JTextField();
-
-		jtfName.setPreferredSize(new Dimension(150, jtfName.getPreferredSize().height));
-		jpSocial.add(jtfName);
+		
+		jpSocial = new JSocialPanel();
+		jpSocial.setOpaque(false);
 		jpPrincipal.add(jpSocial, Step.SOCIAL.name());
 
+		// CARACTERISTIQUES
 		JPanel jpCARAC = new JPanel();
 		jpCARAC.add(new JLabel("CARAC"));
 		jpPrincipal.add(jpCARAC, Step.CARAC.name());
 
+		// EQUIPEMENT
 		JPanel jpEQUIPMENT = new JPanel();
 		jpEQUIPMENT.add(new JLabel("EQUIPMENT"));
 		jpPrincipal.add(jpEQUIPMENT, Step.EQUIPMENT.name());
 
+		// COMPETENCES
 		JPanel jpCOMPETENCES = new JPanel();
 		jpCOMPETENCES.add(new JLabel("COMPETENCES"));
 		jpPrincipal.add(jpCOMPETENCES, Step.COMPETENCES.name());
 
-		JPanel jpRESUME = new JPanel();
-		jpRESUME.add(new JLabel("RESUME"));
-		jpPrincipal.add(jpRESUME, Step.RESUME.name());
+		
+		//JPanel jpRESUME = new JPanel();
+		//jpRESUME.add(new JLabel("RESUME"));
+		//jpPrincipal.add(jpRESUME, Step.RESUME.name());
 
 		JPanel jpCONFIRMATION = new JPanel();
 		jpCONFIRMATION.add(new JLabel("CONFIRMATION"));
@@ -104,6 +109,7 @@ public class JFicheNav extends JPanel {
 		cl.show(jpPrincipal, Step.SOCIAL.name());
 
 		JPanel jpButton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		jpButton.setOpaque(false);
 		jpButton.add(new JButton(previous));
 		jpButton.add(new JButton(next));
 		this.add(jpButton, BorderLayout.SOUTH);
@@ -122,7 +128,7 @@ public class JFicheNav extends JPanel {
 	private void setStep(Step step) {
 		this.step = step;
 		if (this.step == Step.CONFIRMATION) {
-			jtfVerificationName.setText(jtfName.getText());
+			jtfVerificationName.setText(socialPanel.getMyName());
 			this.next.putValue(Action.NAME, "Valider");
 		} else {
 			this.next.putValue(Action.NAME, "Suivant");
@@ -149,9 +155,6 @@ public class JFicheNav extends JPanel {
 			this.setStep(Step.COMPETENCES);
 			break;
 		case COMPETENCES:
-			this.setStep(Step.RESUME);
-			break;
-		case RESUME:
 			this.setStep(Step.CONFIRMATION);
 			break;
 		default:
@@ -170,15 +173,21 @@ public class JFicheNav extends JPanel {
 		case COMPETENCES:
 			this.setStep(Step.EQUIPMENT);
 			break;
-		case RESUME:
-			this.setStep(Step.COMPETENCES);
-			break;
 		case CONFIRMATION:
-			this.setStep(Step.RESUME);
+			this.setStep(Step.COMPETENCES);
 			break;
 		default:
 			throw new IllegalArgumentException("Pas de next !");
 		}
 	}
 
+	@Override
+	protected void paintComponent(Graphics g) {
+		try {
+			Image img = ImageIO.read(JTile.class.getClassLoader().getResource("parchemin.jpg"));
+			g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

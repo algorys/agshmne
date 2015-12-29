@@ -57,8 +57,7 @@ public class JWelcome extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				btLeft.setAction(actionMainMenu);
-				JFicheNav jToto = new JFicheNav();
-				cardPanel.add(jToto, CHARACTER_SKILLS);
+				cardPanel.add(new JFicheNav(), CHARACTER_SKILLS);
 				cardLayout.show(cardPanel, CHARACTER_SKILLS);
 			}
 		};
