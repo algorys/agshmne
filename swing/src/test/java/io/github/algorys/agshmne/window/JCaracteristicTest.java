@@ -35,6 +35,7 @@ public class JCaracteristicTest {
 				int remainingPoints = total - spentPoints;
 				jcPremier.setMaxValue(Math.min(remainingPoints + jcPremier.getValue(), MAX_FOR_ONE));
 				jcDeuxieme.setMaxValue(Math.min(remainingPoints + jcDeuxieme.getValue(), MAX_FOR_ONE));
+				// Test condition
 //				jcPremier.setMaxValue(jcDeuxieme.getValue()+3);
 //				jcDeuxieme.setMaxValue(jcPremier.getValue()+3);
 //				jcPremier.setMinValue(jcDeuxieme.getValue()-3);

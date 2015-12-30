@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 public class JCaracPanel extends JPanel {
 	/*
@@ -19,14 +20,34 @@ public class JCaracPanel extends JPanel {
 	* Vie et Mana → dépensées par combat / compétences
 	* Fatigue et Faim → incrémenté à chaque déplacement
 	*/
-	private int FOR, DEX, CON, INT, CHA = 10;
-	
-	final int MAX_FOR_ONE = 20;
-	final JCaracteristic jcTotal = new JCaracteristic(MAX_FOR_ONE + 2, 2, 40);
-	final int total = 10;
 
 	public JCaracPanel() {
 		super();
+		final int MAX_FOR_ONE = 20;
+		final int total = 60;
+		final JCaracteristic FOR = new JCaracteristic(10, 1, MAX_FOR_ONE);	
+		final JCaracteristic DEX = new JCaracteristic(10, 1, MAX_FOR_ONE);
+		final JCaracteristic CON = new JCaracteristic(10, 1, MAX_FOR_ONE);
+		final JCaracteristic INT = new JCaracteristic(10, 1, MAX_FOR_ONE);
+		final JCaracteristic CHA = new JCaracteristic(10, 1, MAX_FOR_ONE);
+
+
+		PropertyChangeListener pcl = new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				int spentPoints = FOR.getValue() + DEX.getValue() + CON.getValue() + INT.getValue() + CHA.getValue();
+				int remainingPoints = total - spentPoints;
+				FOR.setMaxValue(Math.min(remainingPoints + FOR.getValue(), MAX_FOR_ONE));
+				DEX.setMaxValue(Math.min(remainingPoints + DEX.getValue(), MAX_FOR_ONE));
+				CON.setMaxValue(Math.min(remainingPoints + DEX.getValue(), MAX_FOR_ONE));
+				INT.setMaxValue(Math.min(remainingPoints + DEX.getValue(), MAX_FOR_ONE));
+				CHA.setMaxValue(Math.min(remainingPoints + DEX.getValue(), MAX_FOR_ONE));
+
+			}
+		};
+		FOR.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
+		DEX.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
+		
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcCarac = new GridBagConstraints();
 		// Ajuste la taille du GridBag
@@ -65,7 +86,7 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.WEST;
 		gbcCarac.fill = GridBagConstraints.HORIZONTAL;
-		this.add(jcTotal, gbcCarac);
+		this.add(new JLabel(""), gbcCarac);
 		
 		// CARACTERISTIQUES
 		// FOR
@@ -75,7 +96,7 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.EAST;
 		gbcCarac.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("FOR"), gbcCarac);
+		this.add(new JLabel("FOR : agit sur l'attaque au corps à corps. "), gbcCarac);
 		
 		gbcCarac.gridy = 3;
 		gbcCarac.gridheight = 1;
@@ -83,7 +104,6 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.WEST;
 		gbcCarac.fill = GridBagConstraints.HORIZONTAL;
-		final JCaracteristic FOR = new JCaracteristic(10, 1, MAX_FOR_ONE);	
 		FOR.setOpaque(false);
 		this.add(FOR, gbcCarac);
 
@@ -102,8 +122,7 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridx = 1;
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.WEST;
-		gbcCarac.fill = GridBagConstraints.HORIZONTAL;
-		final JCaracteristic DEX = new JCaracteristic(10, 1, MAX_FOR_ONE);
+		gbcCarac.fill = GridBagConstraints.HORIZONTAL;		
 		DEX.setOpaque(false);
 		this.add(DEX, gbcCarac);
 		
@@ -115,6 +134,15 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.anchor = GridBagConstraints.EAST;
 		gbcCarac.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("CON"), gbcCarac);
+		
+		gbcCarac.gridy = 5;
+		gbcCarac.gridheight = 1;
+		gbcCarac.gridx = 1;
+		gbcCarac.gridwidth = 1;
+		gbcCarac.anchor = GridBagConstraints.WEST;
+		gbcCarac.fill = GridBagConstraints.HORIZONTAL;		
+		CON.setOpaque(false);
+		this.add(CON, gbcCarac);
 
 		// INT
 		gbcCarac.gridy = 6;
@@ -125,6 +153,15 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("INT"), gbcCarac);
 		
+		gbcCarac.gridy = 6;
+		gbcCarac.gridheight = 1;
+		gbcCarac.gridx = 1;
+		gbcCarac.gridwidth = 1;
+		gbcCarac.anchor = GridBagConstraints.WEST;
+		gbcCarac.fill = GridBagConstraints.HORIZONTAL;		
+		INT.setOpaque(false);
+		this.add(INT, gbcCarac);
+		
 		// CHA
 		gbcCarac.gridy = 7;
 		gbcCarac.gridheight = 1;
@@ -133,44 +170,17 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.anchor = GridBagConstraints.EAST;
 		gbcCarac.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("CHA"), gbcCarac);
-
-		PropertyChangeListener pcl = new PropertyChangeListener() {
-			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-				int spentPoints = FOR.getValue() + DEX.getValue();
-				int remainingPoints = total - spentPoints;
-				FOR.setMaxValue(Math.min(remainingPoints + FOR.getValue(), MAX_FOR_ONE));
-				DEX.setMaxValue(Math.min(remainingPoints + DEX.getValue(), MAX_FOR_ONE));
-			}
-		};
 		
-		jcTotal.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
-		FOR.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
-		DEX.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
-		
+		gbcCarac.gridy = 7;
+		gbcCarac.gridheight = 1;
+		gbcCarac.gridx = 1;
+		gbcCarac.gridwidth = 1;
+		gbcCarac.anchor = GridBagConstraints.WEST;
+		gbcCarac.fill = GridBagConstraints.HORIZONTAL;		
+		CHA.setOpaque(false);
+		this.add(CHA, gbcCarac);
 		
 		
 	}
-	
-	
 
-	public int getFOR() {
-		return FOR;
-	}
-
-	public int getDEX() {
-		return DEX;
-	}
-
-	public int getCON() {
-		return CON;
-	}
-
-	public int getINT() {
-		return INT;
-	}
-
-	public int getCHA() {
-		return CHA;
-	}
 }

@@ -21,17 +21,9 @@ import javax.swing.JTextField;
 import io.github.algorys.agshmne.tile.JTile;
 
 public class JFicheNav extends JPanel {
-	/*
-	 * 5 Caractéristiques (Force, Dextérité, Constitution, Intelligence et
-	 * Charisme) 4 Vitales : Vie et Mana → dépensées par combat / compétences,
-	 * Fatigue et Faim → incrémenté à chaque déplacement. 1 caractéristique
-	 * Position 1 Équipement : Tête, Torse, Bras, Jambes, 2 Mains, 2 anneaux
-	 * Compétences : celles de bases et celles apprises. Expérience et Niveau :
-	 * augmentera selon les succès du joueur. Cela apportera des bonus et des
-	 * points à distribuer. Argent : gagné de diverses façons.
-	 */
+	
 	public static enum Step {
-		SOCIAL, CARAC, EQUIPMENT, COMPETENCES, RESUME, CONFIRMATION
+		SOCIAL, CARAC, COMPETENCES, EQUIPMENT, RESUME, CONFIRMATION
 	}
 
 	private CardLayout cl;
@@ -45,6 +37,8 @@ public class JFicheNav extends JPanel {
 
 	public JFicheNav() {
 		this.setBackground(Color.BLACK);
+		
+		// Next Abstract Action
 		next = new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -58,6 +52,8 @@ public class JFicheNav extends JPanel {
 				}
 			}
 		};
+		
+		// Previous Abstract Action
 		previous = new AbstractAction("Précédent") {
 
 			@Override
@@ -70,9 +66,11 @@ public class JFicheNav extends JPanel {
 			}
 		};
 
+		// Layout
 		this.setLayout(new BorderLayout());
-
 		cl = new CardLayout();
+		
+		// Panel Principal
 		jpPrincipal = new JPanel(cl);
 		jpPrincipal.setOpaque(false);
 		this.add(jpPrincipal, BorderLayout.CENTER);
@@ -86,16 +84,16 @@ public class JFicheNav extends JPanel {
 		jpCarac = new JCaracPanel();
 		jpCarac.setOpaque(false);
 		jpPrincipal.add(jpCarac, Step.CARAC.name());
-
-		// EQUIPEMENT
-		JPanel jpEQUIPMENT = new JPanel();
-		jpEQUIPMENT.add(new JLabel("EQUIPMENT"));
-		jpPrincipal.add(jpEQUIPMENT, Step.EQUIPMENT.name());
-
+		
 		// COMPETENCES
 		JPanel jpCOMPETENCES = new JPanel();
 		jpCOMPETENCES.add(new JLabel("COMPETENCES"));
 		jpPrincipal.add(jpCOMPETENCES, Step.COMPETENCES.name());
+		
+		// EQUIPEMENT
+		JPanel jpEQUIPMENT = new JPanel();
+		jpEQUIPMENT.add(new JLabel("EQUIPMENT"));
+		jpPrincipal.add(jpEQUIPMENT, Step.EQUIPMENT.name());
 
 		// CONFIRMATION
 		JPanel jpCONFIRMATION = new JPanel();
@@ -114,7 +112,7 @@ public class JFicheNav extends JPanel {
 		jpButton.add(new JButton(next));
 		this.add(jpButton, BorderLayout.SOUTH);
 
-		// INITIALISATION à Social
+		// Initialisation à Social
 		this.setStep(Step.SOCIAL);
 	}
 
@@ -150,12 +148,12 @@ public class JFicheNav extends JPanel {
 			this.setStep(Step.CARAC);
 			break;
 		case CARAC:
-			this.setStep(Step.EQUIPMENT);
-			break;
-		case EQUIPMENT:
 			this.setStep(Step.COMPETENCES);
 			break;
 		case COMPETENCES:
+			this.setStep(Step.EQUIPMENT);
+			break;	
+		case EQUIPMENT:
 			this.setStep(Step.CONFIRMATION);
 			break;
 		default:
@@ -168,14 +166,14 @@ public class JFicheNav extends JPanel {
 		case CARAC:
 			this.setStep(Step.SOCIAL);
 			break;
-		case EQUIPMENT:
+		case COMPETENCES:
 			this.setStep(Step.CARAC);
 			break;
-		case COMPETENCES:
-			this.setStep(Step.EQUIPMENT);
+		case EQUIPMENT:
+			this.setStep(Step.COMPETENCES);
 			break;
 		case CONFIRMATION:
-			this.setStep(Step.COMPETENCES);
+			this.setStep(Step.EQUIPMENT);
 			break;
 		default:
 			throw new IllegalArgumentException("Pas de next !");
@@ -185,8 +183,8 @@ public class JFicheNav extends JPanel {
 	@Override
 	public Dimension getPreferredSize() {
 		Dimension preferredSize = super.getPreferredSize();
-		preferredSize.width += 40;
-		preferredSize.height += 40;
+		preferredSize.width += 150;
+		preferredSize.height += 60;
 		return preferredSize;
 	}
 
