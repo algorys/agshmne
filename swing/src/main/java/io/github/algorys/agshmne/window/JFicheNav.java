@@ -2,6 +2,8 @@ package io.github.algorys.agshmne.window;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -32,25 +34,25 @@ public class JFicheNav extends JPanel {
 		SOCIAL, CARAC, EQUIPMENT, COMPETENCES, RESUME, CONFIRMATION
 	}
 
-	private JSocialPanel socialPanel; 
-	//private JLabel jlPane;
 	private CardLayout cl;
 	private Step step;
 	private Action next;
 	private Action previous;
 	private JPanel jpPrincipal;
-	private JPanel jpSocial;
-	private JPanel jpCarac;
+	private JSocialPanel jpSocial;
+	private JCaracPanel jpCarac;
 	private JTextField jtfVerificationName;
 
 	public JFicheNav() {
+		this.setBackground(Color.BLACK);
 		next = new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (JFicheNav.this.step == Step.CONFIRMATION) {
-						String name = socialPanel.getMyName();
-						System.out.println("FINI !!!");
-						System.out.println("Je remplis la fiche de perso pour " + name);
+					String name = jpSocial.getMyName();
+					String sexe = jpSocial.getMySexe();
+					System.out.println("Nom : " + name);
+					System.out.println("Sexe : " + sexe);
 				} else {
 					JFicheNav.this.next();
 				}
@@ -74,7 +76,7 @@ public class JFicheNav extends JPanel {
 		jpPrincipal = new JPanel(cl);
 		jpPrincipal.setOpaque(false);
 		this.add(jpPrincipal, BorderLayout.CENTER);
-		
+
 		// SOCIAL
 		jpSocial = new JSocialPanel();
 		jpSocial.setOpaque(false);
@@ -95,11 +97,7 @@ public class JFicheNav extends JPanel {
 		jpCOMPETENCES.add(new JLabel("COMPETENCES"));
 		jpPrincipal.add(jpCOMPETENCES, Step.COMPETENCES.name());
 
-		
-		//JPanel jpRESUME = new JPanel();
-		//jpRESUME.add(new JLabel("RESUME"));
-		//jpPrincipal.add(jpRESUME, Step.RESUME.name());
-
+		// CONFIRMATION
 		JPanel jpCONFIRMATION = new JPanel();
 		jpCONFIRMATION.add(new JLabel("CONFIRMATION"));
 		jtfVerificationName = new JTextField();
@@ -116,6 +114,7 @@ public class JFicheNav extends JPanel {
 		jpButton.add(new JButton(next));
 		this.add(jpButton, BorderLayout.SOUTH);
 
+		// INITIALISATION à Social
 		this.setStep(Step.SOCIAL);
 	}
 
@@ -130,7 +129,7 @@ public class JFicheNav extends JPanel {
 	private void setStep(Step step) {
 		this.step = step;
 		if (this.step == Step.CONFIRMATION) {
-			jtfVerificationName.setText(socialPanel.getMyName());
+			jtfVerificationName.setText(jpSocial.getMyName());
 			this.next.putValue(Action.NAME, "Valider");
 		} else {
 			this.next.putValue(Action.NAME, "Suivant");
@@ -184,10 +183,28 @@ public class JFicheNav extends JPanel {
 	}
 
 	@Override
+	public Dimension getPreferredSize() {
+		Dimension preferredSize = super.getPreferredSize();
+		preferredSize.width += 40;
+		preferredSize.height += 40;
+		return preferredSize;
+	}
+
+	@Override
+	public Dimension getMinimumSize() {
+		return this.getPreferredSize();
+	}
+
+	@Override
 	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		int width = getPreferredSize().width;
+		int height = getPreferredSize().height;
+		int x = (this.getWidth() - width) / 2;
+		int y = (this.getHeight() - height) / 2;
 		try {
 			Image img = ImageIO.read(JTile.class.getClassLoader().getResource("parchemin.png"));
-			g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+			g.drawImage(img, x, y, width, height, this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

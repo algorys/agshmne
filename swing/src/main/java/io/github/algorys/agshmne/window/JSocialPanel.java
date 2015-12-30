@@ -35,7 +35,7 @@ public class JSocialPanel extends JPanel {
 		gbcSocial.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("FICHE PERSONNAGE JOUEUR"), gbcSocial);
 		
-		// TITRE
+		// Titre Panel
 		gbcSocial.gridy = 1;
 		gbcSocial.gridheight = 1;
 		gbcSocial.gridx = 0;
@@ -130,4 +130,17 @@ public class JSocialPanel extends JPanel {
 	public String getMyName() {
 		return jtfName.getText();
 	}
+	
+	public String getMySexe() {
+		return (String)jcbSexe.getSelectedItem();
+	}
+	
+	public String getMyRace() {
+		return jcbRace.getName();
+	}
+	
+	public String getMyBackGround() {
+		return jtaBackground.getText();
+	}
+	
 }
