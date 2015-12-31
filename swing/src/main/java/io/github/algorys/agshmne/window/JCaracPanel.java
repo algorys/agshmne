@@ -39,14 +39,17 @@ public class JCaracPanel extends JPanel {
 				int remainingPoints = total - spentPoints;
 				FOR.setMaxValue(Math.min(remainingPoints + FOR.getValue(), MAX_FOR_ONE));
 				DEX.setMaxValue(Math.min(remainingPoints + DEX.getValue(), MAX_FOR_ONE));
-				CON.setMaxValue(Math.min(remainingPoints + DEX.getValue(), MAX_FOR_ONE));
-				INT.setMaxValue(Math.min(remainingPoints + DEX.getValue(), MAX_FOR_ONE));
-				CHA.setMaxValue(Math.min(remainingPoints + DEX.getValue(), MAX_FOR_ONE));
-
+				CON.setMaxValue(Math.min(remainingPoints + CON.getValue(), MAX_FOR_ONE));
+				INT.setMaxValue(Math.min(remainingPoints + INT.getValue(), MAX_FOR_ONE));
+				CHA.setMaxValue(Math.min(remainingPoints + CHA.getValue(), MAX_FOR_ONE));
 			}
 		};
+		
 		FOR.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		DEX.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
+		CON.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
+		INT.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
+		CHA.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcCarac = new GridBagConstraints();
