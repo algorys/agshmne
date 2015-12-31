@@ -33,6 +33,7 @@ public class JFicheNav extends JPanel {
 	private JPanel jpPrincipal;
 	private JSocialPanel jpSocial;
 	private JCaracPanel jpCarac;
+	private JCompPanel jpComp;
 	private JTextField jtfVerificationName;
 
 	public JFicheNav() {
@@ -86,9 +87,9 @@ public class JFicheNav extends JPanel {
 		jpPrincipal.add(jpCarac, Step.CARAC.name());
 		
 		// COMPETENCES
-		JPanel jpCOMPETENCES = new JPanel();
-		jpCOMPETENCES.add(new JLabel("COMPETENCES"));
-		jpPrincipal.add(jpCOMPETENCES, Step.COMPETENCES.name());
+		jpComp = new JCompPanel();
+		jpComp.setOpaque(false);
+		jpPrincipal.add(jpComp, Step.COMPETENCES.name());
 		
 		// EQUIPEMENT
 		JPanel jpEQUIPMENT = new JPanel();
@@ -184,7 +185,7 @@ public class JFicheNav extends JPanel {
 	public Dimension getPreferredSize() {
 		Dimension preferredSize = super.getPreferredSize();
 		preferredSize.width += 150;
-		preferredSize.height += 60;
+		preferredSize.height += 300;
 		return preferredSize;
 	}
 

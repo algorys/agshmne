@@ -1,5 +1,6 @@
 package io.github.algorys.agshmne.window;
 
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -18,6 +19,7 @@ public class JSocialPanel extends JPanel {
 	private JTextArea jtaBackground;
 	private JComboBox<String> jcbSexe;
 	private JComboBox<String> jcbRace;
+	private JTextField jtfClasse;
 
 	public JSocialPanel() {
 		super();
@@ -102,11 +104,28 @@ public class JSocialPanel extends JPanel {
 		jcbRace.addItem("Elfe (+1 DEX)");
 		jcbRace.addItem("Demi-Elfe (+1 CHA");
 		jcbRace.addItem("Nain (+1 FOR)");
-
 		this.add(jcbRace, gbcSocial);
-				
-		// BACKGROUND
+		
+		// CLASSE
 		gbcSocial.gridy = 5;
+		gbcSocial.gridheight = 1;
+		gbcSocial.gridx = 0;
+		gbcSocial.gridwidth = 1;
+		gbcSocial.anchor = GridBagConstraints.EAST;
+		gbcSocial.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("Classe"), gbcSocial);
+				
+		gbcSocial.gridy = 5;
+		gbcSocial.gridheight = 1;
+		gbcSocial.gridx = 1;
+		gbcSocial.gridwidth = 1;
+		gbcSocial.anchor = GridBagConstraints.WEST;
+		gbcSocial.fill = GridBagConstraints.HORIZONTAL;
+		jtfClasse = new JTextField();
+		this.add(jtfClasse, gbcSocial);
+		
+		// BACKGROUND
+		gbcSocial.gridy = 6;
 		gbcSocial.gridheight = 1;
 		gbcSocial.gridx = 0;
 		gbcSocial.gridwidth = 1;
@@ -114,7 +133,7 @@ public class JSocialPanel extends JPanel {
 		gbcSocial.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Background"), gbcSocial);
 
-		gbcSocial.gridy = 5;
+		gbcSocial.gridy = 6;
 		gbcSocial.gridheight = 1;
 		gbcSocial.gridx = 1;
 		gbcSocial.gridwidth = 1;

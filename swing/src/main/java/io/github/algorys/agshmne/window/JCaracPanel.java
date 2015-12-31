@@ -31,7 +31,7 @@ public class JCaracPanel extends JPanel {
 		final JCaracteristic INT = new JCaracteristic(10, 1, MAX_FOR_ONE);
 		final JCaracteristic CHA = new JCaracteristic(10, 1, MAX_FOR_ONE);
 
-
+		// Property Change Listener
 		PropertyChangeListener pcl = new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
@@ -45,12 +45,14 @@ public class JCaracPanel extends JPanel {
 			}
 		};
 		
+		// Add listener for each
 		FOR.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		DEX.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		CON.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		INT.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		CHA.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		
+		// GidBag Layout
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcCarac = new GridBagConstraints();
 		// Ajuste la taille du GridBag
@@ -99,7 +101,7 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.EAST;
 		gbcCarac.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("FOR : agit sur l'attaque au corps à corps. "), gbcCarac);
+		this.add(new JLabel("FOR : l'attaque au corps à corps. Pousser, tirer, casser ! "), gbcCarac);
 		
 		gbcCarac.gridy = 3;
 		gbcCarac.gridheight = 1;
@@ -118,7 +120,7 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.EAST;
 		gbcCarac.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("DEX"), gbcCarac);
+		this.add(new JLabel("DEX : attaque à distance et actions délicates"), gbcCarac);
 		
 		gbcCarac.gridy = 4;
 		gbcCarac.gridheight = 1;
@@ -136,7 +138,7 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.EAST;
 		gbcCarac.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("CON"), gbcCarac);
+		this.add(new JLabel("CON : la vie et les résitances aux poisons... "), gbcCarac);
 		
 		gbcCarac.gridy = 5;
 		gbcCarac.gridheight = 1;
@@ -154,7 +156,7 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.EAST;
 		gbcCarac.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("INT"), gbcCarac);
+		this.add(new JLabel("INT : magie et connaissances"), gbcCarac);
 		
 		gbcCarac.gridy = 6;
 		gbcCarac.gridheight = 1;
@@ -172,7 +174,7 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.EAST;
 		gbcCarac.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("CHA"), gbcCarac);
+		this.add(new JLabel("CHA : la manière dont vous influez le monde."), gbcCarac);
 		
 		gbcCarac.gridy = 7;
 		gbcCarac.gridheight = 1;
