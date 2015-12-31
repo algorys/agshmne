@@ -64,7 +64,7 @@ L'univers d'Agshmne sera un mélange de fantasy provenant de différents mondes 
 
 **! Conception en cours !**
 
-Voici un premier rendu de région **nue** :
+Voici un premier rendu de région :
 
 ![Region](/doc/region.png)
 
