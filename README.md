@@ -74,3 +74,6 @@ Voici un premier rendu de région :
 **Agshmne** de *Estrada Matthieu* est mis à disposition selon les termes de la [licence Creative Commons Attribution - Pas d&#39;Utilisation Commerciale - Pas de Modification 4.0 International](http://creativecommons.org/licenses/by-nc-nd/4.0/).
 
 Fondé(e) sur une œuvre à [https://github.com/algorys/agshmne](https://github.com/algorys/agshmne).
+
+### Licence Images
+Tuiles : images de [Jinn](http://jinndevil.tumblr.com/).
