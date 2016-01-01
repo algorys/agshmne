@@ -21,12 +21,18 @@ public class JCaracPanel extends JPanel {
 	* Fatigue et Faim → incrémenté à chaque déplacement
 	*/
 
+	private JCaracteristic FOR;	
+	private JCaracteristic DEX;
+	private JCaracteristic CON;
+	private JCaracteristic INT;
+	private JCaracteristic CHA;
+	
 	public JCaracPanel() {
 		super();
 		final int MAX_FOR_ONE = 20;
 		final int total = 60;
 		final JCaracteristic FOR = new JCaracteristic(10, 1, MAX_FOR_ONE);	
-		final JCaracteristic DEX = new JCaracteristic(10, 1, MAX_FOR_ONE);
+		final JCaracteristic DEX = new JCaracteristic(10, 1, MAX_FOR_ONE);		
 		final JCaracteristic CON = new JCaracteristic(10, 1, MAX_FOR_ONE);
 		final JCaracteristic INT = new JCaracteristic(10, 1, MAX_FOR_ONE);
 		final JCaracteristic CHA = new JCaracteristic(10, 1, MAX_FOR_ONE);
@@ -51,6 +57,12 @@ public class JCaracPanel extends JPanel {
 		CON.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		INT.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		CHA.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
+		
+		this.FOR = FOR;
+		this.DEX = DEX;
+		this.CON = CON;
+		this.INT = INT;
+		this.CHA = CHA;
 		
 		// GidBag Layout
 		this.setLayout(new GridBagLayout());
@@ -186,6 +198,26 @@ public class JCaracPanel extends JPanel {
 		this.add(CHA, gbcCarac);
 		
 		
+	}
+
+	public int getFOR() {
+		return FOR.getValue();
+	}
+
+	public int getDEX() {
+		return DEX.getValue();
+	}
+
+	public int getCON() {
+		return CON.getValue();
+	}
+
+	public int getINT() {
+		return INT.getValue();
+	}
+
+	public int getCHA() {
+		return CHA.getValue();
 	}
 
 }

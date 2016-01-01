@@ -34,6 +34,7 @@ public class JFicheNav extends JPanel {
 	private JSocialPanel jpSocial;
 	private JCaracPanel jpCarac;
 	private JCompPanel jpComp;
+	private JInvPanel jpInv;
 	private JTextField jtfVerificationName;
 
 	public JFicheNav() {
@@ -46,8 +47,10 @@ public class JFicheNav extends JPanel {
 				if (JFicheNav.this.step == Step.CONFIRMATION) {
 					String name = jpSocial.getMyName();
 					String sexe = jpSocial.getMySexe();
+					JCaracPanel FOR = jpCarac;
 					System.out.println("Nom : " + name);
 					System.out.println("Sexe : " + sexe);
+					System.out.println("Force =" + FOR.getFOR());
 				} else {
 					JFicheNav.this.next();
 				}
@@ -92,9 +95,9 @@ public class JFicheNav extends JPanel {
 		jpPrincipal.add(jpComp, Step.COMPETENCES.name());
 		
 		// EQUIPEMENT
-		JPanel jpEQUIPMENT = new JPanel();
-		jpEQUIPMENT.add(new JLabel("EQUIPMENT"));
-		jpPrincipal.add(jpEQUIPMENT, Step.EQUIPMENT.name());
+		jpInv = new JInvPanel();
+		jpInv.setOpaque(false);
+		jpPrincipal.add(jpInv, Step.EQUIPMENT.name());
 
 		// CONFIRMATION
 		JPanel jpCONFIRMATION = new JPanel();
