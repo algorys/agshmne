@@ -203,6 +203,8 @@ public class JFicheNav extends JPanel {
 		int y = (this.getHeight() - height) / 2;
 		try {
 			Image img = ImageIO.read(JTile.class.getClassLoader().getResource("parchemin.png"));
+			Image imgBack = ImageIO.read(JTile.class.getClassLoader().getResource("table.png") );
+			g.drawImage(imgBack, 0, 0, this.getWidth(), this.getHeight(), this);
 			g.drawImage(img, x, y, width, height, this);
 		} catch (IOException e) {
 			e.printStackTrace();
