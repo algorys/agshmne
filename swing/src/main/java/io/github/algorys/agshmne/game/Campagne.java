@@ -6,6 +6,7 @@ import io.github.algorys.agshmne.outils.MapUtils;
 import io.github.algorys.agshmne.personnage.Personnage;
 import io.github.algorys.agshmne.region.Region;
 import io.github.algorys.agshmne.window.JWelcome;
+import io.github.algorys.agshmne.window.JFicheNav.Step;
 import io.github.algorys.agshmne.window.JMap;
 import io.github.algorys.agshmne.world.DefaultWorldFactory;
 import io.github.algorys.agshmne.world.World;
@@ -30,6 +31,9 @@ public class Campagne {
 		fMap.setVisible(false);
 		
 		JWelcome fAccueil = new JWelcome();
-		fAccueil.setVisible(true);
+		fAccueil.setVisible(false);
+
+		JGame game = new JGame();
+		game.setVisible(true);
 	}
 }

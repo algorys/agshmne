@@ -57,7 +57,7 @@ public class JCompPanel extends JLabel {
 						+ pecher.getValue()
 						+ magie.getValue()
 						;
-				int remainingPoints = total - spentPoints;
+				final int remainingPoints = total - spentPoints;
 				cuisiner.setMaxValue(Math.min(remainingPoints + cuisiner.getValue(), MAX_FOR_ONE));
 				fouiller.setMaxValue(Math.min(remainingPoints + fouiller.getValue(), MAX_FOR_ONE));
 				boucherie.setMaxValue(Math.min(remainingPoints + boucherie.getValue(), MAX_FOR_ONE));
@@ -68,6 +68,7 @@ public class JCompPanel extends JLabel {
 				magie.setMaxValue(Math.min(remainingPoints + miner.getValue(), MAX_FOR_ONE));
 			}
 		};
+
 		// Add listener for each
 		cuisiner.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		fouiller.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);

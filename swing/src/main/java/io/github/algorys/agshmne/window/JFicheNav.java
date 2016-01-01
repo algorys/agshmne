@@ -18,6 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import io.github.algorys.agshmne.game.JGameWorld;
+import io.github.algorys.agshmne.personnage.Personnage;
+import io.github.algorys.agshmne.region.Region;
 import io.github.algorys.agshmne.tile.JTile;
 
 public class JFicheNav extends JPanel {
@@ -36,6 +39,9 @@ public class JFicheNav extends JPanel {
 	private JCompPanel jpComp;
 	private JInvPanel jpInv;
 	private JTextField jtfVerificationName;
+	
+	private int FOR;
+	private int DEX;
 
 	public JFicheNav() {
 		this.setBackground(Color.BLACK);
@@ -47,16 +53,22 @@ public class JFicheNav extends JPanel {
 				if (JFicheNav.this.step == Step.CONFIRMATION) {
 					String name = jpSocial.getMyName();
 					String sexe = jpSocial.getMySexe();
-					JCaracPanel FOR = jpCarac;
-					System.out.println("Nom : " + name);
-					System.out.println("Sexe : " + sexe);
-					System.out.println("Force =" + FOR.getFOR());
+					int FOR = jpCarac.getFOR();
+					int DEX = jpCarac.getDEX();
+					int CON = jpCarac.getCON();
+					int INT = jpCarac.getINT();
+					int CHA = jpCarac.getCHA();
+					
 				} else {
 					JFicheNav.this.next();
 				}
 			}
 		};
 		
+		this.FOR = FOR;
+		this.DEX = DEX;
+		System.out.println("FOR = " + FOR);
+		System.out.println("DEX = " + DEX);
 		// Previous Abstract Action
 		previous = new AbstractAction("Précédent") {
 
@@ -105,7 +117,6 @@ public class JFicheNav extends JPanel {
 		jtfVerificationName = new JTextField();
 		jtfVerificationName.setEditable(false);
 		jpCONFIRMATION.add(jtfVerificationName);
-
 		jpPrincipal.add(jpCONFIRMATION, Step.CONFIRMATION.name());
 
 		cl.show(jpPrincipal, Step.SOCIAL.name());
@@ -131,7 +142,7 @@ public class JFicheNav extends JPanel {
 	private void setStep(Step step) {
 		this.step = step;
 		if (this.step == Step.CONFIRMATION) {
-			jtfVerificationName.setText(jpSocial.getMyName());
+			//jtfVerificationName.setText(jpSocial.getMyName());
 			this.next.putValue(Action.NAME, "Valider");
 		} else {
 			this.next.putValue(Action.NAME, "Suivant");
