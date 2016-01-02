@@ -26,7 +26,8 @@ public class Personnage extends Observable {
 	}
 	
 	public void setPosition(Position position) {
-		System.out.println("Nouvelle position => " + position.getX() + ", " + position.getY());
+		//System.out.println("Nouvelle position => " + position.getX() + ", " + position.getY());
+		//System.out.println("Sur case : " + region.getTileFromPosition(position));
 		this.position = position;
 		this.setChanged();
 		this.notifyObservers();

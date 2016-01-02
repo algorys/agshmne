@@ -42,6 +42,9 @@ public class JRegion extends JPanel implements Observer {
 	}
 
 	public Personnage getPersonnage() {
+		this.personnage.deleteObserver(this);
+		this.personnage.addObserver(this);
+		this.updateDisplay();
 		return personnage;
 	}
 
@@ -61,7 +64,7 @@ public class JRegion extends JPanel implements Observer {
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 7; j++) {
 				Region region = this.personnage.getRegion();
-				Position newPosition = new Position(position.getX() + j - 3, position.getY() + (7 - i) - 3);
+				Position newPosition = new Position(position.getX() + j - 3, position.getY() + i - 3);
 				Tile tile = region.getTileFromPosition(newPosition);
 				jtiles[i][j].setModel(tile);
 			}
