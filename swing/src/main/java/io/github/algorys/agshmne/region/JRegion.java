@@ -31,15 +31,14 @@ public class JRegion extends JPanel implements Observer {
 		Position position = personnage.getPosition();
 		System.out.println("------- Création J Region --------");
 
-		jtiles = new JTile[7][7];
-		this.setLayout(new GridLayout(7, 7));
-		for (int i = 0; i < 7; i++) {
-			for (int j = 0; j < 7; j++) {
+		jtiles = new JTile[13][13];
+		this.setLayout(new GridLayout(13, 13));
+		for (int i = 0; i < 13; i++) {
+			for (int j = 0; j < 13; j++) {
 				jtiles[i][j] = new JTile(personnage.getRegion()
-						.getTileFromPosition(new Position(position.getX() + j - 3, position.getY() + (7 - i) - 3)));
+						.getTileFromPosition(new Position(position.getX() + j - 6, position.getY() + (12 - i) - 6)));
 				this.add(jtiles[i][j]);
 			}
-		//personnage.setPosition(new Position(0,0));
 		System.out.println("Personnage JRegion " + personnage.getPosition().getX() + ", " + personnage.getPosition().getY());
 		}
 	}
@@ -64,10 +63,10 @@ public class JRegion extends JPanel implements Observer {
 	private void updateDisplay() {
 		Position position = this.personnage.getPosition();
 
-		for (int i = 0; i < 7; i++) {
-			for (int j = 0; j < 7; j++) {
+		for (int i = 0; i < 13; i++) {
+			for (int j = 0; j < 13; j++) {
 				Region region = this.personnage.getRegion();
-				Position newPosition = new Position(position.getX() + j - 3, position.getY() + (7 - i) - 3);
+				Position newPosition = new Position(position.getX() + j - 6, position.getY() + (12 - i) - 6);
 				Tile tile = region.getTileFromPosition(newPosition);
 				jtiles[i][j].setModel(tile);
 			}
@@ -78,7 +77,7 @@ public class JRegion extends JPanel implements Observer {
 
 	@Override
 	public Dimension getPreferredSize() {
-		return new Dimension(350, 350);
+		return new Dimension(700, 700);
 	}
 
 	@Override
@@ -89,7 +88,7 @@ public class JRegion extends JPanel implements Observer {
 			Graphics2D g2 = (Graphics2D)g;
 			g2.setStroke(new BasicStroke(3));
 			g2.setColor(new Color(178, 102, 255));
-			g2.drawRoundRect(150, 150, 50, 50, 5, 5);
+			g2.drawRoundRect(322, 322, 50, 50, 5, 5);
 		} else {
 			g.setColor(Color.BLUE);
 			g.drawRect(150, 150, 50, 50);

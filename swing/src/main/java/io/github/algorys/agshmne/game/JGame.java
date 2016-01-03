@@ -34,7 +34,7 @@ public class JGame extends JFrame {
 		 * Contiendra la map vue de dessus
 		 */	
 		jpCenter.setBackground(Color.BLACK);
-		jpCenter.setSize(new Dimension(350,350));
+		//jpCenter.setSize(new Dimension(700,700));
 		jpCenter.add(this.jregion);
 		this.add(jpCenter);
 		
