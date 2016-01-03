@@ -33,7 +33,7 @@ public class JGame extends JFrame {
 		
 		JPanel outputPane = new JPanel();
 		Position position = pj.getPosition();
-		final JLabel jlRegion = new JLabel("Sur une case " + jregion.getTileFromPerso(pj));
+		final JLabel jlRegion = new JLabel("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 		final JLabel jlPosition = new JLabel("Personnage en position " + pj.getPosition().getX() + " , " + pj.getPosition().getY());
 		
 		outputPane.add(jlPosition);
@@ -66,25 +66,25 @@ public class JGame extends JFrame {
 					pj.setPosition(
 							new Position(pj.getPosition().getX() - 1, pj.getPosition().getY()));
 					jlPosition.setText("APRES Personnage en position " + pj.getPosition().getX() + " , " + pj.getPosition().getY());
-					jlRegion.setText("Sur une case " + jregion.getTileFromPerso(pj));
+					jlRegion.setText("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 					break;
 				case KeyEvent.VK_RIGHT:
 					pj.setPosition(
 							new Position(pj.getPosition().getX() + 1, pj.getPosition().getY()));
 					jlPosition.setText("Personnage en position " + pj.getPosition().getX() + " , " + pj.getPosition().getY());
-					jlRegion.setText("Sur une case " + jregion.getTileFromPerso(pj));
+					jlRegion.setText("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 					break;
 				case KeyEvent.VK_UP:
 					pj.setPosition(
 							new Position(pj.getPosition().getX(), pj.getPosition().getY() + 1));
 					jlPosition.setText("Personnage en position " + pj.getPosition().getX() + " , " + pj.getPosition().getY());
-					jlRegion.setText("Sur une case " + jregion.getTileFromPerso(pj));
+					jlRegion.setText("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 					break;
 				case KeyEvent.VK_DOWN:
 					pj.setPosition(
 							new Position(pj.getPosition().getX(), pj.getPosition().getY() - 1));
 							jlPosition.setText("Personnage en position " + pj.getPosition().getX() + " , " + pj.getPosition().getY());
-							jlRegion.setText("Sur une case " + jregion.getTileFromPerso(pj));
+							jlRegion.setText("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 					break;
 				}
 	
