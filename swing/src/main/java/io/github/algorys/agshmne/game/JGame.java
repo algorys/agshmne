@@ -18,32 +18,84 @@ import io.github.algorys.agshmne.region.Region;
 public class JGame extends JFrame {
 	private Region region = new Region();
 	private Personnage pj = new Personnage(region);
-	
+	private final JRegion jregion = new JRegion(this.pj);
 	
 	public JGame(){
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
-		JPanel jp = new JPanel();
-		final JRegion jregion = new JRegion(pj);
-		jp.setBackground(Color.BLACK);
-		jp.setSize(new Dimension(350,350));
-		jp.add(jregion);
-		this.add(jp);
+		JPanel jpCenter = new JPanel();
+		JPanel jpNorth = new JPanel();
+		JPanel jpEast = new JPanel();
+		JPanel jpSouth = new JPanel();
+		JPanel jpWest = new JPanel();
+
+		/* JPCenter
+		 * Contiendra la map vue de dessus
+		 */	
+		jpCenter.setBackground(Color.BLACK);
+		jpCenter.setSize(new Dimension(350,350));
+		jpCenter.add(this.jregion);
+		this.add(jpCenter);
 		
-		JPanel outputPane = new JPanel();
-		Position position = pj.getPosition();
+		/*
+		 * JPNorth
+		 * Barre racourcis
+		 * Magie (Menu / Combat) : Liste les sorts du personnage. Possibilité pour le joueur de lancer certains sorts selon le contexte (En combat tous les sorts seront lançables / En Zone de jeu non !)
+		 * Personnage (Menu): donnera un aperçu des caractéristiques du personnage. Cet onglet servira notamment aux passage de niveaux. (Bouton – et + pour les points)
+		 * Inventaire (Menu): affichera la liste des objets que possède le personnage. Certains objets comme les potions offriront des actions supplémentaires (comme boire, manger, équiper, enchanter, etc.) via un bouton.
+		 * Équipement (Menu): affichera une silhouette du personnage et de ce qu'il porte actuellement. Les équipements possibles seront : Tête, Bras, Torse, Jambes, 2 anneaux, 2 mains, Sac-à-dos (pour la capacité) et 1 Compagnon (Pet).
+		  * Le Personnage pourra retirer des équipements via ce menu.
+		  * Le personnage pourra renommer son Pet et l'enlever.
+		 * Compétences (Menu): les compétences seront le plus possibles variés afin de fournir au joueur le plus de combinaisons possibles. Le joueur aura certaines compétences de bases et d'autres qu'il pourra apprendre. Certaines compétences pourront être utilisés ici, comme Atelier.
+		 * Carte (Menu): affichera la carte en plus grand (toutes les cases idéalement) et au minimum les types de Cases. Le Joueur pourra ajouter des marqueurs avec texte.
+		 * Quêtes (Menu): montrera les quêtes acceptées par le personnage.
+		 * 
+		 */
+		JLabel jlPerso = new JLabel("Magie");
+		JLabel jlComp = new JLabel("Compétences");
+		JLabel jlInv = new JLabel("Inventaire");
+		JLabel jlEquip = new JLabel("Equip");
+		JLabel jlMagie = new JLabel("Magie");
+		JLabel jlMap = new JLabel("Map");
+		JLabel jlQuest = new JLabel("Quêtes");
+		jpNorth.add(jlPerso);
+		jpNorth.add(jlComp);
+		jpNorth.add(jlInv);
+		jpNorth.add(jlEquip);
+		jpNorth.add(jlMagie);
+		jpNorth.add(jlMap);
+		jpNorth.add(jlQuest);
+		
+		/*
+		 * JPEast
+		 * Objets à terres
+		 * Actions pj et compétences
+		 */
+		 
+		//Objets
+		JPanel jpObjets = new JPanel();
+		JLabel jlObjets = new JLabel("Objets à terre");
+		jpObjets.add(jlObjets);
+		
+		// Actions
+		JPanel jpActions = new JPanel();
+		JLabel jlActions = new JLabel("Creuser, Bûcher, ");
+		jpActions.add(jlActions);
+		
+		jpEast.add(jpObjets);
+		jpEast.add(jpActions);
+
+		
+		/*
+		 * JPSouth
+		 * Infos textuelles : descriptions des lieux, objets disponibles, position, etc...
+		 */
 		final JLabel jlRegion = new JLabel("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 		final JLabel jlPosition = new JLabel("Personnage en position " + pj.getPosition().getX() + " , " + pj.getPosition().getY());
 		
-		outputPane.add(jlPosition);
-		outputPane.add(jlRegion);
-		
-		JPanel contentPane = new JPanel(new BorderLayout());
-		contentPane.add(jp, BorderLayout.NORTH);
-		contentPane.add(outputPane, BorderLayout.SOUTH);
-		this.setContentPane(contentPane);
-		this.pack();
+		jpSouth.add(jlPosition);
+		jpSouth.add(jlRegion);
 		
 		this.addKeyListener(new KeyListener() {
 			@Override
@@ -89,6 +141,27 @@ public class JGame extends JFrame {
 				}
 	
 			}
+			
+			
 		});
+		
+		/*
+		 * JPWest
+		 * Personnage / Ville
+		 */
+		JLabel jlWest = new JLabel("Personnage / Ville");
+		jpWest.add(jlWest);	
+		
+		
+		// Ajout Panneau Final
+		JPanel contentPane = new JPanel(new BorderLayout());
+		contentPane.add(jpCenter, BorderLayout.CENTER);
+		contentPane.add(jpNorth, BorderLayout.NORTH);
+		contentPane.add(jpEast, BorderLayout.EAST);
+		contentPane.add(jpSouth, BorderLayout.SOUTH);
+		contentPane.add(jpWest, BorderLayout.WEST);
+		
+		this.setContentPane(contentPane);
+		this.pack();
 	}
 }
