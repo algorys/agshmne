@@ -15,6 +15,7 @@ public class Personnage extends Observable {
 
 	public Personnage(Region region) {
 		this.region = region;
+		System.out.println("------- Création Personnage --------");
 	}
 
 	public Position getPosition() {

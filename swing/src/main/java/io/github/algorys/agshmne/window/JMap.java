@@ -15,7 +15,7 @@ public class JMap extends JFrame {
 		this.setLocationRelativeTo(null);		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		this.setContentPane(new JRegion(world.getDefaultRegion()));
+		//this.setContentPane(new JRegion(world.getDefaultRegion()));
 	}
 	
 }

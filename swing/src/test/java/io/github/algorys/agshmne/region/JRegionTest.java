@@ -18,7 +18,7 @@ public class JRegionTest {
 		Region region = new Region();
 		final Personnage personnage = new Personnage(region);
 		jf.getContentPane().add(new JRegion(personnage));
-
+		System.out.println("-------------------------------------");
 		jf.addKeyListener(new KeyListener() {
 
 			@Override
@@ -40,18 +40,22 @@ public class JRegionTest {
 				case KeyEvent.VK_LEFT:
 					personnage.setPosition(
 							new Position(personnage.getPosition().getX() - 1, personnage.getPosition().getY()));
+					System.out.println("-------------------------------------");
 					break;
 				case KeyEvent.VK_RIGHT:
 					personnage.setPosition(
 							new Position(personnage.getPosition().getX() + 1, personnage.getPosition().getY()));
+					System.out.println("-------------------------------------");
 					break;
 				case KeyEvent.VK_UP:
 					personnage.setPosition(
 							new Position(personnage.getPosition().getX(), personnage.getPosition().getY() + 1));
+					System.out.println("-------------------------------------");
 					break;
 				case KeyEvent.VK_DOWN:
 					personnage.setPosition(
 							new Position(personnage.getPosition().getX(), personnage.getPosition().getY() - 1));
+					System.out.println("-------------------------------------");
 					break;
 				}
 

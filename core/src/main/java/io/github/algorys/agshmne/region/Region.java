@@ -26,11 +26,14 @@ public class Region {
 				InventoryItem e = new Apple();
 				tiles[i].addItem(e);
 			}
+		System.out.println("------- Création Région --------");
 		}
 	}
 
-	public Tile getTileFromPosition(Position p) {
+	public Tile getTileFromPosition(Position p) {		
 		int z = (p.getY() - Position.MIN_Y) * WIDTH + (p.getX() - Position.MIN_X);
+		System.out.println("Personnage sur tuile " + tiles[z]);
+		System.out.println("Coordonnées : " + p.getX() + ", " + p.getY());
 		return tiles[z];
 	}
 
