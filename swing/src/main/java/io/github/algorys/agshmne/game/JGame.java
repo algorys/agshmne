@@ -6,9 +6,11 @@ import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 import io.github.algorys.agshmne.deplacement.Position;
 import io.github.algorys.agshmne.personnage.Personnage;
@@ -24,22 +26,11 @@ public class JGame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
-		JPanel jpCenter = new JPanel();
-		JPanel jpNorth = new JPanel();
 		JPanel jpEast = new JPanel();
 		JPanel jpSouth = new JPanel();
 		JPanel jpWest = new JPanel();
 
 		/* JPCenter
-		 * Contiendra la map vue de dessus
-		 */	
-		jpCenter.setBackground(Color.BLACK);
-		//jpCenter.setSize(new Dimension(700,700));
-		jpCenter.add(this.jregion);
-		this.add(jpCenter);
-		
-		/*
-		 * JPNorth
 		 * Barre racourcis
 		 * Magie (Menu / Combat) : Liste les sorts du personnage. Possibilité pour le joueur de lancer certains sorts selon le contexte (En combat tous les sorts seront lançables / En Zone de jeu non !)
 		 * Personnage (Menu): donnera un aperçu des caractéristiques du personnage. Cet onglet servira notamment aux passage de niveaux. (Bouton – et + pour les points)
@@ -53,20 +44,31 @@ public class JGame extends JFrame {
 		 * 
          * TODO AJOUTER Tabbed Panes !
 		 */
-		JLabel jlPerso = new JLabel("Magie");
-		JLabel jlComp = new JLabel("Compétences");
-		JLabel jlInv = new JLabel("Inventaire");
-		JLabel jlEquip = new JLabel("Equip");
-		JLabel jlMagie = new JLabel("Magie");
-		JLabel jlMap = new JLabel("Map");
-		JLabel jlQuest = new JLabel("Quêtes");
-		jpNorth.add(jlPerso);
-		jpNorth.add(jlComp);
-		jpNorth.add(jlInv);
-		jpNorth.add(jlEquip);
-		jpNorth.add(jlMagie);
-		jpNorth.add(jlMap);
-		jpNorth.add(jlQuest);
+		JPanel jpMap = new JPanel();
+		JPanel jpPerso = new JPanel();
+		JPanel jpComp = new JPanel();
+		JPanel jpInv = new JPanel();
+		JPanel jpEquip = new JPanel();
+		JPanel jpMagie = new JPanel();
+		JPanel jpQuest = new JPanel();
+		
+		JTabbedPane tabbedNorth = new JTabbedPane();
+				
+		jpMap.setBackground(Color.BLACK);
+		jpMap.add(this.jregion);
+		tabbedNorth.addTab("Map", jpMap);
+		
+		tabbedNorth.addTab("Personnage", jpPerso);
+		
+		tabbedNorth.addTab("Compétences", jpComp);
+		
+		tabbedNorth.addTab("Inventaire", jpInv);
+		
+		tabbedNorth.addTab("Equipement", jpEquip);
+		
+		tabbedNorth.addTab("Magie", jpMagie);
+		
+		tabbedNorth.addTab("Quêtes", jpQuest);
 		
 		/*
 		 * JPEast
@@ -145,7 +147,7 @@ public class JGame extends JFrame {
 			
 			
 		});
-		
+		this.setFocusable(true);
 		/*
 		 * JPWest
 		 * Personnage / Ville
@@ -156,8 +158,8 @@ public class JGame extends JFrame {
 		
 		// Ajout Panneau Final
 		JPanel contentPane = new JPanel(new BorderLayout());
-		contentPane.add(jpCenter, BorderLayout.CENTER);
-		contentPane.add(jpNorth, BorderLayout.NORTH);
+		//contentPane.add(jpCenter, BorderLayout.CENTER);
+		contentPane.add(tabbedNorth, BorderLayout.CENTER);
 		contentPane.add(jpEast, BorderLayout.EAST);
 		contentPane.add(jpSouth, BorderLayout.SOUTH);
 		contentPane.add(jpWest, BorderLayout.WEST);

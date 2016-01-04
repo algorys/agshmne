@@ -1,12 +1,9 @@
 package io.github.algorys.agshmne.game;
 
-import javax.swing.JFrame;
-
 import io.github.algorys.agshmne.outils.MapUtils;
 import io.github.algorys.agshmne.personnage.Personnage;
 import io.github.algorys.agshmne.region.Region;
 import io.github.algorys.agshmne.window.JWelcome;
-import io.github.algorys.agshmne.window.JFicheNav.Step;
 import io.github.algorys.agshmne.window.JMap;
 import io.github.algorys.agshmne.world.DefaultWorldFactory;
 import io.github.algorys.agshmne.world.World;
