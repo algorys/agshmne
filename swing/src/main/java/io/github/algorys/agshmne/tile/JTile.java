@@ -3,7 +3,11 @@ package io.github.algorys.agshmne.tile;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,6 +61,16 @@ public class JTile extends JComponent {
 
 	public JTile(Tile model) {
 		super();
+		this.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getSource() instanceof JTile) {
+					JTile source = (JTile) e.getSource();
+					System.out.println("Cliqué sur une case");
+					System.out.println(Arrays.toString(source.getModel().getItems().toArray()));
+				}
+			}
+		});
 		if (model == null) {
 			throw new NullPointerException("model cannot be null");
 		}
