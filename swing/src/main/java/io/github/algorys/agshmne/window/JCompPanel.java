@@ -1,5 +1,7 @@
 package io.github.algorys.agshmne.window;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -129,7 +131,10 @@ public class JCompPanel extends JLabel {
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.EAST;
 		gbcComp.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Cuisiner : permet de cuisiner de la viandes, poissons..."), gbcComp);
+		JLabel label = new JLabel("Cuisiner : ");
+		label.setToolTipText("Permet de cuisiner de la viandes, poissons...");
+		//label.setForeground(new Color(0xffffdd));
+		this.add(label, gbcComp);
 		
 		gbcComp.gridy = 3;
 		gbcComp.gridheight = 1;
