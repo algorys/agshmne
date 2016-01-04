@@ -51,6 +51,7 @@ public class JGame extends JFrame {
 		 * Carte (Menu): affichera la carte en plus grand (toutes les cases idéalement) et au minimum les types de Cases. Le Joueur pourra ajouter des marqueurs avec texte.
 		 * Quêtes (Menu): montrera les quêtes acceptées par le personnage.
 		 * 
+         * TODO AJOUTER Tabbed Panes !
 		 */
 		JLabel jlPerso = new JLabel("Magie");
 		JLabel jlComp = new JLabel("Compétences");
