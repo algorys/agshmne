@@ -3,9 +3,13 @@ package io.github.algorys.agshmne.game;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,6 +20,7 @@ import io.github.algorys.agshmne.deplacement.Position;
 import io.github.algorys.agshmne.personnage.Personnage;
 import io.github.algorys.agshmne.region.JRegion;
 import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.tile.JTile;
 
 public class JGame extends JFrame {
 	private Region region = new Region();
@@ -62,7 +67,8 @@ public class JGame extends JFrame {
 		
 		tabbedNorth.addTab("Compétences", jpComp);
 		
-		tabbedNorth.addTab("Inventaire", jpInv);
+		Icon icon = new ImageIcon(JGame.class.getClassLoader().getResource("backpack.png"));
+		tabbedNorth.addTab("Inventaire", icon, jpInv);		
 		
 		tabbedNorth.addTab("Equipement", jpEquip);
 		
