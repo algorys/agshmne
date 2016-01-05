@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -61,20 +62,22 @@ public class JGame extends JFrame {
 				
 		jpMap.setBackground(Color.BLACK);
 		jpMap.add(this.jregion);
-		tabbedNorth.addTab("Map", jpMap);
+		Icon mapIcon = new ImageIcon(JGame.class.getClassLoader().getResource("map.png"));
+		tabbedNorth.addTab(null, mapIcon, jpMap);
 		
 		tabbedNorth.addTab("Personnage", jpPerso);
 		
 		tabbedNorth.addTab("Compétences", jpComp);
 		
-		Icon icon = new ImageIcon(JGame.class.getClassLoader().getResource("backpack.png"));
-		tabbedNorth.addTab("Inventaire", icon, jpInv);		
+		Icon backpackIcon = new ImageIcon(JGame.class.getClassLoader().getResource("backpack.png"));
+		tabbedNorth.addTab(null, backpackIcon, jpInv);		
 		
 		tabbedNorth.addTab("Equipement", jpEquip);
 		
 		tabbedNorth.addTab("Magie", jpMagie);
 		
-		tabbedNorth.addTab("Quêtes", jpQuest);
+		Icon questIcon = new ImageIcon(JGame.class.getClassLoader().getResource("quest.png"));
+		tabbedNorth.addTab(null, questIcon, jpQuest);
 		
 		/*
 		 * JPEast
@@ -106,18 +109,7 @@ public class JGame extends JFrame {
 		jpSouth.add(jlPosition);
 		jpSouth.add(jlRegion);
 		
-		this.addKeyListener(new KeyListener() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-			
-			}
-	
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-	
-			}
+		this.addKeyListener(new KeyAdapter() {
 	
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -153,7 +145,7 @@ public class JGame extends JFrame {
 			
 			
 		});
-		this.setFocusable(true);
+//		this.setFocusable(true);
 		/*
 		 * JPWest
 		 * Personnage / Ville
