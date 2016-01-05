@@ -2,16 +2,11 @@ package io.github.algorys.agshmne.game;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +16,6 @@ import io.github.algorys.agshmne.deplacement.Position;
 import io.github.algorys.agshmne.personnage.Personnage;
 import io.github.algorys.agshmne.region.JRegion;
 import io.github.algorys.agshmne.region.Region;
-import io.github.algorys.agshmne.tile.JTile;
 
 public class JGame extends JFrame {
 	private Region region = new Region();
@@ -59,25 +53,30 @@ public class JGame extends JFrame {
 		JPanel jpQuest = new JPanel();
 		
 		JTabbedPane tabbedNorth = new JTabbedPane();
+		tabbedNorth.setTabPlacement(JTabbedPane.TOP);
 				
 		jpMap.setBackground(Color.BLACK);
 		jpMap.add(this.jregion);
 		Icon mapIcon = new ImageIcon(JGame.class.getClassLoader().getResource("map.png"));
-		tabbedNorth.addTab(null, mapIcon, jpMap);
+		tabbedNorth.addTab(null, mapIcon, jpMap, "Carte");
 		
-		tabbedNorth.addTab("Personnage", jpPerso);
+		Icon persoIcon = new ImageIcon(JGame.class.getClassLoader().getResource("perso.png"));
+		tabbedNorth.addTab(null, persoIcon, jpPerso, "Personnage");
 		
-		tabbedNorth.addTab("Compétences", jpComp);
+		Icon compIcon = new ImageIcon(JGame.class.getClassLoader().getResource("comp.png"));
+		tabbedNorth.addTab(null, compIcon, jpComp, "Compétences");
 		
 		Icon backpackIcon = new ImageIcon(JGame.class.getClassLoader().getResource("backpack.png"));
-		tabbedNorth.addTab(null, backpackIcon, jpInv);		
+		tabbedNorth.addTab(null, backpackIcon, jpInv, "Inventaire");		
 		
-		tabbedNorth.addTab("Equipement", jpEquip);
+		Icon equipIcon = new ImageIcon(JGame.class.getClassLoader().getResource("equip.png"));
+		tabbedNorth.addTab(null, equipIcon, jpEquip, "Equipement");
 		
-		tabbedNorth.addTab("Magie", jpMagie);
+		Icon magieIcon = new ImageIcon(JGame.class.getClassLoader().getResource("magie.png"));
+		tabbedNorth.addTab(null, magieIcon, jpMagie, "Magie");
 		
 		Icon questIcon = new ImageIcon(JGame.class.getClassLoader().getResource("quest.png"));
-		tabbedNorth.addTab(null, questIcon, jpQuest);
+		tabbedNorth.addTab(null, questIcon, jpQuest, "Quêtes");
 		
 		/*
 		 * JPEast
@@ -145,7 +144,7 @@ public class JGame extends JFrame {
 			
 			
 		});
-//		this.setFocusable(true);
+		this.setFocusable(true);
 		/*
 		 * JPWest
 		 * Personnage / Ville
