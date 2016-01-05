@@ -1,16 +1,12 @@
 package io.github.algorys.agshmne.game;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 
 import io.github.algorys.agshmne.deplacement.Position;
 import io.github.algorys.agshmne.personnage.Personnage;
@@ -26,57 +22,15 @@ public class JGame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
+		// JPanel
 		JPanel jpEast = new JPanel();
 		JPanel jpSouth = new JPanel();
 		JPanel jpWest = new JPanel();
-
-		/* JPCenter
-		 * Barre racourcis
-		 * Magie (Menu / Combat) : Liste les sorts du personnage. Possibilité pour le joueur de lancer certains sorts selon le contexte (En combat tous les sorts seront lançables / En Zone de jeu non !)
-		 * Personnage (Menu): donnera un aperçu des caractéristiques du personnage. Cet onglet servira notamment aux passage de niveaux. (Bouton – et + pour les points)
-		 * Inventaire (Menu): affichera la liste des objets que possède le personnage. Certains objets comme les potions offriront des actions supplémentaires (comme boire, manger, équiper, enchanter, etc.) via un bouton.
-		 * Équipement (Menu): affichera une silhouette du personnage et de ce qu'il porte actuellement. Les équipements possibles seront : Tête, Bras, Torse, Jambes, 2 anneaux, 2 mains, Sac-à-dos (pour la capacité) et 1 Compagnon (Pet).
-		  * Le Personnage pourra retirer des équipements via ce menu.
-		  * Le personnage pourra renommer son Pet et l'enlever.
-		 * Compétences (Menu): les compétences seront le plus possibles variés afin de fournir au joueur le plus de combinaisons possibles. Le joueur aura certaines compétences de bases et d'autres qu'il pourra apprendre. Certaines compétences pourront être utilisés ici, comme Atelier.
-		 * Carte (Menu): affichera la carte en plus grand (toutes les cases idéalement) et au minimum les types de Cases. Le Joueur pourra ajouter des marqueurs avec texte.
-		 * Quêtes (Menu): montrera les quêtes acceptées par le personnage.
-		 * 
-         * TODO AJOUTER Tabbed Panes !
+		/*
+		 * JPCenter :
+		 * Permet d'accéder aux différentes interfaces du jeu.
 		 */
-		JPanel jpMap = new JPanel();
-		JPanel jpPerso = new JPanel();
-		JPanel jpComp = new JPanel();
-		JPanel jpInv = new JPanel();
-		JPanel jpEquip = new JPanel();
-		JPanel jpMagie = new JPanel();
-		JPanel jpQuest = new JPanel();
-		
-		JTabbedPane tabbedNorth = new JTabbedPane();
-		tabbedNorth.setTabPlacement(JTabbedPane.TOP);
-				
-		jpMap.setBackground(Color.BLACK);
-		jpMap.add(this.jregion);
-		Icon mapIcon = new ImageIcon(JGame.class.getClassLoader().getResource("map.png"));
-		tabbedNorth.addTab(null, mapIcon, jpMap, "Carte");
-		
-		Icon persoIcon = new ImageIcon(JGame.class.getClassLoader().getResource("perso.png"));
-		tabbedNorth.addTab(null, persoIcon, jpPerso, "Personnage");
-		
-		Icon compIcon = new ImageIcon(JGame.class.getClassLoader().getResource("comp.png"));
-		tabbedNorth.addTab(null, compIcon, jpComp, "Compétences");
-		
-		Icon backpackIcon = new ImageIcon(JGame.class.getClassLoader().getResource("backpack.png"));
-		tabbedNorth.addTab(null, backpackIcon, jpInv, "Inventaire");		
-		
-		Icon equipIcon = new ImageIcon(JGame.class.getClassLoader().getResource("equip.png"));
-		tabbedNorth.addTab(null, equipIcon, jpEquip, "Equipement");
-		
-		Icon magieIcon = new ImageIcon(JGame.class.getClassLoader().getResource("magie.png"));
-		tabbedNorth.addTab(null, magieIcon, jpMagie, "Magie");
-		
-		Icon questIcon = new ImageIcon(JGame.class.getClassLoader().getResource("quest.png"));
-		tabbedNorth.addTab(null, questIcon, jpQuest, "Quêtes");
+		JGameTabbed tabbedNorth = new JGameTabbed(this.jregion);
 		
 		/*
 		 * JPEast

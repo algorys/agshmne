@@ -15,7 +15,7 @@ import io.github.algorys.agshmne.region.Region;
 import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileType;
 
-public class JRegion extends JPanel {
+public class JFullMap extends JPanel {
 	/**
 	 * Le gardien du temple... Il garde la seule image chargée par type de
 	 * tuile.
@@ -25,7 +25,7 @@ public class JRegion extends JPanel {
 	/** Une référence vers la région affichée par le panneau actuel */
 	private Region region;
 
-	public JRegion(Region region) {
+	public JFullMap(Region region) {
 		super();
 		this.region = region;
 	}
