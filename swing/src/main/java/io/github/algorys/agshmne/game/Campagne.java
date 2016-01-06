@@ -28,9 +28,9 @@ public class Campagne {
 		fMap.setVisible(false);
 		
 		JWelcome fAccueil = new JWelcome();
-		fAccueil.setVisible(false);
+		fAccueil.setVisible(true);
 
 		JGame game = new JGame();
-		game.setVisible(true);
+		game.setVisible(false);
 	}
 }

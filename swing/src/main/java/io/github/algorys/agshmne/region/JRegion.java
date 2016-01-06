@@ -39,7 +39,7 @@ public class JRegion extends JPanel implements Observer {
 						.getTileFromPosition(new Position(position.getX() + j - 6, position.getY() + (6 - i))));
 				this.add(jtiles[i][j]);
 			}
-		System.out.println("Personnage JRegion " + personnage.getPosition().getX() + ", " + personnage.getPosition().getY());
+		//System.out.println("Personnage JRegion " + personnage.getPosition().getX() + ", " + personnage.getPosition().getY());
 		}
 	}
 
