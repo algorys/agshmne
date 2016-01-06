@@ -120,5 +120,15 @@ public class InventoryTest {
 		assertEquals(Inventory.MAX_INVENTORY, underTest.count(Apple.class));
 		assertTrue(underTest.contains(Nail.class));
 	}
+	
+	/*@Test
+	public void inventoryWith2Orange_Remove2Orange_should_have_0_orange() {
+		Inventory underTest = new Inventory();
+		underTest.addItem(new Orange());
+		underTest.addItem(new Orange());
+		Orange orange = new Orange();
+		underTest.removeItem(orange);
 
+		assertFalse(underTest.contains(Orange.class));
+	}*/
 }

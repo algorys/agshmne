@@ -1,8 +1,8 @@
 package io.github.algorys.agshmne.objets;
 
-import io.github.algorys.agshmne.inventory.InventoryItem;
+import io.github.algorys.agshmne.inventory.StackableItemAdapter;
 
-public class Orange implements InventoryItem {
+public class Orange extends StackableItemAdapter  {
 
 	@Override
 	public String getName() {
