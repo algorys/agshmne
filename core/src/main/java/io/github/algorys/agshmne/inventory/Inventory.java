@@ -1,46 +1,73 @@
 package io.github.algorys.agshmne.inventory;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import io.github.algorys.agshmne.objets.Item;
-
 public class Inventory {
-	public static List<Item> backPack = new ArrayList<Item>();
-	//List<Item> items = new ArrayList<Item>();
-	
-	/*
-	 * TODO Faire max inventaire avec pj.FOR
-	 */
+	public final static int MAX_INVENTORY = 10;
+
+	private InventoryItem[] backpack = new InventoryItem[MAX_INVENTORY];
 
 	public Inventory() {
-		Item orange = new Item("Orange", 2);
-		Item pomme = new Item("Pomme", 3);
-		Item plantes = new Item("Plantes", 5);
-		
-		backPack.add(orange);
-		backPack.add(pomme);
-		backPack.add(plantes);
-		
-		
-		this.getInventaire(backPack);
 	}
 
-	public void addItems(Item item) {
-		for(int i = 0; i < this.backPack.size(); i++){
-			if(this.backPack.get(i).getName() == item.getName()) {
-				int nb = item.getNb();
-				this.backPack.get(i).setNb(nb);
-			} else { 
-				this.backPack.add(item);
+	public void addItem(InventoryItem item) {
+		boolean added = false;
+		if (item instanceof StackableItem) {
+			StackableItem stackItem = (StackableItem) item;
+			for (int i = 0; i < MAX_INVENTORY; i++) {
+				if (backpack[i] != null && item.getClass() == backpack[i].getClass()) {
+					StackableItem stack = (StackableItem) backpack[i];
+					stack.addCount(stackItem.getCount());
+					added = true;
+					break;
+				}
 			}
 		}
-		this.getInventaire(backPack);
-	}
-	
-	private void getInventaire(List<Item> backPack) {
-		for(int i = 0; i < backPack.size(); i++){
-			System.out.println("Objets : " + backPack.get(i).getName() + " => " + backPack.get(i).getNb() );
+		if (!added) {
+			for (int i = 0; i < MAX_INVENTORY; i++) {
+				if (backpack[i] == null) {
+					backpack[i] = item;
+					break;
+				}
+			}
 		}
+	}
+
+	public void addItem(InventoryItem item, int index) {
+		if (backpack[index] != null) {
+			throw new IllegalArgumentException("Already an item at this index");
+		}
+		backpack[index] = item;
+	}
+
+	public void removeItem(InventoryItem item) {
+		for (int i = 0; i < MAX_INVENTORY; i++) {
+			if (backpack[i] == item) {
+				backpack[i] = null;
+				break;
+			}
+		}
+	}
+
+	public boolean contains(Class<?> type) {
+		for (int i = 0; i < MAX_INVENTORY; i++) {
+			if (type.isInstance(backpack[i])) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public int count(Class<?> type) {
+		int res = 0;
+		for (int i = 0; i < MAX_INVENTORY; i++) {
+			if (type.isInstance(backpack[i])) {
+				if(backpack[i] instanceof StackableItem) {
+					StackableItem stackableItem = (StackableItem)backpack[i];
+					res += stackableItem.getCount();
+				} else {
+					res++;
+				}
+			}
+		}
+		return res;
 	}
 }

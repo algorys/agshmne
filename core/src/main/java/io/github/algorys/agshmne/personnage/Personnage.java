@@ -21,8 +21,8 @@ public class Personnage extends Observable {
 		System.out.println("------- Création Personnage --------");
 		Item clou = new Item("Clou", 1);
 		Item pomme = new Item("Pomme", 2);
-		inv.addItems(clou);
-		inv.addItems(clou);
+		//inv.addItems(clou);
+		//inv.addItems(clou);
 		
 	}
 

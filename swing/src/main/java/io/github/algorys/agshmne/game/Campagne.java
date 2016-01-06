@@ -11,7 +11,6 @@ import io.github.algorys.agshmne.world.World;
 public class Campagne {
 	World world = new DefaultWorldFactory().create();
 	Region map = world.getDefaultRegion();
-	Personnage pj = new Personnage(map);
 	MapUtils mapUtils = new MapUtils(map);
 	
 	public Campagne() {

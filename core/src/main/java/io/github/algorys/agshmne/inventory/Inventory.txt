@@ -1,0 +1,25 @@
+L'inventaire doit :
+( - pouvoir contenir des Item)
+ - ajouter des Item
+ 	* addItem(InventoryItem item)
+ 	* addItem(InventoryItem item, int index)
+ - compter le nombre d'objet du même type
+ 	* int count(Class<?> type)
+ - contenir MAX_INVENTORY types différents d'objets (avec des nombres d'objets différents)
+ - enlever des Item
+    * removeItem(InventoryItem item)
+    * removeItem(int index)
+ - lister l'inventaire
+ 	* Iterable<InventoryItem> listItems()
+ - vérifier si il existe un certains type d'Item
+    * boolean containsType(Class<?> type)
+    
+TDD
+Test
+Driven
+Development
+
+
+1. Tests rouges => Ca teste quelque chose
+2. Tests verts => J'ai une implémentation qui fonctionne
+3. Refactoring => Faire du beau code et générique (sans aller plus loin que les tests)
