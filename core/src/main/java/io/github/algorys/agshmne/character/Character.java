@@ -2,9 +2,9 @@ package io.github.algorys.agshmne.character;
 
 import java.util.Observable;
 
+import io.github.algorys.agshmne.attribute.CharacterAttribute;
 import io.github.algorys.agshmne.deplacement.Position;
 import io.github.algorys.agshmne.inventory.Inventory;
-import io.github.algorys.agshmne.objets.Item;
 import io.github.algorys.agshmne.region.Region;
 
 /*
@@ -14,6 +14,7 @@ public class Character extends Observable {
 	private Position position = new Position(0, 0);
 	private Region region;
 	private Inventory inv;
+	private CharacterAttribute attributes;
 	
 
 	public Character(Region region) {
@@ -36,6 +37,10 @@ public class Character extends Observable {
 		this.position = position;
 		this.setChanged();
 		this.notifyObservers();
+	}
+	
+	public CharacterAttribute getAttributes() {
+		return attributes;
 	}
 }
 
