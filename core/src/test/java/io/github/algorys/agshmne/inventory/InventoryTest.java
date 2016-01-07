@@ -121,14 +121,15 @@ public class InventoryTest {
 		assertTrue(underTest.contains(Nail.class));
 	}
 	
-	/*@Test
-	public void inventoryWith2Orange_Remove2Orange_should_have_0_orange() {
+	@Test
+	public void inventoryWith2Orange_and_Remove2Orange_should_have_0_orange() {
 		Inventory underTest = new Inventory();
 		underTest.addItem(new Orange());
 		underTest.addItem(new Orange());
 		Orange orange = new Orange();
 		underTest.removeItem(orange);
-
+		Orange orange2 = new Orange();
+		underTest.removeItem(orange2);
 		assertFalse(underTest.contains(Orange.class));
-	}*/
+	}
 }
