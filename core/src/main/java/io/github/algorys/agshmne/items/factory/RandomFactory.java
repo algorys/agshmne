@@ -1,11 +1,11 @@
-package io.github.algorys.agshmne.objets.factory;
+package io.github.algorys.agshmne.items.factory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 import io.github.algorys.agshmne.inventory.InventoryItem;
-import io.github.algorys.agshmne.objets.Apple;
+import io.github.algorys.agshmne.items.Apple;
 
 public class RandomFactory implements InventoryItemFactory {
 

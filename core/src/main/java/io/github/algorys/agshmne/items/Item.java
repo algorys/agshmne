@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.objets;
+package io.github.algorys.agshmne.items;
 
 public class Item {
 	private String name;

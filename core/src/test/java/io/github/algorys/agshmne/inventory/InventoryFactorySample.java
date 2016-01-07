@@ -1,8 +1,8 @@
 package io.github.algorys.agshmne.inventory;
 
-import io.github.algorys.agshmne.objets.factory.AppleFactory;
-import io.github.algorys.agshmne.objets.factory.RandomFactory;
-import io.github.algorys.agshmne.objets.factory.StrongAxeFactory;
+import io.github.algorys.agshmne.items.factory.AppleFactory;
+import io.github.algorys.agshmne.items.factory.RandomFactory;
+import io.github.algorys.agshmne.items.factory.StrongAxeFactory;
 
 public class InventoryFactorySample {
 	public static void main(String[] args) {
