@@ -49,7 +49,7 @@ public class Inventory {
 					stack.removeCount(stackItem.getCount());
 					System.out.println(".getCount vaut : " + stackItem.getCount());
 					if(stackItem.getCount() == 0){
-						backpack[i] = null;
+						backpack[i] = null; // TODO Si non gestion des emplacements (mais du coup, pas forcément un tableau)
 					}
 					removed = true;
 					break;
@@ -70,6 +70,12 @@ public class Inventory {
 		for (int i = 0; i < MAX_INVENTORY; i++) {
 			if (type.isInstance(backpack[i])) {
 				return true;
+				/*
+				 * TODO Si gestion des emplacements 
+				if(!StackableItem.class.isInstance(backpack[i]) || ((StackableItem)backpack[i]).getCount() > 0) { 
+					return true;
+				}
+				*/
 			}
 		}
 		return false;
