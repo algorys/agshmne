@@ -14,4 +14,8 @@ public class Apple extends StackableItemAdapter {
 		return 1;
 	}
 
+	@Override
+	public String toString() {
+		return "Apple";
+	}
 }
