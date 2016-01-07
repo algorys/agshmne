@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.window;
+package io.github.algorys.agshmne.start;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.plaf.synth.SynthSeparatorUI;
+
+import io.github.algorys.agshmne.caracteristic.JCaracteristic;
 
 public class JCaracPanel extends JPanel {
 	/*

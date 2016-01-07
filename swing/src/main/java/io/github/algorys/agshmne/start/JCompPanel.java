@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.window;
+package io.github.algorys.agshmne.start;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -9,6 +9,8 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.JLabel;
+
+import io.github.algorys.agshmne.caracteristic.JCaracteristic;
 
 public class JCompPanel extends JLabel {
 	/*

@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.window;
+package io.github.algorys.agshmne.start;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

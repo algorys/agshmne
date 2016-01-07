@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.attribute;
+package io.github.algorys.agshmne.caracteristic;
 
 public class CharacterAttribute {
 	private int FOR;

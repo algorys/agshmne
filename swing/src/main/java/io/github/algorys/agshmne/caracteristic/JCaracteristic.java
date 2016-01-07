@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.window;
+package io.github.algorys.agshmne.caracteristic;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

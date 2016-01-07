@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.window;
+package io.github.algorys.agshmne.region;
 
 import java.awt.Graphics;
 import java.awt.Image;

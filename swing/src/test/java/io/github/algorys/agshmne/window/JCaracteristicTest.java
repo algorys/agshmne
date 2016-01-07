@@ -6,6 +6,8 @@ import java.beans.PropertyChangeListener;
 
 import javax.swing.JFrame;
 
+import io.github.algorys.agshmne.caracteristic.JCaracteristic;
+
 public class JCaracteristicTest {
 
 	public static void main(String[] args) {
