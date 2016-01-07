@@ -11,16 +11,16 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
+import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.deplacement.Position;
-import io.github.algorys.agshmne.personnage.Personnage;
 import io.github.algorys.agshmne.tile.JTile;
 import io.github.algorys.agshmne.tile.Tile;
 
 public class JRegion extends JPanel implements Observer {
-	private Personnage personnage;
+	private Character personnage;
 	private JTile[][] jtiles;
 
-	public JRegion(Personnage personnage) {
+	public JRegion(Character personnage) {
 		super();
 		if (personnage == null) {
 			throw new NullPointerException("personnage cannot be null");
@@ -43,14 +43,14 @@ public class JRegion extends JPanel implements Observer {
 		}
 	}
 
-	public Personnage getPersonnage() {
+	public Character getPersonnage() {
 		this.personnage.deleteObserver(this);
 		this.personnage.addObserver(this);
 		this.updateDisplay();
 		return personnage;
 	}
 
-	public void setPersonnage(Personnage personnage) {
+	public void setPersonnage(Character personnage) {
 		if (personnage == null) {
 			throw new NullPointerException("personnage ne doit pas être null");
 		}

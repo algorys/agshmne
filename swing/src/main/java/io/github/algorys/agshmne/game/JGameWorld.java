@@ -9,17 +9,17 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.deplacement.Position;
-import io.github.algorys.agshmne.personnage.Personnage;
 import io.github.algorys.agshmne.region.JRegion;
 import io.github.algorys.agshmne.region.Region;
 
 public class JGameWorld extends JPanel{
 
 	private Region region = new Region();
-	private final Personnage pj;
+	private final Character pj;
 	
-	public JGameWorld(Region region, final Personnage pj){		
+	public JGameWorld(Region region, final Character pj){		
 		this.pj = pj;
 		this.region = region;
 		

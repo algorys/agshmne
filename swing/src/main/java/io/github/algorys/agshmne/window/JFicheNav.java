@@ -18,8 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.game.JGameWorld;
-import io.github.algorys.agshmne.personnage.Personnage;
 import io.github.algorys.agshmne.region.Region;
 import io.github.algorys.agshmne.tile.JTile;
 

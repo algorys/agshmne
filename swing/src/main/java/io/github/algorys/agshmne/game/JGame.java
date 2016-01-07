@@ -8,14 +8,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.deplacement.Position;
-import io.github.algorys.agshmne.personnage.Personnage;
 import io.github.algorys.agshmne.region.JRegion;
 import io.github.algorys.agshmne.region.Region;
 
 public class JGame extends JFrame {
 	private Region region = new Region();
-	private Personnage pj = new Personnage(region);
+	private Character pj = new Character(region);
 	private final JRegion jregion = new JRegion(this.pj);
 	
 	public JGame(){

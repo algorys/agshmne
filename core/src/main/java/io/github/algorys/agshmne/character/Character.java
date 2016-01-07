@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.personnage;
+package io.github.algorys.agshmne.character;
 
 import java.util.Observable;
 
@@ -10,19 +10,15 @@ import io.github.algorys.agshmne.region.Region;
 /*
  * Définit le Personnage
  */
-public class Personnage extends Observable {
+public class Character extends Observable {
 	private Position position = new Position(0, 0);
 	private Region region;
-	private Inventory inv = new Inventory();
+	private Inventory inv;
 	
 
-	public Personnage(Region region) {
+	public Character(Region region) {
 		this.region = region;
-		System.out.println("------- Création Personnage --------");
-		Item clou = new Item("Clou", 1);
-		Item pomme = new Item("Pomme", 2);
-		//inv.addItems(clou);
-		//inv.addItems(clou);
+		//System.out.println("------- Création Personnage --------");
 		
 	}
 

@@ -6,8 +6,8 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
+import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.deplacement.Position;
-import io.github.algorys.agshmne.personnage.Personnage;
 
 public class JRegionTest {
 	public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class JRegionTest {
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		Region region = new Region();
-		final Personnage personnage = new Personnage(region);
+		final Character personnage = new Character(region);
 		jf.getContentPane().add(new JRegion(personnage));
 		System.out.println("-------------------------------------");
 		jf.addKeyListener(new KeyListener() {

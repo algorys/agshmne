@@ -1,8 +1,8 @@
 package io.github.algorys.agshmne.world;
 
+import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.deplacement.Direction;
 import io.github.algorys.agshmne.deplacement.Position;
-import io.github.algorys.agshmne.personnage.Personnage;
 import io.github.algorys.agshmne.region.Region;
 
 public class World {
@@ -12,7 +12,7 @@ public class World {
 		this.regions = regions;
 	}
 	
-	public Region getRegion(Region origin, Personnage direction) {
+	public Region getRegion(Region origin, Character direction) {
 		// TODO retrouver les coordonnées de la région <code>origin</origin> pour donner la bonne région de retour, ou envoyer une erreur pour mauvaises entrées
 		return null;
 	}
@@ -22,7 +22,7 @@ public class World {
 	}
 	
 
-	public void move(Direction direction, Personnage personnage) {
+	public void move(Direction direction, Character personnage) {
 		Position position = personnage.getPosition();
 		switch (direction) {
 		case NORTH:

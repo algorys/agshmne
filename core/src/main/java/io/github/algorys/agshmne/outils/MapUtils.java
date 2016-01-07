@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne.outils;
 
-import io.github.algorys.agshmne.personnage.Personnage;
+import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.region.Region;
 import io.github.algorys.agshmne.tile.Tile;
 
@@ -12,11 +12,11 @@ public class MapUtils {
 		this.region = region;
 	}
 
-	public Tile tileFromPersonnage(Personnage p) {
+	public Tile tileFromPersonnage(Character p) {
 		return region.getTileFromPosition(p.getPosition());
 	}
 	
-	public void showStatus(Personnage p) {
+	public void showStatus(Character p) {
 		System.out.println("Le personnage se trouve en position : (" + p.getPosition().getX() + " , "
 				+ p.getPosition().getY() + ")");
 		System.out.println("Vous etes sur une case : " + this.tileFromPersonnage(p));
