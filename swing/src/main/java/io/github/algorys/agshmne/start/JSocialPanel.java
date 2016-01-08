@@ -84,7 +84,7 @@ public class JSocialPanel extends JPanel {
 		jcbSexe.addItem("Femelle");
 		this.add(jcbSexe, gbcSocial);
 		
-		// SEXE
+		// RACE
 		gbcSocial.gridy = 4;
 		gbcSocial.gridheight = 1;
 		gbcSocial.gridx = 0;
@@ -146,19 +146,23 @@ public class JSocialPanel extends JPanel {
 		
 	}
 
-	public String getMyName() {
+	public String getPjName() {
 		return jtfName.getText();
 	}
 	
-	public String getMySexe() {
+	public String getPjSexe() {
 		return (String)jcbSexe.getSelectedItem();
 	}
 	
-	public String getMyRace() {
+	public String getPjRace() {
 		return jcbRace.getName();
 	}
 	
-	public String getMyBackGround() {
+	public String getPjClass() {
+		return jtfClasse.getText();
+	}
+	
+	public String getPjBackground() {
 		return jtaBackground.getText();
 	}
 	
