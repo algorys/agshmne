@@ -12,6 +12,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
+import javax.swing.AbstractButton;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -38,10 +39,12 @@ public class JFicheNav extends JPanel {
 	private JCaracPanel jpCarac;
 	private JCompPanel jpComp;
 	private JInvPanel jpInv;
-	private JTextField jtfVerificationName;
+	private JConfirmPanel jpConfirm;
 	
 	private int FOR;
 	private int DEX;
+	private JTextField jtfVerificationName;
+	private JTextField jtfFor;
 
 	public JFicheNav() {
 		this.setBackground(Color.BLACK);
@@ -51,22 +54,13 @@ public class JFicheNav extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (JFicheNav.this.step == Step.CONFIRMATION) {
-					String name = jpSocial.getMyName();
-					String sexe = jpSocial.getMySexe();
-					int FOR = jpCarac.getFOR();
-					int DEX = jpCarac.getDEX();
-					int CON = jpCarac.getCON();
-					int INT = jpCarac.getINT();
-					int CHA = jpCarac.getCHA();
-					
+					System.out.println("Personnage FOR : " + jpCarac.getFOR());				
 				} else {
 					JFicheNav.this.next();
 				}
 			}
 		};
 		
-		this.FOR = FOR;
-		this.DEX = DEX;
 		System.out.println("FOR = " + FOR);
 		System.out.println("DEX = " + DEX);
 		// Previous Abstract Action
@@ -112,12 +106,19 @@ public class JFicheNav extends JPanel {
 		jpPrincipal.add(jpInv, Step.EQUIPMENT.name());
 
 		// CONFIRMATION
-		JPanel jpCONFIRMATION = new JPanel();
+		/*JPanel jpCONFIRMATION = new JPanel();
 		jpCONFIRMATION.add(new JLabel("CONFIRMATION"));
 		jtfVerificationName = new JTextField();
 		jtfVerificationName.setEditable(false);
+		jtfFor = new JTextField();
+		jtfFor.setEditable(false);
 		jpCONFIRMATION.add(jtfVerificationName);
-		jpPrincipal.add(jpCONFIRMATION, Step.CONFIRMATION.name());
+		jpCONFIRMATION.add(jtfFor);
+		jpPrincipal.add(jpCONFIRMATION, Step.CONFIRMATION.name());*/
+		
+		/*jpConfirm = new JConfirmPanel(jpCarac.getFOR());
+		jpConfirm.setOpaque(false);
+		jpPrincipal.add(jpConfirm, Step.CONFIRMATION.name());*/
 
 		cl.show(jpPrincipal, Step.SOCIAL.name());
 
@@ -142,7 +143,9 @@ public class JFicheNav extends JPanel {
 	private void setStep(Step step) {
 		this.step = step;
 		if (this.step == Step.CONFIRMATION) {
-			//jtfVerificationName.setText(jpSocial.getMyName());
+			jpConfirm = new JConfirmPanel(jpSocial, jpCarac, jpComp, jpInv);
+			jpConfirm.setOpaque(false);
+			jpPrincipal.add(jpConfirm, Step.CONFIRMATION.name());
 			this.next.putValue(Action.NAME, "Valider");
 		} else {
 			this.next.putValue(Action.NAME, "Suivant");
