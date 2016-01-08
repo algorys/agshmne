@@ -19,6 +19,7 @@ public class Character extends Observable {
 
 	public Character(Region region) {
 		this.region = region;
+		attributes = new CharacterAttribute();
 		//System.out.println("------- Création Personnage --------");
 		
 	}
