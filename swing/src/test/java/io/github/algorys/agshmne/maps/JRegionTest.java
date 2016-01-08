@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.region;
+package io.github.algorys.agshmne.maps;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -7,7 +7,9 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.deplacement.Position;
+import io.github.algorys.agshmne.movement.Position;
+import io.github.algorys.agshmne.region.JRegion;
+import io.github.algorys.agshmne.region.Region;
 
 public class JRegionTest {
 	public static void main(String[] args) {

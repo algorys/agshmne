@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.deplacement;
+package io.github.algorys.agshmne.movement;
 
 public class Position {
 	public static final int MAX_X = 65;

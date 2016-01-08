@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.window;
+package io.github.algorys.agshmne.JCaractest;
 
 import java.awt.GridLayout;
 import java.beans.PropertyChangeEvent;

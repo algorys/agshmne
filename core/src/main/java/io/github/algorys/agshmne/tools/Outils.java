@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.outils;
+package io.github.algorys.agshmne.tools;
 
 public class Outils {
 	public static int dice(int d){

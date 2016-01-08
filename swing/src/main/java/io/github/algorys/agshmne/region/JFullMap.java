@@ -10,7 +10,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import io.github.algorys.agshmne.deplacement.Position;
+import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.region.Region;
 import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileType;

@@ -1,8 +1,8 @@
 package io.github.algorys.agshmne.world;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.deplacement.Direction;
-import io.github.algorys.agshmne.deplacement.Position;
+import io.github.algorys.agshmne.movement.Direction;
+import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.region.Region;
 
 public class World {

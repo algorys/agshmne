@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.deplacement.Position;
+import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.region.JRegion;
 import io.github.algorys.agshmne.region.Region;
 

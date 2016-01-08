@@ -1,7 +1,5 @@
 package io.github.algorys.agshmne.start;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -9,10 +7,11 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.caracteristic.JCaracteristic;
 
-public class JCompPanel extends JLabel {
+public class JCompPanel extends JPanel {
 	/*
 	* Cuisiner (Unités : repas))
     * Fouiller (DEX : Objet Trouvé)

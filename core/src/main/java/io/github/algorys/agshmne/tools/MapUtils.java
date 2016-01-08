@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.outils;
+package io.github.algorys.agshmne.tools;
 
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.region.Region;

@@ -2,9 +2,9 @@ package io.github.algorys.agshmne.region;
 
 import java.util.Arrays;
 
-import io.github.algorys.agshmne.deplacement.Position;
 import io.github.algorys.agshmne.inventory.InventoryItem;
 import io.github.algorys.agshmne.items.Apple;
+import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileType;
 
@@ -20,7 +20,7 @@ public class Region {
 
 	public Region() {
 		for (int i = 0; i < SIZE; i++) {
-			TileType type = TileType.values()[io.github.algorys.agshmne.outils.Outils.dice(TileType.values().length)];
+			TileType type = TileType.values()[io.github.algorys.agshmne.tools.Outils.dice(TileType.values().length)];
 			tiles[i] = new Tile(type);
 			while (Math.random() < .5) {
 				InventoryItem e = new Apple();
