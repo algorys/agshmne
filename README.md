@@ -68,6 +68,14 @@ Voici un premier rendu de région :
 
 ![Region](/doc/region.png)
 
+Un rendu de l'interface de Jeu
+
+![Interface](/doc/interface.png)
+
+Et enfin la création de personnage
+
+![Creation](/doc/crea_pj.png)
+
 ## Licence
 [![Licence Creative Commons](https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-nd/4.0/)
 
@@ -75,5 +83,9 @@ Voici un premier rendu de région :
 
 Fondé(e) sur une œuvre à [https://github.com/algorys/agshmne](https://github.com/algorys/agshmne).
 
-### Licence Images
-Tuiles : images de [Jinn](http://jinndevil.tumblr.com/).
+### Crédits Images
+Images en provenance d'[opengameart.org](http://opengameart.org/) :
+
+Icônes originales : images de [RavenmoreArt](https://www.facebook.com/RavenmoreArt), ont été modifiées. [Licence Creative Commons CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/fr/)
+
+Tuiles originales : images de [Jinn](http://jinndevil.tumblr.com/), ont été modifiées. [Licence Creative Commons CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/fr/)
