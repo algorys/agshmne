@@ -12,7 +12,7 @@ import io.github.algorys.agshmne.character.Character;
 
 public class JConfirmPanel extends JPanel {
 	
-	public JConfirmPanel(JSocialPanel jpSocial, JCaracPanel carac, JCompPanel jpComp, JInvPanel jpInv) {
+	public JConfirmPanel(JSocialPanel social, JCaracPanel carac, JCompPanel comp, JInvPanel inv) {
 		super();
 		
 		// GidBag Layout
@@ -30,8 +30,28 @@ public class JConfirmPanel extends JPanel {
 		gbcConfirm.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("CONFIRMATION"), gbcConfirm);
 		
-		// CARAC
+		// SOCIAL
 		gbcConfirm.gridy = 1;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 2;
+		gbcConfirm.anchor = GridBagConstraints.CENTER;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("-- SOCIAL --"), gbcConfirm);
+
+		// Nom
+		gbcConfirm.gridy = 2;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtName = new JTextField("Nom : " + social.getMyName());
+		jtName.setEditable(false);
+		this.add(jtName, gbcConfirm);
+				
+		// CARACTERISTIQUES
+		gbcConfirm.gridy = 3;
 		gbcConfirm.gridheight = 1;
 		gbcConfirm.gridx = 0;
 		gbcConfirm.gridwidth = 1;
@@ -39,9 +59,8 @@ public class JConfirmPanel extends JPanel {
 		gbcConfirm.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("- Caractéristiques -"), gbcConfirm);
 		
-		// CARACTERISTIQUES
 		// FOR
-		gbcConfirm.gridy = 2;
+		gbcConfirm.gridy = 4;
 		gbcConfirm.gridheight = 1;
 		gbcConfirm.gridx = 0;
 		gbcConfirm.gridwidth = 1;
@@ -53,7 +72,7 @@ public class JConfirmPanel extends JPanel {
 
 		
 		// DEX
-		gbcConfirm.gridy = 3;
+		gbcConfirm.gridy = 5;
 		gbcConfirm.gridheight = 1;
 		gbcConfirm.gridx = 0;
 		gbcConfirm.gridwidth = 1;
@@ -63,6 +82,25 @@ public class JConfirmPanel extends JPanel {
 		jtDexterite.setEditable(false);
 		this.add(jtDexterite, gbcConfirm);
 		
+		// COMPETENCES
+		
+		gbcConfirm.gridy = 6;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.CENTER;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("-- Compétences --"), gbcConfirm);
+		
+		gbcConfirm.gridy = 7;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtCuisine = new JTextField("Cuisine : " + comp.getCuisiner());
+		jtCuisine.setEditable(false);
+		this.add(jtCuisine, gbcConfirm);
 	}
 
 }

@@ -3,11 +3,16 @@ package io.github.algorys.agshmne.start;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.event.ChangeListener;
 
 import io.github.algorys.agshmne.caracteristic.JCaracteristic;
 
@@ -33,18 +38,17 @@ public class JCompPanel extends JPanel {
     
     public JCompPanel(){
     	super();
-		final int MAX_FOR_ONE = 20;
-		final int total = 60;
-		final int remainingPoints = 0;
+		final int MAX_FOR_ONE = 5;
+		final int total = 10;
 
-		final JCaracteristic cuisiner = new JCaracteristic(10, 1, MAX_FOR_ONE);	
-		final JCaracteristic fouiller = new JCaracteristic(10, 1, MAX_FOR_ONE);
-		final JCaracteristic boucherie = new JCaracteristic(10, 1, MAX_FOR_ONE);
-		final JCaracteristic bucheron = new JCaracteristic(10, 1, MAX_FOR_ONE);
-		final JCaracteristic miner = new JCaracteristic(10, 1, MAX_FOR_ONE);
-		final JCaracteristic cultiver = new JCaracteristic(10, 1, MAX_FOR_ONE);
-		final JCaracteristic pecher = new JCaracteristic(10, 1, MAX_FOR_ONE);
-		final JCaracteristic magie = new JCaracteristic(10, 1, MAX_FOR_ONE);
+		final JCaracteristic cuisiner = new JCaracteristic(1, 1, MAX_FOR_ONE);	
+		final JCaracteristic fouiller = new JCaracteristic(1, 1, MAX_FOR_ONE);
+		final JCaracteristic boucherie = new JCaracteristic(1, 1, MAX_FOR_ONE);
+		final JCaracteristic bucheron = new JCaracteristic(1, 1, MAX_FOR_ONE);
+		final JCaracteristic miner = new JCaracteristic(1, 1, MAX_FOR_ONE);
+		final JCaracteristic cultiver = new JCaracteristic(1, 1, MAX_FOR_ONE);
+		final JCaracteristic pecher = new JCaracteristic(1, 1, MAX_FOR_ONE);
+		final JCaracteristic magie = new JCaracteristic(1, 1, MAX_FOR_ONE);
 		
 		// Property Change Listener
 		PropertyChangeListener pcl = new PropertyChangeListener() {
@@ -60,7 +64,7 @@ public class JCompPanel extends JPanel {
 						+ pecher.getValue()
 						+ magie.getValue()
 						;
-				final int remainingPoints = total - spentPoints;
+				int remainingPoints = total - spentPoints;
 				cuisiner.setMaxValue(Math.min(remainingPoints + cuisiner.getValue(), MAX_FOR_ONE));
 				fouiller.setMaxValue(Math.min(remainingPoints + fouiller.getValue(), MAX_FOR_ONE));
 				boucherie.setMaxValue(Math.min(remainingPoints + boucherie.getValue(), MAX_FOR_ONE));
@@ -82,6 +86,14 @@ public class JCompPanel extends JPanel {
 		pecher.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		magie.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 
+		this.cuisiner = cuisiner;
+		this.fouiller = fouiller;
+		this.boucherie = boucherie;
+		this.bucheron = boucherie;
+		this.miner = miner;
+		this.cultiver = cultiver;
+		this.pecher = pecher;
+		this.magie = magie;
 		
 		// GidBag Layout
 		this.setLayout(new GridBagLayout());
@@ -122,7 +134,7 @@ public class JCompPanel extends JPanel {
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.WEST;
 		gbcComp.fill = GridBagConstraints.HORIZONTAL;
-		this.add(new JLabel("" + remainingPoints), gbcComp);
+		this.add(new JLabel(""), gbcComp);
 		
 		// Compétences
 		// Cuisiner
@@ -274,6 +286,38 @@ public class JCompPanel extends JPanel {
 		this.add(magie, gbcComp);
 		
 		
+	}
+
+	public int getCuisiner() {
+		return cuisiner.getValue();
+	}
+
+	public int getFouiller() {
+		return fouiller.getValue();
+	}
+
+	public int getBoucherie() {
+		return boucherie.getValue();
+	}
+
+	public int getBucheron() {
+		return bucheron.getValue();
+	}
+
+	public int getMiner() {
+		return miner.getValue();
+	}
+
+	public int getCultiver() {
+		return cultiver.getValue();
+	}
+
+	public int getPecher() {
+		return pecher.getValue();
+	}
+
+	public int getMagie() {
+		return magie.getValue();
 	}    
     
 }

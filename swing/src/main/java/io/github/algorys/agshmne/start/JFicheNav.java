@@ -54,7 +54,8 @@ public class JFicheNav extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (JFicheNav.this.step == Step.CONFIRMATION) {
-					System.out.println("Personnage FOR : " + jpCarac.getFOR());				
+					System.out.println("Personnage FOR : " + jpCarac.getFOR());
+					System.out.println("Personnage Cuisiner : " + jpComp.getCuisiner());	
 				} else {
 					JFicheNav.this.next();
 				}
@@ -104,21 +105,6 @@ public class JFicheNav extends JPanel {
 		jpInv = new JInvPanel();
 		jpInv.setOpaque(false);
 		jpPrincipal.add(jpInv, Step.EQUIPMENT.name());
-
-		// CONFIRMATION
-		/*JPanel jpCONFIRMATION = new JPanel();
-		jpCONFIRMATION.add(new JLabel("CONFIRMATION"));
-		jtfVerificationName = new JTextField();
-		jtfVerificationName.setEditable(false);
-		jtfFor = new JTextField();
-		jtfFor.setEditable(false);
-		jpCONFIRMATION.add(jtfVerificationName);
-		jpCONFIRMATION.add(jtfFor);
-		jpPrincipal.add(jpCONFIRMATION, Step.CONFIRMATION.name());*/
-		
-		/*jpConfirm = new JConfirmPanel(jpCarac.getFOR());
-		jpConfirm.setOpaque(false);
-		jpPrincipal.add(jpConfirm, Step.CONFIRMATION.name());*/
 
 		cl.show(jpPrincipal, Step.SOCIAL.name());
 
