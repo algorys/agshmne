@@ -155,7 +155,7 @@ public class JSocialPanel extends JPanel {
 	}
 	
 	public String getPjRace() {
-		return jcbRace.getName();
+		return (String)jcbRace.getSelectedItem();
 	}
 	
 	public String getPjClass() {
