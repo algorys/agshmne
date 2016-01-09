@@ -1,7 +1,7 @@
 package io.github.algorys.agshmne.region;
 
 import io.github.algorys.agshmne.inventory.InventoryItem;
-import io.github.algorys.agshmne.items.Apple;
+import io.github.algorys.agshmne.items.fruits.Apple;
 import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileType;
 

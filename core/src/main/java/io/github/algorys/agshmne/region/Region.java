@@ -3,7 +3,7 @@ package io.github.algorys.agshmne.region;
 import java.util.Arrays;
 
 import io.github.algorys.agshmne.inventory.InventoryItem;
-import io.github.algorys.agshmne.items.Apple;
+import io.github.algorys.agshmne.items.fruits.Apple;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileType;

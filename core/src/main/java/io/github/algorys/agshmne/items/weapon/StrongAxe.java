@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.items;
+package io.github.algorys.agshmne.items.weapon;
 
 import io.github.algorys.agshmne.inventory.InventoryItem;
 

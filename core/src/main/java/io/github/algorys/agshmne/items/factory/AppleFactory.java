@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne.items.factory;
 
-import io.github.algorys.agshmne.items.Apple;
+import io.github.algorys.agshmne.items.fruits.Apple;
 
 /**
  * Fabrique de pommes.

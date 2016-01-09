@@ -6,12 +6,12 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import io.github.algorys.agshmne.items.Apple;
-import io.github.algorys.agshmne.items.Axe;
-import io.github.algorys.agshmne.items.Nail;
-import io.github.algorys.agshmne.items.Orange;
-import io.github.algorys.agshmne.items.StrongAxe;
-import io.github.algorys.agshmne.items.WeakAxe;
+import io.github.algorys.agshmne.items.fruits.Apple;
+import io.github.algorys.agshmne.items.fruits.Orange;
+import io.github.algorys.agshmne.items.misc.Nail;
+import io.github.algorys.agshmne.items.weapon.Axe;
+import io.github.algorys.agshmne.items.weapon.StrongAxe;
+import io.github.algorys.agshmne.items.weapon.WeakAxe;
 
 public class InventoryTest {
 

@@ -1,17 +1,17 @@
-package io.github.algorys.agshmne.items;
+package io.github.algorys.agshmne.items.misc;
 
 import io.github.algorys.agshmne.inventory.StackableItemAdapter;
 
-public class Orange extends StackableItemAdapter  {
+public class Nail extends StackableItemAdapter {
 
 	@Override
 	public String getName() {
-		return "Orange";
+		return "Clou";
 	}
 
 	@Override
 	public int getWeight() {
-		return 1;
+		return 0;
 	}
 
 }

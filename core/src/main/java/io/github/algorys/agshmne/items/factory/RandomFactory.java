@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import io.github.algorys.agshmne.inventory.InventoryItem;
-import io.github.algorys.agshmne.items.Apple;
+import io.github.algorys.agshmne.items.fruits.Apple;
 
 public class RandomFactory implements InventoryItemFactory {
 
