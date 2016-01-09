@@ -15,11 +15,14 @@ import javax.swing.AbstractAction;
 import javax.swing.AbstractButton;
 import javax.swing.Action;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.game.JGame;
 import io.github.algorys.agshmne.game.JGameWorld;
 import io.github.algorys.agshmne.region.Region;
 import io.github.algorys.agshmne.tile.JTile;
@@ -41,29 +44,29 @@ public class JFicheNav extends JPanel {
 	private JInvPanel jpInv;
 	private JConfirmPanel jpConfirm;
 	
-	private int FOR;
-	private int DEX;
 	private JTextField jtfVerificationName;
 	private JTextField jtfFor;
+	private JFrame parent;
 
-	public JFicheNav() {
+	public JFicheNav(JFrame jframe) {
 		this.setBackground(Color.BLACK);
-		
+		this.parent = jframe;
 		// Next Abstract Action
 		next = new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (JFicheNav.this.step == Step.CONFIRMATION) {
-					System.out.println("Personnage FOR : " + jpCarac.getFOR());
-					System.out.println("Personnage Cuisiner : " + jpComp.getCuisiner());	
+//					System.out.println("Personnage FOR : " + jpCarac.getFOR());
+//					System.out.println("Personnage Cuisiner : " + jpComp.getCuisiner());
+					parent.dispose();
+					JGame game = new JGame();
+					game.setVisible(true);
 				} else {
 					JFicheNav.this.next();
 				}
 			}
 		};
 		
-		System.out.println("FOR = " + FOR);
-		System.out.println("DEX = " + DEX);
 		// Previous Abstract Action
 		previous = new AbstractAction("Précédent") {
 

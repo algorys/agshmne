@@ -3,7 +3,6 @@ package io.github.algorys.agshmne.start;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -57,7 +56,7 @@ public class JWelcome extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				btLeft.setAction(actionMainMenu);
-				cardPanel.add(new JFicheNav(), CHARACTER_SKILLS);
+				cardPanel.add(new JFicheNav(JWelcome.this), CHARACTER_SKILLS);
 				cardLayout.show(cardPanel, CHARACTER_SKILLS);
 			}
 		};

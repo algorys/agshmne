@@ -12,7 +12,7 @@ public class JFicheNavTest {
 		JFrame jf = new JFrame("FicheNav");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		JFicheNav jToto = new JFicheNav();
+		JFicheNav jToto = new JFicheNav(jf);
 		jf.getContentPane().add(jToto);
 
 		JMenuBar jmb = new JMenuBar();
