@@ -6,6 +6,7 @@ import java.awt.Insets;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import io.github.algorys.agshmne.character.Character;
@@ -85,7 +86,7 @@ public class JConfirmPanel extends JPanel {
 		gbcConfirm.gridwidth = 1;
 		gbcConfirm.anchor = GridBagConstraints.WEST;
 		gbcConfirm.fill = GridBagConstraints.NONE;
-		JTextField jtBckgrd= new JTextField("Background : " + social.getPjBackground());
+		JTextArea jtBckgrd= new JTextArea("Background : " + social.getPjBackground());
 		jtBckgrd.setEditable(false);
 		this.add(jtBckgrd, gbcConfirm);
 				
@@ -117,9 +118,39 @@ public class JConfirmPanel extends JPanel {
 		JTextField jtDexterite = new JTextField("Dextérité : " + carac.getDEX());
 		jtDexterite.setEditable(false);
 		this.add(jtDexterite, gbcConfirm);
-		
-		// COMPETENCES
+		// CON
 		gbcConfirm.gridy = 10;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtConstit = new JTextField("Constitution : " + carac.getCON());
+		jtConstit.setEditable(false);
+		this.add(jtConstit, gbcConfirm);
+		// INT
+		gbcConfirm.gridy = 11;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtIntellect = new JTextField("Intelligence : " + carac.getINT());
+		jtIntellect.setEditable(false);
+		this.add(jtIntellect, gbcConfirm);
+		// CHA
+		gbcConfirm.gridy = 12;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtCharism = new JTextField("Dextérité : " + carac.getCHA());
+		jtCharism.setEditable(false);
+		this.add(jtCharism, gbcConfirm);
+
+		// COMPETENCES
+		gbcConfirm.gridy = 13;
 		gbcConfirm.gridheight = 1;
 		gbcConfirm.gridx = 0;
 		gbcConfirm.gridwidth = 1;
@@ -127,7 +158,7 @@ public class JConfirmPanel extends JPanel {
 		gbcConfirm.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("-- Compétences --"), gbcConfirm);
 		// Cuisine
-		gbcConfirm.gridy = 11;
+		gbcConfirm.gridy = 14;
 		gbcConfirm.gridheight = 1;
 		gbcConfirm.gridx = 0;
 		gbcConfirm.gridwidth = 1;
@@ -136,6 +167,87 @@ public class JConfirmPanel extends JPanel {
 		JTextField jtCuisine = new JTextField("Cuisine : " + comp.getCuisiner());
 		jtCuisine.setEditable(false);
 		this.add(jtCuisine, gbcConfirm);
+		/*
+		* Cuisiner (Unités : repas))
+	    * Fouiller (DEX : Objet Trouvé)
+	    * Boucherie (Unités : Viandes)
+	    * Bûcheron (Unités : bois)
+	    * Miner (Unités : métaux différents)
+	    * Cultiver (Unités : Herbes)
+	    * Pêcher (Unités : Poissons)
+	    * Magie (INT : Voir Personnage)
+		 */
+		// Fouiller
+		gbcConfirm.gridy = 15;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtFouiller = new JTextField("Fouiller : " + comp.getFouiller());
+		jtFouiller.setEditable(false);
+		this.add(jtFouiller, gbcConfirm);
+		// Boucherie
+		gbcConfirm.gridy = 16;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtBoucher = new JTextField("Boucherie : " + comp.getBoucherie());
+		jtBoucher.setEditable(false);
+		this.add(jtBoucher, gbcConfirm);
+		// Bucheron
+		gbcConfirm.gridy = 17;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtBucher = new JTextField("Bucheron : " + comp.getBucheron());
+		jtBucher.setEditable(false);
+		this.add(jtBucher, gbcConfirm);
+		// Miner
+		gbcConfirm.gridy = 18;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtMiner = new JTextField("Miner : " + comp.getMiner());
+		jtMiner.setEditable(false);
+		this.add(jtMiner, gbcConfirm);
+		// Cultiver
+		gbcConfirm.gridy = 19;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtCultiver = new JTextField("Cultiver : " + comp.getCultiver());
+		jtCultiver.setEditable(false);
+		this.add(jtCultiver, gbcConfirm);
+		// Pecher
+		gbcConfirm.gridy = 20;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtPecher = new JTextField("Cultiver : " + comp.getPecher());
+		jtPecher.setEditable(false);
+		this.add(jtPecher, gbcConfirm);
+		// Magie
+		gbcConfirm.gridy = 21;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtMagie = new JTextField("Cultiver : " + comp.getMagie());
+		jtMagie.setEditable(false);
+		this.add(jtMagie, gbcConfirm);
+		
 	}
 
 }
