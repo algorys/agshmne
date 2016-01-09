@@ -1,5 +1,6 @@
 package io.github.algorys.agshmne.start;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -105,7 +106,7 @@ public class JCompPanel extends JPanel {
 		gbcComp.gridy = 0;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 0;
-		gbcComp.gridwidth = 2;
+		gbcComp.gridwidth = 3;
 		gbcComp.anchor = GridBagConstraints.CENTER;
 		gbcComp.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("FICHE PERSONNAGE JOUEUR"), gbcComp);
@@ -114,7 +115,7 @@ public class JCompPanel extends JPanel {
 		gbcComp.gridy = 1;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 0;
-		gbcComp.gridwidth = 2;
+		gbcComp.gridwidth = 3;
 		gbcComp.anchor = GridBagConstraints.CENTER;
 		gbcComp.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("- Compétences -"), gbcComp);
@@ -122,7 +123,7 @@ public class JCompPanel extends JPanel {
 		// POINTS
 		gbcComp.gridy = 2;
 		gbcComp.gridheight = 1;
-		gbcComp.gridx = 0;
+		gbcComp.gridx = 1;
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.EAST;
 		gbcComp.fill = GridBagConstraints.NONE;
@@ -130,11 +131,11 @@ public class JCompPanel extends JPanel {
 		
 		gbcComp.gridy = 2;
 		gbcComp.gridheight = 1;
-		gbcComp.gridx = 1;
+		gbcComp.gridx = 2;
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.WEST;
 		gbcComp.fill = GridBagConstraints.HORIZONTAL;
-		this.add(new JLabel(""), gbcComp);
+		this.add(new JLabel("TODO"), gbcComp);
 		
 		// Compétences
 		// Cuisiner
@@ -144,20 +145,25 @@ public class JCompPanel extends JPanel {
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.EAST;
 		gbcComp.fill = GridBagConstraints.NONE;
-		JLabel label = new JLabel("Cuisiner : ");
-		label.setToolTipText("Permet de cuisiner de la viandes, poissons...");
-		//label.setForeground(new Color(0xffffdd));
-		this.add(label, gbcComp);
+		JLabel jlCuisiner = new JLabel("Cuisiner : ");
+		jlCuisiner.setForeground(new Color(0x886A08));
+		this.add(jlCuisiner, gbcComp);
 		
 		gbcComp.gridy = 3;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
 		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.anchor = GridBagConstraints.CENTER;
 		gbcComp.fill = GridBagConstraints.HORIZONTAL;
 		cuisiner.setOpaque(false);
 		this.add(cuisiner, gbcComp);
-
+		gbcComp.gridy = 3;
+		gbcComp.gridheight = 1;
+		gbcComp.gridx = 2;
+		gbcComp.gridwidth = 1;
+		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.fill = GridBagConstraints.HORIZONTAL;
+		this.add(new JLabel("Permet de cuisiner de la viandes, poissons..."), gbcComp);
 		
 		// Fouiller
 		gbcComp.gridy = 4;
@@ -166,16 +172,25 @@ public class JCompPanel extends JPanel {
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.EAST;
 		gbcComp.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Fouiller : voir ce qui est secret, dissimulé, peu visible..."), gbcComp);
+		JLabel jlFouiller = new JLabel("Fouiller : ");
+		jlFouiller.setForeground(new Color(0x886A08));
+		this.add(jlFouiller, gbcComp);
 		
 		gbcComp.gridy = 4;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
 		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.anchor = GridBagConstraints.CENTER;
 		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
 		fouiller.setOpaque(false);
-		this.add(fouiller, gbcComp);
+		this.add(fouiller, gbcComp);		
+		gbcComp.gridy = 4;
+		gbcComp.gridheight = 1;
+		gbcComp.gridx = 2;
+		gbcComp.gridwidth = 1;
+		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
+		this.add(new JLabel("Voir ce qui est secret, dissimulé, peu visible..."), gbcComp);
 		
 		// Boucherie
 		gbcComp.gridy = 5;
@@ -184,16 +199,25 @@ public class JCompPanel extends JPanel {
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.EAST;
 		gbcComp.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Boucherie : découper de la viande. Tenir une boucherie ?"), gbcComp);
+		JLabel jlBoucher = new JLabel("Boucherie : ");
+		jlBoucher.setForeground(new Color(0x886A08));
+		this.add(jlBoucher, gbcComp);
 		
 		gbcComp.gridy = 5;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
 		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.anchor = GridBagConstraints.CENTER;
 		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
 		boucherie.setOpaque(false);
 		this.add(boucherie, gbcComp);
+		gbcComp.gridy = 5;
+		gbcComp.gridheight = 1;
+		gbcComp.gridx = 2;
+		gbcComp.gridwidth = 1;
+		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.fill = GridBagConstraints.HORIZONTAL;
+		this.add(new JLabel("Découper de la viande. Tenir une boucherie ?"), gbcComp);
 
 		// Bucheron
 		gbcComp.gridy = 6;
@@ -202,16 +226,25 @@ public class JCompPanel extends JPanel {
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.EAST;
 		gbcComp.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Bûcheron : couper du bois avec une <hache>, ouvrir une scierie ?"), gbcComp);
+		JLabel jlBucher = new JLabel("Bûcheron : ");
+		jlBucher.setForeground(new Color(0x886A08));
+		this.add(jlBucher, gbcComp);
 		
 		gbcComp.gridy = 6;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
 		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.anchor = GridBagConstraints.CENTER;
 		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
 		bucheron.setOpaque(false);
 		this.add(bucheron, gbcComp);
+		gbcComp.gridy = 6;
+		gbcComp.gridheight = 1;
+		gbcComp.gridx = 2;
+		gbcComp.gridwidth = 1;
+		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.fill = GridBagConstraints.HORIZONTAL;
+		this.add(new JLabel("Couper du bois avec une <hache>, ouvrir une scierie ?"), gbcComp);
 		
 		// Miner
 		gbcComp.gridy = 7;
@@ -220,16 +253,25 @@ public class JCompPanel extends JPanel {
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.EAST;
 		gbcComp.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Miner : extraire de la roche avec une <pioche>."), gbcComp);
+		JLabel jlMiner = new JLabel("Miner : ");
+		jlMiner.setForeground(new Color(0x886A08));
+		this.add(jlMiner, gbcComp);
 		
 		gbcComp.gridy = 7;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
 		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.anchor = GridBagConstraints.CENTER;
 		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
 		miner.setOpaque(false);
 		this.add(miner, gbcComp);
+		gbcComp.gridy = 7;
+		gbcComp.gridheight = 1;
+		gbcComp.gridx = 2;
+		gbcComp.gridwidth = 1;
+		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.fill = GridBagConstraints.HORIZONTAL;
+		this.add(new JLabel("Extraire de la roche avec une <pioche>."), gbcComp);
 		
 		// Cultiver
 		gbcComp.gridy = 8;
@@ -238,16 +280,25 @@ public class JCompPanel extends JPanel {
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.EAST;
 		gbcComp.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Cultiver : faire pousser tout et n'importe quoi."), gbcComp);
+		JLabel jlCultiver = new JLabel("Cultiver : ");
+		jlCultiver.setForeground(new Color(0x886A08));
+		this.add(jlCultiver, gbcComp);
 		
 		gbcComp.gridy = 8;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
 		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.anchor = GridBagConstraints.CENTER;
 		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
 		cultiver.setOpaque(false);
 		this.add(cultiver, gbcComp);
+		gbcComp.gridy = 8;
+		gbcComp.gridheight = 1;
+		gbcComp.gridx = 2;
+		gbcComp.gridwidth = 1;
+		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.fill = GridBagConstraints.HORIZONTAL;
+		this.add(new JLabel("Faire pousser tout et n'importe quoi."), gbcComp);
 		
 		// Pecher
 		gbcComp.gridy = 9;
@@ -256,16 +307,25 @@ public class JCompPanel extends JPanel {
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.EAST;
 		gbcComp.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Pêcher : en bateau ou au bord de la mer."), gbcComp);
+		JLabel jlPecher = new JLabel("Pêcher : ");
+		jlPecher.setForeground(new Color(0x886A08));
+		this.add(jlPecher, gbcComp);
 		
 		gbcComp.gridy = 9;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
 		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.anchor = GridBagConstraints.CENTER;
 		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
 		pecher.setOpaque(false);
 		this.add(pecher, gbcComp);
+		gbcComp.gridy = 9;
+		gbcComp.gridheight = 1;
+		gbcComp.gridx = 2;
+		gbcComp.gridwidth = 1;
+		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
+		this.add(new JLabel("En bateau ou au bord de la mer."), gbcComp);
 		
 		// Magie
 		gbcComp.gridy = 10;
@@ -274,18 +334,25 @@ public class JCompPanel extends JPanel {
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.EAST;
 		gbcComp.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Magie : apprendre durement les arcanes..."), gbcComp);
+		JLabel jlMagie = new JLabel("Magie : ");
+		jlMagie.setForeground(new Color(0x886A08));
+		this.add(jlMagie, gbcComp);
 		
 		gbcComp.gridy = 10;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
 		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.anchor = GridBagConstraints.CENTER;
 		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
 		magie.setOpaque(false);
 		this.add(magie, gbcComp);
-		
-		
+		gbcComp.gridy = 10;
+		gbcComp.gridheight = 1;
+		gbcComp.gridx = 2;
+		gbcComp.gridwidth = 1;
+		gbcComp.anchor = GridBagConstraints.WEST;
+		gbcComp.fill = GridBagConstraints.HORIZONTAL;
+		this.add(new JLabel("Apprendre durement les arcanes..."), gbcComp);
 	}
 
 	public int getCuisiner() {
