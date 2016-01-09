@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne.items.factory;
 
-import io.github.algorys.agshmne.items.weapon.StrongAxe;
+import io.github.algorys.agshmne.items.closeWeapon.StrongAxe;
 
 public class StrongAxeFactory implements InventoryItemFactory {
 

@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.items.weapon;
+package io.github.algorys.agshmne.items.closeWeapon;
 
 import io.github.algorys.agshmne.inventory.InventoryItem;
 
@@ -11,13 +11,11 @@ public class WeakAxe implements Axe, InventoryItem {
 
 	@Override
 	public String getName() {
-		return "Hache de base";
+		return "Hache";
 	}
 
 	@Override
 	public int getWeight() {
 		return 1;
 	}
-
-	
 }
