@@ -4,4 +4,6 @@ public interface Sword {
 	public int getLevel();
 	
 	public String getName();
+	
+	public String toString();
 }

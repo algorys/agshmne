@@ -1,16 +1,24 @@
 package io.github.algorys.agshmne.items.rangeWeapon;
 
 public class WeakBow implements Bow {
+	private final int level;
+	
+	public WeakBow(){
+		this.level = 1;
+	}
+	
 	@Override
 	public int getLevel() {
-		// TODO Auto-generated method stub
-		return 1;
+		return level;
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Arc ("+this.getLevel()+")";
 	}
 
+	@Override
+	public String toString() {
+		return "Arc ("+level+")";
+	}
 }

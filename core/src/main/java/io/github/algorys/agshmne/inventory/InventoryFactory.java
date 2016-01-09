@@ -8,8 +8,18 @@ import io.github.algorys.agshmne.items.factory.PotionManaFactory;
 import io.github.algorys.agshmne.items.factory.RandomFactory;
 import io.github.algorys.agshmne.items.factory.StrongAxeFactory;
 
-public class InventoryFactorySample {
-	public static void main(String[] args) {
+/*
+ * TODO : faire une factory pour cette classe, pour avoir une Factory :
+ *  * Low
+ *  * Medium
+ *  * High
+ *  * Extra -> Objets Magique
+ *  
+ */
+public class InventoryFactory {
+	private InventoryItem inventItem;
+	
+	public InventoryFactory() {
 		RandomFactory rf = new RandomFactory();
 		rf.addFactory(new AppleFactory());
 		rf.addFactory(new StrongAxeFactory());
@@ -18,9 +28,16 @@ public class InventoryFactorySample {
 		rf.addFactory(new CloakFactory());
 		rf.addFactory(new OrangeFactory());
 		
-		for(int i = 0; i < 20; i++) {
-			InventoryItem r = rf.createRandom();
-			System.out.println(r);
-		}
+		this.inventItem = rf.createRandom();
 	}
+
+	public InventoryItem getInventItem() {
+		return inventItem;
+	}
+	
+	public String toString(){
+		return inventItem.getName();
+	}
+	
+	
 }

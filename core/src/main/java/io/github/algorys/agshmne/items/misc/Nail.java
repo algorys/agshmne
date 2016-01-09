@@ -13,5 +13,10 @@ public class Nail extends StackableItemAdapter {
 	public int getWeight() {
 		return 0;
 	}
+	
+	@Override
+	public String toString() {
+		return "Clou";
+	}
 
 }

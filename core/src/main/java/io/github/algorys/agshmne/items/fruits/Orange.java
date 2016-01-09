@@ -14,4 +14,8 @@ public class Orange extends StackableItemAdapter  {
 		return 1;
 	}
 
+	@Override
+	public String toString() {
+		return "Orange";
+	}
 }

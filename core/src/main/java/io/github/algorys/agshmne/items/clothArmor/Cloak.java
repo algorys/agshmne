@@ -1,14 +1,33 @@
 package io.github.algorys.agshmne.items.clothArmor;
 
-public class Cloak implements Cloth {
+import io.github.algorys.agshmne.inventory.InventoryItem;
+
+public class Cloak implements Cloth, InventoryItem {
+	private final int level;
+	
+	public Cloak() {
+		this.level = 1;
+	}
+	
 	@Override
 	public int getLevel() {
-		return 1;
+		return level;
 	}
 	
 	@Override
 	public String getName() {
-		return "Manteau";
+		return "Manteau ("+this.getLevel()+")";
+	}
+	
+	@Override
+	public String toString(){
+		return "Manteau ("+level+")";
+	}
+
+	@Override
+	public int getWeight() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
