@@ -70,9 +70,9 @@ public class JCompPanel extends JPanel {
 				boucherie.setMaxValue(Math.min(remainingPoints + boucherie.getValue(), MAX_FOR_ONE));
 				bucheron.setMaxValue(Math.min(remainingPoints + bucheron.getValue(), MAX_FOR_ONE));
 				miner.setMaxValue(Math.min(remainingPoints + miner.getValue(), MAX_FOR_ONE));
-				cultiver.setMaxValue(Math.min(remainingPoints + miner.getValue(), MAX_FOR_ONE));
-				pecher.setMaxValue(Math.min(remainingPoints + miner.getValue(), MAX_FOR_ONE));
-				magie.setMaxValue(Math.min(remainingPoints + miner.getValue(), MAX_FOR_ONE));
+				cultiver.setMaxValue(Math.min(remainingPoints + cultiver.getValue(), MAX_FOR_ONE));
+				pecher.setMaxValue(Math.min(remainingPoints + pecher.getValue(), MAX_FOR_ONE));
+				magie.setMaxValue(Math.min(remainingPoints + magie.getValue(), MAX_FOR_ONE));
 			}
 		};
 
