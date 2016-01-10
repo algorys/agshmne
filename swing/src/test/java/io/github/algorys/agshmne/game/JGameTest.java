@@ -1,11 +1,17 @@
 package io.github.algorys.agshmne.game;
 
 import io.github.algorys.agshmne.game.JGame;
+import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.character.Character;;
 
 public class JGameTest {
-
+	
+	
 	public static void main(String[] args) {
-		JGame game = new JGame();
+		Region region = new Region();
+		Character pj = new Character(region);
+		
+		JGame game = new JGame(pj);
 		game.setVisible(true);
 
 	}

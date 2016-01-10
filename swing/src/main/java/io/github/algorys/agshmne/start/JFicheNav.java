@@ -44,8 +44,6 @@ public class JFicheNav extends JPanel {
 	private JInvPanel jpInv;
 	private JConfirmPanel jpConfirm;
 	
-	private JTextField jtfVerificationName;
-	private JTextField jtfFor;
 	private JFrame parent;
 
 	public JFicheNav(JFrame jframe) {
@@ -56,11 +54,13 @@ public class JFicheNav extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (JFicheNav.this.step == Step.CONFIRMATION) {
-//					System.out.println("Personnage FOR : " + jpCarac.getFOR());
-//					System.out.println("Personnage Cuisiner : " + jpComp.getCuisiner());
-					parent.dispose();
-					JGame game = new JGame();
+					Region region = new Region();
+					Character pj = new Character(region);
+					pj.getAttributes().setCHA(jpCarac.getCHA());
+					System.out.println("Personnage CHA : " + pj.getAttributes().getCHA());
+					JGame game = new JGame(pj);
 					game.setVisible(true);
+					parent.dispose();
 				} else {
 					JFicheNav.this.next();
 				}
