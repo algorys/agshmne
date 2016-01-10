@@ -18,6 +18,8 @@ import io.github.algorys.agshmne.items.factory.RandomFactory;
 import io.github.algorys.agshmne.items.factory.StrongAxeFactory;
 
 public class JInvPanel extends JLabel {
+	private JComboBox<InventoryFactory> firstObject;
+	private JComboBox<InventoryFactory> secondObject;
 	
 	public JInvPanel(){
 		// GidBag Layout
@@ -44,21 +46,42 @@ public class JInvPanel extends JLabel {
 		gbcInv.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("- Inventaire -"), gbcInv);
 	
-		// POINTS
+		// Objet 1
 		gbcInv.gridy = 2;
 		gbcInv.gridheight = 1;
 		gbcInv.gridx = 0;
 		gbcInv.gridwidth = 1;
 		gbcInv.anchor = GridBagConstraints.EAST;
 		gbcInv.fill = GridBagConstraints.NONE;
-		JComboBox<InventoryFactory> objectList = new JComboBox<InventoryFactory>();
-		objectList.addItem(new InventoryFactory());
-		objectList.addItem(new InventoryFactory());
-		objectList.addItem(new InventoryFactory());
-		objectList.addItem(new InventoryFactory());
+		firstObject = new JComboBox<InventoryFactory>();
+		firstObject.addItem(new InventoryFactory());
+		firstObject.addItem(new InventoryFactory());
+		firstObject.addItem(new InventoryFactory());
+		firstObject.addItem(new InventoryFactory());		
+		this.add(firstObject, gbcInv);
 		
-		this.add(objectList, gbcInv);
+		// Objet 1
+		gbcInv.gridy = 3;
+		gbcInv.gridheight = 1;
+		gbcInv.gridx = 0;
+		gbcInv.gridwidth = 1;
+		gbcInv.anchor = GridBagConstraints.EAST;
+		gbcInv.fill = GridBagConstraints.NONE;
+		secondObject = new JComboBox<InventoryFactory>();
+		secondObject.addItem(new InventoryFactory());
+		secondObject.addItem(new InventoryFactory());
+		secondObject.addItem(new InventoryFactory());
+		secondObject.addItem(new InventoryFactory());		
+		this.add(secondObject, gbcInv);
 	
+	}
+
+	public String getFirstObject() {
+		return (String) firstObject.getSelectedItem().toString();
+	}
+
+	public String getSecondObject() {
+		return (String) secondObject.getSelectedItem().toString();
 	}
 	
 }

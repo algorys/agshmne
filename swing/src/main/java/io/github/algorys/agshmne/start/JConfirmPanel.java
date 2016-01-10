@@ -167,16 +167,6 @@ public class JConfirmPanel extends JPanel {
 		JTextField jtCuisine = new JTextField("Cuisine : " + comp.getCuisiner());
 		jtCuisine.setEditable(false);
 		this.add(jtCuisine, gbcConfirm);
-		/*
-		* Cuisiner (Unités : repas))
-	    * Fouiller (DEX : Objet Trouvé)
-	    * Boucherie (Unités : Viandes)
-	    * Bûcheron (Unités : bois)
-	    * Miner (Unités : métaux différents)
-	    * Cultiver (Unités : Herbes)
-	    * Pêcher (Unités : Poissons)
-	    * Magie (INT : Voir Personnage)
-		 */
 		// Fouiller
 		gbcConfirm.gridy = 15;
 		gbcConfirm.gridheight = 1;
@@ -248,6 +238,34 @@ public class JConfirmPanel extends JPanel {
 		jtMagie.setEditable(false);
 		this.add(jtMagie, gbcConfirm);
 		
+		// COMPETENCES
+		gbcConfirm.gridy = 22;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.CENTER;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("-- Inventaire de départ --"), gbcConfirm);
+		// Premier Objet
+		gbcConfirm.gridy = 23;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtObjectOne = new JTextField("Objet 1 : " + inv.getFirstObject());
+		jtObjectOne.setEditable(false);
+		this.add(jtObjectOne, gbcConfirm);
+		// Premier Objet
+		gbcConfirm.gridy = 24;
+		gbcConfirm.gridheight = 1;
+		gbcConfirm.gridx = 0;
+		gbcConfirm.gridwidth = 1;
+		gbcConfirm.anchor = GridBagConstraints.WEST;
+		gbcConfirm.fill = GridBagConstraints.NONE;
+		JTextField jtObjectTwo = new JTextField("Objet 2 : " + inv.getSecondObject());
+		jtObjectTwo.setEditable(false);
+		this.add(jtObjectTwo, gbcConfirm);
 	}
 
 }
