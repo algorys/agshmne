@@ -1,5 +1,6 @@
 package io.github.algorys.agshmne.game;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,8 +9,11 @@ import java.awt.Insets;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import io.github.algorys.agshmne.character.Character;
 
@@ -31,10 +35,40 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("PERSONNAGE"), gbcCharacter);
+		JLabel jpPerso = new JLabel("### PERSONNAGE ###");
+		jpPerso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		this.add(jpPerso, gbcCharacter);
+		
+		// SOCIAL
+		gbcCharacter.gridy = 1;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 2;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("--- Social ---"), gbcCharacter);
+		
+		
+		// Race 
+		gbcCharacter.gridy = 2;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 2;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("Race : TODO (Sexe : TODO)"), gbcCharacter);
+		
+		gbcCharacter.gridy = 3;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 2;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("Classe : TODO"), gbcCharacter);
 		
 		// COLONNE GAUCHE
-		gbcCharacter.gridy = 1;
+		// Vital
+		gbcCharacter.gridy = 4;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 2;
@@ -42,63 +76,105 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Vitaux"), gbcCharacter);
 		
-		// TODO PdVs et Mana
-		gbcCharacter.gridy = 2;
+		// TODO PdVs
+		gbcCharacter.gridy = 5;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Vie : 0 | Mana : 0"), gbcCharacter);
-		
-		gbcCharacter.gridy = 2;
+		JLabel jIcon = new JLabel();
+		Image imgLife;
+		try {
+			imgLife = ImageIO.read(JTile.class.getClassLoader().getResource("life.png"));
+			jIcon.setIcon(new ImageIcon(imgLife));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		this.add(jIcon, gbcCharacter);
+		gbcCharacter.gridy = 5;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 1;
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Fatigue : 0 | Faim : 0"), gbcCharacter);
+		this.add(new JLabel("Vie : "), gbcCharacter);
 		
-		gbcCharacter.gridy = 3;
-		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 2;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Caractéristiques"), gbcCharacter);
-		
-		gbcCharacter.gridy = 4;
-		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 2;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("FOR : " + pj.getAttributes().getFOR()), gbcCharacter);
-		
-		gbcCharacter.gridy = 5;
-		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 2;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("DEX : " + pj.getAttributes().getDEX()), gbcCharacter);
-		
+		// TODO Mana
 		gbcCharacter.gridy = 6;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 2;
+		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("CON : " + pj.getAttributes().getCON()), gbcCharacter);
-		
-		// COLONNE DROITE
-		gbcCharacter.gridy = 1;
+		JLabel jMana = new JLabel();
+		Image imgMana;
+		try {
+			imgMana = ImageIO.read(JTile.class.getClassLoader().getResource("mana.png"));
+			jMana.setIcon(new ImageIcon(imgMana));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		this.add(jMana, gbcCharacter);
+		gbcCharacter.gridy = 6;
 		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 2;
-		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.gridx = 1;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Compétences"), gbcCharacter);
+		this.add(new JLabel("Mana : "), gbcCharacter);
+		
+		// TODO Faim
+		gbcCharacter.gridy = 7;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		JLabel jHungry = new JLabel();
+		Image imgFood;
+		try {
+			imgFood = ImageIO.read(JTile.class.getClassLoader().getResource("meat.png"));
+			jHungry.setIcon(new ImageIcon(imgFood));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		this.add(jHungry, gbcCharacter);
+		gbcCharacter.gridy = 7;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 1;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("Faim : "), gbcCharacter);
+		
+		// TODO Fatigue
+		gbcCharacter.gridy = 8;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		JLabel jTired = new JLabel();
+		Image imgTired;
+		try {
+			imgTired = ImageIO.read(JTile.class.getClassLoader().getResource("tired.png"));
+			jTired.setIcon(new ImageIcon(imgTired));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		this.add(jTired, gbcCharacter);
+		gbcCharacter.gridy = 8;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 1;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("Fatigue : "), gbcCharacter);
+		
+		// COLONNE DROITE TODO Définir accesseur pour Social
+
+		
 	}
 	
 	@Override
@@ -112,7 +188,7 @@ public class JTabCharacter extends JPanel {
 			Image img = ImageIO.read(JTile.class.getClassLoader().getResource("parchemin.png"));
 			Image imgBack = ImageIO.read(JTile.class.getClassLoader().getResource("table.png") );
 			g.drawImage(imgBack, 0, 0, this.getWidth(), this.getHeight(), this);
-			g.drawImage(img, x, y, width, height, this);
+			g.drawImage(img, 0, 0,  this.getWidth(), this.getHeight(), this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

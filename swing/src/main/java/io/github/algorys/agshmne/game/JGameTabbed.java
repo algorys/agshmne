@@ -17,7 +17,7 @@ public class JGameTabbed extends JTabbedPane {
 	
 	private JPanel jpMap = new JPanel();
 	private JTabCharacter jpPerso;
-	private JPanel jpComp = new JPanel();
+	private JTabComp jpComp;
 	private JPanel jpInv = new JPanel();
 	private JPanel jpEquip = new JPanel();
 	private JPanel jpMagie = new JPanel();
@@ -36,6 +36,7 @@ public class JGameTabbed extends JTabbedPane {
 		this.addTab(null, persoIcon, jpPerso, "Personnage");
 		
 		Icon compIcon = new ImageIcon(JGameTabbed.class.getClassLoader().getResource("comp.png"));
+		jpComp = new JTabComp();
 		this.addTab(null, compIcon, jpComp, "Compétences");
 		
 		Icon backpackIcon = new ImageIcon(JGameTabbed.class.getClassLoader().getResource("backpack.png"));
