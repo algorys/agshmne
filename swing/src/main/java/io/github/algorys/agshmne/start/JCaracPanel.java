@@ -6,12 +6,8 @@ import java.awt.Insets;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import io.github.algorys.agshmne.caracteristic.JCaracteristic;
 

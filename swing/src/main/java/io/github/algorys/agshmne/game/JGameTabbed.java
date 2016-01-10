@@ -16,7 +16,7 @@ import io.github.algorys.agshmne.region.JRegion;
 public class JGameTabbed extends JTabbedPane {
 	
 	private JPanel jpMap = new JPanel();
-	private JPanel jpPerso = new JPanel();
+	private JTabCharacter jpPerso;
 	private JPanel jpComp = new JPanel();
 	private JPanel jpInv = new JPanel();
 	private JPanel jpEquip = new JPanel();
@@ -32,6 +32,7 @@ public class JGameTabbed extends JTabbedPane {
 		this.addTab(null, mapIcon, jpMap, "Carte");
 		
 		Icon persoIcon = new ImageIcon(JGameTabbed.class.getClassLoader().getResource("perso.png"));
+		jpPerso = new JTabCharacter(jregion.getPersonnage());
 		this.addTab(null, persoIcon, jpPerso, "Personnage");
 		
 		Icon compIcon = new ImageIcon(JGameTabbed.class.getClassLoader().getResource("comp.png"));
