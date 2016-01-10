@@ -9,7 +9,7 @@ public class AquaticRegionFactory implements RegionFactory {
 
 	@Override
 	public Region create() {
-		TileType[] possibles = {TileType.Water, TileType.Wood};
+		TileType[] possibles = {TileType.Sea, TileType.Wood};
 		Tile[] tiles = new Tile[Region.SIZE];
 		for (int i = 0; i < Region.SIZE; i++) {
 			TileType type = possibles[io.github.algorys.agshmne.tools.Outils.dice(possibles.length)];

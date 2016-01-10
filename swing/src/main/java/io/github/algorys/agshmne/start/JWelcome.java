@@ -2,6 +2,7 @@ package io.github.algorys.agshmne.start;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
@@ -30,7 +31,9 @@ public class JWelcome extends JFrame {
 		cardPanel.setLayout(cardLayout);
 
 		JPanel jpAccueil = new JPanel();
-		jpAccueil.add(new JLabel("Accueil"));
+		JLabel jlTitle = new JLabel("Agshmne");
+		jlTitle.setFont(new Font("URW Chancery L", Font.PLAIN,70));
+		jpAccueil.add(jlTitle);
 
 		JPanel jpPerso = new JPanel();
 		jpPerso.add(new JLabel("Création Personnage"));
