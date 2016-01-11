@@ -1,5 +1,7 @@
 package io.github.algorys.agshmne.inventory;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -15,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import design.InvRenderer;
 import io.github.algorys.agshmne.items.closeWeapon.WeakAxe;
 import io.github.algorys.agshmne.items.closeWeapon.WeakSword;
 import io.github.algorys.agshmne.items.fruits.Apple;
@@ -38,6 +41,10 @@ public class GroundInv extends JPanel implements ListSelectionListener {
 		t.addItem(new WeakAxe());
 		t.addItem(new WeakSword());
 		groundItem = new JList<InventoryItem>(new TileListModel(t));
+		//groundItem.setCellRenderer(new InvRenderer());; TODO ! Ne fonctionne pas
+		groundItem.setBackground(Color.BLACK);
+		groundItem.setForeground(Color.green); // SetEnabled False désactive les couleurs
+		groundItem.setFixedCellWidth(290);
 		groundItem.setEnabled(false);
 		
 		groundItem.addListSelectionListener(this);
@@ -49,19 +56,21 @@ public class GroundInv extends JPanel implements ListSelectionListener {
 	            if (me.isPopupTrigger()) {
 	            	final int index = groundItem.locationToIndex(me.getPoint());
 	                JPopupMenu menu = new JPopupMenu();
-	                JMenuItem item = new JMenuItem("Ajouter Truc");
-	                item.addActionListener(new ActionListener() {
+	                JMenuItem ramasser = new JMenuItem("Ramasser");
+	                ramasser.addActionListener(new ActionListener() {
 	                    public void actionPerformed(ActionEvent e) {
 							InventoryItem selectedItem = groundItem.getModel().getElementAt(index);
 							JOptionPane.showMessageDialog(GroundInv.this, ""
-	                                + selectedItem + " ajouté!");
+	                                + selectedItem + " ajouté(e) !");
 							((TileListModel)groundItem.getModel()).removeElementAt(index);
 							inv.addItem(selectedItem);
 							System.out.println("Objets " + selectedItem + "Ajouté");
 							System.out.println(inv);
 	                    }
 	                });
-	                menu.add(item);
+	                JMenuItem laisser = new JMenuItem("Laisser");
+	                menu.add(ramasser);
+	                menu.add(laisser);
 	                menu.show(groundItem, me.getX(),me.getY());
 	            }
 	        }
