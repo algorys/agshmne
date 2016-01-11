@@ -36,6 +36,7 @@ public class JCompPanel extends JPanel {
     private JCaracteristic cultiver;
     private JCaracteristic pecher;
     private JCaracteristic magie;
+	private JLabel jlRemaining;
     
     public JCompPanel(){
     	super();
@@ -50,6 +51,17 @@ public class JCompPanel extends JPanel {
 		final JCaracteristic cultiver = new JCaracteristic(1, 1, MAX_FOR_ONE);
 		final JCaracteristic pecher = new JCaracteristic(1, 1, MAX_FOR_ONE);
 		final JCaracteristic magie = new JCaracteristic(1, 1, MAX_FOR_ONE);
+		int spentPoints = 
+				cuisiner.getValue() 
+				+ fouiller.getValue() 
+				+ boucherie.getValue() 
+				+ bucheron.getValue() 
+				+ miner.getValue()
+				+ cultiver.getValue()
+				+ pecher.getValue()
+				+ magie.getValue()
+				;
+		int remainingPoints = total - spentPoints;
 		
 		// Property Change Listener
 		PropertyChangeListener pcl = new PropertyChangeListener() {
@@ -74,6 +86,7 @@ public class JCompPanel extends JPanel {
 				cultiver.setMaxValue(Math.min(remainingPoints + cultiver.getValue(), MAX_FOR_ONE));
 				pecher.setMaxValue(Math.min(remainingPoints + pecher.getValue(), MAX_FOR_ONE));
 				magie.setMaxValue(Math.min(remainingPoints + magie.getValue(), MAX_FOR_ONE));
+				jlRemaining.setText(""+remainingPoints);
 			}
 		};
 
@@ -135,7 +148,8 @@ public class JCompPanel extends JPanel {
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.WEST;
 		gbcComp.fill = GridBagConstraints.HORIZONTAL;
-		this.add(new JLabel("TODO"), gbcComp);
+		jlRemaining = new JLabel(""+remainingPoints);
+		this.add(jlRemaining, gbcComp);
 		
 		// Compétences
 		// Cuisiner

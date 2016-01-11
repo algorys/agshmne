@@ -15,6 +15,7 @@ import javax.swing.AbstractAction;
 import javax.swing.AbstractButton;
 import javax.swing.Action;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -54,13 +55,16 @@ public class JFicheNav extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (JFicheNav.this.step == Step.CONFIRMATION) {
-					Region region = new Region();
-					Character pj = new Character(region);
-					pj.getAttributes().setCHA(jpCarac.getCHA());
-					System.out.println("Personnage CHA : " + pj.getAttributes().getCHA());
-					JGame game = new JGame(pj);
-					game.setVisible(true);
-					parent.dispose();
+					int res = JOptionPane.showOptionDialog(JFicheNav.this, "Êtes-vous sûr(e) ?", "Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Oui", "Non"}, "Oui");
+					if(res == JOptionPane.YES_OPTION) {
+						Region region = new Region();
+						Character pj = new Character(region);
+						pj.getAttributes().setCHA(jpCarac.getCHA());
+						System.out.println("Personnage CHA : " + pj.getAttributes().getCHA());
+						JGame game = new JGame(pj);
+						game.setVisible(true);
+						parent.dispose();
+					}
 				} else {
 					JFicheNav.this.next();
 				}

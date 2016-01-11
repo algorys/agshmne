@@ -24,6 +24,7 @@ public class JCaracPanel extends JPanel {
 	private JCaracteristic CON;
 	private JCaracteristic INT;
 	private JCaracteristic CHA;
+	private JLabel jlRemaining;
 	
 	public JCaracPanel() {
 		super();
@@ -34,6 +35,8 @@ public class JCaracPanel extends JPanel {
 		final JCaracteristic CON = new JCaracteristic(10, 1, MAX_FOR_ONE);
 		final JCaracteristic INT = new JCaracteristic(10, 1, MAX_FOR_ONE);
 		final JCaracteristic CHA = new JCaracteristic(10, 1, MAX_FOR_ONE);
+		int spentPoints = FOR.getValue() + DEX.getValue() + CON.getValue() + INT.getValue() + CHA.getValue();
+		int remainingPoints = total - spentPoints;
 
 		// Property Change Listener
 		PropertyChangeListener pcl = new PropertyChangeListener() {
@@ -46,6 +49,7 @@ public class JCaracPanel extends JPanel {
 				CON.setMaxValue(Math.min(remainingPoints + CON.getValue(), MAX_FOR_ONE));
 				INT.setMaxValue(Math.min(remainingPoints + INT.getValue(), MAX_FOR_ONE));
 				CHA.setMaxValue(Math.min(remainingPoints + CHA.getValue(), MAX_FOR_ONE));
+				jlRemaining.setText(""+remainingPoints);
 			}
 		};
 		
@@ -101,7 +105,8 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.WEST;
 		gbcCarac.fill = GridBagConstraints.HORIZONTAL;
-		this.add(new JLabel(""), gbcCarac);
+		jlRemaining = new JLabel(""+remainingPoints);
+		this.add(jlRemaining, gbcCarac);
 		
 		// CARACTERISTIQUES
 		// FOR
