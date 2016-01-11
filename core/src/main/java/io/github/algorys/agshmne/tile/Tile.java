@@ -10,7 +10,6 @@ public class Tile {
 	private TileType type;
 	private List<InventoryItem> items = new ArrayList<>();
 
-
 	public Tile(TileType type) {
 		this.type = type;
 	}
@@ -22,22 +21,26 @@ public class Tile {
 	public void setType(TileType type) {
 		this.type = type;
 	}
-	
+
 	public boolean addItem(InventoryItem e) {
 		return items.add(e);
 	}
-	
+
 	public List<InventoryItem> getItems() {
 		return Collections.unmodifiableList(items);
 	}
-	
+
+	public void removeItem(InventoryItem e) {
+		this.items.remove(e);
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(type);
-		if(!items.isEmpty()) {
+		if (!items.isEmpty()) {
 			sb.append("(");
-			for(InventoryItem item: items) {
+			for (InventoryItem item : items) {
 				sb.append(item.getName());
 				sb.append(" ");
 			}

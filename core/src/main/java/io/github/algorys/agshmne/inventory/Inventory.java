@@ -95,4 +95,17 @@ public class Inventory {
 		}
 		return res;
 	}
+	
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("--- Sac-à-dos ---");
+		sb.append("\n");
+		for (int i = 0; i < MAX_INVENTORY; i++) {
+			sb.append(""+ backpack[i]);
+			sb.append("\n");
+		}
+		sb.append("------------\n");
+		return sb.toString();
+	}
+
 }

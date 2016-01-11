@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.fenetre;
+package io.github.algorys.agshmne.nav;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
