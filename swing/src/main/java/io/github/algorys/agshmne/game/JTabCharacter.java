@@ -39,11 +39,11 @@ public class JTabCharacter extends JPanel {
 		jpPerso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		this.add(jpPerso, gbcCharacter);
 		
-		// SOCIAL
+		// SOCIAL TODO Définir accesseur pour Social
 		gbcCharacter.gridy = 1;
 		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 2;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("--- Social ---"), gbcCharacter);
@@ -52,16 +52,16 @@ public class JTabCharacter extends JPanel {
 		// Race 
 		gbcCharacter.gridy = 2;
 		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 2;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Race : TODO (Sexe : TODO)"), gbcCharacter);
 		
 		gbcCharacter.gridy = 3;
 		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 2;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Classe : TODO"), gbcCharacter);
@@ -74,7 +74,7 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 2;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Vitaux"), gbcCharacter);
+		this.add(new JLabel("--- Vitaux ---"), gbcCharacter);
 		
 		// TODO PdVs
 		gbcCharacter.gridy = 5;
@@ -172,8 +172,55 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Fatigue : "), gbcCharacter);
 		
-		// COLONNE DROITE TODO Définir accesseur pour Social
-
+		// COLONNE DROITE
+		// Caractéristiques
+		gbcCharacter.gridy = 4;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("--- Caractéristiques ---"), gbcCharacter);
+		// FOR
+		gbcCharacter.gridy = 5;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("FOR : " + pj.getAttributes().getFOR()), gbcCharacter);
+		// DEX
+		gbcCharacter.gridy = 6;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("DEX : " + pj.getAttributes().getDEX()), gbcCharacter);
+		// CON
+		gbcCharacter.gridy = 7;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("CON : " + pj.getAttributes().getCON()), gbcCharacter);
+		// INT
+		gbcCharacter.gridy = 8;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("INT : " + pj.getAttributes().getINT()), gbcCharacter);
+		// CHA
+		gbcCharacter.gridy = 9;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("CHA : " + pj.getAttributes().getCHA()), gbcCharacter);
 		
 	}
 	
