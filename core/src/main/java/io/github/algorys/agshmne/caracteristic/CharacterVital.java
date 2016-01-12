@@ -3,10 +3,10 @@ package io.github.algorys.agshmne.caracteristic;
 import io.github.algorys.agshmne.character.CharacterXP;
 
 public class CharacterVital {
-	private int vie = 0;
-	private int mana = 0;
-	private int fatigue = 0;
-	private int faim = 0;
+	private int vie;
+	private int mana;
+	private int fatigue;
+	private int faim;
 
     public CharacterVital (CharacterAttribute attributes, CharacterXP xp) {
     	// TODO : Faire la gestion de la vie et de la mana

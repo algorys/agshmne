@@ -60,16 +60,17 @@ public class JFicheNav extends JPanel {
 						Region region = new Region();
 						Character pj = new Character(region);
 						// Init Social 
-//						pj.getSocial().setName(jpSocial.getPjName());
-//						pj.getSocial().setSexe(jpSocial.getPjSexe());
-//						pj.getSocial().setRace(jpSocial.getPjRace());
-//						pj.getSocial().setClasse(jpSocial.getPjClass());
+						pj.getSocial().setName(jpSocial.getPjName());
+						pj.getSocial().setSexe(jpSocial.getPjSexe());
+						pj.getSocial().setRace(jpSocial.getPjRace());
+						pj.getSocial().setClasse(jpSocial.getPjClass());
 						// Init Carac
 						pj.getAttributes().setFOR(jpCarac.getFOR());
 						pj.getAttributes().setDEX(jpCarac.getDEX());
 						pj.getAttributes().setCON(jpCarac.getCON());
 						pj.getAttributes().setINT(jpCarac.getINT());
 						pj.getAttributes().setCHA(jpCarac.getCHA());
+						pj.initVital();
 						//System.out.println("Personnage CHA : " + pj.getAttributes().getCHA());
 						JGame game = new JGame(pj);
 						game.setVisible(true);

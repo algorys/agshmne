@@ -26,8 +26,6 @@ public class Character extends Observable {
 		social = new CharacterSocial();
 		attributes = new CharacterAttribute();
 		xp = new CharacterXP();
-		vital = new CharacterVital(attributes, xp);
-		//System.out.println("------- Création Personnage --------");
 		
 	}
 
@@ -37,6 +35,10 @@ public class Character extends Observable {
 
 	public Region getRegion() {
 		return this.region;
+	}
+	
+	public void initVital() {
+		vital = new CharacterVital(attributes, xp);
 	}
 	
 	public void setPosition(Position position) {

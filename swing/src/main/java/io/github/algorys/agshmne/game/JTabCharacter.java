@@ -56,7 +56,7 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Race : TODO (Sexe : TODO)"), gbcCharacter);
+		this.add(new JLabel("Race : " + pj.getSocial().getRace() + " (Sexe : "+ pj.getSocial().getSexe()+")"), gbcCharacter);
 		
 		gbcCharacter.gridy = 3;
 		gbcCharacter.gridheight = 1;
@@ -64,7 +64,7 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Classe : TODO"), gbcCharacter);
+		this.add(new JLabel("Classe : " + pj.getSocial().getClass()), gbcCharacter);
 		
 		// COLONNE GAUCHE
 		// Vital
@@ -98,7 +98,7 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Vie : "), gbcCharacter);
+		this.add(new JLabel("Vie : " + pj.getVital().getVie()), gbcCharacter);
 		
 		// TODO Mana
 		gbcCharacter.gridy = 6;
@@ -122,7 +122,7 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Mana : "), gbcCharacter);
+		this.add(new JLabel("Mana : " + pj.getVital().getMana()), gbcCharacter);
 		
 		// TODO Faim
 		gbcCharacter.gridy = 7;
@@ -146,7 +146,7 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Faim : "), gbcCharacter);
+		this.add(new JLabel("Faim : " + pj.getVital().getFaim()), gbcCharacter);
 		
 		// TODO Fatigue
 		gbcCharacter.gridy = 8;
@@ -170,7 +170,7 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Fatigue : "), gbcCharacter);
+		this.add(new JLabel("Fatigue : " + pj.getVital().getFatigue()), gbcCharacter);
 		
 		// COLONNE DROITE
 		// Caractéristiques
