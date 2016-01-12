@@ -2,6 +2,7 @@ package io.github.algorys.agshmne.region;
 
 import java.util.Arrays;
 
+import io.github.algorys.agshmne.inventory.InventoryFactory;
 import io.github.algorys.agshmne.inventory.InventoryItem;
 import io.github.algorys.agshmne.items.fruits.Apple;
 import io.github.algorys.agshmne.movement.Position;
@@ -23,8 +24,8 @@ public class Region {
 			TileType type = TileType.values()[io.github.algorys.agshmne.tools.Outils.dice(TileType.values().length)];
 			tiles[i] = new Tile(type);
 			while (Math.random() < .5) {
-				InventoryItem e = new Apple();
-				tiles[i].addItem(e);
+				InventoryFactory invFact = new InventoryFactory();
+				tiles[i].addItem(invFact.getInventItem());
 			}
 		//System.out.println("------- Création Région --------");
 		}
