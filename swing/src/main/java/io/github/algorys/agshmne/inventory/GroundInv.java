@@ -26,12 +26,10 @@ import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileListModel;
 import io.github.algorys.agshmne.tile.TileType;
 
-public class GroundInv extends JPanel implements ListSelectionListener {
+public class GroundInv extends JPanel {
 	InventoryGroungTest inv;
 	JList<InventoryItem> groundItem;
-	JLabel etiquette = new JLabel("");
-	
-	
+
 	public GroundInv() {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setViewportView(groundItem);
@@ -41,49 +39,40 @@ public class GroundInv extends JPanel implements ListSelectionListener {
 		t.addItem(new WeakAxe());
 		t.addItem(new WeakSword());
 		groundItem = new JList<InventoryItem>(new TileListModel(t));
-		//groundItem.setCellRenderer(new InvRenderer());; TODO ! Ne fonctionne pas
+		// TODO ! Ne fonctionne pas
+		groundItem.setCellRenderer(new InvRenderer());
 		groundItem.setBackground(Color.BLACK);
-		groundItem.setForeground(Color.green); // SetEnabled False désactive les couleurs
+		groundItem.setForeground(Color.green); // SetEnabled False désactive les
+												// couleurs
 		groundItem.setFixedCellWidth(290);
-		groundItem.setEnabled(false);
-		
-		groundItem.addListSelectionListener(this);
+		groundItem.setEnabled(true);
+
 		this.add(groundItem);
-		
+
 		final Inventory inv = new Inventory();
 		groundItem.addMouseListener(new MouseAdapter() {
-	        public void mousePressed(final MouseEvent me) {
-	            if (me.isPopupTrigger()) {
-	            	final int index = groundItem.locationToIndex(me.getPoint());
-	                JPopupMenu menu = new JPopupMenu();
-	                JMenuItem ramasser = new JMenuItem("Ramasser");
-	                ramasser.addActionListener(new ActionListener() {
-	                    public void actionPerformed(ActionEvent e) {
+			public void mousePressed(final MouseEvent me) {
+				if (me.isPopupTrigger()) {
+					final int index = groundItem.locationToIndex(me.getPoint());
+					JPopupMenu menu = new JPopupMenu();
+					JMenuItem ramasser = new JMenuItem("Ramasser");
+					ramasser.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
 							InventoryItem selectedItem = groundItem.getModel().getElementAt(index);
-							JOptionPane.showMessageDialog(GroundInv.this, ""
-	                                + selectedItem + " ajouté(e) !");
-							((TileListModel)groundItem.getModel()).removeElementAt(index);
+							JOptionPane.showMessageDialog(GroundInv.this, "" + selectedItem + " ajouté(e) !");
+							((TileListModel) groundItem.getModel()).removeElementAt(index);
 							inv.addItem(selectedItem);
 							System.out.println("Objets " + selectedItem + "Ajouté");
 							System.out.println(inv);
-	                    }
-	                });
-	                JMenuItem laisser = new JMenuItem("Laisser");
-	                menu.add(ramasser);
-	                menu.add(laisser);
-	                menu.show(groundItem, me.getX(),me.getY());
-	            }
-	        }
-	    });
-		
-		
-	}
+						}
+					});
+					JMenuItem laisser = new JMenuItem("Laisser");
+					menu.add(ramasser);
+					menu.add(laisser);
+					menu.show(groundItem, me.getX(), me.getY());
+				}
+			}
+		});
 
-
-	@Override
-	public void valueChanged(ListSelectionEvent e) {
-		etiquette.setText(groundItem.getSelectedValue().getName());
-		
-		
 	}
 }
