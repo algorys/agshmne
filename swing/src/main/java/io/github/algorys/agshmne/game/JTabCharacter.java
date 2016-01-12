@@ -44,7 +44,7 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("--- Social ---"), gbcCharacter);
 		
@@ -64,11 +64,19 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Classe : " + pj.getSocial().getClass()), gbcCharacter);
+		this.add(new JLabel("Classe : " + pj.getSocial().getClasse()), gbcCharacter);
+		
+		gbcCharacter.gridy = 4;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("Background : " + pj.getSocial().getBackground()), gbcCharacter);
 		
 		// COLONNE GAUCHE
 		// Vital
-		gbcCharacter.gridy = 4;
+		gbcCharacter.gridy = 5;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 2;
@@ -76,8 +84,8 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("--- Vitaux ---"), gbcCharacter);
 		
-		// TODO PdVs
-		gbcCharacter.gridy = 5;
+		// PdVs
+		gbcCharacter.gridy = 6;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 1;
@@ -92,7 +100,7 @@ public class JTabCharacter extends JPanel {
 			e.printStackTrace();
 		}
 		this.add(jIcon, gbcCharacter);
-		gbcCharacter.gridy = 5;
+		gbcCharacter.gridy = 6;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 1;
 		gbcCharacter.gridwidth = 1;
@@ -100,8 +108,8 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Vie : " + pj.getVital().getVie()), gbcCharacter);
 		
-		// TODO Mana
-		gbcCharacter.gridy = 6;
+		// Mana
+		gbcCharacter.gridy = 7;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 1;
@@ -116,7 +124,7 @@ public class JTabCharacter extends JPanel {
 			e.printStackTrace();
 		}
 		this.add(jMana, gbcCharacter);
-		gbcCharacter.gridy = 6;
+		gbcCharacter.gridy = 7;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 1;
 		gbcCharacter.gridwidth = 1;
@@ -124,8 +132,8 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Mana : " + pj.getVital().getMana()), gbcCharacter);
 		
-		// TODO Faim
-		gbcCharacter.gridy = 7;
+		// Faim
+		gbcCharacter.gridy = 8;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 1;
@@ -140,7 +148,7 @@ public class JTabCharacter extends JPanel {
 			e.printStackTrace();
 		}
 		this.add(jHungry, gbcCharacter);
-		gbcCharacter.gridy = 7;
+		gbcCharacter.gridy = 8;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 1;
 		gbcCharacter.gridwidth = 1;
@@ -148,8 +156,8 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Faim : " + pj.getVital().getFaim()), gbcCharacter);
 		
-		// TODO Fatigue
-		gbcCharacter.gridy = 8;
+		// Fatigue
+		gbcCharacter.gridy = 9;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 1;
@@ -164,7 +172,7 @@ public class JTabCharacter extends JPanel {
 			e.printStackTrace();
 		}
 		this.add(jTired, gbcCharacter);
-		gbcCharacter.gridy = 8;
+		gbcCharacter.gridy = 9;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 1;
 		gbcCharacter.gridwidth = 1;
@@ -174,51 +182,51 @@ public class JTabCharacter extends JPanel {
 		
 		// COLONNE DROITE
 		// Caractéristiques
-		gbcCharacter.gridy = 4;
-		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 1;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("--- Caractéristiques ---"), gbcCharacter);
-		// FOR
 		gbcCharacter.gridy = 5;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 2;
 		gbcCharacter.gridwidth = 1;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("FOR : " + pj.getAttributes().getFOR()), gbcCharacter);
-		// DEX
+		this.add(new JLabel("--- Caractéristiques ---"), gbcCharacter);
+		// FOR
 		gbcCharacter.gridy = 6;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 2;
 		gbcCharacter.gridwidth = 1;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("DEX : " + pj.getAttributes().getDEX()), gbcCharacter);
-		// CON
+		this.add(new JLabel("FOR : " + pj.getAttributes().getFOR()), gbcCharacter);
+		// DEX
 		gbcCharacter.gridy = 7;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 2;
 		gbcCharacter.gridwidth = 1;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("CON : " + pj.getAttributes().getCON()), gbcCharacter);
-		// INT
+		this.add(new JLabel("DEX : " + pj.getAttributes().getDEX()), gbcCharacter);
+		// CON
 		gbcCharacter.gridy = 8;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 2;
 		gbcCharacter.gridwidth = 1;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("INT : " + pj.getAttributes().getINT()), gbcCharacter);
-		// CHA
+		this.add(new JLabel("CON : " + pj.getAttributes().getCON()), gbcCharacter);
+		// INT
 		gbcCharacter.gridy = 9;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 2;
 		gbcCharacter.gridwidth = 1;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("INT : " + pj.getAttributes().getINT()), gbcCharacter);
+		// CHA
+		gbcCharacter.gridy = 10;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("CHA : " + pj.getAttributes().getCHA()), gbcCharacter);
 		

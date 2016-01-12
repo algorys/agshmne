@@ -55,7 +55,9 @@ public class JFicheNav extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (JFicheNav.this.step == Step.CONFIRMATION) {
-					int res = JOptionPane.showOptionDialog(JFicheNav.this, "Êtes-vous sûr(e) ?", "Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Oui", "Non"}, "Oui");
+					int res = JOptionPane.showOptionDialog(JFicheNav.this, 
+							"Êtes-vous sûr(e) de vouloir jouer avec " + jpSocial.getPjName() + " ?", 
+							"Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Oui", "Non"}, "Oui");
 					if(res == JOptionPane.YES_OPTION) {
 						Region region = new Region();
 						Character pj = new Character(region);
@@ -64,6 +66,7 @@ public class JFicheNav extends JPanel {
 						pj.getSocial().setSexe(jpSocial.getPjSexe());
 						pj.getSocial().setRace(jpSocial.getPjRace());
 						pj.getSocial().setClasse(jpSocial.getPjClass());
+						pj.getSocial().setBackground(jpSocial.getPjBackground());
 						// Init Carac
 						pj.getAttributes().setFOR(jpCarac.getFOR());
 						pj.getAttributes().setDEX(jpCarac.getDEX());
@@ -71,7 +74,7 @@ public class JFicheNav extends JPanel {
 						pj.getAttributes().setINT(jpCarac.getINT());
 						pj.getAttributes().setCHA(jpCarac.getCHA());
 						pj.initVital();
-						//System.out.println("Personnage CHA : " + pj.getAttributes().getCHA());
+						// Entrée dans le jeu
 						JGame game = new JGame(pj);
 						game.setVisible(true);
 						parent.dispose();

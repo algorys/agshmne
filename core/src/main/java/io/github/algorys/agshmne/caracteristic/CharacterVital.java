@@ -13,7 +13,7 @@ public class CharacterVital {
     	vie = attributes.getCON() + 10 + xp.getLvl();
     	mana = attributes.getINT() + xp.getLvl();
     	   // TODO : Faire la gestion de la Faim et de la Fatigue
-    	fatigue = (attributes.getCON() + attributes.getFOR() / 2) + 10;
+    	fatigue = ((attributes.getCON() + attributes.getFOR()) / 2) + 10;
     	faim = attributes.getCON() + 10;
     }
 
