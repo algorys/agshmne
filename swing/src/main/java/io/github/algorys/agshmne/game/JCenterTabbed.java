@@ -13,7 +13,7 @@ import io.github.algorys.agshmne.region.JRegion;
  * Barre racourcis
  */
 
-public class JGameTabbed extends JTabbedPane {
+public class JCenterTabbed extends JTabbedPane {
 	
 	private JPanel jpMap = new JPanel();
 	private JTabCharacter jpPerso;
@@ -23,32 +23,32 @@ public class JGameTabbed extends JTabbedPane {
 	private JPanel jpMagie = new JPanel();
 	private JPanel jpQuest = new JPanel();
 	
-	public JGameTabbed(JRegion jregion){
+	public JCenterTabbed(JRegion jregion){
 		this.setTabPlacement(JTabbedPane.TOP);
 				
 		jpMap.setBackground(Color.BLACK);
 		jpMap.add(jregion);
-		Icon mapIcon = new ImageIcon(JGameTabbed.class.getClassLoader().getResource("map.png"));
+		Icon mapIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("map.png"));
 		this.addTab(null, mapIcon, jpMap, "Carte");
 		
-		Icon persoIcon = new ImageIcon(JGameTabbed.class.getClassLoader().getResource("perso.png"));
+		Icon persoIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("perso.png"));
 		jpPerso = new JTabCharacter(jregion.getPersonnage());
 		this.addTab(null, persoIcon, jpPerso, "Personnage");
 		
-		Icon compIcon = new ImageIcon(JGameTabbed.class.getClassLoader().getResource("comp.png"));
+		Icon compIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("comp.png"));
 		jpComp = new JTabComp();
 		this.addTab(null, compIcon, jpComp, "Compétences");
 		
-		Icon backpackIcon = new ImageIcon(JGameTabbed.class.getClassLoader().getResource("backpack.png"));
+		Icon backpackIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("backpack.png"));
 		this.addTab(null, backpackIcon, jpInv, "Inventaire");		
 		
-		Icon equipIcon = new ImageIcon(JGameTabbed.class.getClassLoader().getResource("equip.png"));
+		Icon equipIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("equip.png"));
 		this.addTab(null, equipIcon, jpEquip, "Equipement");
 		
-		Icon magieIcon = new ImageIcon(JGameTabbed.class.getClassLoader().getResource("magie.png"));
+		Icon magieIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("magie.png"));
 		this.addTab(null, magieIcon, jpMagie, "Magie");
 		
-		Icon questIcon = new ImageIcon(JGameTabbed.class.getClassLoader().getResource("quest.png"));
+		Icon questIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("quest.png"));
 		this.addTab(null, questIcon, jpQuest, "Quêtes");
 	}
 }

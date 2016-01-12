@@ -1,4 +1,4 @@
-package design;
+package io.github.algorys.agshmne.design;
 
 import java.awt.Color;
 import java.awt.Component;

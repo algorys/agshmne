@@ -9,9 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.inventory.GroundInv;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.region.JRegion;
 import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.tile.Tile;
 
 public class JGame extends JFrame {
 	private Region region = new Region();
@@ -24,34 +26,13 @@ public class JGame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
-		// JPanel
-		JPanel jpEast = new JPanel();
 		JPanel jpSouth = new JPanel();
 		JPanel jpWest = new JPanel();
 		/*
 		 * JPCenter :
 		 * Permet d'accéder aux différentes interfaces du jeu.
 		 */
-		JGameTabbed tabbedNorth = new JGameTabbed(this.jregion);
-		
-		/*
-		 * JPEast
-		 * Objets à terres
-		 * Actions pj et compétences
-		 */
-		 
-		//Objets
-		JPanel jpObjets = new JPanel();
-		JLabel jlObjets = new JLabel("Objets à terre");
-		jpObjets.add(jlObjets);
-		
-		// Actions
-		JPanel jpActions = new JPanel();
-		JLabel jlActions = new JLabel("Creuser, Bûcher, ");
-		jpActions.add(jlActions);
-		
-		jpEast.add(jpObjets);
-		jpEast.add(jpActions);
+		JCenterTabbed tabbedCenter = new JCenterTabbed(this.jregion);
 
 		
 		/*
@@ -101,7 +82,14 @@ public class JGame extends JFrame {
 			
 			
 		});
-//		this.setFocusable(true);
+		
+		/*
+		 * JPEast
+		 * Objets à terres
+		 * Actions pj et compétences
+		 */
+		JRightTabbed tabbedRight = new JRightTabbed();
+		
 		/*
 		 * JPWest
 		 * Personnage / Ville
@@ -115,8 +103,8 @@ public class JGame extends JFrame {
 		// Ajout Panneau Final
 		JPanel contentPane = new JPanel(new BorderLayout());
 		//contentPane.add(jpCenter, BorderLayout.CENTER);
-		contentPane.add(tabbedNorth, BorderLayout.CENTER);
-		contentPane.add(jpEast, BorderLayout.EAST);
+		contentPane.add(tabbedCenter, BorderLayout.CENTER);
+		contentPane.add(tabbedRight, BorderLayout.EAST);
 		contentPane.add(jpSouth, BorderLayout.SOUTH);
 		contentPane.add(jpWest, BorderLayout.WEST);
 		

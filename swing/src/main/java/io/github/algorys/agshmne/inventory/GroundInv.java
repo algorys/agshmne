@@ -17,7 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import design.InvRenderer;
+import io.github.algorys.agshmne.design.InvRenderer;
 import io.github.algorys.agshmne.items.closeWeapon.WeakAxe;
 import io.github.algorys.agshmne.items.closeWeapon.WeakSword;
 import io.github.algorys.agshmne.items.fruits.Apple;
