@@ -8,43 +8,33 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
 import io.github.algorys.agshmne.inventory.InventoryItem;
+import io.github.algorys.agshmne.items.fruits.Apple;
 
-public class InvRenderer extends JLabel implements ListCellRenderer { 
-	  
-		public Component getListCellRendererComponent( 
-			JList<InventoryItem> list, 
-			InventoryItem item,            // value to display 
-			int index,               // cell index 
-			boolean isSelected,      // is the cell selected 
-			boolean cellHasFocus)    // the list and the cell have the focus 
-		{ 
-			setText(item.toString()); 
-	  
-			if (isSelected) { 
-				setBackground(list.getSelectionBackground()); 
-				setForeground(list.getSelectionForeground()); 
-			} 
-			else { 
-				setBackground(list.getBackground()); 
-				setForeground(list.getForeground()); 
-			} 
-	  
-			// Ici, il faut tester si on veut changer la couleur et changer par la  
-			// couleur de notre choix 
-			if (item.getName() == "Pomme"){ 
-				setBackground(Color.GREEN); 
-			} 
-	  
-			setEnabled(list.isEnabled()); 
-			setFont(list.getFont()); 
-			setOpaque(true); 
-			return this; 
+public class InvRenderer implements ListCellRenderer<InventoryItem> {
+	private JLabel rendererComponent = new JLabel();
+	
+	@Override
+	public Component getListCellRendererComponent(JList<? extends InventoryItem> list, InventoryItem value, int index, boolean isSelected,
+			boolean cellHasFocus) {
+		rendererComponent.setText(value.toString());
+
+		if (isSelected) {
+			rendererComponent.setBackground(list.getSelectionBackground());
+			rendererComponent.setForeground(list.getSelectionForeground());
+		} else {
+			if (value instanceof Apple) {
+
+				rendererComponent.setBackground(Color.GREEN);
+				rendererComponent.setForeground(Color.BLACK);
+			} else {
+				rendererComponent.setBackground(list.getBackground());
+				rendererComponent.setForeground(list.getForeground());
+			}
 		}
 
-		@Override
-		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
-				boolean cellHasFocus) {
-			// TODO Auto-generated method stub
-			return null;
-		} 
+		rendererComponent.setEnabled(list.isEnabled());
+		rendererComponent.setFont(list.getFont());
+		rendererComponent.setOpaque(true);
+		return this.rendererComponent;
 	}
+}
