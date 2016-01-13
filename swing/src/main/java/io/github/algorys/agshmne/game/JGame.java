@@ -86,7 +86,7 @@ public class JGame extends JFrame {
 		 * Objets à terres
 		 * Actions pj et compétences
 		 */
-		JRightTabbed tabbedRight = new JRightTabbed();
+		JRightTabbed tabbedRight = new JRightTabbed(pj);
 		
 		/*
 		 * JPWest
