@@ -1,11 +1,19 @@
 package io.github.algorys.agshmne.inventory;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import io.github.algorys.agshmne.items.fruits.Apple;
+
 public class Inventory {
 	public final static int MAX_INVENTORY = 10;
 
 	private InventoryItem[] backpack = new InventoryItem[MAX_INVENTORY];
-
+	
 	public Inventory() {
+		this.addItem(new Apple());
+		
 	}
 
 	public void addItem(InventoryItem item) {
@@ -106,6 +114,11 @@ public class Inventory {
 		}
 		sb.append("------------\n");
 		return sb.toString();
+	}
+
+	public List<InventoryItem> getListBackpack() {
+		List<InventoryItem> list = Arrays.asList(this.backpack);
+		return Collections.unmodifiableList(list);
 	}
 
 }

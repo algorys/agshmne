@@ -26,6 +26,7 @@ public class Character extends Observable {
 		social = new CharacterSocial();
 		attributes = new CharacterAttribute();
 		xp = new CharacterXP();
+		inv = new Inventory();
 		
 	}
 

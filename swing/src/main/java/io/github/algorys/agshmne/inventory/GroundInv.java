@@ -21,12 +21,13 @@ import io.github.algorys.agshmne.design.InvRenderer;
 import io.github.algorys.agshmne.tile.TileListModel;
 
 public class GroundInv extends JPanel implements Observer {
-	InventoryGroungTest inv;
+	Inventory inv;
 	JList<InventoryItem> groundItem;
 	Character pj;
 
 	public GroundInv(Character pj) {
 		this.pj = pj;
+		this.inv = pj.getInventory();
 		pj.addObserver(this);
 				
 		groundItem = new JList<InventoryItem>(new TileListModel(pj.getRegion().getTileFromPosition(pj.getPosition())));
@@ -36,14 +37,14 @@ public class GroundInv extends JPanel implements Observer {
 		groundItem.setVisibleRowCount(10);
 		groundItem.setFixedCellHeight(15);
 		groundItem.setFixedCellWidth(290);
-		groundItem.setPreferredSize(new Dimension(200, 15));
+		groundItem.setPreferredSize(new Dimension(400, 15));
 		groundItem.setEnabled(true);
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.getViewport().add(groundItem);
 
 		this.add(groundItem);
 
-		final Inventory inv = new Inventory();
+		inv = new Inventory();
 		groundItem.addMouseListener(new MouseAdapter() {
 			public void mousePressed(final MouseEvent me) {
 				if (me.isPopupTrigger()) {
