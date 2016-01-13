@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.inventory;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -27,24 +28,18 @@ public class GroundInv extends JPanel implements Observer {
 	public GroundInv(Character pj) {
 		this.pj = pj;
 		pj.addObserver(this);
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setViewportView(groundItem);
-		
-		//Tile tile = 
-		/*Tile t = new Tile(TileType.Swamp);
-		t.addItem(new Apple());
-		t.addItem(new Orange());
-		t.addItem(new WeakAxe());
-		t.addItem(new WeakSword());*/
-		
+				
 		groundItem = new JList<InventoryItem>(new TileListModel(pj.getRegion().getTileFromPosition(pj.getPosition())));
-		// TODO ! Ne fonctionne pas
 		groundItem.setCellRenderer(new InvRenderer());
 		groundItem.setBackground(Color.BLACK);
-		groundItem.setForeground(Color.green); // SetEnabled False désactive les
-												// couleurs
+		groundItem.setForeground(Color.green);
+		groundItem.setVisibleRowCount(10);
+		groundItem.setFixedCellHeight(15);
 		groundItem.setFixedCellWidth(290);
+		groundItem.setPreferredSize(new Dimension(200, 15));
 		groundItem.setEnabled(true);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.getViewport().add(groundItem);
 
 		this.add(groundItem);
 
