@@ -43,9 +43,8 @@ public class JGame extends JFrame {
 		jpSouth.add(jlPosition);
 		jpSouth.add(jlRegion);
 		
-		this.setFocusable(true);
 		this.addKeyListener(new KeyAdapter() {
-	
+			
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//System.out.println("Touché!");
@@ -80,6 +79,7 @@ public class JGame extends JFrame {
 			
 			
 		});
+		this.setFocusable(true);
 		
 		/*
 		 * JPEast

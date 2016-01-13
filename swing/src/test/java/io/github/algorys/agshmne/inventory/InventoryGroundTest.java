@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.region.Region;
 
-public class InventoryGroungTest {
+public class InventoryGroundTest {
 
 	public static void main(String[] args) {
 		Region region = new Region();

@@ -17,12 +17,9 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.design.InvRenderer;
-import io.github.algorys.agshmne.inventory.GroundInv;
 import io.github.algorys.agshmne.inventory.Inventory;
 import io.github.algorys.agshmne.inventory.InventoryItem;
 import io.github.algorys.agshmne.inventory.InventoryListModel;
-import io.github.algorys.agshmne.tile.TileListModel;
 
 public class JTabInv extends JPanel implements Observer {
 	private Inventory inv;
@@ -32,15 +29,15 @@ public class JTabInv extends JPanel implements Observer {
 	public JTabInv(Character pj) {
 		this.pj = pj;
 		this.inv = pj.getInventory();
-		pj.addObserver(this);
+		inv.addObserver(this);
 		
 		// Jlist items
 		invItems = new JList<InventoryItem>(new InventoryListModel(pj.getInventory()));
-		invItems.setCellRenderer(new InvRenderer());
+		//invItems.setCellRenderer(new InvRenderer());
 		invItems.setBackground(Color.BLACK);
 		invItems.setForeground(Color.green);
 		invItems.setVisibleRowCount(10);
-		invItems.setFixedCellHeight(15);
+		//invItems.setFixedCellHeight(15);
 		invItems.setFixedCellWidth(290);
 		invItems.setPreferredSize(new Dimension(400, 15));
 		invItems.setEnabled(true);
@@ -49,7 +46,6 @@ public class JTabInv extends JPanel implements Observer {
 
 		this.add(invItems);
 
-		inv = new Inventory();
 		invItems.addMouseListener(new MouseAdapter() {
 			public void mousePressed(final MouseEvent me) {
 				if (me.isPopupTrigger()) {
@@ -60,7 +56,7 @@ public class JTabInv extends JPanel implements Observer {
 						public void actionPerformed(ActionEvent e) {
 							InventoryItem selectedItem = invItems.getModel().getElementAt(index);
 							JOptionPane.showMessageDialog(JTabInv.this, "" + selectedItem + " ajouté(e) !");
-							((TileListModel) invItems.getModel()).removeElementAt(index);
+							((InventoryListModel) invItems.getModel()).removeElementAt(index);
 							inv.addItem(selectedItem);
 							System.out.println("Objets " + selectedItem + "Ajouté");
 							System.out.println(inv);

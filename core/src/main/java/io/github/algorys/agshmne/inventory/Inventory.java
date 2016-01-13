@@ -3,10 +3,11 @@ package io.github.algorys.agshmne.inventory;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Observable;
 
 import io.github.algorys.agshmne.items.fruits.Apple;
 
-public class Inventory {
+public class Inventory extends Observable {
 	public final static int MAX_INVENTORY = 10;
 
 	private InventoryItem[] backpack = new InventoryItem[MAX_INVENTORY];
@@ -37,6 +38,7 @@ public class Inventory {
 				}
 			}
 		}
+		
 	}
 
 	public void addItem(InventoryItem item, int index) {
@@ -118,6 +120,8 @@ public class Inventory {
 
 	public List<InventoryItem> getListBackpack() {
 		List<InventoryItem> list = Arrays.asList(this.backpack);
+		this.setChanged();
+		this.notifyObservers();
 		return Collections.unmodifiableList(list);
 	}
 
