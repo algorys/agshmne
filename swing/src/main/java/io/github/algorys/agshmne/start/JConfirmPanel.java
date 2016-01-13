@@ -9,8 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import io.github.algorys.agshmne.character.Character;
-
 public class JConfirmPanel extends JPanel {
 	
 	public JConfirmPanel(JSocialPanel social, JCaracPanel carac, JCompPanel comp, JInvPanel inv) {

@@ -8,14 +8,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
 import io.github.algorys.agshmne.inventory.InventoryFactory;
-import io.github.algorys.agshmne.inventory.InventoryItem;
-import io.github.algorys.agshmne.items.factory.AppleFactory;
-import io.github.algorys.agshmne.items.factory.CloakFactory;
-import io.github.algorys.agshmne.items.factory.NailFactory;
-import io.github.algorys.agshmne.items.factory.OrangeFactory;
-import io.github.algorys.agshmne.items.factory.PotionManaFactory;
-import io.github.algorys.agshmne.items.factory.RandomFactory;
-import io.github.algorys.agshmne.items.factory.StrongAxeFactory;
 
 public class JInvPanel extends JLabel {
 	private JComboBox<InventoryFactory> firstObject;

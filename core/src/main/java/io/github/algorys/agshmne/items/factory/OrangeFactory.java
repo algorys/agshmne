@@ -1,6 +1,5 @@
 package io.github.algorys.agshmne.items.factory;
 
-import io.github.algorys.agshmne.inventory.InventoryItem;
 import io.github.algorys.agshmne.items.fruits.Orange;
 
 public class OrangeFactory implements InventoryItemFactory {
