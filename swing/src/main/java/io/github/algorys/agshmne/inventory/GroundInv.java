@@ -17,7 +17,6 @@ import javax.swing.JScrollPane;
 
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.design.InvRenderer;
-import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileListModel;
 
 public class GroundInv extends JPanel implements Observer {
