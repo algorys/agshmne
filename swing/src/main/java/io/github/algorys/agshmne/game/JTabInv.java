@@ -6,9 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Observable;
-import java.util.Observer;
 
+import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -17,35 +16,42 @@ import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 
 import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.design.InvRenderer;
 import io.github.algorys.agshmne.inventory.Inventory;
 import io.github.algorys.agshmne.inventory.InventoryItem;
 import io.github.algorys.agshmne.inventory.InventoryListModel;
 
-public class JTabInv extends JPanel implements Observer {
+public class JTabInv extends JPanel {
 	private Inventory inv;
 	private Character pj;
-	JList<InventoryItem> invItems;
+	private JList<InventoryItem> invItems;
 	
 	public JTabInv(Character pj) {
 		this.pj = pj;
 		this.inv = pj.getInventory();
-		inv.addObserver(this);
 		
 		// Jlist items
 		invItems = new JList<InventoryItem>(new InventoryListModel(pj.getInventory()));
-		//invItems.setCellRenderer(new InvRenderer());
+		invItems.setCellRenderer(new InvRenderer());
 		invItems.setBackground(Color.BLACK);
 		invItems.setForeground(Color.green);
-		invItems.setVisibleRowCount(10);
-		//invItems.setFixedCellHeight(15);
 		invItems.setFixedCellWidth(290);
-		invItems.setPreferredSize(new Dimension(400, 15));
 		invItems.setEnabled(true);
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.getViewport().add(invItems);
+	
 
 		this.add(invItems);
-
+		
+		JButton jbTest = new JButton("Test");
+		jbTest.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println(invItems.getSize());
+				System.out.println(JTabInv.this.pj.getInventory());
+			}
+		});
+		this.add(jbTest);
+/*
 		invItems.addMouseListener(new MouseAdapter() {
 			public void mousePressed(final MouseEvent me) {
 				if (me.isPopupTrigger()) {
@@ -69,14 +75,7 @@ public class JTabInv extends JPanel implements Observer {
 				}
 			}
 		});
-
+*/
 	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		System.out.println("On passe par l'inventaire");
-		invItems.setModel(new InventoryListModel(pj.getInventory()));
-	}
-		
 	
 }

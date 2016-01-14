@@ -26,6 +26,7 @@ public class Inventory extends Observable {
 					StackableItem stack = (StackableItem) backpack[i];
 					stack.addCount(stackItem.getCount());
 					added = true;
+					this.setChanged();
 					break;
 				}
 			}
@@ -33,12 +34,13 @@ public class Inventory extends Observable {
 		if (!added) {
 			for (int i = 0; i < MAX_INVENTORY; i++) {
 				if (backpack[i] == null) {
+					this.setChanged();
 					backpack[i] = item;
 					break;
 				}
 			}
 		}
-		
+		this.notifyObservers();
 	}
 
 	public void addItem(InventoryItem item, int index) {
@@ -46,6 +48,8 @@ public class Inventory extends Observable {
 			throw new IllegalArgumentException("Already an item at this index");
 		}
 		backpack[index] = item;
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	public void removeItem(InventoryItem item) {
@@ -62,6 +66,7 @@ public class Inventory extends Observable {
 						backpack[i] = null; // TODO Si non gestion des emplacements (mais du coup, pas forcément un tableau)
 					}
 					removed = true;
+					this.setChanged();
 					break;
 				}
 			}
@@ -70,10 +75,12 @@ public class Inventory extends Observable {
 			for (int i = 0; i < MAX_INVENTORY; i++) {
 				if (backpack[i] == item) {
 					backpack[i] = null;
+					this.setChanged();
 					break;
 				}
 			}
 		}
+		this.notifyObservers();
 	}
 
 	public boolean contains(Class<?> type) {
@@ -120,8 +127,6 @@ public class Inventory extends Observable {
 
 	public List<InventoryItem> getListBackpack() {
 		List<InventoryItem> list = Arrays.asList(this.backpack);
-		this.setChanged();
-		this.notifyObservers();
 		return Collections.unmodifiableList(list);
 	}
 

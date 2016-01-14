@@ -41,6 +41,7 @@ public class JRegion extends JPanel implements Observer {
 			}
 		//System.out.println("Personnage JRegion " + personnage.getPosition().getX() + ", " + personnage.getPosition().getY());
 		}
+		this.setFocusable(true);
 	}
 
 	public Character getPersonnage() {

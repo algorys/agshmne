@@ -2,6 +2,7 @@ package io.github.algorys.agshmne.design;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -13,10 +14,18 @@ import io.github.algorys.agshmne.items.fruits.Apple;
 public class InvRenderer implements ListCellRenderer<InventoryItem> {
 	private JLabel rendererComponent = new JLabel();
 	
+	public InvRenderer() {
+		rendererComponent.setMinimumSize(new Dimension(290, 15));
+		rendererComponent.setPreferredSize(new Dimension(290, 15));
+	}
+	
 	@Override
-	public Component getListCellRendererComponent(JList<? extends InventoryItem> list, InventoryItem value, int index, boolean isSelected,
-			boolean cellHasFocus) {
-		rendererComponent.setText(value.toString());
+	public Component getListCellRendererComponent(JList<? extends InventoryItem> list, InventoryItem value, int index, boolean isSelected, boolean cellHasFocus) {
+		if(value == null) {
+			rendererComponent.setText("");
+		} else {
+			rendererComponent.setText(value.toString());
+		}
 
 		if (isSelected) {
 			rendererComponent.setBackground(list.getSelectionBackground());

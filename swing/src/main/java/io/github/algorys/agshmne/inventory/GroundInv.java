@@ -21,8 +21,8 @@ import io.github.algorys.agshmne.design.InvRenderer;
 import io.github.algorys.agshmne.tile.TileListModel;
 
 public class GroundInv extends JPanel implements Observer {
-	JList<InventoryItem> groundItem;
-	Character pj;
+	private JList<InventoryItem> groundItem;
+	private Character pj;
 
 	public GroundInv(Character pj) {
 		this.pj = pj;
@@ -42,7 +42,6 @@ public class GroundInv extends JPanel implements Observer {
 
 		this.add(groundItem);
 
-		final Inventory inv = new Inventory();
 		groundItem.addMouseListener(new MouseAdapter() {
 			public void mousePressed(final MouseEvent me) {
 				if (me.isPopupTrigger()) {
@@ -54,9 +53,9 @@ public class GroundInv extends JPanel implements Observer {
 							InventoryItem selectedItem = groundItem.getModel().getElementAt(index);
 							JOptionPane.showMessageDialog(GroundInv.this, "" + selectedItem + " ajouté(e) !");
 							((TileListModel) groundItem.getModel()).removeElementAt(index);
-							inv.addItem(selectedItem);
+							GroundInv.this.pj.getInventory().addItem(selectedItem);
 							System.out.println("Objets " + selectedItem + "Ajouté");
-							System.out.println(inv);
+							System.out.println(GroundInv.this.pj.getInventory());
 						}
 					});
 					JMenuItem laisser = new JMenuItem("Laisser");
