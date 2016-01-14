@@ -57,7 +57,7 @@ public class Inventory extends Observable {
 		if (item instanceof StackableItem) {
 			StackableItem stackItem = (StackableItem) item;
 			for (int i = 0; i < MAX_INVENTORY; i++) {
-				if (item.getClass() == backpack[i].getClass()) {
+				if (backpack[i] != null && item.getClass() == backpack[i].getClass()) {
 					StackableItem stack = (StackableItem) backpack[i];
 					System.out.println(".getCount vaut : " + stackItem.getCount());
 					stack.removeCount(stackItem.getCount());

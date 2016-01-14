@@ -1,19 +1,16 @@
 package io.github.algorys.agshmne.game;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
 
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.design.InvRenderer;
@@ -29,7 +26,6 @@ public class JTabInv extends JPanel {
 	public JTabInv(Character pj) {
 		this.pj = pj;
 		this.inv = pj.getInventory();
-		
 		// Jlist items
 		invItems = new JList<InventoryItem>(new InventoryListModel(pj.getInventory()));
 		invItems.setCellRenderer(new InvRenderer());
@@ -41,7 +37,7 @@ public class JTabInv extends JPanel {
 
 		this.add(invItems);
 		
-		JButton jbTest = new JButton("Test");
+		/*JButton jbTest = new JButton("Test");
 		jbTest.addActionListener(new ActionListener() {
 			
 			@Override
@@ -50,32 +46,32 @@ public class JTabInv extends JPanel {
 				System.out.println(JTabInv.this.pj.getInventory());
 			}
 		});
-		this.add(jbTest);
-/*
+		this.add(jbTest);*/
+
 		invItems.addMouseListener(new MouseAdapter() {
 			public void mousePressed(final MouseEvent me) {
 				if (me.isPopupTrigger()) {
 					final int index = invItems.locationToIndex(me.getPoint());
 					JPopupMenu menu = new JPopupMenu();
-					JMenuItem ramasser = new JMenuItem("Ramasser");
-					ramasser.addActionListener(new ActionListener() {
+					JMenuItem deposer = new JMenuItem("Déposer");
+					deposer.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							InventoryItem selectedItem = invItems.getModel().getElementAt(index);
-							JOptionPane.showMessageDialog(JTabInv.this, "" + selectedItem + " ajouté(e) !");
+							JOptionPane.showMessageDialog(JTabInv.this, "" + selectedItem + " retiré(e) !");
 							((InventoryListModel) invItems.getModel()).removeElementAt(index);
-							inv.addItem(selectedItem);
+							inv.removeItem((InventoryItem) selectedItem);;
 							System.out.println("Objets " + selectedItem + "Ajouté");
 							System.out.println(inv);
 						}
 					});
-					JMenuItem laisser = new JMenuItem("Laisser");
-					menu.add(ramasser);
-					menu.add(laisser);
+					JMenuItem utiliser = new JMenuItem("Utiliser");
+					menu.add(deposer);
+					menu.add(utiliser);
 					menu.show(invItems, me.getX(), me.getY());
 				}
 			}
 		});
-*/
+
 	}
 	
 }

@@ -37,8 +37,6 @@ public class GroundInv extends JPanel implements Observer {
 		groundItem.setFixedCellWidth(290);
 		groundItem.setPreferredSize(new Dimension(400, 15));
 		groundItem.setEnabled(true);
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.getViewport().add(groundItem);
 
 		this.add(groundItem);
 
@@ -73,6 +71,5 @@ public class GroundInv extends JPanel implements Observer {
 	public void update(Observable o, Object arg) {
 		System.out.println("On passe par la liste groundItem");
 		groundItem.setModel(new TileListModel(pj.getRegion().getTileFromPosition(pj.getPosition())));
-		//groundItem.setModel(new TileListModel(tile));
 	}
 }
