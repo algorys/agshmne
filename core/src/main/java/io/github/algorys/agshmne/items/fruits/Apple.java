@@ -16,6 +16,6 @@ public class Apple extends StackableItemAdapter {
 
 	@Override
 	public String toString() {
-		return "Pomme";
+		return "Pomme (" + Apple.this.getCount() + ")";
 	}
 }

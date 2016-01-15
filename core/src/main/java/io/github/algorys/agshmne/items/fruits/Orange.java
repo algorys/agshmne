@@ -16,6 +16,6 @@ public class Orange extends StackableItemAdapter  {
 
 	@Override
 	public String toString() {
-		return "Orange";
+		return "Orange (" + Orange.this.getCount() + ")";
 	}
 }
