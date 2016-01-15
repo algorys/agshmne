@@ -16,12 +16,12 @@ public class WeakWand implements Wand {
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return "Bâton ("+this.getLevel()+")";
+		return "Bâton ["+this.getLevel()+"]";
 	}
 	
 	@Override
 	public String toString() {
-		return "Hache renforcée ("+level+")";
+		return "Hache renforcée ["+level+"]";
 	}
 
 }

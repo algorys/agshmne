@@ -25,6 +25,6 @@ public class WeakSword implements Sword, InventoryItem{
 	
 	@Override
 	public String toString() {
-		return "Epée ("+level+")";
+		return "Epée ["+level+"]";
 	}
 }

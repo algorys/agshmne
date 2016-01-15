@@ -14,11 +14,11 @@ public class WeakBow implements Bow {
 
 	@Override
 	public String getName() {
-		return "Arc ("+this.getLevel()+")";
+		return "Arc ["+this.getLevel()+"]";
 	}
 
 	@Override
 	public String toString() {
-		return "Arc ("+level+")";
+		return "Arc ["+level+"]";
 	}
 }

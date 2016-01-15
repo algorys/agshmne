@@ -16,12 +16,12 @@ public class Cloak implements Cloth, InventoryItem {
 	
 	@Override
 	public String getName() {
-		return "Manteau ("+this.getLevel()+")";
+		return "Manteau ["+this.getLevel()+"]";
 	}
 	
 	@Override
 	public String toString(){
-		return "Manteau ("+level+")";
+		return "Manteau ["+level+"]";
 	}
 
 	@Override

@@ -25,6 +25,6 @@ public class WeakAxe implements Axe, InventoryItem {
 	
 	@Override
 	public String toString() {
-		return "Hache renforcée ("+level+")";
+		return "Hache renforcée ["+level+"]";
 	}
 }

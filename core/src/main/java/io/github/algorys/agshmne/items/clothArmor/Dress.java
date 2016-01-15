@@ -14,12 +14,12 @@ public class Dress implements Cloth {
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return "Robe ("+this.getLevel()+")";
+		return "Robe ["+this.getLevel()+"]";
 	}
 	
 	@Override
 	public String toString() {
-		return "Robe ("+level+")";
+		return "Robe ["+level+"]";
 	}
 
 }

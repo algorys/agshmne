@@ -20,7 +20,7 @@ public class StrongAxe implements Axe, InventoryItem {
 
 	@Override
 	public String getName() {
-		return "Hache renforcée ("+this.getLevel()+")";
+		return "Hache renforcée ["+this.getLevel()+"]";
 	}
 
 	@Override
