@@ -23,12 +23,10 @@ public class JTabInv extends JPanel {
 	private Inventory inv;
 	private Character pj;
 	private JList<InventoryItem> invItems;
-	private Tile tile;
 	
 	public JTabInv(Character pj) {
 		this.pj = pj;
 		this.inv = pj.getInventory();
-		this.tile = pj.getRegion().getTileFromPosition(pj.getPosition());
 		// Jlist items
 		invItems = new JList<InventoryItem>(new InventoryListModel(pj.getInventory()));
 		invItems.setCellRenderer(new InvRenderer());
@@ -65,6 +63,7 @@ public class JTabInv extends JPanel {
 							inv.removeItem((InventoryItem) selectedItem);;
 							System.out.println("Objets " + selectedItem + "Ajouté");
 							System.out.println(inv);
+							Tile tile = JTabInv.this.pj.getRegion().getTileFromPosition(JTabInv.this.pj.getPosition());
 							tile.addItem(selectedItem);
 							System.out.println("Objets courants : " + tile.getItems());
 							

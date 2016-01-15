@@ -3,10 +3,11 @@ package io.github.algorys.agshmne.tile;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Observable;
 
 import io.github.algorys.agshmne.inventory.InventoryItem;
 
-public class Tile {
+public class Tile extends Observable {
 	private TileType type;
 	private List<InventoryItem> items = new ArrayList<>();
 
@@ -20,10 +21,15 @@ public class Tile {
 
 	public void setType(TileType type) {
 		this.type = type;
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	public boolean addItem(InventoryItem e) {
-		return items.add(e);
+		boolean added = items.add(e);
+		this.setChanged();
+		this.notifyObservers();
+		return added;
 	}
 
 	public List<InventoryItem> getItems() {
@@ -32,6 +38,8 @@ public class Tile {
 
 	public void removeItem(InventoryItem e) {
 		this.items.remove(e);
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	@Override

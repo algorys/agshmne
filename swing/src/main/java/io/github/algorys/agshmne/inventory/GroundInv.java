@@ -14,14 +14,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
 
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.design.InvRenderer;
+import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileListModel;
 
 public class GroundInv extends JPanel implements Observer {
 	private JList<InventoryItem> groundItem;
+	private Tile currentTile;
 	private Character pj;
 
 	public GroundInv(Character pj) {
@@ -33,9 +34,7 @@ public class GroundInv extends JPanel implements Observer {
 		groundItem.setBackground(Color.BLACK);
 		groundItem.setForeground(Color.green);
 		groundItem.setVisibleRowCount(10);
-		groundItem.setFixedCellHeight(15);
-		groundItem.setFixedCellWidth(290);
-		groundItem.setPreferredSize(new Dimension(400, 15));
+		groundItem.setPreferredSize(new Dimension(400, 300));
 		groundItem.setEnabled(true);
 
 		this.add(groundItem);
@@ -70,6 +69,12 @@ public class GroundInv extends JPanel implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		System.out.println("On passe par la liste groundItem");
-		groundItem.setModel(new TileListModel(pj.getRegion().getTileFromPosition(pj.getPosition())));
+		if(this.currentTile != null) {
+			currentTile.deleteObserver(this);
+		}
+		this.currentTile = pj.getRegion().getTileFromPosition(pj.getPosition());
+		groundItem.setModel(new TileListModel(this.currentTile));
+		
+		this.currentTile.addObserver(this);
 	}
 }
