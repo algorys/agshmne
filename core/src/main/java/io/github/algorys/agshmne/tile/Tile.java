@@ -18,13 +18,7 @@ public class Tile extends Observable {
 	public TileType getType() {
 		return type;
 	}
-
-	public void setType(TileType type) {
-		this.type = type;
-		this.setChanged();
-		this.notifyObservers();
-	}
-
+	
 	public boolean addItem(InventoryItem e) {
 		boolean added = items.add(e);
 		this.setChanged();
