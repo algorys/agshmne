@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
 
-import javax.tools.DiagnosticCollector;
-
 import io.github.algorys.agshmne.city.City;
 import io.github.algorys.agshmne.inventory.InventoryItem;
 import io.github.algorys.agshmne.tools.Outils;

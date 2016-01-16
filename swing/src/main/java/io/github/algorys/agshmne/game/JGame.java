@@ -36,6 +36,7 @@ public class JGame extends JFrame {
 		/*
 		 * JPSouth Infos textuelles : descriptions des lieux, objets
 		 * disponibles, position, etc...
+		 * TODO : Exporter ce panel dans une classe à part
 		 */
 		final JLabel jlRegion = new JLabel("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 		final JLabel jlPosition = new JLabel(
@@ -64,7 +65,8 @@ public class JGame extends JFrame {
 						jlRegion.setText("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 						if(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized()) {
 							System.out.println("Case civilisée !");
-							jlCity.setText("------Ville-------");
+							jlCity.setText("---Ville "+pj.getRegion().getTileFromPosition(pj.getPosition()).getCity().getType()+" ---");
+							jlCity.setText(jlCity.getText() + " [" +pj.getRegion().getTileFromPosition(pj.getPosition()).getCity().getLevel()+"]");
 						}else{
 							jlCity.setText("Rien dans le coin !");
 						}
@@ -76,7 +78,8 @@ public class JGame extends JFrame {
 						jlRegion.setText("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 						if(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized()) {
 							System.out.println("Case civilisée !");
-							jlCity.setText("------Ville-------");
+							jlCity.setText("---Ville "+pj.getRegion().getTileFromPosition(pj.getPosition()).getCity().getType()+" ---");
+							jlCity.setText(jlCity.getText() + " [" +pj.getRegion().getTileFromPosition(pj.getPosition()).getCity().getLevel()+"]");
 						}else{
 							jlCity.setText("Rien dans le coin !");
 						}
@@ -88,7 +91,8 @@ public class JGame extends JFrame {
 						jlRegion.setText("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 						if(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized()) {
 							System.out.println("Case civilisée !");
-							jlCity.setText("------Ville-------");
+							jlCity.setText("---Ville "+pj.getRegion().getTileFromPosition(pj.getPosition()).getCity().getType()+" ---");
+							jlCity.setText(jlCity.getText() + " [" +pj.getRegion().getTileFromPosition(pj.getPosition()).getCity().getLevel()+"]");
 						}else{
 							jlCity.setText("Rien dans le coin !");
 						}
@@ -100,7 +104,8 @@ public class JGame extends JFrame {
 						jlRegion.setText("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 						if(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized()) {
 							System.out.println("Case civilisée !");
-							jlCity.setText("------Ville-------");
+							jlCity.setText("---Ville "+pj.getRegion().getTileFromPosition(pj.getPosition()).getCity().getType()+" ---");
+							jlCity.setText(jlCity.getText() + " [" +pj.getRegion().getTileFromPosition(pj.getPosition()).getCity().getLevel()+"]");
 						}else{
 							jlCity.setText("Rien dans le coin !");
 						}
