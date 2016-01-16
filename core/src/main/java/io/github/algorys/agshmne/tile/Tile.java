@@ -5,14 +5,27 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
 
+import javax.tools.DiagnosticCollector;
+
+import io.github.algorys.agshmne.city.City;
 import io.github.algorys.agshmne.inventory.InventoryItem;
+import io.github.algorys.agshmne.tools.Outils;
 
 public class Tile extends Observable {
 	private TileType type;
 	private List<InventoryItem> items = new ArrayList<>();
-
+	private City city; 
+	boolean isCivilized = false;
+	
 	public Tile(TileType type) {
 		this.type = type;
+		int dice = Outils.dice(100);
+		if(dice < 25) {
+			city = new City(this);
+			isCivilized = true;
+		}
+		System.out.println("Dé vaut " + dice);
+		System.out.println("isCivilized vaut : " + isCivilized);
 	}
 
 	public TileType getType() {
@@ -41,7 +54,7 @@ public class Tile extends Observable {
 		StringBuilder sb = new StringBuilder();
 		sb.append(type);
 		if (!items.isEmpty()) {
-			sb.append("(");
+			sb.append(" (Objets : ");
 			for (InventoryItem item : items) {
 				sb.append(item.getName());
 				sb.append(" ");
@@ -50,4 +63,12 @@ public class Tile extends Observable {
 		}
 		return sb.toString();
 	}
+	public City getCity() {
+		return city;
+	}
+	
+	public boolean isCivilized() {
+		return isCivilized;
+	}
+
 }

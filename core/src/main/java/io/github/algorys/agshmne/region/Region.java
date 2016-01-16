@@ -12,6 +12,7 @@ public class Region {
 	private final static int HEIGHT = (Position.MAX_Y - Position.MIN_Y + 1);
 	final static int SIZE = WIDTH * HEIGHT;
 	private Tile[] tiles = new Tile[SIZE];
+	
 
 	Region(Tile[] tiles) {
 		this.tiles = tiles;
@@ -25,14 +26,11 @@ public class Region {
 				InventoryFactory invFact = new InventoryFactory();
 				tiles[i].addItem(invFact.getInventItem());
 			}
-		//System.out.println("------- Création Région --------");
 		}
 	}
 
 	public Tile getTileFromPosition(Position p) {		
 		int z = (p.getY() - Position.MIN_Y) * WIDTH + (p.getX() - Position.MIN_X);
-		//System.out.println("Personnage sur tuile " + tiles[z]);
-		//System.out.println("Coordonnées : " + p.getX() + ", " + p.getY());
 		return tiles[z];
 	}
 
