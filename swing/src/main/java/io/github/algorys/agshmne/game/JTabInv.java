@@ -34,20 +34,8 @@ public class JTabInv extends JPanel {
 		invItems.setForeground(Color.green);
 		invItems.setFixedCellWidth(290);
 		invItems.setEnabled(true);
-	
 
 		this.add(invItems);
-		
-		/*JButton jbTest = new JButton("Test");
-		jbTest.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(invItems.getSize());
-				System.out.println(JTabInv.this.pj.getInventory());
-			}
-		});
-		this.add(jbTest);*/
 
 		invItems.addMouseListener(new MouseAdapter() {
 			public void mousePressed(final MouseEvent me) {
