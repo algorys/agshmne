@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class Main {
 	public static void main(String[] args) {
-		Personnage p = new Personnage("Raymond", 42, 54);
+		PersoSave p = new PersoSave("Raymond", 42, 54);
 		try {
 			DataOutputStream out = new DataOutputStream(new FileOutputStream("example.save"));
 			try {
@@ -24,7 +24,7 @@ public class Main {
 				String name = in.readUTF();
 				int force = in.readInt();
 				int charism = in.readInt();
-				Personnage apres = new Personnage(name, force, charism);
+				PersoSave apres = new PersoSave(name, force, charism);
 				System.out.println(apres);
 			} finally {
 				in.close();

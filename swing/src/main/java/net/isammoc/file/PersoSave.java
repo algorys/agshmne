@@ -1,19 +1,19 @@
 package net.isammoc.file;
 
-public class Personnage {
+public class PersoSave {
 	private String name;
 	private int force;
 	private int charism;
 
-	public Personnage() {
+	public PersoSave() {
 		this("Inconnu", 1, 1);
 	}
 
-	public Personnage(String name) {
+	public PersoSave(String name) {
 		this(name, 1, 1);
 	}
 
-	public Personnage(String name, int force, int charism) {
+	public PersoSave(String name, int force, int charism) {
 		super();
 		this.name = name;
 		this.force = force;

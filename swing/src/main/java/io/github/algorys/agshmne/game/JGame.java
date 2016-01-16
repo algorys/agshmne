@@ -1,11 +1,12 @@
 package io.github.algorys.agshmne.game;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,31 +27,26 @@ public class JGame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-		JPanel jpSouth = new JPanel();
+		// TODO
 		JPanel jpWest = new JPanel();
 		/*
 		 * JPCenter : Permet d'accéder aux différentes interfaces du jeu.
 		 */
 		JCenterTabbed tabbedCenter = new JCenterTabbed(this.jregion);
-
+		
 		/*
-		 * JPSouth Infos textuelles : descriptions des lieux, objets
-		 * disponibles, position, etc...
-		 * TODO : Exporter ce panel dans une classe à part
+		 * SOUTH : TODO : En cours...
 		 */
-		final JLabel jlRegion = new JLabel("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
-		final JLabel jlPosition = new JLabel(
-				"Personnage en position " + pj.getPosition().getX() + " , " + pj.getPosition().getY());
-		final JLabel jlCity = new JLabel();
-		if(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized()) {
-			System.out.println("Case civilisée !");
-			jlCity.setText("------Ville-------");
-		}else{
-			jlCity.setText("Rien dans le coin !");
-		}
-		jpSouth.add(jlCity);
-		jpSouth.add(jlPosition);
-		jpSouth.add(jlRegion);
+		JPanel jpSouth = new JPanel();
+		jpSouth.setPreferredSize(new Dimension(710, 100));
+		BoxLayout blSouth = new BoxLayout(jpSouth, BoxLayout.Y_AXIS);
+		jpSouth.setLayout(blSouth);
+		final JTitleHistory titleHistory = new JTitleHistory(pj);
+		titleHistory.setTitle("Region : " + pj.getRegion().getTileFromPosition(pj.getPosition()).getType());
+		final JCivilized civilized = new JCivilized(pj);
+		civilized.setCivilized(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized());
+		jpSouth.add(titleHistory);
+		jpSouth.add(civilized);
 
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
 			@Override
@@ -60,7 +56,10 @@ public class JGame extends JFrame {
 					switch (e.getKeyCode()) {
 					case KeyEvent.VK_LEFT:
 						pj.setPosition(new Position(pj.getPosition().getX() - 1, pj.getPosition().getY()));
-						jlPosition.setText(
+						titleHistory.setTitle("Region : " + pj.getRegion().getTileFromPosition(pj.getPosition()).getType());
+						civilized.setCivilized(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized());
+						//jpSouth.add(gameHistory);
+						/*jlPosition.setText(
 								"Personnage en position " + pj.getPosition().getX() + " , " + pj.getPosition().getY());
 						jlRegion.setText("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 						if(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized()) {
@@ -69,11 +68,14 @@ public class JGame extends JFrame {
 							jlCity.setText(jlCity.getText() + " [" +pj.getRegion().getTileFromPosition(pj.getPosition()).getCity().getLevel()+"]");
 						}else{
 							jlCity.setText("Rien dans le coin !");
-						}
+						}*/
 						return true;
 					case KeyEvent.VK_RIGHT:
 						pj.setPosition(new Position(pj.getPosition().getX() + 1, pj.getPosition().getY()));
-						jlPosition.setText(
+						titleHistory.setTitle("Region : " + pj.getRegion().getTileFromPosition(pj.getPosition()).getType());
+						civilized.setCivilized(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized());
+						//jpSouth.add(gameHistory);
+						/*jlPosition.setText(
 								"Personnage en position " + pj.getPosition().getX() + " , " + pj.getPosition().getY());
 						jlRegion.setText("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 						if(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized()) {
@@ -82,11 +84,14 @@ public class JGame extends JFrame {
 							jlCity.setText(jlCity.getText() + " [" +pj.getRegion().getTileFromPosition(pj.getPosition()).getCity().getLevel()+"]");
 						}else{
 							jlCity.setText("Rien dans le coin !");
-						}
+						}*/
 						return true;
 					case KeyEvent.VK_UP:
 						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() + 1));
-						jlPosition.setText(
+						titleHistory.setTitle("Region : " + pj.getRegion().getTileFromPosition(pj.getPosition()).getType());
+						civilized.setCivilized(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized());
+						//jpSouth.add(gameHistory);
+						/*jlPosition.setText(
 								"Personnage en position " + pj.getPosition().getX() + " , " + pj.getPosition().getY());
 						jlRegion.setText("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 						if(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized()) {
@@ -95,11 +100,14 @@ public class JGame extends JFrame {
 							jlCity.setText(jlCity.getText() + " [" +pj.getRegion().getTileFromPosition(pj.getPosition()).getCity().getLevel()+"]");
 						}else{
 							jlCity.setText("Rien dans le coin !");
-						}
+						}*/
 						return true;
 					case KeyEvent.VK_DOWN:
 						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() - 1));
-						jlPosition.setText(
+						titleHistory.setTitle("Region : " + pj.getRegion().getTileFromPosition(pj.getPosition()).getType());
+						civilized.setCivilized(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized());
+						//jpSouth.add(gameHistory);
+						/*jlPosition.setText(
 								"Personnage en position " + pj.getPosition().getX() + " , " + pj.getPosition().getY());
 						jlRegion.setText("Sur une case " + pj.getRegion().getTileFromPosition(pj.getPosition()));
 						if(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized()) {
@@ -108,7 +116,7 @@ public class JGame extends JFrame {
 							jlCity.setText(jlCity.getText() + " [" +pj.getRegion().getTileFromPosition(pj.getPosition()).getCity().getLevel()+"]");
 						}else{
 							jlCity.setText("Rien dans le coin !");
-						}
+						}*/
 						return true;
 					}
 				}
@@ -130,6 +138,8 @@ public class JGame extends JFrame {
 		JLabel caracWest = new JLabel("CHA : " + pj.getAttributes().getCHA());
 		jpWest.add(jlWest);
 		jpWest.add(caracWest);
+		
+		
 
 		// Ajout Panneau Final
 		JPanel contentPane = new JPanel(new BorderLayout());

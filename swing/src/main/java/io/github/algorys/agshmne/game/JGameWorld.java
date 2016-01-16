@@ -22,6 +22,5 @@ public class JGameWorld extends JPanel{
 		this.setBackground(Color.BLACK);
 
 		this.setSize(new Dimension(400,400));
-		//this.setVisible(true);
 	}
 }

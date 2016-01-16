@@ -22,8 +22,8 @@ public class Tile extends Observable {
 			city = new City(this);
 			isCivilized = true;
 		}
-		System.out.println("Dé vaut " + dice);
-		System.out.println("isCivilized vaut : " + isCivilized);
+		//System.out.println("Dé vaut " + dice);
+		//System.out.println("isCivilized vaut : " + isCivilized);
 	}
 
 	public TileType getType() {
