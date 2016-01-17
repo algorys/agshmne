@@ -1,10 +1,11 @@
-package io.github.algorys.agshmne.history;
+package io.github.algorys.agshmne.desctile;
 
 public enum DescLake {
-    lake("Lacs de "),
-    pond("Etangs de "),
-    fountain("Fontaines de "),
-    waterfall("Chutes de ")
+    lake("Lacs"),
+    pond("Etangs"),
+    fountain("Fontaines"),
+    waterfall("Cascades"),
+    fall("Chutes")
     ;
 
     private final String text;
