@@ -15,7 +15,6 @@ public class Tile extends Observable {
 	private TileType type;
 	private List<InventoryItem> items = new ArrayList<>();
 	private City city; 
-	boolean isCivilized = false;
 	private HistoryTile histTile;
 	
 	public Tile(TileType type) {
@@ -23,7 +22,6 @@ public class Tile extends Observable {
 		int dice = Outils.dice(100);
 		if(dice < 25) {
 			city = new CityFactory().createCity(type);
-			isCivilized = true;
 		}
 		histTile = new HistoryTile(this);
 	}
@@ -68,7 +66,7 @@ public class Tile extends Observable {
 	}
 	
 	public boolean isCivilized() {
-		return isCivilized;
+		return this.city != null;
 	}
 
 	public HistoryTile getHistTile() {
