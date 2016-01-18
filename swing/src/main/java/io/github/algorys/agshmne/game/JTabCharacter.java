@@ -234,10 +234,6 @@ public class JTabCharacter extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		int width = getPreferredSize().width;
-		int height = getPreferredSize().height;
-		int x = (this.getWidth() - width) / 2;
-		int y = (this.getHeight() - height) / 2;
 		try {
 			Image img = ImageIO.read(JTile.class.getClassLoader().getResource("parchemin.png"));
 			Image imgBack = ImageIO.read(JTile.class.getClassLoader().getResource("table.png") );

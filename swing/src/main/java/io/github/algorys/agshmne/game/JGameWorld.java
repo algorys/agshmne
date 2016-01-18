@@ -9,14 +9,7 @@ import io.github.algorys.agshmne.region.JRegion;
 import io.github.algorys.agshmne.region.Region;
 
 public class JGameWorld extends JPanel{
-
-	private Region region = new Region();
-	private final Character pj;
-	
 	public JGameWorld(Region region, final Character pj){		
-		this.pj = pj;
-		this.region = region;
-		
 		this.add(new JRegion(pj));
 		
 		this.setBackground(Color.BLACK);

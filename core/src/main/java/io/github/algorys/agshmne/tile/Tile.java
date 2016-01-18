@@ -8,25 +8,22 @@ import java.util.Observable;
 import io.github.algorys.agshmne.city.City;
 import io.github.algorys.agshmne.history.HistoryTile;
 import io.github.algorys.agshmne.inventory.InventoryItem;
-import io.github.algorys.agshmne.tools.Outils;
 
 public class Tile extends Observable {
 	private TileType type;
 	private List<InventoryItem> items = new ArrayList<>();
 	private City city; 
-	boolean isCivilized = false;
 	private HistoryTile histTile;
 	
+	public Tile(TileType type, City city) {
+		this.type = type;
+		this.city = city;
+		histTile = new HistoryTile(this);
+	}
+
 	public Tile(TileType type) {
 		this.type = type;
-		int dice = Outils.dice(100);
-		if(dice < 25) {
-			city = new City(this.getType());
-			isCivilized = true;
-		}
 		histTile = new HistoryTile(this);
-		//System.out.println("Dé vaut " + dice);
-		//System.out.println("isCivilized vaut : " + isCivilized);
 	}
 
 	public TileType getType() {
@@ -69,7 +66,7 @@ public class Tile extends Observable {
 	}
 	
 	public boolean isCivilized() {
-		return isCivilized;
+		return this.city != null;
 	}
 
 	public HistoryTile getHistTile() {
