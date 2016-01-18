@@ -1,42 +1,41 @@
 package io.github.algorys.agshmne.city;
 
-import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileType;
 import io.github.algorys.agshmne.tools.Outils;
 
 public class City {
-	private CityType type;
+	private CityType cityType;
 	private int level;
 	
-	public City(Tile tile) {
-		this.defineLvl(tile);
+	public City(TileType type) {
+		this.defineLvl(type);
 	}
 	
-	private void defineLvl(Tile tile){
-		if(tile.getType() == TileType.Desert || tile.getType() == TileType.Sea || tile.getType() == TileType.Swamp) {
+	private void defineLvl(TileType type){
+		if(type == TileType.Desert || type == TileType.Sea || type == TileType.Swamp) {
 			this.setLevel(Outils.dice(3));
-			CityType type = CityType.values()[0];
-			System.out.println("Type ville = " + type);
-			this.type = type;
+			CityType cityType = CityType.Hamlet;
+			System.out.println("Type ville = " + cityType);
+			this.cityType = cityType;
 		}
-		if(tile.getType() == TileType.Mountain || tile.getType() == TileType.Lake){
+		if(type == TileType.Mountain || type == TileType.Lake){
 			this.setLevel(Outils.dice(3)+2);
-			CityType type = CityType.values()[1];
-			System.out.println("Type ville = " + type);
-			this.type = type;
+			CityType cityType = CityType.Town;
+			System.out.println("Type ville = " + cityType);
+			this.cityType = cityType;
 		}
-		if(tile.getType() == TileType.Forest || tile.getType() == TileType.Wood){
+		if(type == TileType.Forest || type == TileType.Wood){
 			this.setLevel(Outils.dice(3)+5);
-			CityType type = CityType.values()[2];
-			System.out.println("Type ville = " + type);
-			this.type = type;
+			CityType cityType = CityType.City;
+			System.out.println("Type ville = " + cityType);
+			this.cityType = cityType;
 		}
-		if(tile.getType() == TileType.Hill || tile.getType() == TileType.Plain ||
-				tile.getType() == TileType.River || tile.getType() == TileType.Valley) {
+		if(type == TileType.Hill || type == TileType.Plain ||
+				type == TileType.River || type == TileType.Valley) {
 			this.setLevel(Outils.dice(3)+7);
-			CityType type = CityType.values()[3];
-			System.out.println("Type ville = " + type);
-			this.type = type;
+			CityType cityType = CityType.Citadel;
+			System.out.println("Type ville = " + cityType);
+			this.cityType = cityType;
 		}
 	}
 
@@ -49,7 +48,7 @@ public class City {
 	}
 
 	public CityType getType() {
-		return type;
+		return cityType;
 	}
 	
 }

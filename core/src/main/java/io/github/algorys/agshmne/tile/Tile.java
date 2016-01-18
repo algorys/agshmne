@@ -21,7 +21,7 @@ public class Tile extends Observable {
 		this.type = type;
 		int dice = Outils.dice(100);
 		if(dice < 25) {
-			city = new City(this);
+			city = new City(this.getType());
 			isCivilized = true;
 		}
 		histTile = new HistoryTile(this);
