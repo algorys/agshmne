@@ -12,31 +12,32 @@ public class City {
 	}
 	
 	private void defineLvl(TileType type){
-		if(type == TileType.Desert || type == TileType.Sea || type == TileType.Swamp) {
-			this.setLevel(Outils.dice(3));
-			CityType cityType = CityType.Hamlet;
-			System.out.println("Type ville = " + cityType);
-			this.cityType = cityType;
+		switch (type) {
+			case Desert:
+			case Sea:
+			case Swamp:
+				this.setLevel(Outils.dice(3));
+				this.cityType = CityType.Hamlet;
+				break;
+			case Mountain:
+			case Lake:
+				this.setLevel(Outils.dice(3) + 2);
+				this.cityType = CityType.Town;
+				break;
+			case Forest:
+			case Wood:
+				this.setLevel(Outils.dice(3) + 5);
+				this.cityType = CityType.City;
+				break;
+			case Hill:
+			case Plain:
+			case River:
+			case Valley:
+			default:
+				this.setLevel(Outils.dice(3) + 7);
+				this.cityType = CityType.Citadel;
 		}
-		if(type == TileType.Mountain || type == TileType.Lake){
-			this.setLevel(Outils.dice(3)+2);
-			CityType cityType = CityType.Town;
-			System.out.println("Type ville = " + cityType);
-			this.cityType = cityType;
-		}
-		if(type == TileType.Forest || type == TileType.Wood){
-			this.setLevel(Outils.dice(3)+5);
-			CityType cityType = CityType.City;
-			System.out.println("Type ville = " + cityType);
-			this.cityType = cityType;
-		}
-		if(type == TileType.Hill || type == TileType.Plain ||
-				type == TileType.River || type == TileType.Valley) {
-			this.setLevel(Outils.dice(3)+7);
-			CityType cityType = CityType.Citadel;
-			System.out.println("Type ville = " + cityType);
-			this.cityType = cityType;
-		}
+		System.out.println("Type ville = " + this.cityType);
 	}
 
 	public int getLevel() {
@@ -50,5 +51,5 @@ public class City {
 	public CityType getType() {
 		return cityType;
 	}
-	
+
 }
