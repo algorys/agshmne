@@ -5,7 +5,6 @@ import java.util.Map;
 
 import io.github.algorys.agshmne.city.City;
 import io.github.algorys.agshmne.city.ICityFactory;
-import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileType;
 
 public class CityFactory {
