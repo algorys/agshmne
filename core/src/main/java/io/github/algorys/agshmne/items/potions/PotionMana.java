@@ -1,7 +1,6 @@
 package io.github.algorys.agshmne.items.potions;
 
 import io.github.algorys.agshmne.inventory.StackableItemAdapter;
-import io.github.algorys.agshmne.items.fruits.Apple;
 
 public class PotionMana extends StackableItemAdapter  implements Potion{
 	private final int level;

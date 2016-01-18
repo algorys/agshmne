@@ -1,7 +1,6 @@
 package io.github.algorys.agshmne.items.misc;
 
 import io.github.algorys.agshmne.inventory.StackableItemAdapter;
-import io.github.algorys.agshmne.items.fruits.Apple;
 
 public class Nail extends StackableItemAdapter {
 
