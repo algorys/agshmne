@@ -2,10 +2,10 @@ package io.github.algorys.agshmne.skills.factory;
 
 import io.github.algorys.agshmne.skills.ISkillFactory;
 
-public class Cuisiner implements ISkillFactory {
+public class Fouiller implements ISkillFactory {
 	private int level;
 	
-	public Cuisiner() {
+	public Fouiller(){
 		this.level = 0;
 	}
 	
@@ -14,14 +14,13 @@ public class Cuisiner implements ISkillFactory {
 	}
 	
 	@Override
-	public String toString() {
-		return "Cuisiner ["+level+"]";
-	}
-
-	@Override
 	public int getLevel() {
+		// TODO Auto-generated method stub
 		return level;
 	}
-
+	@Override
+	public String toString(){
+		return "Fouiller";
+	}
 
 }

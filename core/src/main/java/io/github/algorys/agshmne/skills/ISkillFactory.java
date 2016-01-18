@@ -5,4 +5,5 @@ public interface ISkillFactory {
 	public String toString();
 	
 	public int getLevel();
+	
 }
