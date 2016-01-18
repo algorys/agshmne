@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Observable;
 
 import io.github.algorys.agshmne.city.City;
+import io.github.algorys.agshmne.city.factory.CityFactory;
 import io.github.algorys.agshmne.history.HistoryTile;
 import io.github.algorys.agshmne.inventory.InventoryItem;
 import io.github.algorys.agshmne.tools.Outils;
@@ -21,12 +22,10 @@ public class Tile extends Observable {
 		this.type = type;
 		int dice = Outils.dice(100);
 		if(dice < 25) {
-			city = new City(this.getType());
+			city = new CityFactory().createCity(type);
 			isCivilized = true;
 		}
 		histTile = new HistoryTile(this);
-		//System.out.println("Dé vaut " + dice);
-		//System.out.println("isCivilized vaut : " + isCivilized);
 	}
 
 	public TileType getType() {
