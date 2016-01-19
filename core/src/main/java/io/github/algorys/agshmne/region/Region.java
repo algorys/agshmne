@@ -13,6 +13,7 @@ public class Region {
 	private final static int HEIGHT = (Position.MAX_Y - Position.MIN_Y + 1);
 	final static int SIZE = WIDTH * HEIGHT;
 	private Tile[] tiles = new Tile[SIZE];
+	private int danger;
 	
 
 	Region(Tile[] tiles) {
@@ -22,7 +23,7 @@ public class Region {
 	public Region() {
 		CityFactory cityFactory = new CityFactory();
 		for (int i = 0; i < SIZE; i++) {
-			TileType type = TileType.values()[io.github.algorys.agshmne.tools.Outils.dice(TileType.values().length)];
+			TileType type = TileType.values()[io.github.algorys.agshmne.tools.Tools.dice(TileType.values().length)];
 			if(Math.random() < .25) {
 				tiles[i] = new Tile(type, cityFactory.createCity(type));
 			} else {
@@ -40,6 +41,8 @@ public class Region {
 		int z = (p.getY() - Position.MIN_Y) * WIDTH + (p.getX() - Position.MIN_X);
 		return tiles[z];
 	}
+	
+
 
 	@Override
 	public String toString() {
