@@ -12,7 +12,7 @@ public class AquaticRegionFactory implements RegionFactory {
 		TileType[] possibles = {TileType.Sea, TileType.Wood};
 		Tile[] tiles = new Tile[Region.SIZE];
 		for (int i = 0; i < Region.SIZE; i++) {
-			TileType type = possibles[io.github.algorys.agshmne.tools.Outils.dice(possibles.length)];
+			TileType type = possibles[io.github.algorys.agshmne.tools.Tools.dice(possibles.length)];
 			tiles[i] = new Tile(type);
 			while (Math.random() < .2) {
 				InventoryItem e = new Apple();

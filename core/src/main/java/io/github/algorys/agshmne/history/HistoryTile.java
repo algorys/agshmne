@@ -17,39 +17,39 @@ public class HistoryTile {
 	
 	public HistoryTile(Tile tile) {
 		if(tile.getType().equals(TileType.Wood) || tile.getType().equals(TileType.Forest)) {
-			DescWood descWood = DescWood.values()[io.github.algorys.agshmne.tools.Outils.dice(DescWood.values().length)];
+			DescWood descWood = DescWood.values()[io.github.algorys.agshmne.tools.Tools.dice(DescWood.values().length)];
 			this.desc = descWood.toString();
 		}
 		if(tile.getType().equals(TileType.Hill)) {
-			DescHill descHill = DescHill.values()[io.github.algorys.agshmne.tools.Outils.dice(DescHill.values().length)];
+			DescHill descHill = DescHill.values()[io.github.algorys.agshmne.tools.Tools.dice(DescHill.values().length)];
 			this.desc = descHill.toString();
 		}
 		if(tile.getType().equals(TileType.Desert)) {
-			DescDesert descDesert = DescDesert.values()[io.github.algorys.agshmne.tools.Outils.dice(DescDesert.values().length)];
+			DescDesert descDesert = DescDesert.values()[io.github.algorys.agshmne.tools.Tools.dice(DescDesert.values().length)];
 			this.desc = descDesert.toString();
 		}
 		if(tile.getType().equals(TileType.Sea)) {
-			DescSea descSea = DescSea.values()[io.github.algorys.agshmne.tools.Outils.dice(DescSea.values().length)];
+			DescSea descSea = DescSea.values()[io.github.algorys.agshmne.tools.Tools.dice(DescSea.values().length)];
 			this.desc = descSea.toString();
 		}
 		if(tile.getType().equals(TileType.Mountain)) {
-			DescMountain descMountain = DescMountain.values()[io.github.algorys.agshmne.tools.Outils.dice(DescMountain.values().length)];
+			DescMountain descMountain = DescMountain.values()[io.github.algorys.agshmne.tools.Tools.dice(DescMountain.values().length)];
 			this.desc = descMountain.toString();
 		}
 		if(tile.getType().equals(TileType.Plain) || tile.getType().equals(TileType.Valley)) {
-			DescPlain descPlain = DescPlain.values()[io.github.algorys.agshmne.tools.Outils.dice(DescPlain.values().length)];
+			DescPlain descPlain = DescPlain.values()[io.github.algorys.agshmne.tools.Tools.dice(DescPlain.values().length)];
 			this.desc = descPlain.toString();
 		}
 		if(tile.getType().equals(TileType.River)) {
-			DescRiver descRiver = DescRiver.values()[io.github.algorys.agshmne.tools.Outils.dice(DescRiver.values().length)];
+			DescRiver descRiver = DescRiver.values()[io.github.algorys.agshmne.tools.Tools.dice(DescRiver.values().length)];
 			this.desc = descRiver.toString();
 		}
 		if(tile.getType().equals(TileType.Swamp)) {
-			DescSwamp descSwamp = DescSwamp.values()[io.github.algorys.agshmne.tools.Outils.dice(DescSwamp.values().length)];
+			DescSwamp descSwamp = DescSwamp.values()[io.github.algorys.agshmne.tools.Tools.dice(DescSwamp.values().length)];
 			this.desc = descSwamp.toString();
 		}
 		if(tile.getType().equals(TileType.Lake)) {
-			DescLake descLake = DescLake.values()[io.github.algorys.agshmne.tools.Outils.dice(DescLake.values().length)];
+			DescLake descLake = DescLake.values()[io.github.algorys.agshmne.tools.Tools.dice(DescLake.values().length)];
 			this.desc = descLake.toString();
 		}
 		System.out.println("Desc Tile : " + desc);
