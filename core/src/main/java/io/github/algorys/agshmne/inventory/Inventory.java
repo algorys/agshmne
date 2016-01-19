@@ -5,16 +5,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
 
-import io.github.algorys.agshmne.items.fruits.Apple;
-
 public class Inventory extends Observable {
 	public final static int MAX_INVENTORY = 10;
 
 	private InventoryItem[] backpack = new InventoryItem[MAX_INVENTORY];
 	
 	public Inventory() {
-		this.addItem(new Apple());
-		
 	}
 
 	public void addItem(InventoryItem item) {
