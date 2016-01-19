@@ -43,11 +43,11 @@ public class Character extends Observable {
 	}
 	
 	public void setPosition(Position position) {
-		//System.out.println("Nouvelle position => " + position.getX() + ", " + position.getY());
-		//System.out.println("Sur case : " + region.getTileFromPosition(position));
-		this.position = position;
-		this.setChanged();
-		this.notifyObservers();
+		if(!this.position.equals(position)) {
+			this.position = position;
+			this.setChanged();
+			this.notifyObservers();
+		}
 	}
 	
 	public CharacterAttribute getAttributes() {
