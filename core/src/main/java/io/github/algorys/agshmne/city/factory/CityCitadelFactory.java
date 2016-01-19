@@ -9,7 +9,7 @@ public class CityCitadelFactory implements ICityFactory {
 
 	@Override
 	public City createCity() {
-		return new City(CityType.Citadel, Outils.dice(3) + 7);
+		return new City(Outils.dice(3) + 7);
 	}
 
 }

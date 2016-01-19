@@ -1,11 +1,11 @@
 package io.github.algorys.agshmne.city;
 
 public class City {
-	private CityType cityType;
+	//private CityType cityType;
 	private int level;
 
-	public City(CityType type, int level) {
-		this.cityType = type;
+	public City(int level) {
+		//this.cityType = type;
 		this.level = level;
 	}
 
@@ -18,7 +18,15 @@ public class City {
 	}
 
 	public CityType getType() {
-		return cityType;
+		if(level < 2) {
+			return CityType.Hamlet;
+		} else if (level < 4)  {
+			return CityType.Town;
+		} else if (level < 7)  {
+			return CityType.City;
+		} else {
+			return CityType.Citadel;
+		}
 	}
 
 }
