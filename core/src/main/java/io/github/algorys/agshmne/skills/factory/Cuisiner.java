@@ -16,7 +16,7 @@ public class Cuisiner implements ISkillFactory {
 	
 	@Override
 	public String toString() {
-		return "Cuisiner ["+level+"]";
+		return "Cuisiner";
 	}
 
 	@Override
