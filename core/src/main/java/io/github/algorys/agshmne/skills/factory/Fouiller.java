@@ -9,8 +9,9 @@ public class Fouiller implements ISkillFactory {
 		this.level = 0;
 	}
 	
+	@Override
 	public void setLevel(int lvl) {
-		this.level = lvl;
+		this.level = lvl;		
 	}
 	
 	@Override
