@@ -15,11 +15,11 @@ public class Position {
 					String.format("(x,y) devrait être compris entre (%d, %d) et (%d, %d) mais (%d,%d) reçu.", MIN_X,
 							MIN_Y, MAX_X, MAX_Y, x, y));
 		}
-		//System.out.println("------- Nouvelle Position --------");
+		// System.out.println("------- Nouvelle Position --------");
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	public int getX() {
 		return x;
 	}
@@ -28,4 +28,29 @@ public class Position {
 		return y;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + x;
+		result = prime * result + y;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Position other = (Position) obj;
+		if (x != other.x)
+			return false;
+		if (y != other.y)
+			return false;
+		return true;
+	}
+	
 }
