@@ -7,10 +7,14 @@ public class Danger {
 		lvl = 0;
 	}
 	
-	public boolean isDanger(){
-		if(this.lvl >= 10){
-			return true;
+	public void moreDanger(){
+		if(this.lvl >= 30){
+			// TODO : Voir si on entame pas un nouveau Combat ? ou si on attribue de l'XP;
+			this.lvl = 0;
 		}
-		return false;
+	}
+
+	public int getLvl() {
+		return lvl;
 	}
 }

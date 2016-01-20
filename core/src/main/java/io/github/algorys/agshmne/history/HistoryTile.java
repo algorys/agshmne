@@ -52,7 +52,7 @@ public class HistoryTile {
 			DescLake descLake = DescLake.values()[io.github.algorys.agshmne.tools.Tools.dice(DescLake.values().length)];
 			this.desc = descLake.toString();
 		}
-		System.out.println("Desc Tile : " + desc);
+		//System.out.println("Desc Tile : " + desc);
 		
 	}
 
