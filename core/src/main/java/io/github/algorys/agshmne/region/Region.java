@@ -3,6 +3,8 @@ package io.github.algorys.agshmne.region;
 import java.util.Arrays;
 
 import io.github.algorys.agshmne.city.factory.CityFactory;
+import io.github.algorys.agshmne.danger.Danger;
+import io.github.algorys.agshmne.events.Event;
 import io.github.algorys.agshmne.inventory.InventoryFactory;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.tile.Tile;
@@ -13,15 +15,12 @@ public class Region {
 	private final static int HEIGHT = (Position.MAX_Y - Position.MIN_Y + 1);
 	final static int SIZE = WIDTH * HEIGHT;
 	private Tile[] tiles = new Tile[SIZE];
-	private int danger;
+	private Danger danger;
 	
-
-	Region(Tile[] tiles) {
-		this.tiles = tiles;
-	}
-
 	public Region() {
 		CityFactory cityFactory = new CityFactory();
+		danger = new Danger();
+		Event event = new Event(danger);
 		for (int i = 0; i < SIZE; i++) {
 			TileType type = TileType.values()[io.github.algorys.agshmne.tools.Tools.dice(TileType.values().length)];
 			if(Math.random() < .25) {

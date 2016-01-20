@@ -1,14 +1,14 @@
 package io.github.algorys.agshmne.danger;
 
 public class Danger {
-	private int danger;
+	private int lvl;
 	
 	public Danger(){
-		danger = 0;
+		lvl = 0;
 	}
 	
-	public boolean isDanger(Danger danger){
-		if(this.danger >= 10){
+	public boolean isDanger(){
+		if(this.lvl >= 10){
 			return true;
 		}
 		return false;
