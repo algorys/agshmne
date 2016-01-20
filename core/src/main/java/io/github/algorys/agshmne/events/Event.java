@@ -20,41 +20,14 @@ public class Event {
 		TypeEvent typeEvent;
 		if(dice <= (29 - danger.getLvl())){
 			typeEvent = TypeEvent.Friend;
-			System.out.println("-------------------");
-			System.out.println("Rencontre AMICALE !");
-			System.out.println("Résultat : " + dice);
-			System.out.println("Type Event = " + typeEvent);
-			System.out.println("-------------------");
 		} else if(dice <= (49 + danger.getLvl())){
 			typeEvent = TypeEvent.Hostil;
-			System.out.println("-------------------");
-			System.out.println("Rencontre HOSTILE !");
-			System.out.println("Résultat : " + dice);
-			System.out.println("Type Event = " + typeEvent);
-			System.out.println("-------------------");
 		} else if(dice <= 56){
 			typeEvent = TypeEvent.Locality;
-			System.out.println("-------------------");
-			System.out.println("Lieu-dit");
-			System.out.println("Résultat : " + dice);
-			System.out.println("Type Event = " + typeEvent);
-			System.out.println("-------------------");
 		} else if(dice <= 59){
 			typeEvent = TypeEvent.Dungeon;
-			System.out.println("-------------------");
-			System.out.println("Donjon");
-			System.out.println("Résultat : " + dice);
-			System.out.println("Type Event = " + typeEvent);
-			System.out.println("-------------------");
-			
 		} else {
 			typeEvent = TypeEvent.Items;
-			System.out.println("-------------------");
-			System.out.println("Vous avez trouvé des objets !");
-			System.out.println("Résultat : " + dice);
-			System.out.println("Type Event = " + typeEvent);
-			System.out.println("-------------------");
-			
 		}
 		
 		return typeEvent;
