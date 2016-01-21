@@ -6,7 +6,7 @@ import io.github.algorys.agshmne.tools.Tools;
 public class Event {
 	private EncountType event;
 	/*
-	 * TODO
+	 * TODO Gestion du Danger
 	 * Rencontre Amicale : le joueur peut se voir proposer une quête ou apprendre une compétence. (30% - DANGER)
 	 * Rencontre Hostile : le joueur doit se battre ou monnayer sa fuite (si la rencontre le permet. Exemple : un joueur pourra marchander avec un bandit mais pas avec un loup). (20% + DANGER)
 	 */

@@ -27,7 +27,7 @@ public class JGame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-		// TODO
+		// TODO Faire le panneau WEST
 		JPanel jpWest = new JPanel();
 		/*
 		 * JPCenter : Permet d'accéder aux différentes interfaces du jeu.
