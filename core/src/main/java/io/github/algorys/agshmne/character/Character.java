@@ -7,6 +7,7 @@ import io.github.algorys.agshmne.caracteristic.CharacterVital;
 import io.github.algorys.agshmne.inventory.Inventory;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.skills.factory.SkillFactory;
 
 /*
  * Définit le Personnage
@@ -19,7 +20,7 @@ public class Character extends Observable {
 	private CharacterAttribute attributes;
 	private CharacterVital vital;
 	private CharacterXP xp;
-	
+	private SkillFactory skills;
 
 	public Character(Region region) {
 		this.region = region;
@@ -27,6 +28,7 @@ public class Character extends Observable {
 		attributes = new CharacterAttribute();
 		xp = new CharacterXP();
 		inv = new Inventory();
+		skills = new SkillFactory();
 		
 	}
 
@@ -64,6 +66,10 @@ public class Character extends Observable {
 
 	public CharacterSocial getSocial() {
 		return social;
+	}
+
+	public SkillFactory getSkills() {
+		return skills;
 	}
 }
 

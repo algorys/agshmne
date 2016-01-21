@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.game.JGame;
 import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.skills.SkillType;
 import io.github.algorys.agshmne.tile.JTile;
 
 public class JFicheNav extends JPanel {
@@ -68,6 +69,15 @@ public class JFicheNav extends JPanel {
 						pj.getAttributes().setINT(jpCarac.getINT());
 						pj.getAttributes().setCHA(jpCarac.getCHA());
 						pj.initVital();
+						// Init Skills
+						pj.getSkills().setSkillLevel(SkillType.cuisine, jpComp.getCuisiner());
+						pj.getSkills().setSkillLevel(SkillType.fouiller, jpComp.getFouiller());
+						pj.getSkills().setSkillLevel(SkillType.boucherie, jpComp.getBoucherie());
+						pj.getSkills().setSkillLevel(SkillType.bucheron, jpComp.getBucheron());
+						pj.getSkills().setSkillLevel(SkillType.miner, jpComp.getMiner());
+						pj.getSkills().setSkillLevel(SkillType.cultiver, jpComp.getCultiver());
+						pj.getSkills().setSkillLevel(SkillType.pecher, jpComp.getPecher());
+						pj.getSkills().setSkillLevel(SkillType.magie, jpComp.getMagie());
 						// Entrée dans le jeu
 						JGame game = new JGame(pj);
 						game.setVisible(true);

@@ -16,10 +16,10 @@ import io.github.algorys.agshmne.skills.factory.SkillFactory;
 import io.github.algorys.agshmne.tile.JTile;
 
 public class JTabComp extends JPanel {
-	private SkillFactory skillFact;
+	//private SkillFactory skillFact;
 	
-	public JTabComp() {
-		skillFact = new SkillFactory();
+	public JTabComp(SkillFactory skillFact) {
+		//this.skillFact = skillFact;
 		// GidBag Layout
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbccSkill = new GridBagConstraints();

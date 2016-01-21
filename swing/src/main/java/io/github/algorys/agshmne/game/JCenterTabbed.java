@@ -37,7 +37,7 @@ public class JCenterTabbed extends JTabbedPane {
 		this.addTab("Personnage", persoIcon, jpPerso, "Personnage");
 		// Compétences
 		Icon compIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("comp.png"));
-		jpComp = new JTabComp();
+		jpComp = new JTabComp(jregion.getPersonnage().getSkills());
 		this.addTab("Compétences", compIcon, jpComp, "Compétences");
 		// Inventaire
 		Icon backpackIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("backpack.png"));
