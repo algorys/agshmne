@@ -1,34 +1,45 @@
 package io.github.algorys.agshmne.quest;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.items.fruits.Apple;
+import io.github.algorys.agshmne.inventory.StackableItem;
 import io.github.algorys.agshmne.movement.Position;
 
-public class AppleQuest {
+public class FetchQuest {
 	private Position questPosition;
-	private Apple apple;
-	
-	public AppleQuest(Character pj) {
+	private Class<? extends StackableItem> type;
+	private int count;
+
+	public FetchQuest(Character pj, Class<? extends StackableItem> type, int count) {
 		this.questPosition = pj.getPosition();
+		this.count = count;
+		this.type = type;
 	}
 	
 	public boolean isWin(Character pj) {
-		if(pj.getInventory().count(Apple.class) >= 3) {
-			for(int i = 0; i < 3; i++) {
-				apple = new Apple();
-				pj.getInventory().removeItem(apple);
-			}
-			return true;
+		return (pj.getInventory().count(type) >= count) ;
+	}
+	
+	public void terminate(Character pj) {
+		
+		try {
+			StackableItem item = type.newInstance();
+			item.addCount(count - 1);
+			pj.getInventory().removeItem(item);
+		} catch (InstantiationException e) {
+			e.printStackTrace(); // FIXME
+		} catch (IllegalAccessException e) {
+			e.printStackTrace(); // FIXME
 		}
-		return false;
+		
+		// TODO Rajouter une récompense
 	}
 
 	public String getName() {
-		return "Trouver des Pommes";
+		return "Trouver des " + type.getSimpleName();
 	}
 
 	public String getGoal() {
-		return "Vous devez trouvez au moins 3 pommes et les rapporter en ("
+		return "Vous devez trouvez au moins " + count + " "+type.getSimpleName()+" et les rapporter en ("
 	+ questPosition.getX() + ", " 
 	+ questPosition.getY() + ")";
 	}
