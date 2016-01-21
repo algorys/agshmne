@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne.events;
 
-public enum TypeEvent {
+public enum EncountType {
 	Friend,
 	Hostil,
 	Locality,

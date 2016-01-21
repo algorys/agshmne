@@ -4,7 +4,7 @@ import io.github.algorys.agshmne.danger.Danger;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class Event {
-	private TypeEvent event;
+	private EncountType event;
 	/*
 	 * TODO
 	 * Rencontre Amicale : le joueur peut se voir proposer une quête ou apprendre une compétence. (30% - DANGER)
@@ -12,22 +12,23 @@ public class Event {
 	 */
 	public Event(Danger danger){
 		event = ChoiceEvent(danger);
+		Encounter encount = new Encounter(event);
 	}
 	
-	private TypeEvent ChoiceEvent(Danger danger) {
+	private EncountType ChoiceEvent(Danger danger) {
 		int dice = Tools.dice(100);
 		danger.moreDanger();
-		TypeEvent typeEvent;
+		EncountType typeEvent;
 		if(dice <= (29 - danger.getLvl())){
-			typeEvent = TypeEvent.Friend;
+			typeEvent = EncountType.Friend;
 		} else if(dice <= (49 + danger.getLvl())){
-			typeEvent = TypeEvent.Hostil;
+			typeEvent = EncountType.Hostil;
 		} else if(dice <= 56){
-			typeEvent = TypeEvent.Locality;
+			typeEvent = EncountType.Locality;
 		} else if(dice <= 59){
-			typeEvent = TypeEvent.Dungeon;
+			typeEvent = EncountType.Dungeon;
 		} else {
-			typeEvent = TypeEvent.Items;
+			typeEvent = EncountType.Items;
 		}
 		
 		return typeEvent;
