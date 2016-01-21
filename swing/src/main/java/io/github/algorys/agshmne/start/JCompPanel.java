@@ -96,7 +96,7 @@ public class JCompPanel extends JPanel {
 		this.cuisiner = cuisiner;
 		this.fouiller = fouiller;
 		this.boucherie = boucherie;
-		this.bucheron = boucherie;
+		this.bucheron = bucheron;
 		this.miner = miner;
 		this.cultiver = cultiver;
 		this.pecher = pecher;

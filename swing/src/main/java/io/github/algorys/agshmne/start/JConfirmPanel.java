@@ -192,9 +192,9 @@ public class JConfirmPanel extends JPanel {
 		gbcConfirm.gridwidth = 1;
 		gbcConfirm.anchor = GridBagConstraints.WEST;
 		gbcConfirm.fill = GridBagConstraints.NONE;
-		JTextField jtBucher = new JTextField("Bucheron : " + comp.getBucheron());
-		jtBucher.setEditable(false);
-		this.add(jtBucher, gbcConfirm);
+		JTextField jtBucheron = new JTextField("Bucheron : " + comp.getBucheron());
+		jtBucheron.setEditable(false);
+		this.add(jtBucheron, gbcConfirm);
 		// Miner
 		gbcConfirm.gridy = 18;
 		gbcConfirm.gridheight = 1;
