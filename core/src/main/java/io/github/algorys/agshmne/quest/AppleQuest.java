@@ -13,7 +13,7 @@ public class AppleQuest {
 	}
 	
 	public boolean isWin(Character pj) {
-		if(pj.getInventory().count(Apple.class) == 3) {
+		if(pj.getInventory().count(Apple.class) >= 3) {
 			for(int i = 0; i < 3; i++) {
 				apple = new Apple();
 				pj.getInventory().removeItem(apple);
