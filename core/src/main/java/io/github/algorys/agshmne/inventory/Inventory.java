@@ -55,9 +55,7 @@ public class Inventory extends Observable {
 			for (int i = 0; i < MAX_INVENTORY; i++) {
 				if (backpack[i] != null && item.getClass() == backpack[i].getClass()) {
 					StackableItem stack = (StackableItem) backpack[i];
-					System.out.println(".getCount vaut : " + stackItem.getCount());
 					stack.removeCount(stackItem.getCount());
-					System.out.println(".getCount vaut : " + stackItem.getCount());
 					if(stack.getCount() == 0){
 						backpack[i] = null; // TODO Si non gestion des emplacements (mais du coup, pas forcément un tableau)
 					}
