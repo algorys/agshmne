@@ -16,8 +16,7 @@ public class JCivilized extends JPanel{
 	public JCivilized(Character pj){
 		this.setPreferredSize(new Dimension(700, 20));
 		this.setBackground(Color.lightGray);
-		Tile tile = pj.getRegion().getTileFromPosition(pj.getPosition());
-		if(tile.isCivilized()){
+		if(pj.getTile().isCivilized()){
 			this.jlCiv.setText("Civilisé");
 		} else {
 			this.jlCiv.setText("Aucune civilisation connue...");

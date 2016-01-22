@@ -8,6 +8,7 @@ import io.github.algorys.agshmne.inventory.Inventory;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.region.Region;
 import io.github.algorys.agshmne.skills.factory.SkillFactory;
+import io.github.algorys.agshmne.tile.Tile;
 
 /*
  * Définit le Personnage
@@ -70,6 +71,10 @@ public class Character extends Observable {
 
 	public SkillFactory getSkills() {
 		return skills;
+	}
+	
+	public Tile getTile() {
+		return getRegion().getTileFromPosition(getPosition());
 	}
 }
 

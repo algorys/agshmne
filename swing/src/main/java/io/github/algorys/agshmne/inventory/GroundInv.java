@@ -29,7 +29,7 @@ public class GroundInv extends JPanel implements Observer {
 		this.pj = pj;
 		pj.addObserver(this);
 				
-		groundItem = new JList<InventoryItem>(new TileListModel(pj.getRegion().getTileFromPosition(pj.getPosition())));
+		groundItem = new JList<InventoryItem>(new TileListModel(pj.getTile()));
 		groundItem.setCellRenderer(new InvRenderer());
 		groundItem.setBackground(Color.BLACK);
 		groundItem.setForeground(Color.green);
@@ -72,7 +72,7 @@ public class GroundInv extends JPanel implements Observer {
 		if(this.currentTile != null) {
 			currentTile.deleteObserver(this);
 		}
-		this.currentTile = pj.getRegion().getTileFromPosition(pj.getPosition());
+		this.currentTile = pj.getTile();
 		groundItem.setModel(new TileListModel(this.currentTile));
 		
 		this.currentTile.addObserver(this);

@@ -51,7 +51,7 @@ public class JTabInv extends JPanel {
 							inv.removeItem((InventoryItem) selectedItem);;
 							System.out.println("Objets " + selectedItem + "Ajouté");
 							System.out.println(inv);
-							Tile tile = JTabInv.this.pj.getRegion().getTileFromPosition(JTabInv.this.pj.getPosition());
+							Tile tile = JTabInv.this.pj.getTile();
 							tile.addItem(selectedItem);
 							System.out.println("Objets courants : " + tile.getItems());
 							

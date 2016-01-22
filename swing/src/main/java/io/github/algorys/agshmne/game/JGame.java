@@ -15,6 +15,7 @@ import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.region.JRegion;
 import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.tile.Tile;
 
 public class JGame extends JFrame {
 	private Region region = new Region();
@@ -42,9 +43,10 @@ public class JGame extends JFrame {
 		BoxLayout blSouth = new BoxLayout(jpSouth, BoxLayout.Y_AXIS);
 		jpSouth.setLayout(blSouth);
 		final JTitleHistory titleHistory = new JTitleHistory(pj);
-		titleHistory.setTitle("Region : " + pj.getRegion().getTileFromPosition(pj.getPosition()).getHistTile().getDesc());
+		Tile currentTile = pj.getTile();
+		titleHistory.setTitle("Region : " + currentTile.getHistTile().getDesc());
 		final JCivilized civilized = new JCivilized(pj);
-		civilized.setCivilized(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized());
+		civilized.setCivilized(currentTile.isCivilized());
 		jpSouth.add(titleHistory);
 		jpSouth.add(civilized);
 
@@ -56,26 +58,26 @@ public class JGame extends JFrame {
 					switch (e.getKeyCode()) {
 					case KeyEvent.VK_LEFT:
 						pj.setPosition(new Position(pj.getPosition().getX() - 1, pj.getPosition().getY()));
-						titleHistory.setTitle("Region : " + pj.getRegion().getTileFromPosition(pj.getPosition()).getHistTile().getDesc());
-						civilized.setCivilized(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized());
+						titleHistory.setTitle("Region : " + pj.getTile().getHistTile().getDesc());
+						civilized.setCivilized(pj.getTile().isCivilized());
 						
 						return true;
 					case KeyEvent.VK_RIGHT:
 						pj.setPosition(new Position(pj.getPosition().getX() + 1, pj.getPosition().getY()));
-						titleHistory.setTitle("Region : " + pj.getRegion().getTileFromPosition(pj.getPosition()).getHistTile().getDesc());
-						civilized.setCivilized(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized());
+						titleHistory.setTitle("Region : " + pj.getTile().getHistTile().getDesc());
+						civilized.setCivilized(pj.getTile().isCivilized());
 						
 						return true;
 					case KeyEvent.VK_UP:
 						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() + 1));
-						titleHistory.setTitle("Region : " + pj.getRegion().getTileFromPosition(pj.getPosition()).getHistTile().getDesc());
-						civilized.setCivilized(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized());
+						titleHistory.setTitle("Region : " + pj.getTile().getHistTile().getDesc());
+						civilized.setCivilized(pj.getTile().isCivilized());
 						
 						return true;
 					case KeyEvent.VK_DOWN:
 						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() - 1));
-						titleHistory.setTitle("Region : " + pj.getRegion().getTileFromPosition(pj.getPosition()).getHistTile().getDesc());
-						civilized.setCivilized(pj.getRegion().getTileFromPosition(pj.getPosition()).isCivilized());
+						titleHistory.setTitle("Region : " + pj.getTile().getHistTile().getDesc());
+						civilized.setCivilized(pj.getTile().isCivilized());
 						
 						return true;
 					}
