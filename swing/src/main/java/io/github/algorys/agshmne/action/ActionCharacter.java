@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.items.craft.lowOre;
 import io.github.algorys.agshmne.items.craft.lowWood;
 import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileType;
@@ -35,7 +36,7 @@ public class ActionCharacter extends JPanel implements Observer {
 		cutWood = new AbstractAction("Couper du bois") {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent wood) {
 				System.out.println("Bois coupé !");	
 				pj.getInventory().addItem(new lowWood());
 			}
@@ -46,9 +47,9 @@ public class ActionCharacter extends JPanel implements Observer {
 		mineOre = new AbstractAction("Récolter Minerai") {
 
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent ore) {
 				System.out.println("Minerai trouvé !");	
-				pj.getInventory().addItem(new lowWood());
+				pj.getInventory().addItem(new lowOre());
 			}
 			
 		};
