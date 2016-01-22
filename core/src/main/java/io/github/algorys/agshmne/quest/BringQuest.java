@@ -3,33 +3,40 @@ package io.github.algorys.agshmne.quest;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.inventory.QuestItem;
 import io.github.algorys.agshmne.movement.Position;
-import io.github.algorys.agshmne.tools.Tools;
+import io.github.algorys.agshmne.movement.RandomCoordinated;
 
 public class BringQuest {
 	private Position questDestination;
-	private Position  initialPos;
+	private Position initialPos;
+	private QuestItem itemQ;
 	
 	public BringQuest(Character pj, QuestItem item, int count) {
 		this.initialPos = pj.getPosition();
-		questDestination = this.defineDestination(initialPos);
+		this.questDestination = this.defineDestination(initialPos);
+		this.itemQ = item;
+		// TODO gérer les objets de quêtes différement des objets normaux.
 		pj.getInventory().addItem(item);
 	}
 	
 	private Position defineDestination(Position position) {
-		// TODO voir pour un algo plus précis
-		int x1 = position.getX() - Tools.dice(10);
-		int y1 = position.getX() + Tools.dice(10);
-		Position questDestination = new Position(x1, y1);
+		int maxX = position.getX() + 10;
+		int minX = position.getX() - 10;
+		int maxY = position.getX() + 10;
+		int minY = position.getX() - 10;
+		RandomCoordinated newY = new RandomCoordinated(maxY, minY);
+		RandomCoordinated newX = new RandomCoordinated(maxX, minX);	
+		Position questDestination = new Position(newX.getCoordinated(), newY.getCoordinated());
 		return questDestination;
 	}
 	
-	public boolean isWin(Character pj) {
-		return false;
+	public boolean isWin(Position pjPosition) {
+		return pjPosition == questDestination;
 	}
 	
 	public void terminate(Character pj) {
-		
-		}
+		pj.getInventory().removeItem(itemQ);
+		// TODO prévoir une récompense.
+	}
 
 	public Position getQuestDestination() {
 		return questDestination;
