@@ -8,8 +8,8 @@ import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.items.craft.lowWood;
+import io.github.algorys.agshmne.skills.SkillTool;
 import io.github.algorys.agshmne.skills.SkillType;
-import io.github.algorys.agshmne.skills.factory.Miner;
 
 public class CompetenceMineAction extends AbstractAction implements Observer {
 	private final Character pj;
@@ -23,8 +23,13 @@ public class CompetenceMineAction extends AbstractAction implements Observer {
 
 	@Override
 	public void actionPerformed(ActionEvent mine) {
-		System.out.println("Minerai trouvé !");
-		pj.getInventory().addItem(new lowWood());
+		int mineLevel = pj.getSkills().getSkillLevel(SkillType.miner);
+		if(SkillTool.Dice(mineLevel, 10)){
+			System.out.println("Minerai trouvé !");
+			pj.getInventory().addItem(new lowWood());
+		}else {
+			System.out.println("Rien d'exploitable");
+		}
 	}
 
 	@Override
