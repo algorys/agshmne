@@ -10,7 +10,7 @@ public class BringQuest {
 	private Position initialPos;
 	private QuestItem itemQ;
 	
-	public BringQuest(Character pj, QuestItem item, int count) {
+	public BringQuest(Character pj, QuestItem item) {
 		this.initialPos = pj.getPosition();
 		this.questDestination = this.defineDestination(initialPos);
 		this.itemQ = item;
@@ -29,8 +29,8 @@ public class BringQuest {
 		return questDestination;
 	}
 	
-	public boolean isWin(Position pjPosition) {
-		return pjPosition == questDestination;
+	public boolean isWin(Character pj) {
+		return pj.getPosition() == questDestination && pj.getInventory().contains(itemQ.getClass());
 	}
 	
 	public void terminate(Character pj) {
