@@ -7,6 +7,5 @@ public interface QuestItem extends InventoryItem {
 	public Position getDestination();
 	
 	public Position setDestination(Position destination);
-	
-	public int getLevel();
+
 }

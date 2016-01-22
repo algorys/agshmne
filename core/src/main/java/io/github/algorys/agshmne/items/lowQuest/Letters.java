@@ -5,7 +5,6 @@ import io.github.algorys.agshmne.movement.Position;
 
 public class Letters implements QuestItem {
 	private Position position;
-	private int level;
 	
 	public Letters(Position position){
 		this.position = position;
@@ -30,12 +29,6 @@ public class Letters implements QuestItem {
 	public Position setDestination(Position destination) {
 		this.position = destination;
 		return position;
-	}
-
-	@Override
-	public int getLevel() {
-		// TODO Auto-generated method stub
-		return level;
 	}
 
 }
