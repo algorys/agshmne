@@ -21,8 +21,8 @@ public class BringQuest {
 	private Position defineDestination(Position position) {
 		int maxX = position.getX() + 10;
 		int minX = position.getX() - 10;
-		int maxY = position.getX() + 10;
-		int minY = position.getX() - 10;
+		int maxY = position.getY() + 10;
+		int minY = position.getY() - 10;
 		RandomCoordinated newY = new RandomCoordinated(maxY, minY);
 		RandomCoordinated newX = new RandomCoordinated(maxX, minX);	
 		Position questDestination = new Position(newX.getCoordinated(), newY.getCoordinated());
