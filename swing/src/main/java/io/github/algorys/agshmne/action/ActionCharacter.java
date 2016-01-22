@@ -20,22 +20,6 @@ public class ActionCharacter extends JPanel {
 		this.add(oreButton);
 		
 		woodButton.setAction(new CompetenceCutAction(pj));
-		
-		Action mineOre = new AbstractAction("Récolter Minerai") {
-
-			@Override
-			public void actionPerformed(ActionEvent ore) {
-				if(pj.getTile().getType() == TileType.Mountain) {
-					this.setEnabled(true);
-				} else {
-					this.setEnabled(false);
-				}
-				
-				System.out.println("Minerai trouvé !");	
-				pj.getInventory().addItem(new lowOre());
-			}
-			
-		};
-		oreButton.setAction(mineOre);
+		oreButton.setAction(new CompetenceMineAction(pj));
 	}
 }
