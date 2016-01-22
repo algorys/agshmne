@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Observable;
 
 public class Inventory extends Observable {
+	// TODO gérer les objets de quêtes différement des objets normaux.
 	public final static int MAX_INVENTORY = 10;
-
 	private InventoryItem[] backpack = new InventoryItem[MAX_INVENTORY];
 	
 	public Inventory() {
