@@ -14,6 +14,11 @@ public class Letters implements QuestItem {
 	public String getName() {
 		return "Lettres";
 	}
+	
+	@Override
+	public String toString() {
+		return "Lettres";
+	}
 
 	@Override
 	public int getWeight() {
