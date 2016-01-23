@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.items.craft;
+package io.github.algorys.agshmne.items.craft.wood;
 
 import io.github.algorys.agshmne.inventory.CraftItem;
 import io.github.algorys.agshmne.inventory.StackableItemAdapter;

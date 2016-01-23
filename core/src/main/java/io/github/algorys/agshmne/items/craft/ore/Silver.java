@@ -1,20 +1,15 @@
-package io.github.algorys.agshmne.items.craft;
+package io.github.algorys.agshmne.items.craft.ore;
 
 import io.github.algorys.agshmne.inventory.CraftItem;
 import io.github.algorys.agshmne.inventory.StackableItemAdapter;
 
-public class Iron extends StackableItemAdapter implements CraftItem, Ore {
+public class Silver extends StackableItemAdapter implements Ore, CraftItem {
 	private OreType type;
 	
-	public Iron() {
-		type = OreType.Iron;
+	public Silver() {
+		this.type = OreType.Silver;
 	}
 	
-	@Override
-	public String getName() {
-		return "Minerai de fer";
-	}
-
 	@Override
 	public int getWeight() {
 		return 1;
@@ -23,6 +18,11 @@ public class Iron extends StackableItemAdapter implements CraftItem, Ore {
 	@Override
 	public OreType getOreType() {
 		return type;
+	}
+
+	@Override
+	public String getName() {
+		return "Minerai d'argent";
 	}
 
 }

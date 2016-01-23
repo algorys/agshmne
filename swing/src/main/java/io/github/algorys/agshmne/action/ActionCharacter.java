@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.items.craft.Copper;
+import io.github.algorys.agshmne.items.craft.ore.Copper;
 import io.github.algorys.agshmne.tile.TileType;
 
 public class ActionCharacter extends JPanel {
