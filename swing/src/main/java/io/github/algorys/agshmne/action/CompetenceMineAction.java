@@ -7,7 +7,7 @@ import java.util.Observer;
 import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.items.craft.Pine;
+import io.github.algorys.agshmne.items.craft.ore.Copper;
 import io.github.algorys.agshmne.skills.SkillTool;
 import io.github.algorys.agshmne.skills.SkillType;
 
@@ -26,7 +26,7 @@ public class CompetenceMineAction extends AbstractAction implements Observer {
 		int mineLevel = pj.getSkills().getSkillLevel(SkillType.miner);
 		if(SkillTool.Dice(mineLevel, 10)){
 			System.out.println("Minerai trouvé !");
-			pj.getInventory().addItem(new Pine());
+			pj.getInventory().addItem(new Copper());
 		}else {
 			System.out.println("Rien d'exploitable");
 		}
