@@ -3,20 +3,26 @@ package io.github.algorys.agshmne.items.craft;
 import io.github.algorys.agshmne.inventory.CraftItem;
 import io.github.algorys.agshmne.inventory.StackableItemAdapter;
 
-public class lowWood extends StackableItemAdapter implements CraftItem {
-
+public class Iron extends StackableItemAdapter implements CraftItem, Ore {
+	private OreType type;
+	
+	public Iron() {
+		type = OreType.Iron;
+	}
+	
 	@Override
 	public String getName() {
-		return "Bois de mauvaise qualité";
+		return "Minerai de fer";
 	}
 
 	@Override
 	public int getWeight() {
-		return 0;
+		return 1;
 	}
-	
+
 	@Override
-	public String toString() {
-		return "Bois de mauvaise qualité (" + lowWood.this.getCount() + ")";
+	public OreType getOreType() {
+		return type;
 	}
+
 }
