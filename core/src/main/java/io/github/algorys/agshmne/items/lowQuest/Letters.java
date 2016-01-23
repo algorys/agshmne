@@ -31,9 +31,8 @@ public class Letters implements QuestItem {
 	}
 
 	@Override
-	public Position setDestination(Position destination) {
+	public void setDestination(Position destination) {
 		this.position = destination;
-		return position;
 	}
 
 }
