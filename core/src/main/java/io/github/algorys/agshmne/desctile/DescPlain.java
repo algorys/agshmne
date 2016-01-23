@@ -5,7 +5,7 @@ public enum DescPlain {
 	savanna("Savane"),
 	earth("Terres"),
 	countries("Contrées"),
-	county("Conté")
+	county("Comté")
 	;
 	
 	private final String text;
