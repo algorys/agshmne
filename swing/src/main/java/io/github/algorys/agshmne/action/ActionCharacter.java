@@ -11,16 +11,20 @@ public class ActionCharacter extends JPanel {
 		// Boutons d'action
 		JButton woodButton = new JButton("Couper du Bois");
 		JButton oreButton = new JButton("Récolter Minerai");
+		JButton fishButton = new JButton("Pêcher");
+		
 		JButton searchCity = new JButton("Fouiller la Ville");
 		JButton searchRegion = new JButton("Fouiller la Région");
 		
 		this.add(woodButton);
 		this.add(oreButton);
+		this.add(fishButton);
 		this.add(searchRegion);
 		this.add(searchCity);
 		
 		woodButton.setAction(new SkillCutAction(pj));
 		oreButton.setAction(new SkillMineAction(pj));
+		fishButton.setAction(new SkillFishAction(pj));
 		searchRegion.setAction(new SkillSearchRegionAction(pj));
 		searchCity.setAction(new SkillSearchCityAction(pj));
 	}
