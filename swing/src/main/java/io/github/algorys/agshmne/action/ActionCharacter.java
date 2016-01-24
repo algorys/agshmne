@@ -1,25 +1,23 @@
 package io.github.algorys.agshmne.action;
 
-import java.awt.event.ActionEvent;
-
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.items.craft.ore.Copper;
-import io.github.algorys.agshmne.tile.TileType;
 
 public class ActionCharacter extends JPanel {
 	public ActionCharacter(final Character pj){
 		// Boutons d'action
-		JButton woodButton = new JButton("Couper du bois");
+		JButton woodButton = new JButton("Couper du Bois");
 		JButton oreButton = new JButton("Récolter Minerai");
+		JButton searchRegion = new JButton("Fouiller la Ville");
+		
 		this.add(woodButton);
 		this.add(oreButton);
+		this.add(searchRegion);
 		
 		woodButton.setAction(new CompetenceCutAction(pj));
 		oreButton.setAction(new CompetenceMineAction(pj));
+		searchRegion.setAction(new CompetenceSearchCityAction(pj));
 	}
 }
