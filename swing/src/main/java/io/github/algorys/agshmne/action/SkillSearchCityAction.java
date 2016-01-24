@@ -8,10 +8,10 @@ import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.Character;
 
-public class CompetenceSearchCityAction extends AbstractAction implements Observer {
+public class SkillSearchCityAction extends AbstractAction implements Observer {
 	private final Character pj;
 	
-	public CompetenceSearchCityAction(Character pj) {
+	public SkillSearchCityAction(Character pj) {
 		super("Fouiller la Ville");
 		this.pj = pj;
 		pj.addObserver(this);

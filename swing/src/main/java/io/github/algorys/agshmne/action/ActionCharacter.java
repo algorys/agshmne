@@ -16,8 +16,8 @@ public class ActionCharacter extends JPanel {
 		this.add(oreButton);
 		this.add(searchRegion);
 		
-		woodButton.setAction(new CompetenceCutAction(pj));
-		oreButton.setAction(new CompetenceMineAction(pj));
-		searchRegion.setAction(new CompetenceSearchCityAction(pj));
+		woodButton.setAction(new SkillCutAction(pj));
+		oreButton.setAction(new SkillMineAction(pj));
+		searchRegion.setAction(new SkillSearchCityAction(pj));
 	}
 }

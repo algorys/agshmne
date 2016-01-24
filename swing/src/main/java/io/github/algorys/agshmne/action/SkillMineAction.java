@@ -11,10 +11,10 @@ import io.github.algorys.agshmne.items.craft.ore.Copper;
 import io.github.algorys.agshmne.skills.SkillTool;
 import io.github.algorys.agshmne.skills.SkillType;
 
-public class CompetenceMineAction extends AbstractAction implements Observer {
+public class SkillMineAction extends AbstractAction implements Observer {
 	private final Character pj;
 
-	public CompetenceMineAction(Character pj) {
+	public SkillMineAction(Character pj) {
 		super("Récolter du minerai");
 		this.pj = pj;
 		pj.addObserver(this);

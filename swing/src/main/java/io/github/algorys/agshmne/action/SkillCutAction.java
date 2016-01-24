@@ -9,10 +9,10 @@ import javax.swing.AbstractAction;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.items.craft.wood.Pine;
 
-final class CompetenceCutAction extends AbstractAction implements Observer {
+final class SkillCutAction extends AbstractAction implements Observer {
 	private final Character pj;
 
-	public CompetenceCutAction(Character pj) {
+	public SkillCutAction(Character pj) {
 		super("Couper du bois");
 		this.pj = pj;
 		pj.addObserver(this);
