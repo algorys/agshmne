@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.opponent.beast;
 
-public interface Beast {
+import io.github.algorys.agshmne.opponent.Opponent;
 
-	public BeastAttributeFactory getAttributes();
+public interface Beast extends Opponent {
+
 }
