@@ -1,0 +1,21 @@
+Box
+Book
+Hello
+Simple
+Truc
+D'autres
+exemples
+pour montrer
+que je
+peux rajouter
+Autant de trucs que je veux et meme des très longs !
+
+Nail:3
+Letters:5
+Flowers:8
+Wood:12
+Stackable Items:7
+
+armor:5
+sword:7/9
+
