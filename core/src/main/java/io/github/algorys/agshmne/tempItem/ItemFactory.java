@@ -26,7 +26,7 @@ public class ItemFactory {
 		return new GeneralItem(simpleItems.get(Tools.dice(simpleItems.size())));
 	}
 	
-	public StackableItem createStackableItem() {
+	public IStackableItem createStackableItem() {
 		String line = stackableItems.get(Tools.dice(stackableItems.size()));
 		String[] parts = line.split(":");
 		return new GeneralStackableItem(parts[0], Integer.parseInt(parts[1]));

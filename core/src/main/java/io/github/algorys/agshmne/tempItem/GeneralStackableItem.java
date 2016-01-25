@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne.tempItem;
 
-public class GeneralStackableItem implements StackableItem {
+public class GeneralStackableItem implements IStackableItem {
 	private int count;
 	private String name;
 	
@@ -20,7 +20,20 @@ public class GeneralStackableItem implements StackableItem {
 	}
 
 	@Override
-	public boolean isSameType(StackableItem item) {
+	public boolean isSameType(IStackableItem item) {
 		return this.name == item.getName();
+	}
+
+	@Override
+	public void addCount(int amount) {
+		if(amount < 0) throw new IllegalArgumentException("amount should be positive");
+		count += amount;		
+	}
+
+	@Override
+	public void removeCount(int amount) {
+		if(amount < 0) throw new IllegalArgumentException("amount should be positive");
+		if(amount > count) throw new IllegalStateException("You can't remove so many items from this stack");
+		count -= amount;
 	}
 }
