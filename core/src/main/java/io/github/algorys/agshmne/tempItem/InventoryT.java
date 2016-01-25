@@ -36,13 +36,12 @@ public class InventoryT extends Observable {
 		this.notifyObservers();
 	}
 
-	public void removeItem(InventoryItem item) {
+	public void removeItem(Item item) {
 		boolean removed = false;
 		if (item instanceof GeneralStackableItem) {
-			IStackableItem stackItem = (IStackableItem) item;
 			for (int i = 0; i < backpack.size(); i++) {
-				if (((GeneralStackableItem) item).isSameType((IStackableItem)backpack.get(i))) {
-					IStackableItem stack = (IStackableItem) backpack.get(i);
+				if (backpack.get(i).getName() == item.getName()) {
+					IStackableItem stack = ((IStackableItem) backpack.get(i));
 					stack.removeCount(stack.getCount());
 					if(stack.getCount() == 0){
 						backpack.remove(i); // TODO Si non gestion des emplacements (mais du coup, pas forcément un tableau)

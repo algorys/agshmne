@@ -20,11 +20,21 @@ public class ItemInventoryTest {
 		StackableItemDirectFactory stackFactory = new StackableItemDirectFactory();
 		
 		Item apple = stackFactory.createApple();
+		Item orange = stackFactory.createOrange();
 		
 		inventory.addItem(apple);
 		inventory.addItem(apple);
+		inventory.addItem(orange);
 
 		System.out.println("---" + inventory.toString());
+		
+		inventory.removeItem(apple);
+		inventory.removeItem(apple);
+		inventory.removeItem(orange);
+		
+		System.out.println("---" + inventory.toString());
+		
+		
 	}
 
 }
