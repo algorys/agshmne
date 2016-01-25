@@ -4,11 +4,6 @@ import io.github.algorys.agshmne.inventory.CraftItem;
 import io.github.algorys.agshmne.inventory.StackableItemAdapter;
 
 public class Iron extends StackableItemAdapter implements CraftItem, Ore {
-	private OreType type;
-	
-	public Iron() {
-		type = OreType.Iron;
-	}
 	
 	@Override
 	public String getName() {
@@ -22,7 +17,7 @@ public class Iron extends StackableItemAdapter implements CraftItem, Ore {
 
 	@Override
 	public OreType getOreType() {
-		return type;
+		return OreType.Iron;
 	}
 
 }

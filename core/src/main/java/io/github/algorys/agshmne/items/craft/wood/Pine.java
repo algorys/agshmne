@@ -4,11 +4,7 @@ import io.github.algorys.agshmne.inventory.CraftItem;
 import io.github.algorys.agshmne.inventory.StackableItemAdapter;
 
 public class Pine extends StackableItemAdapter implements CraftItem, Wood {
-	private WoodType type;
-	
-	public Pine() {
-		type = WoodType.Pine;
-	}
+
 	@Override
 	public String getName() {
 		return "Bois de Pin";
@@ -26,6 +22,6 @@ public class Pine extends StackableItemAdapter implements CraftItem, Wood {
 
 	@Override
 	public WoodType getWoodType() {
-		return type;
+		return WoodType.Pine;
 	}
 }

@@ -4,11 +4,6 @@ import io.github.algorys.agshmne.inventory.CraftItem;
 import io.github.algorys.agshmne.inventory.StackableItemAdapter;
 
 public class Silver extends StackableItemAdapter implements Ore, CraftItem {
-	private OreType type;
-	
-	public Silver() {
-		this.type = OreType.Silver;
-	}
 	
 	@Override
 	public int getWeight() {
@@ -17,7 +12,7 @@ public class Silver extends StackableItemAdapter implements Ore, CraftItem {
 
 	@Override
 	public OreType getOreType() {
-		return type;
+		return OreType.Silver;
 	}
 
 	@Override

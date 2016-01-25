@@ -4,12 +4,7 @@ import io.github.algorys.agshmne.inventory.CraftItem;
 import io.github.algorys.agshmne.inventory.StackableItemAdapter;
 
 public class Copper extends StackableItemAdapter implements CraftItem, Ore {
-	private OreType type;
-	
-	public Copper() {
-		type = OreType.Copper;
-	}
-	
+
 	@Override
 	public String getName() {
 		return "Minerai de Cuivre";
@@ -27,7 +22,7 @@ public class Copper extends StackableItemAdapter implements CraftItem, Ore {
 
 	@Override
 	public OreType getOreType() {
-		return type;
+		return OreType.Copper;
 	}
 
 }

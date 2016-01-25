@@ -4,11 +4,6 @@ import io.github.algorys.agshmne.inventory.CraftItem;
 import io.github.algorys.agshmne.inventory.StackableItemAdapter;
 
 public class Mythril extends StackableItemAdapter implements CraftItem, Ore {
-	private OreType type;
-	
-	public Mythril() {
-		type = OreType.Mythril;
-	}
 	
 	@Override
 	public String getName() {
@@ -22,7 +17,7 @@ public class Mythril extends StackableItemAdapter implements CraftItem, Ore {
 
 	@Override
 	public OreType getOreType() {
-		return type;
+		return OreType.Mythril;
 	}
 
 }
