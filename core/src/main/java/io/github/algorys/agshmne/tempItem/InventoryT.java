@@ -21,8 +21,8 @@ public class InventoryT extends Observable {
 		boolean added = false;
 		if (item instanceof GeneralStackableItem) {
 			for (int i = 0; i < backpack.size(); i++) {
-				if (((GeneralStackableItem) item).isSameType((IStackableItem)backpack.get(i))) {
-					IStackableItem stack = (IStackableItem) backpack.get(i);
+				if (backpack.get(i).getName() == item.getName()) {
+					IStackableItem stack = (IStackableItem) item;
 					stack.addCount(stack.getCount());
 					added = true;
 					this.setChanged();
@@ -94,7 +94,12 @@ public class InventoryT extends Observable {
 		sb.append("--- Sac-à-dos ---");
 		sb.append("\n");
 		for (int i = 0; i < backpack.size(); i++) {
-			sb.append(""+ backpack.get(i).getName());
+			if(backpack.get(i) instanceof GeneralStackableItem) {
+				IStackableItem stackableItem = (IStackableItem)backpack.get(i);
+				sb.append(""+ stackableItem.getName() + ", " + stackableItem.getCount());
+			} else {
+				sb.append(""+ backpack.get(i).getName());
+			}
 			sb.append("\n");
 		}
 		sb.append("------------\n");
