@@ -17,42 +17,47 @@ public class HistoryTile {
 	String desc;
 	
 	public HistoryTile(Tile tile) {
-		
-		if(tile.getType().equals(TileType.Wood) || tile.getType().equals(TileType.Forest)) {
+		switch (tile.getType()) {
+		case Wood:
+		case Forest:
 			DescWood descWood = DescWood.values()[Tools.dice(DescWood.values().length)];
 			this.desc = descWood.toString();
-		}
-		if(tile.getType().equals(TileType.Hill)) {
+			break;
+		case Hill:
 			DescHill descHill = DescHill.values()[Tools.dice(DescHill.values().length)];
 			this.desc = descHill.toString();
-		}
-		if(tile.getType().equals(TileType.Desert)) {
+			break;
+		case Desert:
 			DescDesert descDesert = DescDesert.values()[Tools.dice(DescDesert.values().length)];
 			this.desc = descDesert.toString();
-		}
-		if(tile.getType().equals(TileType.Sea)) {
+			break;
+		case Sea:
 			DescSea descSea = DescSea.values()[Tools.dice(DescSea.values().length)];
 			this.desc = descSea.toString();
-		}
-		if(tile.getType().equals(TileType.Mountain)) {
+			break;
+		case Mountain:
 			DescMountain descMountain = DescMountain.values()[Tools.dice(DescMountain.values().length)];
 			this.desc = descMountain.toString();
-		}
-		if(tile.getType().equals(TileType.Plain) || tile.getType().equals(TileType.Valley)) {
+			break;
+		case Plain:
+		case Valley:
 			DescPlain descPlain = DescPlain.values()[Tools.dice(DescPlain.values().length)];
 			this.desc = descPlain.toString();
-		}
-		if(tile.getType().equals(TileType.River)) {
+			break;
+		case River:
 			DescRiver descRiver = DescRiver.values()[Tools.dice(DescRiver.values().length)];
 			this.desc = descRiver.toString();
-		}
-		if(tile.getType().equals(TileType.Swamp)) {
+			break;
+		case Swamp:
 			DescSwamp descSwamp = DescSwamp.values()[Tools.dice(DescSwamp.values().length)];
 			this.desc = descSwamp.toString();
-		}
-		if(tile.getType().equals(TileType.Lake)) {
+			break;
+		case Lake:
 			DescLake descLake = DescLake.values()[Tools.dice(DescLake.values().length)];
 			this.desc = descLake.toString();
+			break;
+		default:
+			this.desc = "No TileType found";
 		}
 		//System.out.println("Desc Tile : " + desc);
 		
