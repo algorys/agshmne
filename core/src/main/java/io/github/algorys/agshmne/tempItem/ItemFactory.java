@@ -10,20 +10,19 @@ public class ItemFactory {
 	private List<String> stackableItems = new ArrayList<>();
 	
 	public ItemFactory() {
-		simpleItems.add("Box");
-		simpleItems.add("Bottle");
-		simpleItems.add("Book");
+		simpleItems.add("SampleSimple 1");
+		simpleItems.add("SampleSimple 2");
+		simpleItems.add("SampleSimple 3");
 		
-		stackableItems.add("Nail:1");
-		stackableItems.add("Apple:1");
-		stackableItems.add("Orange:1");
-		stackableItems.add("Flowers:1");
-		stackableItems.add("Wood:1");
+		stackableItems.add("SampleStackable 1:1");
+		stackableItems.add("SampleStackable 2:1");
+		stackableItems.add("SampleStackable 3:1");
+		stackableItems.add("SampleStackable 4:1");
+		stackableItems.add("SampleStackable 5:1");
 	}
 	
 	
-	public Item createItem() {
-		
+	public Item createItem() {		
 		return new GeneralItem(simpleItems.get(Tools.dice(simpleItems.size())));
 	}
 	
