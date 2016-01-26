@@ -42,13 +42,14 @@ public class Inventory extends Observable {
 		if (itemToRemove instanceof IStackableItem) {
 			Iterator<Item> iter = backpack.iterator();
 			while (iter.hasNext()) {
-				Item existingItem = iter.next();
-				IStackableItem stack = (IStackableItem) itemToRemove;
-				if (existingItem.isSameType(itemToRemove)) {					
-					IStackableItem inBag = ((IStackableItem) existingItem);
-					inBag.removeCount(stack.getCount());
-					if(inBag.getCount() == 0){
-						iter.remove(); // TODO Si non gestion des emplacements (mais du coup, pas forcément un tableau)
+				Item itemInBag = iter.next();
+				IStackableItem stackItemToRemove = (IStackableItem) itemToRemove;
+				if (itemInBag.isSameType(itemToRemove)) {
+					IStackableItem stackableItemInBag = ((IStackableItem) itemInBag);
+					if(stackableItemInBag.getCount() > stackItemToRemove.getCount()) {
+						stackableItemInBag.removeCount(stackItemToRemove.getCount());
+					} else {
+						iter.remove();
 					}
 					removed = true;
 					this.setChanged();

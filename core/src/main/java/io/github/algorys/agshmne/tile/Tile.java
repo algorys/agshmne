@@ -1,17 +1,17 @@
 package io.github.algorys.agshmne.tile;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
 
 import io.github.algorys.agshmne.city.City;
 import io.github.algorys.agshmne.history.HistoryTile;
+import io.github.algorys.agshmne.inventory.Inventory;
 import io.github.algorys.agshmne.items.Item;
 
 public class Tile extends Observable {
 	private TileType type;
-	private List<Item> items = new ArrayList<>();
+	//private List<Item> items = new ArrayList<>();
+	private Inventory inv = new Inventory();
 	private City city; 
 	private HistoryTile histTile;
 	
@@ -31,18 +31,20 @@ public class Tile extends Observable {
 	}
 	
 	public boolean addItem(Item e) {
-		boolean added = items.add(e);
+		//boolean added = items.add(e);
+		inv.addItem(e);
+		boolean added = true;
 		this.setChanged();
 		this.notifyObservers();
 		return added;
 	}
 
 	public List<Item> getItems() {
-		return Collections.unmodifiableList(items);
+		return inv.getListBackpack();
 	}
 
 	public void removeItem(Item e) {
-		this.items.remove(e);
+		this.inv.removeItem(e);
 		this.setChanged();
 		this.notifyObservers();
 	}
@@ -51,16 +53,15 @@ public class Tile extends Observable {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(type);
-		if (!items.isEmpty()) {
-			sb.append(" (Objets : ");
-			for (Item item : items) {
-				sb.append(item.getName());
-				sb.append(" ");
-			}
-			sb.append(")");
+		sb.append(" (Objets : ");
+		for (Item item : inv.getListBackpack()) {
+			sb.append(item.getName());
+			sb.append(" ");
 		}
+		sb.append(")");
 		return sb.toString();
 	}
+	
 	public City getCity() {
 		return city;
 	}

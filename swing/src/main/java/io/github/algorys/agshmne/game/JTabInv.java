@@ -15,8 +15,8 @@ import javax.swing.JPopupMenu;
 
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.design.InvRenderer;
-import io.github.algorys.agshmne.inventory.InventoryListModel;
 import io.github.algorys.agshmne.inventory.Inventory;
+import io.github.algorys.agshmne.inventory.InventoryListModel;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.tile.Tile;
 
@@ -51,14 +51,10 @@ public class JTabInv extends JPanel {
 						public void actionPerformed(ActionEvent e) {
 							Item selectedItem = invItems.getModel().getElementAt(index);
 							JOptionPane.showMessageDialog(JTabInv.this, "" + selectedItem + " retiré(e) !");
-							((InventoryListModel) invItems.getModel()).removeElementAt(index);
-							inv.removeItem((Item) selectedItem);;
-							System.out.println("Objets " + selectedItem + "Ajouté");
-							System.out.println(inv);
+							inv.removeItem(selectedItem);
 							Tile tile = JTabInv.this.pj.getTile();
 							tile.addItem(selectedItem);
-							System.out.println("Objets courants : " + tile.getItems());
-							
+							System.out.println("Objets Tile courante : " + tile.getItems());
 						}
 					});
 					JMenuItem utiliser = new JMenuItem("Utiliser");

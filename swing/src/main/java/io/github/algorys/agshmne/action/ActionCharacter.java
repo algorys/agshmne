@@ -1,5 +1,7 @@
 package io.github.algorys.agshmne.action;
 
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -8,6 +10,7 @@ import io.github.algorys.agshmne.character.Character;
 public class ActionCharacter extends JPanel {
 	
 	public ActionCharacter(final Character pj){
+		this.setLayout(new GridLayout(0,1));
 		// Boutons d'action
 		JButton woodButton = new JButton("Couper du Bois");
 		JButton oreButton = new JButton("Récolter Minerai");
