@@ -1,17 +1,11 @@
 package io.github.algorys.agshmne.tempItem;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Observable;
 
-import io.github.algorys.agshmne.inventory.InventoryItem;
-import io.github.algorys.agshmne.inventory.StackableItem;
-
 public class InventoryT extends Observable {
 	// TODO gérer les objets de quêtes différement des objets normaux.
-	public final static int MAX_INVENTORY = 10;
 	private List<Item> backpack = new ArrayList<>();
 	
 	public InventoryT() {
@@ -40,9 +34,10 @@ public class InventoryT extends Observable {
 		boolean removed = false;
 		if (item instanceof GeneralStackableItem) {
 			for (int i = 0; i < backpack.size(); i++) {
+				IStackableItem stackItem = (IStackableItem) item;
 				if (backpack.get(i).getName() == item.getName()) {
 					IStackableItem stack = ((IStackableItem) backpack.get(i));
-					stack.removeCount(stack.getCount());
+					stack.removeCount(stackItem.getCount());
 					if(stack.getCount() == 0){
 						backpack.remove(i); // TODO Si non gestion des emplacements (mais du coup, pas forcément un tableau)
 					}
@@ -53,7 +48,7 @@ public class InventoryT extends Observable {
 			}
 		}
 		if (!removed) {
-			for (int i = 0; i < MAX_INVENTORY; i++) {
+			for (int i = 0; i < backpack.size(); i++) {
 				if (backpack.get(i) == item) {
 					backpack.remove(i);
 					this.setChanged();

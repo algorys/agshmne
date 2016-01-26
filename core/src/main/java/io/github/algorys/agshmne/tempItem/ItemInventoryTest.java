@@ -29,6 +29,7 @@ public class ItemInventoryTest {
 		System.out.println("---" + inventory.toString());
 		
 		inventory.removeItem(apple);
+		System.out.println("---" + inventory.toString());
 		inventory.removeItem(apple);
 		inventory.removeItem(orange);
 		
