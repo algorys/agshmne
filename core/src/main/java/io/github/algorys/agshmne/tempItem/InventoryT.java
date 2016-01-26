@@ -16,8 +16,8 @@ public class InventoryT extends Observable {
 		boolean added = false;
 		if (item instanceof IStackableItem) {
 			for (Item inBag : backpack) {
+				IStackableItem stack = (IStackableItem) inBag;
 				if (inBag.isSameType(item)) {
-					IStackableItem stack = (IStackableItem) inBag;
 					IStackableItem stackToAdd = (IStackableItem) item;
 					stack.addCount(stackToAdd.getCount());
 					added = true;
@@ -38,9 +38,9 @@ public class InventoryT extends Observable {
 		if (itemToRemove instanceof IStackableItem) {
 			Iterator<Item> iter = backpack.iterator();
 			while (iter.hasNext()) {
-				Item existingItem = iter.next();			
-				if (existingItem.isSameType(itemToRemove)) {
-					IStackableItem stack = (IStackableItem) itemToRemove;
+				Item existingItem = iter.next();
+				IStackableItem stack = (IStackableItem) itemToRemove;
+				if (existingItem.isSameType(itemToRemove)) {					
 					IStackableItem inBag = ((IStackableItem) existingItem);
 					inBag.removeCount(stack.getCount());
 					if(inBag.getCount() == 0){
