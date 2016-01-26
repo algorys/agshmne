@@ -9,11 +9,11 @@ import io.github.algorys.agshmne.items.GeneralStackableItem;
 import io.github.algorys.agshmne.items.IStackableItem;
 import io.github.algorys.agshmne.items.Item;
 
-public class InventoryT extends Observable {
+public class Inventory extends Observable {
 	// TODO gérer les objets de quêtes différement des objets normaux.
 	private List<Item> backpack = new ArrayList<>();
 	
-	public InventoryT() {
+	public Inventory() {
 	}
 
 	public void addItem(Item item) {

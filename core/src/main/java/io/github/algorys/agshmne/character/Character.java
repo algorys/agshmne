@@ -4,7 +4,7 @@ import java.util.Observable;
 
 import io.github.algorys.agshmne.caracteristic.CharacterAttribute;
 import io.github.algorys.agshmne.caracteristic.CharacterVital;
-import io.github.algorys.agshmne.inventory.InventoryT;
+import io.github.algorys.agshmne.inventory.Inventory;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.region.Region;
 import io.github.algorys.agshmne.skills.factory.SkillFactory;
@@ -16,7 +16,7 @@ import io.github.algorys.agshmne.tile.Tile;
 public class Character extends Observable {
 	private Position position = new Position(0, 0);
 	private Region region;
-	private InventoryT inv;
+	private Inventory inv;
 	private CharacterSocial social;
 	private CharacterAttribute attributes;
 	private CharacterVital vital;
@@ -28,7 +28,7 @@ public class Character extends Observable {
 		social = new CharacterSocial();
 		attributes = new CharacterAttribute();
 		xp = new CharacterXP();
-		inv = new InventoryT();
+		inv = new Inventory();
 		skills = new SkillFactory();
 		
 	}
@@ -61,7 +61,7 @@ public class Character extends Observable {
 		return vital;
 	}
 	
-	public InventoryT getInventory() {
+	public Inventory getInventory() {
 		return inv;
 	}
 

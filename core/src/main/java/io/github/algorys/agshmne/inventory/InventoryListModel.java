@@ -8,9 +8,9 @@ import javax.swing.AbstractListModel;
 import io.github.algorys.agshmne.items.Item;
 
 public class InventoryListModel extends AbstractListModel<Item> implements Observer {
-	final InventoryT inv;
+	final Inventory inv;
 	
-	public InventoryListModel(InventoryT inventory) {
+	public InventoryListModel(Inventory inventory) {
 		this.inv = inventory;
 		inventory.addObserver(this);
 	}

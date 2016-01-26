@@ -9,7 +9,7 @@ import io.github.algorys.agshmne.items.StackableItemDirectFactory;;
 public class ItemInventoryTest {
 
 	public static void main(String[] args) {
-		InventoryT inventory = new InventoryT();
+		Inventory inventory = new Inventory();
 		StackableItemDirectFactory stackFact = new StackableItemDirectFactory();
 		
 		// Ajout une première Pomme
