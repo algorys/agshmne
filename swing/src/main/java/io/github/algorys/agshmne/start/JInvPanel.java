@@ -7,11 +7,12 @@ import java.awt.Insets;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
+import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.ItemFactory;
 
 public class JInvPanel extends JLabel {
-	private JComboBox<ItemFactory> firstObject;
-	private JComboBox<ItemFactory> secondObject;
+	private JComboBox<Item> firstObject;
+	private JComboBox<Item> secondObject;
 	
 	public JInvPanel(){
 		// GidBag Layout
@@ -45,11 +46,12 @@ public class JInvPanel extends JLabel {
 		gbcInv.gridwidth = 1;
 		gbcInv.anchor = GridBagConstraints.EAST;
 		gbcInv.fill = GridBagConstraints.NONE;
-		firstObject = new JComboBox<ItemFactory>();
-		firstObject.addItem(new ItemFactory());
-		firstObject.addItem(new ItemFactory());
-		firstObject.addItem(new ItemFactory());
-		firstObject.addItem(new ItemFactory());		
+		firstObject = new JComboBox<Item>();
+		ItemFactory itemFact = new ItemFactory();
+		firstObject.addItem(itemFact.createStackableItem());
+		firstObject.addItem(itemFact.createStackableItem());
+		firstObject.addItem(itemFact.createStackableItem());
+		firstObject.addItem(itemFact.createStackableItem());		
 		this.add(firstObject, gbcInv);
 		
 		// Objet 1
@@ -59,21 +61,21 @@ public class JInvPanel extends JLabel {
 		gbcInv.gridwidth = 1;
 		gbcInv.anchor = GridBagConstraints.EAST;
 		gbcInv.fill = GridBagConstraints.NONE;
-		secondObject = new JComboBox<ItemFactory>();
-		secondObject.addItem(new ItemFactory());
-		secondObject.addItem(new ItemFactory());
-		secondObject.addItem(new ItemFactory());
-		secondObject.addItem(new ItemFactory());		
+		secondObject = new JComboBox<Item>();		
+		secondObject.addItem(itemFact.createItem());
+		secondObject.addItem(itemFact.createItem());
+		secondObject.addItem(itemFact.createItem());
+		secondObject.addItem(itemFact.createItem());		
 		this.add(secondObject, gbcInv);
 	
 	}
 
-	public String getFirstObject() {
-		return (String) firstObject.getSelectedItem().toString();
+	public Item getFirstObject() {
+		return (Item) firstObject.getSelectedItem();
 	}
 
-	public String getSecondObject() {
-		return (String) secondObject.getSelectedItem().toString();
+	public Item getSecondObject() {
+		return (Item) secondObject.getSelectedItem();
 	}
 	
 }

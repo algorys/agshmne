@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.items;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import io.github.algorys.agshmne.tools.Tools;
@@ -19,6 +20,8 @@ public class ItemFactory {
 		stackableItems.add("Nail");
 		stackableItems.add("Wood");
 		stackableItems.add("Copper");
+		String[] items = new String[]{ "Gold","Silver","Iron"};
+		stackableItems.addAll(Arrays.asList(items));
 	}
 	
 	
@@ -27,9 +30,10 @@ public class ItemFactory {
 	}
 	
 	public IStackableItem createStackableItem() {
-		String line = stackableItems.get(Tools.dice(stackableItems.size()));
+		/*String line = stackableItems.get(Tools.dice(stackableItems.size()));
 		String[] parts = line.split(":");
-		return new StackableItem(parts[0], Integer.parseInt(parts[1]));
+		return new StackableItem(parts[0], Integer.parseInt(parts[1]));*/
+		return new StackableItem(stackableItems.get(Tools.dice(stackableItems.size())), 1);
 	}
 
 

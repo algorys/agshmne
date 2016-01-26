@@ -78,6 +78,9 @@ public class JFicheNav extends JPanel {
 						pj.getSkills().setSkillLevel(SkillType.cultiver, jpComp.getCultiver());
 						pj.getSkills().setSkillLevel(SkillType.pecher, jpComp.getPecher());
 						pj.getSkills().setSkillLevel(SkillType.magie, jpComp.getMagie());
+						// Init Inventaire
+						pj.getInventory().addItem(jpInv.getFirstObject());
+						pj.getInventory().addItem(jpInv.getSecondObject());
 						// Entrée dans le jeu
 						JGame game = new JGame(pj);
 						game.setVisible(true);
