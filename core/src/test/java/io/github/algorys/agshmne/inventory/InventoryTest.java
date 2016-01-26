@@ -8,128 +8,98 @@ import org.junit.Test;
 
 import io.github.algorys.agshmne.items.closeWeapon.Axe;
 import io.github.algorys.agshmne.items.closeWeapon.StrongAxe;
-import io.github.algorys.agshmne.items.closeWeapon.WeakAxe;
 import io.github.algorys.agshmne.items.fruits.Apple;
 import io.github.algorys.agshmne.items.fruits.Orange;
 import io.github.algorys.agshmne.items.misc.Nail;
+import io.github.algorys.agshmne.tempItem.InventoryT;
+import io.github.algorys.agshmne.tempItem.Item;
+import io.github.algorys.agshmne.tempItem.ItemDirectFactory;
+import io.github.algorys.agshmne.tempItem.StackableItemDirectFactory;
 
 public class InventoryTest {
 
 	@Test
 	public void newInventory_should_NOT_contains_Apple() {
-		Inventory underTest = new Inventory();
-		assertFalse(underTest.contains(Apple.class));
+		InventoryT underTest = new InventoryT();
+		assertFalse(underTest.contains(new StackableItemDirectFactory().createApple()));
 	}
 
 	@Test
 	public void inventoryWithApple_should_contains_Apple() {
-		Inventory underTest = new Inventory();
-		underTest.addItem(new Apple());
-		assertTrue(underTest.contains(Apple.class));
+		InventoryT underTest = new InventoryT();
+		Item apple = new StackableItemDirectFactory().createApple();
+		underTest.addItem(apple);
+		assertTrue(underTest.contains(apple));
 	}
 
 	@Test
 	public void inventoryWithApple_should_NOT_contains_Nails() {
-		Inventory underTest = new Inventory();
-		underTest.addItem(new Apple());
-		assertFalse(underTest.contains(Nail.class));
+		InventoryT underTest = new InventoryT();
+		Item apple = new StackableItemDirectFactory().createApple();
+		underTest.addItem(apple);
+		assertFalse(underTest.contains(new StackableItemDirectFactory().createNail()));
 	}
 
 	@Test
 	public void inventoryWithNail_should_contains_Nails() {
-		Inventory underTest = new Inventory();
-		underTest.addItem(new Nail());
-		assertTrue(underTest.contains(Nail.class));
+		InventoryT underTest = new InventoryT();
+		underTest.addItem(new StackableItemDirectFactory().createNail());
+		assertTrue(underTest.contains(new StackableItemDirectFactory().createNail()));
 	}
 
 	@Test
 	public void inventoryWithOrange_should_contains_Orange_but_NOT_Apple_NOR_Nails() {
-		Inventory underTest = new Inventory();
-		underTest.addItem(new Orange());
-		assertTrue(underTest.contains(Orange.class));
-		assertFalse(underTest.contains(Apple.class));
-		assertFalse(underTest.contains(Nail.class));
+		InventoryT underTest = new InventoryT();
+		underTest.addItem(new StackableItemDirectFactory().createOrange());
+		assertTrue(underTest.contains(new StackableItemDirectFactory().createOrange()));
+		assertFalse(underTest.contains(new StackableItemDirectFactory().createApple()));
+		assertFalse(underTest.contains(new StackableItemDirectFactory().createNail()));
 	}
 
 	@Test
 	public void inventoryWithApple_should_NOT_contains_Apple_when_Apple_is_removed() {
-		Inventory underTest = new Inventory();
-		Apple myApple = new Apple();
-		underTest.addItem(myApple);
-		underTest.removeItem(myApple);
-		assertFalse(underTest.contains(Apple.class));
+		InventoryT underTest = new InventoryT();
+		Item apple = new StackableItemDirectFactory().createApple();
+		underTest.addItem(apple);
+		underTest.removeItem(apple);
+		assertFalse(underTest.contains(new StackableItemDirectFactory().createApple()));
 	}
 
 	@Test
-	public void inventoryWithTwoApple_should_contains_Apple_when_one_is_removed() {
-		Inventory underTest = new Inventory();
-		WeakAxe myAxe = new WeakAxe();
-		underTest.addItem(myAxe);
-		underTest.addItem(new StrongAxe());
-		assertEquals(2, underTest.count(Axe.class));
-		underTest.removeItem(myAxe);
-		assertTrue(underTest.contains(Axe.class));
-	}
-
-	@Test
-	public void newInventory_should_addApple_at_specificIndex_and_containsApple() {
-		Inventory underTest = new Inventory();
-		Apple myApple = new Apple();
-		underTest.addItem(myApple, 5);
-		assertTrue(underTest.contains(Apple.class));
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void inventoryWithAppleAtSpecificIndex_should_throw_exception_when_Nail_is_added_at_same_index() {
-		Inventory underTest = new Inventory();
-		underTest.addItem(new Apple(), 5);
-		underTest.addItem(new Nail(), 5);
-	}
-
-	@Test
-	public void inventoryWithStrongAxe_should_contains_Axe() {
-		Inventory underTest = new Inventory();
-		underTest.addItem(new StrongAxe());
-		assertTrue(underTest.contains(Axe.class));
+	public void inventoryWithTwoAxe_should_contains_Axe_when_one_is_removed() {
+		InventoryT underTest = new InventoryT();
+		Item axe = new ItemDirectFactory().createAxe();
+		underTest.addItem(axe);
+		underTest.addItem(new ItemDirectFactory().createAxe());
+		assertEquals(2, underTest.count(new ItemDirectFactory().createAxe()));
+		underTest.removeItem(axe);
+		assertTrue(underTest.contains(new ItemDirectFactory().createAxe()));
 	}
 
 	@Test
 	public void inventoryWith2Apple_should_have_2_apple() {
-		Inventory underTest = new Inventory();
-		underTest.addItem(new Apple());
-		underTest.addItem(new Apple());
-		assertEquals(2, underTest.count(Apple.class));
+		InventoryT underTest = new InventoryT();
+		underTest.addItem(new StackableItemDirectFactory().createApple());
+		underTest.addItem(new StackableItemDirectFactory().createApple());
+		assertEquals(2, underTest.count(new StackableItemDirectFactory().createApple()));
 	}
 
 	@Test
 	public void inventoryWith3Apple_should_have_3_apple() {
-		Inventory underTest = new Inventory();
-		underTest.addItem(new Apple());
-		underTest.addItem(new Apple());
-		underTest.addItem(new Apple());
-		assertEquals(3, underTest.count(Apple.class));
-	}
-
-	@Test
-	public void inventoryMayHave_ANY_numbersOfApple_and_One_Nail() {
-		Inventory underTest = new Inventory();
-		for (int i = 0; i < Inventory.MAX_INVENTORY; i++) {
-			underTest.addItem(new Apple());
-		}
-		underTest.addItem(new Nail());
-		assertEquals(Inventory.MAX_INVENTORY, underTest.count(Apple.class));
-		assertTrue(underTest.contains(Nail.class));
+		InventoryT underTest = new InventoryT();
+		underTest.addItem(new StackableItemDirectFactory().createApple());
+		underTest.addItem(new StackableItemDirectFactory().createApple());
+		underTest.addItem(new StackableItemDirectFactory().createApple());
+		assertEquals(3, underTest.count(new StackableItemDirectFactory().createApple()));
 	}
 	
 	@Test
 	public void inventoryWith2Orange_and_Remove2Orange_should_have_0_orange() {
-		Inventory underTest = new Inventory();
-		underTest.addItem(new Orange());
-		underTest.addItem(new Orange());
-		Orange orange = new Orange();
-		underTest.removeItem(orange);
-		Orange orange2 = new Orange();
-		underTest.removeItem(orange2);
-		assertFalse(underTest.contains(Orange.class));
+		InventoryT underTest = new InventoryT();
+		underTest.addItem(new StackableItemDirectFactory().createOrange());
+		underTest.addItem(new StackableItemDirectFactory().createOrange());
+		underTest.removeItem(new StackableItemDirectFactory().createOrange());
+		underTest.removeItem(new StackableItemDirectFactory().createOrange());
+		assertFalse(underTest.contains(new StackableItemDirectFactory().createOrange()));
 	}
 }
