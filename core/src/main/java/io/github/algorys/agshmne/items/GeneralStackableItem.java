@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.tempItem;
+package io.github.algorys.agshmne.items;
 
 public class GeneralStackableItem implements IStackableItem {
 	private int count;

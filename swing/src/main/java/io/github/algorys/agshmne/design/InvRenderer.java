@@ -8,9 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import io.github.algorys.agshmne.inventory.InventoryItem;
-import io.github.algorys.agshmne.items.fruits.Apple;
-import io.github.algorys.agshmne.tempItem.Item;
+import io.github.algorys.agshmne.items.Item;
+import io.github.algorys.agshmne.items.StackableItemDirectFactory;
 
 public class InvRenderer implements ListCellRenderer<Item> {
 	private JLabel rendererComponent = new JLabel();
@@ -32,7 +31,7 @@ public class InvRenderer implements ListCellRenderer<Item> {
 			rendererComponent.setBackground(list.getSelectionBackground());
 			rendererComponent.setForeground(list.getSelectionForeground());
 		} else {
-			if (value instanceof Apple) {
+			if (value.isSameType(new StackableItemDirectFactory().createApple())) {
 
 				rendererComponent.setBackground(Color.GREEN);
 				rendererComponent.setForeground(Color.BLACK);

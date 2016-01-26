@@ -2,8 +2,7 @@ package io.github.algorys.agshmne.tile;
 
 import javax.swing.AbstractListModel;
 
-import io.github.algorys.agshmne.inventory.InventoryItem;
-import io.github.algorys.agshmne.tempItem.Item;
+import io.github.algorys.agshmne.items.Item;
 
 public class TileListModel extends AbstractListModel<Item> {
 	final Tile t;

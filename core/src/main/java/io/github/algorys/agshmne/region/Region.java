@@ -5,9 +5,8 @@ import java.util.Arrays;
 import io.github.algorys.agshmne.city.factory.CityFactory;
 import io.github.algorys.agshmne.danger.Danger;
 import io.github.algorys.agshmne.events.Event;
-import io.github.algorys.agshmne.inventory.InventoryFactory;
+import io.github.algorys.agshmne.items.ItemFactory;
 import io.github.algorys.agshmne.movement.Position;
-import io.github.algorys.agshmne.tempItem.ItemFactory;
 import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileType;
 

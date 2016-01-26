@@ -7,8 +7,7 @@ import java.util.Observer;
 import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.items.craft.wood.Pine;
-import io.github.algorys.agshmne.tempItem.StackableItemDirectFactory;
+import io.github.algorys.agshmne.items.StackableItemDirectFactory;
 
 final class SkillCutAction extends AbstractAction implements Observer {
 	private final Character pj;

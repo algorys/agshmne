@@ -1,12 +1,9 @@
 package io.github.algorys.agshmne.quest;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.inventory.QuestItem;
+import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.movement.RandomCoordinated;
-import io.github.algorys.agshmne.tempItem.GeneralItem;
-import io.github.algorys.agshmne.tempItem.Item;
-import io.github.algorys.agshmne.tempItem.ItemDirectFactory;
 
 public class BringQuest {
 	private Position questDestination;

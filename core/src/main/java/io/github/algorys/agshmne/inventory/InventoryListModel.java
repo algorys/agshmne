@@ -5,8 +5,7 @@ import java.util.Observer;
 
 import javax.swing.AbstractListModel;
 
-import io.github.algorys.agshmne.tempItem.InventoryT;
-import io.github.algorys.agshmne.tempItem.Item;
+import io.github.algorys.agshmne.items.Item;
 
 public class InventoryListModel extends AbstractListModel<Item> implements Observer {
 	final InventoryT inv;

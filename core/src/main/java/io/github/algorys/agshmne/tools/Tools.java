@@ -2,7 +2,7 @@ package io.github.algorys.agshmne.tools;
 
 import java.util.Arrays;
 
-import io.github.algorys.agshmne.tempItem.ItemFactory;
+import io.github.algorys.agshmne.items.ItemFactory;
 
 public class Tools {
 	public static int dice(int d){

@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.tempItem;
+package io.github.algorys.agshmne.items;
 
 import java.util.ArrayList;
 import java.util.List;

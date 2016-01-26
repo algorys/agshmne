@@ -7,10 +7,9 @@ import java.util.Observer;
 import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.items.craft.ore.Copper;
+import io.github.algorys.agshmne.items.StackableItemDirectFactory;
 import io.github.algorys.agshmne.skills.SkillTool;
 import io.github.algorys.agshmne.skills.SkillType;
-import io.github.algorys.agshmne.tempItem.StackableItemDirectFactory;
 
 public class SkillMineAction extends AbstractAction implements Observer {
 	private final Character pj;

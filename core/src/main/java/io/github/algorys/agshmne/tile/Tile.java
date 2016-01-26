@@ -7,8 +7,7 @@ import java.util.Observable;
 
 import io.github.algorys.agshmne.city.City;
 import io.github.algorys.agshmne.history.HistoryTile;
-import io.github.algorys.agshmne.inventory.InventoryItem;
-import io.github.algorys.agshmne.tempItem.Item;
+import io.github.algorys.agshmne.items.Item;
 
 public class Tile extends Observable {
 	private TileType type;

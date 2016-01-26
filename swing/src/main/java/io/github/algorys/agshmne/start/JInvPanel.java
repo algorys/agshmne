@@ -7,11 +7,11 @@ import java.awt.Insets;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
-import io.github.algorys.agshmne.inventory.InventoryFactory;
+import io.github.algorys.agshmne.items.ItemFactory;
 
 public class JInvPanel extends JLabel {
-	private JComboBox<InventoryFactory> firstObject;
-	private JComboBox<InventoryFactory> secondObject;
+	private JComboBox<ItemFactory> firstObject;
+	private JComboBox<ItemFactory> secondObject;
 	
 	public JInvPanel(){
 		// GidBag Layout
@@ -45,11 +45,11 @@ public class JInvPanel extends JLabel {
 		gbcInv.gridwidth = 1;
 		gbcInv.anchor = GridBagConstraints.EAST;
 		gbcInv.fill = GridBagConstraints.NONE;
-		firstObject = new JComboBox<InventoryFactory>();
-		firstObject.addItem(new InventoryFactory());
-		firstObject.addItem(new InventoryFactory());
-		firstObject.addItem(new InventoryFactory());
-		firstObject.addItem(new InventoryFactory());		
+		firstObject = new JComboBox<ItemFactory>();
+		firstObject.addItem(new ItemFactory());
+		firstObject.addItem(new ItemFactory());
+		firstObject.addItem(new ItemFactory());
+		firstObject.addItem(new ItemFactory());		
 		this.add(firstObject, gbcInv);
 		
 		// Objet 1
@@ -59,11 +59,11 @@ public class JInvPanel extends JLabel {
 		gbcInv.gridwidth = 1;
 		gbcInv.anchor = GridBagConstraints.EAST;
 		gbcInv.fill = GridBagConstraints.NONE;
-		secondObject = new JComboBox<InventoryFactory>();
-		secondObject.addItem(new InventoryFactory());
-		secondObject.addItem(new InventoryFactory());
-		secondObject.addItem(new InventoryFactory());
-		secondObject.addItem(new InventoryFactory());		
+		secondObject = new JComboBox<ItemFactory>();
+		secondObject.addItem(new ItemFactory());
+		secondObject.addItem(new ItemFactory());
+		secondObject.addItem(new ItemFactory());
+		secondObject.addItem(new ItemFactory());		
 		this.add(secondObject, gbcInv);
 	
 	}

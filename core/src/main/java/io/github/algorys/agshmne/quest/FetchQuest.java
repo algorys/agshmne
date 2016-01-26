@@ -1,10 +1,8 @@
 package io.github.algorys.agshmne.quest;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.inventory.StackableItem;
+import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.movement.Position;
-import io.github.algorys.agshmne.tempItem.IStackableItem;
-import io.github.algorys.agshmne.tempItem.Item;
 
 public class FetchQuest {
 	private Position questPosition;

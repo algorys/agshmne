@@ -1,10 +1,9 @@
 package io.github.algorys.agshmne.quest;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.items.lowQuest.Letters;
+import io.github.algorys.agshmne.items.ItemDirectFactory;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.region.Region;
-import io.github.algorys.agshmne.tempItem.ItemDirectFactory;
 
 public class BringQuestTest {
 

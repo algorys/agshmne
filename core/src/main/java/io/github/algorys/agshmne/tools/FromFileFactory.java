@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import io.github.algorys.agshmne.tempItem.ItemFactory;
+import io.github.algorys.agshmne.items.ItemFactory;
 
 public class FromFileFactory {
 	public FromFileFactory() {
