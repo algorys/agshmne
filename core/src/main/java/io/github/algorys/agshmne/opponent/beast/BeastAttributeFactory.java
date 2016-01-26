@@ -4,7 +4,7 @@ import io.github.algorys.agshmne.caracteristic.CharacterAttribute;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class BeastAttributeFactory {
-	
+
 	public BeastAttributeFactory() {
 	}
 	
