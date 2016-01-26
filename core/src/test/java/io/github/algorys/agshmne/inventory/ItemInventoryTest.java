@@ -1,7 +1,7 @@
 package io.github.algorys.agshmne.inventory;
 
 import io.github.algorys.agshmne.items.GeneralItem;
-import io.github.algorys.agshmne.items.GeneralStackableItem;
+import io.github.algorys.agshmne.items.StackableItem;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.ItemDirectFactory;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;;
@@ -38,9 +38,9 @@ public class ItemInventoryTest {
 		System.out.println("Inventaire contient " + inventory.count(orange) + " Oranges !");
 		
 		// Test pour Ajout GeneralStackable (sans Direct)
-		Item pear = new GeneralStackableItem("Pear", 1);
+		Item pear = new StackableItem("Pear", 1);
 		inventory.addItem(pear);
-		pear = new GeneralStackableItem("Pear", 1);
+		pear = new StackableItem("Pear", 1);
 		inventory.addItem(pear);
 		Item armor = new GeneralItem("Armure matelassée");
 		inventory.addItem(armor);

@@ -1,10 +1,10 @@
 package io.github.algorys.agshmne.items;
 
-public class GeneralStackableItem implements IStackableItem {
+public class StackableItem implements IStackableItem {
 	private int count;
 	private String name;
 	
-	public GeneralStackableItem(String name, int count) {
+	public StackableItem(String name, int count) {
 		this.name = name;
 		this.count = count;
 	}

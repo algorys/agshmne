@@ -21,42 +21,42 @@ public class StackableItemDirectFactory {
 		return createApple(1);
 	}
 	public Item createApple(int count) {
-		return new GeneralStackableItem(APPLE, count);
+		return new StackableItem(APPLE, count);
 	}
 	
 	public Item createOrange() {
 		return createOrange(1);
 	}
 	public Item createOrange(int count) {
-		return new GeneralStackableItem(ORANGE, count);
+		return new StackableItem(ORANGE, count);
 	}
 	
 	public Item createCopper() {
 		return createCopper(1);
 	}
 	public Item createCopper(int count) {
-		return new GeneralStackableItem(COPPER, count);
+		return new StackableItem(COPPER, count);
 	}
 	
 	public Item createIron() {
 		return createIron(1);
 	}
 	public Item createIron(int count) {
-		return new GeneralStackableItem(IRON, count);
+		return new StackableItem(IRON, count);
 	}
 	
 	public Item createSilver() {
 		return createSilver(1);
 	}
 	public Item createSilver(int count) {
-		return new GeneralStackableItem(SILVER, count);
+		return new StackableItem(SILVER, count);
 	}
 	
 	public Item createGold() {
 		return createGold(1);
 	}
 	public Item createGold(int count) {
-		return new GeneralStackableItem(GOLD, count);
+		return new StackableItem(GOLD, count);
 	}
 	
 	
@@ -64,27 +64,27 @@ public class StackableItemDirectFactory {
 		return createMytril(1);
 	}
 	public Item createMytril(int count) {
-		return new GeneralStackableItem(MYTHRIL, count);
+		return new StackableItem(MYTHRIL, count);
 	}
 	
 	public Item createPine() {
 		return createPine(1);
 	}
 	public Item createPine(int count) {
-		return new GeneralStackableItem(PINE, count);
+		return new StackableItem(PINE, count);
 	}
 	
 	public Item createNail() {
 		return createNail(1);
 	}
 	public Item createNail(int count) {
-		return new GeneralStackableItem(NAIL, count);
+		return new StackableItem(NAIL, count);
 	}
 	
 	public Item createManaPotion() {
 		return createManaPotion(1);
 	}
 	public Item createManaPotion(int count) {
-		return new GeneralStackableItem(MANAPOTION, count);
+		return new StackableItem(MANAPOTION, count);
 	}
 }	

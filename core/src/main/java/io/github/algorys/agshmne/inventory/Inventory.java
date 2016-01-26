@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 
-import io.github.algorys.agshmne.items.GeneralStackableItem;
+import io.github.algorys.agshmne.items.StackableItem;
 import io.github.algorys.agshmne.items.IStackableItem;
 import io.github.algorys.agshmne.items.Item;
 
@@ -98,7 +98,7 @@ public class Inventory extends Observable {
 		sb.append("--- Sac-à-dos ---");
 		sb.append("\n");
 		for (int i = 0; i < backpack.size(); i++) {
-			if(backpack.get(i) instanceof GeneralStackableItem) {
+			if(backpack.get(i) instanceof StackableItem) {
 				IStackableItem stackableItem = (IStackableItem)backpack.get(i);
 				sb.append(""+ stackableItem.getName() + ", " + stackableItem.getCount());
 			} else {

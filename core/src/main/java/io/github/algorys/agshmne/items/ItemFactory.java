@@ -29,7 +29,7 @@ public class ItemFactory {
 	public IStackableItem createStackableItem() {
 		String line = stackableItems.get(Tools.dice(stackableItems.size()));
 		String[] parts = line.split(":");
-		return new GeneralStackableItem(parts[0], Integer.parseInt(parts[1]));
+		return new StackableItem(parts[0], Integer.parseInt(parts[1]));
 	}
 
 
