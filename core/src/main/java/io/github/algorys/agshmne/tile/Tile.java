@@ -10,7 +10,6 @@ import io.github.algorys.agshmne.items.Item;
 
 public class Tile extends Observable {
 	private TileType type;
-	//private List<Item> items = new ArrayList<>();
 	private Inventory inv = new Inventory();
 	private City city; 
 	private HistoryTile histTile;
