@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.tempItem;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 
@@ -13,11 +14,12 @@ public class InventoryT extends Observable {
 
 	public void addItem(Item item) {
 		boolean added = false;
-		if (item instanceof GeneralStackableItem) {
-			for (int i = 0; i < backpack.size(); i++) {
-				if (backpack.get(i).getName() == item.getName()) {
-					IStackableItem stack = (IStackableItem) item;
-					stack.addCount(stack.getCount());
+		if (item instanceof IStackableItem) {
+			for (Item inBag : backpack) {
+				if (inBag.isSameType(item)) {
+					IStackableItem stack = (IStackableItem) inBag;
+					IStackableItem stackToAdd = (IStackableItem) item;
+					stack.addCount(stackToAdd.getCount());
 					added = true;
 					this.setChanged();
 					break;
@@ -26,20 +28,23 @@ public class InventoryT extends Observable {
 		}
 		if (!added) {
 			backpack.add(item);
+			this.setChanged();
 		}
 		this.notifyObservers();
 	}
 
-	public void removeItem(Item item) {
+	public void removeItem(Item itemToRemove) {
 		boolean removed = false;
-		if (item instanceof GeneralStackableItem) {
-			for (int i = 0; i < backpack.size(); i++) {
-				IStackableItem stackItem = (IStackableItem) item;
-				if (backpack.get(i).getName() == item.getName()) {
-					IStackableItem stack = ((IStackableItem) backpack.get(i));
-					stack.removeCount(stackItem.getCount());
-					if(stack.getCount() == 0){
-						backpack.remove(i); // TODO Si non gestion des emplacements (mais du coup, pas forcément un tableau)
+		if (itemToRemove instanceof IStackableItem) {
+			Iterator<Item> iter = backpack.iterator();
+			while (iter.hasNext()) {
+				Item existingItem = iter.next();			
+				if (existingItem.isSameType(itemToRemove)) {
+					IStackableItem stack = (IStackableItem) itemToRemove;
+					IStackableItem inBag = ((IStackableItem) existingItem);
+					inBag.removeCount(stack.getCount());
+					if(inBag.getCount() == 0){
+						iter.remove(); // TODO Si non gestion des emplacements (mais du coup, pas forcément un tableau)
 					}
 					removed = true;
 					this.setChanged();
@@ -48,9 +53,10 @@ public class InventoryT extends Observable {
 			}
 		}
 		if (!removed) {
-			for (int i = 0; i < backpack.size(); i++) {
-				if (backpack.get(i) == item) {
-					backpack.remove(i);
+			Iterator<Item> iter = backpack.iterator();
+			while (iter.hasNext()) {
+				if (iter.next() == itemToRemove) {
+					iter.remove();
 					this.setChanged();
 					break;
 				}
@@ -59,21 +65,21 @@ public class InventoryT extends Observable {
 		this.notifyObservers();
 	}
 
-	public boolean contains(String item) {
-		for (int i = 0; i < backpack.size(); i++) {
-			if (item == backpack.get(i).getName()) {
+	public boolean contains(Item item) {
+		for (Item inBag : backpack) {
+			if (inBag.isSameType(item)) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	public int count(Class<?> type) {
+	public int count(Item item) {
 		int res = 0;
-		for (int i = 0; i < backpack.size(); i++) {
-			if (type.isInstance(backpack.get(i))) {
-				if(backpack.get(i) instanceof GeneralStackableItem) {
-					IStackableItem stackableItem = (IStackableItem)backpack.get(i);
+		for (Item inBag : backpack) {
+			if (inBag.isSameType(item)) {
+				if(inBag instanceof IStackableItem) {
+					IStackableItem stackableItem = (IStackableItem)inBag;
 					res += stackableItem.getCount();
 				} else {
 					res++;

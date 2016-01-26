@@ -20,8 +20,8 @@ public class GeneralStackableItem implements IStackableItem {
 	}
 
 	@Override
-	public boolean isSameType(IStackableItem item) {
-		return this.name == item.getName();
+	public boolean isSameType(Item other) {
+		return (other instanceof IStackableItem) && this.name == other.getName();
 	}
 
 	@Override
