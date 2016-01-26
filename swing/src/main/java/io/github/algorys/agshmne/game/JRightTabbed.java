@@ -5,7 +5,7 @@ import javax.swing.JTabbedPane;
 
 import io.github.algorys.agshmne.action.ActionCharacter;
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.inventory.GroundInv;
+import io.github.algorys.agshmne.tile.GroundInv;
 
 public class JRightTabbed extends JTabbedPane {
 	private GroundInv grdInv;

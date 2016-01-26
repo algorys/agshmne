@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.inventory;
+package io.github.algorys.agshmne.tile;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,7 +19,6 @@ import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.design.InvRenderer;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.tile.Tile;
-import io.github.algorys.agshmne.tile.TileListModel;
 
 public class GroundInv extends JPanel implements Observer {
 	private JList<Item> groundItem;
