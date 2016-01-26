@@ -11,6 +11,7 @@ public class ItemFactory {
 	private List<String> stackableItems = new ArrayList<>();
 	
 	public ItemFactory() {
+		// TODO Refactoring à faire pour passer en tableau
 		simpleItems.add("Sword");
 		simpleItems.add("Knife");
 		simpleItems.add("Barrel");
