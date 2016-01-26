@@ -1,6 +1,11 @@
-package io.github.algorys.agshmne.tempItem;
+package io.github.algorys.agshmne.inventory;
 
-import io.github.algorys.agshmne.tempItem.InventoryT;;
+import io.github.algorys.agshmne.tempItem.GeneralItem;
+import io.github.algorys.agshmne.tempItem.GeneralStackableItem;
+import io.github.algorys.agshmne.tempItem.InventoryT;
+import io.github.algorys.agshmne.tempItem.Item;
+import io.github.algorys.agshmne.tempItem.ItemDirectFactory;
+import io.github.algorys.agshmne.tempItem.StackableItemDirectFactory;;
 
 public class ItemInventoryTest {
 
