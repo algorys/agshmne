@@ -17,11 +17,12 @@ import javax.swing.JPopupMenu;
 
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.design.InvRenderer;
+import io.github.algorys.agshmne.tempItem.Item;
 import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileListModel;
 
 public class GroundInv extends JPanel implements Observer {
-	private JList<InventoryItem> groundItem;
+	private JList<Item> groundItem;
 	private Tile currentTile;
 	private Character pj;
 
@@ -29,7 +30,7 @@ public class GroundInv extends JPanel implements Observer {
 		this.pj = pj;
 		pj.addObserver(this);
 				
-		groundItem = new JList<InventoryItem>(new TileListModel(pj.getTile()));
+		groundItem = new JList<Item>(new TileListModel(pj.getTile()));
 		groundItem.setCellRenderer(new InvRenderer());
 		groundItem.setBackground(Color.BLACK);
 		groundItem.setForeground(Color.green);
@@ -47,7 +48,7 @@ public class GroundInv extends JPanel implements Observer {
 					JMenuItem ramasser = new JMenuItem("Ramasser");
 					ramasser.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							InventoryItem selectedItem = groundItem.getModel().getElementAt(index);
+							Item selectedItem = groundItem.getModel().getElementAt(index);
 							JOptionPane.showMessageDialog(GroundInv.this, "" + selectedItem + " ajouté(e) !");
 							((TileListModel) groundItem.getModel()).removeElementAt(index);
 							GroundInv.this.pj.getInventory().addItem(selectedItem);

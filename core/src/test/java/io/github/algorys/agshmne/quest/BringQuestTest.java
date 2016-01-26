@@ -4,13 +4,14 @@ import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.items.lowQuest.Letters;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.tempItem.ItemDirectFactory;
 
 public class BringQuestTest {
 
 	public static void main(String[] args) {
 		Region region = new Region();
 		Character pj = new Character(region);
-		BringQuest bringQ = new BringQuest(pj, new Letters(pj.getPosition()));
+		BringQuest bringQ = new BringQuest(pj, new ItemDirectFactory().createLetters());
 		Position questDestination = bringQ.getQuestDestination();
 		boolean win = bringQ.isWin(pj);
 		System.out.println("Quête finie ? " + win);

@@ -15,6 +15,11 @@ public class GeneralStackableItem implements IStackableItem {
 	}
 
 	@Override
+	public String toString() {
+		return (String) this.name + " (" + this.getCount() + ")";
+	}
+	
+	@Override
 	public int getCount() {
 		return count;
 	}

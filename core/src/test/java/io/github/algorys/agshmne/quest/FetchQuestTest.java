@@ -3,26 +3,29 @@ package io.github.algorys.agshmne.quest;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.items.fruits.Apple;
 import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.tempItem.GeneralStackableItem;
+import io.github.algorys.agshmne.tempItem.ItemDirectFactory;
+import io.github.algorys.agshmne.tempItem.StackableItemDirectFactory;
 
 public class FetchQuestTest {
 
 	public static void main(String[] args) {
 		Region region = new Region();
 		Character pj = new Character(region);
-		FetchQuest appleQ = new FetchQuest(pj, Apple.class, 3);
+		FetchQuest appleQ = new FetchQuest(pj, new StackableItemDirectFactory().createApple(), 3);
 		System.out.println(appleQ.getGoal());
 		
 		boolean win = appleQ.isWin(pj);
 		System.out.println("Quête finie ? " + win);
 		for(int i = 0; i < 3; i++) {
-			pj.getInventory().addItem(new Apple());
+			pj.getInventory().addItem(new StackableItemDirectFactory().createApple());
 		}
-		System.out.println("Il vous reste " + pj.getInventory().count(Apple.class) + " pommes !");
+		System.out.println("Il vous reste " + pj.getInventory().count(new StackableItemDirectFactory().createApple()) + " pommes !");
 		win = appleQ.isWin(pj);
 		System.out.println("Quête finie ? " + win);
 		
 		appleQ.terminate(pj);
-		System.out.println("Il vous reste " + pj.getInventory().count(Apple.class) + " pommes !");
+		System.out.println("Il vous reste " + pj.getInventory().count(new StackableItemDirectFactory().createApple()) + " pommes !");
 
 	}
 

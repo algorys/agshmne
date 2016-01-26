@@ -15,10 +15,10 @@ public class InventoryT extends Observable {
 	public void addItem(Item item) {
 		boolean added = false;
 		if (item instanceof IStackableItem) {
+			IStackableItem stackToAdd = (IStackableItem) item;
 			for (Item inBag : backpack) {
-				IStackableItem stack = (IStackableItem) inBag;
-				if (inBag.isSameType(item)) {
-					IStackableItem stackToAdd = (IStackableItem) item;
+				if (inBag.isSameType(item) && inBag instanceof IStackableItem) {
+					IStackableItem stack = (IStackableItem) inBag;
 					stack.addCount(stackToAdd.getCount());
 					added = true;
 					this.setChanged();
@@ -55,7 +55,7 @@ public class InventoryT extends Observable {
 		if (!removed) {
 			Iterator<Item> iter = backpack.iterator();
 			while (iter.hasNext()) {
-				if (iter.next() == itemToRemove) {
+				if (iter.next().isSameType(itemToRemove)) {
 					iter.remove();
 					this.setChanged();
 					break;

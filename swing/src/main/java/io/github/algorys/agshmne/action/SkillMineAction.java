@@ -10,6 +10,7 @@ import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.items.craft.ore.Copper;
 import io.github.algorys.agshmne.skills.SkillTool;
 import io.github.algorys.agshmne.skills.SkillType;
+import io.github.algorys.agshmne.tempItem.StackableItemDirectFactory;
 
 public class SkillMineAction extends AbstractAction implements Observer {
 	private final Character pj;
@@ -26,7 +27,7 @@ public class SkillMineAction extends AbstractAction implements Observer {
 		int mineLevel = pj.getSkills().getSkillLevel(SkillType.miner);
 		if(SkillTool.Dice(mineLevel, 10)){
 			System.out.println("Minerai trouvé !");
-			pj.getInventory().addItem(new Copper());
+			pj.getInventory().addItem(new StackableItemDirectFactory().createCopper());
 		}else {
 			System.out.println("Rien d'exploitable");
 		}

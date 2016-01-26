@@ -3,8 +3,9 @@ package io.github.algorys.agshmne.tile;
 import javax.swing.AbstractListModel;
 
 import io.github.algorys.agshmne.inventory.InventoryItem;
+import io.github.algorys.agshmne.tempItem.Item;
 
-public class TileListModel extends AbstractListModel<InventoryItem> {
+public class TileListModel extends AbstractListModel<Item> {
 	final Tile t;
 	public TileListModel(Tile t) {
 		this.t= t;
@@ -14,7 +15,7 @@ public class TileListModel extends AbstractListModel<InventoryItem> {
 		return t.getItems().size();
 	}
 	@Override
-	public InventoryItem getElementAt(int index) {
+	public Item getElementAt(int index) {
 		return t.getItems().get(index);
 	}
 	public void removeElementAt(int index) {

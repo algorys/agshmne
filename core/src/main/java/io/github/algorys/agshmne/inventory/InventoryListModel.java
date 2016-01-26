@@ -5,19 +5,22 @@ import java.util.Observer;
 
 import javax.swing.AbstractListModel;
 
-public class InventoryListModel extends AbstractListModel<InventoryItem> implements Observer {
-	final Inventory inv;
+import io.github.algorys.agshmne.tempItem.InventoryT;
+import io.github.algorys.agshmne.tempItem.Item;
+
+public class InventoryListModel extends AbstractListModel<Item> implements Observer {
+	final InventoryT inv;
 	
-	public InventoryListModel(Inventory inv) {
-		this.inv = inv;
-		inv.addObserver(this);
+	public InventoryListModel(InventoryT inventory) {
+		this.inv = inventory;
+		inventory.addObserver(this);
 	}
 	@Override
 	public int getSize() {
 		return inv.getListBackpack().size();
 	}
 	@Override
-	public InventoryItem getElementAt(int index) {
+	public Item getElementAt(int index) {
 		return inv.getListBackpack().get(index);
 	}
 	public void removeElementAt(int index) {

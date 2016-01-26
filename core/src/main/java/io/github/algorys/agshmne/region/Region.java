@@ -7,6 +7,7 @@ import io.github.algorys.agshmne.danger.Danger;
 import io.github.algorys.agshmne.events.Event;
 import io.github.algorys.agshmne.inventory.InventoryFactory;
 import io.github.algorys.agshmne.movement.Position;
+import io.github.algorys.agshmne.tempItem.ItemFactory;
 import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileType;
 
@@ -29,9 +30,9 @@ public class Region {
 				tiles[i] = new Tile(type);
 			}
 
-			while (Math.random() < .5) {
-				InventoryFactory invFact = new InventoryFactory();
-				tiles[i].addItem(invFact.getInventItem());
+			while (Math.random() < .3) {
+				ItemFactory itemFact = new ItemFactory();
+				tiles[i].addItem(itemFact.createItem());
 			}
 		}
 	}

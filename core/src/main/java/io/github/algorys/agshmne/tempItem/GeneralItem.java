@@ -13,6 +13,11 @@ public class GeneralItem implements Item {
 	}
 
 	@Override
+	public String toString() {
+		return (String) this.name;
+	}
+	
+	@Override
 	public boolean isSameType(Item other) {
 		return other != null && other.getName().equals(this.name);
 	}

@@ -3,43 +3,38 @@ package io.github.algorys.agshmne.quest;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.inventory.StackableItem;
 import io.github.algorys.agshmne.movement.Position;
+import io.github.algorys.agshmne.tempItem.IStackableItem;
+import io.github.algorys.agshmne.tempItem.Item;
 
 public class FetchQuest {
 	private Position questPosition;
-	private Class<? extends StackableItem> type;
+	private Item item;
 	private int count;
 
-	public FetchQuest(Character pj, Class<? extends StackableItem> type, int count) {
+	public FetchQuest(Character pj, Item item, int count) {
 		this.questPosition = pj.getPosition();
 		this.count = count;
-		this.type = type;
+		this.item = item;
 	}
 	
 	public boolean isWin(Character pj) {
-		return (pj.getInventory().count(type) >= count) ;
+		return (pj.getInventory().count(item) >= count) ;
 	}
 	
 	public void terminate(Character pj) {
-		
-		try {
-			StackableItem item = type.newInstance();
-			item.addCount(count - 1);
+		for(int i = 0; i < count; i ++) {
 			pj.getInventory().removeItem(item);
-		} catch (InstantiationException e) {
-			e.printStackTrace(); // FIXME
-		} catch (IllegalAccessException e) {
-			e.printStackTrace(); // FIXME
 		}
 		
 		// TODO Rajouter une récompense
 	}
 
 	public String getName() {
-		return "Trouver des " + type.getSimpleName();
+		return "Trouver des " + item.getName();
 	}
 
 	public String getGoal() {
-		return "Vous devez trouvez au moins " + count + " "+type.getSimpleName()+" et les rapporter en ("
+		return "Vous devez trouvez au moins " + count + " "+item.getName()+" et les rapporter en ("
 	+ questPosition.getX() + ", " 
 	+ questPosition.getY() + ")";
 	}

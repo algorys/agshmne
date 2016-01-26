@@ -4,16 +4,19 @@ import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.inventory.QuestItem;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.movement.RandomCoordinated;
+import io.github.algorys.agshmne.tempItem.GeneralItem;
+import io.github.algorys.agshmne.tempItem.Item;
+import io.github.algorys.agshmne.tempItem.ItemDirectFactory;
 
 public class BringQuest {
 	private Position questDestination;
 	private Position initialPos;
-	private QuestItem itemQ;
+	private Item item;
 	
-	public BringQuest(Character pj, QuestItem item) {
+	public BringQuest(Character pj, Item item) {
 		this.initialPos = pj.getPosition();
 		this.questDestination = this.defineDestination(initialPos);
-		this.itemQ = item;
+		this.item = item;
 		// TODO gérer les objets de quêtes différement des objets normaux.
 		pj.getInventory().addItem(item);
 	}
@@ -30,11 +33,11 @@ public class BringQuest {
 	}
 	
 	public boolean isWin(Character pj) {
-		return pj.getPosition() == questDestination && pj.getInventory().contains(itemQ.getClass());
+		return pj.getPosition() == questDestination && pj.getInventory().contains(item);
 	}
 	
 	public void terminate(Character pj) {
-		pj.getInventory().removeItem(itemQ);
+		pj.getInventory().removeItem(item);
 		// TODO prévoir une récompense.
 	}
 

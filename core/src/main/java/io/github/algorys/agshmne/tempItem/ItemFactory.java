@@ -10,15 +10,15 @@ public class ItemFactory {
 	private List<String> stackableItems = new ArrayList<>();
 	
 	public ItemFactory() {
-		simpleItems.add("SampleSimple 1");
-		simpleItems.add("SampleSimple 2");
-		simpleItems.add("SampleSimple 3");
+		simpleItems.add("Sword");
+		simpleItems.add("Knife");
+		simpleItems.add("Barrel");
 		
-		stackableItems.add("SampleStackable 1:1");
-		stackableItems.add("SampleStackable 2:1");
-		stackableItems.add("SampleStackable 3:1");
-		stackableItems.add("SampleStackable 4:1");
-		stackableItems.add("SampleStackable 5:1");
+		stackableItems.add("Apple");
+		stackableItems.add("Orange");
+		stackableItems.add("Nail");
+		stackableItems.add("Wood");
+		stackableItems.add("Copper");
 	}
 	
 	

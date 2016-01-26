@@ -10,8 +10,9 @@ import javax.swing.ListCellRenderer;
 
 import io.github.algorys.agshmne.inventory.InventoryItem;
 import io.github.algorys.agshmne.items.fruits.Apple;
+import io.github.algorys.agshmne.tempItem.Item;
 
-public class InvRenderer implements ListCellRenderer<InventoryItem> {
+public class InvRenderer implements ListCellRenderer<Item> {
 	private JLabel rendererComponent = new JLabel();
 	
 	public InvRenderer() {
@@ -20,7 +21,7 @@ public class InvRenderer implements ListCellRenderer<InventoryItem> {
 	}
 	
 	@Override
-	public Component getListCellRendererComponent(JList<? extends InventoryItem> list, InventoryItem value, int index, boolean isSelected, boolean cellHasFocus) {
+	public Component getListCellRendererComponent(JList<? extends Item> list, Item value, int index, boolean isSelected, boolean cellHasFocus) {
 		if(value == null) {
 			rendererComponent.setText("");
 		} else {
@@ -46,4 +47,5 @@ public class InvRenderer implements ListCellRenderer<InventoryItem> {
 		rendererComponent.setOpaque(true);
 		return this.rendererComponent;
 	}
+
 }

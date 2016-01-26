@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.tempItem;
 
 public interface Item {
-	String getName();
-	boolean isSameType(Item item);
+	public String getName();
+	public String toString();
+	public boolean isSameType(Item item);
 }
