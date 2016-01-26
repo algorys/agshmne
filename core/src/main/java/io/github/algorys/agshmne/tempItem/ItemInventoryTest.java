@@ -35,6 +35,15 @@ public class ItemInventoryTest {
 		
 		System.out.println("---" + inventory.toString());
 		
+		if(inventory.contains(apple.getName())){
+			System.out.println("Le sac à dos contient des pommes !");
+		}
+		inventory.addItem(apple);
+		if(inventory.contains(apple.getName())){
+			System.out.println("Le sac à dos contient des pommes !");
+		}
+		System.out.println(inventory.toString());
+		
 		
 	}
 

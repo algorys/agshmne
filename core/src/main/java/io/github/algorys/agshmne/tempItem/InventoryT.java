@@ -59,9 +59,9 @@ public class InventoryT extends Observable {
 		this.notifyObservers();
 	}
 
-	public boolean contains(Class<?> type) {
+	public boolean contains(String item) {
 		for (int i = 0; i < backpack.size(); i++) {
-			if (type.isInstance(backpack.get(i))) {
+			if (item == backpack.get(i).getName()) {
 				return true;
 			}
 		}
