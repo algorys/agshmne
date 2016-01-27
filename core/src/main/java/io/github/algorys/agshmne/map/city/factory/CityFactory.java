@@ -1,11 +1,11 @@
-package io.github.algorys.agshmne.city.factory;
+package io.github.algorys.agshmne.map.city.factory;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import io.github.algorys.agshmne.city.City;
-import io.github.algorys.agshmne.city.ICityFactory;
-import io.github.algorys.agshmne.tile.TileType;
+import io.github.algorys.agshmne.map.city.City;
+import io.github.algorys.agshmne.map.city.ICityFactory;
+import io.github.algorys.agshmne.map.tile.TileType;
 
 public class CityFactory {
 	private Map<TileType, ICityFactory> factories = new HashMap<>();

@@ -2,7 +2,7 @@ package io.github.algorys.agshmne.quest;
 
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;
-import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.map.region.Region;
 
 public class FetchQuestTest {
 

@@ -3,6 +3,7 @@ package io.github.algorys.agshmne.tile;
 import javax.swing.AbstractListModel;
 
 import io.github.algorys.agshmne.items.Item;
+import io.github.algorys.agshmne.map.tile.Tile;
 
 @SuppressWarnings("serial")
 public class TileListModel extends AbstractListModel<Item> {

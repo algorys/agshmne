@@ -1,11 +1,11 @@
-package io.github.algorys.agshmne.region;
+package io.github.algorys.agshmne.map.region;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import io.github.algorys.agshmne.tile.TileType;
+import io.github.algorys.agshmne.map.tile.TileType;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class DescFactory {

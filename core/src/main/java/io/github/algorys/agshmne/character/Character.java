@@ -6,9 +6,9 @@ import io.github.algorys.agshmne.caracteristic.CharacterAttribute;
 import io.github.algorys.agshmne.caracteristic.CharacterVital;
 import io.github.algorys.agshmne.character.skills.factory.SkillFactory;
 import io.github.algorys.agshmne.inventory.Inventory;
+import io.github.algorys.agshmne.map.region.Region;
+import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.movement.Position;
-import io.github.algorys.agshmne.region.Region;
-import io.github.algorys.agshmne.tile.Tile;
 
 /*
  * Définit le Personnage

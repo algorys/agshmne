@@ -13,6 +13,9 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
+import io.github.algorys.agshmne.map.tile.Tile;
+import io.github.algorys.agshmne.map.tile.TileType;
+
 @SuppressWarnings("serial")
 public class JTile extends JComponent {
 	/**

@@ -7,9 +7,9 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.region.JRegion;
-import io.github.algorys.agshmne.region.Region;
 
 public class JRegionTest {
 	public static void main(String[] args) {

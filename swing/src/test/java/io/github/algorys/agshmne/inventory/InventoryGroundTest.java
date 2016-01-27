@@ -3,7 +3,7 @@ package io.github.algorys.agshmne.inventory;
 import javax.swing.JFrame;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.tile.GroundInv;
 
 public class InventoryGroundTest {

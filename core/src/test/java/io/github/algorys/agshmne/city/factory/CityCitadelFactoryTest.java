@@ -4,8 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import io.github.algorys.agshmne.city.City;
-import io.github.algorys.agshmne.city.CityType;
+import io.github.algorys.agshmne.map.city.City;
+import io.github.algorys.agshmne.map.city.CityType;
+import io.github.algorys.agshmne.map.city.factory.CityCitadelFactory;
 
 public class CityCitadelFactoryTest {
 

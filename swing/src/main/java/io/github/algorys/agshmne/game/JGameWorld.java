@@ -5,8 +5,8 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.region.JRegion;
-import io.github.algorys.agshmne.region.Region;
 
 @SuppressWarnings("serial")
 public class JGameWorld extends JPanel{
