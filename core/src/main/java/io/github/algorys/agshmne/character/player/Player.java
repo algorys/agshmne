@@ -3,6 +3,7 @@ package io.github.algorys.agshmne.character.player;
 import java.util.Observable;
 
 import io.github.algorys.agshmne.character.Attribute;
+import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.player.skills.factory.SkillFactory;
 import io.github.algorys.agshmne.items.Inventory;
@@ -13,7 +14,7 @@ import io.github.algorys.agshmne.map.tile.Tile;
 /*
  * Définit le Personnage
  */
-public class Player extends Observable {
+public class Player extends Observable implements Character {
 	private Position position = new Position(0, 0);
 	private Region region;
 	private Inventory inv;
@@ -99,5 +100,15 @@ public class Player extends Observable {
 
 	public PlayerXP getXp() {
 		return xp;
+	}
+	
+	@Override
+	public int getLevel() {
+		return this.xp.getLvl();
+	}
+	
+	@Override
+	public String getName() {
+		return this.social.getName();
 	}
 }
