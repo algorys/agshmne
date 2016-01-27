@@ -7,12 +7,15 @@ public class Beast implements Opponent {
 	private String name;
 	private int level;
 	private CharacterAttribute carac;
+	private OpponentVital vital;
 	
-	public Beast(String name, int level, CharacterAttribute carac) {
+	public Beast(String name, int level, CharacterAttribute carac, OpponentVital vital) {
 		this.name = name;
 		this.level = level;
 		this.carac = carac;
+		this.vital = vital;
 	}
+	
 	@Override
 	public String getName() {
 		return name;
@@ -29,23 +32,26 @@ public class Beast implements Opponent {
 	}
 	
 	@Override
+	public OpponentVital getVital() {
+		return vital;
+	}
+	
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Nom : " + this.getName());
 		sb.append("\n");
 		sb.append("Level : " + this.getLevel());
 		sb.append("\n");
+		sb.append("Vie = " + this.getVital().getVie());
+		sb.append("\n");
+		sb.append("Mana = " + this.getVital().getMana());
+		sb.append("\n");
 		sb.append("For = " + this.getAttributes().getFOR());
 		sb.append("\n");
 		sb.append("Dex = " + this.getAttributes().getDEX());
 		sb.append("\n");
 		sb.append("Con = " + this.getAttributes().getCON());
-		sb.append("\n");
-		sb.append("Int = " + this.getAttributes().getINT());
-		sb.append("\n");
-		sb.append("Cha = " + this.getAttributes().getCHA());
-
 		return sb.toString();
 	}
-
 }

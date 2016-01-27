@@ -3,11 +3,13 @@ package io.github.algorys.agshmne.opponent.beast;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.algorys.agshmne.caracteristic.CharacterAttribute;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class BeastFactory {
 	private List<String> lowMonster = new ArrayList<>();
 	private final BeastAttributeFactory beastAttributeFactory = new BeastAttributeFactory();
+	private final OpponentVitalFactory beastVitalFact = new OpponentVitalFactory();
 
 	public BeastFactory() {
 		lowMonster.add("Wolf:3");
@@ -21,6 +23,7 @@ public class BeastFactory {
 		String line = lowMonster.get(Tools.dice(lowMonster.size()));
 		String[] parts = line.split(":");
 		int level = Integer.parseInt(parts[1]);
-		return new Beast(parts[0], level, beastAttributeFactory.createAttributes(level));
+		CharacterAttribute attributes = beastAttributeFactory.createAttributes(level);
+		return new Beast(parts[0], level, attributes, beastVitalFact.createVital(attributes, level));
 	}
 }
