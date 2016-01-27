@@ -11,9 +11,9 @@ import io.github.algorys.agshmne.items.Item;
 public class Tile extends Observable {
 	private TileType type;
 	private Inventory inv = new Inventory();
-	private City city; 
-	private HistoryTile histTile;
-	
+	private City city;
+	private String desc;
+
 	public Tile(TileType type, City city) {
 		this(type);
 		this.city = city;
@@ -21,13 +21,13 @@ public class Tile extends Observable {
 
 	public Tile(TileType type) {
 		this.type = type;
-		histTile = new HistoryTile(this);
+		desc = new HistoryTile(this).getDesc();
 	}
 
 	public TileType getType() {
 		return type;
 	}
-	
+
 	public boolean addItem(Item e) {
 		inv.addItem(e);
 		boolean added = true;
@@ -58,16 +58,16 @@ public class Tile extends Observable {
 		sb.append(")");
 		return sb.toString();
 	}
-	
+
 	public City getCity() {
 		return city;
 	}
-	
+
 	public boolean isCivilized() {
 		return this.city != null;
 	}
-	
+
 	public String getDesc() {
-		return histTile.getDesc();
+		return this.desc;
 	}
 }
