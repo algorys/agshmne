@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.game;
+package io.github.algorys.agshmne.game.south;
 
 import java.awt.Dimension;
 
