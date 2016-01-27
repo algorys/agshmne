@@ -1,7 +1,7 @@
 package io.github.algorys.agshmne.character.opponent;
 
 import io.github.algorys.agshmne.character.Attribute;
-import io.github.algorys.agshmne.character.opponent.beast.OpponentVital;
+import io.github.algorys.agshmne.character.Vital;
 
 public interface Opponent {
 
@@ -11,6 +11,6 @@ public interface Opponent {
 	
 	public Attribute getAttributes();
 	
-	public OpponentVital getVital();
+	public Vital getVital();
 
 }

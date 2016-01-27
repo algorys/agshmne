@@ -1,15 +1,16 @@
 package io.github.algorys.agshmne.character.opponent.beast;
 
 import io.github.algorys.agshmne.character.Attribute;
+import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.opponent.Opponent;
 
 public class Beast implements Opponent {
 	private String name;
 	private int level;
 	private Attribute carac;
-	private OpponentVital vital;
+	private Vital vital;
 	
-	public Beast(String name, int level, Attribute carac, OpponentVital vital) {
+	public Beast(String name, int level, Attribute carac, Vital vital) {
 		this.name = name;
 		this.level = level;
 		this.carac = carac;
@@ -32,7 +33,7 @@ public class Beast implements Opponent {
 	}
 	
 	@Override
-	public OpponentVital getVital() {
+	public Vital getVital() {
 		return vital;
 	}
 	
