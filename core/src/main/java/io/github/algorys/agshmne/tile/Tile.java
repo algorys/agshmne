@@ -15,9 +15,8 @@ public class Tile extends Observable {
 	private HistoryTile histTile;
 	
 	public Tile(TileType type, City city) {
-		this.type = type;
+		this(type);
 		this.city = city;
-		histTile = new HistoryTile(this);
 	}
 
 	public Tile(TileType type) {
@@ -30,7 +29,6 @@ public class Tile extends Observable {
 	}
 	
 	public boolean addItem(Item e) {
-		//boolean added = items.add(e);
 		inv.addItem(e);
 		boolean added = true;
 		this.setChanged();
@@ -68,9 +66,8 @@ public class Tile extends Observable {
 	public boolean isCivilized() {
 		return this.city != null;
 	}
-
-	public HistoryTile getHistTile() {
-		return histTile;
+	
+	public String getDesc() {
+		return histTile.getDesc();
 	}
-
 }
