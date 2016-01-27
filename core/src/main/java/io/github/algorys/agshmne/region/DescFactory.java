@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.history;
+package io.github.algorys.agshmne.region;
 
 import java.util.Arrays;
 import java.util.HashMap;

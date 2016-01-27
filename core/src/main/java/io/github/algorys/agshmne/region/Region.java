@@ -3,7 +3,6 @@ package io.github.algorys.agshmne.region;
 import java.util.Arrays;
 
 import io.github.algorys.agshmne.city.factory.CityFactory;
-import io.github.algorys.agshmne.history.DescFactory;
 import io.github.algorys.agshmne.items.ItemFactory;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.tile.Tile;
@@ -20,10 +19,11 @@ public class Region {
 		DescFactory descFactory = new DescFactory();
 		for (int i = 0; i < SIZE; i++) {
 			TileType type = TileType.values()[io.github.algorys.agshmne.tools.Tools.dice(TileType.values().length)];
+			String desc = descFactory.randomDesc(type);
 			if(Math.random() < .25) {
-				tiles[i] = new Tile(type, descFactory.randomDesc(type), cityFactory.createCity(type));
+				tiles[i] = new Tile(type, desc, cityFactory.createCity(type));
 			} else {
-				tiles[i] = new Tile(type, descFactory.randomDesc(type));
+				tiles[i] = new Tile(type, desc);
 			}
 
 			while (Math.random() < .3) {
