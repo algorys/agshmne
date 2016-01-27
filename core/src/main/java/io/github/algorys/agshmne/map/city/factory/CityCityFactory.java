@@ -8,7 +8,7 @@ public class CityCityFactory implements ICityFactory {
 
 	@Override
 	public City createCity() {
-		return new City(Tools.dice(3) + 5);
+		return new City(Tools.dice(3) + 4);
 	}
 
 }
