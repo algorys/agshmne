@@ -28,7 +28,7 @@ public class Character extends Observable {
 		xp = new CharacterXP();
 		inv = new Inventory();
 		skills = new SkillFactory();
-		
+
 	}
 
 	public Position getPosition() {
@@ -38,27 +38,28 @@ public class Character extends Observable {
 	public Region getRegion() {
 		return this.region;
 	}
-	
+
 	public void initVital() {
-		vital = new Vital(attributes, xp.getLvl());
+		vital = new Vital(attributes.getCON() + 10 + this.getXp().getLvl(), attributes.getINT() + this.getXp().getLvl(),
+				((attributes.getCON() + attributes.getFOR()) / 2) + 10, attributes.getCON() + 10);
 	}
-	
+
 	public void setPosition(Position position) {
-		if(!this.position.equals(position)) {
+		if (!this.position.equals(position)) {
 			this.position = position;
 			this.setChanged();
 			this.notifyObservers();
 		}
 	}
-	
+
 	public Attribute getAttributes() {
 		return attributes;
 	}
-	
+
 	public Vital getVital() {
 		return vital;
 	}
-	
+
 	public Inventory getInventory() {
 		return inv;
 	}
@@ -70,11 +71,11 @@ public class Character extends Observable {
 	public SkillFactory getSkills() {
 		return skills;
 	}
-	
+
 	public Tile getTile() {
 		return getRegion().getTileFromPosition(getPosition());
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -98,4 +99,3 @@ public class Character extends Observable {
 		return xp;
 	}
 }
-

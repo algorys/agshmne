@@ -1,17 +1,19 @@
 package io.github.algorys.agshmne.character;
 
 public class Vital {
+
 	private int vie;
 	private int mana;
 	private int fatigue;
 	private int faim;
 
-    public Vital (Attribute attributes, int level) {
-    	vie = attributes.getCON() + 10 + level;
-    	mana = attributes.getINT() + level;
-    	fatigue = ((attributes.getCON() + attributes.getFOR()) / 2) + 10;
-    	faim = attributes.getCON() + 10;
-    }
+	public Vital(int vie, int mana, int fatigue, int faim) {
+		super();
+		this.vie = vie;
+		this.mana = mana;
+		this.fatigue = fatigue;
+		this.faim = faim;
+	}
 
 	public int getVie() {
 		return vie;
