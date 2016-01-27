@@ -1,18 +1,14 @@
 package io.github.algorys.agshmne.caracteristic;
 
-import io.github.algorys.agshmne.character.CharacterXP;
-
 public class CharacterVital {
 	private int vie;
 	private int mana;
 	private int fatigue;
 	private int faim;
 
-    public CharacterVital (CharacterAttribute attributes, CharacterXP xp) {
-    	// TODO : Faire la gestion de la vie et de la mana
-    	vie = attributes.getCON() + 10 + xp.getLvl();
-    	mana = attributes.getINT() + xp.getLvl();
-    	   // TODO : Faire la gestion de la Faim et de la Fatigue
+    public CharacterVital (CharacterAttribute attributes, int level) {
+    	vie = attributes.getCON() + 10 + level;
+    	mana = attributes.getINT() + level;
     	fatigue = ((attributes.getCON() + attributes.getFOR()) / 2) + 10;
     	faim = attributes.getCON() + 10;
     }
