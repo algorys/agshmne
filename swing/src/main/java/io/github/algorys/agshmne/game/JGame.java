@@ -1,12 +1,10 @@
 package io.github.algorys.agshmne.game;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,7 +13,6 @@ import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.region.RandomRegionFactory;
 import io.github.algorys.agshmne.map.region.Region;
-import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.region.JRegion;
 
 @SuppressWarnings("serial")
@@ -40,17 +37,8 @@ public class JGame extends JFrame {
 		/*
 		 * SOUTH : TODO : En cours...
 		 */
-		JPanel jpSouth = new JPanel();
-		jpSouth.setPreferredSize(new Dimension(710, 100));
-		BoxLayout blSouth = new BoxLayout(jpSouth, BoxLayout.Y_AXIS);
-		jpSouth.setLayout(blSouth);
-		final JTitleHistory titleHistory = new JTitleHistory(pj);
-		Tile currentTile = pj.getTile();
-		titleHistory.setTitle("Region : " + currentTile.getDesc());
-		final JCivilized civilized = new JCivilized(pj);
-		civilized.setCivilized(currentTile.isCivilized());
-		jpSouth.add(titleHistory);
-		jpSouth.add(civilized);
+		final JDescGame descGame = new JDescGame(pj);
+		
 
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
 			@Override
@@ -60,27 +48,19 @@ public class JGame extends JFrame {
 					switch (e.getKeyCode()) {
 					case KeyEvent.VK_LEFT:
 						pj.setPosition(new Position(pj.getPosition().getX() - 1, pj.getPosition().getY()));
-						titleHistory.setTitle("Region : " + pj.getTile().getDesc());
-						civilized.setCivilized(pj.getTile().isCivilized());
-						
+						descGame.updateLabels(pj);
 						return true;
 					case KeyEvent.VK_RIGHT:
 						pj.setPosition(new Position(pj.getPosition().getX() + 1, pj.getPosition().getY()));
-						titleHistory.setTitle("Region : " + pj.getTile().getDesc());
-						civilized.setCivilized(pj.getTile().isCivilized());
-						
+						descGame.updateLabels(pj);
 						return true;
 					case KeyEvent.VK_UP:
 						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() + 1));
-						titleHistory.setTitle("Region : " + pj.getTile().getDesc());
-						civilized.setCivilized(pj.getTile().isCivilized());
-						
+						descGame.updateLabels(pj);
 						return true;
 					case KeyEvent.VK_DOWN:
 						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() - 1));
-						titleHistory.setTitle("Region : " + pj.getTile().getDesc());
-						civilized.setCivilized(pj.getTile().isCivilized());
-						
+						descGame.updateLabels(pj);
 						return true;
 					}
 				}
@@ -110,7 +90,7 @@ public class JGame extends JFrame {
 		// contentPane.add(jpCenter, BorderLayout.CENTER);
 		contentPane.add(tabbedCenter, BorderLayout.CENTER);
 		contentPane.add(tabbedRight, BorderLayout.EAST);
-		contentPane.add(jpSouth, BorderLayout.SOUTH);
+		contentPane.add(descGame, BorderLayout.SOUTH);
 		contentPane.add(jpWest, BorderLayout.WEST);
 
 		this.setContentPane(contentPane);
