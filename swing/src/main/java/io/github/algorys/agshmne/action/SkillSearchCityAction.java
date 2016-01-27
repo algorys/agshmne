@@ -6,13 +6,13 @@ import java.util.Observer;
 
 import javax.swing.AbstractAction;
 
-import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.Player;
 
 @SuppressWarnings("serial")
 public class SkillSearchCityAction extends AbstractAction implements Observer {
-	private final Character pj;
+	private final Player pj;
 	
-	public SkillSearchCityAction(Character pj) {
+	public SkillSearchCityAction(Player pj) {
 		super("Fouiller la Ville");
 		this.pj = pj;
 		pj.addObserver(this);

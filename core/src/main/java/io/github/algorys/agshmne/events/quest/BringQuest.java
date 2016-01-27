@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne.events.quest;
 
-import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.Player;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.tools.RandomCoordinated;
@@ -10,7 +10,7 @@ public class BringQuest {
 	private Position initialPos;
 	private Item item;
 	
-	public BringQuest(Character pj, Item item) {
+	public BringQuest(Player pj, Item item) {
 		this.initialPos = pj.getPosition();
 		this.questDestination = this.defineDestination(initialPos);
 		this.item = item;
@@ -29,11 +29,11 @@ public class BringQuest {
 		return questDestination;
 	}
 	
-	public boolean isWin(Character pj) {
+	public boolean isWin(Player pj) {
 		return pj.getPosition() == questDestination && pj.getInventory().contains(item);
 	}
 	
-	public void terminate(Character pj) {
+	public void terminate(Player pj) {
 		pj.getInventory().removeItem(item);
 		// TODO prévoir une récompense.
 	}

@@ -11,7 +11,7 @@ import io.github.algorys.agshmne.map.tile.Tile;
 /*
  * Définit le Personnage
  */
-public class Character extends Observable {
+public class Player extends Observable {
 	private Position position = new Position(0, 0);
 	private Region region;
 	private Inventory inv;
@@ -21,7 +21,7 @@ public class Character extends Observable {
 	private CharacterXP xp;
 	private SkillFactory skills;
 
-	public Character(Region region) {
+	public Player(Region region) {
 		this.region = region;
 		social = new CharacterSocial();
 		attributes = new Attribute();

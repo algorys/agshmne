@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne.quest;
 
-import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.Player;
 import io.github.algorys.agshmne.events.quest.FetchQuest;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;
 import io.github.algorys.agshmne.map.region.Region;
@@ -9,7 +9,7 @@ public class FetchQuestTest {
 
 	public static void main(String[] args) {
 		Region region = new Region();
-		Character pj = new Character(region);
+		Player pj = new Player(region);
 		FetchQuest appleQ = new FetchQuest(pj, new StackableItemDirectFactory().createApple(), 3);
 		System.out.println(appleQ.getGoal());
 		

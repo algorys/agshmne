@@ -5,12 +5,12 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.Player;
 
 @SuppressWarnings("serial")
 public class ActionCharacter extends JPanel {
 	
-	public ActionCharacter(final Character pj){
+	public ActionCharacter(final Player pj){
 		this.setLayout(new GridLayout(0,1));
 		// Boutons d'action
 		JButton woodButton = new JButton("Couper du Bois");

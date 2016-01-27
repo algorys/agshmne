@@ -3,7 +3,7 @@ package io.github.algorys.agshmne.game;
 import javax.swing.JTabbedPane;
 
 import io.github.algorys.agshmne.action.ActionCharacter;
-import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.Player;
 import io.github.algorys.agshmne.tile.GroundInv;
 
 @SuppressWarnings("serial")
@@ -11,7 +11,7 @@ public class JRightTabbed extends JTabbedPane {
 	private GroundInv grdInv;
 	private ActionCharacter actionCharacter;
 	
-	public JRightTabbed(Character pj) {
+	public JRightTabbed(Player pj) {
 		grdInv = new GroundInv(pj);
 		actionCharacter = new ActionCharacter(pj);
 		

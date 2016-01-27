@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne.events.quest;
 
-import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.Player;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.Position;
 
@@ -9,17 +9,17 @@ public class FetchQuest {
 	private Item item;
 	private int count;
 
-	public FetchQuest(Character pj, Item item, int count) {
+	public FetchQuest(Player pj, Item item, int count) {
 		this.questPosition = pj.getPosition();
 		this.count = count;
 		this.item = item;
 	}
 	
-	public boolean isWin(Character pj) {
+	public boolean isWin(Player pj) {
 		return (pj.getInventory().count(item) >= count) ;
 	}
 	
-	public void terminate(Character pj) {
+	public void terminate(Player pj) {
 		for(int i = 0; i < count; i ++) {
 			pj.getInventory().removeItem(item);
 		}

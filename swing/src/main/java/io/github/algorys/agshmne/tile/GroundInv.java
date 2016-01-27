@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
-import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.Player;
 import io.github.algorys.agshmne.design.InvRenderer;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.tile.Tile;
@@ -24,9 +24,9 @@ import io.github.algorys.agshmne.map.tile.Tile;
 public class GroundInv extends JPanel implements Observer {
 	private JList<Item> groundItem;
 	private Tile currentTile;
-	private Character pj;
+	private Player pj;
 
-	public GroundInv(Character pj) {
+	public GroundInv(Player pj) {
 		this.pj = pj;
 		pj.addObserver(this);
 				
