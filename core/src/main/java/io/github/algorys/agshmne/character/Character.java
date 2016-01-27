@@ -2,7 +2,6 @@ package io.github.algorys.agshmne.character;
 
 import java.util.Observable;
 
-import io.github.algorys.agshmne.character.caracteristic.CharacterVital;
 import io.github.algorys.agshmne.character.skills.factory.SkillFactory;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.map.Position;
@@ -18,7 +17,7 @@ public class Character extends Observable {
 	private Inventory inv;
 	private CharacterSocial social;
 	private Attribute attributes;
-	private CharacterVital vital;
+	private Vital vital;
 	private CharacterXP xp;
 	private SkillFactory skills;
 
@@ -41,7 +40,7 @@ public class Character extends Observable {
 	}
 	
 	public void initVital() {
-		vital = new CharacterVital(attributes, xp.getLvl());
+		vital = new Vital(attributes, xp.getLvl());
 	}
 	
 	public void setPosition(Position position) {
@@ -56,7 +55,7 @@ public class Character extends Observable {
 		return attributes;
 	}
 	
-	public CharacterVital getVital() {
+	public Vital getVital() {
 		return vital;
 	}
 	

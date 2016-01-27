@@ -1,14 +1,12 @@
-package io.github.algorys.agshmne.character.caracteristic;
+package io.github.algorys.agshmne.character;
 
-import io.github.algorys.agshmne.character.Attribute;
-
-public class CharacterVital {
+public class Vital {
 	private int vie;
 	private int mana;
 	private int fatigue;
 	private int faim;
 
-    public CharacterVital (Attribute attributes, int level) {
+    public Vital (Attribute attributes, int level) {
     	vie = attributes.getCON() + 10 + level;
     	mana = attributes.getINT() + level;
     	fatigue = ((attributes.getCON() + attributes.getFOR()) / 2) + 10;
