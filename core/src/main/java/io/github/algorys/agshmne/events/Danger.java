@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.danger;
+package io.github.algorys.agshmne.events;
 
 public class Danger {
 	private int lvl;

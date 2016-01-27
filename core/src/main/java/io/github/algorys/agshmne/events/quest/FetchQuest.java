@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.quest;
+package io.github.algorys.agshmne.events.quest;
 
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.items.Item;
