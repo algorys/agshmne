@@ -15,7 +15,7 @@ public class Player extends Observable {
 	private Position position = new Position(0, 0);
 	private Region region;
 	private Inventory inv;
-	private CharacterSocial social;
+	private PlayerSocial social;
 	private Attribute attributes;
 	private Vital vital;
 	private CharacterXP xp;
@@ -23,7 +23,7 @@ public class Player extends Observable {
 
 	public Player(Region region) {
 		this.region = region;
-		social = new CharacterSocial();
+		social = new PlayerSocial();
 		attributes = new Attribute();
 		xp = new CharacterXP();
 		inv = new Inventory();
@@ -64,7 +64,7 @@ public class Player extends Observable {
 		return inv;
 	}
 
-	public CharacterSocial getSocial() {
+	public PlayerSocial getSocial() {
 		return social;
 	}
 

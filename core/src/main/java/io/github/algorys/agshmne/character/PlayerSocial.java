@@ -1,13 +1,13 @@
 package io.github.algorys.agshmne.character;
 
-public class CharacterSocial {
+public class PlayerSocial {
 	private String name;
 	private String sexe;
 	private String classe;
 	private String race;
 	private String background;
 	
-	public CharacterSocial() {
+	public PlayerSocial() {
 		
 	}
 
