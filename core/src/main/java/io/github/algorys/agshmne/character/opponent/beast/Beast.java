@@ -1,10 +1,10 @@
 package io.github.algorys.agshmne.character.opponent.beast;
 
 import io.github.algorys.agshmne.character.Attribute;
+import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.Vital;
-import io.github.algorys.agshmne.character.opponent.Opponent;
 
-public class Beast implements Opponent {
+public class Beast implements Character {
 	private String name;
 	private int level;
 	private Attribute carac;
