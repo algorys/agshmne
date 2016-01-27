@@ -19,8 +19,9 @@ public class FightSample {
 		Fight fight = new Fight(pj, wolf);
 		System.out.println(pj.toString());
 		System.out.println(wolf.toString());
-		fight.newRound();
-		fight.newRound();
+		while(!fight.isFinish()) {
+			fight.newRound();
+		}
 	}
 
 }

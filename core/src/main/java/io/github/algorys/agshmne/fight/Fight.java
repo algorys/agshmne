@@ -40,6 +40,10 @@ public class Fight {
 		round += 1;
 	}
 	
+	public boolean isFinish() {
+		return this.currentPjLife <= 0 || this.currentAdvLife <= 0;
+	}
+	
 	private int attack(int carac, int level) {
     	int dice = Tools.dice(20);
     	int difficulty = 10 + level;
