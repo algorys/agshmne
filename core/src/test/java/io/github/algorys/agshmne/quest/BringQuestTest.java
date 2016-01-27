@@ -3,8 +3,8 @@ package io.github.algorys.agshmne.quest;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.events.quest.BringQuest;
 import io.github.algorys.agshmne.items.ItemDirectFactory;
+import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.region.Region;
-import io.github.algorys.agshmne.movement.Position;
 
 public class BringQuestTest {
 

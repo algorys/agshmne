@@ -3,10 +3,10 @@ package io.github.algorys.agshmne.map.region;
 import java.util.Arrays;
 
 import io.github.algorys.agshmne.items.ItemFactory;
+import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.city.factory.CityFactory;
 import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.map.tile.TileType;
-import io.github.algorys.agshmne.movement.Position;
 
 public class Region {
 	private final static int WIDTH = (Position.MAX_X - Position.MIN_X + 1);

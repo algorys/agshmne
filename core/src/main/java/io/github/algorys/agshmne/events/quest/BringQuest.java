@@ -2,7 +2,7 @@ package io.github.algorys.agshmne.events.quest;
 
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.items.Item;
-import io.github.algorys.agshmne.movement.Position;
+import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.movement.RandomCoordinated;
 
 public class BringQuest {

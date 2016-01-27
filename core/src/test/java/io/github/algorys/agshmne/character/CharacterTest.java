@@ -9,7 +9,7 @@ import java.util.Observer;
 
 import org.junit.Test;
 
-import io.github.algorys.agshmne.movement.Position;
+import io.github.algorys.agshmne.map.Position;
 
 public class CharacterTest {
 

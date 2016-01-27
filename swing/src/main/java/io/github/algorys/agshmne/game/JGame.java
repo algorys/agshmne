@@ -12,9 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.map.tile.Tile;
-import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.region.JRegion;
 
 @SuppressWarnings("serial")

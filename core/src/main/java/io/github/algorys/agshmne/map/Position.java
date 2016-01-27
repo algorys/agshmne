@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.movement;
+package io.github.algorys.agshmne.map;
 
 public class Position {
 	public static final int MAX_X = 65;
@@ -15,7 +15,6 @@ public class Position {
 					String.format("(x,y) devrait être compris entre (%d, %d) et (%d, %d) mais (%d,%d) reçu.", MIN_X,
 							MIN_Y, MAX_X, MAX_Y, x, y));
 		}
-		// System.out.println("------- Nouvelle Position --------");
 		this.x = x;
 		this.y = y;
 	}
