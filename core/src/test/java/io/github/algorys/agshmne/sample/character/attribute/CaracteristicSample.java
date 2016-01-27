@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.caracteristic;
+package io.github.algorys.agshmne.sample.character.attribute;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.map.region.Region;;
