@@ -1,6 +1,6 @@
-package io.github.algorys.agshmne.opponent.beast;
+package io.github.algorys.agshmne.character.opponent.beast;
 
-import io.github.algorys.agshmne.caracteristic.CharacterAttribute;
+import io.github.algorys.agshmne.character.caracteristic.CharacterAttribute;
 
 public class OpponentVital {
 	private int vie;

@@ -2,8 +2,8 @@ package io.github.algorys.agshmne.character;
 
 import java.util.Observable;
 
-import io.github.algorys.agshmne.caracteristic.CharacterAttribute;
-import io.github.algorys.agshmne.caracteristic.CharacterVital;
+import io.github.algorys.agshmne.character.caracteristic.CharacterAttribute;
+import io.github.algorys.agshmne.character.caracteristic.CharacterVital;
 import io.github.algorys.agshmne.character.skills.factory.SkillFactory;
 import io.github.algorys.agshmne.inventory.Inventory;
 import io.github.algorys.agshmne.map.Position;

@@ -1,7 +1,7 @@
-package io.github.algorys.agshmne.opponent.beast;
+package io.github.algorys.agshmne.character.opponent.beast;
 
-import io.github.algorys.agshmne.caracteristic.CharacterAttribute;
-import io.github.algorys.agshmne.opponent.Opponent;
+import io.github.algorys.agshmne.character.caracteristic.CharacterAttribute;
+import io.github.algorys.agshmne.character.opponent.Opponent;
 
 public class Beast implements Opponent {
 	private String name;

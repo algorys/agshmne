@@ -1,9 +1,9 @@
-package io.github.algorys.agshmne.opponent.beast;
+package io.github.algorys.agshmne.character.opponent.beast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.github.algorys.agshmne.caracteristic.CharacterAttribute;
+import io.github.algorys.agshmne.character.caracteristic.CharacterAttribute;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class BeastFactory {

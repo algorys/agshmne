@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.caracteristic;
+package io.github.algorys.agshmne.character.caracteristic;
 
 public class CharacterVital {
 	private int vie;
