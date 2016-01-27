@@ -1,10 +1,10 @@
 package io.github.algorys.agshmne.character;
 
-public class CharacterXP {
+public class PlayerXP {
 	private int xp;
 	private int lvl;
 	
-	public CharacterXP() {
+	public PlayerXP() {
 		xp = 0;
 		lvl = 1;
 	}

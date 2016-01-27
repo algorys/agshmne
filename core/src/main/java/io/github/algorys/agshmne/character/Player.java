@@ -18,14 +18,14 @@ public class Player extends Observable {
 	private PlayerSocial social;
 	private Attribute attributes;
 	private Vital vital;
-	private CharacterXP xp;
+	private PlayerXP xp;
 	private SkillFactory skills;
 
 	public Player(Region region) {
 		this.region = region;
 		social = new PlayerSocial();
 		attributes = new Attribute();
-		xp = new CharacterXP();
+		xp = new PlayerXP();
 		inv = new Inventory();
 		skills = new SkillFactory();
 
@@ -95,7 +95,7 @@ public class Player extends Observable {
 		return sb.toString();
 	}
 
-	public CharacterXP getXp() {
+	public PlayerXP getXp() {
 		return xp;
 	}
 }
