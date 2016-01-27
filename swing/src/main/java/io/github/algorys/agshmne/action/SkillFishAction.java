@@ -7,8 +7,8 @@ import java.util.Observer;
 import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.skills.SkillTool;
-import io.github.algorys.agshmne.skills.SkillType;
+import io.github.algorys.agshmne.character.skills.SkillTool;
+import io.github.algorys.agshmne.character.skills.SkillType;
 
 @SuppressWarnings("serial")
 public class SkillFishAction extends AbstractAction implements Observer {

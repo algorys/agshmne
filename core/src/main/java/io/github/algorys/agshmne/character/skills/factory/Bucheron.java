@@ -1,11 +1,11 @@
-package io.github.algorys.agshmne.skills.factory;
+package io.github.algorys.agshmne.character.skills.factory;
 
-import io.github.algorys.agshmne.skills.ISkillFactory;
+import io.github.algorys.agshmne.character.skills.ISkillFactory;
 
-public class Boucher implements ISkillFactory {
+public class Bucheron implements ISkillFactory {
 	private int level;
 	
-	public Boucher(){
+	public Bucheron(){
 		this.level = 0;
 	}
 	
@@ -20,7 +20,6 @@ public class Boucher implements ISkillFactory {
 	}
 	@Override
 	public String toString(){
-		return "Boucherie";
+		return "Bucheron";
 	}
-
 }

@@ -7,9 +7,9 @@ import java.util.Observer;
 import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.skills.SkillTool;
+import io.github.algorys.agshmne.character.skills.SkillType;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;
-import io.github.algorys.agshmne.skills.SkillTool;
-import io.github.algorys.agshmne.skills.SkillType;
 
 @SuppressWarnings("serial")
 public class SkillMineAction extends AbstractAction implements Observer {

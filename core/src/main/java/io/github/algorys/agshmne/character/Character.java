@@ -4,10 +4,10 @@ import java.util.Observable;
 
 import io.github.algorys.agshmne.caracteristic.CharacterAttribute;
 import io.github.algorys.agshmne.caracteristic.CharacterVital;
+import io.github.algorys.agshmne.character.skills.factory.SkillFactory;
 import io.github.algorys.agshmne.inventory.Inventory;
 import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.region.Region;
-import io.github.algorys.agshmne.skills.factory.SkillFactory;
 import io.github.algorys.agshmne.tile.Tile;
 
 /*

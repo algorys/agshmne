@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.skills;
+package io.github.algorys.agshmne.character.skills;
 
 
 public interface ISkillFactory {

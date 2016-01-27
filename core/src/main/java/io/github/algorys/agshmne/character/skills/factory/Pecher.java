@@ -1,11 +1,11 @@
-package io.github.algorys.agshmne.skills.factory;
+package io.github.algorys.agshmne.character.skills.factory;
 
-import io.github.algorys.agshmne.skills.ISkillFactory;
+import io.github.algorys.agshmne.character.skills.ISkillFactory;
 
-public class Magie implements ISkillFactory {
+public class Pecher implements ISkillFactory {
 	private int level;
 	
-	public Magie(){
+	public Pecher(){
 		this.level = 0;
 	}
 	
@@ -18,9 +18,9 @@ public class Magie implements ISkillFactory {
 	public int getLevel() {
 		return level;
 	}
+	
 	@Override
 	public String toString(){
-		return "Magie";
+		return "Pêcher";
 	}
-
 }

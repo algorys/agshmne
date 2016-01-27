@@ -1,10 +1,10 @@
-package io.github.algorys.agshmne.skills.factory;
+package io.github.algorys.agshmne.character.skills.factory;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import io.github.algorys.agshmne.skills.ISkillFactory;
-import io.github.algorys.agshmne.skills.SkillType;
+import io.github.algorys.agshmne.character.skills.ISkillFactory;
+import io.github.algorys.agshmne.character.skills.SkillType;
 
 public class SkillFactory {
 	private Map<SkillType, ISkillFactory> skillFactories = new HashMap<>();
