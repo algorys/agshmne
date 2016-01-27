@@ -18,18 +18,22 @@ public class Region {
 		CityFactory cityFactory = new CityFactory();
 		DescFactory descFactory = new DescFactory();
 		for (int i = 0; i < SIZE; i++) {
+			Tile currentTile;
+			
 			TileType type = TileType.values()[io.github.algorys.agshmne.tools.Tools.dice(TileType.values().length)];
 			String desc = descFactory.randomDesc(type);
 			if(Math.random() < .25) {
-				tiles[i] = new Tile(type, desc, cityFactory.createCity(type));
+				currentTile = new Tile(type, desc, cityFactory.createCity(type));
 			} else {
-				tiles[i] = new Tile(type, desc);
+				currentTile = new Tile(type, desc);
 			}
 
 			while (Math.random() < .3) {
 				ItemFactory itemFact = new ItemFactory();
-				tiles[i].addItem(itemFact.createItem());
+				currentTile.addItem(itemFact.createItem());
 			}
+
+			tiles[i] = currentTile;
 		}
 	}
 
