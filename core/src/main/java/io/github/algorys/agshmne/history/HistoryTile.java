@@ -1,65 +1,57 @@
 package io.github.algorys.agshmne.history;
 
-import io.github.algorys.agshmne.desctile.DescDesert;
-import io.github.algorys.agshmne.desctile.DescHill;
-import io.github.algorys.agshmne.desctile.DescLake;
-import io.github.algorys.agshmne.desctile.DescMountain;
-import io.github.algorys.agshmne.desctile.DescPlain;
-import io.github.algorys.agshmne.desctile.DescRiver;
-import io.github.algorys.agshmne.desctile.DescSea;
-import io.github.algorys.agshmne.desctile.DescSwamp;
-import io.github.algorys.agshmne.desctile.DescWood;
+import java.util.Arrays;
+import java.util.List;
+
 import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class HistoryTile {
 	String desc;
-	
+
 	public HistoryTile(Tile tile) {
+		List<String> descWood = Arrays.asList("Bois", "Forêt", "Jardins", "Jungle", "Sylve");
+		List<String> descHill = Arrays.asList("Collines", "Plateau", "Grand Tertre", "Buttes");
+		List<String> descDesert = Arrays.asList("Désert", "Désert de Sel", "Steppe", "Toundra");
+		List<String> descSea = Arrays.asList("Mer", "Océan");
+		List<String> descMountain = Arrays.asList("Monts", "Montagnes", "Falaises", "Crevasses", "Canyons");
+		List<String> descPlain = Arrays.asList("Plaines", "Savane", "Terres", "Contrées", "Comté");
+		List<String> descRiver = Arrays.asList("Rivière", "Fleuve", "Côte", "Rivages");
+		List<String> descSwamp = Arrays.asList("Marécage", "Marais", "Tourbière", "Bourbier");
+		List<String> descLake = Arrays.asList("Lacs", "Etangs", "Fontaines", "Cascades", "Chutes");
 		switch (tile.getType()) {
 		case Wood:
 		case Forest:
-			DescWood descWood = DescWood.values()[Tools.dice(DescWood.values().length)];
-			this.desc = descWood.toString();
+			this.desc = descWood.get(Tools.dice(descWood.size()));
 			break;
 		case Hill:
-			DescHill descHill = DescHill.values()[Tools.dice(DescHill.values().length)];
-			this.desc = descHill.toString();
+			this.desc = descHill.get(Tools.dice(descHill.size()));
 			break;
 		case Desert:
-			DescDesert descDesert = DescDesert.values()[Tools.dice(DescDesert.values().length)];
-			this.desc = descDesert.toString();
+			this.desc = descDesert.get(Tools.dice(descDesert.size()));
 			break;
 		case Sea:
-			DescSea descSea = DescSea.values()[Tools.dice(DescSea.values().length)];
-			this.desc = descSea.toString();
+			this.desc = descSea.get(Tools.dice(descSea.size()));
 			break;
 		case Mountain:
-			DescMountain descMountain = DescMountain.values()[Tools.dice(DescMountain.values().length)];
-			this.desc = descMountain.toString();
+			this.desc = descMountain.get(Tools.dice(descMountain.size()));
 			break;
 		case Plain:
 		case Valley:
-			DescPlain descPlain = DescPlain.values()[Tools.dice(DescPlain.values().length)];
-			this.desc = descPlain.toString();
+			this.desc = descPlain.get(Tools.dice(descPlain.size()));
 			break;
 		case River:
-			DescRiver descRiver = DescRiver.values()[Tools.dice(DescRiver.values().length)];
-			this.desc = descRiver.toString();
+			this.desc = descRiver.get(Tools.dice(descRiver.size()));
 			break;
 		case Swamp:
-			DescSwamp descSwamp = DescSwamp.values()[Tools.dice(DescSwamp.values().length)];
-			this.desc = descSwamp.toString();
+			this.desc = descSwamp.get(Tools.dice(descSwamp.size()));
 			break;
 		case Lake:
-			DescLake descLake = DescLake.values()[Tools.dice(DescLake.values().length)];
-			this.desc = descLake.toString();
+			this.desc = descLake.get(Tools.dice(descLake.size()));
 			break;
 		default:
 			this.desc = "No TileType found";
 		}
-		//System.out.println("Desc Tile : " + desc);
-		
 	}
 
 	public String getDesc() {
