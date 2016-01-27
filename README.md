@@ -1,11 +1,13 @@
-# Jeu
+# Agshmne [![Build Status](https://travis-ci.org/algorys/agshmne.svg?branch=master)](https://travis-ci.org/algorys/agshmne)
+
+## Jeu
 
 > **Code :** Java <br>
 > **IDE :** Eclipse <br>
 > **Style :** RPG <br>
 > **Plateformes Envisagées :** Desktop / Android
 
-# Information Générales
+## Information Générales
 
 > **Nom du Jeu :** Agshmne
 
@@ -16,7 +18,7 @@ Le style général sera le Jeu de Rôle en Solitaire, en se basant sur des titre
 La Magie sera présente dans Agshmne. Le jeu comprendra des écoles de bases que le joueur pourra ensuite s'approprier ou modifier.
 
 
-## Fonctionnalités souhaités
+### Fonctionnalités souhaités
 
 **Générales :**
 
@@ -54,12 +56,12 @@ La plupart du jeu se déroulera sur une carte en 2D, avec des cases carrées.
 
 Le système de jeu sera au Tour par Tour (enclenchés par chaque mouvement sur la carte). Un déplacement équivaudra à un jour probabement et on passera ainsi des Montagnes Déchainés de Malarh aux Marais des Sans Sels.
 
-## Contexte
+### Contexte
 L'univers d'Agshmne sera un mélange de fantasy provenant de différents mondes (Donjons & Dragons, Elders Scroll, Planescape Torment, Baldur's Gate, etc…) Cela ira du simple nain grognon à l'accès aux Plans Spirituels ou Élémentaires, tout en passant par des lieux Mystiques et Légendaires ou des choses étranges comme de la technologie incomprise ou des choses innommables (comme dans Cthulhu).
 
 > Pour en savoir plus lisez le [Document de Conception](/doc/conception.md) du jeu.
 
-## Etat d'avancement
+### Etat d'avancement
 **Aucune version Jouable...**
 
 **! Conception en cours !**
@@ -76,14 +78,14 @@ Et enfin la création de personnage
 
 ![Creation](/doc/crea_pj.png)
 
-## Licence
+### Licence
 [![Licence Creative Commons](https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-nd/4.0/)
 
 **Agshmne** de *Estrada Matthieu* est mis à disposition selon les termes de la [licence Creative Commons Attribution - Pas d&#39;Utilisation Commerciale - Pas de Modification 4.0 International](http://creativecommons.org/licenses/by-nc-nd/4.0/).
 
 Fondé(e) sur une œuvre à [https://github.com/algorys/agshmne](https://github.com/algorys/agshmne).
 
-### Crédits Images
+#### Crédits Images
 Images en provenance d'[opengameart.org](http://opengameart.org/) :
 
 Icônes originales : images de [RavenmoreArt](https://www.facebook.com/RavenmoreArt), ont été modifiées. [Licence Creative Commons CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/fr/)
