@@ -5,7 +5,7 @@ import java.util.Observable;
 import io.github.algorys.agshmne.character.caracteristic.CharacterAttribute;
 import io.github.algorys.agshmne.character.caracteristic.CharacterVital;
 import io.github.algorys.agshmne.character.skills.factory.SkillFactory;
-import io.github.algorys.agshmne.inventory.Inventory;
+import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.map.tile.Tile;

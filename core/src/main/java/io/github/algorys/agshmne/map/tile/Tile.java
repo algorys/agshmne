@@ -3,7 +3,7 @@ package io.github.algorys.agshmne.map.tile;
 import java.util.List;
 import java.util.Observable;
 
-import io.github.algorys.agshmne.inventory.Inventory;
+import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.city.City;
 

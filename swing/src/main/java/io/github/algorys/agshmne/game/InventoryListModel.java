@@ -5,7 +5,7 @@ import java.util.Observer;
 
 import javax.swing.AbstractListModel;
 
-import io.github.algorys.agshmne.inventory.Inventory;
+import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 
 @SuppressWarnings("serial")

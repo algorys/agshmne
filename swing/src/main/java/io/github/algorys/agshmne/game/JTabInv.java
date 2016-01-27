@@ -15,7 +15,7 @@ import javax.swing.JPopupMenu;
 
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.design.InvRenderer;
-import io.github.algorys.agshmne.inventory.Inventory;
+import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.tile.Tile;
 

@@ -1,13 +1,9 @@
-package io.github.algorys.agshmne.inventory;
+package io.github.algorys.agshmne.items;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
-
-import io.github.algorys.agshmne.items.StackableItem;
-import io.github.algorys.agshmne.items.IStackableItem;
-import io.github.algorys.agshmne.items.Item;
 
 public class Inventory extends Observable {
 	// TODO gérer les objets de quêtes différement des objets normaux.
