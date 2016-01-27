@@ -28,7 +28,7 @@ public class Beast implements Character {
 	}
 
 	@Override
-	public Attribute getAttributes() {
+	public Attribute getCurrentAttributes() {
 		return carac;
 	}
 	
@@ -48,11 +48,11 @@ public class Beast implements Character {
 		sb.append("\n");
 		sb.append("Mana = " + this.getVital().getMana());
 		sb.append("\n");
-		sb.append("For = " + this.getAttributes().getFOR());
+		sb.append("For = " + this.getCurrentAttributes().getFOR());
 		sb.append("\n");
-		sb.append("Dex = " + this.getAttributes().getDEX());
+		sb.append("Dex = " + this.getCurrentAttributes().getDEX());
 		sb.append("\n");
-		sb.append("Con = " + this.getAttributes().getCON());
+		sb.append("Con = " + this.getCurrentAttributes().getCON());
 		return sb.toString();
 	}
 }

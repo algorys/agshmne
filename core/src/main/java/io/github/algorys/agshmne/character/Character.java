@@ -6,7 +6,7 @@ public interface Character {
 	
 	public int getLevel();
 	
-	public Attribute getAttributes();
+	public Attribute getCurrentAttributes();
 	
 	public Vital getVital();
 

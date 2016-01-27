@@ -55,8 +55,30 @@ public class Player extends Observable implements Character {
 		}
 	}
 
+	/**
+	 * Retourne les attributs de base (sans modificateurs).
+	 * 
+	 * @return les attributs de base (sans modificateurs)
+	 */
 	public Attribute getAttributes() {
-		return attributes;
+		return this.attributes;
+	}
+
+	/**
+	 * Retourne les attributs courants (avec modificateurs).
+	 * TODO Gérer les objets équipés
+	 * TODO Gérer les sorts actifs
+	 * TODO Gérer les potions actives
+	 * TODO Gérer les malédictions, les bénédictions
+	 * TODO Gérer les modificateurs de quêtes
+	 * 
+	 * @return les attributs courants (avec modificateurs)
+	 */
+	@Override
+	public Attribute getCurrentAttributes() {
+		Attribute attribute = new Attribute();
+		attribute.setDEX(this.attributes.getDEX() + 5);
+		return attribute;
 	}
 
 	public Vital getVital() {
@@ -101,12 +123,12 @@ public class Player extends Observable implements Character {
 	public PlayerXP getXp() {
 		return xp;
 	}
-	
+
 	@Override
 	public int getLevel() {
 		return this.xp.getLvl();
 	}
-	
+
 	@Override
 	public String getName() {
 		return this.social.getName();

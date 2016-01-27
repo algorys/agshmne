@@ -13,7 +13,7 @@ public class OpponentTest {
 	public void oneBeastShouldHaveAttributes() {
 		BeastFactory beastFact = new BeastFactory();
 		Beast wolf = beastFact.createBeast();
-		assertTrue(wolf.getAttributes()!= null);
+		assertTrue(wolf.getCurrentAttributes()!= null);
 	}
 	
 	@Test
