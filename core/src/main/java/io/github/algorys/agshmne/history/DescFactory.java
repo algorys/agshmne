@@ -5,18 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileType;
 import io.github.algorys.agshmne.tools.Tools;
 
-public class HistoryTile {
-	String desc;
+public class DescFactory {
+	private Map<TileType, List<String>> descs = new HashMap<>();;
 
-	public HistoryTile(Tile tile) {
-		this.desc = randomDesc(tile.getType());
-	}
-
-	public String randomDesc(TileType tileType) {
+	public DescFactory() {
 		List<String> descWood = Arrays.asList("Bois", "Forêt", "Jardins", "Jungle", "Sylve");
 		List<String> descHill = Arrays.asList("Collines", "Plateau", "Grand Tertre", "Buttes");
 		List<String> descDesert = Arrays.asList("Désert", "Désert de Sel", "Steppe", "Toundra");
@@ -26,7 +21,6 @@ public class HistoryTile {
 		List<String> descRiver = Arrays.asList("Rivière", "Fleuve", "Côte", "Rivages");
 		List<String> descSwamp = Arrays.asList("Marécage", "Marais", "Tourbière", "Bourbier");
 		List<String> descLake = Arrays.asList("Lacs", "Etangs", "Fontaines", "Cascades", "Chutes");
-		Map<TileType, List<String>> descs = new HashMap<>();
 		descs.put(TileType.Wood, descWood);
 		descs.put(TileType.Forest, descWood);
 		descs.put(TileType.Hill, descHill);
@@ -38,6 +32,9 @@ public class HistoryTile {
 		descs.put(TileType.River, descRiver);
 		descs.put(TileType.Swamp, descSwamp);
 		descs.put(TileType.Lake, descLake);
+	}
+
+	public String randomDesc(TileType tileType) {
 
 		List<String> possibleDesc = descs.get(tileType);
 		final String desc;
@@ -48,9 +45,4 @@ public class HistoryTile {
 		}
 		return desc;
 	}
-
-	public String getDesc() {
-		return desc;
-	}
-
 }

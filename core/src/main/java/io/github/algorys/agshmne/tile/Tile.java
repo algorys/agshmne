@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Observable;
 
 import io.github.algorys.agshmne.city.City;
-import io.github.algorys.agshmne.history.HistoryTile;
+import io.github.algorys.agshmne.history.DescFactory;
 import io.github.algorys.agshmne.inventory.Inventory;
 import io.github.algorys.agshmne.items.Item;
 
@@ -21,7 +21,7 @@ public class Tile extends Observable {
 
 	public Tile(TileType type) {
 		this.type = type;
-		desc = new HistoryTile(this).getDesc();
+		desc = new DescFactory().randomDesc(type);
 	}
 
 	public TileType getType() {
