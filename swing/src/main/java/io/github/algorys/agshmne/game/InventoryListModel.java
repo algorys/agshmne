@@ -1,10 +1,11 @@
-package io.github.algorys.agshmne.inventory;
+package io.github.algorys.agshmne.game;
 
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.AbstractListModel;
 
+import io.github.algorys.agshmne.inventory.Inventory;
 import io.github.algorys.agshmne.items.Item;
 
 @SuppressWarnings("serial")
