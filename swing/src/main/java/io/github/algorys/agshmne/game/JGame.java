@@ -10,6 +10,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.game.center.JCenterTabbed;
+import io.github.algorys.agshmne.game.east.JRightTabbed;
+import io.github.algorys.agshmne.game.south.JDescGame;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.region.RandomRegionFactory;
 import io.github.algorys.agshmne.map.region.Region;

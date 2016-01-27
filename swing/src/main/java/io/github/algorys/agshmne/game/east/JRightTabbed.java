@@ -1,9 +1,9 @@
-package io.github.algorys.agshmne.game;
+package io.github.algorys.agshmne.game.east;
 
 import javax.swing.JTabbedPane;
 
-import io.github.algorys.agshmne.action.ActionCharacter;
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.game.actions.ActionCharacter;
 import io.github.algorys.agshmne.tile.GroundInv;
 
 @SuppressWarnings("serial")

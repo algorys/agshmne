@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.game;
+package io.github.algorys.agshmne.game.center;
 
 import java.awt.Color;
 import java.awt.Dimension;

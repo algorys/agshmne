@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.action;
+package io.github.algorys.agshmne.game.actions;
 
 import java.awt.GridLayout;
 

@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.action;
+package io.github.algorys.agshmne.game.actions;
 
 import java.awt.event.ActionEvent;
 import java.util.Observable;
