@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.ItemFactory;
 
+@SuppressWarnings("serial")
 public class JInvPanel extends JLabel {
 	private JComboBox<Item> firstObject;
 	private JComboBox<Item> secondObject;

@@ -9,6 +9,7 @@ import javax.swing.AbstractAction;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;
 
+@SuppressWarnings("serial")
 final class SkillCutAction extends AbstractAction implements Observer {
 	private final Character pj;
 

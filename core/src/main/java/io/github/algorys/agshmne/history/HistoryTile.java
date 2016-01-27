@@ -10,7 +10,6 @@ import io.github.algorys.agshmne.desctile.DescSea;
 import io.github.algorys.agshmne.desctile.DescSwamp;
 import io.github.algorys.agshmne.desctile.DescWood;
 import io.github.algorys.agshmne.tile.Tile;
-import io.github.algorys.agshmne.tile.TileType;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class HistoryTile {

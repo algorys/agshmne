@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class JWelcome extends JFrame {
 	private static final String MAIN_MENU = "Main Menu";
 	private static final String CHARACTER_SKILLS = "fiche";

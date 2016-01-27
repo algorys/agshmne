@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.caracteristic.JCaracteristic;
 
+@SuppressWarnings("serial")
 public class JCaracPanel extends JPanel {
 	/*
 	* Caractéristiques (Force, Dextérité, Constitution, Intelligence et

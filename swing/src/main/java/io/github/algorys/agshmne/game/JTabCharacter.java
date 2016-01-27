@@ -18,6 +18,7 @@ import io.github.algorys.agshmne.character.Character;
 
 import io.github.algorys.agshmne.tile.JTile;
 
+@SuppressWarnings("serial")
 public class JTabCharacter extends JPanel {
 	
 	public JTabCharacter(Character pj) {

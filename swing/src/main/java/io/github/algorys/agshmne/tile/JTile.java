@@ -13,6 +13,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.JComponent;
 
+@SuppressWarnings("serial")
 public class JTile extends JComponent {
 	/**
 	 * Le gardien du temple... Il garde la seule image chargée par type de

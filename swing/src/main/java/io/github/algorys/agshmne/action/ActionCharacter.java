@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.Character;
 
+@SuppressWarnings("serial")
 public class ActionCharacter extends JPanel {
 	
 	public ActionCharacter(final Character pj){

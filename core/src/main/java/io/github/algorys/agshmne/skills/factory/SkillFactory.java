@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.github.algorys.agshmne.skills.ISkillFactory;
-import io.github.algorys.agshmne.skills.Skill;
 import io.github.algorys.agshmne.skills.SkillType;
 
 public class SkillFactory {

@@ -10,6 +10,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 
+@SuppressWarnings("serial")
 public class JSocialPanel extends JPanel {
 	private JTextField jtfName;
 	private JTextArea jtaBackground;

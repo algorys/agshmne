@@ -24,10 +24,6 @@ public class CharacterTest {
 		public boolean isCalled() {
 			return called > 0;
 		}
-
-		public int getNbCalled() {
-			return called;
-		}
 	}
 
 	@Test

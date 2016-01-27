@@ -13,6 +13,7 @@ import io.github.algorys.agshmne.region.JRegion;
  * Barre racourcis
  */
 
+@SuppressWarnings("serial")
 public class JCenterTabbed extends JTabbedPane {
 	
 	private JPanel jpMap = new JPanel();

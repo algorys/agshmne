@@ -16,6 +16,7 @@ import io.github.algorys.agshmne.movement.Position;
 import io.github.algorys.agshmne.tile.JTile;
 import io.github.algorys.agshmne.tile.Tile;
 
+@SuppressWarnings("serial")
 public class JRegion extends JPanel implements Observer {
 	private Character personnage;
 	private JTile[][] jtiles;

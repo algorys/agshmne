@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class JConfirmPanel extends JPanel {
 	
 	public JConfirmPanel(JSocialPanel social, JCaracPanel carac, JCompPanel comp, JInvPanel inv) {

@@ -20,6 +20,7 @@ import javax.swing.border.BevelBorder;
  * <li>plus.enabled == value < maxValue</li>
  * </ul>
  */
+@SuppressWarnings("serial")
 public class JCaracteristic extends JPanel {
 	public static final String PROPERTY_VALUE = "value";
 	public static final String PROPERTY_MIN_VALUE = "minValue";

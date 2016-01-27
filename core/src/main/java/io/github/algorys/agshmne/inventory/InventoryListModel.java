@@ -7,6 +7,7 @@ import javax.swing.AbstractListModel;
 
 import io.github.algorys.agshmne.items.Item;
 
+@SuppressWarnings("serial")
 public class InventoryListModel extends AbstractListModel<Item> implements Observer {
 	final Inventory inv;
 	

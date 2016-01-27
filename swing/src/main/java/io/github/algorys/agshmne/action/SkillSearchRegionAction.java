@@ -8,12 +8,11 @@ import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.Character;
 
+@SuppressWarnings("serial")
 public class SkillSearchRegionAction extends AbstractAction implements Observer {
-	private final Character pj;
 	
 	public SkillSearchRegionAction(Character pj) {
 		super("Fouiller la Région");
-		this.pj = pj;
 		pj.addObserver(this);
 		this.update(pj, null);
 	}

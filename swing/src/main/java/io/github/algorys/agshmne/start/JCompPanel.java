@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import io.github.algorys.agshmne.caracteristic.JCaracteristic;
 
+@SuppressWarnings("serial")
 public class JCompPanel extends JPanel {
 	/*
 	* Cuisiner (Unités : repas))

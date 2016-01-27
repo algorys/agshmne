@@ -20,6 +20,7 @@ import io.github.algorys.agshmne.design.InvRenderer;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.tile.Tile;
 
+@SuppressWarnings("serial")
 public class GroundInv extends JPanel implements Observer {
 	private JList<Item> groundItem;
 	private Tile currentTile;

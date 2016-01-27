@@ -23,6 +23,7 @@ import io.github.algorys.agshmne.region.Region;
 import io.github.algorys.agshmne.skills.SkillType;
 import io.github.algorys.agshmne.tile.JTile;
 
+@SuppressWarnings("serial")
 public class JFicheNav extends JPanel {
 	
 	public static enum Step {

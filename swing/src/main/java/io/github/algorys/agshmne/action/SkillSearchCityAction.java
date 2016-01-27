@@ -8,6 +8,7 @@ import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.Character;
 
+@SuppressWarnings("serial")
 public class SkillSearchCityAction extends AbstractAction implements Observer {
 	private final Character pj;
 	

@@ -14,6 +14,7 @@ import io.github.algorys.agshmne.region.Region;
 import io.github.algorys.agshmne.tile.Tile;
 import io.github.algorys.agshmne.tile.TileType;
 
+@SuppressWarnings("serial")
 public class JFullMap extends JPanel {
 	/**
 	 * Le gardien du temple... Il garde la seule image chargée par type de

@@ -8,6 +8,7 @@ import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.region.JRegion;
 import io.github.algorys.agshmne.region.Region;
 
+@SuppressWarnings("serial")
 public class JGameWorld extends JPanel{
 	public JGameWorld(Region region, final Character pj){		
 		this.add(new JRegion(pj));

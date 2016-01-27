@@ -20,6 +20,7 @@ import io.github.algorys.agshmne.inventory.InventoryListModel;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.tile.Tile;
 
+@SuppressWarnings("serial")
 public class JTabInv extends JPanel {
 	private Inventory inv;
 	private Character pj;

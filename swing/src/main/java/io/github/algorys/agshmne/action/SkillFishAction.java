@@ -10,6 +10,7 @@ import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.skills.SkillTool;
 import io.github.algorys.agshmne.skills.SkillType;
 
+@SuppressWarnings("serial")
 public class SkillFishAction extends AbstractAction implements Observer {
 	private final Character pj;
 	

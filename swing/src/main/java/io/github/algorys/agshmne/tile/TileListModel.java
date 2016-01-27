@@ -4,6 +4,7 @@ import javax.swing.AbstractListModel;
 
 import io.github.algorys.agshmne.items.Item;
 
+@SuppressWarnings("serial")
 public class TileListModel extends AbstractListModel<Item> {
 	final Tile t;
 	public TileListModel(Tile t) {

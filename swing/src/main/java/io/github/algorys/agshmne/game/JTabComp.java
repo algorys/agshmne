@@ -15,6 +15,7 @@ import io.github.algorys.agshmne.skills.SkillType;
 import io.github.algorys.agshmne.skills.factory.SkillFactory;
 import io.github.algorys.agshmne.tile.JTile;
 
+@SuppressWarnings("serial")
 public class JTabComp extends JPanel {
 	//private SkillFactory skillFact;
 	

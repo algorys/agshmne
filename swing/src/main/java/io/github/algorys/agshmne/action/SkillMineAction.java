@@ -11,6 +11,7 @@ import io.github.algorys.agshmne.items.StackableItemDirectFactory;
 import io.github.algorys.agshmne.skills.SkillTool;
 import io.github.algorys.agshmne.skills.SkillType;
 
+@SuppressWarnings("serial")
 public class SkillMineAction extends AbstractAction implements Observer {
 	private final Character pj;
 
