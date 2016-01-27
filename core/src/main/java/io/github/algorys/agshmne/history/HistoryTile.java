@@ -1,9 +1,12 @@
 package io.github.algorys.agshmne.history;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.github.algorys.agshmne.tile.Tile;
+import io.github.algorys.agshmne.tile.TileType;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class HistoryTile {
@@ -19,38 +22,24 @@ public class HistoryTile {
 		List<String> descRiver = Arrays.asList("Rivière", "Fleuve", "Côte", "Rivages");
 		List<String> descSwamp = Arrays.asList("Marécage", "Marais", "Tourbière", "Bourbier");
 		List<String> descLake = Arrays.asList("Lacs", "Etangs", "Fontaines", "Cascades", "Chutes");
-		switch (tile.getType()) {
-		case Wood:
-		case Forest:
-			this.desc = descWood.get(Tools.dice(descWood.size()));
-			break;
-		case Hill:
-			this.desc = descHill.get(Tools.dice(descHill.size()));
-			break;
-		case Desert:
-			this.desc = descDesert.get(Tools.dice(descDesert.size()));
-			break;
-		case Sea:
-			this.desc = descSea.get(Tools.dice(descSea.size()));
-			break;
-		case Mountain:
-			this.desc = descMountain.get(Tools.dice(descMountain.size()));
-			break;
-		case Plain:
-		case Valley:
-			this.desc = descPlain.get(Tools.dice(descPlain.size()));
-			break;
-		case River:
-			this.desc = descRiver.get(Tools.dice(descRiver.size()));
-			break;
-		case Swamp:
-			this.desc = descSwamp.get(Tools.dice(descSwamp.size()));
-			break;
-		case Lake:
-			this.desc = descLake.get(Tools.dice(descLake.size()));
-			break;
-		default:
+		Map<TileType, List<String>> descs = new HashMap<>();
+		descs.put(TileType.Wood, descWood);
+		descs.put(TileType.Forest, descWood);
+		descs.put(TileType.Hill, descHill);
+		descs.put(TileType.Desert, descDesert);
+		descs.put(TileType.Sea, descSea);
+		descs.put(TileType.Mountain, descMountain);
+		descs.put(TileType.Plain, descPlain);
+		descs.put(TileType.Valley, descPlain);
+		descs.put(TileType.River, descRiver);
+		descs.put(TileType.Swamp, descSwamp);
+		descs.put(TileType.Lake, descLake);
+
+		List<String> possibleDesc = descs.get(tile.getType());
+		if (possibleDesc == null) {
 			this.desc = "No TileType found";
+		} else {
+			this.desc = possibleDesc.get(Tools.dice(possibleDesc.size()));
 		}
 	}
 
