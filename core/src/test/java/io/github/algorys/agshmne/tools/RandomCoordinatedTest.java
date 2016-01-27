@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.movement;
+package io.github.algorys.agshmne.tools;
 
 import static org.junit.Assert.assertTrue;
 
@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import io.github.algorys.agshmne.tools.RandomCoordinated;
 
-public class RandomCoordonnateTest {
+public class RandomCoordinatedTest {
 
 	@Test
 	public void test() {

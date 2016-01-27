@@ -1,13 +1,10 @@
-package io.github.algorys.agshmne.opponent;
+package io.github.algorys.agshmne.character.opponent.beast;
 
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import io.github.algorys.agshmne.character.opponent.beast.Beast;
-import io.github.algorys.agshmne.character.opponent.beast.BeastFactory;
-
-public class OpponentTest {
+public class BeastFactoryTest {
 
 	@Test
 	public void oneBeastShouldHaveAttributes() {

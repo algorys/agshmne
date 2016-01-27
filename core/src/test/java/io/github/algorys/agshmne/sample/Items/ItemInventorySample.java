@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.inventory;
+package io.github.algorys.agshmne.sample.Items;
 
 import io.github.algorys.agshmne.items.GeneralItem;
 import io.github.algorys.agshmne.items.Inventory;
@@ -7,7 +7,7 @@ import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.ItemDirectFactory;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;;
 
-public class ItemInventoryTest {
+public class ItemInventorySample {
 
 	public static void main(String[] args) {
 		Inventory inventory = new Inventory();

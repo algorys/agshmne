@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.character;
+package io.github.algorys.agshmne.character.player;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -9,10 +9,9 @@ import java.util.Observer;
 
 import org.junit.Test;
 
-import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.map.Position;
 
-public class CharacterTest {
+public class PlayerTest {
 
 	private final class MyObserver implements Observer {
 		private int called = 0;

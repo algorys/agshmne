@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.font;
+package io.github.algorys.agshmne.sample.font;
 
 import java.awt.GraphicsEnvironment;
 
