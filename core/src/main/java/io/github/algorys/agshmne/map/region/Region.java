@@ -12,10 +12,9 @@ public class Region {
 	final static int SIZE = WIDTH * HEIGHT;
 	private Tile[] tiles = new Tile[SIZE];
 
-	public Region() {
-		TileFactory tileFactory = new TileFactory();
+	public Region(TileFactory tileFactory) {
 		for (int i = 0; i < SIZE; i++) {
-			tiles[i] = tileFactory.createRandomTile();
+			tiles[i] = tileFactory.createTile();
 		}
 	}
 

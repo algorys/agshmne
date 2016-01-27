@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.game.JGame;
+import io.github.algorys.agshmne.map.region.RandomRegionFactory;
 import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.tile.JTile;
 
@@ -56,7 +57,7 @@ public class JFicheNav extends JPanel {
 							"Êtes-vous sûr(e) de vouloir jouer avec " + jpSocial.getPjName() + " ?", 
 							"Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Oui", "Non"}, "Oui");
 					if(res == JOptionPane.YES_OPTION) {
-						Region region = new Region();
+						Region region = new RandomRegionFactory().create();
 						Player pj = new Player(region);
 						// Init Social 
 						pj.getSocial().setName(jpSocial.getPjName());
