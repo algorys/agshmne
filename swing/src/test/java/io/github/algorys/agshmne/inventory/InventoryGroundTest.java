@@ -2,15 +2,15 @@ package io.github.algorys.agshmne.inventory;
 
 import javax.swing.JFrame;
 
-import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.tile.GroundInv;
 
 public class InventoryGroundTest {
 
 	public static void main(String[] args) {
 		Region region = new Region();
-		Character pj = new Character(region);
+		Player pj = new Player(region);
 		GroundInv grdInv = new GroundInv(pj);
 		JFrame jf = new JFrame("Inventory Ground...");
 		

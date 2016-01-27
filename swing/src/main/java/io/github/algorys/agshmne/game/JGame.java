@@ -11,19 +11,19 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.movement.Position;
+import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.map.Position;
+import io.github.algorys.agshmne.map.region.Region;
+import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.region.JRegion;
-import io.github.algorys.agshmne.region.Region;
-import io.github.algorys.agshmne.tile.Tile;
 
 @SuppressWarnings("serial")
 public class JGame extends JFrame {
 	private Region region = new Region();
-	private Character pj = new Character(region);
+	private Player pj = new Player(region);
 	private final JRegion jregion;
 
-	public JGame(Character perso) {
+	public JGame(Player perso) {
 		pj = perso;
 		jregion = new JRegion(this.pj);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

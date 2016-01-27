@@ -13,19 +13,19 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
-import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.design.InvRenderer;
-import io.github.algorys.agshmne.inventory.Inventory;
+import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
-import io.github.algorys.agshmne.tile.Tile;
+import io.github.algorys.agshmne.map.tile.Tile;
 
 @SuppressWarnings("serial")
 public class JTabInv extends JPanel {
 	private Inventory inv;
-	private Character pj;
+	private Player pj;
 	private JList<Item> invItems;
 	
-	public JTabInv(Character pj) {
+	public JTabInv(Player pj) {
 		this.pj = pj;
 		this.inv = pj.getInventory();
 		// Jlist items

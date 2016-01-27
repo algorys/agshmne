@@ -14,14 +14,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import io.github.algorys.agshmne.character.Character;
-
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
 public class JTabCharacter extends JPanel {
 	
-	public JTabCharacter(Character pj) {
+	public JTabCharacter(Player pj) {
 		// GidBag Layout
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcCharacter = new GridBagConstraints();

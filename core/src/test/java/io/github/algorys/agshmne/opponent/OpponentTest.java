@@ -4,8 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import io.github.algorys.agshmne.opponent.beast.Beast;
-import io.github.algorys.agshmne.opponent.beast.BeastFactory;
+import io.github.algorys.agshmne.character.opponent.beast.Beast;
+import io.github.algorys.agshmne.character.opponent.beast.BeastFactory;
 
 public class OpponentTest {
 

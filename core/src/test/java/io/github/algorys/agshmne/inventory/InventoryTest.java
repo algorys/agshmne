@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.ItemDirectFactory;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;

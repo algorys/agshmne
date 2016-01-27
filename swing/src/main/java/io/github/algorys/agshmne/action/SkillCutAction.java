@@ -6,14 +6,14 @@ import java.util.Observer;
 
 import javax.swing.AbstractAction;
 
-import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;
 
 @SuppressWarnings("serial")
 final class SkillCutAction extends AbstractAction implements Observer {
-	private final Character pj;
+	private final Player pj;
 
-	public SkillCutAction(Character pj) {
+	public SkillCutAction(Player pj) {
 		super("Couper du bois");
 		this.pj = pj;
 		pj.addObserver(this);

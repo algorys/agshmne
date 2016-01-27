@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import io.github.algorys.agshmne.tools.RandomCoordinated;
+
 public class RandomCoordonnateTest {
 
 	@Test

@@ -11,17 +11,18 @@ import java.util.Observer;
 
 import javax.swing.JPanel;
 
-import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.movement.Position;
+import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.map.Position;
+import io.github.algorys.agshmne.map.region.Region;
+import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.tile.JTile;
-import io.github.algorys.agshmne.tile.Tile;
 
 @SuppressWarnings("serial")
 public class JRegion extends JPanel implements Observer {
-	private Character personnage;
+	private Player personnage;
 	private JTile[][] jtiles;
 
-	public JRegion(Character personnage) {
+	public JRegion(Player personnage) {
 		super();
 		if (personnage == null) {
 			throw new NullPointerException("personnage cannot be null");
@@ -45,14 +46,14 @@ public class JRegion extends JPanel implements Observer {
 		this.setFocusable(true);
 	}
 
-	public Character getPersonnage() {
+	public Player getPersonnage() {
 		this.personnage.deleteObserver(this);
 		this.personnage.addObserver(this);
 		this.updateDisplay();
 		return personnage;
 	}
 
-	public void setPersonnage(Character personnage) {
+	public void setPersonnage(Player personnage) {
 		if (personnage == null) {
 			throw new NullPointerException("personnage ne doit pas être null");
 		}

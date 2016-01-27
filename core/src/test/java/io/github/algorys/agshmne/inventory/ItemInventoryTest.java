@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.inventory;
 
 import io.github.algorys.agshmne.items.GeneralItem;
+import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.StackableItem;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.ItemDirectFactory;

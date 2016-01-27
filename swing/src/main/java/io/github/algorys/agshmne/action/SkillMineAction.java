@@ -6,16 +6,16 @@ import java.util.Observer;
 
 import javax.swing.AbstractAction;
 
-import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.skills.SkillTool;
+import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;
-import io.github.algorys.agshmne.skills.SkillTool;
-import io.github.algorys.agshmne.skills.SkillType;
 
 @SuppressWarnings("serial")
 public class SkillMineAction extends AbstractAction implements Observer {
-	private final Character pj;
+	private final Player pj;
 
-	public SkillMineAction(Character pj) {
+	public SkillMineAction(Player pj) {
 		super("Récolter du minerai");
 		this.pj = pj;
 		pj.addObserver(this);

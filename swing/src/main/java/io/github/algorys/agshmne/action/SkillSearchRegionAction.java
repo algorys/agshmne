@@ -6,12 +6,12 @@ import java.util.Observer;
 
 import javax.swing.AbstractAction;
 
-import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.player.Player;
 
 @SuppressWarnings("serial")
 public class SkillSearchRegionAction extends AbstractAction implements Observer {
 	
-	public SkillSearchRegionAction(Character pj) {
+	public SkillSearchRegionAction(Player pj) {
 		super("Fouiller la Région");
 		pj.addObserver(this);
 		this.update(pj, null);

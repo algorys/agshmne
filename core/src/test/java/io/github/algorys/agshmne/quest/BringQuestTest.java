@@ -1,15 +1,16 @@
 package io.github.algorys.agshmne.quest;
 
-import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.events.quest.BringQuest;
 import io.github.algorys.agshmne.items.ItemDirectFactory;
-import io.github.algorys.agshmne.movement.Position;
-import io.github.algorys.agshmne.region.Region;
+import io.github.algorys.agshmne.map.Position;
+import io.github.algorys.agshmne.map.region.Region;
 
 public class BringQuestTest {
 
 	public static void main(String[] args) {
 		Region region = new Region();
-		Character pj = new Character(region);
+		Player pj = new Player(region);
 		BringQuest bringQ = new BringQuest(pj, new ItemDirectFactory().createLetters());
 		Position questDestination = bringQ.getQuestDestination();
 		boolean win = bringQ.isWin(pj);

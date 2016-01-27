@@ -6,15 +6,15 @@ import java.util.Observer;
 
 import javax.swing.AbstractAction;
 
-import io.github.algorys.agshmne.character.Character;
-import io.github.algorys.agshmne.skills.SkillTool;
-import io.github.algorys.agshmne.skills.SkillType;
+import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.skills.SkillTool;
+import io.github.algorys.agshmne.character.player.skills.SkillType;
 
 @SuppressWarnings("serial")
 public class SkillFishAction extends AbstractAction implements Observer {
-	private final Character pj;
+	private final Player pj;
 	
-	public SkillFishAction(Character pj) {
+	public SkillFishAction(Player pj) {
 		super("Pêcher");
 		this.pj = pj;
 		pj.addObserver(this);

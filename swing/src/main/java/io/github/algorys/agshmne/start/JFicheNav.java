@@ -17,10 +17,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import io.github.algorys.agshmne.character.Character;
+
+import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.game.JGame;
-import io.github.algorys.agshmne.region.Region;
-import io.github.algorys.agshmne.skills.SkillType;
+import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
@@ -56,7 +57,7 @@ public class JFicheNav extends JPanel {
 							"Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Oui", "Non"}, "Oui");
 					if(res == JOptionPane.YES_OPTION) {
 						Region region = new Region();
-						Character pj = new Character(region);
+						Player pj = new Player(region);
 						// Init Social 
 						pj.getSocial().setName(jpSocial.getPjName());
 						pj.getSocial().setSexe(jpSocial.getPjSexe());

@@ -9,7 +9,8 @@ import java.util.Observer;
 
 import org.junit.Test;
 
-import io.github.algorys.agshmne.movement.Position;
+import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.map.Position;
 
 public class CharacterTest {
 
@@ -28,13 +29,13 @@ public class CharacterTest {
 
 	@Test
 	public void whenCharacterIsCreated_positionShouldBe00() {
-		Character underTest = new Character(null);
+		Player underTest = new Player(null);
 		assertEquals(new Position(0, 0), underTest.getPosition());
 	}
 
 	@Test
 	public void whenCharacterChangePosition_observersShouldBeNotified() {
-		Character underTest = new Character(null);
+		Player underTest = new Player(null);
 		MyObserver myObserver = new MyObserver();
 		underTest.addObserver(myObserver);
 		underTest.setPosition(new Position(1, 0));
@@ -43,7 +44,7 @@ public class CharacterTest {
 
 	@Test
 	public void whenCharacterSetSamePosition_observersShouldNotBeNotified() {
-		Character underTest = new Character(null);
+		Player underTest = new Player(null);
 		MyObserver myObserver = new MyObserver();
 		underTest.addObserver(myObserver);
 		underTest.setPosition(new Position(0, 0));
