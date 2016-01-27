@@ -14,8 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import io.github.algorys.agshmne.character.Player;
-
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")

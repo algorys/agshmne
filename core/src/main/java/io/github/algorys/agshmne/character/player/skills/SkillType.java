@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.character.skills;
+package io.github.algorys.agshmne.character.player.skills;
 
 public enum SkillType {
 	cuisine,

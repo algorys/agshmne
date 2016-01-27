@@ -1,8 +1,8 @@
 package io.github.algorys.agshmne.game;
 
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.game.JGame;
-import io.github.algorys.agshmne.map.region.Region;
-import io.github.algorys.agshmne.character.Player;;
+import io.github.algorys.agshmne.map.region.Region;;
 
 public class JGameTest {
 	

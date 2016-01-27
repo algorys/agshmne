@@ -1,6 +1,6 @@
-package io.github.algorys.agshmne.character.skills.factory;
+package io.github.algorys.agshmne.character.player.skills.factory;
 
-import io.github.algorys.agshmne.character.skills.ISkillFactory;
+import io.github.algorys.agshmne.character.player.skills.ISkillFactory;
 
 public class Cultiver implements ISkillFactory {
 	private int level;

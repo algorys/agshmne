@@ -11,8 +11,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import io.github.algorys.agshmne.character.skills.SkillType;
-import io.github.algorys.agshmne.character.skills.factory.SkillFactory;
+import io.github.algorys.agshmne.character.player.skills.SkillType;
+import io.github.algorys.agshmne.character.player.skills.factory.SkillFactory;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")

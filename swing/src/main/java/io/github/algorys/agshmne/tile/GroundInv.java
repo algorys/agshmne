@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
-import io.github.algorys.agshmne.character.Player;
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.design.InvRenderer;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.tile.Tile;

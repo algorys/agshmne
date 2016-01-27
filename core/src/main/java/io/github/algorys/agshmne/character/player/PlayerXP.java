@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.character;
+package io.github.algorys.agshmne.character.player;
 
 public class PlayerXP {
 	private int xp;

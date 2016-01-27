@@ -6,7 +6,7 @@ import java.util.Observer;
 
 import javax.swing.AbstractAction;
 
-import io.github.algorys.agshmne.character.Player;
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;
 
 @SuppressWarnings("serial")

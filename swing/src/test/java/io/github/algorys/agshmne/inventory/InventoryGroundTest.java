@@ -2,7 +2,7 @@ package io.github.algorys.agshmne.inventory;
 
 import javax.swing.JFrame;
 
-import io.github.algorys.agshmne.character.Player;
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.tile.GroundInv;
 

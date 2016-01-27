@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne.quest;
 
-import io.github.algorys.agshmne.character.Player;
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.events.quest.FetchQuest;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;
 import io.github.algorys.agshmne.map.region.Region;

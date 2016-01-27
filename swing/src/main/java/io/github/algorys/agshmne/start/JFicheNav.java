@@ -17,8 +17,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import io.github.algorys.agshmne.character.Player;
-import io.github.algorys.agshmne.character.skills.SkillType;
+
+import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.game.JGame;
 import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.tile.JTile;

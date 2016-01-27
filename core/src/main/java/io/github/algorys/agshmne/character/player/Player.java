@@ -1,8 +1,10 @@
-package io.github.algorys.agshmne.character;
+package io.github.algorys.agshmne.character.player;
 
 import java.util.Observable;
 
-import io.github.algorys.agshmne.character.skills.factory.SkillFactory;
+import io.github.algorys.agshmne.character.Attribute;
+import io.github.algorys.agshmne.character.Vital;
+import io.github.algorys.agshmne.character.player.skills.factory.SkillFactory;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.region.Region;

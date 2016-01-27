@@ -6,7 +6,7 @@ import java.util.Observer;
 
 import javax.swing.AbstractAction;
 
-import io.github.algorys.agshmne.character.Player;
+import io.github.algorys.agshmne.character.player.Player;
 
 @SuppressWarnings("serial")
 public class SkillSearchRegionAction extends AbstractAction implements Observer {

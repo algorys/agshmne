@@ -9,6 +9,7 @@ import java.util.Observer;
 
 import org.junit.Test;
 
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.map.Position;
 
 public class CharacterTest {

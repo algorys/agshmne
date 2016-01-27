@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne.quest;
 
-import io.github.algorys.agshmne.character.Player;
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.events.quest.BringQuest;
 import io.github.algorys.agshmne.items.ItemDirectFactory;
 import io.github.algorys.agshmne.map.Position;

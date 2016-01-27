@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne.caracteristic;
 
-import io.github.algorys.agshmne.character.Player;
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.map.region.Region;;
 
 public class CaracteristicSample {
