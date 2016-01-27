@@ -13,6 +13,10 @@ public class HistoryTile {
 	String desc;
 
 	public HistoryTile(Tile tile) {
+		this.desc = randomDesc(tile.getType());
+	}
+
+	public String randomDesc(TileType tileType) {
 		List<String> descWood = Arrays.asList("Bois", "Forêt", "Jardins", "Jungle", "Sylve");
 		List<String> descHill = Arrays.asList("Collines", "Plateau", "Grand Tertre", "Buttes");
 		List<String> descDesert = Arrays.asList("Désert", "Désert de Sel", "Steppe", "Toundra");
@@ -35,12 +39,14 @@ public class HistoryTile {
 		descs.put(TileType.Swamp, descSwamp);
 		descs.put(TileType.Lake, descLake);
 
-		List<String> possibleDesc = descs.get(tile.getType());
+		List<String> possibleDesc = descs.get(tileType);
+		final String desc;
 		if (possibleDesc == null) {
-			this.desc = "No TileType found";
+			desc = "No TileType found";
 		} else {
-			this.desc = possibleDesc.get(Tools.dice(possibleDesc.size()));
+			desc = possibleDesc.get(Tools.dice(possibleDesc.size()));
 		}
+		return desc;
 	}
 
 	public String getDesc() {
