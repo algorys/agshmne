@@ -12,6 +12,7 @@ public class Tile extends Observable {
 	private Inventory inv = new Inventory();
 	private City city;
 	private String desc;
+	private boolean danger = false;
 
 	public Tile(TileType type, String desc, City city) {
 		this(type, desc);
@@ -68,5 +69,13 @@ public class Tile extends Observable {
 
 	public String getDesc() {
 		return this.desc;
+	}
+
+	public boolean isDanger() {
+		return danger;
+	}
+
+	public void setDanger(boolean danger) {
+		this.danger = danger;
 	}
 }
