@@ -1,11 +1,11 @@
-package io.github.algorys.agshmne.quest;
+package io.github.algorys.agshmne.sample.quest;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.events.quest.FetchQuest;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;
 import io.github.algorys.agshmne.map.region.Region;
 
-public class FetchQuestTest {
+public class FetchQuestSample {
 
 	public static void main(String[] args) {
 		Region region = new Region();
