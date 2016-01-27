@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.movement;
+package io.github.algorys.agshmne.tools;
 
 import java.util.Random;
 
