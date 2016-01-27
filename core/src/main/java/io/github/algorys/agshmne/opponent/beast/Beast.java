@@ -8,10 +8,10 @@ public class Beast implements Opponent {
 	private int level;
 	private CharacterAttribute carac;
 	
-	public Beast(String name, int level) {
+	public Beast(String name, int level, CharacterAttribute carac) {
 		this.name = name;
 		this.level = level;
-		this.carac = new BeastAttributeFactory().createAttributes(level);
+		this.carac = carac;
 	}
 	@Override
 	public String getName() {
