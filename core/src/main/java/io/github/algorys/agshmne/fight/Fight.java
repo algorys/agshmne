@@ -17,28 +17,34 @@ public class Fight {
 		this.currentAdvLife = adv.getVital().getVie();
 	}
 	
+	
 	public void newRound() {		
-		System.out.println("---- ROUND " + round + " ----");
-		
+		System.out.println("----- ROUND " + round + " -----");
+		this.pjAttack();
+		this.mobAttack();
+		round += 1;
+	}
+	
+	public void pjAttack() {
 		int pjAttack = this.attack(pj.getCurrentAttributes().getDEX(), adv.getLevel());
 		System.out.println("Attaque PJ= " + pjAttack);
 		if(pjAttack > 0) {
 			this.currentAdvLife -= pjAttack;
 			adv.getVital().setVie(currentAdvLife);
-		}	
-		
+		}
+		System.out.println(pj.toString());
+	}
+	
+	public void mobAttack() {
 		int advAttack = this.attack(adv.getCurrentAttributes().getDEX(), 10 + pj.getLevel());
 		System.out.println("Attaque ADV = " + advAttack);
 		if(advAttack > 0) {
 			this.currentPjLife -= advAttack;
 			pj.getVital().setVie(currentPjLife);
 		}
-		
-		System.out.println(pj.toString());
 		System.out.println(adv.toString());
-		
-		round += 1;
 	}
+
 	
 	public boolean isFinish() {
 		return this.currentPjLife <= 0 || this.currentAdvLife <= 0;
