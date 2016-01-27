@@ -16,12 +16,14 @@ public class Region {
 	
 	public Region() {
 		CityFactory cityFactory = new CityFactory();
+		DescFactory descFactory = new DescFactory();
 		for (int i = 0; i < SIZE; i++) {
 			TileType type = TileType.values()[io.github.algorys.agshmne.tools.Tools.dice(TileType.values().length)];
+			String desc = descFactory.randomDesc(type);
 			if(Math.random() < .25) {
-				tiles[i] = new Tile(type, cityFactory.createCity(type));
+				tiles[i] = new Tile(type, desc, cityFactory.createCity(type));
 			} else {
-				tiles[i] = new Tile(type);
+				tiles[i] = new Tile(type, desc);
 			}
 
 			while (Math.random() < .3) {

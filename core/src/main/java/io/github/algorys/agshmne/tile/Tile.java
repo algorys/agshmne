@@ -4,33 +4,30 @@ import java.util.List;
 import java.util.Observable;
 
 import io.github.algorys.agshmne.city.City;
-import io.github.algorys.agshmne.history.HistoryTile;
 import io.github.algorys.agshmne.inventory.Inventory;
 import io.github.algorys.agshmne.items.Item;
 
 public class Tile extends Observable {
 	private TileType type;
 	private Inventory inv = new Inventory();
-	private City city; 
-	private HistoryTile histTile;
-	
-	public Tile(TileType type, City city) {
-		this.type = type;
+	private City city;
+	private String desc;
+
+	public Tile(TileType type, String desc, City city) {
+		this(type, desc);
 		this.city = city;
-		histTile = new HistoryTile(this);
 	}
 
-	public Tile(TileType type) {
+	public Tile(TileType type, String desc) {
 		this.type = type;
-		histTile = new HistoryTile(this);
+		this.desc = desc;
 	}
 
 	public TileType getType() {
 		return type;
 	}
-	
+
 	public boolean addItem(Item e) {
-		//boolean added = items.add(e);
 		inv.addItem(e);
 		boolean added = true;
 		this.setChanged();
@@ -60,17 +57,16 @@ public class Tile extends Observable {
 		sb.append(")");
 		return sb.toString();
 	}
-	
+
 	public City getCity() {
 		return city;
 	}
-	
+
 	public boolean isCivilized() {
 		return this.city != null;
 	}
 
-	public HistoryTile getHistTile() {
-		return histTile;
+	public String getDesc() {
+		return this.desc;
 	}
-
 }

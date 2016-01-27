@@ -45,7 +45,7 @@ public class JGame extends JFrame {
 		jpSouth.setLayout(blSouth);
 		final JTitleHistory titleHistory = new JTitleHistory(pj);
 		Tile currentTile = pj.getTile();
-		titleHistory.setTitle("Region : " + currentTile.getHistTile().getDesc());
+		titleHistory.setTitle("Region : " + currentTile.getDesc());
 		final JCivilized civilized = new JCivilized(pj);
 		civilized.setCivilized(currentTile.isCivilized());
 		jpSouth.add(titleHistory);
@@ -59,25 +59,25 @@ public class JGame extends JFrame {
 					switch (e.getKeyCode()) {
 					case KeyEvent.VK_LEFT:
 						pj.setPosition(new Position(pj.getPosition().getX() - 1, pj.getPosition().getY()));
-						titleHistory.setTitle("Region : " + pj.getTile().getHistTile().getDesc());
+						titleHistory.setTitle("Region : " + pj.getTile().getDesc());
 						civilized.setCivilized(pj.getTile().isCivilized());
 						
 						return true;
 					case KeyEvent.VK_RIGHT:
 						pj.setPosition(new Position(pj.getPosition().getX() + 1, pj.getPosition().getY()));
-						titleHistory.setTitle("Region : " + pj.getTile().getHistTile().getDesc());
+						titleHistory.setTitle("Region : " + pj.getTile().getDesc());
 						civilized.setCivilized(pj.getTile().isCivilized());
 						
 						return true;
 					case KeyEvent.VK_UP:
 						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() + 1));
-						titleHistory.setTitle("Region : " + pj.getTile().getHistTile().getDesc());
+						titleHistory.setTitle("Region : " + pj.getTile().getDesc());
 						civilized.setCivilized(pj.getTile().isCivilized());
 						
 						return true;
 					case KeyEvent.VK_DOWN:
 						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() - 1));
-						titleHistory.setTitle("Region : " + pj.getTile().getHistTile().getDesc());
+						titleHistory.setTitle("Region : " + pj.getTile().getDesc());
 						civilized.setCivilized(pj.getTile().isCivilized());
 						
 						return true;
