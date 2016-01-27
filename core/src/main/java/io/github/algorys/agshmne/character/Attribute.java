@@ -1,13 +1,13 @@
-package io.github.algorys.agshmne.character.caracteristic;
+package io.github.algorys.agshmne.character;
 
-public class CharacterAttribute {
+public class Attribute {
 	private int FOR;
 	private int DEX;
 	private int CON;
 	private int INT;
 	private int CHA;
 
-    public CharacterAttribute () {
+    public Attribute () {
     }
 
 	public int getFOR() {

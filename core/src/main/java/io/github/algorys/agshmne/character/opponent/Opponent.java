@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne.character.opponent;
 
-import io.github.algorys.agshmne.character.caracteristic.CharacterAttribute;
+import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.opponent.beast.OpponentVital;
 
 public interface Opponent {
@@ -9,7 +9,7 @@ public interface Opponent {
 	
 	public int getLevel();
 	
-	public CharacterAttribute getAttributes();
+	public Attribute getAttributes();
 	
 	public OpponentVital getVital();
 

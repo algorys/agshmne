@@ -2,7 +2,6 @@ package io.github.algorys.agshmne.character;
 
 import java.util.Observable;
 
-import io.github.algorys.agshmne.character.caracteristic.CharacterAttribute;
 import io.github.algorys.agshmne.character.caracteristic.CharacterVital;
 import io.github.algorys.agshmne.character.skills.factory.SkillFactory;
 import io.github.algorys.agshmne.items.Inventory;
@@ -18,7 +17,7 @@ public class Character extends Observable {
 	private Region region;
 	private Inventory inv;
 	private CharacterSocial social;
-	private CharacterAttribute attributes;
+	private Attribute attributes;
 	private CharacterVital vital;
 	private CharacterXP xp;
 	private SkillFactory skills;
@@ -26,7 +25,7 @@ public class Character extends Observable {
 	public Character(Region region) {
 		this.region = region;
 		social = new CharacterSocial();
-		attributes = new CharacterAttribute();
+		attributes = new Attribute();
 		xp = new CharacterXP();
 		inv = new Inventory();
 		skills = new SkillFactory();
@@ -53,7 +52,7 @@ public class Character extends Observable {
 		}
 	}
 	
-	public CharacterAttribute getAttributes() {
+	public Attribute getAttributes() {
 		return attributes;
 	}
 	

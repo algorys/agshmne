@@ -3,7 +3,7 @@ package io.github.algorys.agshmne.character.opponent.beast;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.github.algorys.agshmne.character.caracteristic.CharacterAttribute;
+import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class BeastFactory {
@@ -23,7 +23,7 @@ public class BeastFactory {
 		String line = lowMonster.get(Tools.dice(lowMonster.size()));
 		String[] parts = line.split(":");
 		int level = Integer.parseInt(parts[1]);
-		CharacterAttribute attributes = beastAttributeFactory.createAttributes(level);
+		Attribute attributes = beastAttributeFactory.createAttributes(level);
 		return new Beast(parts[0], level, attributes, beastVitalFact.createVital(attributes, level));
 	}
 }

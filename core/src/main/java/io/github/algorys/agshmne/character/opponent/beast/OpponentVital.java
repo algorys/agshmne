@@ -1,12 +1,12 @@
 package io.github.algorys.agshmne.character.opponent.beast;
 
-import io.github.algorys.agshmne.character.caracteristic.CharacterAttribute;
+import io.github.algorys.agshmne.character.Attribute;
 
 public class OpponentVital {
 	private int vie;
 	private int mana;
 	
-	public OpponentVital(CharacterAttribute attributes, int level) {
+	public OpponentVital(Attribute attributes, int level) {
 		vie = (attributes.getCON() / 2) + 5 + level;
     	mana = attributes.getINT() + level;
 	}
