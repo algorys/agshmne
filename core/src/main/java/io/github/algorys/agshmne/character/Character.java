@@ -42,7 +42,7 @@ public class Character extends Observable {
 	}
 	
 	public void initVital() {
-		vital = new CharacterVital(attributes, xp);
+		vital = new CharacterVital(attributes, xp.getLvl());
 	}
 	
 	public void setPosition(Position position) {
@@ -75,6 +75,29 @@ public class Character extends Observable {
 	
 	public Tile getTile() {
 		return getRegion().getTileFromPosition(getPosition());
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Nom : " + this.social.getName());
+		sb.append("\n");
+		sb.append("Level : " + this.xp.getLvl());
+		sb.append("\n");
+		sb.append("Vie = " + this.getVital().getVie());
+		sb.append("\n");
+		sb.append("Mana = " + this.getVital().getMana());
+		sb.append("\n");
+		sb.append("For = " + this.getAttributes().getFOR());
+		sb.append("\n");
+		sb.append("Dex = " + this.getAttributes().getDEX());
+		sb.append("\n");
+		sb.append("Con = " + this.getAttributes().getCON());
+		return sb.toString();
+	}
+
+	public CharacterXP getXp() {
+		return xp;
 	}
 }
 
