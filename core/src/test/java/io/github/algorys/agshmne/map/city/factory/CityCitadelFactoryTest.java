@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.city.factory;
+package io.github.algorys.agshmne.map.city.factory;
 
 import static org.junit.Assert.*;
 
