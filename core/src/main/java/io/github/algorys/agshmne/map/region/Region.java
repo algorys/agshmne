@@ -20,21 +20,27 @@ public class Region {
 		for (int i = 0; i < SIZE; i++) {
 			Tile currentTile;
 			
-			TileType type = TileType.values()[io.github.algorys.agshmne.tools.Tools.dice(TileType.values().length)];
-			String desc = descFactory.randomDesc(type);
-			if(Math.random() < .25) {
-				currentTile = new Tile(type, desc, cityFactory.createCity(type));
-			} else {
-				currentTile = new Tile(type, desc);
-			}
-
-			while (Math.random() < .3) {
-				ItemFactory itemFact = new ItemFactory();
-				currentTile.addItem(itemFact.createItem());
-			}
+			currentTile = createOneTile(cityFactory, descFactory);
 
 			tiles[i] = currentTile;
 		}
+	}
+
+	private Tile createOneTile(CityFactory cityFactory, DescFactory descFactory) {
+		Tile currentTile;
+		TileType type = TileType.values()[io.github.algorys.agshmne.tools.Tools.dice(TileType.values().length)];
+		String desc = descFactory.randomDesc(type);
+		if(Math.random() < .25) {
+			currentTile = new Tile(type, desc, cityFactory.createCity(type));
+		} else {
+			currentTile = new Tile(type, desc);
+		}
+
+		while (Math.random() < .3) {
+			ItemFactory itemFact = new ItemFactory();
+			currentTile.addItem(itemFact.createItem());
+		}
+		return currentTile;
 	}
 
 	public Tile getTileFromPosition(Position p) {		
