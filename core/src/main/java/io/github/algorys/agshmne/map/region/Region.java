@@ -15,11 +15,7 @@ public class Region {
 	public Region() {
 		TileFactory tileFactory = new TileFactory();
 		for (int i = 0; i < SIZE; i++) {
-			Tile currentTile;
-
-			currentTile = tileFactory.createRandomTile();
-
-			tiles[i] = currentTile;
+			tiles[i] = tileFactory.createRandomTile();
 		}
 	}
 
