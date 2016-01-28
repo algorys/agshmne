@@ -1,23 +1,24 @@
 package io.github.algorys.agshmne.game.actions;
 
 import java.awt.event.ActionEvent;
-import java.util.Observable;
-import java.util.Observer;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;
+import io.github.algorys.agshmne.map.tile.TileType;
 
 @SuppressWarnings("serial")
-final class SkillCutAction extends AbstractAction implements Observer {
+final class SkillCutAction extends AbstractAction implements PropertyChangeListener {
 	private final Player pj;
 
 	public SkillCutAction(Player pj) {
 		super("Couper du bois");
 		this.pj = pj;
-		pj.addObserver(this);
-		this.update(pj, null);
+		pj.addPropertyChangeListener(this);
+		this.update(pj.getTile().getType());
 	}
 
 	@Override
@@ -27,8 +28,13 @@ final class SkillCutAction extends AbstractAction implements Observer {
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {
-		switch (pj.getTile().getType()) {
+	public void propertyChange(PropertyChangeEvent evt) {
+		TileType tileType = pj.getTile().getType();
+		update(tileType);
+	}
+
+	private void update(TileType tileType) {
+		switch (tileType) {
 		case Wood:
 		case Forest:
 			this.setEnabled(true);

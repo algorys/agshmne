@@ -1,22 +1,20 @@
 package io.github.algorys.agshmne.game.actions;
 
 import java.awt.event.ActionEvent;
-import java.util.Observable;
-import java.util.Observer;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.player.Player;
 
 @SuppressWarnings("serial")
-public class SkillSearchRegionAction extends AbstractAction implements Observer {
-	
+public class SkillSearchRegionAction extends AbstractAction implements PropertyChangeListener {
+
 	public SkillSearchRegionAction(Player pj) {
 		super("Fouiller la Région");
-		pj.addObserver(this);
-		this.update(pj, null);
+		pj.addPropertyChangeListener(this);
 	}
-	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -25,7 +23,7 @@ public class SkillSearchRegionAction extends AbstractAction implements Observer 
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {	
+	public void propertyChange(PropertyChangeEvent evt) {
 		// TODO Faire en sorte de savoir si la Tile a déjà été visitée ou pas.
 	}
 

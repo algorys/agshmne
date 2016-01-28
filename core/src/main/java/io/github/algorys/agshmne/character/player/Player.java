@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.character.player;
 
-import java.util.Observable;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 
 import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.Character;
@@ -14,7 +15,14 @@ import io.github.algorys.agshmne.map.tile.Tile;
 /*
  * Définit le Personnage
  */
-public class Player extends Observable implements Character {
+public class Player implements Character {
+	public final static String PROPERTY_POSITION = "position";
+	public final static String PROPERTY_REGION = "position";
+	public final static String PROPERTY_INVENTORY = "inventory";
+	public final static String PROPERTY_SOCIAL = "social";
+	public final static String PROPERTY_XP = "xp";
+	public final static String PROPERTY_SKILLS = "skills";
+
 	private Position position = new Position(0, 0);
 	private Region region;
 	private Inventory inv;
@@ -23,6 +31,7 @@ public class Player extends Observable implements Character {
 	private Vital vital;
 	private PlayerXP xp;
 	private SkillFactory skills;
+	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	public Player(Region region) {
 		this.region = region;
@@ -31,7 +40,6 @@ public class Player extends Observable implements Character {
 		xp = new PlayerXP();
 		inv = new Inventory();
 		skills = new SkillFactory();
-
 	}
 
 	public Position getPosition() {
@@ -48,11 +56,9 @@ public class Player extends Observable implements Character {
 	}
 
 	public void setPosition(Position position) {
-		if (!this.position.equals(position)) {
-			this.position = position;
-			this.setChanged();
-			this.notifyObservers();
-		}
+		Position old = this.position;
+		this.position = position;
+		pcs.firePropertyChange(PROPERTY_POSITION, old, this.position);
 	}
 
 	/**
@@ -132,5 +138,21 @@ public class Player extends Observable implements Character {
 	@Override
 	public String getName() {
 		return this.social.getName();
+	}
+
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(listener);
+	}
+
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		pcs.removePropertyChangeListener(listener);
+	}
+
+	public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(propertyName, listener);
+	}
+
+	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		pcs.removePropertyChangeListener(propertyName, listener);
 	}
 }

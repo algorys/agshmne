@@ -1,24 +1,23 @@
 package io.github.algorys.agshmne.game.actions;
 
 import java.awt.event.ActionEvent;
-import java.util.Observable;
-import java.util.Observer;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.player.Player;
 
 @SuppressWarnings("serial")
-public class SkillSearchCityAction extends AbstractAction implements Observer {
+public class SkillSearchCityAction extends AbstractAction implements PropertyChangeListener {
 	private final Player pj;
-	
+
 	public SkillSearchCityAction(Player pj) {
 		super("Fouiller la Ville");
 		this.pj = pj;
-		pj.addObserver(this);
-		this.update(pj, null);
+		pj.addPropertyChangeListener(this);
+		this.setEnabled(pj.getTile().isCivilized());
 	}
-	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -27,12 +26,8 @@ public class SkillSearchCityAction extends AbstractAction implements Observer {
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {	
-		if(pj.getTile().isCivilized()){
-			this.setEnabled(true);
-		} else {
-			this.setEnabled(false);
-		}
+	public void propertyChange(PropertyChangeEvent evt) {
+		this.setEnabled(pj.getTile().isCivilized());
 	}
 
 }

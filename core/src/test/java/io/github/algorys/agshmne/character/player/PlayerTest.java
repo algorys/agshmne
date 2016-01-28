@@ -4,8 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import org.junit.Test;
 
@@ -13,11 +13,11 @@ import io.github.algorys.agshmne.map.Position;
 
 public class PlayerTest {
 
-	private final class MyObserver implements Observer {
+	private final class MyObserver implements PropertyChangeListener {
 		private int called = 0;
 
 		@Override
-		public void update(Observable o, Object arg) {
+		public void propertyChange(PropertyChangeEvent evt) {
 			called++;
 		}
 
@@ -36,7 +36,7 @@ public class PlayerTest {
 	public void whenCharacterChangePosition_observersShouldBeNotified() {
 		Player underTest = new Player(null);
 		MyObserver myObserver = new MyObserver();
-		underTest.addObserver(myObserver);
+		underTest.addPropertyChangeListener(myObserver);
 		underTest.setPosition(new Position(1, 0));
 		assertTrue(myObserver.isCalled());
 	}
@@ -45,7 +45,7 @@ public class PlayerTest {
 	public void whenCharacterSetSamePosition_observersShouldNotBeNotified() {
 		Player underTest = new Player(null);
 		MyObserver myObserver = new MyObserver();
-		underTest.addObserver(myObserver);
+		underTest.addPropertyChangeListener(myObserver);
 		underTest.setPosition(new Position(0, 0));
 		assertFalse(myObserver.isCalled());
 	}

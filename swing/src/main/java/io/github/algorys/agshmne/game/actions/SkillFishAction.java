@@ -1,41 +1,45 @@
 package io.github.algorys.agshmne.game.actions;
 
 import java.awt.event.ActionEvent;
-import java.util.Observable;
-import java.util.Observer;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.skills.SkillTool;
 import io.github.algorys.agshmne.character.player.skills.SkillType;
+import io.github.algorys.agshmne.map.tile.TileType;
 
 @SuppressWarnings("serial")
-public class SkillFishAction extends AbstractAction implements Observer {
+public class SkillFishAction extends AbstractAction implements PropertyChangeListener {
 	private final Player pj;
-	
+
 	public SkillFishAction(Player pj) {
 		super("Pêcher");
 		this.pj = pj;
-		pj.addObserver(this);
-		this.update(pj, null);
+		pj.addPropertyChangeListener(this);
+		this.update(pj.getTile().getType());
 	}
-	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		int mineLevel = pj.getSkills().getSkillLevel(SkillType.pecher);
-		if(SkillTool.Dice(mineLevel, 10)){
+		if (SkillTool.Dice(mineLevel, 10)) {
 			System.out.println("Poisson trouvé !");
 			// TODO Ajouter Poisson
-		}else {
+		} else {
 			System.out.println("Ca n'a pas mordu...");
 		}
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {	
-		switch (pj.getTile().getType()) {
+	public void propertyChange(PropertyChangeEvent evt) {
+		update(pj.getTile().getType());
+	}
+
+	private void update(TileType tileType) {
+		switch (tileType) {
 		case Lake:
 		case River:
 		case Sea:
