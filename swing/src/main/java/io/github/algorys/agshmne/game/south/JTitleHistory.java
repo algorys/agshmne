@@ -14,8 +14,9 @@ public class JTitleHistory extends JPanel {
 	
 	public JTitleHistory(Player pj){
 		this.setPreferredSize(new Dimension(700, 20));
-		this.setBackground(Color.lightGray);
+		this.setBackground(Color.black);
 		title = new JLabel("[REGION] - " + pj.getTile().getType());
+		title.setForeground(Color.magenta);
 		this.add(title);
 	}
 

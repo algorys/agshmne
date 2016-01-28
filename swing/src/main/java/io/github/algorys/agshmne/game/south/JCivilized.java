@@ -15,7 +15,8 @@ public class JCivilized extends JPanel{
 	
 	public JCivilized(Player pj){
 		this.setPreferredSize(new Dimension(700, 20));
-		this.setBackground(Color.lightGray);
+		this.setBackground(Color.black);
+		jlCiv.setForeground(Color.green);
 		if(pj.getTile().isCivilized()){
 			this.jlCiv.setText("Civilisé");
 		} else {

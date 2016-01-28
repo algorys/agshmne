@@ -1,5 +1,6 @@
 package io.github.algorys.agshmne.game.south;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -67,9 +68,11 @@ public class JDescGame extends JPanel {
 		final JDialog jDialogEvent = new JDialog(topFrame, "Vous êtes attaqué !", true);
 		jDialogEvent.setSize(600, 300);
 		jDialogEvent.setLocationRelativeTo(topFrame);
+		
 
 		JPanel panEvent = new JPanel();
 		panEvent.setLayout(new GridBagLayout());
+		panEvent.setBackground(Color.black);
 		GridBagConstraints gbcEvent = new GridBagConstraints();
 		gbcEvent.insets = new Insets(5, 5, 5, 5);
 
@@ -79,7 +82,9 @@ public class JDescGame extends JPanel {
 		gbcEvent.gridwidth = 4;
 		gbcEvent.anchor = GridBagConstraints.CENTER;
 		gbcEvent.fill = GridBagConstraints.NONE;
-		panEvent.add(new JLabel("COMBAT"), gbcEvent);
+		JLabel title = new JLabel("COMBAT");
+		title.setForeground(Color.red);
+		panEvent.add(title, gbcEvent);
 
 		// PLAYER
 		gbcEvent.gridy = 1;
@@ -124,6 +129,7 @@ public class JDescGame extends JPanel {
 		gbcEvent.anchor = GridBagConstraints.CENTER;
 		gbcEvent.fill = GridBagConstraints.NONE;
 		final JLabel outputAttaq = new JLabel("Init combat...");
+		outputAttaq.setForeground(Color.magenta);
 		panEvent.add(outputAttaq, gbcEvent);
 		
 		gbcEvent.gridy = 8;
@@ -133,6 +139,7 @@ public class JDescGame extends JPanel {
 		gbcEvent.anchor = GridBagConstraints.CENTER;
 		gbcEvent.fill = GridBagConstraints.NONE;
 		final JLabel jlDamage = new JLabel("---");
+		jlDamage.setForeground(Color.cyan);
 		panEvent.add(jlDamage, gbcEvent);
 
 		final JButton jbQuit = new JButton("Continuer le combat...");
