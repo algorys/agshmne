@@ -11,10 +11,10 @@ public class CityFactory {
 	private Map<TileType, ICityFactory> factories = new HashMap<>();
 
 	public CityFactory() {
-		ICityFactory hamletFactory = new CityHamletFactory();
-		ICityFactory townFactory = new CityTownFactory();
-		ICityFactory cityFactory = new CityCityFactory();
-		ICityFactory citadelFactory = new CityCitadelFactory();
+		ICityFactory hamletFactory = new GeneralCityFactory(2, 0);
+		ICityFactory townFactory = new GeneralCityFactory(2, 2);
+		ICityFactory cityFactory = new GeneralCityFactory(3, 4);
+		ICityFactory citadelFactory = new GeneralCityFactory(3, 7);
 
 		factories.put(TileType.Desert, hamletFactory);
 		factories.put(TileType.Sea, hamletFactory);
