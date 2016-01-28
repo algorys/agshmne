@@ -8,8 +8,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JList;
 import javax.swing.JMenuItem;
@@ -23,7 +21,7 @@ import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.tile.Tile;
 
 @SuppressWarnings("serial")
-public class GroundInv extends JPanel implements PropertyChangeListener, Observer {
+public class GroundInv extends JPanel implements PropertyChangeListener {
 	private JList<Item> groundItem;
 	private Tile currentTile;
 	private Player pj;
@@ -31,7 +29,7 @@ public class GroundInv extends JPanel implements PropertyChangeListener, Observe
 	public GroundInv(Player pj) {
 		this.pj = pj;
 		pj.addPropertyChangeListener(Player.PROPERTY_POSITION, this);
-				
+
 		groundItem = new JList<Item>(new TileListModel(pj.getTile()));
 		groundItem.setCellRenderer(new InvRenderer());
 		groundItem.setBackground(Color.BLACK);
@@ -70,19 +68,13 @@ public class GroundInv extends JPanel implements PropertyChangeListener, Observe
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {
-		System.out.println("On passe par la liste groundItem");
-		groundItem.setModel(new TileListModel(this.currentTile));
-	}
-	
-	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		if(this.currentTile != null) {
-			currentTile.deleteObserver(this);
+		if (this.currentTile != null) {
+			currentTile.removePropertyChangeListener(this);
 		}
 		this.currentTile = pj.getTile();
 		groundItem.setModel(new TileListModel(this.currentTile));
-		
-		this.currentTile.addObserver(this);
+
+		this.currentTile.addPropertyChangeListener(this);
 	}
 }
