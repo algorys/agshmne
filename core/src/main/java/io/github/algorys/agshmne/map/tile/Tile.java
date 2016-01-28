@@ -1,18 +1,22 @@
 package io.github.algorys.agshmne.map.tile;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.List;
-import java.util.Observable;
 
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.city.City;
 
-public class Tile extends Observable {
+public class Tile {
+	public static final String PROPERTY_ITEMS = "items";
+
 	private TileType type;
 	private Inventory inv = new Inventory();
 	private City city;
 	private String desc;
 	private boolean danger = false;
+	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	public Tile(TileType type, String desc, City city) {
 		this(type, desc);
@@ -28,12 +32,9 @@ public class Tile extends Observable {
 		return type;
 	}
 
-	public boolean addItem(Item e) {
+	public void addItem(Item e) {
 		inv.addItem(e);
-		boolean added = true;
-		this.setChanged();
-		this.notifyObservers();
-		return added;
+		this.pcs.firePropertyChange(PROPERTY_ITEMS, null, inv);
 	}
 
 	public List<Item> getItems() {
@@ -42,8 +43,7 @@ public class Tile extends Observable {
 
 	public void removeItem(Item e) {
 		this.inv.removeItem(e);
-		this.setChanged();
-		this.notifyObservers();
+		this.pcs.firePropertyChange(PROPERTY_ITEMS, null, inv);
 	}
 
 	@Override
@@ -77,5 +77,21 @@ public class Tile extends Observable {
 
 	public void setDanger(boolean danger) {
 		this.danger = danger;
+	}
+
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(listener);
+	}
+
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		pcs.removePropertyChangeListener(listener);
+	}
+
+	public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(propertyName, listener);
+	}
+
+	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		pcs.removePropertyChangeListener(propertyName, listener);
 	}
 }
