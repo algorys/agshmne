@@ -7,6 +7,8 @@ public class Fight {
 	private int round = 1;
 	private int currentAdvLife;
 	private int currentPjLife;
+	private int pjDamage;
+	private int mobDamage;
 	private Character pj;
 	private Character adv;
 	
@@ -26,6 +28,7 @@ public class Fight {
 	public void pjAttack() {
 		int pjAttack = this.attack(pj.getCurrentAttributes().getDEX(), adv.getLevel());
 		System.out.println("Attaque PJ= " + pjAttack);
+		this.pjDamage = pjAttack;
 		if(pjAttack > 0) {
 			this.currentAdvLife -= pjAttack;
 			adv.getVital().setVie(currentAdvLife);
@@ -34,10 +37,11 @@ public class Fight {
 	}
 	
 	public void mobAttack() {
-		int advAttack = this.attack(adv.getCurrentAttributes().getDEX(), 10 + pj.getLevel());
-		System.out.println("Attaque ADV = " + advAttack);
-		if(advAttack > 0) {
-			this.currentPjLife -= advAttack;
+		int mobAttack = this.attack(adv.getCurrentAttributes().getDEX(), 10 + pj.getLevel());
+		System.out.println("Attaque ADV = " + mobAttack);
+		this.mobDamage = mobAttack;
+		if(mobAttack > 0) {
+			this.currentPjLife -= mobAttack;
 			pj.getVital().setVie(currentPjLife);
 		}
 		System.out.println(adv.toString());
@@ -53,5 +57,31 @@ public class Fight {
     	int difficulty = 10 + level;
     	int attack = dice + (carac / 2) - difficulty;
 		return attack;
+	}
+	
+	public String stringAttack() {
+		String styleAttack;
+		if(this.pjDamage == this.mobDamage) {
+			styleAttack = "Match nul !";
+		} else if(this.pjDamage >= this.mobDamage){
+			styleAttack = this.pj.getName() + " mène une belle attaque...";
+		}else {
+			styleAttack = this.adv.getName() + " vous en met plein la tronche !!!";
+		}
+		return styleAttack;
+	}
+
+	public String stringDamage() {
+		String stringDamage = "Dégats "+pj.getName()+" "+this.getPjDamage()+" - "+adv.getName()+" "+this.getMobDamage();
+		return stringDamage;
+	}
+
+	public int getPjDamage() {
+		return pjDamage;
+	}
+
+
+	public int getMobDamage() {
+		return mobDamage;
 	}
 }

@@ -45,7 +45,6 @@ public class JDescGame extends JPanel {
 		
 		this.add(titleHistory);
 		this.add(civilized);
-		//this.add(event);
 	}
 	
 	public void updateLabels(Player pj) {
@@ -63,7 +62,7 @@ public class JDescGame extends JPanel {
 		}
 	}
 
-	private void initJFight(Player pj, Beast wolf, final Fight fight) {
+	private void initJFight(final Player pj, final Beast wolf, final Fight fight) {
 		JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
 		JDialog jDialogEvent = new JDialog(topFrame, "Vous êtes attaqué !", true);
 		jDialogEvent.setSize(600, 300);
@@ -108,8 +107,24 @@ public class JDescGame extends JPanel {
 		gbcEvent.anchor = GridBagConstraints.EAST;
 		gbcEvent.fill = GridBagConstraints.NONE;
 		panEvent.add(jbAttaq, gbcEvent);
-
+		
+		gbcEvent.gridy = 7;
+		gbcEvent.gridheight = 1;
+		gbcEvent.gridx = 1;
+		gbcEvent.gridwidth = 4;
+		gbcEvent.anchor = GridBagConstraints.CENTER;
+		gbcEvent.fill = GridBagConstraints.NONE;
 		final JLabel outputAttaq = new JLabel("Init combat...");
+		panEvent.add(outputAttaq, gbcEvent);
+		
+		gbcEvent.gridy = 8;
+		gbcEvent.gridheight = 1;
+		gbcEvent.gridx = 1;
+		gbcEvent.gridwidth = 4;
+		gbcEvent.anchor = GridBagConstraints.CENTER;
+		gbcEvent.fill = GridBagConstraints.NONE;
+		final JLabel jlDamage = new JLabel("---");
+		panEvent.add(jlDamage, gbcEvent);
 
 		jbAttaq.addActionListener(new ActionListener() {
 
@@ -118,17 +133,12 @@ public class JDescGame extends JPanel {
 				fight.newRound();
 				fight.pjAttack();
 				fight.mobAttack();
-				outputAttaq.setText("Vous attaquez !");
+				String stringDamage = fight.stringAttack();
+				outputAttaq.setText(stringDamage);
+				String degats = fight.stringDamage();
+				jlDamage.setText(degats);
 			}
 		});
-
-		gbcEvent.gridy = 7;
-		gbcEvent.gridheight = 1;
-		gbcEvent.gridx = 1;
-		gbcEvent.gridwidth = 4;
-		gbcEvent.anchor = GridBagConstraints.CENTER;
-		gbcEvent.fill = GridBagConstraints.NONE;
-		panEvent.add(outputAttaq, gbcEvent);
 
 		jDialogEvent.add(panEvent);
 		jDialogEvent.setVisible(true);
