@@ -5,6 +5,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -13,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.opponent.beast.Beast;
 import io.github.algorys.agshmne.character.opponent.beast.BeastFactory;
 import io.github.algorys.agshmne.character.player.Player;
@@ -22,25 +25,25 @@ import io.github.algorys.agshmne.fight.Fight;
 public class JEvent extends JPanel {
 	JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
 	Player pj;
-	
+
 	public JEvent(Player pj) {
 		this.pj = pj;
 	}
-	
+
 	public void updateEvent(boolean danger) {
-		if(danger) {
+		if (danger) {
 			Beast wolf = new BeastFactory().createBeast();
 			final Fight fight = new Fight(pj, wolf);
-			
+
 			JDialog jDialogEvent = new JDialog(topFrame, "Vous êtes attaqué !", true);
 			jDialogEvent.setSize(600, 300);
 			jDialogEvent.setLocationRelativeTo(topFrame);
-			
+
 			JPanel panEvent = new JPanel();
 			panEvent.setLayout(new GridBagLayout());
 			GridBagConstraints gbcEvent = new GridBagConstraints();
 			gbcEvent.insets = new Insets(5, 5, 5, 5);
-			
+
 			gbcEvent.gridy = 0;
 			gbcEvent.gridheight = 1;
 			gbcEvent.gridx = 0;
@@ -48,7 +51,7 @@ public class JEvent extends JPanel {
 			gbcEvent.anchor = GridBagConstraints.CENTER;
 			gbcEvent.fill = GridBagConstraints.NONE;
 			panEvent.add(new JLabel("COMBAT"), gbcEvent);
-			
+
 			// PLAYER
 			gbcEvent.gridy = 1;
 			gbcEvent.gridheight = 1;
@@ -57,15 +60,22 @@ public class JEvent extends JPanel {
 			gbcEvent.anchor = GridBagConstraints.WEST;
 			gbcEvent.fill = GridBagConstraints.NONE;
 			panEvent.add(new JLabel("Nom : " + pj.getName()), gbcEvent);
-			
+
 			gbcEvent.gridy = 2;
 			gbcEvent.gridheight = 1;
 			gbcEvent.gridx = 0;
 			gbcEvent.gridwidth = 2;
 			gbcEvent.anchor = GridBagConstraints.WEST;
 			gbcEvent.fill = GridBagConstraints.NONE;
-			panEvent.add(new JLabel("Vie : " + pj.getVital().getVie()), gbcEvent);
-			
+			final JLabel jlPjVie = new JLabel("Vie : " + pj.getVital().getVie());
+			panEvent.add(jlPjVie, gbcEvent);
+			pj.getVital().addPropertyChangeListener(Vital.PROPERTY_VIE, new PropertyChangeListener() {
+				@Override
+				public void propertyChange(PropertyChangeEvent evt) {
+					jlPjVie.setText("Vie : " + evt.getNewValue());
+				}
+			});
+
 			gbcEvent.gridy = 3;
 			gbcEvent.gridheight = 1;
 			gbcEvent.gridx = 0;
@@ -73,7 +83,7 @@ public class JEvent extends JPanel {
 			gbcEvent.anchor = GridBagConstraints.WEST;
 			gbcEvent.fill = GridBagConstraints.NONE;
 			panEvent.add(new JLabel("Mana : " + pj.getVital().getMana()), gbcEvent);
-			
+
 			gbcEvent.gridy = 4;
 			gbcEvent.gridheight = 1;
 			gbcEvent.gridx = 0;
@@ -81,7 +91,7 @@ public class JEvent extends JPanel {
 			gbcEvent.anchor = GridBagConstraints.WEST;
 			gbcEvent.fill = GridBagConstraints.NONE;
 			panEvent.add(new JLabel("Attaque : " + pj.getCurrentAttributes().getDEX()), gbcEvent);
-			
+
 			// MONSTER
 			gbcEvent.gridy = 1;
 			gbcEvent.gridheight = 1;
@@ -90,15 +100,22 @@ public class JEvent extends JPanel {
 			gbcEvent.anchor = GridBagConstraints.EAST;
 			gbcEvent.fill = GridBagConstraints.NONE;
 			panEvent.add(new JLabel("Nom : " + wolf.getName()), gbcEvent);
-			
+
 			gbcEvent.gridy = 2;
 			gbcEvent.gridheight = 1;
 			gbcEvent.gridx = 2;
 			gbcEvent.gridwidth = 2;
 			gbcEvent.anchor = GridBagConstraints.EAST;
 			gbcEvent.fill = GridBagConstraints.NONE;
-			panEvent.add(new JLabel("Vie : " + wolf.getVital().getVie()), gbcEvent);
-			
+			final JLabel jlWolfVie = new JLabel("Vie : " + wolf.getVital().getVie());
+			panEvent.add(jlWolfVie, gbcEvent);
+			wolf.getVital().addPropertyChangeListener(Vital.PROPERTY_VIE, new PropertyChangeListener() {
+				@Override
+				public void propertyChange(PropertyChangeEvent evt) {
+					jlWolfVie.setText("Vie : " + evt.getNewValue());
+				}
+			});
+
 			gbcEvent.gridy = 3;
 			gbcEvent.gridheight = 1;
 			gbcEvent.gridx = 2;
@@ -106,7 +123,7 @@ public class JEvent extends JPanel {
 			gbcEvent.anchor = GridBagConstraints.EAST;
 			gbcEvent.fill = GridBagConstraints.NONE;
 			panEvent.add(new JLabel("Mana : " + wolf.getVital().getMana()), gbcEvent);
-			
+
 			gbcEvent.gridy = 4;
 			gbcEvent.gridheight = 1;
 			gbcEvent.gridx = 2;
@@ -114,7 +131,7 @@ public class JEvent extends JPanel {
 			gbcEvent.anchor = GridBagConstraints.EAST;
 			gbcEvent.fill = GridBagConstraints.NONE;
 			panEvent.add(new JLabel("Attaque : " + wolf.getCurrentAttributes().getDEX()), gbcEvent);
-			
+
 			JButton jbAttaq = new JButton("Attaquer");
 			gbcEvent.gridy = 5;
 			gbcEvent.gridheight = 1;
@@ -123,20 +140,20 @@ public class JEvent extends JPanel {
 			gbcEvent.anchor = GridBagConstraints.EAST;
 			gbcEvent.fill = GridBagConstraints.NONE;
 			panEvent.add(jbAttaq, gbcEvent);
-			
+
 			final JLabel outputAttaq = new JLabel("Init combat...");
-			
+
 			jbAttaq.addActionListener(new ActionListener() {
-				
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					fight.newRound();
 					fight.pjAttack();
 					fight.mobAttack();
-					outputAttaq.setText("Vous attaquez !");					
+					outputAttaq.setText("Vous attaquez !");
 				}
 			});
-			
+
 			gbcEvent.gridy = 7;
 			gbcEvent.gridheight = 1;
 			gbcEvent.gridx = 1;
@@ -144,10 +161,10 @@ public class JEvent extends JPanel {
 			gbcEvent.anchor = GridBagConstraints.CENTER;
 			gbcEvent.fill = GridBagConstraints.NONE;
 			panEvent.add(outputAttaq, gbcEvent);
-			
+
 			jDialogEvent.add(panEvent);
 			jDialogEvent.setVisible(true);
-			
-		} 	
+
+		}
 	}
 }

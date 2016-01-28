@@ -1,5 +1,6 @@
 package io.github.algorys.agshmne.character;
 
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class Vital {
@@ -24,7 +25,7 @@ public class Vital {
 
 	public void setVie(int vie) {
 		int old = this.vie;
-		this.vie = vie;		
+		this.vie = vie;
 		pcs.firePropertyChange(PROPERTY_VIE, old, this.vie);
 	}
 
@@ -51,6 +52,21 @@ public class Vital {
 	public void setFaim(int faim) {
 		this.faim = faim;
 	}
-    
- 
+
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(listener);
+	}
+
+	public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(propertyName, listener);
+	}
+
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		pcs.removePropertyChangeListener(listener);
+	}
+
+	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		pcs.removePropertyChangeListener(propertyName, listener);
+	}
+
 }
