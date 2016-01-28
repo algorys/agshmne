@@ -20,8 +20,6 @@ public class Fight {
 	
 	public void newRound() {		
 		System.out.println("----- ROUND " + round + " -----");
-		this.pjAttack();
-		this.mobAttack();
 		round += 1;
 	}
 	

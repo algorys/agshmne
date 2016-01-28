@@ -27,19 +27,19 @@ public class JDescGame extends JPanel {
 		this.civilized.setCivilized(pj.getTile().isCivilized());
 		
 		// TODO Danger aux alentour (Rouge)
-		this.event = new JEvent(pj.getTile().isDanger());
-		this.event.setJlabelDanger(pj.getTile().isDanger());
+		this.event = new JEvent(pj);
+		this.event.updateEvent(pj.getTile().isDanger());
 		
 		// TODO Actions Personnage**this.add(titleHistory);
 		
 		this.add(titleHistory);
 		this.add(civilized);
-		this.add(event);
+		//this.add(event);
 	}
 	
 	public void updateLabels(Player pj) {
 		titleHistory.setTitle("Region : " + pj.getTile().getDesc());
 		civilized.setCivilized(pj.getTile().isCivilized());
-		event.setJlabelDanger(pj.getTile().isDanger());
+		event.updateEvent(pj.getTile().isDanger());
 	}
 }

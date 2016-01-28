@@ -1,11 +1,14 @@
 package io.github.algorys.agshmne.character;
 
-public class Vital {
+import java.beans.PropertyChangeSupport;
 
+public class Vital {
+	public final static String PROPERTY_VIE = "vie";
 	private int vie;
 	private int mana;
 	private int fatigue;
 	private int faim;
+	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	public Vital(int vie, int mana, int fatigue, int faim) {
 		super();
@@ -20,7 +23,9 @@ public class Vital {
 	}
 
 	public void setVie(int vie) {
-		this.vie = vie;
+		int old = this.vie;
+		this.vie = vie;		
+		pcs.firePropertyChange(PROPERTY_VIE, old, this.vie);
 	}
 
 	public int getMana() {
