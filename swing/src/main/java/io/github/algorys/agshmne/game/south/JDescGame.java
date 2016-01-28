@@ -62,9 +62,9 @@ public class JDescGame extends JPanel {
 		}
 	}
 
-	private void initJFight(final Player pj, final Beast wolf, final Fight fight) {
+	private void initJFight(Player pj, Beast wolf, final Fight fight) {
 		JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-		JDialog jDialogEvent = new JDialog(topFrame, "Vous êtes attaqué !", true);
+		final JDialog jDialogEvent = new JDialog(topFrame, "Vous êtes attaqué !", true);
 		jDialogEvent.setSize(600, 300);
 		jDialogEvent.setLocationRelativeTo(topFrame);
 
@@ -99,14 +99,23 @@ public class JDescGame extends JPanel {
 		gbcEvent.fill = GridBagConstraints.NONE;
 		panEvent.add(new JCharacter(wolf), gbcEvent);
 
-		JButton jbAttaq = new JButton("Attaquer");
+		final JButton jbAttaq = new JButton("Attaquer");
 		gbcEvent.gridy = 5;
 		gbcEvent.gridheight = 1;
-		gbcEvent.gridx = 2;
+		gbcEvent.gridx = 3;
 		gbcEvent.gridwidth = 2;
 		gbcEvent.anchor = GridBagConstraints.EAST;
 		gbcEvent.fill = GridBagConstraints.NONE;
 		panEvent.add(jbAttaq, gbcEvent);
+		
+		final JButton jbDefense = new JButton("Défense");
+		gbcEvent.gridy = 5;
+		gbcEvent.gridheight = 1;
+		gbcEvent.gridx = 1;
+		gbcEvent.gridwidth = 2;
+		gbcEvent.anchor = GridBagConstraints.EAST;
+		gbcEvent.fill = GridBagConstraints.NONE;
+		panEvent.add(jbDefense, gbcEvent);
 		
 		gbcEvent.gridy = 7;
 		gbcEvent.gridheight = 1;
@@ -126,17 +135,44 @@ public class JDescGame extends JPanel {
 		final JLabel jlDamage = new JLabel("---");
 		panEvent.add(jlDamage, gbcEvent);
 
+		final JButton jbQuit = new JButton("Continuer le combat...");
+		jbQuit.setEnabled(false);
+		gbcEvent.gridy = 9;
+		gbcEvent.gridheight = 1;
+		gbcEvent.gridx = 1;
+		gbcEvent.gridwidth = 4;
+		gbcEvent.anchor = GridBagConstraints.CENTER;
+		gbcEvent.fill = GridBagConstraints.NONE;
+		panEvent.add(jbQuit, gbcEvent);
+		jbQuit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				jDialogEvent.dispose();
+			}
+		});
+		
 		jbAttaq.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				// Combat
 				fight.newRound();
 				fight.pjAttack();
 				fight.mobAttack();
+				// Descriptions
 				String stringDamage = fight.stringAttack();
 				outputAttaq.setText(stringDamage);
 				String degats = fight.stringDamage();
 				jlDamage.setText(degats);
+				// Fini ?
+				if(fight.isFinish()) {
+					jbQuit.setText("Quitter le combat");
+					jbQuit.setEnabled(true);
+					
+					jbAttaq.setEnabled(false);
+					jbDefense.setEnabled(false);
+				}
 			}
 		});
 

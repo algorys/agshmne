@@ -72,7 +72,7 @@ public class Fight {
 	}
 
 	public String stringDamage() {
-		String stringDamage = "Dégats "+pj.getName()+" "+this.getPjDamage()+" - "+adv.getName()+" "+this.getMobDamage();
+		String stringDamage = "Dégats : "+pj.getName()+" ["+this.getPjDamage()+"],  "+adv.getName()+" ["+this.getMobDamage()+"]";
 		return stringDamage;
 	}
 
