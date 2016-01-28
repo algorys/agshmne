@@ -9,10 +9,10 @@ public class JGameTest {
 	public static void main(String[] args) {
 		Region region = new RandomRegionFactory().create();
 		Player pj = new Player(region);
+		pj.getSocial().setName("Player");
 		pj.initVital();
 		JGame game = new JGame(pj);
 		game.setVisible(true);
-
 	}
 
 }

@@ -5,8 +5,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -15,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.opponent.beast.Beast;
 import io.github.algorys.agshmne.character.opponent.beast.BeastFactory;
 import io.github.algorys.agshmne.character.player.Player;
@@ -59,38 +56,7 @@ public class JEvent extends JPanel {
 			gbcEvent.gridwidth = 2;
 			gbcEvent.anchor = GridBagConstraints.WEST;
 			gbcEvent.fill = GridBagConstraints.NONE;
-			panEvent.add(new JLabel("Nom : " + pj.getName()), gbcEvent);
-
-			gbcEvent.gridy = 2;
-			gbcEvent.gridheight = 1;
-			gbcEvent.gridx = 0;
-			gbcEvent.gridwidth = 2;
-			gbcEvent.anchor = GridBagConstraints.WEST;
-			gbcEvent.fill = GridBagConstraints.NONE;
-			final JLabel jlPjVie = new JLabel("Vie : " + pj.getVital().getVie());
-			panEvent.add(jlPjVie, gbcEvent);
-			pj.getVital().addPropertyChangeListener(Vital.PROPERTY_VIE, new PropertyChangeListener() {
-				@Override
-				public void propertyChange(PropertyChangeEvent evt) {
-					jlPjVie.setText("Vie : " + evt.getNewValue());
-				}
-			});
-
-			gbcEvent.gridy = 3;
-			gbcEvent.gridheight = 1;
-			gbcEvent.gridx = 0;
-			gbcEvent.gridwidth = 2;
-			gbcEvent.anchor = GridBagConstraints.WEST;
-			gbcEvent.fill = GridBagConstraints.NONE;
-			panEvent.add(new JLabel("Mana : " + pj.getVital().getMana()), gbcEvent);
-
-			gbcEvent.gridy = 4;
-			gbcEvent.gridheight = 1;
-			gbcEvent.gridx = 0;
-			gbcEvent.gridwidth = 2;
-			gbcEvent.anchor = GridBagConstraints.WEST;
-			gbcEvent.fill = GridBagConstraints.NONE;
-			panEvent.add(new JLabel("Attaque : " + pj.getCurrentAttributes().getDEX()), gbcEvent);
+			panEvent.add(new JCharacter(pj), gbcEvent);
 
 			// MONSTER
 			gbcEvent.gridy = 1;
@@ -99,38 +65,7 @@ public class JEvent extends JPanel {
 			gbcEvent.gridwidth = 2;
 			gbcEvent.anchor = GridBagConstraints.EAST;
 			gbcEvent.fill = GridBagConstraints.NONE;
-			panEvent.add(new JLabel("Nom : " + wolf.getName()), gbcEvent);
-
-			gbcEvent.gridy = 2;
-			gbcEvent.gridheight = 1;
-			gbcEvent.gridx = 2;
-			gbcEvent.gridwidth = 2;
-			gbcEvent.anchor = GridBagConstraints.EAST;
-			gbcEvent.fill = GridBagConstraints.NONE;
-			final JLabel jlWolfVie = new JLabel("Vie : " + wolf.getVital().getVie());
-			panEvent.add(jlWolfVie, gbcEvent);
-			wolf.getVital().addPropertyChangeListener(Vital.PROPERTY_VIE, new PropertyChangeListener() {
-				@Override
-				public void propertyChange(PropertyChangeEvent evt) {
-					jlWolfVie.setText("Vie : " + evt.getNewValue());
-				}
-			});
-
-			gbcEvent.gridy = 3;
-			gbcEvent.gridheight = 1;
-			gbcEvent.gridx = 2;
-			gbcEvent.gridwidth = 2;
-			gbcEvent.anchor = GridBagConstraints.EAST;
-			gbcEvent.fill = GridBagConstraints.NONE;
-			panEvent.add(new JLabel("Mana : " + wolf.getVital().getMana()), gbcEvent);
-
-			gbcEvent.gridy = 4;
-			gbcEvent.gridheight = 1;
-			gbcEvent.gridx = 2;
-			gbcEvent.gridwidth = 2;
-			gbcEvent.anchor = GridBagConstraints.EAST;
-			gbcEvent.fill = GridBagConstraints.NONE;
-			panEvent.add(new JLabel("Attaque : " + wolf.getCurrentAttributes().getDEX()), gbcEvent);
+			panEvent.add(new JCharacter(wolf), gbcEvent);
 
 			JButton jbAttaq = new JButton("Attaquer");
 			gbcEvent.gridy = 5;
