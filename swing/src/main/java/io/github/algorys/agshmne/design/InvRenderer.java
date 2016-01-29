@@ -8,23 +8,31 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+import io.github.algorys.agshmne.items.IEquipableItem;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.StackableItemDirectFactory;
 
 public class InvRenderer implements ListCellRenderer<Item> {
 	private JLabel rendererComponent = new JLabel();
-	
+
 	public InvRenderer() {
 		rendererComponent.setMinimumSize(new Dimension(290, 15));
 		rendererComponent.setPreferredSize(new Dimension(290, 15));
 	}
-	
+
 	@Override
-	public Component getListCellRendererComponent(JList<? extends Item> list, Item value, int index, boolean isSelected, boolean cellHasFocus) {
-		if(value == null) {
+	public Component getListCellRendererComponent(JList<? extends Item> list, Item value, int index, boolean isSelected,
+			boolean cellHasFocus) {
+		if (value == null) {
 			rendererComponent.setText("");
 		} else {
 			rendererComponent.setText(value.toString());
+			if (value instanceof IEquipableItem) {
+				IEquipableItem currentItem = (IEquipableItem) value;
+				if (currentItem.isEquipped()) {
+					rendererComponent.setText(currentItem.toString() + " [E]");
+				}
+			}
 		}
 
 		if (isSelected) {
