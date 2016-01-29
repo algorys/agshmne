@@ -51,19 +51,15 @@ public class JGame extends JFrame {
 					switch (e.getKeyCode()) {
 					case KeyEvent.VK_LEFT:
 						pj.setPosition(new Position(pj.getPosition().getX() - 1, pj.getPosition().getY()));
-						descGame.updateLabels(pj);
 						return true;
 					case KeyEvent.VK_RIGHT:
 						pj.setPosition(new Position(pj.getPosition().getX() + 1, pj.getPosition().getY()));
-						descGame.updateLabels(pj);
 						return true;
 					case KeyEvent.VK_UP:
 						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() + 1));
-						descGame.updateLabels(pj);
 						return true;
 					case KeyEvent.VK_DOWN:
 						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() - 1));
-						descGame.updateLabels(pj);
 						return true;
 					}
 				}

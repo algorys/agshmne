@@ -6,10 +6,14 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.map.Position;
@@ -19,6 +23,37 @@ import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
 public class JRegion extends JPanel implements PropertyChangeListener {
+	private final class MovePJMouseListener extends MouseAdapter {
+		private int diffX = 0;
+		private int diffY = -1;
+
+		public MovePJMouseListener(int diffX, int diffY) {
+			super();
+			this.diffX = diffX;
+			this.diffY = diffY;
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			if (e.getSource() instanceof JTile) {
+				((JTile) e.getSource()).setBorder(new LineBorder(Color.YELLOW));
+			}
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			if (e.getSource() instanceof JTile) {
+				((JTile) e.getSource()).setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			}
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			JRegion.this.personnage.setPosition(new Position(JRegion.this.personnage.getPosition().getX() + diffX,
+					JRegion.this.personnage.getPosition().getY() + diffY));
+		}
+	}
+
 	private Player personnage;
 	private JTile[][] jtiles;
 
@@ -32,15 +67,19 @@ public class JRegion extends JPanel implements PropertyChangeListener {
 
 		Position position = personnage.getPosition();
 
-		jtiles = new JTile[13][13];
-		this.setLayout(new GridLayout(13, 13));
-		for (int i = 0; i < 13; i++) {
-			for (int j = 0; j < 13; j++) {
+		jtiles = new JTile[7][7];
+		this.setLayout(new GridLayout(7, 7));
+		for (int i = 0; i < 7; i++) {
+			for (int j = 0; j < 7; j++) {
 				jtiles[i][j] = new JTile(personnage.getRegion()
-						.getTileFromPosition(new Position(position.getX() + j - 6, position.getY() + (6 - i))));
+						.getTileFromPosition(new Position(position.getX() + j - 3, position.getY() + (3 - i))));
 				this.add(jtiles[i][j]);
 			}
 		}
+		jtiles[2][3].addMouseListener(new MovePJMouseListener(0, 1));
+		jtiles[4][3].addMouseListener(new MovePJMouseListener(0, -1));
+		jtiles[3][2].addMouseListener(new MovePJMouseListener(-1, 0));
+		jtiles[3][4].addMouseListener(new MovePJMouseListener(1, 0));
 		this.setFocusable(true);
 	}
 
@@ -61,10 +100,10 @@ public class JRegion extends JPanel implements PropertyChangeListener {
 	private void updateDisplay() {
 		Position position = this.personnage.getPosition();
 
-		for (int i = 0; i < 13; i++) {
-			for (int j = 0; j < 13; j++) {
+		for (int i = 0; i < 7; i++) {
+			for (int j = 0; j < 7; j++) {
 				Region region = this.personnage.getRegion();
-				Position newPosition = new Position(position.getX() + j - 6, position.getY() + (6 - i));
+				Position newPosition = new Position(position.getX() + j - 3, position.getY() + (3 - i));
 				Tile tile = region.getTileFromPosition(newPosition);
 				jtiles[i][j].setModel(tile);
 			}
@@ -82,20 +121,20 @@ public class JRegion extends JPanel implements PropertyChangeListener {
 	public void paint(Graphics g) {
 		super.paintComponents(g);
 		g.setPaintMode();
-		if(g instanceof Graphics2D) {
-			Graphics2D g2 = (Graphics2D)g;
+		if (g instanceof Graphics2D) {
+			Graphics2D g2 = (Graphics2D) g;
 			g2.setStroke(new BasicStroke(3));
 			g2.setColor(new Color(178, 102, 255));
-			g2.drawRoundRect(322, 322, 50, 50, 5, 5);
+			g2.drawRoundRect(300, 300, 100, 100, 5, 5);
 		} else {
 			g.setColor(Color.BLUE);
-			g.drawRect(150, 150, 50, 50);
+			g.drawRect(150, 150, 130, 130);
 		}
 	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		if(evt.getSource() == this.personnage) {
+		if (evt.getSource() == this.personnage) {
 			this.updateDisplay();
 		}
 	}

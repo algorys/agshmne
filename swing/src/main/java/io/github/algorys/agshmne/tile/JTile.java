@@ -3,10 +3,7 @@ package io.github.algorys.agshmne.tile;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -64,16 +61,6 @@ public class JTile extends JComponent {
 
 	public JTile(Tile model) {
 		super();
-		this.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (e.getSource() instanceof JTile) {
-					JTile source = (JTile) e.getSource();
-					System.out.println("Cliqué sur une case");
-					System.out.println(Arrays.toString(source.getModel().getItems().toArray()));
-				}
-			}
-		});
 		if (model == null) {
 			throw new NullPointerException("model cannot be null");
 		}
@@ -82,7 +69,7 @@ public class JTile extends JComponent {
 
 	@Override
 	public Dimension getPreferredSize() {
-		return new Dimension(50, 50);
+		return new Dimension(128, 128);
 	}
 
 	public void paintComponent(Graphics g) {
@@ -91,12 +78,13 @@ public class JTile extends JComponent {
 		if (img == null) {
 			// Par défaut, si l'image n'a pu être chargée, on affiche
 			// une croix
-			g.drawLine(1, 1, 50, 50);
-			g.drawLine(50, 1, 1, 50);
+			g.drawLine(1, 1, 130, 130);
+			g.drawLine(130, 1, 1, 130);
 		} else {
 			// Dans le meilleur cas, on affiche l'image... ou les 48x48
 			// premiers pixels en tous cas
-			g.drawImage(img, 1, 1, 48, 48, this);
+			//System.out.println(this.getSize());
+			g.drawImage(img, 1, 1, this.getWidth() - 2, this.getHeight() - 2, this);
 		}
 	}
 }
