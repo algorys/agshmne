@@ -7,11 +7,11 @@ public interface Character {
 	public static final String PROPERTY_VITAL = "vital";
 
 	public String getName();
-	
+
 	public int getLevel();
-	
+
 	public Attribute getCurrentAttributes();
-	
+
 	public Vital getVital();
 
 }
