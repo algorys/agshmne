@@ -13,17 +13,17 @@ public class EquipableItemTest {
 	public void testCasque() {
 		String name = "Casque";
 		BodyPart part = BodyPart.HEAD;
-		IEquipableItem underTest = new EquipableItem(name, part);
+		IEquipableItem underTest = new EquipableItem(name, part, 1);
 		assertEquals(name, underTest.getName());
 		assertFalse(underTest.isEquipped());
 		assertSame(part, underTest.getPart());
 	}
-	
+
 	@Test
 	public void testChapeau() {
 		String name = "Chapeau";
 		BodyPart part = BodyPart.HEAD;
-		IEquipableItem underTest = new EquipableItem(name, part);
+		IEquipableItem underTest = new EquipableItem(name, part, 1);
 		assertEquals(name, underTest.getName());
 		assertFalse(underTest.isEquipped());
 		assertSame(part, underTest.getPart());
@@ -31,9 +31,9 @@ public class EquipableItemTest {
 
 	@Test
 	public void testBottes() {
-		String name="bottes";
+		String name = "bottes";
 		BodyPart part = BodyPart.LEGS;
-		IEquipableItem underTest = new EquipableItem(name, part);
+		IEquipableItem underTest = new EquipableItem(name, part, 1);
 		assertEquals(name, underTest.getName());
 		assertFalse(underTest.isEquipped());
 		assertSame(part, underTest.getPart());
@@ -41,9 +41,9 @@ public class EquipableItemTest {
 
 	@Test
 	public void testBottesEquipées() {
-		String name="bottes";
+		String name = "bottes";
 		BodyPart part = BodyPart.LEGS;
-		IEquipableItem underTest = new EquipableItem(name, part);
+		IEquipableItem underTest = new EquipableItem(name, part, 1);
 		underTest.equip();
 		assertEquals(name, underTest.getName());
 		assertTrue(underTest.isEquipped());

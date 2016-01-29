@@ -55,7 +55,7 @@ public class PlayerTest {
 	@Test
 	public void whenCharacterEquipAnItem() {
 		Player underTest = new Player(null);
-		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD);
+		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD, 1);
 		underTest.getInventory().addItem(item);
 		assertTrue(underTest.getInventory().contains(item));
 		assertFalse(item.isEquipped());
@@ -66,7 +66,7 @@ public class PlayerTest {
 	@Test
 	public void whenCharacterEquipAnItemHeDoesNotHave() {
 		Player underTest = new Player(null);
-		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD);
+		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD, 1);
 		assertFalse(underTest.getInventory().contains(item));
 		assertFalse(item.isEquipped());
 		underTest.equip(item);
@@ -76,8 +76,8 @@ public class PlayerTest {
 	@Test
 	public void whenCharacterEquipASecondItem() {
 		Player underTest = new Player(null);
-		EquipableItem first = new EquipableItem("Casque", BodyPart.HEAD);
-		EquipableItem second = new EquipableItem("Bottes", BodyPart.LEGS);
+		EquipableItem first = new EquipableItem("Casque", BodyPart.HEAD, 1);
+		EquipableItem second = new EquipableItem("Bottes", BodyPart.LEGS, 1);
 		underTest.getInventory().addItem(first);
 		underTest.getInventory().addItem(second);
 
@@ -97,24 +97,23 @@ public class PlayerTest {
 		assertTrue(first.isEquipped());
 		assertTrue(second.isEquipped());
 	}
-	
+
 	@Test
 	public void whenCharacterUnEquipAnItem() {
 		Player underTest = new Player(null);
-		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD);
+		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD, 1);
 		underTest.getInventory().addItem(item);
 		underTest.equip(item);
 		assertTrue(item.isEquipped());
 		underTest.unequip(item);
 		assertFalse(item.isEquipped());
 	}
-	
 
 	@Test
 	public void whenCharacterEquipASecondItem_sameBodyPart() {
 		Player underTest = new Player(null);
-		EquipableItem first = new EquipableItem("Casque", BodyPart.HEAD);
-		EquipableItem second = new EquipableItem("Chapeau", BodyPart.HEAD);
+		EquipableItem first = new EquipableItem("Casque", BodyPart.HEAD, 1);
+		EquipableItem second = new EquipableItem("Chapeau", BodyPart.HEAD, 1);
 		underTest.getInventory().addItem(first);
 		underTest.getInventory().addItem(second);
 
@@ -133,6 +132,19 @@ public class PlayerTest {
 
 		assertFalse(first.isEquipped());
 		assertTrue(second.isEquipped());
+	}
+
+	@Test
+	public void whenCharacterEquipACloseWeapon_FORisModifed() {
+		Player underTest = new Player(null);
+		underTest.getAttributes().setFOR(12);
+		assertTrue(underTest.getAttributes().getFOR() == 12);
+		EquipableItem sword = new EquipableItem("Sword", BodyPart.RIGHT_HAND, 1);
+		underTest.getInventory().addItem(sword);
+		underTest.equip(sword);
+
+		assertTrue(underTest.getInventory().contains(sword));
+		assertTrue(underTest.getAttributes().getFOR() != underTest.getCurrentAttributes().getFOR());
 	}
 
 }

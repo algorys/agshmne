@@ -100,9 +100,37 @@ public class Player implements Character {
 	 */
 	@Override
 	public Attribute getCurrentAttributes() {
-		Attribute attribute = new Attribute();
-		attribute.setDEX(this.attributes.getDEX() + 5);
-		return attribute;
+		Attribute attributes = this.getAttributes();
+		for (Item item : this.getInventory().getListBackpack()) {
+			if (item instanceof IEquipableItem) {
+				IEquipableItem equipItem = (IEquipableItem) item;
+				int modifier = equipItem.getModifier();
+				switch (equipItem.getPart()) {
+				case HEAD:
+					attributes.setINT(this.getAttributes().getINT() + modifier);
+					break;
+				case CHEST:
+					attributes.setCON(this.getAttributes().getCON() + modifier);
+					break;
+				case ARMS:
+					attributes.setCON(this.getAttributes().getCON() + modifier);
+					break;
+				case LEGS:
+					attributes.setCON(this.getAttributes().getCON() + modifier);
+					break;
+				case RIGHT_HAND:
+					attributes.setFOR(this.getAttributes().getFOR() + modifier);
+					break;
+				case LEFT_HAND:
+					attributes.setDEX(this.getAttributes().getFOR() + modifier);
+					break;
+				// TODO : voir pour peut-être géré les anneaux autrement.
+				default:
+					break;
+				}
+			}
+		}
+		return attributes;
 	}
 
 	public Vital getVital() {
