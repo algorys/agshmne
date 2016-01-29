@@ -15,6 +15,7 @@ import javax.swing.JPopupMenu;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.design.InvRenderer;
+import io.github.algorys.agshmne.items.IEquipableItem;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.tile.Tile;
@@ -24,7 +25,7 @@ public class JTabInv extends JPanel {
 	private Inventory inv;
 	private Player pj;
 	private JList<Item> invItems;
-	
+
 	public JTabInv(Player pj) {
 		this.pj = pj;
 		this.inv = pj.getInventory();
@@ -46,25 +47,57 @@ public class JTabInv extends JPanel {
 				if (me.isPopupTrigger()) {
 					final int index = invItems.locationToIndex(me.getPoint());
 					JPopupMenu menu = new JPopupMenu();
+
 					JMenuItem deposer = new JMenuItem("Déposer");
 					deposer.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							Item selectedItem = invItems.getModel().getElementAt(index);
-							JOptionPane.showMessageDialog(JTabInv.this, "" + selectedItem + " retiré(e) !");
 							inv.removeItem(selectedItem);
-							Tile tile = JTabInv.this.pj.getTile();
-							tile.addItem(selectedItem);
-							System.out.println("Objets Tile courante : " + tile.getItems());
+							JTabInv.this.pj.getTile().addItem(selectedItem);
 						}
 					});
-					JMenuItem utiliser = new JMenuItem("Utiliser");
 					menu.add(deposer);
-					menu.add(utiliser);
+
+					if (invItems.getModel().getElementAt(index) instanceof IEquipableItem) {
+						IEquipableItem current = (IEquipableItem) invItems.getModel().getElementAt(index);
+						final JMenuItem equip;
+						if (current.isEquipped()) {
+							equip = new JMenuItem("Enlever");
+							equip.addActionListener(new ActionListener() {
+								@Override
+								public void actionPerformed(ActionEvent e) {
+									Item selectedItem = invItems.getModel().getElementAt(index);
+									if (selectedItem instanceof IEquipableItem) {
+										IEquipableItem itemToUnequip = (IEquipableItem) selectedItem;
+										JTabInv.this.pj.unequip(itemToUnequip);
+										invItems.invalidate();
+										invItems.repaint();
+									}
+								}
+							});
+						} else {
+							equip = new JMenuItem("Équiper");
+							equip.addActionListener(new ActionListener() {
+								@Override
+								public void actionPerformed(ActionEvent e) {
+									Item selectedItem = invItems.getModel().getElementAt(index);
+									if (selectedItem instanceof IEquipableItem) {
+										IEquipableItem itemToEquip = (IEquipableItem) selectedItem;
+										JTabInv.this.pj.equip(itemToEquip);
+										invItems.invalidate();
+										invItems.repaint();
+									}
+								}
+							});
+						}
+						menu.add(equip);
+					}
+
 					menu.show(invItems, me.getX(), me.getY());
 				}
 			}
 		});
 
 	}
-	
+
 }
