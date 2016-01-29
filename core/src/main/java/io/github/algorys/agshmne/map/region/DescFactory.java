@@ -12,12 +12,12 @@ public class DescFactory {
 	private Map<TileType, List<String>> descs = new HashMap<>();;
 
 	public DescFactory() {
-		List<String> descWood = Arrays.asList("Bois", "Forêt", "Jardins", "Jungle", "Sylve");
+		List<String> descWood = Arrays.asList("Bois", "Forêt", "Jardins", "Jungle", "Sylve", "Bosquet");
 		List<String> descHill = Arrays.asList("Collines", "Plateau", "Grand Tertre", "Buttes");
 		List<String> descDesert = Arrays.asList("Désert", "Désert de Sel", "Steppe", "Toundra");
 		List<String> descSea = Arrays.asList("Mer", "Océan");
 		List<String> descMountain = Arrays.asList("Monts", "Montagnes", "Falaises", "Crevasses", "Canyons");
-		List<String> descPlain = Arrays.asList("Plaines", "Savane", "Terres", "Contrées", "Comté");
+		List<String> descPlain = Arrays.asList("Plaines", "Savane", "Terres", "Contrées", "Comté", "Vallée");
 		List<String> descRiver = Arrays.asList("Rivière", "Fleuve", "Côte", "Rivages");
 		List<String> descSwamp = Arrays.asList("Marécage", "Marais", "Tourbière", "Bourbier");
 		List<String> descLake = Arrays.asList("Lacs", "Etangs", "Fontaines", "Cascades", "Chutes");
@@ -37,12 +37,24 @@ public class DescFactory {
 	public String randomDesc(TileType tileType) {
 
 		List<String> possibleDesc = descs.get(tileType);
-		final String desc;
+		final String title;
 		if (possibleDesc == null) {
-			desc = "No TileType found";
+			title = "No TileType found";
 		} else {
-			desc = possibleDesc.get(Tools.dice(possibleDesc.size()));
+			title = possibleDesc.get(Tools.dice(possibleDesc.size()));
 		}
-		return desc;
+		String name = namePlace();
+		return title + name;
+	}
+	
+	private String namePlace() {
+		String[] namePlace = {
+				" des Nuits Noires",
+				" de Sombre-Nuit",
+				" des Ombres",
+				" d'Agshmne",
+				" de l'Ogre"
+		};
+		return namePlace[Tools.dice(namePlace.length)];
 	}
 }
