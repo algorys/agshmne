@@ -7,7 +7,9 @@ import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.player.skills.factory.SkillFactory;
+import io.github.algorys.agshmne.items.IEquipableItem;
 import io.github.algorys.agshmne.items.Inventory;
+import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.map.tile.Tile;
@@ -61,6 +63,24 @@ public class Player implements Character {
 		pcs.firePropertyChange(PROPERTY_POSITION, old, this.position);
 	}
 
+	public void equip(IEquipableItem item) {
+		if (this.getInventory().contains(item)) {
+			for (Item currentItem : this.getInventory().getListBackpack()) {
+				if (currentItem instanceof IEquipableItem) {
+					IEquipableItem currentEquipableItem = (IEquipableItem) currentItem;
+					if (currentEquipableItem.getPart() == item.getPart()) {
+						currentEquipableItem.unequip();
+					}
+				}
+			}
+			item.equip();
+		}
+	}
+
+	public void unequip(IEquipableItem item) {
+		item.unequip();
+	}
+
 	/**
 	 * Retourne les attributs de base (sans modificateurs).
 	 * 
@@ -71,12 +91,10 @@ public class Player implements Character {
 	}
 
 	/**
-	 * Retourne les attributs courants (avec modificateurs).
-	 * TODO Gérer les objets équipés
-	 * TODO Gérer les sorts actifs
-	 * TODO Gérer les potions actives
-	 * TODO Gérer les malédictions, les bénédictions
-	 * TODO Gérer les modificateurs de quêtes
+	 * Retourne les attributs courants (avec modificateurs). TODO Gérer les
+	 * objets équipés TODO Gérer les sorts actifs TODO Gérer les potions actives
+	 * TODO Gérer les malédictions, les bénédictions TODO Gérer les
+	 * modificateurs de quêtes
 	 * 
 	 * @return les attributs courants (avec modificateurs)
 	 */

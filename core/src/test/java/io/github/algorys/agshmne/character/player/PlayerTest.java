@@ -9,6 +9,8 @@ import java.beans.PropertyChangeListener;
 
 import org.junit.Test;
 
+import io.github.algorys.agshmne.items.BodyPart;
+import io.github.algorys.agshmne.items.EquipableItem;
 import io.github.algorys.agshmne.map.Position;
 
 public class PlayerTest {
@@ -48,6 +50,89 @@ public class PlayerTest {
 		underTest.addPropertyChangeListener(myObserver);
 		underTest.setPosition(new Position(0, 0));
 		assertFalse(myObserver.isCalled());
+	}
+
+	@Test
+	public void whenCharacterEquipAnItem() {
+		Player underTest = new Player(null);
+		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD);
+		underTest.getInventory().addItem(item);
+		assertTrue(underTest.getInventory().contains(item));
+		assertFalse(item.isEquipped());
+		underTest.equip(item);
+		assertTrue(item.isEquipped());
+	}
+
+	@Test
+	public void whenCharacterEquipAnItemHeDoesNotHave() {
+		Player underTest = new Player(null);
+		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD);
+		assertFalse(underTest.getInventory().contains(item));
+		assertFalse(item.isEquipped());
+		underTest.equip(item);
+		assertFalse(item.isEquipped());
+	}
+
+	@Test
+	public void whenCharacterEquipASecondItem() {
+		Player underTest = new Player(null);
+		EquipableItem first = new EquipableItem("Casque", BodyPart.HEAD);
+		EquipableItem second = new EquipableItem("Bottes", BodyPart.LEGS);
+		underTest.getInventory().addItem(first);
+		underTest.getInventory().addItem(second);
+
+		assertTrue(underTest.getInventory().contains(first));
+		assertTrue(underTest.getInventory().contains(second));
+
+		assertFalse(first.isEquipped());
+		assertFalse(second.isEquipped());
+
+		underTest.equip(first);
+
+		assertTrue(first.isEquipped());
+		assertFalse(second.isEquipped());
+
+		underTest.equip(second);
+
+		assertTrue(first.isEquipped());
+		assertTrue(second.isEquipped());
+	}
+	
+	@Test
+	public void whenCharacterUnEquipAnItem() {
+		Player underTest = new Player(null);
+		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD);
+		underTest.getInventory().addItem(item);
+		underTest.equip(item);
+		assertTrue(item.isEquipped());
+		underTest.unequip(item);
+		assertFalse(item.isEquipped());
+	}
+	
+
+	@Test
+	public void whenCharacterEquipASecondItem_sameBodyPart() {
+		Player underTest = new Player(null);
+		EquipableItem first = new EquipableItem("Casque", BodyPart.HEAD);
+		EquipableItem second = new EquipableItem("Chapeau", BodyPart.HEAD);
+		underTest.getInventory().addItem(first);
+		underTest.getInventory().addItem(second);
+
+		assertTrue(underTest.getInventory().contains(first));
+		assertTrue(underTest.getInventory().contains(second));
+
+		assertFalse(first.isEquipped());
+		assertFalse(second.isEquipped());
+
+		underTest.equip(first);
+
+		assertTrue(first.isEquipped());
+		assertFalse(second.isEquipped());
+
+		underTest.equip(second);
+
+		assertFalse(first.isEquipped());
+		assertTrue(second.isEquipped());
 	}
 
 }
