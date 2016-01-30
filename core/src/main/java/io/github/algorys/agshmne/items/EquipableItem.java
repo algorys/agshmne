@@ -12,6 +12,25 @@ public class EquipableItem extends GeneralItem implements IEquipableItem {
 		super(name);
 		this.part = part;
 		this.modifier = modifier;
+		switch (part) {
+		case HEAD:
+			attribute.setINT(modifier);
+			break;
+		case CHEST:
+		case ARMS:
+		case LEGS:
+			attribute.setCON(modifier);
+			break;
+		case RIGHT_HAND:
+			attribute.setFOR(modifier);
+			break;
+		case LEFT_HAND:
+			attribute.setDEX(modifier);
+			break;
+		// TODO : voir pour peut-être géré les anneaux autrement.
+		default:
+			break;
+		}
 	}
 
 	public void equip() {

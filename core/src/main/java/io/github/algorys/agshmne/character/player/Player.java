@@ -106,28 +106,7 @@ public class Player implements Character {
 			if (item instanceof IEquipableItem) {
 				IEquipableItem equipItem = (IEquipableItem) item;
 				if (equipItem.isEquipped()) {
-					Attribute equipItemAttribute = new Attribute();
-					int modifier = equipItem.getModifier();
-					switch (equipItem.getPart()) {
-					case HEAD:
-						equipItemAttribute.setINT(modifier);
-						break;
-					case CHEST:
-					case ARMS:
-					case LEGS:
-						equipItemAttribute.setCON(modifier);
-						break;
-					case RIGHT_HAND:
-						equipItemAttribute.setFOR(modifier);
-						break;
-					case LEFT_HAND:
-						equipItemAttribute.setDEX(modifier);
-						break;
-					// TODO : voir pour peut-être géré les anneaux autrement.
-					default:
-						break;
-					}
-					attributes.add(equipItemAttribute);
+					attributes.add(equipItem.getAttribute());
 				}
 			}
 		}
