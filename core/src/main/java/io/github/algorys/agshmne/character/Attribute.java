@@ -18,6 +18,10 @@ public class Attribute {
 		this.CHA = original.CHA;
 	}
 
+	public void add(Attribute other) {
+
+	}
+
 	public int getFOR() {
 		return FOR;
 	}

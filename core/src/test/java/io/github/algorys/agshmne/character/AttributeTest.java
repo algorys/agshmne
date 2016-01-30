@@ -26,4 +26,22 @@ public class AttributeTest {
 		assertNotSame(original, copy);
 		assertEquals(original, copy);
 	}
+	
+	@Test
+	public void testSum() {
+		Attribute modifier = new Attribute();
+		Attribute original = new Attribute();
+		original.setCHA(1);
+		original.setCON(2);
+		original.setDEX(3);
+		original.setFOR(4);
+		original.setINT(5);
+		
+		original.add(modifier);
+		assertEquals(1,original.getCHA());
+		assertEquals(2,original.getCON());
+		assertEquals(3,original.getDEX());
+		assertEquals(4,original.getFOR());
+		assertEquals(5,original.getINT());
+	}
 }
