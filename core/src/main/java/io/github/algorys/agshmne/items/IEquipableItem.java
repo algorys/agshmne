@@ -1,5 +1,7 @@
 package io.github.algorys.agshmne.items;
 
+import io.github.algorys.agshmne.character.Attribute;
+
 public interface IEquipableItem extends Item {
 	public boolean isEquipped();
 
@@ -10,5 +12,7 @@ public interface IEquipableItem extends Item {
 	public void unequip();
 
 	public int getModifier();
+
+	public Attribute getAttribute();
 
 }

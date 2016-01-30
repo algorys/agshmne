@@ -2,6 +2,7 @@ package io.github.algorys.agshmne.items;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
@@ -48,5 +49,11 @@ public class EquipableItemTest {
 		assertEquals(name, underTest.getName());
 		assertTrue(underTest.isEquipped());
 		assertSame(part, underTest.getPart());
+	}
+	
+	@Test
+	public void equipableItem_shouldHaveAttributes() {
+		IEquipableItem underTest = new EquipableItem("name",BodyPart.HEAD, 1);
+		assertNotNull(underTest.getAttribute());
 	}
 }

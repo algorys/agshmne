@@ -1,5 +1,7 @@
 package io.github.algorys.agshmne.items;
 
+import io.github.algorys.agshmne.character.Attribute;
+
 public class EquipableItem extends GeneralItem implements IEquipableItem {
 	private BodyPart part;
 	private boolean equipped;
@@ -35,4 +37,8 @@ public class EquipableItem extends GeneralItem implements IEquipableItem {
 		return this.modifier;
 	}
 
+	@Override
+	public Attribute getAttribute() {
+		return new Attribute();
+	}
 }
