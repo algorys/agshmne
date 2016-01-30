@@ -101,32 +101,39 @@ public class Player implements Character {
 	@Override
 	public Attribute getCurrentAttributes() {
 		Attribute attributes = new Attribute();
+		attributes.setINT(this.getAttributes().getINT());
+		attributes.setCON(this.getAttributes().getCON());
+		attributes.setFOR(this.getAttributes().getFOR());
+		attributes.setDEX(this.getAttributes().getDEX());
+		
 		for (Item item : this.getInventory().getListBackpack()) {
 			if (item instanceof IEquipableItem) {
 				IEquipableItem equipItem = (IEquipableItem) item;
-				int modifier = equipItem.getModifier();
-				switch (equipItem.getPart()) {
-				case HEAD:
-					attributes.setINT(this.getAttributes().getINT() + modifier);
-					break;
-				case CHEST:
-					attributes.setCON(this.getAttributes().getCON() + modifier);
-					break;
-				case ARMS:
-					attributes.setCON(this.getAttributes().getCON() + modifier);
-					break;
-				case LEGS:
-					attributes.setCON(this.getAttributes().getCON() + modifier);
-					break;
-				case RIGHT_HAND:
-					attributes.setFOR(this.getAttributes().getFOR() + modifier);
-					break;
-				case LEFT_HAND:
-					attributes.setDEX(this.getAttributes().getFOR() + modifier);
-					break;
-				// TODO : voir pour peut-être géré les anneaux autrement.
-				default:
-					break;
+				if(equipItem.isEquipped()) {
+					int modifier = equipItem.getModifier();
+					switch (equipItem.getPart()) {
+					case HEAD:
+						attributes.setINT(attributes.getINT() + modifier);
+						break;
+					case CHEST:
+						attributes.setCON(attributes.getCON() + modifier);
+						break;
+					case ARMS:
+						attributes.setCON(attributes.getCON() + modifier);
+						break;
+					case LEGS:
+						attributes.setCON(attributes.getCON() + modifier);
+						break;
+					case RIGHT_HAND:
+						attributes.setFOR(attributes.getFOR() + modifier);
+						break;
+					case LEFT_HAND:
+						attributes.setDEX(attributes.getDEX() + modifier);
+						break;
+					// TODO : voir pour peut-être géré les anneaux autrement.
+					default:
+						break;
+					}
 				}
 			}
 		}
