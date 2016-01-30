@@ -116,11 +116,7 @@ public class Player implements Character {
 						attributes.setINT(attributes.getINT() + modifier);
 						break;
 					case CHEST:
-						attributes.setCON(attributes.getCON() + modifier);
-						break;
 					case ARMS:
-						attributes.setCON(attributes.getCON() + modifier);
-						break;
 					case LEGS:
 						attributes.setCON(attributes.getCON() + modifier);
 						break;
