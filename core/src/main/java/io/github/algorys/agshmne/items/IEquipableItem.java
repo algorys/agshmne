@@ -11,8 +11,6 @@ public interface IEquipableItem extends Item {
 
 	public void unequip();
 
-	public int getModifier();
-
 	public Attribute getAttribute();
 
 }

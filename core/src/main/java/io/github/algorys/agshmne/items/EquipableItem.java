@@ -5,13 +5,11 @@ import io.github.algorys.agshmne.character.Attribute;
 public class EquipableItem extends GeneralItem implements IEquipableItem {
 	private BodyPart part;
 	private boolean equipped;
-	private int modifier;
 	private Attribute attribute = new Attribute();
 
 	public EquipableItem(String name, BodyPart part, int modifier) {
 		super(name);
 		this.part = part;
-		this.modifier = modifier;
 		switch (part) {
 		case HEAD:
 			attribute.setINT(modifier);
@@ -50,11 +48,6 @@ public class EquipableItem extends GeneralItem implements IEquipableItem {
 	@Override
 	public BodyPart getPart() {
 		return part;
-	}
-
-	@Override
-	public int getModifier() {
-		return this.modifier;
 	}
 
 	@Override
