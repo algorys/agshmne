@@ -16,12 +16,7 @@ public class AttributeTest {
 
 	@Test
 	public void testCopyConstructor_withValues() {
-		Attribute original = new Attribute();
-		original.setCHA(1);
-		original.setCON(2);
-		original.setDEX(3);
-		original.setFOR(4);
-		original.setINT(5);
+		Attribute original = createBaseAttribute();
 		Attribute copy = new Attribute(original);
 		assertNotSame(original, copy);
 		assertEquals(original, copy);
@@ -30,12 +25,7 @@ public class AttributeTest {
 	@Test
 	public void testSum() {
 		Attribute modifier = new Attribute();
-		Attribute original = new Attribute();
-		original.setCHA(1);
-		original.setCON(2);
-		original.setDEX(3);
-		original.setFOR(4);
-		original.setINT(5);
+		Attribute original = createBaseAttribute();
 
 		original.add(modifier);
 		assertEquals(1, original.getCHA());
@@ -54,18 +44,24 @@ public class AttributeTest {
 		modifier.setFOR(7);
 		modifier.setINT(11);
 
+		Attribute original = createBaseAttribute();
+
+		original.add(modifier);
+
+		assertEquals(2, original.getCHA());
+		assertEquals(5, original.getCON());
+		assertEquals(8, original.getDEX());
+		assertEquals(11, original.getFOR());
+		assertEquals(16, original.getINT());
+	}
+
+	private Attribute createBaseAttribute() {
 		Attribute original = new Attribute();
 		original.setCHA(1);
 		original.setCON(2);
 		original.setDEX(3);
 		original.setFOR(4);
 		original.setINT(5);
-
-		original.add(modifier);
-		assertEquals(2, original.getCHA());
-		assertEquals(5, original.getCON());
-		assertEquals(8, original.getDEX());
-		assertEquals(11, original.getFOR());
-		assertEquals(16, original.getINT());
+		return original;
 	}
 }
