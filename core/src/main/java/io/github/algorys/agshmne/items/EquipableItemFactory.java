@@ -36,39 +36,44 @@ public class EquipableItemFactory {
 		String weapon = lowCloseWeapon.get(Tools.dice(lowCloseWeapon.size()));
 		String[] values = weapon.split(":");
 		String name = values[0];
-		int modifier = Integer.parseInt(values[1]);
-		return new EquipableItem(name, BodyPart.RIGHT_HAND, modifier);
+		EquipableItem equipableItem = new EquipableItem(name, BodyPart.RIGHT_HAND);
+		equipableItem.getAttribute().setFOR(Integer.parseInt(values[1]));
+		return equipableItem;
 	}
 
 	public EquipableItem createHeadArmor() {
 		String head = lowHead.get(Tools.dice(lowHead.size()));
 		String[] values = head.split(":");
 		String name = values[0];
-		int modifier = Integer.parseInt(values[1]);
-		return new EquipableItem(name, BodyPart.HEAD, modifier);
+		EquipableItem equipableItem = new EquipableItem(name, BodyPart.HEAD);
+		equipableItem.getAttribute().setINT(Integer.parseInt(values[1]));
+		return equipableItem;
 	}
 
 	public EquipableItem createArmsArmor() {
 		String arms = lowArms.get(Tools.dice(lowArms.size()));
 		String[] values = arms.split(":");
 		String name = values[0];
-		int modifier = Integer.parseInt(values[1]);
-		return new EquipableItem(name, BodyPart.ARMS, modifier);
+		EquipableItem equipableItem = new EquipableItem(name, BodyPart.ARMS);
+		equipableItem.getAttribute().setCON(Integer.parseInt(values[1]));
+		return equipableItem;
 	}
 
 	public EquipableItem createLegsArmor() {
 		String legs = lowLegs.get(Tools.dice(lowLegs.size()));
 		String[] values = legs.split(":");
 		String name = values[0];
-		int modifier = Integer.parseInt(values[1]);
-		return new EquipableItem(name, BodyPart.LEGS, modifier);
+		EquipableItem equipableItem = new EquipableItem(name, BodyPart.LEGS);
+		equipableItem.getAttribute().setCON(Integer.parseInt(values[1]));
+		return equipableItem;
 	}
 
 	public EquipableItem createChestArmor() {
 		String chest = lowChest.get(Tools.dice(lowChest.size()));
 		String[] values = chest.split(":");
 		String name = values[0];
-		int modifier = Integer.parseInt(values[1]);
-		return new EquipableItem(name, BodyPart.CHEST, modifier);
+		EquipableItem equipableItem = new EquipableItem(name, BodyPart.CHEST);
+		equipableItem.getAttribute().setCON(Integer.parseInt(values[1]));
+		return equipableItem;
 	}
 }

@@ -139,7 +139,8 @@ public class PlayerTest {
 		Player underTest = new Player(null);
 		underTest.getAttributes().setFOR(12);
 		assertTrue(underTest.getAttributes().getFOR() == 12);
-		EquipableItem sword = new EquipableItem("Sword", BodyPart.RIGHT_HAND, 1);
+		EquipableItem sword = new EquipableItem("Sword", BodyPart.RIGHT_HAND);
+		sword.getAttribute().setFOR(1);
 		underTest.getInventory().addItem(sword);
 		underTest.equip(sword);
 
@@ -152,7 +153,8 @@ public class PlayerTest {
 		Player underTest = new Player(null);
 		underTest.getAttributes().setCON(12);
 		assertTrue(underTest.getAttributes().getCON() == 12);
-		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST, 1);
+		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST);
+		armor.getAttribute().setCON(1);
 		underTest.getInventory().addItem(armor);
 		assertTrue(underTest.getInventory().contains(armor));
 
@@ -166,9 +168,12 @@ public class PlayerTest {
 	public void whenCharacterEquipAChestALegsAndArms_CONisModifedWithThreeModifier() {
 		Player underTest = new Player(null);
 		underTest.getAttributes().setCON(12);
-		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST, 1);
-		EquipableItem legs = new EquipableItem("Legs", BodyPart.LEGS, 1);
-		EquipableItem arms = new EquipableItem("Arms", BodyPart.ARMS, 1);
+		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST);
+		armor.getAttribute().setCON(1);
+		EquipableItem legs = new EquipableItem("Legs", BodyPart.LEGS);
+		legs.getAttribute().setCON(1);
+		EquipableItem arms = new EquipableItem("Arms", BodyPart.ARMS);
+		arms.getAttribute().setCON(1);
 		underTest.getInventory().addItem(armor);
 		underTest.getInventory().addItem(legs);
 		underTest.getInventory().addItem(arms);
@@ -188,9 +193,12 @@ public class PlayerTest {
 	public void whenCharacterEquipAChestALegsAndArms_AndRemoveOne_CONisModifedWithTwoModifier() {
 		Player underTest = new Player(null);
 		underTest.getAttributes().setCON(12);
-		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST, 1);
-		EquipableItem legs = new EquipableItem("Legs", BodyPart.LEGS, 1);
-		EquipableItem arms = new EquipableItem("Arms", BodyPart.ARMS, 2);
+		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST);
+		armor.getAttribute().setCON(1);
+		EquipableItem legs = new EquipableItem("Legs", BodyPart.LEGS);
+		legs.getAttribute().setCON(1);
+		EquipableItem arms = new EquipableItem("Arms", BodyPart.ARMS);
+		arms.getAttribute().setCON(2);
 		underTest.getInventory().addItem(armor);
 		underTest.getInventory().addItem(legs);
 		underTest.getInventory().addItem(arms);
