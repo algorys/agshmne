@@ -1,15 +1,16 @@
 package io.github.algorys.agshmne.items;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.github.algorys.agshmne.tools.Tools;
 
 public class EquipableItemFactory {
-	private List<String> lowCloseWeapon;
-	private List<String> lowHead;
-	private List<String> lowArms;
-	private List<String> lowLegs;
-	private List<String> lowChest;
+	private List<String> lowCloseWeapon = new ArrayList<>();;
+	private List<String> lowHead = new ArrayList<>();;
+	private List<String> lowArms = new ArrayList<>();;
+	private List<String> lowLegs = new ArrayList<>();;
+	private List<String> lowChest = new ArrayList<>();;
 
 	public EquipableItemFactory() {
 		lowCloseWeapon.add("Épée en fer:1");
@@ -40,7 +41,7 @@ public class EquipableItemFactory {
 	}
 	
 	public EquipableItem createHeadArmor() {
-		String head = lowHead.get(Tools.dice(lowHead.size()-1));
+		String head = lowHead.get(Tools.dice(lowHead.size()));
 		String[] values = head.split(":");
 		String name = values[0];
 		int modifier = Integer.parseInt(values[1]);
