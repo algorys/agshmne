@@ -190,7 +190,7 @@ public class PlayerTest {
 		underTest.getAttributes().setCON(12);
 		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST, 1);
 		EquipableItem legs = new EquipableItem("Legs", BodyPart.LEGS, 1);
-		EquipableItem arms = new EquipableItem("Arms", BodyPart.ARMS, 1);
+		EquipableItem arms = new EquipableItem("Arms", BodyPart.ARMS, 2);
 		underTest.getInventory().addItem(armor);
 		underTest.getInventory().addItem(legs);
 		underTest.getInventory().addItem(arms);
@@ -203,7 +203,7 @@ public class PlayerTest {
 		underTest.equip(arms);
 
 		assertEquals(12, underTest.getAttributes().getCON());
-		assertEquals(15, underTest.getCurrentAttributes().getCON());
+		assertEquals(16, underTest.getCurrentAttributes().getCON());
 
 		underTest.unequip(arms);
 		assertEquals(12, underTest.getAttributes().getCON());
