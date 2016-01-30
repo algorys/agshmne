@@ -147,4 +147,41 @@ public class PlayerTest {
 		assertTrue(underTest.getAttributes().getFOR() != underTest.getCurrentAttributes().getFOR());
 	}
 
+	@Test
+	public void whenCharacterEquipAChest_CONisModifed() {
+		Player underTest = new Player(null);
+		underTest.getAttributes().setCON(12);
+		assertTrue(underTest.getAttributes().getCON() == 12);
+		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST, 1);
+		underTest.getInventory().addItem(armor);
+		assertTrue(underTest.getInventory().contains(armor));
+
+		underTest.equip(armor);
+
+		assertEquals(12, underTest.getAttributes().getCON());
+		assertEquals(13, underTest.getCurrentAttributes().getCON());
+	}
+
+	@Test
+	public void whenCharacterEquipAChestALegsAndArms_CONisModifedWithThreeModifier() {
+		Player underTest = new Player(null);
+		underTest.getAttributes().setCON(12);
+		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST, 1);
+		EquipableItem legs = new EquipableItem("Legs", BodyPart.LEGS, 1);
+		EquipableItem arms = new EquipableItem("Arms", BodyPart.ARMS, 1);
+		underTest.getInventory().addItem(armor);
+		underTest.getInventory().addItem(legs);
+		underTest.getInventory().addItem(arms);
+		assertTrue(underTest.getInventory().contains(armor));
+		assertTrue(underTest.getInventory().contains(legs));
+		assertTrue(underTest.getInventory().contains(arms));
+
+		underTest.equip(armor);
+		underTest.equip(legs);
+		underTest.equip(arms);
+
+		assertEquals(12, underTest.getAttributes().getCON());
+		assertEquals(15, underTest.getCurrentAttributes().getCON());
+	}
+
 }

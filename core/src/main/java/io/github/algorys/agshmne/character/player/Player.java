@@ -100,7 +100,7 @@ public class Player implements Character {
 	 */
 	@Override
 	public Attribute getCurrentAttributes() {
-		Attribute attributes = this.getAttributes();
+		Attribute attributes = new Attribute();
 		for (Item item : this.getInventory().getListBackpack()) {
 			if (item instanceof IEquipableItem) {
 				IEquipableItem equipItem = (IEquipableItem) item;
