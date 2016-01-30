@@ -183,5 +183,31 @@ public class PlayerTest {
 		assertEquals(12, underTest.getAttributes().getCON());
 		assertEquals(15, underTest.getCurrentAttributes().getCON());
 	}
+	
+	@Test
+	public void whenCharacterEquipAChestALegsAndArms_AndRemoveOne_CONisModifedWithTwoModifier() {
+		Player underTest = new Player(null);
+		underTest.getAttributes().setCON(12);
+		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST, 1);
+		EquipableItem legs = new EquipableItem("Legs", BodyPart.LEGS, 1);
+		EquipableItem arms = new EquipableItem("Arms", BodyPart.ARMS, 1);
+		underTest.getInventory().addItem(armor);
+		underTest.getInventory().addItem(legs);
+		underTest.getInventory().addItem(arms);
+		assertTrue(underTest.getInventory().contains(armor));
+		assertTrue(underTest.getInventory().contains(legs));
+		assertTrue(underTest.getInventory().contains(arms));
+
+		underTest.equip(armor);
+		underTest.equip(legs);
+		underTest.equip(arms);
+
+		assertEquals(12, underTest.getAttributes().getCON());
+		assertEquals(15, underTest.getCurrentAttributes().getCON());
+		
+		underTest.unequip(arms);
+		assertEquals(12, underTest.getAttributes().getCON());
+		assertEquals(14, underTest.getCurrentAttributes().getCON());
+	}
 
 }
