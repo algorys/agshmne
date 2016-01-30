@@ -17,7 +17,7 @@ public class EquipableItemTest {
 	public void testCasque() {
 		String name = "Casque";
 		BodyPart part = BodyPart.HEAD;
-		IEquipableItem underTest = new EquipableItem(name, part, 1);
+		IEquipableItem underTest = new EquipableItem(name, part);
 		assertEquals(name, underTest.getName());
 		assertFalse(underTest.isEquipped());
 		assertSame(part, underTest.getPart());
@@ -27,7 +27,7 @@ public class EquipableItemTest {
 	public void testChapeau() {
 		String name = "Chapeau";
 		BodyPart part = BodyPart.HEAD;
-		IEquipableItem underTest = new EquipableItem(name, part, 1);
+		IEquipableItem underTest = new EquipableItem(name, part);
 		assertEquals(name, underTest.getName());
 		assertFalse(underTest.isEquipped());
 		assertSame(part, underTest.getPart());
@@ -37,7 +37,7 @@ public class EquipableItemTest {
 	public void testBottes() {
 		String name = "bottes";
 		BodyPart part = BodyPart.LEGS;
-		IEquipableItem underTest = new EquipableItem(name, part, 1);
+		IEquipableItem underTest = new EquipableItem(name, part);
 		assertEquals(name, underTest.getName());
 		assertFalse(underTest.isEquipped());
 		assertSame(part, underTest.getPart());
@@ -47,7 +47,7 @@ public class EquipableItemTest {
 	public void testBottesEquipées() {
 		String name = "bottes";
 		BodyPart part = BodyPart.LEGS;
-		IEquipableItem underTest = new EquipableItem(name, part, 1);
+		IEquipableItem underTest = new EquipableItem(name, part);
 		underTest.equip();
 		assertEquals(name, underTest.getName());
 		assertTrue(underTest.isEquipped());
@@ -56,13 +56,13 @@ public class EquipableItemTest {
 
 	@Test
 	public void equipableItem_shouldHaveAttributes() {
-		IEquipableItem underTest = new EquipableItem("name", BodyPart.HEAD, 1);
+		IEquipableItem underTest = new EquipableItem("name", BodyPart.HEAD);
 		assertNotNull(underTest.getAttribute());
 	}
 
 	@Test
 	public void equipableItem_shouldHaveSpecifiAttributes() {
-		IEquipableItem underTest = new EquipableItem("name", BodyPart.HEAD, 1);
+		IEquipableItem underTest = new EquipableItem("name", BodyPart.HEAD);
 		AttributeTest.setBaseValues(underTest.getAttribute());
 
 		Attribute original = AttributeTest.createBaseAttribute();

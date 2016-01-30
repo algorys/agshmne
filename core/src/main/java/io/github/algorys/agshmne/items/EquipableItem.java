@@ -7,9 +7,13 @@ public class EquipableItem extends GeneralItem implements IEquipableItem {
 	private boolean equipped;
 	private Attribute attribute = new Attribute();
 
-	public EquipableItem(String name, BodyPart part, int modifier) {
+	public EquipableItem(String name, BodyPart part) {
 		super(name);
 		this.part = part;
+	}
+
+	public EquipableItem(String name, BodyPart part, int modifier) {
+		this(name, part);
 		switch (part) {
 		case HEAD:
 			attribute.setINT(modifier);
