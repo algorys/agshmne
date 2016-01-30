@@ -11,18 +11,19 @@ public class ItemFactory {
 	private List<String> stackableItems = new ArrayList<>();
 	
 	public ItemFactory() {
-		// TODO Refactoring à faire pour passer en tableau
-		simpleItems.add("Sword");
-		simpleItems.add("Knife");
-		simpleItems.add("Barrel");
-		
-		stackableItems.add("Apple");
-		stackableItems.add("Orange");
-		stackableItems.add("Nail");
-		stackableItems.add("Wood");
-		stackableItems.add("Copper");
-		String[] items = new String[]{ "Gold","Silver","Iron"};
-		stackableItems.addAll(Arrays.asList(items));
+		String[] misc = {
+				"Tonneau","Bouteille","Verre",
+				"Pierre", "gravier"
+				};
+		simpleItems.addAll(Arrays.asList(misc));
+		String[] stackies = {
+				"Bois",
+				"Viande", "Poisson", "Cuir",
+				"Minerai:pierre", "Minerai:cuivre","Minerai:fer", "Minerai:Argent", "Minerai:Or", "Minerai:mythril",
+				"Pomme","Orange","Poire","Pêche", "Figue",
+				"Clou", "Rivet", "Caillou"
+				};
+		stackableItems.addAll(Arrays.asList(stackies));
 	}
 	
 	

@@ -1,5 +1,7 @@
 package io.github.algorys.agshmne.map.tile;
 
+import io.github.algorys.agshmne.items.EquipableItemFactory;
+import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.ItemFactory;
 import io.github.algorys.agshmne.map.city.factory.CityFactory;
 import io.github.algorys.agshmne.map.region.DescFactory;
@@ -22,13 +24,29 @@ public class RandomTileFactory implements TileFactory {
 		} else {
 			currentTile = new Tile(type, desc);
 		}
-
-		while (Math.random() < .3) {
-			ItemFactory itemFact = new ItemFactory();
-			currentTile.addItem(itemFact.createItem());
-		}
 		
-		if (Math.random() <.25) {
+		
+		while (Math.random() < .4) {
+			Item[] itemTile = {
+					
+			new EquipableItemFactory().createCloseWeapon(),
+			new EquipableItemFactory().createArmsArmor(),
+			new EquipableItemFactory().createChestArmor(),
+			new EquipableItemFactory().createHeadArmor(),
+			new EquipableItemFactory().createLegsArmor(),
+			
+			new ItemFactory().createItem(),
+			new ItemFactory().createItem(),
+			new ItemFactory().createItem(),
+			new ItemFactory().createStackableItem(),
+			new ItemFactory().createStackableItem(),
+			new ItemFactory().createStackableItem(),
+			
+					};
+			currentTile.addItem(itemTile[Tools.dice(itemTile.length)]);
+			}
+		
+		if (Math.random() <.15) {
 			currentTile.setDanger(true);
 		}
 		return currentTile;
