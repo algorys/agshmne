@@ -19,7 +19,11 @@ public class Attribute {
 	}
 
 	public void add(Attribute other) {
-
+		this.FOR += other.FOR;
+		this.DEX += other.DEX;
+		this.CON += other.CON;
+		this.INT += other.INT;
+		this.CHA += other.CHA;
 	}
 
 	public int getFOR() {
