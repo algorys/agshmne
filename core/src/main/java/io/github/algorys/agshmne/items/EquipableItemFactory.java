@@ -37,7 +37,7 @@ public class EquipableItemFactory {
 		String[] values = weapon.split(":");
 		String name = values[0];
 		int modifier = Integer.parseInt(values[1]);
-		return new EquipableItem(name, BodyPart.LEFT_HAND, modifier);
+		return new EquipableItem(name, BodyPart.RIGHT_HAND, modifier);
 	}
 	
 	public EquipableItem createHeadArmor() {
