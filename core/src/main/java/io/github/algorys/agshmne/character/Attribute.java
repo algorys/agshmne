@@ -7,8 +7,24 @@ public class Attribute {
 	private int INT;
 	private int CHA;
 
-    public Attribute () {
-    }
+	public Attribute() {
+	}
+
+	public Attribute(Attribute original) {
+		this.FOR = original.FOR;
+		this.DEX = original.DEX;
+		this.CON = original.CON;
+		this.INT = original.INT;
+		this.CHA = original.CHA;
+	}
+
+	public void add(Attribute other) {
+		this.FOR += other.FOR;
+		this.DEX += other.DEX;
+		this.CON += other.CON;
+		this.INT += other.INT;
+		this.CHA += other.CHA;
+	}
 
 	public int getFOR() {
 		return FOR;
@@ -49,6 +65,38 @@ public class Attribute {
 	public void setCHA(int cHA) {
 		CHA = cHA;
 	}
-    
-    
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + CHA;
+		result = prime * result + CON;
+		result = prime * result + DEX;
+		result = prime * result + FOR;
+		result = prime * result + INT;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Attribute other = (Attribute) obj;
+		if (CHA != other.CHA)
+			return false;
+		if (CON != other.CON)
+			return false;
+		if (DEX != other.DEX)
+			return false;
+		if (FOR != other.FOR)
+			return false;
+		if (INT != other.INT)
+			return false;
+		return true;
+	}
 }
