@@ -183,7 +183,7 @@ public class PlayerTest {
 		assertEquals(12, underTest.getAttributes().getCON());
 		assertEquals(15, underTest.getCurrentAttributes().getCON());
 	}
-	
+
 	@Test
 	public void whenCharacterEquipAChestALegsAndArms_AndRemoveOne_CONisModifedWithTwoModifier() {
 		Player underTest = new Player(null);
@@ -204,7 +204,7 @@ public class PlayerTest {
 
 		assertEquals(12, underTest.getAttributes().getCON());
 		assertEquals(15, underTest.getCurrentAttributes().getCON());
-		
+
 		underTest.unequip(arms);
 		assertEquals(12, underTest.getAttributes().getCON());
 		assertEquals(14, underTest.getCurrentAttributes().getCON());

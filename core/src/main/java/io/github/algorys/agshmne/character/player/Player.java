@@ -105,11 +105,11 @@ public class Player implements Character {
 		attributes.setCON(this.getAttributes().getCON());
 		attributes.setFOR(this.getAttributes().getFOR());
 		attributes.setDEX(this.getAttributes().getDEX());
-		
+
 		for (Item item : this.getInventory().getListBackpack()) {
 			if (item instanceof IEquipableItem) {
 				IEquipableItem equipItem = (IEquipableItem) item;
-				if(equipItem.isEquipped()) {
+				if (equipItem.isEquipped()) {
 					int modifier = equipItem.getModifier();
 					switch (equipItem.getPart()) {
 					case HEAD:
