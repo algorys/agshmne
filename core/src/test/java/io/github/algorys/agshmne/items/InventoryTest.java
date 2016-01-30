@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import io.github.algorys.agshmne.character.player.Player;
+
 public class InventoryTest {
 
 	@Test
@@ -82,7 +84,7 @@ public class InventoryTest {
 		underTest.addItem(new StackableItemDirectFactory().createApple());
 		assertEquals(3, underTest.count(new StackableItemDirectFactory().createApple()));
 	}
-	
+
 	@Test
 	public void inventoryWith2Orange_and_Remove2Orange_should_have_0_orange() {
 		Inventory underTest = new Inventory();
@@ -91,5 +93,45 @@ public class InventoryTest {
 		underTest.removeItem(new StackableItemDirectFactory().createOrange());
 		underTest.removeItem(new StackableItemDirectFactory().createOrange());
 		assertFalse(underTest.contains(new StackableItemDirectFactory().createOrange()));
+	}
+
+	@Test
+	public void inventoryCanGiveAllEquippedItem() {
+		Player pj = new Player(null);
+		Inventory underTest = pj.getInventory();
+		EquipableItem axe = new EquipableItem("Hache", BodyPart.RIGHT_HAND);
+		EquipableItem leatherArmor = new EquipableItem("Armure en cuir", BodyPart.CHEST);
+		EquipableItem helmet = new EquipableItem("Casque", BodyPart.HEAD);
+
+		underTest.addItem(axe);
+		underTest.addItem(leatherArmor);
+		underTest.addItem(helmet);
+
+		pj.equip(leatherArmor);
+		assertTrue(underTest.getEquipment().contains(leatherArmor));
+
+		pj.equip(helmet);
+		assertTrue(underTest.getEquipment().contains(helmet));
+
+	}
+
+	@Test
+	public void inventoryCanKnowAllItemUnequip() {
+		Player pj = new Player(null);
+		Inventory underTest = pj.getInventory();
+		EquipableItem leatherArmor = new EquipableItem("Armure en cuir", BodyPart.CHEST);
+		EquipableItem helmet = new EquipableItem("Casque", BodyPart.HEAD);
+
+		underTest.addItem(leatherArmor);
+		underTest.addItem(helmet);
+
+		pj.equip(leatherArmor);
+		assertTrue(underTest.getEquipment().contains(leatherArmor));
+
+		pj.equip(helmet);
+		assertTrue(underTest.getEquipment().contains(helmet));
+		pj.unequip(leatherArmor);
+		assertFalse(underTest.getEquipment().contains(leatherArmor));
+
 	}
 }

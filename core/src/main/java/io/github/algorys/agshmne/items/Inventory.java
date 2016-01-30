@@ -8,7 +8,7 @@ import java.util.Observable;
 public class Inventory extends Observable {
 	// TODO gérer les objets de quêtes différement des objets normaux.
 	private List<Item> backpack = new ArrayList<>();
-	
+
 	public Inventory() {
 	}
 
@@ -42,7 +42,7 @@ public class Inventory extends Observable {
 				IStackableItem stackItemToRemove = (IStackableItem) itemToRemove;
 				if (itemInBag.isSameType(itemToRemove)) {
 					IStackableItem stackableItemInBag = ((IStackableItem) itemInBag);
-					if(stackableItemInBag.getCount() > stackItemToRemove.getCount()) {
+					if (stackableItemInBag.getCount() > stackItemToRemove.getCount()) {
 						stackableItemInBag.removeCount(stackItemToRemove.getCount());
 					} else {
 						iter.remove();
@@ -79,8 +79,8 @@ public class Inventory extends Observable {
 		int res = 0;
 		for (Item inBag : backpack) {
 			if (inBag.isSameType(item)) {
-				if(inBag instanceof IStackableItem) {
-					IStackableItem stackableItem = (IStackableItem)inBag;
+				if (inBag instanceof IStackableItem) {
+					IStackableItem stackableItem = (IStackableItem) inBag;
 					res += stackableItem.getCount();
 				} else {
 					res++;
@@ -89,17 +89,17 @@ public class Inventory extends Observable {
 		}
 		return res;
 	}
-	
+
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 		sb.append("--- Sac-à-dos ---");
 		sb.append("\n");
 		for (int i = 0; i < backpack.size(); i++) {
-			if(backpack.get(i) instanceof StackableItem) {
-				IStackableItem stackableItem = (IStackableItem)backpack.get(i);
-				sb.append(""+ stackableItem.getName() + ", " + stackableItem.getCount());
+			if (backpack.get(i) instanceof StackableItem) {
+				IStackableItem stackableItem = (IStackableItem) backpack.get(i);
+				sb.append("" + stackableItem.getName() + ", " + stackableItem.getCount());
 			} else {
-				sb.append(""+ backpack.get(i).getName());
+				sb.append("" + backpack.get(i).getName());
 			}
 			sb.append("\n");
 		}
@@ -109,6 +109,19 @@ public class Inventory extends Observable {
 
 	public List<Item> getListBackpack() {
 		return backpack;
+	}
+
+	public List<EquipableItem> getEquipment() {
+		List<EquipableItem> equipment = new ArrayList<>();
+		for (Item item : this.backpack) {
+			if (item instanceof IEquipableItem) {
+				EquipableItem itemEquipped = (EquipableItem) item;
+				if (itemEquipped.isEquipped()) {
+					equipment.add(itemEquipped);
+				}
+			}
+		}
+		return equipment;
 	}
 
 }
