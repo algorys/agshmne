@@ -7,12 +7,16 @@ public class Attribute {
 	private int INT;
 	private int CHA;
 
-    public Attribute () {
-    }
+	public Attribute() {
+	}
 
-    public Attribute( Attribute original) {
-    	
-    }
+	public Attribute(Attribute original) {
+		this.FOR = original.FOR;
+		this.DEX = original.DEX;
+		this.CON = original.CON;
+		this.INT = original.INT;
+		this.CHA = original.CHA;
+	}
 
 	public int getFOR() {
 		return FOR;

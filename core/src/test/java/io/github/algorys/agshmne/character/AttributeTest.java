@@ -14,4 +14,16 @@ public class AttributeTest {
 		assertEquals(original, copy);
 	}
 
+	@Test
+	public void testCopyConstructor_withValues() {
+		Attribute original = new Attribute();
+		original.setCHA(1);
+		original.setCON(2);
+		original.setDEX(3);
+		original.setFOR(4);
+		original.setINT(5);
+		Attribute copy = new Attribute(original);
+		assertNotSame(original, copy);
+		assertEquals(original, copy);
+	}
 }
