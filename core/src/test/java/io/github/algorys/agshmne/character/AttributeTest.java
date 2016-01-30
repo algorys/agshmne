@@ -55,13 +55,17 @@ public class AttributeTest {
 		assertEquals(16, original.getINT());
 	}
 
-	private Attribute createBaseAttribute() {
+	public static Attribute createBaseAttribute() {
 		Attribute original = new Attribute();
+		setBaseValues(original);
+		return original;
+	}
+
+	public static void setBaseValues(Attribute original) {
 		original.setCHA(1);
 		original.setCON(2);
 		original.setDEX(3);
 		original.setFOR(4);
 		original.setINT(5);
-		return original;
 	}
 }

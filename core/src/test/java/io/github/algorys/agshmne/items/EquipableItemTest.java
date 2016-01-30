@@ -8,6 +8,9 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import io.github.algorys.agshmne.character.Attribute;
+import io.github.algorys.agshmne.character.AttributeTest;
+
 public class EquipableItemTest {
 
 	@Test
@@ -50,10 +53,20 @@ public class EquipableItemTest {
 		assertTrue(underTest.isEquipped());
 		assertSame(part, underTest.getPart());
 	}
-	
+
 	@Test
 	public void equipableItem_shouldHaveAttributes() {
-		IEquipableItem underTest = new EquipableItem("name",BodyPart.HEAD, 1);
+		IEquipableItem underTest = new EquipableItem("name", BodyPart.HEAD, 1);
 		assertNotNull(underTest.getAttribute());
+	}
+
+	@Test
+	public void equipableItem_shouldHaveSpecifiAttributes() {
+		IEquipableItem underTest = new EquipableItem("name", BodyPart.HEAD, 1);
+		AttributeTest.setBaseValues(underTest.getAttribute());
+
+		Attribute original = AttributeTest.createBaseAttribute();
+
+		assertEquals(original, underTest.getAttribute());
 	}
 }

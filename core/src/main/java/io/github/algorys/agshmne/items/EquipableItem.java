@@ -6,6 +6,7 @@ public class EquipableItem extends GeneralItem implements IEquipableItem {
 	private BodyPart part;
 	private boolean equipped;
 	private int modifier;
+	private Attribute attribute = new Attribute();
 
 	public EquipableItem(String name, BodyPart part, int modifier) {
 		super(name);
@@ -39,6 +40,6 @@ public class EquipableItem extends GeneralItem implements IEquipableItem {
 
 	@Override
 	public Attribute getAttribute() {
-		return new Attribute();
+		return attribute;
 	}
 }
