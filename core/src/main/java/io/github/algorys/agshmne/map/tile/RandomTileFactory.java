@@ -41,10 +41,10 @@ public class RandomTileFactory implements TileFactory {
 			new ItemFactory().createStackableItem(),
 			new ItemFactory().createStackableItem(),
 			new ItemFactory().createStackableItem(),
+			};
 			
-					};
 			currentTile.addItem(itemTile[Tools.dice(itemTile.length)]);
-			}
+		}
 		
 		if (Math.random() <.15) {
 			currentTile.setDanger(true);
