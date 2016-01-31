@@ -33,7 +33,6 @@ public class Fight {
 			this.currentAdvLife -= pjAttack;
 			adv.getVital().setVie(currentAdvLife);
 		}
-		System.out.println(pj.toString());
 	}
 	
 	public void mobAttack() {
@@ -44,7 +43,6 @@ public class Fight {
 			this.currentPjLife -= mobAttack;
 			pj.getVital().setVie(currentPjLife);
 		}
-		System.out.println(adv.toString());
 	}
 
 	
