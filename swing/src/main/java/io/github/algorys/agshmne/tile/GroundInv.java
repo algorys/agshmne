@@ -52,8 +52,8 @@ public class GroundInv extends JPanel implements PropertyChangeListener {
 							JOptionPane.showMessageDialog(GroundInv.this, "" + selectedItem + " ajouté(e) !");
 							((TileListModel) groundItem.getModel()).removeElementAt(index);
 							GroundInv.this.pj.getInventory().addItem(selectedItem);
-							System.out.println("Objets " + selectedItem + "Ajouté");
-							System.out.println(GroundInv.this.pj.getInventory());
+							groundItem.invalidate();
+							groundItem.repaint();
 						}
 					});
 					JMenuItem laisser = new JMenuItem("Laisser");

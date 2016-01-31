@@ -17,6 +17,7 @@ public class TileListModel extends AbstractListModel<Item> {
 	}
 	@Override
 	public Item getElementAt(int index) {
+		this.fireIntervalRemoved(this, index, index );
 		return t.getItems().get(index);
 	}
 	public void removeElementAt(int index) {
