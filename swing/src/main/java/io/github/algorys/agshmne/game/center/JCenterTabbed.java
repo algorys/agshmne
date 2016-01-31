@@ -15,7 +15,7 @@ import io.github.algorys.agshmne.region.JRegion;
 
 @SuppressWarnings("serial")
 public class JCenterTabbed extends JTabbedPane {
-	
+
 	private JPanel jpMap = new JPanel();
 	private JTabCharacter jpPerso;
 	private JTabComp jpComp;
@@ -23,10 +23,10 @@ public class JCenterTabbed extends JTabbedPane {
 	private JTabEquip jpEquip;
 	private JPanel jpMagie = new JPanel();
 	private JPanel jpQuest = new JPanel();
-	
-	public JCenterTabbed(JRegion jregion){
+
+	public JCenterTabbed(JRegion jregion) {
 		this.setTabPlacement(JTabbedPane.TOP);
-		
+
 		// Carte
 		jpMap.setBackground(Color.BLACK);
 		jpMap.add(jregion);
@@ -43,10 +43,10 @@ public class JCenterTabbed extends JTabbedPane {
 		// Inventaire
 		Icon backpackIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("backpack.png"));
 		jpInv = new JTabInv(jregion.getPersonnage());
-		this.addTab("Inventaire", backpackIcon, jpInv, "Inventaire");		
+		this.addTab("Inventaire", backpackIcon, jpInv, "Inventaire");
 		// Equipement
 		Icon equipIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("equip.png"));
-		jpEquip = new JTabEquip(jregion.getPersonnage().getInventory().getEquipment());
+		jpEquip = new JTabEquip(jregion.getPersonnage());
 		this.addTab("Equipement", equipIcon, jpEquip, "Equipement");
 		// Magie
 		Icon magieIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("magie.png"));
