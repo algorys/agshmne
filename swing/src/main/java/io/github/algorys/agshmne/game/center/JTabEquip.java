@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.BodyPart;
@@ -53,7 +54,8 @@ public class JTabEquip extends JPanel {
 		gbcEquip.gridwidth = 4;
 		gbcEquip.anchor = GridBagConstraints.CENTER;
 		gbcEquip.fill = GridBagConstraints.NONE;
-		jlHead = new JLabel("Tête : " + this.getEquipFromPart(BodyPart.HEAD));
+		String strHead = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.HEAD).getAttribute());
+		jlHead = new JLabel("Tête : " + this.getEquipFromPart(BodyPart.HEAD) + strHead);
 		this.add(jlHead, gbcEquip);
 
 		// Torse
@@ -63,7 +65,8 @@ public class JTabEquip extends JPanel {
 		gbcEquip.gridwidth = 4;
 		gbcEquip.anchor = GridBagConstraints.CENTER;
 		gbcEquip.fill = GridBagConstraints.NONE;
-		jlChest = new JLabel("Torse : " + this.getEquipFromPart(BodyPart.CHEST));
+		String strChest = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.CHEST).getAttribute());
+		jlChest = new JLabel("Torse : " + this.getEquipFromPart(BodyPart.CHEST) + strChest);
 		this.add(jlChest, gbcEquip);
 
 		// Bras
@@ -73,7 +76,8 @@ public class JTabEquip extends JPanel {
 		gbcEquip.gridwidth = 4;
 		gbcEquip.anchor = GridBagConstraints.CENTER;
 		gbcEquip.fill = GridBagConstraints.NONE;
-		jlArms = new JLabel("Bras : " + this.getEquipFromPart(BodyPart.ARMS));
+		String strArms = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.ARMS).getAttribute());
+		jlArms = new JLabel("Bras : " + this.getEquipFromPart(BodyPart.ARMS) + strArms);
 		this.add(jlArms, gbcEquip);
 
 		// Jambes
@@ -83,7 +87,8 @@ public class JTabEquip extends JPanel {
 		gbcEquip.gridwidth = 4;
 		gbcEquip.anchor = GridBagConstraints.CENTER;
 		gbcEquip.fill = GridBagConstraints.NONE;
-		jlLegs = new JLabel("Jambes : " + this.getEquipFromPart(BodyPart.LEGS));
+		String strLegs = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.LEGS).getAttribute());
+		jlLegs = new JLabel("Jambes : " + this.getEquipFromPart(BodyPart.LEGS) + strLegs);
 		this.add(jlLegs, gbcEquip);
 
 		// Main Droite
@@ -93,7 +98,8 @@ public class JTabEquip extends JPanel {
 		gbcEquip.gridwidth = 4;
 		gbcEquip.anchor = GridBagConstraints.CENTER;
 		gbcEquip.fill = GridBagConstraints.NONE;
-		jlRightHand = new JLabel("Main Droite : " + this.getEquipFromPart(BodyPart.RIGHT_HAND));
+		String strRightHand = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.RIGHT_HAND).getAttribute());
+		jlRightHand = new JLabel("Main Droite : " + this.getEquipFromPart(BodyPart.RIGHT_HAND) + strRightHand);
 		this.add(jlRightHand, gbcEquip);
 
 		// Main Gauche
@@ -103,7 +109,8 @@ public class JTabEquip extends JPanel {
 		gbcEquip.gridwidth = 4;
 		gbcEquip.anchor = GridBagConstraints.CENTER;
 		gbcEquip.fill = GridBagConstraints.NONE;
-		jlLeftHand = new JLabel("Main Gauche : " + this.getEquipFromPart(BodyPart.LEFT_HAND));
+		String strLeftHand = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.LEFT_HAND).getAttribute());
+		jlLeftHand = new JLabel("Main Gauche : " + this.getEquipFromPart(BodyPart.LEFT_HAND) + strLeftHand);
 		this.add(jlLeftHand, gbcEquip);
 
 		pj.addPropertyChangeListener(Character.PROPERTY_CURRENT_ATTRIBUTES, new PropertyChangeListener() {
@@ -113,20 +120,53 @@ public class JTabEquip extends JPanel {
 				if (evt.getSource() instanceof Player) {
 					Player pj = (Player) evt.getSource();
 					equipment = pj.getInventory().getEquipment();
-					jlHead.setText("Tête : " + JTabEquip.this.getEquipFromPart(BodyPart.HEAD));
-					jlChest.setText("Torse : " + JTabEquip.this.getEquipFromPart(BodyPart.CHEST));
-					jlArms.setText("Bras : " + JTabEquip.this.getEquipFromPart(BodyPart.ARMS));
-					jlLegs.setText("Jambes : " + JTabEquip.this.getEquipFromPart(BodyPart.LEGS));
-					jlRightHand.setText("Main Droite : " + JTabEquip.this.getEquipFromPart(BodyPart.RIGHT_HAND));
-					jlLeftHand.setText("Main Gauche : " + JTabEquip.this.getEquipFromPart(BodyPart.LEFT_HAND));
+					
+					String strHead = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.HEAD).getAttribute());
+					jlHead.setText("Tête : " + JTabEquip.this.getEquipFromPart(BodyPart.HEAD) + strHead);
+					String strChest = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.CHEST).getAttribute());
+					jlChest.setText("Torse : " + JTabEquip.this.getEquipFromPart(BodyPart.CHEST) + strChest);
+					String strArms = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.ARMS).getAttribute());
+					jlArms.setText("Bras : " + JTabEquip.this.getEquipFromPart(BodyPart.ARMS) + strArms);
+					String strLegs = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.LEGS).getAttribute());
+					jlLegs.setText("Jambes : " + JTabEquip.this.getEquipFromPart(BodyPart.LEGS) + strLegs);
+					String strRightHand = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.RIGHT_HAND).getAttribute());
+					jlRightHand.setText("Main Droite : " + JTabEquip.this.getEquipFromPart(BodyPart.RIGHT_HAND) + strRightHand);
+					String strLeftHand = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.LEFT_HAND).getAttribute());
+					jlLeftHand.setText("Main Gauche : " + JTabEquip.this.getEquipFromPart(BodyPart.LEFT_HAND) + strLeftHand);
 				}
 
 			}
 		});
 	}
 
+	public String getStringAttribute(Attribute equip) {
+		int FOR = equip.getFOR();
+		int DEX = equip.getDEX();
+		int CON = equip.getCON();
+		int INT = equip.getINT();
+		int CHA = equip.getCHA();
+		String strAttrib = "";
+		if(FOR > 0 || FOR < 0) {
+			strAttrib += " For : " + FOR + " ";
+		}
+		if(DEX > 0 || DEX < 0) {
+			strAttrib += " Dex : " + DEX + " ";
+		}
+		if(CON > 0 || CON < 0) {
+			strAttrib += " Con : " + CON + " ";
+		}
+		if(INT > 0 || INT < 0) {
+			strAttrib += " Int : " + INT + " ";
+		}
+		if(CHA > 0 || CHA < 0) {
+			strAttrib += " Cha : " + CHA + " ";
+		}
+		String finalString = " (" + strAttrib + ")";
+		return finalString;
+		
+	}
 	public EquipableItem getEquipFromPart(BodyPart part) {
-		EquipableItem itemSearch = null;
+		EquipableItem itemSearch = new EquipableItem("Rien", null);
 		for (EquipableItem itemEquip : equipment) {
 			if (itemEquip.getPart() == part) {
 				itemSearch = itemEquip;

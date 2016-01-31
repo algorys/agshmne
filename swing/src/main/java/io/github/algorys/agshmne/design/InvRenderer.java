@@ -30,7 +30,7 @@ public class InvRenderer implements ListCellRenderer<Item> {
 			if (value instanceof IEquipableItem) {
 				IEquipableItem currentItem = (IEquipableItem) value;
 				if (currentItem.isEquipped()) {
-					rendererComponent.setText(currentItem.toString() + " [E]");
+					rendererComponent.setText(currentItem.toString() + " [E:"+currentItem.getPart()+"]");
 				}
 			}
 		}
