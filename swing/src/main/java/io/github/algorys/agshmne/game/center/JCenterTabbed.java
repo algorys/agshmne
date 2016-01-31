@@ -20,7 +20,7 @@ public class JCenterTabbed extends JTabbedPane {
 	private JTabCharacter jpPerso;
 	private JTabComp jpComp;
 	private JTabInv jpInv;
-	private JPanel jpEquip = new JPanel();
+	private JTabEquip jpEquip;
 	private JPanel jpMagie = new JPanel();
 	private JPanel jpQuest = new JPanel();
 	
@@ -45,7 +45,8 @@ public class JCenterTabbed extends JTabbedPane {
 		jpInv = new JTabInv(jregion.getPersonnage());
 		this.addTab("Inventaire", backpackIcon, jpInv, "Inventaire");		
 		// Equipement
-		Icon equipIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("equip.png"));	
+		Icon equipIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("equip.png"));
+		jpEquip = new JTabEquip(jregion.getPersonnage().getInventory().getEquipment());
 		this.addTab("Equipement", equipIcon, jpEquip, "Equipement");
 		// Magie
 		Icon magieIcon = new ImageIcon(JCenterTabbed.class.getClassLoader().getResource("magie.png"));

@@ -13,13 +13,19 @@ public class JGameTest {
 		Region region = new RandomRegionFactory().create();
 		Player pj = new Player(region);
 		pj.getSocial().setName("Player");
-		EquipableItem casque = new EquipableItem("Casque", BodyPart.HEAD);
-		casque.getAttribute().setINT(1);
-		pj.getInventory().addItem(casque);
-		EquipableItem epee = new EquipableItem("Épée", BodyPart.RIGHT_HAND);
-		epee.getAttribute().setFOR(1);
-		pj.getInventory().addItem(epee);
-		pj.equip(casque);
+		
+		EquipableItem helmet = new EquipableItem("Casque", BodyPart.HEAD);
+		helmet.getAttribute().setINT(1);
+		pj.getInventory().addItem(helmet);
+		EquipableItem sword = new EquipableItem("Épée", BodyPart.RIGHT_HAND);
+		sword.getAttribute().setFOR(1);
+		pj.getInventory().addItem(sword);
+		EquipableItem leatherArmor = new EquipableItem("Armure en cuir", BodyPart.CHEST);
+		leatherArmor.getAttribute().setFOR(1);
+		pj.getInventory().addItem(leatherArmor);
+		
+		pj.equip(helmet);
+		pj.equip(sword);
 		pj.getInventory().addItem(new GeneralItem("Clou"));
 		pj.initVital();
 		JGame game = new JGame(pj);
