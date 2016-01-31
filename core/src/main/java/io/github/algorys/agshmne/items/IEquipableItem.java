@@ -13,4 +13,6 @@ public interface IEquipableItem extends Item {
 
 	public Attribute getAttribute();
 
+	int getPuissance();
+
 }
