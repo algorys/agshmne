@@ -64,6 +64,7 @@ public class Player implements Character {
 	}
 
 	public void equip(IEquipableItem item) {
+		Attribute old = this.getCurrentAttributes();
 		if (this.getInventory().contains(item)) {
 			for (Item currentItem : this.getInventory().getListBackpack()) {
 				if (currentItem instanceof IEquipableItem) {
@@ -74,11 +75,14 @@ public class Player implements Character {
 				}
 			}
 			item.equip();
+			pcs.firePropertyChange(PROPERTY_CURRENT_ATTRIBUTES, old, this.getCurrentAttributes());
 		}
 	}
 
 	public void unequip(IEquipableItem item) {
+		Attribute old = this.getCurrentAttributes();
 		item.unequip();
+		pcs.firePropertyChange(PROPERTY_CURRENT_ATTRIBUTES, old, this.getCurrentAttributes());
 	}
 
 	/**
