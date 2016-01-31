@@ -195,7 +195,7 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("FOR : " + pj.getAttributes().getFOR()), gbcCharacter);
+		this.add(new JLabel("FOR : " + pj.getCurrentAttributes().getFOR()), gbcCharacter);
 		// DEX
 		gbcCharacter.gridy = 7;
 		gbcCharacter.gridheight = 1;
@@ -203,7 +203,7 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("DEX : " + pj.getAttributes().getDEX()), gbcCharacter);
+		this.add(new JLabel("DEX : " + pj.getCurrentAttributes().getDEX()), gbcCharacter);
 		// CON
 		gbcCharacter.gridy = 8;
 		gbcCharacter.gridheight = 1;
@@ -211,7 +211,7 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("CON : " + pj.getAttributes().getCON()), gbcCharacter);
+		this.add(new JLabel("CON : " + pj.getCurrentAttributes().getCON()), gbcCharacter);
 		// INT
 		gbcCharacter.gridy = 9;
 		gbcCharacter.gridheight = 1;
@@ -219,7 +219,7 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("INT : " + pj.getAttributes().getINT()), gbcCharacter);
+		this.add(new JLabel("INT : " + pj.getCurrentAttributes().getINT()), gbcCharacter);
 		// CHA
 		gbcCharacter.gridy = 10;
 		gbcCharacter.gridheight = 1;
@@ -227,7 +227,7 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("CHA : " + pj.getAttributes().getCHA()), gbcCharacter);
+		this.add(new JLabel("CHA : " + pj.getCurrentAttributes().getCHA()), gbcCharacter);
 		
 	}
 	
