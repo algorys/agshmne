@@ -5,10 +5,11 @@ import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.tools.RandomCoordinated;
 
-public class BringQuest {
+public class BringQuest implements IQuest {
 	private Position questDestination;
 	private Position initialPos;
 	private Item item;
+	private boolean finish = false;
 	
 	public BringQuest(Player pj, Item item) {
 		this.initialPos = pj.getPosition();
@@ -29,12 +30,14 @@ public class BringQuest {
 		return questDestination;
 	}
 	
+	@Override
 	public boolean isWin(Player pj) {
 		return pj.getPosition() == questDestination && pj.getInventory().contains(item);
 	}
-	
-	public void terminate(Player pj) {
+	@Override
+	public void reward(Player pj) {
 		pj.getInventory().removeItem(item);
+		finish = true;
 		// TODO prévoir une récompense.
 	}
 
@@ -44,5 +47,10 @@ public class BringQuest {
 
 	public Position getInitialPos() {
 		return initialPos;
+	}
+
+	@Override
+	public boolean isFinish() {
+		return finish;
 	}
 }

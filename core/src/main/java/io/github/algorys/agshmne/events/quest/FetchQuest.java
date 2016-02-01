@@ -4,10 +4,11 @@ import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.Position;
 
-public class FetchQuest {
+public class FetchQuest implements IQuest {
 	private Position questPosition;
 	private Item item;
 	private int count;
+	private boolean finish = false;
 
 	public FetchQuest(Player pj, Item item, int count) {
 		this.questPosition = pj.getPosition();
@@ -15,15 +16,16 @@ public class FetchQuest {
 		this.item = item;
 	}
 	
+	@Override
 	public boolean isWin(Player pj) {
 		return (pj.getInventory().count(item) >= count) ;
 	}
-	
-	public void terminate(Player pj) {
+	@Override
+	public void reward(Player pj) {
 		for(int i = 0; i < count; i ++) {
 			pj.getInventory().removeItem(item);
 		}
-		
+		finish = true;
 		// TODO Rajouter une récompense
 	}
 
@@ -39,5 +41,10 @@ public class FetchQuest {
 
 	public Position getQuestPosition() {
 		return questPosition;
+	}
+
+	@Override
+	public boolean isFinish() {
+		return finish;
 	}
 }
