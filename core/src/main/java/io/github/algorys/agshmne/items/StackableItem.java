@@ -16,7 +16,7 @@ public class StackableItem implements IStackableItem {
 
 	@Override
 	public String toString() {
-		return (String) this.name + " (" + this.getCount() + ")";
+		return (String) this.name;
 	}
 	
 	@Override

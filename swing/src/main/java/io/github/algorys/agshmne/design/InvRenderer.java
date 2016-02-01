@@ -49,7 +49,7 @@ public class InvRenderer implements ListCellRenderer<Item> {
 			} else if(value instanceof IStackableItem) {
 				IStackableItem currentItem = (IStackableItem) value;
 				rendererComponent.setForeground(new Color(255, 255, 204));
-				rendererComponent.setText(currentItem.toString() + " Qtité : " + currentItem.getCount());
+				rendererComponent.setText(currentItem.toString() + " (Qtité : " + currentItem.getCount() + ")");
 			} else {
 				rendererComponent.setForeground(Color.lightGray);
 			}
