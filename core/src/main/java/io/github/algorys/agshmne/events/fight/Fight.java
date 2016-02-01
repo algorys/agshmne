@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.fight;
+package io.github.algorys.agshmne.events.fight;
 
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.events.IAdventure;

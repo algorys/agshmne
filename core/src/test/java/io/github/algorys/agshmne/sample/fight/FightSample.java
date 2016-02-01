@@ -3,7 +3,7 @@ package io.github.algorys.agshmne.sample.fight;
 import io.github.algorys.agshmne.character.opponent.beast.Beast;
 import io.github.algorys.agshmne.character.opponent.beast.BeastFactory;
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.fight.Fight;
+import io.github.algorys.agshmne.events.fight.Fight;
 
 public class FightSample {
 
