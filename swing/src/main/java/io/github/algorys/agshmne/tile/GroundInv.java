@@ -37,6 +37,8 @@ public class GroundInv extends JPanel implements PropertyChangeListener {
 		groundItem.setVisibleRowCount(10);
 		groundItem.setPreferredSize(new Dimension(400, 300));
 		groundItem.setEnabled(true);
+		this.currentTile = pj.getTile();
+		this.currentTile.addPropertyChangeListener(this);
 
 		this.add(groundItem);
 
