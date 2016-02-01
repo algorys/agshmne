@@ -1,6 +1,9 @@
 package io.github.algorys.agshmne.events.fight;
 
 import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.opponent.beast.Beast;
+import io.github.algorys.agshmne.character.opponent.beast.BeastFactory;
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.events.IAdventure;
 import io.github.algorys.agshmne.tools.Tools;
 
@@ -83,7 +86,8 @@ public class Fight implements IAdventure {
 	}
 
 	@Override
-	public IAdventure getAdventure() {
-		return this;
+	public IAdventure createAdventure(Player pj) {
+		Beast beast = new BeastFactory().createBeast();
+		return new Fight(pj, beast);
 	}
 }

@@ -10,7 +10,7 @@ import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class QuestFactory implements IAdventure {
-	IQuest fetch;
+	private IQuest fetch;
 	private List<IQuest> listQuest = new ArrayList<>();
 
 	public QuestFactory(Player pj) {
@@ -49,7 +49,7 @@ public class QuestFactory implements IAdventure {
 	}
 
 	@Override
-	public IAdventure getAdventure() {
-		return this;
+	public IAdventure createAdventure(Player pj) {
+		return new QuestFactory(pj);
 	}
 }
