@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JList;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
@@ -50,8 +51,19 @@ public class JTabInv extends JPanel {
 					deposer.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							Item selectedItem = invItems.getModel().getElementAt(index);
-							inv.removeItem(selectedItem);
-							JTabInv.this.pj.getTile().addItem(selectedItem);
+							if(selectedItem instanceof IEquipableItem) {
+								IEquipableItem itemToGround = (IEquipableItem) selectedItem;
+								if(itemToGround.isEquipped()){
+									JOptionPane.showMessageDialog(JTabInv.this,
+											"Vous devez d'abord déséquipper " + itemToGround);
+								} else {
+									inv.removeItem(selectedItem);
+									JTabInv.this.pj.getTile().addItem(selectedItem);
+								}
+							} else {
+								inv.removeItem(selectedItem);
+								JTabInv.this.pj.getTile().addItem(selectedItem);
+							}
 						}
 					});
 					menu.add(deposer);
