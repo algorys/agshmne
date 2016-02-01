@@ -19,7 +19,7 @@ public class BringQuestSample {
 		win = bringQ.isWin(pj);
 		System.out.println("Quête finie ? " + win);
 		// Validation de la quêtes
-		bringQ.terminate(pj);
+		bringQ.reward(pj);
 		System.out.println("Inventaire = " + pj.getInventory());
 
 	}

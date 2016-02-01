@@ -20,7 +20,7 @@ public class FetchQuestSample {
 		win = appleQ.isWin(pj);
 		System.out.println("Quête finie ? " + win);
 
-		appleQ.terminate(pj);
+		appleQ.reward(pj);
 		System.out.println("Il vous reste " + pj.getInventory().count(new StackableItem("Pomme", 1)) + " pommes !");
 
 	}
