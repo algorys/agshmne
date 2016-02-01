@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.items;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
@@ -108,7 +109,7 @@ public class Inventory extends Observable {
 	}
 
 	public List<Item> getListBackpack() {
-		return backpack;
+		return Collections.unmodifiableList(backpack);
 	}
 
 	public List<EquipableItem> getEquipment() {

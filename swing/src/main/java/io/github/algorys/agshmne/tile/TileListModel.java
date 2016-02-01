@@ -7,7 +7,7 @@ import io.github.algorys.agshmne.map.tile.Tile;
 
 @SuppressWarnings("serial")
 public class TileListModel extends AbstractListModel<Item> {
-	final Tile t;
+	final private Tile t;
 	public TileListModel(Tile t) {
 		this.t= t;
 	}
@@ -17,7 +17,6 @@ public class TileListModel extends AbstractListModel<Item> {
 	}
 	@Override
 	public Item getElementAt(int index) {
-		this.fireIntervalRemoved(this, index, index );
 		return t.getItems().get(index);
 	}
 	public void removeElementAt(int index) {

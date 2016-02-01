@@ -10,7 +10,7 @@ import io.github.algorys.agshmne.items.Item;
 
 @SuppressWarnings("serial")
 public class InventoryListModel extends AbstractListModel<Item> implements Observer {
-	final Inventory inv;
+	final private Inventory inv;
 	
 	public InventoryListModel(Inventory inventory) {
 		this.inv = inventory;
