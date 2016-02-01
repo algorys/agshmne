@@ -27,6 +27,7 @@ public class RandomTileFactory implements TileFactory {
 		
 		
 		while (Math.random() < .4) {
+			// TODO Implémenter ce Tableau dans une SuperFactory afin de pouvoir créer aléatoirement n'importe quel type d'objet 
 			Item[] itemTile = {
 					
 			new EquipableItemFactory().createCloseWeapon(),
@@ -34,6 +35,8 @@ public class RandomTileFactory implements TileFactory {
 			new EquipableItemFactory().createChestArmor(),
 			new EquipableItemFactory().createHeadArmor(),
 			new EquipableItemFactory().createLegsArmor(),
+			new EquipableItemFactory().createRing(),
+			new EquipableItemFactory().createNecklace(),
 			
 			new ItemFactory().createItem(),
 			new ItemFactory().createItem(),

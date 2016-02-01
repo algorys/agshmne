@@ -3,6 +3,7 @@ package io.github.algorys.agshmne.game;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.BodyPart;
 import io.github.algorys.agshmne.items.EquipableItem;
+import io.github.algorys.agshmne.items.EquipableItemFactory;
 import io.github.algorys.agshmne.items.GeneralItem;
 import io.github.algorys.agshmne.items.StackableItem;
 import io.github.algorys.agshmne.map.region.RandomRegionFactory;
@@ -14,7 +15,7 @@ public class JGameTest {
 		Region region = new RandomRegionFactory().create();
 		Player pj = new Player(region);
 		pj.getSocial().setName("Player");
-		
+
 		EquipableItem helmet = new EquipableItem("Casque", BodyPart.HEAD);
 		helmet.getAttribute().setINT(5);
 		pj.getInventory().addItem(helmet);
@@ -26,7 +27,9 @@ public class JGameTest {
 		pj.getInventory().addItem(leatherArmor);
 		GeneralItem barrel = new GeneralItem("Tonneau");
 		pj.getInventory().addItem(barrel);
-		
+		pj.getInventory().addItem(new EquipableItemFactory().createRing());
+		pj.getInventory().addItem(new EquipableItemFactory().createNecklace());
+
 		pj.equip(helmet);
 		pj.equip(sword);
 		pj.getInventory().addItem(new StackableItem("Clou", 1));

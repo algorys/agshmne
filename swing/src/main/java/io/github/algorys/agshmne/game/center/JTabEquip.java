@@ -30,6 +30,8 @@ public class JTabEquip extends JPanel {
 	JLabel jlLegs;
 	JLabel jlRightHand;
 	JLabel jlLeftHand;
+	JLabel jlRing;
+	JLabel jlNeck;
 
 	public JTabEquip(Player pj) {
 		this.equipment = pj.getInventory().getEquipment();
@@ -113,6 +115,28 @@ public class JTabEquip extends JPanel {
 		jlLeftHand = new JLabel("Main Gauche : " + this.getEquipFromPart(BodyPart.LEFT_HAND) + strLeftHand);
 		this.add(jlLeftHand, gbcEquip);
 
+		// Anneau
+		gbcEquip.gridy = 7;
+		gbcEquip.gridheight = 1;
+		gbcEquip.gridx = 0;
+		gbcEquip.gridwidth = 4;
+		gbcEquip.anchor = GridBagConstraints.CENTER;
+		gbcEquip.fill = GridBagConstraints.NONE;
+		String strRing = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.RING).getAttribute());
+		jlRing = new JLabel("Anneau : " + this.getEquipFromPart(BodyPart.RING) + strRing);
+		this.add(jlRing, gbcEquip);
+
+		// Cou
+		gbcEquip.gridy = 8;
+		gbcEquip.gridheight = 1;
+		gbcEquip.gridx = 0;
+		gbcEquip.gridwidth = 4;
+		gbcEquip.anchor = GridBagConstraints.CENTER;
+		gbcEquip.fill = GridBagConstraints.NONE;
+		String strNeck = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.NECKLACE).getAttribute());
+		jlNeck = new JLabel("Cou : " + this.getEquipFromPart(BodyPart.NECKLACE) + strNeck);
+		this.add(jlNeck, gbcEquip);
+
 		pj.addPropertyChangeListener(Character.PROPERTY_CURRENT_ATTRIBUTES, new PropertyChangeListener() {
 
 			@Override
@@ -120,19 +144,29 @@ public class JTabEquip extends JPanel {
 				if (evt.getSource() instanceof Player) {
 					Player pj = (Player) evt.getSource();
 					equipment = pj.getInventory().getEquipment();
-					
+
 					String strHead = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.HEAD).getAttribute());
 					jlHead.setText("Tête : " + JTabEquip.this.getEquipFromPart(BodyPart.HEAD) + strHead);
-					String strChest = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.CHEST).getAttribute());
+					String strChest = getStringAttribute(
+							JTabEquip.this.getEquipFromPart(BodyPart.CHEST).getAttribute());
 					jlChest.setText("Torse : " + JTabEquip.this.getEquipFromPart(BodyPart.CHEST) + strChest);
 					String strArms = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.ARMS).getAttribute());
 					jlArms.setText("Bras : " + JTabEquip.this.getEquipFromPart(BodyPart.ARMS) + strArms);
 					String strLegs = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.LEGS).getAttribute());
 					jlLegs.setText("Jambes : " + JTabEquip.this.getEquipFromPart(BodyPart.LEGS) + strLegs);
-					String strRightHand = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.RIGHT_HAND).getAttribute());
-					jlRightHand.setText("Main Droite : " + JTabEquip.this.getEquipFromPart(BodyPart.RIGHT_HAND) + strRightHand);
-					String strLeftHand = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.LEFT_HAND).getAttribute());
-					jlLeftHand.setText("Main Gauche : " + JTabEquip.this.getEquipFromPart(BodyPart.LEFT_HAND) + strLeftHand);
+					String strRightHand = getStringAttribute(
+							JTabEquip.this.getEquipFromPart(BodyPart.RIGHT_HAND).getAttribute());
+					jlRightHand.setText(
+							"Main Droite : " + JTabEquip.this.getEquipFromPart(BodyPart.RIGHT_HAND) + strRightHand);
+					String strLeftHand = getStringAttribute(
+							JTabEquip.this.getEquipFromPart(BodyPart.LEFT_HAND).getAttribute());
+					jlLeftHand.setText(
+							"Main Gauche : " + JTabEquip.this.getEquipFromPart(BodyPart.LEFT_HAND) + strLeftHand);
+					String strRing = getStringAttribute(JTabEquip.this.getEquipFromPart(BodyPart.RING).getAttribute());
+					jlRing.setText("Anneau : " + JTabEquip.this.getEquipFromPart(BodyPart.RING) + strRing);
+					String strNeck = getStringAttribute(
+							JTabEquip.this.getEquipFromPart(BodyPart.NECKLACE).getAttribute());
+					jlNeck.setText("Cou : " + JTabEquip.this.getEquipFromPart(BodyPart.NECKLACE) + strNeck);
 				}
 
 			}
@@ -146,25 +180,26 @@ public class JTabEquip extends JPanel {
 		int INT = equip.getINT();
 		int CHA = equip.getCHA();
 		String strAttrib = "";
-		if(FOR > 0 || FOR < 0) {
+		if (FOR > 0 || FOR < 0) {
 			strAttrib += " For : " + FOR + " ";
 		}
-		if(DEX > 0 || DEX < 0) {
+		if (DEX > 0 || DEX < 0) {
 			strAttrib += " Dex : " + DEX + " ";
 		}
-		if(CON > 0 || CON < 0) {
+		if (CON > 0 || CON < 0) {
 			strAttrib += " Con : " + CON + " ";
 		}
-		if(INT > 0 || INT < 0) {
+		if (INT > 0 || INT < 0) {
 			strAttrib += " Int : " + INT + " ";
 		}
-		if(CHA > 0 || CHA < 0) {
+		if (CHA > 0 || CHA < 0) {
 			strAttrib += " Cha : " + CHA + " ";
 		}
 		String finalString = " (" + strAttrib + ")";
 		return finalString;
-		
+
 	}
+
 	public EquipableItem getEquipFromPart(BodyPart part) {
 		EquipableItem itemSearch = new EquipableItem("Rien", null);
 		for (EquipableItem itemEquip : equipment) {
