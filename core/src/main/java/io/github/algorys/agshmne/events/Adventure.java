@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.events;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.events.quest.QuestFactory;
 import io.github.algorys.agshmne.map.tile.Tile;
 
 public class Adventure {
@@ -9,7 +10,7 @@ public class Adventure {
 		if (tile.isDanger()) {
 			FightAdventure fight = new FightAdventure(pj);
 		}
-		QuestAdventure quest = new QuestAdventure(pj);
+		QuestFactory quest = new QuestFactory(pj);
 
 	}
 

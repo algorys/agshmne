@@ -23,7 +23,7 @@ public class ItemFactory {
 				"Viande", "Poisson", "Cuir",
 				"Minerai:pierre", "Minerai:cuivre","Minerai:fer", "Minerai:Argent", "Minerai:Or", "Minerai:mythril",
 				"Pomme","Orange","Poire","Pêche", "Figue",
-				"Clou", "Rivet", "Caillou", "Lettres"
+				"Clou", "Rivet", "Caillou", "Lettres", "Feraille"
 				};
 		stackableItems.addAll(Arrays.asList(stackies));
 	}

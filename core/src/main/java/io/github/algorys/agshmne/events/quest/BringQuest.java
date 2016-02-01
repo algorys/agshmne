@@ -3,6 +3,7 @@ package io.github.algorys.agshmne.events.quest;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.Position;
+import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.tools.RandomCoordinated;
 
 public class BringQuest implements IQuest {
@@ -10,8 +11,10 @@ public class BringQuest implements IQuest {
 	private Position initialPos;
 	private Item item;
 	private boolean finish = false;
+	private Player pj;
 	
 	public BringQuest(Player pj, Item item) {
+		this.pj = pj;
 		this.initialPos = pj.getPosition();
 		this.questDestination = this.defineDestination(initialPos);
 		this.item = item;
@@ -30,16 +33,7 @@ public class BringQuest implements IQuest {
 		return questDestination;
 	}
 	
-	@Override
-	public boolean isWin(Player pj) {
-		return pj.getPosition() == questDestination && pj.getInventory().contains(item);
-	}
-	@Override
-	public void reward(Player pj) {
-		pj.getInventory().removeItem(item);
-		finish = true;
-		// TODO prévoir une récompense.
-	}
+	
 
 	public Position getQuestDestination() {
 		return questDestination;
@@ -50,7 +44,22 @@ public class BringQuest implements IQuest {
 	}
 
 	@Override
+	public boolean isWin(Player pj) {
+		return pj.getPosition() == questDestination && pj.getInventory().contains(item);
+	}
+	@Override
+	public void reward(Player pj) {
+		pj.getInventory().removeItem(item);
+		finish = true;
+		// TODO prévoir une récompense.
+	}
+	@Override
 	public boolean isFinish() {
 		return finish;
+	}
+	@Override
+	public String getName() {
+		Tile tile = pj.getRegion().getTileFromPosition(questDestination);
+		return "Apporter des " + item.getName() + " dans la Région : " + tile.getDesc();
 	}
 }

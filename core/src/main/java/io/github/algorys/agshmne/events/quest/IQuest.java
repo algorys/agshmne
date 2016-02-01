@@ -8,4 +8,6 @@ public interface IQuest {
 	public boolean isFinish();
 	
 	public void reward(Player pj);
+	
+	public String getName();
 }
