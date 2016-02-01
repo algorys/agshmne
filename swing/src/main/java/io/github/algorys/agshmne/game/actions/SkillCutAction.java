@@ -7,7 +7,7 @@ import java.beans.PropertyChangeListener;
 import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.items.StackableItemDirectFactory;
+import io.github.algorys.agshmne.items.stackable.StackableItem;
 import io.github.algorys.agshmne.map.tile.TileType;
 
 @SuppressWarnings("serial")
@@ -24,7 +24,7 @@ final class SkillCutAction extends AbstractAction implements PropertyChangeListe
 	@Override
 	public void actionPerformed(ActionEvent wood) {
 		System.out.println("Bois coupé !");
-		pj.getInventory().addItem(new StackableItemDirectFactory().createPine());
+		pj.getInventory().addItem(new StackableItem("Pin", 1));
 	}
 
 	@Override

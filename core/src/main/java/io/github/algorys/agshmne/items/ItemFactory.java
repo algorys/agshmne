@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import io.github.algorys.agshmne.items.stackable.IStackableItem;
+import io.github.algorys.agshmne.items.stackable.StackableItem;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class ItemFactory {
@@ -21,7 +23,7 @@ public class ItemFactory {
 				"Viande", "Poisson", "Cuir",
 				"Minerai:pierre", "Minerai:cuivre","Minerai:fer", "Minerai:Argent", "Minerai:Or", "Minerai:mythril",
 				"Pomme","Orange","Poire","Pêche", "Figue",
-				"Clou", "Rivet", "Caillou"
+				"Clou", "Rivet", "Caillou", "Lettres"
 				};
 		stackableItems.addAll(Arrays.asList(stackies));
 	}

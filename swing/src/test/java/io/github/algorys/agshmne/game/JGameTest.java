@@ -1,11 +1,11 @@
 package io.github.algorys.agshmne.game;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.items.BodyPart;
-import io.github.algorys.agshmne.items.EquipableItem;
-import io.github.algorys.agshmne.items.EquipableItemFactory;
 import io.github.algorys.agshmne.items.GeneralItem;
-import io.github.algorys.agshmne.items.StackableItem;
+import io.github.algorys.agshmne.items.equipable.BodyPart;
+import io.github.algorys.agshmne.items.equipable.EquipableItem;
+import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
+import io.github.algorys.agshmne.items.stackable.StackableItem;
 import io.github.algorys.agshmne.map.region.RandomRegionFactory;
 import io.github.algorys.agshmne.map.region.Region;;
 

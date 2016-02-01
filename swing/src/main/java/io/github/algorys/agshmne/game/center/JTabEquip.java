@@ -17,8 +17,8 @@ import javax.swing.JPanel;
 import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.items.BodyPart;
-import io.github.algorys.agshmne.items.EquipableItem;
+import io.github.algorys.agshmne.items.equipable.BodyPart;
+import io.github.algorys.agshmne.items.equipable.EquipableItem;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")

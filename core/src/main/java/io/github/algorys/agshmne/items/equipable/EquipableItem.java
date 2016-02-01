@@ -1,6 +1,7 @@
-package io.github.algorys.agshmne.items;
+package io.github.algorys.agshmne.items.equipable;
 
 import io.github.algorys.agshmne.character.Attribute;
+import io.github.algorys.agshmne.items.GeneralItem;
 
 public class EquipableItem extends GeneralItem implements IEquipableItem {
 	private BodyPart part;

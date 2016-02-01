@@ -8,9 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import io.github.algorys.agshmne.items.IEquipableItem;
-import io.github.algorys.agshmne.items.IStackableItem;
 import io.github.algorys.agshmne.items.Item;
+import io.github.algorys.agshmne.items.equipable.IEquipableItem;
+import io.github.algorys.agshmne.items.stackable.IStackableItem;
 
 public class InvRenderer implements ListCellRenderer<Item> {
 	private JLabel rendererComponent = new JLabel();

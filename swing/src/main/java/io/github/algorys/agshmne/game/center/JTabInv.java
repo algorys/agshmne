@@ -15,9 +15,9 @@ import javax.swing.JPopupMenu;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.design.InvRenderer;
-import io.github.algorys.agshmne.items.IEquipableItem;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
+import io.github.algorys.agshmne.items.equipable.IEquipableItem;
 
 @SuppressWarnings("serial")
 public class JTabInv extends JPanel {

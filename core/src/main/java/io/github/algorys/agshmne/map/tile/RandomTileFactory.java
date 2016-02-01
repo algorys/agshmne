@@ -1,8 +1,8 @@
 package io.github.algorys.agshmne.map.tile;
 
-import io.github.algorys.agshmne.items.EquipableItemFactory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.ItemFactory;
+import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
 import io.github.algorys.agshmne.map.city.factory.CityFactory;
 import io.github.algorys.agshmne.map.region.DescFactory;
 import io.github.algorys.agshmne.tools.Tools;

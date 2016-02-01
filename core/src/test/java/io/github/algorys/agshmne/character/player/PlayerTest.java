@@ -9,8 +9,8 @@ import java.beans.PropertyChangeListener;
 
 import org.junit.Test;
 
-import io.github.algorys.agshmne.items.BodyPart;
-import io.github.algorys.agshmne.items.EquipableItem;
+import io.github.algorys.agshmne.items.equipable.BodyPart;
+import io.github.algorys.agshmne.items.equipable.EquipableItem;
 import io.github.algorys.agshmne.map.Position;
 
 public class PlayerTest {

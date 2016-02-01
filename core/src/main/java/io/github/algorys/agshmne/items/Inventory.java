@@ -6,6 +6,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 
+import io.github.algorys.agshmne.items.equipable.EquipableItem;
+import io.github.algorys.agshmne.items.equipable.IEquipableItem;
+import io.github.algorys.agshmne.items.stackable.IStackableItem;
+import io.github.algorys.agshmne.items.stackable.StackableItem;
+
 public class Inventory extends Observable {
 	// TODO gérer les objets de quêtes différement des objets normaux.
 	private List<Item> backpack = new ArrayList<>();

@@ -4,6 +4,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import io.github.algorys.agshmne.items.equipable.BodyPart;
+import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
+import io.github.algorys.agshmne.items.equipable.IEquipableItem;
+
 public class EquipableItemFactoryTest {
 
 	@Test

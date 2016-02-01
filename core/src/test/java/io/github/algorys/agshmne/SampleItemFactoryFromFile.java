@@ -2,8 +2,8 @@ package io.github.algorys.agshmne;
 
 import java.io.File;
 
-import io.github.algorys.agshmne.items.IStackableItem;
 import io.github.algorys.agshmne.items.ItemFactory;
+import io.github.algorys.agshmne.items.stackable.IStackableItem;
 import io.github.algorys.agshmne.tools.FromFileFactory;
 
 public class SampleItemFactoryFromFile {

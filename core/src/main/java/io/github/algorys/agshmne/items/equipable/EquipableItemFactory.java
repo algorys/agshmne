@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.items;
+package io.github.algorys.agshmne.items.equipable;
 
 import java.util.ArrayList;
 import java.util.List;

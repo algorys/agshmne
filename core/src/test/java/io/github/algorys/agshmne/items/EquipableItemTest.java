@@ -10,6 +10,9 @@ import org.junit.Test;
 
 import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.AttributeTest;
+import io.github.algorys.agshmne.items.equipable.BodyPart;
+import io.github.algorys.agshmne.items.equipable.EquipableItem;
+import io.github.algorys.agshmne.items.equipable.IEquipableItem;
 
 public class EquipableItemTest {
 

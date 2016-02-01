@@ -1,4 +1,6 @@
-package io.github.algorys.agshmne.items;
+package io.github.algorys.agshmne.items.stackable;
+
+import io.github.algorys.agshmne.items.Item;
 
 public class StackableItem implements IStackableItem {
 	private int count;

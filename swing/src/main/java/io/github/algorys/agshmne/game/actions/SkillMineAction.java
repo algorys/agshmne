@@ -9,7 +9,7 @@ import javax.swing.AbstractAction;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.skills.SkillTool;
 import io.github.algorys.agshmne.character.player.skills.SkillType;
-import io.github.algorys.agshmne.items.StackableItemDirectFactory;
+import io.github.algorys.agshmne.items.stackable.StackableItem;
 import io.github.algorys.agshmne.map.tile.TileType;
 
 @SuppressWarnings("serial")
@@ -28,7 +28,7 @@ public class SkillMineAction extends AbstractAction implements PropertyChangeLis
 		int mineLevel = pj.getSkills().getSkillLevel(SkillType.miner);
 		if (SkillTool.Dice(mineLevel, 10)) {
 			System.out.println("Minerai trouvé !");
-			pj.getInventory().addItem(new StackableItemDirectFactory().createCopper());
+			pj.getInventory().addItem(new StackableItem("Pierre", 1));
 		} else {
 			System.out.println("Rien d'exploitable");
 		}
