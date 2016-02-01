@@ -66,17 +66,7 @@ L'univers d'Agshmne sera un mélange de fantasy provenant de différents mondes 
 
 **! Conception en cours !**
 
-Voici un premier rendu de région :
-
-![Region](/doc/region.png)
-
-Un rendu de l'interface de Jeu
-
-![Interface](/doc/interface.png)
-
-Et enfin la création de personnage
-
-![Creation](/doc/crea_pj.png)
+Premiers rendus disponibles [ici !](/doc/rendu.md)
 
 ### Licence
 [![Licence Creative Commons](https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-nd/4.0/)
