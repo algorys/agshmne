@@ -1,9 +1,10 @@
 package io.github.algorys.agshmne.fight;
 
 import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.events.IAdventure;
 import io.github.algorys.agshmne.tools.Tools;
 
-public class Fight implements IFight{
+public class Fight implements IAdventure {
 	private int round = 1;
 	private int currentAdvLife;
 	private int currentPjLife;
@@ -19,13 +20,11 @@ public class Fight implements IFight{
 		this.currentAdvLife = adv.getVital().getVie();
 	}
 	
-	@Override
 	public void newRound() {		
 		System.out.println("----- ROUND " + round + " -----");
 		round += 1;
 	}
 	
-	@Override
 	public void pjAttack() {
 		int pjAttack = this.attack(pj.getCurrentAttributes().getDEX(), adv.getLevel());
 		System.out.println("Attaque PJ= " + pjAttack);
@@ -36,7 +35,6 @@ public class Fight implements IFight{
 		}
 	}
 	
-	@Override
 	public void mobAttack() {
 		int mobAttack = this.attack(adv.getCurrentAttributes().getDEX(), 10 + pj.getLevel());
 		System.out.println("Attaque ADV = " + mobAttack);
@@ -47,7 +45,6 @@ public class Fight implements IFight{
 		}
 	}
 
-	@Override
 	public boolean isFinish() {
 		return this.currentPjLife <= 0 || this.currentAdvLife <= 0;
 	}
@@ -83,5 +80,10 @@ public class Fight implements IFight{
 
 	public int getMobDamage() {
 		return mobDamage;
+	}
+
+	@Override
+	public IAdventure getAdventure() {
+		return this;
 	}
 }
