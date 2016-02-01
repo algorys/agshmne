@@ -12,6 +12,8 @@ public class EquipableItemFactory {
 	private List<String> lowArms = new ArrayList<>();
 	private List<String> lowLegs = new ArrayList<>();
 	private List<String> lowChest = new ArrayList<>();
+	private List<String> lowRing = new ArrayList<>();
+	private List<String> lowNecklace = new ArrayList<>();
 
 	public EquipableItemFactory() {
 		lowCloseWeapon.add("Épée en fer:FOR+1");
@@ -35,6 +37,15 @@ public class EquipableItemFactory {
 		lowChest.add("Armure en cuir:CON+2");
 		lowChest.add("Plastron en cuir:CON+1");
 		lowChest.add("Robe de prêtre:CON-1,INT+1,CHA-1");
+		
+		lowRing.add("Anneau de cuivre:CHA+1");
+		lowRing.add("Anneau d'argent:DEX+1");
+		lowRing.add("Anneau doré:INT+2");
+		
+		lowNecklace.add("Collier de Beauté:CHA+2");
+		lowNecklace.add("Amulette de Savoir:INT+2");
+		lowNecklace.add("Talisman de Courage:FOR+2");
+		
 	}
 
 	private void manageAttribute(String manyCaracsInput, Attribute attribute) {
@@ -103,6 +114,24 @@ public class EquipableItemFactory {
 		String[] values = chest.split(":");
 		String name = values[0];
 		EquipableItem equipableItem = new EquipableItem(name, BodyPart.CHEST);
+		manageAttribute(values[1], equipableItem.getAttribute());
+		return equipableItem;
+	}
+	
+	public EquipableItem createRing() {
+		String ring = lowRing.get(Tools.dice(lowRing.size()));
+		String[] values = ring.split(":");
+		String name = values[0];
+		EquipableItem equipableItem = new EquipableItem(name, BodyPart.RING);
+		manageAttribute(values[1], equipableItem.getAttribute());
+		return equipableItem;
+	}
+	
+	public EquipableItem createNecklace() {
+		String ring = lowNecklace.get(Tools.dice(lowNecklace.size()));
+		String[] values = ring.split(":");
+		String name = values[0];
+		EquipableItem equipableItem = new EquipableItem(name, BodyPart.NECKLACE);
 		manageAttribute(values[1], equipableItem.getAttribute());
 		return equipableItem;
 	}
