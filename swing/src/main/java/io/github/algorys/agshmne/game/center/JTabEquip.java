@@ -179,24 +179,30 @@ public class JTabEquip extends JPanel {
 		int CON = equip.getCON();
 		int INT = equip.getINT();
 		int CHA = equip.getCHA();
-		String strAttrib = "";
+		StringBuffer sb = new StringBuffer();
+		sb.append(" (");
 		if (FOR != 0) {
-			strAttrib += " For : " + FOR + " ";
+			sb.append(" For : ");
+			sb.append(FOR);
 		}
 		if (DEX != 0) {
-			strAttrib += " Dex : " + DEX + " ";
+			sb.append(" Dex : ");
+			sb.append(DEX);
 		}
 		if (CON != 0) {
-			strAttrib += " Con : " + CON + " ";
+			sb.append(" Con : ");
+			sb.append(CON);
 		}
 		if (INT != 0) {
-			strAttrib += " Int : " + INT + " ";
+			sb.append(" Int : ");
+			sb.append(INT);
 		}
 		if (CHA != 0) {
-			strAttrib += " Cha : " + CHA + " ";
+			sb.append(" Cha : ");
+			sb.append(CHA);
 		}
-		String finalString = " (" + strAttrib + ")";
-		return finalString;
+		sb.append(" )");
+		return sb.toString();
 
 	}
 
