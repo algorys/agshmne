@@ -180,19 +180,19 @@ public class JTabEquip extends JPanel {
 		int INT = equip.getINT();
 		int CHA = equip.getCHA();
 		String strAttrib = "";
-		if (FOR > 0 || FOR < 0) {
+		if (FOR != 0) {
 			strAttrib += " For : " + FOR + " ";
 		}
-		if (DEX > 0 || DEX < 0) {
+		if (DEX != 0) {
 			strAttrib += " Dex : " + DEX + " ";
 		}
-		if (CON > 0 || CON < 0) {
+		if (CON != 0) {
 			strAttrib += " Con : " + CON + " ";
 		}
-		if (INT > 0 || INT < 0) {
+		if (INT != 0) {
 			strAttrib += " Int : " + INT + " ";
 		}
-		if (CHA > 0 || CHA < 0) {
+		if (CHA != 0) {
 			strAttrib += " Cha : " + CHA + " ";
 		}
 		String finalString = " (" + strAttrib + ")";
