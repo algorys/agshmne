@@ -71,7 +71,7 @@ public class JDescGame extends JPanel {
 		}
 	}
 
-	private void initJFight(Player pj, Beast wolf, final Fight fight) {
+	private void initJFight(final Player pj, final Beast wolf, final Fight fight) {
 		JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
 		final JDialog jDialogEvent = new JDialog(topFrame, "Vous êtes attaqué !", true);
 		jDialogEvent.setSize(600, 300);
@@ -167,17 +167,29 @@ public class JDescGame extends JPanel {
 		});
 
 		jbAttaq.addActionListener(new ActionListener() {
+			public String stringAttack(int pjDamage, int mobDamage) {
+				String styleAttack;
+				if (pjDamage == mobDamage) {
+					styleAttack = "Match nul !";
+				} else if (pjDamage >= mobDamage) {
+					styleAttack = pj.getName() + " mène une belle attaque...";
+				} else {
+					styleAttack = wolf.getName() + " vous en met plein la tronche !!!";
+				}
+				return styleAttack;
+			}
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// Combat
 				fight.newRound();
-				fight.pjAttack();
-				fight.mobAttack();
+				int pjAttack = fight.pjAttack();
+				int mobAttack = fight.mobAttack();
 				// Descriptions
-				String stringDamage = fight.stringAttack();
+				String stringDamage = this.stringAttack(pjAttack, mobAttack);
 				outputAttaq.setText(stringDamage);
-				String degats = fight.stringDamage();
+				String degats = "Dégats : " + pj.getName() + " [" + pjAttack + "],  " + wolf.getName() + " ["
+						+ mobAttack + "]";
 				jlDamage.setText(degats);
 				// Fini ?
 				if (fight.isFinish()) {
