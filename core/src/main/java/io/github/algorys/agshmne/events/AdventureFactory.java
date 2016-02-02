@@ -3,26 +3,21 @@ package io.github.algorys.agshmne.events;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.github.algorys.agshmne.character.opponent.beast.BeastFactory;
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.events.fight.Fight;
 import io.github.algorys.agshmne.events.quest.QuestFactory;
+import io.github.algorys.agshmne.tools.Tools;
 
-public class AdventureFactory {
-	private Map<AdventureType, IAdventure> factories =  new HashMap<>();
-	private Player pj;
+public class AdventureFactory implements IAdventureFactory {
+	private Map<AdventureType, IAdventureFactory> factories =  new HashMap<>();
 
 	public AdventureFactory(Player pj) {
-		this.pj = pj;
-		IAdventure fight = new Fight(pj, new BeastFactory().createBeast());
-		IAdventure quest = new QuestFactory(pj);
+		IAdventureFactory quest = new QuestFactory(pj);
 		
-		factories.put(AdventureType.FIGHT, fight);
 		factories.put(AdventureType.QUEST, quest);
 	}
 	
-	public IAdventure createAdventure(AdventureType type) {
-		return factories.get(type).createAdventure(pj);
+	public IAdventure createAdventure(Player pj) {
+		return factories.get(AdventureType.values()[Tools.dice(AdventureType.values().length)]).createAdventure(pj);
 	}
 
 }

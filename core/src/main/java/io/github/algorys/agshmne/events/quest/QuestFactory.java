@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.events.IAdventure;
+import io.github.algorys.agshmne.events.IAdventureFactory;
 import io.github.algorys.agshmne.items.ItemFactory;
 import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
 import io.github.algorys.agshmne.tools.Tools;
 
-public class QuestFactory implements IAdventure {
+public class QuestFactory implements IAdventureFactory {
 	private IQuest fetch;
 	private List<IQuest> listQuest = new ArrayList<>();
 
@@ -49,7 +49,7 @@ public class QuestFactory implements IAdventure {
 	}
 
 	@Override
-	public IAdventure createAdventure(Player pj) {
-		return new QuestFactory(pj);
+	public IQuest createAdventure(Player pj) {
+		return createRandomQuest();
 	}
 }
