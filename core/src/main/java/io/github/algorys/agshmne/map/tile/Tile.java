@@ -16,7 +16,6 @@ public class Tile {
 	private City city;
 	private String desc;
 	private boolean danger = false;
-	private boolean find = false;
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	public Tile(TileType type, String desc, City city) {
@@ -64,13 +63,6 @@ public class Tile {
 		return city;
 	}
 	
-	public boolean isFind() {
-		if (Math.random() < .5) {
-			find = true;
-		}
-		return find;
-	}
-
 	public boolean isCivilized() {
 		return this.city != null;
 	}
