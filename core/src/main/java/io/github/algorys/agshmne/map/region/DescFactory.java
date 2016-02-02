@@ -41,7 +41,7 @@ public class DescFactory {
 		if (possibleDesc == null) {
 			title = "No TileType found";
 		} else {
-			title = possibleDesc.get(Tools.dice(possibleDesc.size()));
+			title = Tools.random(possibleDesc);
 		}
 		String name = namePlace();
 		return title + name;
@@ -55,6 +55,6 @@ public class DescFactory {
 				" d'Agshmne",
 				" de l'Ogre"
 		};
-		return namePlace[Tools.dice(namePlace.length)];
+		return Tools.random(namePlace);
 	}
 }

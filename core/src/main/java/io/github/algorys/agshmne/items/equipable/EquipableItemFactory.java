@@ -74,7 +74,7 @@ public class EquipableItemFactory {
 	}
 
 	public EquipableItem createCloseWeapon() {
-		String weapon = lowCloseWeapon.get(Tools.dice(lowCloseWeapon.size()));
+		String weapon = Tools.random(lowCloseWeapon);
 		String[] values = weapon.split(":");
 		String name = values[0];
 		EquipableItem equipableItem = new EquipableItem(name, BodyPart.RIGHT_HAND);
@@ -83,7 +83,7 @@ public class EquipableItemFactory {
 	}
 
 	public EquipableItem createHeadArmor() {
-		String head = lowHead.get(Tools.dice(lowHead.size()));
+		String head = Tools.random(lowHead);
 		String[] values = head.split(":");
 		String name = values[0];
 		EquipableItem equipableItem = new EquipableItem(name, BodyPart.HEAD);
@@ -92,7 +92,7 @@ public class EquipableItemFactory {
 	}
 
 	public EquipableItem createArmsArmor() {
-		String arms = lowArms.get(Tools.dice(lowArms.size()));
+		String arms = Tools.random(lowArms);
 		String[] values = arms.split(":");
 		String name = values[0];
 		EquipableItem equipableItem = new EquipableItem(name, BodyPart.ARMS);
@@ -101,7 +101,7 @@ public class EquipableItemFactory {
 	}
 
 	public EquipableItem createLegsArmor() {
-		String legs = lowLegs.get(Tools.dice(lowLegs.size()));
+		String legs = Tools.random(lowLegs);
 		String[] values = legs.split(":");
 		String name = values[0];
 		EquipableItem equipableItem = new EquipableItem(name, BodyPart.LEGS);
@@ -110,7 +110,7 @@ public class EquipableItemFactory {
 	}
 
 	public EquipableItem createChestArmor() {
-		String chest = lowChest.get(Tools.dice(lowChest.size()));
+		String chest = Tools.random(lowChest);
 		String[] values = chest.split(":");
 		String name = values[0];
 		EquipableItem equipableItem = new EquipableItem(name, BodyPart.CHEST);
@@ -119,7 +119,7 @@ public class EquipableItemFactory {
 	}
 	
 	public EquipableItem createRing() {
-		String ring = lowRing.get(Tools.dice(lowRing.size()));
+		String ring = Tools.random(lowRing);
 		String[] values = ring.split(":");
 		String name = values[0];
 		EquipableItem equipableItem = new EquipableItem(name, BodyPart.RING);
@@ -128,7 +128,7 @@ public class EquipableItemFactory {
 	}
 	
 	public EquipableItem createNecklace() {
-		String ring = lowNecklace.get(Tools.dice(lowNecklace.size()));
+		String ring = Tools.random(lowNecklace);
 		String[] values = ring.split(":");
 		String name = values[0];
 		EquipableItem equipableItem = new EquipableItem(name, BodyPart.NECKLACE);

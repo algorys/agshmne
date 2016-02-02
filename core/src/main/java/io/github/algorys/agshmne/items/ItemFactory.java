@@ -30,14 +30,14 @@ public class ItemFactory {
 	
 	
 	public Item createItem() {		
-		return new GeneralItem(simpleItems.get(Tools.dice(simpleItems.size())));
+		return new GeneralItem(Tools.random(simpleItems));
 	}
 	
 	public IStackableItem createStackableItem() {
 		/*String line = stackableItems.get(Tools.dice(stackableItems.size()));
 		String[] parts = line.split(":");
 		return new StackableItem(parts[0], Integer.parseInt(parts[1]));*/
-		return new StackableItem(stackableItems.get(Tools.dice(stackableItems.size())), 1);
+		return new StackableItem(Tools.random(stackableItems), 1);
 	}
 
 

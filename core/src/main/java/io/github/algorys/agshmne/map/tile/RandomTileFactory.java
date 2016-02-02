@@ -17,7 +17,7 @@ public class RandomTileFactory implements TileFactory {
 	@Override
 	public Tile createTile() {
 		Tile currentTile;
-		TileType type = TileType.values()[Tools.dice(TileType.values().length)];
+		TileType type = Tools.random(TileType.values());
 		String desc = descFactory.randomDesc(type);
 		if (Math.random() < .25) {
 			currentTile = new Tile(type, desc, cityFactory.createCity(type));
@@ -46,7 +46,7 @@ public class RandomTileFactory implements TileFactory {
 			new ItemFactory().createStackableItem(),
 			};
 			
-			currentTile.addItem(itemTile[Tools.dice(itemTile.length)]);
+			currentTile.addItem(Tools.random(itemTile));
 		}
 		
 		if (Math.random() <.15) {

@@ -17,7 +17,7 @@ public class AdventureFactory implements IAdventureFactory {
 	}
 	
 	public IAdventure createAdventure(Player pj) {
-		return factories.get(AdventureType.values()[Tools.dice(AdventureType.values().length)]).createAdventure(pj);
+		return factories.get(Tools.random(AdventureType.values())).createAdventure(pj);
 	}
 
 }

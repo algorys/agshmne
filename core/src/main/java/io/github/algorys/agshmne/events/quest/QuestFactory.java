@@ -40,12 +40,12 @@ public class QuestFactory implements IAdventureFactory {
 	}
 
 	public IQuest createBringQuest() {
-		return listQuest.get(Tools.dice(listQuest.size()));
+		return Tools.random(listQuest);
 	}
 
 	public IQuest createRandomQuest() {
-		listQuest.add(fetch);
-		return listQuest.get(Tools.dice(listQuest.size()));
+		listQuest.add(fetch); // XXX
+		return Tools.random(listQuest);
 	}
 
 	@Override

@@ -20,7 +20,7 @@ public class BeastFactory {
 	}
 
 	public Beast createBeast() {
-		String line = lowMonster.get(Tools.dice(lowMonster.size()));
+		String line = Tools.random(lowMonster);
 		String[] parts = line.split(":");
 		int level = Integer.parseInt(parts[1]);
 		Attribute attributes = beastAttributeFactory.createAttributes(level);
