@@ -53,4 +53,12 @@ public class Fight implements IAdventure {
 		int attack = dice + (carac / 2) - difficulty;
 		return attack;
 	}
+
+	public Character getLeftOpponent() {
+		return pj;
+	}
+
+	public Character getRightOpponent() {
+		return adv;
+	}
 }

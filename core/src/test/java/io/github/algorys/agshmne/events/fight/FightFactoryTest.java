@@ -1,12 +1,13 @@
 package io.github.algorys.agshmne.events.fight;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Test;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.events.IAdventure;
 import io.github.algorys.agshmne.events.IAdventureFactory;
 
 public class FightFactoryTest {
@@ -22,7 +23,26 @@ public class FightFactoryTest {
 		FightFactory underTest = new FightFactory();
 		Player pj = new Player(null);
 		pj.initVital();
-		IAdventure creation = underTest.createAdventure(pj);
+		Fight creation = underTest.createAdventure(pj);
 		assertThat(creation, IsInstanceOf.instanceOf(Fight.class));
+	}
+	
+	@Test
+	public void testDefaultCreated_hasOpponent() {
+		FightFactory underTest = new FightFactory();
+		Player pj = new Player(null);
+		pj.initVital();
+		Fight creation = underTest.createAdventure(pj);
+		assertNotNull(creation.getLeftOpponent());
+		assertNotNull(creation.getRightOpponent());
+	}
+
+	@Test
+	public void testDefaultCreated_hasOpponentWithHealth() {
+		FightFactory underTest = new FightFactory();
+		Player pj = new Player(null);
+		pj.initVital();
+		Fight creation = underTest.createAdventure(pj);
+		assertTrue(creation.getRightOpponent().getVital().getVie() > 0);
 	}
 }
