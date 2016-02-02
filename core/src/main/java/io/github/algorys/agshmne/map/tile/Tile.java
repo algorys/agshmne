@@ -17,6 +17,7 @@ public class Tile {
 	private String desc;
 	private boolean danger = false;
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+	private boolean searched = false;
 
 	public Tile(TileType type, String desc, City city) {
 		this(type, desc);
@@ -93,5 +94,13 @@ public class Tile {
 
 	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
 		pcs.removePropertyChangeListener(propertyName, listener);
+	}
+
+	public boolean isSearched() {
+		return this.searched;
+	}
+	
+	public void setSearched() {
+		this.searched = true;
 	}
 }

@@ -55,13 +55,14 @@ public class JDescGame extends JPanel {
 	}
 
 	public void updateEvent(Player pj) {
-		boolean danger = pj.getTile().isDanger();
-		if (danger) {
-			Beast wolf = new BeastFactory().createBeast();
-			final Fight fight = new Fight(pj, wolf);
-			JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
-			JFightDialog fightDialog = new JFightDialog(topFrame, fight);
-			fightDialog.setVisible(true);
-		}
+//		TODO
+//		boolean danger = pj.getTile().isDanger();
+//		if (danger) {
+//			Beast wolf = new BeastFactory().createBeast();
+//			final Fight fight = new Fight(pj, wolf);
+//			JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+//			JFightDialog fightDialog = new JFightDialog(topFrame, fight);
+//			fightDialog.setVisible(true);
+//		}
 	}
 }
