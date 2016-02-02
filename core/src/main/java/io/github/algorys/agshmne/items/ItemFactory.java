@@ -8,7 +8,7 @@ import io.github.algorys.agshmne.items.stackable.IStackableItem;
 import io.github.algorys.agshmne.items.stackable.StackableItem;
 import io.github.algorys.agshmne.tools.Tools;
 
-public class ItemFactory {
+public class ItemFactory implements IItemFactory {
 	private List<String> simpleItems = new ArrayList<>();
 	private List<String> stackableItems = new ArrayList<>();
 	
@@ -48,5 +48,13 @@ public class ItemFactory {
 
 	public void setStackableItems(List<String> stackableItems) {
 		this.stackableItems = stackableItems;
+	}
+	
+	public Item createRandom() {
+		if (Tools.dice(2) == 1) {
+			return createItem();
+		} else {
+			return createStackableItem();
+		}
 	}
 }

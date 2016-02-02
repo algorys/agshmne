@@ -27,8 +27,8 @@ public class JGameTest {
 		pj.getInventory().addItem(leatherArmor);
 		GeneralItem barrel = new GeneralItem("Tonneau");
 		pj.getInventory().addItem(barrel);
-		pj.getInventory().addItem(new EquipableItemFactory().createRing());
-		pj.getInventory().addItem(new EquipableItemFactory().createNecklace());
+		pj.getInventory().addItem(new EquipableItemFactory().createRandom());
+		pj.getInventory().addItem(new EquipableItemFactory().createRandom());
 
 		pj.equip(helmet);
 		pj.equip(sword);

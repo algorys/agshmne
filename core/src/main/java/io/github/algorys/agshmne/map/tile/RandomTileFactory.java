@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne.map.tile;
 
-import io.github.algorys.agshmne.items.Item;
+import io.github.algorys.agshmne.items.IItemFactory;
 import io.github.algorys.agshmne.items.ItemFactory;
 import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
 import io.github.algorys.agshmne.map.city.factory.CityFactory;
@@ -10,7 +10,29 @@ import io.github.algorys.agshmne.tools.Tools;
 public class RandomTileFactory implements TileFactory {
 	private DescFactory descFactory = new DescFactory();
 	private CityFactory cityFactory = new CityFactory();
+	private IItemFactory[] itemFactories;
 
+	public RandomTileFactory() {
+		EquipableItemFactory equipableItemFactory = new EquipableItemFactory();
+		ItemFactory itemFactory = new ItemFactory();
+		itemFactories = new IItemFactory[] {
+
+		equipableItemFactory.getCloseWeaponFactory(),
+		equipableItemFactory.getArmsFactory(),
+		equipableItemFactory.getChestFactory(),
+		equipableItemFactory.getHeadFactory(),
+		equipableItemFactory.getLegsFactory(),
+		equipableItemFactory.getRingFactory(),
+		equipableItemFactory.getNecklaceFactory(),
+		
+		itemFactory,
+		itemFactory,
+		itemFactory,
+		itemFactory,
+		itemFactory,
+		itemFactory,
+		};
+	}
 	/* (non-Javadoc)
 	 * @see io.github.algorys.agshmne.map.tile.TileFactory#createTile()
 	 */
@@ -27,26 +49,7 @@ public class RandomTileFactory implements TileFactory {
 		
 		
 		while (Math.random() < .4) {
-			// TODO Implémenter ce Tableau dans une SuperFactory afin de pouvoir créer aléatoirement n'importe quel type d'objet 
-			Item[] itemTile = {
-					
-			new EquipableItemFactory().createCloseWeapon(),
-			new EquipableItemFactory().createArmsArmor(),
-			new EquipableItemFactory().createChestArmor(),
-			new EquipableItemFactory().createHeadArmor(),
-			new EquipableItemFactory().createLegsArmor(),
-			new EquipableItemFactory().createRing(),
-			new EquipableItemFactory().createNecklace(),
-			
-			new ItemFactory().createItem(),
-			new ItemFactory().createItem(),
-			new ItemFactory().createItem(),
-			new ItemFactory().createStackableItem(),
-			new ItemFactory().createStackableItem(),
-			new ItemFactory().createStackableItem(),
-			};
-			
-			currentTile.addItem(Tools.random(itemTile));
+			currentTile.addItem(Tools.random(itemFactories).createRandom());
 		}
 		
 		if (Math.random() <.15) {

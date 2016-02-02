@@ -13,7 +13,7 @@ public class EquipableItemFactoryTest {
 	@Test
 	public void testHead() {
 		EquipableItemFactory equipFact = new EquipableItemFactory();
-		IEquipableItem underTest = equipFact.createHeadArmor();
+		IEquipableItem underTest = equipFact.getHeadFactory().createRandom();
 
 		assertTrue(underTest.getPart() == BodyPart.HEAD);
 	}
@@ -21,7 +21,7 @@ public class EquipableItemFactoryTest {
 	@Test
 	public void testChest() {
 		EquipableItemFactory equipFact = new EquipableItemFactory();
-		IEquipableItem underTest = equipFact.createChestArmor();
+		IEquipableItem underTest = equipFact.getChestFactory().createRandom();
 
 		assertTrue(underTest.getPart() == BodyPart.CHEST);
 	}
@@ -29,7 +29,7 @@ public class EquipableItemFactoryTest {
 	@Test
 	public void testLegs() {
 		EquipableItemFactory equipFact = new EquipableItemFactory();
-		IEquipableItem underTest = equipFact.createLegsArmor();
+		IEquipableItem underTest = equipFact.getLegsFactory().createRandom();
 
 		assertTrue(underTest.getPart() == BodyPart.LEGS);
 	}
@@ -37,7 +37,7 @@ public class EquipableItemFactoryTest {
 	@Test
 	public void testArms() {
 		EquipableItemFactory equipFact = new EquipableItemFactory();
-		IEquipableItem underTest = equipFact.createArmsArmor();
+		IEquipableItem underTest = equipFact.getArmsFactory().createRandom();
 
 		assertTrue(underTest.getPart() == BodyPart.ARMS);
 	}
@@ -45,7 +45,7 @@ public class EquipableItemFactoryTest {
 	@Test
 	public void testRightHand() {
 		EquipableItemFactory equipFact = new EquipableItemFactory();
-		IEquipableItem underTest = equipFact.createCloseWeapon();
+		IEquipableItem underTest = equipFact.getCloseWeaponFactory().createRandom();
 
 		assertTrue(underTest.getPart() == BodyPart.RIGHT_HAND);
 	}

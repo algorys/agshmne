@@ -10,8 +10,8 @@ import io.github.algorys.agshmne.tools.Tools;
 public class AdventureFactory implements IAdventureFactory {
 	private Map<AdventureType, IAdventureFactory> factories =  new HashMap<>();
 
-	public AdventureFactory(Player pj) {
-		IAdventureFactory quest = new QuestFactory(pj);
+	public AdventureFactory() {
+		IAdventureFactory quest = new QuestFactory();
 		
 		factories.put(AdventureType.QUEST, quest);
 	}
