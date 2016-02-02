@@ -6,15 +6,18 @@ import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.map.region.RandomRegionFactory;
+import io.github.algorys.agshmne.map.region.Region;
 
 public class QuestFactoryTest {
 
 	@Test
 	public void fetchQuestDifferent() {
 		QuestFactory underTest = new QuestFactory();
-		IQuest quest = underTest.createFetchQuest(new Player(null));
+		Region region = new RandomRegionFactory().create();
+		IQuest quest = underTest.createFetchQuest(new Player(region));
 		assertNotNull(quest);
-		IQuest second = underTest.createFetchQuest(new Player(null));
+		IQuest second = underTest.createFetchQuest(new Player(region));
 		assertNotNull(second);
 		assertNotSame(quest, second);
 	}
@@ -22,9 +25,10 @@ public class QuestFactoryTest {
 	@Test
 	public void randomQuestDifferent() {
 		QuestFactory underTest = new QuestFactory();
-		IQuest quest = underTest.createAdventure(new Player(null));
+		Region region = new RandomRegionFactory().create();
+		IQuest quest = underTest.createAdventure(new Player(region));
 		assertNotNull(quest);
-		IQuest second = underTest.createAdventure(new Player(null));
+		IQuest second = underTest.createAdventure(new Player(region));
 		assertNotNull(second);
 		assertNotSame(quest, second);
 	}

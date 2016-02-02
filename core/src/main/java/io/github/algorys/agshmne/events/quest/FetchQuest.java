@@ -5,14 +5,14 @@ import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.tile.Tile;
 
-public class FetchStackQuest implements IQuest {
+public class FetchQuest implements IQuest {
 	private Position questPosition;
 	private Tile tile;
 	private Item item;
 	private int count;
 	private boolean finish = false;
 
-	public FetchStackQuest(Player pj, Item item, int count) {
+	public FetchQuest(Player pj, Item item, int count) {
 		this.questPosition = pj.getPosition();
 		this.count = count;
 		this.item = item;
