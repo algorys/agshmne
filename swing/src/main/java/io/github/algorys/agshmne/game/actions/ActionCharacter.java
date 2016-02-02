@@ -29,7 +29,7 @@ public class ActionCharacter extends JPanel {
 		woodButton.setAction(new SkillCutAction(pj));
 		oreButton.setAction(new SkillMineAction(pj));
 		fishButton.setAction(new SkillFishAction(pj));
-		searchRegion.setAction(new SkillSearchRegionAction(pj));
+		searchRegion.setAction(new SkillSearchRegionAction(pj, this));
 		searchCity.setAction(new SkillSearchCityAction(pj));
 	}
 }
