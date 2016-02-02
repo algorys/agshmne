@@ -11,4 +11,6 @@ public interface IQuest extends IAdventure {
 	public void reward(Player pj);
 	
 	public String getName();
+	
+	public String getGoal();
 }

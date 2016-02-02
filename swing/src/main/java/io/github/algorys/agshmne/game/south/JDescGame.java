@@ -5,15 +5,9 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import javax.swing.BoxLayout;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
-import io.github.algorys.agshmne.character.opponent.beast.Beast;
-import io.github.algorys.agshmne.character.opponent.beast.BeastFactory;
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.events.fight.Fight;
-import io.github.algorys.agshmne.game.east.JFightDialog;
 
 @SuppressWarnings("serial")
 public class JDescGame extends JPanel {

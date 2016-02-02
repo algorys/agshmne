@@ -3,9 +3,11 @@ package io.github.algorys.agshmne.events.quest;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.Position;
+import io.github.algorys.agshmne.map.tile.Tile;
 
 public class FetchStackQuest implements IQuest {
 	private Position questPosition;
+	private Tile tile;
 	private Item item;
 	private int count;
 	private boolean finish = false;
@@ -14,6 +16,7 @@ public class FetchStackQuest implements IQuest {
 		this.questPosition = pj.getPosition();
 		this.count = count;
 		this.item = item;
+		this.tile = pj.getTile();
 	}
 	
 	@Override
@@ -28,15 +31,23 @@ public class FetchStackQuest implements IQuest {
 		finish = true;
 		// TODO Rajouter une récompense
 	}
-
+	@Override
 	public String getName() {
 		return "Trouver des " + item.getName();
 	}
-
+	@Override
 	public String getGoal() {
-		return "Vous devez trouvez au moins " + count + " "+item.getName()+" et les rapporter en ("
-	+ questPosition.getX() + ", " 
-	+ questPosition.getY() + ")";
+		StringBuffer sb = new StringBuffer();
+		sb.append("Vous devez trouvez au moins ");
+		sb.append(count + " ");
+		sb.append(item.getName());
+		sb.append(" et les rapporter dans la Région : ");
+		sb.append(tile.getDesc());
+		sb.append("(");
+		sb.append(questPosition.getX() + ",");
+		sb.append(questPosition.getY());
+		sb.append(")");
+		return sb.toString();
 	}
 
 	public Position getQuestPosition() {

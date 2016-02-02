@@ -32,84 +32,84 @@ public class JFightDialog extends JDialog{
 		JPanel panEvent = new JPanel();
 		panEvent.setLayout(new GridBagLayout());
 		panEvent.setBackground(Color.black);
-		GridBagConstraints gbcEvent = new GridBagConstraints();
-		gbcEvent.insets = new Insets(5, 5, 5, 5);
+		GridBagConstraints gbcFight = new GridBagConstraints();
+		gbcFight.insets = new Insets(5, 5, 5, 5);
 
-		gbcEvent.gridy = 0;
-		gbcEvent.gridheight = 1;
-		gbcEvent.gridx = 0;
-		gbcEvent.gridwidth = 4;
-		gbcEvent.anchor = GridBagConstraints.CENTER;
-		gbcEvent.fill = GridBagConstraints.NONE;
+		gbcFight.gridy = 0;
+		gbcFight.gridheight = 1;
+		gbcFight.gridx = 0;
+		gbcFight.gridwidth = 4;
+		gbcFight.anchor = GridBagConstraints.CENTER;
+		gbcFight.fill = GridBagConstraints.NONE;
 		JLabel title = new JLabel("COMBAT");
 		title.setForeground(Color.red);
-		panEvent.add(title, gbcEvent);
+		panEvent.add(title, gbcFight);
 
 		// PLAYER
-		gbcEvent.gridy = 1;
-		gbcEvent.gridheight = 1;
-		gbcEvent.gridx = 1;
-		gbcEvent.gridwidth = 1;
-		gbcEvent.anchor = GridBagConstraints.WEST;
-		gbcEvent.fill = GridBagConstraints.NONE;
-		panEvent.add(new JCharacter(pj), gbcEvent);
+		gbcFight.gridy = 1;
+		gbcFight.gridheight = 1;
+		gbcFight.gridx = 1;
+		gbcFight.gridwidth = 1;
+		gbcFight.anchor = GridBagConstraints.WEST;
+		gbcFight.fill = GridBagConstraints.NONE;
+		panEvent.add(new JCharacter(pj), gbcFight);
 
 		// MONSTER
-		gbcEvent.gridy = 1;
-		gbcEvent.gridheight = 1;
-		gbcEvent.gridx = 2;
-		gbcEvent.gridwidth = 1;
-		gbcEvent.anchor = GridBagConstraints.EAST;
-		gbcEvent.fill = GridBagConstraints.NONE;
-		panEvent.add(new JCharacter(mob), gbcEvent);
+		gbcFight.gridy = 1;
+		gbcFight.gridheight = 1;
+		gbcFight.gridx = 2;
+		gbcFight.gridwidth = 1;
+		gbcFight.anchor = GridBagConstraints.EAST;
+		gbcFight.fill = GridBagConstraints.NONE;
+		panEvent.add(new JCharacter(mob), gbcFight);
 
 		final JButton jbAttaq = new JButton("Attaquer");
-		gbcEvent.gridy = 5;
-		gbcEvent.gridheight = 1;
-		gbcEvent.gridx = 2;
-		gbcEvent.gridwidth = 1;
-		gbcEvent.anchor = GridBagConstraints.EAST;
-		gbcEvent.fill = GridBagConstraints.NONE;
-		panEvent.add(jbAttaq, gbcEvent);
+		gbcFight.gridy = 5;
+		gbcFight.gridheight = 1;
+		gbcFight.gridx = 2;
+		gbcFight.gridwidth = 1;
+		gbcFight.anchor = GridBagConstraints.EAST;
+		gbcFight.fill = GridBagConstraints.NONE;
+		panEvent.add(jbAttaq, gbcFight);
 
 		final JButton jbDefense = new JButton("Défense");
-		gbcEvent.gridy = 5;
-		gbcEvent.gridheight = 1;
-		gbcEvent.gridx = 1;
-		gbcEvent.gridwidth = 1;
-		gbcEvent.anchor = GridBagConstraints.EAST;
-		gbcEvent.fill = GridBagConstraints.NONE;
-		panEvent.add(jbDefense, gbcEvent);
+		gbcFight.gridy = 5;
+		gbcFight.gridheight = 1;
+		gbcFight.gridx = 1;
+		gbcFight.gridwidth = 1;
+		gbcFight.anchor = GridBagConstraints.EAST;
+		gbcFight.fill = GridBagConstraints.NONE;
+		panEvent.add(jbDefense, gbcFight);
 
-		gbcEvent.gridy = 7;
-		gbcEvent.gridheight = 1;
-		gbcEvent.gridx = 0;
-		gbcEvent.gridwidth = 4;
-		gbcEvent.anchor = GridBagConstraints.CENTER;
-		gbcEvent.fill = GridBagConstraints.NONE;
+		gbcFight.gridy = 7;
+		gbcFight.gridheight = 1;
+		gbcFight.gridx = 0;
+		gbcFight.gridwidth = 4;
+		gbcFight.anchor = GridBagConstraints.CENTER;
+		gbcFight.fill = GridBagConstraints.NONE;
 		final JLabel outputAttaq = new JLabel("Init combat...");
 		outputAttaq.setForeground(Color.magenta);
-		panEvent.add(outputAttaq, gbcEvent);
+		panEvent.add(outputAttaq, gbcFight);
 
-		gbcEvent.gridy = 8;
-		gbcEvent.gridheight = 1;
-		gbcEvent.gridx = 0;
-		gbcEvent.gridwidth = 4;
-		gbcEvent.anchor = GridBagConstraints.CENTER;
-		gbcEvent.fill = GridBagConstraints.NONE;
+		gbcFight.gridy = 8;
+		gbcFight.gridheight = 1;
+		gbcFight.gridx = 0;
+		gbcFight.gridwidth = 4;
+		gbcFight.anchor = GridBagConstraints.CENTER;
+		gbcFight.fill = GridBagConstraints.NONE;
 		final JLabel jlDamage = new JLabel("---");
 		jlDamage.setForeground(Color.cyan);
-		panEvent.add(jlDamage, gbcEvent);
+		panEvent.add(jlDamage, gbcFight);
 
 		final JButton jbQuit = new JButton("Continuer le combat...");
 		jbQuit.setEnabled(false);
-		gbcEvent.gridy = 9;
-		gbcEvent.gridheight = 1;
-		gbcEvent.gridx = 1;
-		gbcEvent.gridwidth = 2;
-		gbcEvent.anchor = GridBagConstraints.CENTER;
-		gbcEvent.fill = GridBagConstraints.NONE;
-		panEvent.add(jbQuit, gbcEvent);
+		gbcFight.gridy = 9;
+		gbcFight.gridheight = 1;
+		gbcFight.gridx = 1;
+		gbcFight.gridwidth = 2;
+		gbcFight.anchor = GridBagConstraints.CENTER;
+		gbcFight.fill = GridBagConstraints.NONE;
+		panEvent.add(jbQuit, gbcFight);
 		jbQuit.addActionListener(new ActionListener() {
 
 			@Override
@@ -154,19 +154,19 @@ public class JFightDialog extends JDialog{
 			}
 		});
 
-		gbcEvent.gridy = 0;
-		gbcEvent.gridheight = 1;
-		gbcEvent.gridx = 0;
-		gbcEvent.gridwidth = 1;
-		gbcEvent.weightx = 50;
-		panEvent.add(new JLabel(), gbcEvent);
+		gbcFight.gridy = 0;
+		gbcFight.gridheight = 1;
+		gbcFight.gridx = 0;
+		gbcFight.gridwidth = 1;
+		gbcFight.weightx = 50;
+		panEvent.add(new JLabel(), gbcFight);
 
-		gbcEvent.gridy = 0;
-		gbcEvent.gridheight = 1;
-		gbcEvent.gridx = 3;
-		gbcEvent.gridwidth = 1;
-		gbcEvent.weightx = 50;
-		panEvent.add(new JLabel(), gbcEvent);
+		gbcFight.gridy = 0;
+		gbcFight.gridheight = 1;
+		gbcFight.gridx = 3;
+		gbcFight.gridwidth = 1;
+		gbcFight.weightx = 50;
+		panEvent.add(new JLabel(), gbcFight);
 
 		this.add(panEvent);
 	}

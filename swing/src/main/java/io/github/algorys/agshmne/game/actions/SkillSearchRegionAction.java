@@ -12,16 +12,19 @@ import javax.swing.SwingUtilities;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.skills.SkillTool;
 import io.github.algorys.agshmne.character.player.skills.SkillType;
+import io.github.algorys.agshmne.events.AdventureFactory;
 import io.github.algorys.agshmne.events.IAdventure;
 import io.github.algorys.agshmne.events.IAdventureFactory;
 import io.github.algorys.agshmne.events.fight.Fight;
-import io.github.algorys.agshmne.events.fight.FightFactory;
+import io.github.algorys.agshmne.events.quest.IQuest;
+import io.github.algorys.agshmne.events.quest.QuestFactory;
 import io.github.algorys.agshmne.game.east.JFightDialog;
+import io.github.algorys.agshmne.game.east.JQuestDialog;
 
 @SuppressWarnings("serial")
 public class SkillSearchRegionAction extends AbstractAction implements PropertyChangeListener {
 	private Player pj;
-	private IAdventureFactory adventureFactory = new FightFactory();
+	private IAdventureFactory adventureFactory = new QuestFactory();
 
 	public SkillSearchRegionAction(Player pj) {
 		super("Fouiller la Région");
@@ -43,6 +46,10 @@ public class SkillSearchRegionAction extends AbstractAction implements PropertyC
 			if (adventure instanceof Fight) {
 				JFightDialog fightDialog = new JFightDialog(topFrame, (Fight) adventure);
 				fightDialog.setVisible(true);
+			}
+			if(adventure instanceof IQuest) {
+				JQuestDialog questDialog = new JQuestDialog(topFrame, (IQuest) adventure, pj);
+				questDialog.setVisible(true);
 			}
 		}
 	}

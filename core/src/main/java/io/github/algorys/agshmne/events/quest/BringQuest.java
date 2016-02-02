@@ -62,4 +62,17 @@ public class BringQuest implements IQuest {
 		Tile tile = pj.getRegion().getTileFromPosition(questDestination);
 		return "Apporter des " + item.getName() + " dans la Région : " + tile.getDesc();
 	}
+	@Override
+	public String getGoal() {
+		Tile tile = pj.getRegion().getTileFromPosition(questDestination);
+		StringBuffer sb = new StringBuffer();
+		sb.append("Apporter des " + item.getName());
+		sb.append("dans la Région : " + tile.getDesc());
+		sb.append("(");
+		sb.append(questDestination.getX() + ",");
+		sb.append(questDestination.getY());
+		sb.append(")");
+		return sb.toString();
+	}
+	
 }
