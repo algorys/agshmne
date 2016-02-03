@@ -29,6 +29,7 @@ public class LocalityFactory implements IAdventureFactory {
 	
 	@Override
 	public Locality createAdventure(Player pj) {
-		return new Locality(Tools.random(locality), pj);
+		String[] strToParse = Tools.random(locality).split(":");
+		return new Locality(strToParse[0], strToParse[1], strToParse[2]);
 	}
 }

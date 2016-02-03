@@ -10,11 +10,10 @@ public class Locality implements IAdventure{
 	private String effect;
 	private String desc;
 	
-	public Locality(String locality, Player pj) {
-		String[] caracs = locality.split(":");
-		this.name = caracs[0];
-		this.effect = caracs[1];
-		this.desc = caracs[2];
+	public Locality(String name, String effect, String desc) {
+		this.name = name;
+		this.effect = effect;
+		this.desc = desc;
 	}
 	
 	public void interact(Player pj){
