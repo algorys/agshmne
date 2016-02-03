@@ -1,6 +1,8 @@
 package io.github.algorys.agshmne.map.city.shop;
 
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.Inventory;
+import io.github.algorys.agshmne.items.Item;
 
 public class Shop {
 	private Inventory inv;
@@ -11,6 +13,11 @@ public class Shop {
 		inv.setGold(level * 20);
 	}
 
+	public void sellItem(Player pj, Item item) {
+		inv.removeItem(item);
+		pj.getInventory().addItem(item);
+		// TODO item.getPrice();
+	}
 	public Inventory getInventory() {
 		return inv;
 	}
