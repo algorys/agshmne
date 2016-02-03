@@ -14,7 +14,8 @@ import io.github.algorys.agshmne.items.stackable.StackableItem;
 public class Inventory extends Observable {
 	// TODO gérer les objets de quêtes différement des objets normaux.
 	private List<Item> backpack = new ArrayList<>();
-
+	private int gold;
+	
 	public Inventory() {
 	}
 
@@ -130,4 +131,11 @@ public class Inventory extends Observable {
 		return equipment;
 	}
 
+	public int getGold() {
+		return gold;
+	}
+
+	public void setGold(int gold) {
+		this.gold = gold;
+	}
 }
