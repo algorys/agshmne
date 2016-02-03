@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.sample.adventure;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.effect.LifeEffect;
 import io.github.algorys.agshmne.events.locality.Locality;
 
 public class LocalitySample {
@@ -8,7 +9,7 @@ public class LocalitySample {
 	public static void main(String[] args) {
 		String locality = "Une fontaine représentant un ange déversant des flots sur un corps inanimé.";
 		Player pj = new Player(null);
-		Locality underTest = new Locality("Fontaine", "PDV10", locality);
+		Locality underTest = new Locality("Fontaine", new LifeEffect(10), locality);
 		pj.initVital();
 		pj.getVital().setVie(10);
 		System.out.println("Nom : " + underTest.getName());
