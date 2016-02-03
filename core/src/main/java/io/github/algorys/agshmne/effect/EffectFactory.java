@@ -7,10 +7,10 @@ import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class EffectFactory {
-	public IEffect createRandomSkillEffect() {
+	public IEffect createRandomSkillEffect(int modifier) {
 		List<IEffect> effects = new ArrayList<>();
 		for (SkillType type : SkillType.values()) {
-			effects.add(new SkillEffect(type, 1));
+			effects.add(new SkillEffect(type, modifier));
 		}
 		return new RandomEffect(effects);
 	}
