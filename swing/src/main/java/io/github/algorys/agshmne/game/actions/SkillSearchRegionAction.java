@@ -12,7 +12,6 @@ import javax.swing.SwingUtilities;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.skills.SkillTool;
 import io.github.algorys.agshmne.character.player.skills.SkillType;
-import io.github.algorys.agshmne.events.AdventureFactory;
 import io.github.algorys.agshmne.events.IAdventure;
 import io.github.algorys.agshmne.events.IAdventureFactory;
 import io.github.algorys.agshmne.events.fight.Fight;
