@@ -2,6 +2,7 @@ package io.github.algorys.agshmne.character.player;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.beans.PropertyChangeEvent;
@@ -9,6 +10,7 @@ import java.beans.PropertyChangeListener;
 
 import org.junit.Test;
 
+import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.items.equipable.BodyPart;
 import io.github.algorys.agshmne.items.equipable.EquipableItem;
 import io.github.algorys.agshmne.map.Position;
@@ -26,6 +28,36 @@ public class PlayerTest {
 		public boolean isCalled() {
 			return called > 0;
 		}
+	}
+
+	@Test
+	public void whenCharacterVitalAreInit_VitalShouldNotBeNull() {
+		Player underTest = new Player(null);
+		underTest.initVital();
+		assertNotNull(underTest.getVital());
+	}
+
+	@Test
+	public void whenCharacterIsCreatedSkillsAreNotNull() {
+		Player underTest = new Player(null);
+		assertNotNull(underTest.getSkills());
+		for (SkillType type : SkillType.values()) {
+			assertNotNull(underTest.getSkills().getSkillName(type));
+			assertNotNull(underTest.getSkills().getSkillLevel(type));
+		}
+	}
+
+	@Test
+	public void whenCharacterIsCreatedInventoryIsNotNull() {
+		Player underTest = new Player(null);
+		assertNotNull(underTest.getInventory());
+	}
+
+	@Test
+	public void whenCharacterIsCreatedLevelShouldBeEqualToOne_AndXPToZero() {
+		Player underTest = new Player(null);
+		assertEquals(1, underTest.getXp().getLvl());
+		assertEquals(0, underTest.getXp().getXp());
 	}
 
 	@Test
