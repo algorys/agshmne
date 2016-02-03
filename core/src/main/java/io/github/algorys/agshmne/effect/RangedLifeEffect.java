@@ -16,6 +16,9 @@ public class RangedLifeEffect implements IEffect {
 	@Override
 	public void apply(Player pj) {
 		int current = Tools.dice(max - min + 1) + min;
+		if(current == 0) {
+			current = Tools.dice(max - min + 1) + min;
+		}
 		pj.getVital().setVie(pj.getVital().getVie() + current);
 	}
 }
