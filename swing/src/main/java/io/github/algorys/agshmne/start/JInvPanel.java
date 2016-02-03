@@ -3,10 +3,13 @@ package io.github.algorys.agshmne.start;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.ItemFactory;
 
@@ -15,11 +18,9 @@ public class JInvPanel extends JLabel {
 	private JComboBox<Item> firstObject;
 	private JComboBox<Item> secondObject;
 	
-	public JInvPanel(){
-		// GidBag Layout
+	public JInvPanel(final PlayerBuilder builder){
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcInv = new GridBagConstraints();
-		// Ajuste la taille du GridBag
 		gbcInv.insets = new Insets(5, 5, 5, 5);
 	
 		// TITRE
@@ -52,7 +53,17 @@ public class JInvPanel extends JLabel {
 		firstObject.addItem(itemFact.createStackableItem());
 		firstObject.addItem(itemFact.createStackableItem());
 		firstObject.addItem(itemFact.createStackableItem());
-		firstObject.addItem(itemFact.createStackableItem());		
+		firstObject.addItem(itemFact.createStackableItem());
+		firstObject.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == ItemEvent.SELECTED){
+					builder.setFirstItem((Item) e.getItem()); 
+				}
+				
+			}
+		});
 		this.add(firstObject, gbcInv);
 		
 		// Objet 1
@@ -66,17 +77,17 @@ public class JInvPanel extends JLabel {
 		secondObject.addItem(itemFact.createItem());
 		secondObject.addItem(itemFact.createItem());
 		secondObject.addItem(itemFact.createItem());
-		secondObject.addItem(itemFact.createItem());		
+		secondObject.addItem(itemFact.createItem());
+		secondObject.addItemListener(new ItemListener() {
+			
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if(e.getStateChange() == ItemEvent.SELECTED){
+					builder.setSecondItem((Item)e.getItem());
+				}
+			}
+		});
 		this.add(secondObject, gbcInv);
 	
 	}
-
-	public Item getFirstObject() {
-		return (Item) firstObject.getSelectedItem();
-	}
-
-	public Item getSecondObject() {
-		return (Item) secondObject.getSelectedItem();
-	}
-	
 }

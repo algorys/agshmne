@@ -19,15 +19,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.character.player.skills.SkillType;
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.game.JGame;
 import io.github.algorys.agshmne.map.region.RandomRegionFactory;
-import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
 public class JFicheNav extends JPanel {
-	
+
 	public static enum Step {
 		SOCIAL, CARAC, COMPETENCES, EQUIPMENT, RESUME, CONFIRMATION
 	}
@@ -42,48 +41,27 @@ public class JFicheNav extends JPanel {
 	private JCompPanel jpComp;
 	private JInvPanel jpInv;
 	private JConfirmPanel jpConfirm;
-	
+
 	private JFrame parent;
+	private PlayerBuilder builder;
 
 	public JFicheNav(JFrame jframe) {
-		this.setBackground(Color.BLACK);
+		this.builder = new PlayerBuilder();
 		this.parent = jframe;
+
+		this.setBackground(Color.BLACK);
 		// Next Abstract Action
 		next = new AbstractAction() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (JFicheNav.this.step == Step.CONFIRMATION) {
-					int res = JOptionPane.showOptionDialog(JFicheNav.this, 
-							"Êtes-vous sûr(e) de vouloir jouer avec " + jpSocial.getPjName() + " ?", 
-							"Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, new Object[]{"Oui", "Non"}, "Oui");
-					if(res == JOptionPane.YES_OPTION) {
-						Region region = new RandomRegionFactory().create();
-						Player pj = new Player(region);
-						// Init Social 
-						pj.getSocial().setName(jpSocial.getPjName());
-						pj.getSocial().setSexe(jpSocial.getPjSexe());
-						pj.getSocial().setRace(jpSocial.getPjRace());
-						pj.getSocial().setClasse(jpSocial.getPjClass());
-						pj.getSocial().setBackground(jpSocial.getPjBackground());
-						// Init Carac
-						pj.getAttributes().setFOR(jpCarac.getFOR());
-						pj.getAttributes().setDEX(jpCarac.getDEX());
-						pj.getAttributes().setCON(jpCarac.getCON());
-						pj.getAttributes().setINT(jpCarac.getINT());
-						pj.getAttributes().setCHA(jpCarac.getCHA());
-						pj.initVital();
-						// Init Skills
-						pj.getSkills().setSkillLevel(SkillType.cuisine, jpComp.getCuisiner());
-						pj.getSkills().setSkillLevel(SkillType.fouiller, jpComp.getFouiller());
-						pj.getSkills().setSkillLevel(SkillType.boucherie, jpComp.getBoucherie());
-						pj.getSkills().setSkillLevel(SkillType.bucheron, jpComp.getBucheron());
-						pj.getSkills().setSkillLevel(SkillType.miner, jpComp.getMiner());
-						pj.getSkills().setSkillLevel(SkillType.cultiver, jpComp.getCultiver());
-						pj.getSkills().setSkillLevel(SkillType.pecher, jpComp.getPecher());
-						pj.getSkills().setSkillLevel(SkillType.magie, jpComp.getMagie());
-						// Init Inventaire
-						pj.getInventory().addItem(jpInv.getFirstObject());
-						pj.getInventory().addItem(jpInv.getSecondObject());
+					int res = JOptionPane.showOptionDialog(JFicheNav.this,
+							"Êtes-vous sûr(e) de vouloir jouer avec " + builder.getName() + " ?", "Confirmation",
+							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+							new Object[] { "Oui", "Non" }, "Oui");
+					if (res == JOptionPane.YES_OPTION) {
+						builder.setRegion(new RandomRegionFactory().create());
+						Player pj = builder.create();
 						// Entrée dans le jeu
 						JGame game = new JGame(pj);
 						game.setVisible(true);
@@ -94,7 +72,7 @@ public class JFicheNav extends JPanel {
 				}
 			}
 		};
-		
+
 		// Previous Abstract Action
 		previous = new AbstractAction("Précédent") {
 
@@ -111,31 +89,36 @@ public class JFicheNav extends JPanel {
 		// Layout
 		this.setLayout(new BorderLayout());
 		cl = new CardLayout();
-		
+
 		// Panel Principal
 		jpPrincipal = new JPanel(cl);
 		jpPrincipal.setOpaque(false);
 		this.add(jpPrincipal, BorderLayout.CENTER);
 
 		// SOCIAL
-		jpSocial = new JSocialPanel();
+		jpSocial = new JSocialPanel(builder);
 		jpSocial.setOpaque(false);
 		jpPrincipal.add(jpSocial, Step.SOCIAL.name());
 
 		// CARACTERISTIQUES
-		jpCarac = new JCaracPanel();
+		jpCarac = new JCaracPanel(builder);
 		jpCarac.setOpaque(false);
 		jpPrincipal.add(jpCarac, Step.CARAC.name());
-		
+
 		// COMPETENCES
-		jpComp = new JCompPanel();
+		jpComp = new JCompPanel(builder);
 		jpComp.setOpaque(false);
 		jpPrincipal.add(jpComp, Step.COMPETENCES.name());
-		
+
 		// EQUIPEMENT
-		jpInv = new JInvPanel();
+		jpInv = new JInvPanel(builder);
 		jpInv.setOpaque(false);
 		jpPrincipal.add(jpInv, Step.EQUIPMENT.name());
+
+		// CONFIRMATION
+		jpConfirm = new JConfirmPanel(builder);
+		jpConfirm.setOpaque(false);
+		jpPrincipal.add(jpConfirm, Step.CONFIRMATION.name());
 
 		cl.show(jpPrincipal, Step.SOCIAL.name());
 
@@ -145,7 +128,7 @@ public class JFicheNav extends JPanel {
 		jpButton.add(new JButton(next));
 		this.add(jpButton, BorderLayout.SOUTH);
 
-		// Initialisation à Social
+		// Initialisation à Step.Social
 		this.setStep(Step.SOCIAL);
 	}
 
@@ -160,9 +143,7 @@ public class JFicheNav extends JPanel {
 	private void setStep(Step step) {
 		this.step = step;
 		if (this.step == Step.CONFIRMATION) {
-			jpConfirm = new JConfirmPanel(jpSocial, jpCarac, jpComp, jpInv);
-			jpConfirm.setOpaque(false);
-			jpPrincipal.add(jpConfirm, Step.CONFIRMATION.name());
+			jpConfirm.refresh();
 			this.next.putValue(Action.NAME, "Valider");
 		} else {
 			this.next.putValue(Action.NAME, "Suivant");
@@ -187,7 +168,7 @@ public class JFicheNav extends JPanel {
 			break;
 		case COMPETENCES:
 			this.setStep(Step.EQUIPMENT);
-			break;	
+			break;
 		case EQUIPMENT:
 			this.setStep(Step.CONFIRMATION);
 			break;
@@ -237,7 +218,7 @@ public class JFicheNav extends JPanel {
 		int y = (this.getHeight() - height) / 2;
 		try {
 			Image img = ImageIO.read(JTile.class.getClassLoader().getResource("parchemin.png"));
-			Image imgBack = ImageIO.read(JTile.class.getClassLoader().getResource("table.png") );
+			Image imgBack = ImageIO.read(JTile.class.getClassLoader().getResource("table.png"));
 			g.drawImage(imgBack, 0, 0, this.getWidth(), this.getHeight(), this);
 			g.drawImage(img, x, y, width, height, this);
 		} catch (IOException e) {

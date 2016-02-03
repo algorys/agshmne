@@ -10,24 +10,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.caracteristic.JCaracteristic;
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
 
 @SuppressWarnings("serial")
 public class JCaracPanel extends JPanel {
-	/*
-	* Caractéristiques (Force, Dextérité, Constitution, Intelligence et
-	* Charisme) 4 Vitales : 
-	* Vie et Mana → dépensées par combat / compétences
-	* Fatigue et Faim → incrémenté à chaque déplacement
-	*/
-
-	private JCaracteristic FOR;	
-	private JCaracteristic DEX;
-	private JCaracteristic CON;
-	private JCaracteristic INT;
-	private JCaracteristic CHA;
 	private JLabel jlRemaining;
 	
-	public JCaracPanel() {
+	public JCaracPanel(final PlayerBuilder builder) {
 		super();
 		final int MAX_FOR_ONE = 20;
 		final int total = 60;
@@ -43,6 +32,11 @@ public class JCaracPanel extends JPanel {
 		PropertyChangeListener pcl = new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
+				builder.setFOR(FOR.getValue());
+				builder.setDEX(DEX.getValue());
+				builder.setCON(CON.getValue());
+				builder.setINT(INT.getValue());
+				builder.setCHA(CHA.getValue());
 				int spentPoints = FOR.getValue() + DEX.getValue() + CON.getValue() + INT.getValue() + CHA.getValue();
 				int remainingPoints = total - spentPoints;
 				FOR.setMaxValue(Math.min(remainingPoints + FOR.getValue(), MAX_FOR_ONE));
@@ -60,12 +54,6 @@ public class JCaracPanel extends JPanel {
 		CON.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		INT.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		CHA.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
-		
-		this.FOR = FOR;
-		this.DEX = DEX;
-		this.CON = CON;
-		this.INT = INT;
-		this.CHA = CHA;
 		
 		// GidBag Layout
 		this.setLayout(new GridBagLayout());
@@ -127,7 +115,6 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.fill = GridBagConstraints.HORIZONTAL;
 		FOR.setOpaque(false);
 		this.add(FOR, gbcCarac);
-
 		
 		// DEX
 		gbcCarac.gridy = 4;
@@ -200,28 +187,5 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.fill = GridBagConstraints.HORIZONTAL;		
 		CHA.setOpaque(false);
 		this.add(CHA, gbcCarac);
-		
-		
 	}
-
-	public int getFOR() {
-		return FOR.getValue();
-	}
-
-	public int getDEX() {
-		return DEX.getValue();
-	}
-
-	public int getCON() {
-		return CON.getValue();
-	}
-
-	public int getINT() {
-		return INT.getValue();
-	}
-
-	public int getCHA() {
-		return CHA.getValue();
-	}
-
 }

@@ -6,37 +6,23 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import io.github.algorys.agshmne.caracteristic.JCaracteristic;
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
+import io.github.algorys.agshmne.character.player.skills.SkillType;
 
 @SuppressWarnings("serial")
 public class JCompPanel extends JPanel {
-	/*
-	* Cuisiner (Unités : repas))
-    * Fouiller (DEX : Objet Trouvé)
-    * Boucherie (Unités : Viandes)
-    * Bûcheron (Unités : bois)
-    * Miner (Unités : métaux différents)
-    * Cultiver (Unités : Herbes)
-    * Pêcher (Unités : Poissons)
-    * Magie (INT : Voir Personnage)
-	 */
-	private JCaracteristic cuisiner;
-	private JCaracteristic fouiller;
-	private JCaracteristic boucherie;
-	private JCaracteristic bucheron;
-	private JCaracteristic miner;
-    private JCaracteristic cultiver;
-    private JCaracteristic pecher;
-    private JCaracteristic magie;
 	private JLabel jlRemaining;
     
-    public JCompPanel(){
+    public JCompPanel(final PlayerBuilder builder){
     	super();
 		final int MAX_FOR_ONE = 5;
 		final int total = 10;
-
+		
 		final JCaracteristic cuisiner = new JCaracteristic(1, 1, MAX_FOR_ONE);	
 		final JCaracteristic fouiller = new JCaracteristic(1, 1, MAX_FOR_ONE);
 		final JCaracteristic boucherie = new JCaracteristic(1, 1, MAX_FOR_ONE);
@@ -61,6 +47,14 @@ public class JCompPanel extends JPanel {
 		PropertyChangeListener pcl = new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
+				builder.setSkill(SkillType.cuisine, cuisiner.getValue());
+				builder.setSkill(SkillType.fouiller, fouiller.getValue());
+				builder.setSkill(SkillType.boucherie, boucherie.getValue());
+				builder.setSkill(SkillType.bucheron, bucheron.getValue());
+				builder.setSkill(SkillType.miner, miner.getValue());
+				builder.setSkill(SkillType.cultiver, cultiver.getValue());
+				builder.setSkill(SkillType.pecher, pecher.getValue());
+				builder.setSkill(SkillType.magie, magie.getValue());
 				int spentPoints = 
 						cuisiner.getValue() 
 						+ fouiller.getValue() 
@@ -94,16 +88,7 @@ public class JCompPanel extends JPanel {
 		pecher.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		magie.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 
-		this.cuisiner = cuisiner;
-		this.fouiller = fouiller;
-		this.boucherie = boucherie;
-		this.bucheron = bucheron;
-		this.miner = miner;
-		this.cultiver = cultiver;
-		this.pecher = pecher;
-		this.magie = magie;
-		
-		// GidBag Layout
+		// GridBag Layout
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcComp = new GridBagConstraints();
 		// Ajuste la taille du GridBag
@@ -135,7 +120,6 @@ public class JCompPanel extends JPanel {
 		gbcComp.anchor = GridBagConstraints.EAST;
 		gbcComp.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Points à dépenser : "), gbcComp);
-		
 		gbcComp.gridy = 2;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 2;
@@ -156,7 +140,6 @@ public class JCompPanel extends JPanel {
 		JLabel jlCuisiner = new JLabel("Cuisiner : ");
 		jlCuisiner.setForeground(new Color(0x886A08));
 		this.add(jlCuisiner, gbcComp);
-		
 		gbcComp.gridy = 3;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
@@ -183,7 +166,6 @@ public class JCompPanel extends JPanel {
 		JLabel jlFouiller = new JLabel("Fouiller : ");
 		jlFouiller.setForeground(new Color(0x886A08));
 		this.add(jlFouiller, gbcComp);
-		
 		gbcComp.gridy = 4;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
@@ -210,7 +192,6 @@ public class JCompPanel extends JPanel {
 		JLabel jlBoucher = new JLabel("Boucherie : ");
 		jlBoucher.setForeground(new Color(0x886A08));
 		this.add(jlBoucher, gbcComp);
-		
 		gbcComp.gridy = 5;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
@@ -237,7 +218,6 @@ public class JCompPanel extends JPanel {
 		JLabel jlBucher = new JLabel("Bûcheron : ");
 		jlBucher.setForeground(new Color(0x886A08));
 		this.add(jlBucher, gbcComp);
-		
 		gbcComp.gridy = 6;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
@@ -264,7 +244,6 @@ public class JCompPanel extends JPanel {
 		JLabel jlMiner = new JLabel("Miner : ");
 		jlMiner.setForeground(new Color(0x886A08));
 		this.add(jlMiner, gbcComp);
-		
 		gbcComp.gridy = 7;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
@@ -291,7 +270,6 @@ public class JCompPanel extends JPanel {
 		JLabel jlCultiver = new JLabel("Cultiver : ");
 		jlCultiver.setForeground(new Color(0x886A08));
 		this.add(jlCultiver, gbcComp);
-		
 		gbcComp.gridy = 8;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
@@ -318,7 +296,6 @@ public class JCompPanel extends JPanel {
 		JLabel jlPecher = new JLabel("Pêcher : ");
 		jlPecher.setForeground(new Color(0x886A08));
 		this.add(jlPecher, gbcComp);
-		
 		gbcComp.gridy = 9;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
@@ -345,7 +322,6 @@ public class JCompPanel extends JPanel {
 		JLabel jlMagie = new JLabel("Magie : ");
 		jlMagie.setForeground(new Color(0x886A08));
 		this.add(jlMagie, gbcComp);
-		
 		gbcComp.gridy = 10;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
@@ -362,37 +338,4 @@ public class JCompPanel extends JPanel {
 		gbcComp.fill = GridBagConstraints.HORIZONTAL;
 		this.add(new JLabel("Apprendre durement les arcanes..."), gbcComp);
 	}
-
-	public int getCuisiner() {
-		return cuisiner.getValue();
-	}
-
-	public int getFouiller() {
-		return fouiller.getValue();
-	}
-
-	public int getBoucherie() {
-		return boucherie.getValue();
-	}
-
-	public int getBucheron() {
-		return bucheron.getValue();
-	}
-
-	public int getMiner() {
-		return miner.getValue();
-	}
-
-	public int getCultiver() {
-		return cultiver.getValue();
-	}
-
-	public int getPecher() {
-		return pecher.getValue();
-	}
-
-	public int getMagie() {
-		return magie.getValue();
-	}    
-    
 }
