@@ -14,6 +14,7 @@ public class AdventureFactory implements IAdventureFactory {
 	public AdventureFactory() {
 		factories.put(AdventureType.QUEST, new QuestFactory());
 		factories.put(AdventureType.FIGHT, new FightFactory());
+		factories.put(AdventureType.LOCALITY, new FightFactory());
 	}
 	
 	public IAdventure createAdventure(Player pj) {

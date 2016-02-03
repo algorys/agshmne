@@ -1,5 +1,5 @@
 package io.github.algorys.agshmne.events;
 
 public enum AdventureType {
-	FIGHT, QUEST, //TODO HISTORY, LOCALITY, DUNGEON, CITY, 
+	FIGHT, QUEST, LOCALITY, //TODO   HISTORY, DUNGEON, CITY, 
 }
