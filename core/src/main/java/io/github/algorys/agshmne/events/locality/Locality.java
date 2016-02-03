@@ -28,9 +28,9 @@ public class Locality implements IAdventure{
 			modifier = -modifier;
 		}
 		if ("PDV".equals(carac)) {
-			pj.getVital().setVie(modifier);
+			pj.getVital().setVie(pj.getVital().getVie() + modifier);
 		} else if ("MAN".equals(carac)) {
-			pj.getVital().setMana(modifier);
+			pj.getVital().setMana(pj.getVital().getMana() + modifier);
 		} else if ("COM".equals(carac)) {
 			int level = pj.getSkills().getSkillLevel(SkillType.cuisine);
 			pj.getSkills().setSkillLevel(SkillType.cuisine, level + modifier);
