@@ -1,5 +1,6 @@
 package io.github.algorys.agshmne.map.city.shop;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
@@ -28,11 +29,29 @@ public class ShopTest {
 	@Test
 	public void newShopCouldSellAnItem() {
 		Shop underTest = new Shop(1);
-		underTest.getInventory().addItem(new GeneralItem("Pomme"));
-		Inventory old = underTest.getInventory();
-		Player pj = new Player(null);
 		Item item = new GeneralItem("Pomme");
+		underTest.getInventory().addItem(item);
+		Player pj = new Player(null);
+		Inventory old = underTest.getInventory();
+	
 		underTest.sellItem(pj, item);
 		assertNotSame(old.getListBackpack(), underTest.getInventory().getListBackpack());
+		assertFalse(underTest.getInventory().contains(item));
+		assertTrue(pj.getInventory().contains(item));
 	}
+	
+	@Test
+	public void newShopCanBuyAnItem() {
+		Shop underTest = new Shop(1);
+		Item item = new GeneralItem("Pomme");
+		Player pj = new Player(null);
+		pj.getInventory().addItem(item);
+		Inventory old = underTest.getInventory();
+	
+		underTest.buyItem(pj, item);
+		assertNotSame(old.getListBackpack(), underTest.getInventory().getListBackpack());
+		assertTrue(underTest.getInventory().contains(item));
+		assertFalse(pj.getInventory().contains(item));
+	}
+	
 }

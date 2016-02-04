@@ -18,6 +18,12 @@ public class Shop {
 		pj.getInventory().addItem(item);
 		// TODO item.getPrice();
 	}
+	
+	public void buyItem(Player pj, Item item) {
+		pj.getInventory().removeItem(item);
+		inv.addItem(item);
+		// TODO item.getPrice();
+	}
 	public Inventory getInventory() {
 		return inv;
 	}
