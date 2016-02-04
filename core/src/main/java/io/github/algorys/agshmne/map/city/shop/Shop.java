@@ -10,29 +10,22 @@ public class Shop {
 	
 	public Shop(int level) {
 		this.inv = stockFact.createStock(level);
-		inv.setGold(level * 20);
+		//inv.setGold(level * 20);
 	}
 
 	public void sellItem(Player pj, Item item) {
 		inv.removeItem(item);
 		pj.getInventory().addItem(item);
-		// TODO item.getPrice();
+		pj.getInventory().setGold(pj.getInventory().getGold() - item.getPrice());
 	}
 	
 	public void buyItem(Player pj, Item item) {
 		pj.getInventory().removeItem(item);
+		pj.getInventory().setGold(pj.getInventory().getGold() + item.getPrice());
 		inv.addItem(item);
-		// TODO item.getPrice();
 	}
+	
 	public Inventory getInventory() {
 		return inv;
-	}
-	
-	public int getGold() {
-		return inv.getGold();
-	}
-	
-	public void setGold(int gold) {
-		inv.setGold(gold);
 	}
 }

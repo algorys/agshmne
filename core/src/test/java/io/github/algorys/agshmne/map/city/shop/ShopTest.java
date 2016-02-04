@@ -19,12 +19,6 @@ public class ShopTest {
 		Shop underTest = new Shop(1);
 		assertNotNull(underTest.getInventory());
 	}
-
-	@Test
-	public void newShopShouldHaveMoney() {
-		Shop underTest = new Shop(1);
-		assertTrue(underTest.getGold() > 0);
-	}
 	
 	@Test
 	public void newShopCouldSellAnItem() {
@@ -50,6 +44,36 @@ public class ShopTest {
 	
 		underTest.buyItem(pj, item);
 		assertNotSame(old.getListBackpack(), underTest.getInventory().getListBackpack());
+		assertTrue(underTest.getInventory().contains(item));
+		assertFalse(pj.getInventory().contains(item));
+	}
+	
+	@Test 
+	public void shopShouldRemovePjGoldWhenPjBuyItem() {
+		Shop underTest = new Shop(1);
+		Item item = new GeneralItem("Pomme", 2);
+		underTest.getInventory().addItem(item);
+		Player pj = new Player(null);
+		pj.getInventory().setGold(10);
+		
+		int old = pj.getInventory().getGold();
+	
+		underTest.sellItem(pj, item);
+		assertNotSame(old, pj.getInventory().getGold());
+		assertFalse(underTest.getInventory().contains(item));
+		assertTrue(pj.getInventory().contains(item));
+	}
+	
+	@Test
+	public void shopShouldAddGoldWhenPjSellItem() {
+		Shop underTest = new Shop(1);
+		Item item = new GeneralItem("Pomme", 2);
+		Player pj = new Player(null);
+		pj.getInventory().addItem(item);
+		int old = pj.getInventory().getGold();
+	
+		underTest.buyItem(pj, item);
+		assertNotSame(old, pj.getInventory().getGold());
 		assertTrue(underTest.getInventory().contains(item));
 		assertFalse(pj.getInventory().contains(item));
 	}
