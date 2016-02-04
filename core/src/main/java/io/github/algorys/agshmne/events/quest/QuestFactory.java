@@ -7,12 +7,6 @@ import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class QuestFactory implements IAdventureFactory {
-	/*
-	 *  TODO Ajouter les Quêtes suivantes :
-	 *  - Énigmes
-	 *  - Production d'objets
-	 *  - Aller tuer une créature à un lieu donné
-	 */
 	private EquipableItemFactory equipableItemFactory = new EquipableItemFactory();
 	private ItemFactory itemFactory = new ItemFactory();
 
