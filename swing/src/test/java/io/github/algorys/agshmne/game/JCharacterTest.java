@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.game.south.JCharacter;
+import io.github.algorys.agshmne.game.fight.JCharacter;
 import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.map.tile.RandomTileFactory;
 

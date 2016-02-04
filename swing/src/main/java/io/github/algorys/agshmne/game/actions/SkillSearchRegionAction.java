@@ -18,9 +18,9 @@ import io.github.algorys.agshmne.events.fight.Fight;
 import io.github.algorys.agshmne.events.locality.Locality;
 import io.github.algorys.agshmne.events.locality.LocalityFactory;
 import io.github.algorys.agshmne.events.quest.IQuest;
-import io.github.algorys.agshmne.game.east.JFightDialog;
-import io.github.algorys.agshmne.game.east.JLocalityDialog;
-import io.github.algorys.agshmne.game.east.JQuestDialog;
+import io.github.algorys.agshmne.game.fight.JFightDialog;
+import io.github.algorys.agshmne.game.locality.JLocalityDialog;
+import io.github.algorys.agshmne.game.quest.JQuestDialog;
 
 @SuppressWarnings("serial")
 public class SkillSearchRegionAction extends AbstractAction implements PropertyChangeListener {

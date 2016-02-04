@@ -5,7 +5,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import io.github.algorys.agshmne.start.JFicheNav;
+import io.github.algorys.agshmne.charactercreation.JFicheNav;
 
 public class JFicheNavTest {
 	public static void main(String[] args) {

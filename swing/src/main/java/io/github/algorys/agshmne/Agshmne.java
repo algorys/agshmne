@@ -1,6 +1,6 @@
 package io.github.algorys.agshmne;
 
-import io.github.algorys.agshmne.start.JWelcome;
+import io.github.algorys.agshmne.charactercreation.JWelcome;
 
 public class Agshmne {
 

@@ -7,10 +7,10 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.map.JMapRegion;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.region.RandomRegionFactory;
 import io.github.algorys.agshmne.map.region.Region;
-import io.github.algorys.agshmne.region.JRegion;
 
 public class JRegionTest {
 	public static void main(String[] args) {
@@ -20,7 +20,7 @@ public class JRegionTest {
 
 		Region region = new RandomRegionFactory().create();
 		final Player personnage = new Player(region);
-		jf.getContentPane().add(new JRegion(personnage));
+		jf.getContentPane().add(new JMapRegion(personnage));
 		System.out.println("-------------------------------------");
 		jf.addKeyListener(new KeyListener() {
 

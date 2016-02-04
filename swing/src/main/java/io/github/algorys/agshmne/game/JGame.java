@@ -10,23 +10,23 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.game.center.JCenterTabbed;
-import io.github.algorys.agshmne.game.east.JRightTabbed;
-import io.github.algorys.agshmne.game.south.JDescGame;
+import io.github.algorys.agshmne.game.history.JDescGame;
+import io.github.algorys.agshmne.game.mainpanel.JPanMain;
+import io.github.algorys.agshmne.game.mainpanel.JPanActionGroundInv;
+import io.github.algorys.agshmne.map.JMapRegion;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.region.RandomRegionFactory;
 import io.github.algorys.agshmne.map.region.Region;
-import io.github.algorys.agshmne.region.JRegion;
 
 @SuppressWarnings("serial")
 public class JGame extends JFrame {
 	private Region region = new RandomRegionFactory().create();
 	private Player pj = new Player(region);
-	private final JRegion jregion;
+	private final JMapRegion jregion;
 
 	public JGame(Player perso) {
 		pj = perso;
-		jregion = new JRegion(this.pj);
+		jregion = new JMapRegion(this.pj);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
@@ -35,7 +35,7 @@ public class JGame extends JFrame {
 		/*
 		 * JPCenter : Permet d'accéder aux différentes interfaces du jeu.
 		 */
-		JCenterTabbed tabbedCenter = new JCenterTabbed(this.jregion);
+		JPanMain mainPan = new JPanMain(this.jregion);
 		
 		/*
 		 * SOUTH : TODO : En cours...
@@ -72,7 +72,7 @@ public class JGame extends JFrame {
 		/*
 		 * JPEast Objets à terres Actions pj et compétences
 		 */
-		JRightTabbed tabbedRight = new JRightTabbed(pj);
+		JPanActionGroundInv tabbedRight = new JPanActionGroundInv(pj);
 
 		/*
 		 * JPWest Personnage / Ville
@@ -87,7 +87,7 @@ public class JGame extends JFrame {
 		// Ajout Panneau Final
 		JPanel contentPane = new JPanel(new BorderLayout());
 		// contentPane.add(jpCenter, BorderLayout.CENTER);
-		contentPane.add(tabbedCenter, BorderLayout.CENTER);
+		contentPane.add(mainPan, BorderLayout.CENTER);
 		contentPane.add(tabbedRight, BorderLayout.EAST);
 		contentPane.add(descGame, BorderLayout.SOUTH);
 		contentPane.add(jpWest, BorderLayout.WEST);
