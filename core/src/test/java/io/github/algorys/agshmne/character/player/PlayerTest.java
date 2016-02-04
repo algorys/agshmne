@@ -87,7 +87,7 @@ public class PlayerTest {
 	@Test
 	public void whenCharacterEquipAnItem() {
 		Player underTest = new Player(null);
-		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD);
+		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD, 10);
 		underTest.getInventory().addItem(item);
 		assertTrue(underTest.getInventory().contains(item));
 		assertFalse(item.isEquipped());
@@ -98,7 +98,7 @@ public class PlayerTest {
 	@Test
 	public void whenCharacterEquipAnItemHeDoesNotHave() {
 		Player underTest = new Player(null);
-		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD);
+		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD, 10);
 		assertFalse(underTest.getInventory().contains(item));
 		assertFalse(item.isEquipped());
 		underTest.equip(item);
@@ -108,8 +108,8 @@ public class PlayerTest {
 	@Test
 	public void whenCharacterEquipASecondItem() {
 		Player underTest = new Player(null);
-		EquipableItem first = new EquipableItem("Casque", BodyPart.HEAD);
-		EquipableItem second = new EquipableItem("Bottes", BodyPart.LEGS);
+		EquipableItem first = new EquipableItem("Casque", BodyPart.HEAD, 10);
+		EquipableItem second = new EquipableItem("Bottes", BodyPart.LEGS, 15);
 		underTest.getInventory().addItem(first);
 		underTest.getInventory().addItem(second);
 
@@ -133,7 +133,7 @@ public class PlayerTest {
 	@Test
 	public void whenCharacterUnEquipAnItem() {
 		Player underTest = new Player(null);
-		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD);
+		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD, 10);
 		underTest.getInventory().addItem(item);
 		underTest.equip(item);
 		assertTrue(item.isEquipped());
@@ -144,8 +144,8 @@ public class PlayerTest {
 	@Test
 	public void whenCharacterEquipASecondItem_sameBodyPart() {
 		Player underTest = new Player(null);
-		EquipableItem first = new EquipableItem("Casque", BodyPart.HEAD);
-		EquipableItem second = new EquipableItem("Chapeau", BodyPart.HEAD);
+		EquipableItem first = new EquipableItem("Casque", BodyPart.HEAD, 10);
+		EquipableItem second = new EquipableItem("Chapeau", BodyPart.HEAD, 7);
 		underTest.getInventory().addItem(first);
 		underTest.getInventory().addItem(second);
 
@@ -171,7 +171,7 @@ public class PlayerTest {
 		Player underTest = new Player(null);
 		underTest.getAttributes().setFOR(12);
 		assertTrue(underTest.getAttributes().getFOR() == 12);
-		EquipableItem sword = new EquipableItem("Sword", BodyPart.RIGHT_HAND);
+		EquipableItem sword = new EquipableItem("Sword", BodyPart.RIGHT_HAND, 15);
 		sword.getAttribute().setFOR(1);
 		underTest.getInventory().addItem(sword);
 		underTest.equip(sword);
@@ -185,7 +185,7 @@ public class PlayerTest {
 		Player underTest = new Player(null);
 		underTest.getAttributes().setCON(12);
 		assertTrue(underTest.getAttributes().getCON() == 12);
-		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST);
+		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST, 20);
 		armor.getAttribute().setCON(1);
 		underTest.getInventory().addItem(armor);
 		assertTrue(underTest.getInventory().contains(armor));
@@ -200,11 +200,11 @@ public class PlayerTest {
 	public void whenCharacterEquipAChestALegsAndArms_CONisModifedWithThreeModifier() {
 		Player underTest = new Player(null);
 		underTest.getAttributes().setCON(12);
-		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST);
+		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST, 20);
 		armor.getAttribute().setCON(1);
-		EquipableItem legs = new EquipableItem("Legs", BodyPart.LEGS);
+		EquipableItem legs = new EquipableItem("Legs", BodyPart.LEGS, 15);
 		legs.getAttribute().setCON(1);
-		EquipableItem arms = new EquipableItem("Arms", BodyPart.ARMS);
+		EquipableItem arms = new EquipableItem("Arms", BodyPart.ARMS, 17);
 		arms.getAttribute().setCON(1);
 		underTest.getInventory().addItem(armor);
 		underTest.getInventory().addItem(legs);
@@ -225,11 +225,11 @@ public class PlayerTest {
 	public void whenCharacterEquipAChestALegsAndArms_AndRemoveOne_CONisModifedWithTwoModifier() {
 		Player underTest = new Player(null);
 		underTest.getAttributes().setCON(12);
-		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST);
+		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST, 20);
 		armor.getAttribute().setCON(1);
-		EquipableItem legs = new EquipableItem("Legs", BodyPart.LEGS);
+		EquipableItem legs = new EquipableItem("Legs", BodyPart.LEGS, 15);
 		legs.getAttribute().setCON(1);
-		EquipableItem arms = new EquipableItem("Arms", BodyPart.ARMS);
+		EquipableItem arms = new EquipableItem("Arms", BodyPart.ARMS, 15);
 		arms.getAttribute().setCON(2);
 		underTest.getInventory().addItem(armor);
 		underTest.getInventory().addItem(legs);

@@ -9,7 +9,7 @@ public class BringQuestSample {
 
 	public static void main(String[] args) {
 		Player pj = new Player(null);
-		BringQuest bringQ = new BringQuest(pj, new GeneralItem("Lettres"));
+		BringQuest bringQ = new BringQuest(pj, new GeneralItem("Lettres", 0));
 		Position questDestination = bringQ.getQuestDestination();
 		boolean win = bringQ.isWin(pj);
 		System.out.println("Quête finie ? " + win);

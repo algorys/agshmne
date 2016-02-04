@@ -30,14 +30,14 @@ public class ItemFactory implements IItemFactory {
 	
 	
 	public Item createItem() {		
-		return new GeneralItem(Tools.random(simpleItems));
+		return new GeneralItem(Tools.random(simpleItems), Tools.dice(10) +1);
 	}
 	
 	public IStackableItem createStackableItem() {
 		/*String line = stackableItems.get(Tools.dice(stackableItems.size()));
 		String[] parts = line.split(":");
 		return new StackableItem(parts[0], Integer.parseInt(parts[1]));*/
-		return new StackableItem(Tools.random(stackableItems), 1);
+		return new StackableItem(Tools.random(stackableItems), 1,  Tools.dice(5) +1);
 	}
 
 

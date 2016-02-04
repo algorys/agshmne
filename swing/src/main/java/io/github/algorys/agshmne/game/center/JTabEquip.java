@@ -207,7 +207,7 @@ public class JTabEquip extends JPanel {
 	}
 
 	public EquipableItem getEquipFromPart(BodyPart part) {
-		EquipableItem itemSearch = new EquipableItem("Rien", null);
+		EquipableItem itemSearch = new EquipableItem("Rien", null, 10);
 		for (EquipableItem itemEquip : equipment) {
 			if (itemEquip.getPart() == part) {
 				itemSearch = itemEquip;

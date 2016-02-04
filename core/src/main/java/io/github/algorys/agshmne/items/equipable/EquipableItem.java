@@ -8,8 +8,8 @@ public class EquipableItem extends GeneralItem implements IEquipableItem {
 	private boolean equipped;
 	private Attribute attribute = new Attribute();
 
-	public EquipableItem(String name, BodyPart part) {
-		super(name);
+	public EquipableItem(String name, BodyPart part, int price) {
+		super(name, price);
 		this.part = part;
 	}
 

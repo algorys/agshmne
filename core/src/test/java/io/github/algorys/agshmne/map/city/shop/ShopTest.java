@@ -29,7 +29,7 @@ public class ShopTest {
 	@Test
 	public void newShopCouldSellAnItem() {
 		Shop underTest = new Shop(1);
-		Item item = new GeneralItem("Pomme");
+		Item item = new GeneralItem("Pomme", 2);
 		underTest.getInventory().addItem(item);
 		Player pj = new Player(null);
 		Inventory old = underTest.getInventory();
@@ -43,7 +43,7 @@ public class ShopTest {
 	@Test
 	public void newShopCanBuyAnItem() {
 		Shop underTest = new Shop(1);
-		Item item = new GeneralItem("Pomme");
+		Item item = new GeneralItem("Pomme", 2);
 		Player pj = new Player(null);
 		pj.getInventory().addItem(item);
 		Inventory old = underTest.getInventory();

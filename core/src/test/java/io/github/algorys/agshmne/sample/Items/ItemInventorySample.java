@@ -13,23 +13,23 @@ public class ItemInventorySample {
 		Inventory inventory = new Inventory();
 
 		// Ajout une première Pomme
-		Item apple = new StackableItem("Pomme", 1);
+		Item apple = new StackableItem("Pomme", 1, 5);
 		inventory.addItem(apple);
 		System.out.println(inventory.toString());
 		// Ajout une deuxième Pomme
-		apple = new StackableItem("Pomme", 1);
+		apple = new StackableItem("Pomme", 1, 5);
 		inventory.addItem(apple);
 		System.out.println(inventory.toString());
 		System.out.println("Inventaire contient " + inventory.count(apple) + " Pommes !");
 
 		// Ajout d'un objet simple
-		Item axe = new EquipableItem("Hache", BodyPart.RIGHT_HAND);
+		Item axe = new EquipableItem("Hache", BodyPart.RIGHT_HAND, 10);
 		inventory.addItem(axe);
 		System.out.println(inventory.toString());
 
 		// Vérification si l'objet existe
-		Item orange = new StackableItem("Orange", 1);
-		Item sword = new EquipableItem("Épée", BodyPart.RIGHT_HAND);
+		Item orange = new StackableItem("Orange", 1, 5);
+		Item sword = new EquipableItem("Épée", BodyPart.RIGHT_HAND, 10);
 		System.out.println(inventory.contains(axe));
 		System.out.println(inventory.contains(apple));
 		System.out.println(inventory.contains(orange));
@@ -37,11 +37,11 @@ public class ItemInventorySample {
 		System.out.println("Inventaire contient " + inventory.count(orange) + " Oranges !");
 
 		// Test pour Ajout GeneralStackable (sans Direct)
-		Item pear = new StackableItem("Pear", 1);
+		Item pear = new StackableItem("Pear", 1, 5);
 		inventory.addItem(pear);
-		pear = new StackableItem("Pear", 1);
+		pear = new StackableItem("Pear", 1, 5);
 		inventory.addItem(pear);
-		Item armor = new GeneralItem("Armure matelassée");
+		Item armor = new GeneralItem("Armure matelassée", 10);
 		inventory.addItem(armor);
 		System.out.println(inventory.toString());
 

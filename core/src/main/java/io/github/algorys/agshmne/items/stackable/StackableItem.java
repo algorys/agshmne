@@ -5,10 +5,12 @@ import io.github.algorys.agshmne.items.Item;
 public class StackableItem implements IStackableItem {
 	private int count;
 	private String name;
+	private int price;
 	
-	public StackableItem(String name, int count) {
+	public StackableItem(String name, int count, int price) {
 		this.name = name;
 		this.count = count;
+		this.price = price;
 	}
 	
 	@Override
@@ -42,5 +44,10 @@ public class StackableItem implements IStackableItem {
 		if(amount < 0) throw new IllegalArgumentException("amount should be positive");
 		if(amount > count) throw new IllegalStateException("You can't remove so many items from this stack");
 		count -= amount;
+	}
+
+	@Override
+	public int getPrice() {
+		return price;
 	}
 }

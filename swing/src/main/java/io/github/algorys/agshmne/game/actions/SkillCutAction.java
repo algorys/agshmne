@@ -24,7 +24,7 @@ final class SkillCutAction extends AbstractAction implements PropertyChangeListe
 	@Override
 	public void actionPerformed(ActionEvent wood) {
 		System.out.println("Bois coupé !");
-		pj.getInventory().addItem(new StackableItem("Pin", 1));
+		pj.getInventory().addItem(new StackableItem("Pin", 1, 5));
 	}
 
 	@Override
