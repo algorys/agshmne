@@ -5,6 +5,7 @@ import java.util.Map;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.events.fight.FightFactory;
+import io.github.algorys.agshmne.events.locality.LocalityFactory;
 import io.github.algorys.agshmne.events.quest.QuestFactory;
 import io.github.algorys.agshmne.tools.Tools;
 
@@ -14,7 +15,7 @@ public class AdventureFactory implements IAdventureFactory {
 	public AdventureFactory() {
 		factories.put(AdventureType.QUEST, new QuestFactory());
 		factories.put(AdventureType.FIGHT, new FightFactory());
-		factories.put(AdventureType.LOCALITY, new FightFactory());
+		factories.put(AdventureType.LOCALITY, new LocalityFactory());
 	}
 	
 	public IAdventure createAdventure(Player pj) {
