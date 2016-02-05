@@ -20,7 +20,7 @@ public class JShopTest {
 		pj.getSocial().setName("Algorys");
 		pj.getInventory().setGold(40);
 		pj.getInventory().addItem(new GeneralItem("Bouteille", 3));
-		pj.getInventory().addItem(new StackableItem("Pomme", 3, 2));
+		pj.getInventory().addItem(new StackableItem("Pomme", 15, 2));
 		pj.getInventory().addItem(new EquipableItem("Armure en Cuir", BodyPart.HEAD, 20));
 		pj.getInventory().addItem(new EquipableItem("Armure ede Dragon", BodyPart.HEAD, 200));
 		
