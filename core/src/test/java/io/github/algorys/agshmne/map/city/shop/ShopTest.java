@@ -75,7 +75,6 @@ public class ShopTest {
 	
 		underTest.sellItem(pj, item);
 		assertNotSame(old.getListBackpack(), underTest.getInventory().getListBackpack());
-		assertFalse(underTest.getInventory().contains(item));
 		assertTrue(pj.getInventory().contains(item));
 	}
 	
