@@ -1,24 +1,23 @@
 package io.github.algorys.agshmne.game.mainpanel;
 
 import java.awt.Color;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.game.character.JTabCharacter;
 import io.github.algorys.agshmne.game.character.JTabComp;
 import io.github.algorys.agshmne.game.character.equipment.JTabEquip;
 import io.github.algorys.agshmne.game.character.inventory.JTabInv;
 import io.github.algorys.agshmne.map.JMapRegion;
 
-/* JPCenter
- * Barre racourcis
- */
-
 @SuppressWarnings("serial")
-public class JPanMain extends JTabbedPane {
+public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 
 	private JPanel jpMap = new JPanel();
 	private JTabCharacter jpPerso;
@@ -27,10 +26,13 @@ public class JPanMain extends JTabbedPane {
 	private JTabEquip jpEquip;
 	private JPanel jpMagie = new JPanel();
 	private JPanel jpQuest = new JPanel();
+	private JPanel jpCity = new JPanel();
+	private JMapRegion jregion;
 
-	public JPanMain(JMapRegion jregion) {
+	public JPanMain(final JMapRegion jregion) {
+		this.jregion = jregion;
 		this.setTabPlacement(JTabbedPane.TOP);
-
+		jregion.getPersonnage().addPropertyChangeListener(Player.PROPERTY_POSITION, this);
 		// Carte
 		jpMap.setBackground(Color.BLACK);
 		jpMap.add(jregion);
@@ -58,5 +60,26 @@ public class JPanMain extends JTabbedPane {
 		// Quêtes
 		Icon questIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("quest.png"));
 		this.addTab("Quêtes", questIcon, jpQuest, "Quêtes");
+		// Villes
+		Icon cityIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("city.png"));
+		this.addTab("Ville", cityIcon, jpCity, "Ville");
+		this.addPropertyChangeListener(this);
+		if (jregion.getPersonnage().getTile().isCivilized()) {
+			this.setEnabledAt(7, true);
+		} else {
+			this.setEnabledAt(7, false);
+		}
+
+	}
+
+	@Override
+	public void propertyChange(PropertyChangeEvent evt) {
+		// System.out.println("On passe bien par ici");
+		if (jregion.getPersonnage().getTile().isCivilized()) {
+			this.setEnabledAt(7, true);
+		} else {
+			this.setEnabledAt(7, false);
+		}
+
 	}
 }
