@@ -1,12 +1,17 @@
 package io.github.algorys.agshmne.map.city;
 
+import io.github.algorys.agshmne.map.city.factory.CityDescFactory;
+import io.github.algorys.agshmne.map.city.shop.Shop;
+
 public class City {
-	//private CityType cityType;
+	private String name = new CityDescFactory().randomDesc(getType());
 	private int level;
+	private Shop shop;
+			
 
 	public City(int level) {
-		//this.cityType = type;
 		this.level = level;
+		this.shop = new Shop(level);
 	}
 
 	public int getLevel() {
@@ -27,6 +32,14 @@ public class City {
 		} else {
 			return CityType.Citadel;
 		}
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Shop getShop() {
+		return shop;
 	}
 
 }
