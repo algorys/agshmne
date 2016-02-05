@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.game.mainpanel;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -14,7 +15,9 @@ import io.github.algorys.agshmne.game.character.JTabCharacter;
 import io.github.algorys.agshmne.game.character.JTabComp;
 import io.github.algorys.agshmne.game.character.equipment.JTabEquip;
 import io.github.algorys.agshmne.game.character.inventory.JTabInv;
+import io.github.algorys.agshmne.game.history.JDescGame;
 import io.github.algorys.agshmne.map.JMapRegion;
+import io.github.algorys.agshmne.map.city.JPanCity;
 
 @SuppressWarnings("serial")
 public class JPanMain extends JTabbedPane implements PropertyChangeListener {
@@ -26,15 +29,19 @@ public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 	private JTabEquip jpEquip;
 	private JPanel jpMagie = new JPanel();
 	private JPanel jpQuest = new JPanel();
-	private JPanel jpCity = new JPanel();
+	//private JPanel jpCity = new JPanel();
 	private JMapRegion jregion;
 
 	public JPanMain(final JMapRegion jregion) {
 		this.jregion = jregion;
 		this.setTabPlacement(JTabbedPane.TOP);
-		jregion.getPersonnage().addPropertyChangeListener(Player.PROPERTY_POSITION, this);
+		this.setPreferredSize(new Dimension(1400, 1000));
+		
 		// Carte
+		jregion.getPersonnage().addPropertyChangeListener(Player.PROPERTY_POSITION, this);
 		jpMap.setBackground(Color.BLACK);
+		JDescGame descGame = new JDescGame(jregion.getPersonnage());
+		jpMap.add(descGame);
 		jpMap.add(jregion);
 		Icon mapIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("map.png"));
 		this.addTab("Carte", mapIcon, jpMap, "Carte");
@@ -62,6 +69,7 @@ public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 		this.addTab("Quêtes", questIcon, jpQuest, "Quêtes");
 		// Villes
 		Icon cityIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("city.png"));
+		JPanCity jpCity = new JPanCity();
 		this.addTab("Ville", cityIcon, jpCity, "Ville");
 		this.addPropertyChangeListener(this);
 		if (jregion.getPersonnage().getTile().isCivilized()) {

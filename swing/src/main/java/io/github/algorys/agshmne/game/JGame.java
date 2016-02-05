@@ -1,18 +1,18 @@
 package io.github.algorys.agshmne.game;
 
-import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.game.history.JDescGame;
 import io.github.algorys.agshmne.game.mainpanel.JPanMain;
-import io.github.algorys.agshmne.game.mainpanel.JPanActionGroundInv;
+import io.github.algorys.agshmne.game.mainpanel.JPanRight;
 import io.github.algorys.agshmne.map.JMapRegion;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.region.RandomRegionFactory;
@@ -30,19 +30,12 @@ public class JGame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-		// TODO Faire le panneau WEST
-		JPanel jpWest = new JPanel();
-		/*
-		 * JPCenter : Permet d'accéder aux différentes interfaces du jeu.
-		 */
+		//JPanMain : Carte, Inventaire, Equipement, Magie, Quêtes, Villes, ...
 		JPanMain mainPan = new JPanMain(this.jregion);
 		
-		/*
-		 * SOUTH : TODO : En cours...
-		 */
-		final JDescGame descGame = new JDescGame(pj);
+		//JPanLeft : Objets à terres et Actions générales
+		JPanRight tabbedRight = new JPanRight(pj);
 		
-
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
 			@Override
 			public boolean dispatchKeyEvent(KeyEvent e) {
@@ -69,29 +62,27 @@ public class JGame extends JFrame {
 		});
 		this.setFocusable(true);
 
-		/*
-		 * JPEast Objets à terres Actions pj et compétences
-		 */
-		JPanActionGroundInv tabbedRight = new JPanActionGroundInv(pj);
-
-		/*
-		 * JPWest Personnage / Ville
-		 */
-		JLabel jlWest = new JLabel("Personnage / Ville");
-		JLabel caracWest = new JLabel("CHA : " + pj.getAttributes().getCHA());
-		jpWest.add(jlWest);
-		jpWest.add(caracWest);
-		
-		
-
 		// Ajout Panneau Final
-		JPanel contentPane = new JPanel(new BorderLayout());
-		// contentPane.add(jpCenter, BorderLayout.CENTER);
-		contentPane.add(mainPan, BorderLayout.CENTER);
-		contentPane.add(tabbedRight, BorderLayout.EAST);
-		contentPane.add(descGame, BorderLayout.SOUTH);
-		contentPane.add(jpWest, BorderLayout.WEST);
-
+		JPanel contentPane = new JPanel(new GridBagLayout());
+		GridBagConstraints gbcGame = new GridBagConstraints();
+		gbcGame.insets = new Insets(5, 5, 5, 5);
+		
+		gbcGame.gridy = 0;
+		gbcGame.gridheight = 1;
+		gbcGame.gridx = 0;
+		gbcGame.gridwidth = 3;
+		gbcGame.anchor = GridBagConstraints.CENTER;
+		gbcGame.fill = GridBagConstraints.NONE;
+		contentPane.add(mainPan, gbcGame);
+		
+		gbcGame.gridy = 0;
+		gbcGame.gridheight = 1;
+		gbcGame.gridx = 3;
+		gbcGame.gridwidth = 1;
+		gbcGame.anchor = GridBagConstraints.CENTER;
+		gbcGame.fill = GridBagConstraints.NONE;
+		contentPane.add(tabbedRight, gbcGame);
+		
 		this.setContentPane(contentPane);
 		this.pack();
 	}
