@@ -19,6 +19,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 
 import io.github.algorys.agshmne.character.player.Player;
@@ -77,10 +78,11 @@ public class JShopDialog extends JPanel {
 		shopItem.setBackground(Color.BLACK);
 		shopItem.setForeground(Color.green);
 		shopItem.setVisibleRowCount(10);
-		shopItem.setPreferredSize(new Dimension(400, 300));
 		shopItem.setEnabled(true);
-		this.add(shopItem, gbcShop);
-
+		JScrollPane scrollShop = new JScrollPane(shopItem);
+		scrollShop.setPreferredSize(new Dimension(400, 300));
+		this.add(scrollShop, gbcShop);
+		
 		shopItem.addMouseListener(new MouseAdapter() {
 			public void mousePressed(final MouseEvent me) {
 				if (me.isPopupTrigger()) {
@@ -157,9 +159,10 @@ public class JShopDialog extends JPanel {
 		pjItem.setBackground(Color.BLACK);
 		pjItem.setForeground(Color.green);
 		pjItem.setVisibleRowCount(10);
-		pjItem.setPreferredSize(new Dimension(400, 300));
 		pjItem.setEnabled(true);
-		this.add(pjItem, gbcShop);
+		JScrollPane scrollPj = new JScrollPane(pjItem);
+		scrollPj.setPreferredSize(new Dimension(400, 300));
+		this.add(scrollPj, gbcShop);
 
 		pjItem.addMouseListener(new MouseAdapter() {
 			public void mousePressed(final MouseEvent me) {

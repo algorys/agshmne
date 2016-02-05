@@ -36,7 +36,8 @@ public class ShopStockFactory {
 	
 	public Inventory createStock(int level) {
 		Inventory inv = new Inventory();
-		for(int i = 0; i < level; i++) {
+		int nbItem = Tools.dice(level * 10) +5;
+		for(int i = 0; i < nbItem; i++) {
 			inv.addItem(Tools.random(itemFactories).createRandom());
 		}
 		return inv;
