@@ -84,32 +84,38 @@ public class JShopDialog extends JPanel {
 				if (me.isPopupTrigger()) {
 					final int index = shopItem.locationToIndex(me.getPoint());
 					JPopupMenu menu = new JPopupMenu();
-					JMenuItem buy = new JMenuItem("Acheter");
+					final JMenuItem buy = new JMenuItem("Acheter");
 					buy.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							Item selectedItem = shopItem.getModel().getElementAt(index);
-							if (selectedItem instanceof IStackableItem) {
-								IStackableItem stackableItem = (IStackableItem) selectedItem;
-								JDialog jdCount = new JDialog(SwingUtilities.getWindowAncestor(JShopDialog.this),
-										"Combien de " + stackableItem.getName() + " voulez vous acheter ?",
-										ModalityType.DOCUMENT_MODAL);
-								jdCount.setSize(300, 150);
-								JStackChoice choice = new JStackChoice(stackableItem);
-								jdCount.add(choice);
-								jdCount.setVisible(true);
-								if(choice.getNbToSell() > 0) {
-									shop.sellItem(pj, stackableItem, choice.getNbToSell());
+							if (selectedItem.getPrice() > pj.getInventory().getGold()) {
+								JOptionPane.showMessageDialog(JShopDialog.this, "Vous n'avez pas assez d'argent !");
+							} else {
+								if (selectedItem instanceof IStackableItem) {
+									IStackableItem stackableItem = (IStackableItem) selectedItem;
+									JDialog jdCount = new JDialog(SwingUtilities.getWindowAncestor(JShopDialog.this),
+											"Combien de " + stackableItem.getName() + " voulez vous acheter ?",
+											ModalityType.DOCUMENT_MODAL);
+									jdCount.setSize(300, 150);
+									int maxToBuy = pj.getInventory().getGold() / stackableItem.getPrice();
+									System.out.println("Maxx = " + maxToBuy);
+									JStackChoice choice = new JStackChoice(stackableItem, maxToBuy);
+									jdCount.add(choice);
+									jdCount.setVisible(true);
+									if (choice.getNbToSell() > 0) {
+										shop.sellItem(pj, stackableItem, choice.getNbToSell());
+										gold.setText("Or restant : " + pj.getInventory().getGold());
+										shopItem.invalidate();
+										shopItem.repaint();
+									}
+								} else {
+									JOptionPane.showMessageDialog(JShopDialog.this, "" + selectedItem + " acheté(e) !");
+									((InventoryListModel) shopItem.getModel()).removeElementAt(index);
+									shop.sellItem(pj, selectedItem);
 									gold.setText("Or restant : " + pj.getInventory().getGold());
 									shopItem.invalidate();
 									shopItem.repaint();
 								}
-							} else {
-								JOptionPane.showMessageDialog(JShopDialog.this, "" + selectedItem + " acheté(e) !");
-								((InventoryListModel) shopItem.getModel()).removeElementAt(index);
-								shop.sellItem(pj, selectedItem);
-								gold.setText("Or restant : " + pj.getInventory().getGold());
-								shopItem.invalidate();
-								shopItem.repaint();
 							}
 						}
 					});
@@ -168,10 +174,11 @@ public class JShopDialog extends JPanel {
 										"Combien de " + stackableItem.getName() + " voulez vous vendre ?",
 										ModalityType.DOCUMENT_MODAL);
 								jdCount.setSize(300, 150);
-								JStackChoice choice = new JStackChoice(stackableItem);
+								int maxToSell = stackableItem.getCount();
+								JStackChoice choice = new JStackChoice(stackableItem, maxToSell);
 								jdCount.add(choice);
 								jdCount.setVisible(true);
-								if(choice.getNbToSell() > 0) {
+								if (choice.getNbToSell() > 0) {
 									shop.buyItem(pj, stackableItem, choice.getNbToSell());
 									gold.setText("Or restant : " + pj.getInventory().getGold());
 									pjItem.invalidate();

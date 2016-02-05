@@ -21,7 +21,7 @@ public class JStackChoice extends JPanel {
 	private JSlider slide;
 	private int nbToSell;
 
-	public JStackChoice(IStackableItem item) {
+	public JStackChoice(IStackableItem item, int max) {
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcChoice = new GridBagConstraints();
 		gbcChoice.insets = new Insets(5, 5, 5, 5);
@@ -36,7 +36,7 @@ public class JStackChoice extends JPanel {
 		this.add(new JLabel("Faites votre choix :"), gbcChoice);
 
 		slide = new JSlider();
-		slide.setMaximum(item.getCount());
+		slide.setMaximum(max);
 		slide.setMinimum(1);
 		slide.setPaintTicks(true);
 		slide.setPaintLabels(true);

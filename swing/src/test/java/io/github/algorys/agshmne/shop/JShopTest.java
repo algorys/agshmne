@@ -18,7 +18,7 @@ public class JShopTest {
 		Shop shop = new Shop(10);
 		Player pj = new Player(null);
 		pj.getSocial().setName("Algorys");
-		pj.getInventory().setGold(40);
+		pj.getInventory().setGold(-10);
 		pj.getInventory().addItem(new GeneralItem("Bouteille", 3));
 		pj.getInventory().addItem(new StackableItem("Pomme", 15, 2));
 		pj.getInventory().addItem(new EquipableItem("Armure en Cuir", BodyPart.HEAD, 20));
