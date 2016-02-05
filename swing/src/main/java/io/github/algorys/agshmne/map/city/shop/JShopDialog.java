@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.design.InvRenderer;
 import io.github.algorys.agshmne.design.ShopRenderer;
 import io.github.algorys.agshmne.game.character.inventory.InventoryListModel;
 import io.github.algorys.agshmne.items.Item;
@@ -67,7 +68,8 @@ public class JShopDialog extends JPanel {
 		gbcShop.anchor = GridBagConstraints.EAST;
 		gbcShop.fill = GridBagConstraints.NONE;
 		final JList<Item> shopItem = new JList<Item>(new InventoryListModel(shop.getInventory()));
-		shopItem.setCellRenderer(new ShopRenderer());
+		ShopRenderer shopItemRenderer = new ShopRenderer(new InvRenderer());
+		shopItem.setCellRenderer(shopItemRenderer);
 		shopItem.setBackground(Color.BLACK);
 		shopItem.setForeground(Color.green);
 		shopItem.setVisibleRowCount(10);
@@ -124,7 +126,7 @@ public class JShopDialog extends JPanel {
 		gbcShop.anchor = GridBagConstraints.WEST;
 		gbcShop.fill = GridBagConstraints.NONE;
 		final JList<Item> pjItem = new JList<Item>(new InventoryListModel(pj.getInventory()));
-		pjItem.setCellRenderer(new ShopRenderer());
+		pjItem.setCellRenderer(shopItemRenderer);
 		pjItem.setBackground(Color.BLACK);
 		pjItem.setForeground(Color.green);
 		pjItem.setVisibleRowCount(10);
