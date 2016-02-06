@@ -6,6 +6,7 @@ import java.awt.Insets;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -15,7 +16,7 @@ import io.github.algorys.agshmne.character.player.Player;
 public class JCityCenter extends JPanel implements PropertyChangeListener {
 	private City city;
 	private Player pj;
-	private JLabel jpTitle;
+	private JLabel jlTitle;
 	
 	public JCityCenter(Player pj) {
 		this.pj = pj;
@@ -36,18 +37,57 @@ public class JCityCenter extends JPanel implements PropertyChangeListener {
 		gbcCityCenter.gridwidth = 4;
 		gbcCityCenter.anchor = GridBagConstraints.CENTER;
 		gbcCityCenter.fill = GridBagConstraints.NONE;
-		jpTitle = new JLabel(city.getName());
-		this.add(jpTitle, gbcCityCenter);
+		jlTitle = new JLabel(city.getName());
+		this.add(jlTitle, gbcCityCenter);
+		
+		// Auberge
+		gbcCityCenter.gridy = 1;
+		gbcCityCenter.gridheight = 1;
+		gbcCityCenter.gridx = 0;
+		gbcCityCenter.gridwidth = 2;
+		gbcCityCenter.anchor = GridBagConstraints.WEST;
+		gbcCityCenter.fill = GridBagConstraints.NONE;
+		JLabel jlInn = new JLabel("Auberge");
+		this.add(jlInn, gbcCityCenter);
+		
+		gbcCityCenter.gridy = 1;
+		gbcCityCenter.gridheight = 1;
+		gbcCityCenter.gridx = 2;
+		gbcCityCenter.gridwidth = 2;
+		gbcCityCenter.anchor = GridBagConstraints.CENTER;
+		gbcCityCenter.fill = GridBagConstraints.NONE;
+		JButton jbInn = new JButton("Se reposer");
+		this.add(jbInn, gbcCityCenter);
+		
+		// Taverne
+		gbcCityCenter.gridy = 2;
+		gbcCityCenter.gridheight = 1;
+		gbcCityCenter.gridx = 0;
+		gbcCityCenter.gridwidth = 2;
+		gbcCityCenter.anchor = GridBagConstraints.WEST;
+		gbcCityCenter.fill = GridBagConstraints.NONE;
+		JLabel jlTavern = new JLabel("Taverne");
+		this.add(jlTavern, gbcCityCenter);
+		
+		gbcCityCenter.gridy = 2;
+		gbcCityCenter.gridheight = 1;
+		gbcCityCenter.gridx = 2;
+		gbcCityCenter.gridwidth = 2;
+		gbcCityCenter.anchor = GridBagConstraints.CENTER;
+		gbcCityCenter.fill = GridBagConstraints.NONE;
+		JButton jbTavern = new JButton("Boire un coup !");
+		this.add(jbTavern, gbcCityCenter);
+		
 	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if(pj.getTile().isCivilized()) {
 			city = pj.getTile().getCity();
-		} else {
-			city = new City(0);
+//		} else {
+//			city = new City(0);
 		}
-		jpTitle.setText(city.getName());
+		jlTitle.setText(city.getName());
 		
 	}
 }
