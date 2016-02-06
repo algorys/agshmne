@@ -69,9 +69,8 @@ public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 		this.addTab("Quêtes", questIcon, jpQuest, "Quêtes");
 		// Villes
 		Icon cityIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("city.png"));
-		JPanCity jpCity = new JPanCity();
+		JPanCity jpCity = new JPanCity(jregion.getPersonnage());
 		this.addTab("Ville", cityIcon, jpCity, "Ville");
-		this.addPropertyChangeListener(this);
 		if (jregion.getPersonnage().getTile().isCivilized()) {
 			this.setEnabledAt(7, true);
 		} else {
@@ -82,7 +81,6 @@ public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		// System.out.println("On passe bien par ici");
 		if (jregion.getPersonnage().getTile().isCivilized()) {
 			this.setEnabledAt(7, true);
 		} else {
