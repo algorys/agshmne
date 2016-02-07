@@ -21,12 +21,17 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
+import javax.swing.border.Border;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
+import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.design.InvRenderer;
 import io.github.algorys.agshmne.design.ShopRenderer;
 import io.github.algorys.agshmne.game.character.inventory.InventoryListModel;
 import io.github.algorys.agshmne.items.Item;
+import io.github.algorys.agshmne.items.equipable.IEquipableItem;
 import io.github.algorys.agshmne.items.stackable.IStackableItem;
 
 @SuppressWarnings("serial")
@@ -37,6 +42,19 @@ public class JShopDialog extends JPanel {
 		GridBagConstraints gbcShop = new GridBagConstraints();
 		gbcShop.insets = new Insets(5, 5, 5, 5);
 		final JLabel gold = new JLabel("Or restant : " + pj.getInventory().getGold());
+		// Margin text
+		Border paddingBorder = BorderFactory.createEmptyBorder(10,10,10,10);
+		gold.setBorder(BorderFactory.createCompoundBorder(null,paddingBorder));
+		gold.setPreferredSize(new Dimension(400, 50));
+		gold.setBackground(Color.black);
+		gold.setForeground(Color.yellow);
+		gold.setOpaque(true);
+		final JLabel output = new JLabel("Aucun objet sélectionné");
+		output.setBorder(BorderFactory.createCompoundBorder(null,paddingBorder));
+		output.setPreferredSize(new Dimension(400, 50));
+		output.setBackground(Color.black);
+		output.setForeground(Color.green);
+		output.setOpaque(true);
 
 		// TITRE
 		gbcShop.gridy = 0;
@@ -82,7 +100,24 @@ public class JShopDialog extends JPanel {
 		JScrollPane scrollShop = new JScrollPane(shopItem);
 		scrollShop.setPreferredSize(new Dimension(400, 300));
 		this.add(scrollShop, gbcShop);
-		
+		shopItem.addListSelectionListener(new ListSelectionListener() {
+			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				if(e.getValueIsAdjusting()){
+					if(shopItem.getSelectedValue() instanceof IEquipableItem) {
+						IEquipableItem equipItem = (IEquipableItem) shopItem.getSelectedValue();
+						String attribute = getStringAttribute(equipItem.getAttribute());
+						output.setText("<html><body>Nom : " + equipItem.getName() + 
+								"<br>Bonus : " + attribute +
+								"<br>Puissance : "+equipItem.getPuissance()+"</body></html>");
+					} else {
+						output.setText("Détails objet : " + shopItem.getSelectedValue().getName());
+					}
+				}
+				
+			}
+		});
 		shopItem.addMouseListener(new MouseAdapter() {
 			public void mousePressed(final MouseEvent me) {
 				if (me.isPopupTrigger()) {
@@ -163,6 +198,25 @@ public class JShopDialog extends JPanel {
 		JScrollPane scrollPj = new JScrollPane(pjItem);
 		scrollPj.setPreferredSize(new Dimension(400, 300));
 		this.add(scrollPj, gbcShop);
+		
+		pjItem.addListSelectionListener(new ListSelectionListener() {
+			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				if(e.getValueIsAdjusting()){
+					if(pjItem.getSelectedValue() instanceof IEquipableItem) {
+						IEquipableItem equipItem = (IEquipableItem) pjItem.getSelectedValue();
+						String attribute = getStringAttribute(equipItem.getAttribute());
+						output.setText("<html><body>Nom : " + equipItem.getName() + 
+								"<br>Bonus : " + attribute +
+								"<br>Puissance : "+equipItem.getPuissance()+"</body></html>");
+					} else {
+						output.setText("Nom : " + pjItem.getSelectedValue().getName());
+					}
+				}
+				
+			}
+		});
 
 		pjItem.addMouseListener(new MouseAdapter() {
 			public void mousePressed(final MouseEvent me) {
@@ -211,9 +265,50 @@ public class JShopDialog extends JPanel {
 		gbcShop.gridy = 3;
 		gbcShop.gridheight = 1;
 		gbcShop.gridx = 0;
-		gbcShop.gridwidth = 4;
+		gbcShop.gridwidth = 2;
 		gbcShop.anchor = GridBagConstraints.CENTER;
 		gbcShop.fill = GridBagConstraints.NONE;
 		this.add(gold, gbcShop);
+		
+		// Détail objet
+		gbcShop.gridy = 3;
+		gbcShop.gridheight = 1;
+		gbcShop.gridx = 2;
+		gbcShop.gridwidth = 2;
+		gbcShop.anchor = GridBagConstraints.CENTER;
+		gbcShop.fill = GridBagConstraints.NONE;
+		this.add(output, gbcShop);
+	}
+	
+	public String getStringAttribute(Attribute equip) {
+		int FOR = equip.getFOR();
+		int DEX = equip.getDEX();
+		int CON = equip.getCON();
+		int INT = equip.getINT();
+		int CHA = equip.getCHA();
+		StringBuffer sb = new StringBuffer();
+		sb.append(" (");
+		if (FOR != 0) {
+			sb.append(" For : ");
+			sb.append(FOR);
+		}
+		if (DEX != 0) {
+			sb.append(" Dex : ");
+			sb.append(DEX);
+		}
+		if (CON != 0) {
+			sb.append(" Con : ");
+			sb.append(CON);
+		}
+		if (INT != 0) {
+			sb.append(" Int : ");
+			sb.append(INT);
+		}
+		if (CHA != 0) {
+			sb.append(" Cha : ");
+			sb.append(CHA);
+		}
+		sb.append(" )");
+		return sb.toString();
 	}
 }

@@ -22,7 +22,7 @@ public class JShopTest {
 		pj.getInventory().addItem(new GeneralItem("Bouteille", 3));
 		pj.getInventory().addItem(new StackableItem("Pomme", 15, 2));
 		pj.getInventory().addItem(new EquipableItem("Armure en Cuir", BodyPart.HEAD, 20));
-		pj.getInventory().addItem(new EquipableItem("Armure ede Dragon", BodyPart.HEAD, 200));
+		pj.getInventory().addItem(new EquipableItem("Armure de Dragon", BodyPart.HEAD, 200));
 		
 		JShopDialog shopDial = new JShopDialog(shop, pj);
 		jf.add(shopDial);
