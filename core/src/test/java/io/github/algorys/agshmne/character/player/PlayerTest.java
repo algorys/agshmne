@@ -56,7 +56,7 @@ public class PlayerTest {
 	@Test
 	public void whenCharacterIsCreatedLevelShouldBeEqualToOne_AndXPToZero() {
 		Player underTest = new Player(null);
-		assertEquals(1, underTest.getXp().getLvl());
+		assertEquals(1, underTest.getXp().getLevel());
 		assertEquals(0, underTest.getXp().getXp());
 	}
 

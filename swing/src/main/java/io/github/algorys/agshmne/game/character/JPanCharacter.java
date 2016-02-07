@@ -15,6 +15,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.border.BevelBorder;
 
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.player.Player;
@@ -302,7 +304,7 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlLevel = new JLabel("Niveau : " + pj.getXp().getLvl());
+		JLabel jlLevel = new JLabel("Niveau : " + pj.getXp().getLevel());
 		jlLevel.setForeground(Color.magenta);
 		this.add(jlLevel, gbcCharacter);
 		
@@ -316,5 +318,20 @@ public class JPanCharacter extends JPanel {
 		JLabel jlXp = new JLabel("Experience : " + pj.getXp().getXp());
 		jlXp.setForeground(Color.magenta);
 		this.add(jlXp, gbcCharacter);
+		
+		// Expérience
+		gbcCharacter.gridy = 18;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.HORIZONTAL;
+		JProgressBar xpBar = new JProgressBar();
+		xpBar.setMaximum(pj.getXp().getCurrentStepLevel());
+	    xpBar.setMinimum(pj.getLevel() - 1);
+	    xpBar.setValue(pj.getXp().getXp());
+	    xpBar.setForeground(Color.green);
+	    xpBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
+	    this.add(xpBar, gbcCharacter);
 	}
 }

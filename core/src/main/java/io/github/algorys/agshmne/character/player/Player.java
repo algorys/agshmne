@@ -53,7 +53,7 @@ public class Player implements Character {
 	}
 
 	public void initVital() {
-		vital = new Vital(attributes.getCON() + 10 + this.getXp().getLvl(), attributes.getINT() + this.getXp().getLvl(),
+		vital = new Vital(attributes.getCON() + 10 + this.getXp().getLevel(), attributes.getINT() + this.getXp().getLevel(),
 				((attributes.getCON() + attributes.getFOR()) / 2) + 10, attributes.getCON() + 10);
 	}
 
@@ -142,7 +142,7 @@ public class Player implements Character {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Nom : " + this.social.getName());
 		sb.append("\n");
-		sb.append("Level : " + this.xp.getLvl());
+		sb.append("Level : " + this.xp.getLevel());
 		sb.append("\n");
 		sb.append("Vie = " + this.getVital().getVie());
 		sb.append("\n");
@@ -162,7 +162,7 @@ public class Player implements Character {
 
 	@Override
 	public int getLevel() {
-		return this.xp.getLvl();
+		return this.xp.getLevel();
 	}
 
 	@Override

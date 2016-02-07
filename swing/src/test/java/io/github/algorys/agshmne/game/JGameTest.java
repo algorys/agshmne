@@ -15,6 +15,8 @@ public class JGameTest {
 		Region region = new RandomRegionFactory().create();
 		Player pj = new Player(region);
 		pj.getSocial().setName("Player Playing");
+		pj.getXp().setXp(125);
+		System.out.println(pj.getXp().getProgress());
 
 		EquipableItem helmet = new EquipableItem("Casque", BodyPart.HEAD, 10);
 		helmet.getAttribute().setINT(5);
