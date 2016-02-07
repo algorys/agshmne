@@ -33,10 +33,9 @@ public class JPanCharacter extends JPanel {
 		this.setBackground(Color.black);
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcCharacter = new GridBagConstraints();
-		// Ajuste la taille du GridBag
 		gbcCharacter.insets = new Insets(5, 5, 5, 5);
 
-		// TITRE
+		// Nom PJ
 		gbcCharacter.gridy = 0;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
@@ -44,7 +43,7 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		JLabel jpPerso = new JLabel("Nom : " + pj.getName());
-		jpPerso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		jpPerso.setBorder(BorderFactory.createLineBorder(Color.yellow));
 		jpPerso.setForeground(Color.white);
 		this.add(jpPerso, gbcCharacter);
 
@@ -55,7 +54,9 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("--- Social ---"), gbcCharacter);
+		JLabel titleSocial = new JLabel("--- Social ---");
+		titleSocial.setForeground(Color.green);
+		this.add(titleSocial, gbcCharacter);
 
 		// Race
 		gbcCharacter.gridy = 2;
@@ -64,8 +65,9 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Race : " + pj.getSocial().getRace() + " (Sexe : " + pj.getSocial().getSexe() + ")"),
-				gbcCharacter);
+		JLabel jlRace = new JLabel("Race : " + pj.getSocial().getRace() + " (Sexe : " + pj.getSocial().getSexe() + ")");
+		jlRace.setForeground(Color.white);
+		this.add(jlRace, gbcCharacter);
 
 		gbcCharacter.gridy = 3;
 		gbcCharacter.gridheight = 1;
@@ -73,7 +75,9 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Classe : " + pj.getSocial().getClasse()), gbcCharacter);
+		JLabel jlJob = new JLabel("Classe : " + pj.getSocial().getClasse());
+		jlJob.setForeground(Color.white);
+		this.add(jlJob, gbcCharacter);
 
 		gbcCharacter.gridy = 4;
 		gbcCharacter.gridheight = 1;
@@ -81,9 +85,10 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Background : " + pj.getSocial().getBackground()), gbcCharacter);
+		JLabel jlBackGrd = new JLabel("Background : " + pj.getSocial().getBackground());
+		jlBackGrd.setForeground(Color.white);
+		this.add(jlBackGrd, gbcCharacter);
 
-		// COLONNE GAUCHE
 		// Vital
 		gbcCharacter.gridy = 5;
 		gbcCharacter.gridheight = 1;
@@ -91,7 +96,9 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 2;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("--- Vitaux ---"), gbcCharacter);
+		JLabel titleVital = new JLabel("--- Vitaux ---");
+		titleVital.setForeground(Color.green);
+		this.add(titleVital, gbcCharacter);
 
 		// PdVs
 		gbcCharacter.gridy = 6;
@@ -115,7 +122,9 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Vie : " + pj.getVital().getVie()), gbcCharacter);
+		JLabel jlLife = new JLabel("Vie : " + pj.getVital().getVie());
+		jlLife.setForeground(Color.white);
+		this.add(jlLife, gbcCharacter);
 
 		// Mana
 		gbcCharacter.gridy = 7;
@@ -139,7 +148,9 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Mana : " + pj.getVital().getMana()), gbcCharacter);
+		JLabel jlMana = new JLabel("Mana : " + pj.getVital().getMana());
+		jlMana.setForeground(Color.white);
+		this.add(jlMana, gbcCharacter);
 
 		// Faim
 		gbcCharacter.gridy = 8;
@@ -163,7 +174,9 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Faim : " + pj.getVital().getFaim()), gbcCharacter);
+		JLabel jlHungry = new JLabel("Faim : " + pj.getVital().getFaim());
+		jlHungry.setForeground(Color.white);
+		this.add(jlHungry, gbcCharacter);
 
 		// Fatigue
 		gbcCharacter.gridy = 9;
@@ -187,17 +200,21 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Fatigue : " + pj.getVital().getFatigue()), gbcCharacter);
+		JLabel jlTired = new JLabel("Fatigue : " + pj.getVital().getFatigue());
+		jlTired.setForeground(Color.white);
+		this.add(jlTired, gbcCharacter);
 
-		// COLONNE DROITE
-		// Caractéristiques
+		// CARACTERISTIQUES
 		gbcCharacter.gridy = 10;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("--- Caractéristiques ---"), gbcCharacter);
+		JLabel titleCarac = new JLabel("--- Caractéristiques ---");
+		titleCarac.setForeground(Color.green);
+		this.add(titleCarac, gbcCharacter);
+		
 		// FOR
 		gbcCharacter.gridy = 11;
 		gbcCharacter.gridheight = 1;
