@@ -294,5 +294,27 @@ public class JPanCharacter extends JPanel {
 
 			}
 		});
+		
+		// Niveau
+		gbcCharacter.gridy = 16;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		JLabel jlLevel = new JLabel("Niveau : " + pj.getXp().getLvl());
+		jlLevel.setForeground(Color.magenta);
+		this.add(jlLevel, gbcCharacter);
+		
+		// Expérience
+		gbcCharacter.gridy = 17;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		JLabel jlXp = new JLabel("Experience : " + pj.getXp().getXp());
+		jlXp.setForeground(Color.magenta);
+		this.add(jlXp, gbcCharacter);
 	}
 }
