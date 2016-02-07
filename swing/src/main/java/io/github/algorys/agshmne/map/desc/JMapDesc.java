@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.game.history;
+package io.github.algorys.agshmne.map.desc;
 
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
@@ -8,28 +8,32 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.map.JMapTitle;
-import io.github.algorys.agshmne.map.city.JCivilized;
 
 @SuppressWarnings("serial")
-public class JDescGame extends JPanel {
+public class JMapDesc extends JPanel {
 	private JMapTitle titleHistory;
-	private JCivilized civilized;
+	private JMapCiv civilized;
+	private JMapXY xy;
 
-	public JDescGame(Player pj) {
-		this.setPreferredSize(new Dimension(710, 100));
+	public JMapDesc(Player pj) {
+		this.setPreferredSize(new Dimension(710, 150));
 		BoxLayout blSouth = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(blSouth);
 
 		// Description Région
 		titleHistory = new JMapTitle(pj);
 		titleHistory.setTitle("Region : " + pj.getTile().getDesc());
+		
+		// Position
+		xy = new JMapXY(pj);
+		xy.setDescPosition(pj.getPosition());
 
 		// Région Civilisée
-		this.civilized = new JCivilized(pj);
+		this.civilized = new JMapCiv(pj);
 		this.civilized.setCivilized(pj.getTile().isCivilized());
 
 		this.add(titleHistory);
+		this.add(xy);
 		this.add(civilized);
 
 		pj.addPropertyChangeListener(Player.PROPERTY_POSITION, new PropertyChangeListener() {
@@ -39,6 +43,7 @@ public class JDescGame extends JPanel {
 					Player pj = (Player) evt.getSource();
 					titleHistory.setTitle("Region : " + pj.getTile().getDesc());
 					civilized.setCivilized(pj.getTile().isCivilized());
+					xy.setDescPosition(pj.getPosition());
 				}
 			}
 		});

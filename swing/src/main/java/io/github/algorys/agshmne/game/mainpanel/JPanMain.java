@@ -14,9 +14,9 @@ import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.game.character.JPanSkill;
 import io.github.algorys.agshmne.game.character.equipment.JTabEquip;
 import io.github.algorys.agshmne.game.character.inventory.JPanInventory;
-import io.github.algorys.agshmne.game.history.JDescGame;
 import io.github.algorys.agshmne.map.JMapRegion;
 import io.github.algorys.agshmne.map.city.JPanCity;
+import io.github.algorys.agshmne.map.desc.JMapDesc;
 
 @SuppressWarnings("serial")
 public class JPanMain extends JTabbedPane implements PropertyChangeListener {
@@ -37,7 +37,7 @@ public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 		// Carte
 		jregion.getPersonnage().addPropertyChangeListener(Player.PROPERTY_POSITION, this);
 		jpMap.setBackground(Color.BLACK);
-		JDescGame descGame = new JDescGame(jregion.getPersonnage());
+		JMapDesc descGame = new JMapDesc(jregion.getPersonnage());
 		jpMap.add(descGame);
 		jpMap.add(jregion);
 		Icon mapIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("map.png"));

@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.map.city;
+package io.github.algorys.agshmne.map.desc;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,11 +9,11 @@ import javax.swing.JPanel;
 import io.github.algorys.agshmne.character.player.Player;
 
 @SuppressWarnings("serial")
-public class JCivilized extends JPanel{
+public class JMapCiv extends JPanel{
 	JLabel jlCiv = new JLabel("Aucune civilisation connue...");
 	boolean civilized;
 	
-	public JCivilized(Player pj){
+	public JMapCiv(Player pj){
 		this.setPreferredSize(new Dimension(700, 20));
 		this.setBackground(Color.black);
 		jlCiv.setForeground(Color.green);

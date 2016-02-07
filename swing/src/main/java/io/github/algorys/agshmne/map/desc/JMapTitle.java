@@ -1,7 +1,8 @@
-package io.github.algorys.agshmne.map;
+package io.github.algorys.agshmne.map.desc;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,6 +18,7 @@ public class JMapTitle extends JPanel {
 		this.setBackground(Color.black);
 		title = new JLabel("[REGION] - " + pj.getTile().getType());
 		title.setForeground(Color.magenta);
+		title.setFont(new Font("URW Chancery L", Font.PLAIN,35));
 		this.add(title);
 	}
 
