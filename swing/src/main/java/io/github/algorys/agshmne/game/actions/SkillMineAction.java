@@ -27,7 +27,6 @@ public class SkillMineAction extends AbstractAction implements PropertyChangeLis
 	public void actionPerformed(ActionEvent mine) {
 		int mineLevel = pj.getSkills().getSkillLevel(SkillType.miner);
 		if (SkillTool.Dice(mineLevel, 10)) {
-			System.out.println("Minerai trouvé !");
 			pj.getInventory().addItem(new StackableItem("Pierre", 1, 5));
 		} else {
 			System.out.println("Rien d'exploitable");

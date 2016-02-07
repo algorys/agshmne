@@ -7,6 +7,8 @@ import java.beans.PropertyChangeListener;
 import javax.swing.AbstractAction;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.skills.SkillTool;
+import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.items.stackable.StackableItem;
 import io.github.algorys.agshmne.map.tile.TileType;
 
@@ -23,8 +25,12 @@ final class SkillCutAction extends AbstractAction implements PropertyChangeListe
 
 	@Override
 	public void actionPerformed(ActionEvent wood) {
-		System.out.println("Bois coupé !");
-		pj.getInventory().addItem(new StackableItem("Pin", 1, 5));
+		int mineLevel = pj.getSkills().getSkillLevel(SkillType.bucheron);
+		if (SkillTool.Dice(mineLevel, 10)) {
+			pj.getInventory().addItem(new StackableItem("Pin", 1, 5));
+		} else {
+			System.out.println("Rien d'exploitable");
+		}
 	}
 
 	@Override
