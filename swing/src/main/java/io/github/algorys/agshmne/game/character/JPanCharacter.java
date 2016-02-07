@@ -2,6 +2,7 @@ package io.github.algorys.agshmne.game.character;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -11,7 +12,6 @@ import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -41,9 +41,9 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
-		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jpPerso = new JLabel("Nom : " + pj.getName());
-		jpPerso.setBorder(BorderFactory.createLineBorder(Color.yellow));
+		gbcCharacter.fill = GridBagConstraints.HORIZONTAL;
+		JLabel jpPerso = new JLabel(pj.getName());
+		jpPerso.setFont(new Font("URW Chancery L", Font.PLAIN,40));
 		jpPerso.setForeground(Color.white);
 		this.add(jpPerso, gbcCharacter);
 
@@ -54,7 +54,8 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel titleSocial = new JLabel("--- Social ---");
+		JLabel titleSocial = new JLabel("Social");
+		titleSocial.setFont(new Font("URW Chancery L", Font.PLAIN,30));
 		titleSocial.setForeground(Color.green);
 		this.add(titleSocial, gbcCharacter);
 
@@ -63,8 +64,8 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.CENTER;
-		gbcCharacter.fill = GridBagConstraints.NONE;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.HORIZONTAL;
 		JLabel jlRace = new JLabel("Race : " + pj.getSocial().getRace() + " (Sexe : " + pj.getSocial().getSexe() + ")");
 		jlRace.setForeground(Color.white);
 		this.add(jlRace, gbcCharacter);
@@ -73,7 +74,7 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		JLabel jlJob = new JLabel("Classe : " + pj.getSocial().getClasse());
 		jlJob.setForeground(Color.white);
@@ -83,7 +84,7 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		JLabel jlBackGrd = new JLabel("Background : " + pj.getSocial().getBackground());
 		jlBackGrd.setForeground(Color.white);
@@ -93,10 +94,11 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridy = 5;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 2;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel titleVital = new JLabel("--- Vitaux ---");
+		JLabel titleVital = new JLabel("Vitaux");
+		titleVital.setFont(new Font("URW Chancery L", Font.PLAIN,30));
 		titleVital.setForeground(Color.green);
 		this.add(titleVital, gbcCharacter);
 
@@ -211,7 +213,8 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel titleCarac = new JLabel("--- Caractéristiques ---");
+		JLabel titleCarac = new JLabel("Caractéristiques");
+		titleCarac.setFont(new Font("URW Chancery L", Font.PLAIN,30));
 		titleCarac.setForeground(Color.green);
 		this.add(titleCarac, gbcCharacter);
 		
@@ -220,9 +223,10 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		jlFor = new JLabel("FOR : " + pj.getCurrentAttributes().getFOR());
+		jlFor = new JLabel("<html><body>FOR : " +pj.getAttributes().getFOR() +
+				" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getFOR() + "</span>)</body></html>");
 		jlFor.setForeground(Color.white);
 		this.add(jlFor, gbcCharacter);
 		// DEX
@@ -230,9 +234,10 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		jlDex = new JLabel("DEX : " + pj.getCurrentAttributes().getDEX());
+		jlDex = new JLabel("<html><body>DEX : " +pj.getAttributes().getDEX() +
+				" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getDEX() + "</span>)</body></html>");
 		jlDex.setForeground(Color.white);
 		this.add(jlDex, gbcCharacter);
 		// CON
@@ -240,9 +245,10 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		jlCon = new JLabel("CON : " + pj.getCurrentAttributes().getCON());
+		jlCon = new JLabel("<html><body>CON : " +pj.getAttributes().getCON() +
+				" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getCON() + "</span>)</body></html>");
 		jlCon.setForeground(Color.white);
 		this.add(jlCon, gbcCharacter);
 		// INT
@@ -250,9 +256,10 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		jlInt = new JLabel("INT : " + pj.getCurrentAttributes().getINT());
+		jlInt = new JLabel("<html><body>INT : " +pj.getAttributes().getINT() +
+				" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getINT() + "</span>)</body></html>");
 		jlInt.setForeground(Color.white);
 		this.add(jlInt, gbcCharacter);
 		// CHA
@@ -260,9 +267,10 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		jlCha = new JLabel("CHA : " + pj.getCurrentAttributes().getCHA());
+		jlCha = new JLabel("<html><body>CHA : " +pj.getAttributes().getCHA() +
+				" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getCHA() + "</span>)</body></html>");
 		jlCha.setForeground(Color.white);
 		this.add(jlCha, gbcCharacter);
 
@@ -272,11 +280,16 @@ public class JPanCharacter extends JPanel {
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getSource() instanceof Player) {
 					Player pj = (Player) evt.getSource();
-					jlFor.setText("FOR : " + pj.getCurrentAttributes().getFOR());
-					jlDex.setText("DEX : " + pj.getCurrentAttributes().getDEX());
-					jlCon.setText("CON : " + pj.getCurrentAttributes().getCON());
-					jlInt.setText("INT : " + pj.getCurrentAttributes().getINT());
-					jlCha.setText("CHA : " + pj.getCurrentAttributes().getCHA());
+					jlFor.setText("<html><body>FOR : " +pj.getAttributes().getFOR() +
+							" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getFOR() + "</span>)</body></html>");
+					jlDex.setText("<html><body>DEX : " +pj.getAttributes().getDEX() +
+							" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getDEX() + "</span>)</body></html>");
+					jlCon.setText("<html><body>CON : " +pj.getAttributes().getCON() +
+							" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getCON() + "</span>)</body></html>");
+					jlInt.setText("<html><body>INT : " +pj.getAttributes().getINT() +
+							" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getINT() + "</span>)</body></html>");
+					jlCha.setText("<html><body>CHA : " +pj.getAttributes().getCHA() +
+							" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getCHA() + "</span>)</body></html>");
 				}
 
 			}
