@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.game.character.JTabCharacter;
 import io.github.algorys.agshmne.game.character.JTabComp;
 import io.github.algorys.agshmne.game.character.equipment.JTabEquip;
 import io.github.algorys.agshmne.game.character.inventory.JTabInv;
@@ -23,19 +22,17 @@ import io.github.algorys.agshmne.map.city.JPanCity;
 public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 
 	private JPanel jpMap = new JPanel();
-	private JTabCharacter jpPerso;
 	private JTabComp jpComp;
 	private JTabInv jpInv;
 	private JTabEquip jpEquip;
 	private JPanel jpMagie = new JPanel();
 	private JPanel jpQuest = new JPanel();
-	//private JPanel jpCity = new JPanel();
 	private JMapRegion jregion;
 
 	public JPanMain(final JMapRegion jregion) {
 		this.jregion = jregion;
 		this.setTabPlacement(JTabbedPane.TOP);
-		this.setPreferredSize(new Dimension(1400, 1000));
+		this.setPreferredSize(new Dimension(1100, 1000));
 		
 		// Carte
 		jregion.getPersonnage().addPropertyChangeListener(Player.PROPERTY_POSITION, this);
@@ -45,10 +42,6 @@ public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 		jpMap.add(jregion);
 		Icon mapIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("map.png"));
 		this.addTab("Carte", mapIcon, jpMap, "Carte");
-		// Personnage
-		Icon persoIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("perso.png"));
-		jpPerso = new JTabCharacter(jregion.getPersonnage());
-		this.addTab("Personnage", persoIcon, jpPerso, "Personnage");
 		// Compétences
 		Icon compIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("comp.png"));
 		jpComp = new JTabComp(jregion.getPersonnage().getSkills());
@@ -72,19 +65,18 @@ public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 		JPanCity jpCity = new JPanCity(jregion.getPersonnage());
 		this.addTab("Ville", cityIcon, jpCity, "Ville");
 		if (jregion.getPersonnage().getTile().isCivilized()) {
-			this.setEnabledAt(7, true);
+			this.setEnabledAt(6, true);
 		} else {
-			this.setEnabledAt(7, false);
+			this.setEnabledAt(6, false);
 		}
-
 	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
 		if (jregion.getPersonnage().getTile().isCivilized()) {
-			this.setEnabledAt(7, true);
+			this.setEnabledAt(6, true);
 		} else {
-			this.setEnabledAt(7, false);
+			this.setEnabledAt(6, false);
 		}
 
 	}

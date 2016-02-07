@@ -1,7 +1,7 @@
 package io.github.algorys.agshmne.game.character;
 
 import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -21,15 +21,16 @@ import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
-public class JTabCharacter extends JPanel {
+public class JPanCharacter extends JPanel {
 	private JLabel jlFor;
 	private JLabel jlDex;
 	private JLabel jlCon;
 	private JLabel jlInt;
 	private JLabel jlCha;
-
-	public JTabCharacter(Player pj) {
-		// GidBag Layout
+	
+	public JPanCharacter(Player pj) {
+		this.setPreferredSize(new Dimension(300, 1000));
+		this.setBackground(Color.black);
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcCharacter = new GridBagConstraints();
 		// Ajuste la taille du GridBag
@@ -42,11 +43,12 @@ public class JTabCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jpPerso = new JLabel("### PERSONNAGE ###");
+		JLabel jpPerso = new JLabel("Nom : " + pj.getName());
 		jpPerso.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		jpPerso.setForeground(Color.white);
 		this.add(jpPerso, gbcCharacter);
 
-		// SOCIAL TODO Définir accesseur pour Social
+		// SOCIAL
 		gbcCharacter.gridy = 1;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
@@ -189,57 +191,62 @@ public class JTabCharacter extends JPanel {
 
 		// COLONNE DROITE
 		// Caractéristiques
-		gbcCharacter.gridy = 5;
+		gbcCharacter.gridy = 10;
 		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("--- Caractéristiques ---"), gbcCharacter);
 		// FOR
-		gbcCharacter.gridy = 6;
+		gbcCharacter.gridy = 11;
 		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		jlFor = new JLabel("FOR : " + pj.getCurrentAttributes().getFOR());
+		jlFor.setForeground(Color.white);
 		this.add(jlFor, gbcCharacter);
 		// DEX
-		gbcCharacter.gridy = 7;
+		gbcCharacter.gridy = 12;
 		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		jlDex = new JLabel("DEX : " + pj.getCurrentAttributes().getDEX());
+		jlDex.setForeground(Color.white);
 		this.add(jlDex, gbcCharacter);
 		// CON
-		gbcCharacter.gridy = 8;
+		gbcCharacter.gridy = 13;
 		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		jlCon = new JLabel("CON : " + pj.getCurrentAttributes().getCON());
+		jlCon.setForeground(Color.white);
 		this.add(jlCon, gbcCharacter);
 		// INT
-		gbcCharacter.gridy = 9;
+		gbcCharacter.gridy = 14;
 		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		jlInt = new JLabel("INT : " + pj.getCurrentAttributes().getINT());
+		jlInt.setForeground(Color.white);
 		this.add(jlInt, gbcCharacter);
 		// CHA
-		gbcCharacter.gridy = 10;
+		gbcCharacter.gridy = 15;
 		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.CENTER;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		jlCha = new JLabel("CHA : " + pj.getCurrentAttributes().getCHA());
+		jlCha.setForeground(Color.white);
 		this.add(jlCha, gbcCharacter);
 
 		pj.addPropertyChangeListener(Character.PROPERTY_CURRENT_ATTRIBUTES, new PropertyChangeListener() {
@@ -257,20 +264,5 @@ public class JTabCharacter extends JPanel {
 
 			}
 		});
-
 	}
-
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		try {
-			Image img = ImageIO.read(JTile.class.getClassLoader().getResource("parchemin.png"));
-			Image imgBack = ImageIO.read(JTile.class.getClassLoader().getResource("table.png"));
-			g.drawImage(imgBack, 0, 0, this.getWidth(), this.getHeight(), this);
-			g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 }

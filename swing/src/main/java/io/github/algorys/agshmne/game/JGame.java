@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.game.character.JPanCharacter;
 import io.github.algorys.agshmne.game.mainpanel.JPanMain;
 import io.github.algorys.agshmne.game.mainpanel.JPanRight;
 import io.github.algorys.agshmne.map.JMapRegion;
@@ -30,10 +31,13 @@ public class JGame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
+		// JPanCharacter : Personnage
+		JPanCharacter jpLeft = new JPanCharacter(pj);
+		
 		//JPanMain : Carte, Inventaire, Equipement, Magie, Quêtes, Villes, ...
 		JPanMain mainPan = new JPanMain(this.jregion);
 		
-		//JPanLeft : Objets à terres et Actions générales
+		//JPanRight : Objets à terres et Actions générales
 		JPanRight tabbedRight = new JPanRight(pj);
 		
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
@@ -70,7 +74,15 @@ public class JGame extends JFrame {
 		gbcGame.gridy = 0;
 		gbcGame.gridheight = 1;
 		gbcGame.gridx = 0;
-		gbcGame.gridwidth = 3;
+		gbcGame.gridwidth = 1;
+		gbcGame.anchor = GridBagConstraints.CENTER;
+		gbcGame.fill = GridBagConstraints.NONE;
+		contentPane.add(jpLeft);
+		
+		gbcGame.gridy = 0;
+		gbcGame.gridheight = 1;
+		gbcGame.gridx = 1;
+		gbcGame.gridwidth = 2;
 		gbcGame.anchor = GridBagConstraints.CENTER;
 		gbcGame.fill = GridBagConstraints.NONE;
 		contentPane.add(mainPan, gbcGame);
