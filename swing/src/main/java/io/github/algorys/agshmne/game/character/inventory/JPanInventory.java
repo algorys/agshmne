@@ -20,12 +20,12 @@ import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.IEquipableItem;
 
 @SuppressWarnings("serial")
-public class JTabInv extends JPanel {
+public class JPanInventory extends JPanel {
 	private Inventory inv;
 	private Player pj;
 	private JList<Item> invItems;
 
-	public JTabInv(Player pj) {
+	public JPanInventory(Player pj) {
 		this.pj = pj;
 		this.inv = pj.getInventory();
 		// Jlist items
@@ -54,15 +54,15 @@ public class JTabInv extends JPanel {
 							if(selectedItem instanceof IEquipableItem) {
 								IEquipableItem itemToGround = (IEquipableItem) selectedItem;
 								if(itemToGround.isEquipped()){
-									JOptionPane.showMessageDialog(JTabInv.this,
+									JOptionPane.showMessageDialog(JPanInventory.this,
 											"Vous devez d'abord déséquipper " + itemToGround);
 								} else {
 									inv.removeItem(selectedItem);
-									JTabInv.this.pj.getTile().addItem(selectedItem);
+									JPanInventory.this.pj.getTile().addItem(selectedItem);
 								}
 							} else {
 								inv.removeItem(selectedItem);
-								JTabInv.this.pj.getTile().addItem(selectedItem);
+								JPanInventory.this.pj.getTile().addItem(selectedItem);
 							}
 						}
 					});
@@ -79,7 +79,7 @@ public class JTabInv extends JPanel {
 									Item selectedItem = invItems.getModel().getElementAt(index);
 									if (selectedItem instanceof IEquipableItem) {
 										IEquipableItem itemToUnequip = (IEquipableItem) selectedItem;
-										JTabInv.this.pj.unequip(itemToUnequip);
+										JPanInventory.this.pj.unequip(itemToUnequip);
 										invItems.invalidate();
 										invItems.repaint();
 									}
@@ -93,7 +93,7 @@ public class JTabInv extends JPanel {
 									Item selectedItem = invItems.getModel().getElementAt(index);
 									if (selectedItem instanceof IEquipableItem) {
 										IEquipableItem itemToEquip = (IEquipableItem) selectedItem;
-										JTabInv.this.pj.equip(itemToEquip);
+										JPanInventory.this.pj.equip(itemToEquip);
 										invItems.invalidate();
 										invItems.repaint();
 									}

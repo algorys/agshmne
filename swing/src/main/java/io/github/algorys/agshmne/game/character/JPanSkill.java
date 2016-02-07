@@ -16,10 +16,10 @@ import io.github.algorys.agshmne.character.player.skills.factory.SkillFactory;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
-public class JTabComp extends JPanel {
+public class JPanSkill extends JPanel {
 	//private SkillFactory skillFact;
 	
-	public JTabComp(SkillFactory skillFact) {
+	public JPanSkill(SkillFactory skillFact) {
 		//this.skillFact = skillFact;
 		// GidBag Layout
 		this.setLayout(new GridBagLayout());

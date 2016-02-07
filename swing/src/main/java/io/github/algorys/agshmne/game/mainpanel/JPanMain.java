@@ -11,9 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.game.character.JTabComp;
+import io.github.algorys.agshmne.game.character.JPanSkill;
 import io.github.algorys.agshmne.game.character.equipment.JTabEquip;
-import io.github.algorys.agshmne.game.character.inventory.JTabInv;
+import io.github.algorys.agshmne.game.character.inventory.JPanInventory;
 import io.github.algorys.agshmne.game.history.JDescGame;
 import io.github.algorys.agshmne.map.JMapRegion;
 import io.github.algorys.agshmne.map.city.JPanCity;
@@ -22,8 +22,8 @@ import io.github.algorys.agshmne.map.city.JPanCity;
 public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 
 	private JPanel jpMap = new JPanel();
-	private JTabComp jpComp;
-	private JTabInv jpInv;
+	private JPanSkill jpComp;
+	private JPanInventory jpInv;
 	private JTabEquip jpEquip;
 	private JPanel jpMagie = new JPanel();
 	private JPanel jpQuest = new JPanel();
@@ -44,11 +44,11 @@ public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 		this.addTab("Carte", mapIcon, jpMap, "Carte");
 		// Compétences
 		Icon compIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("comp.png"));
-		jpComp = new JTabComp(jregion.getPersonnage().getSkills());
+		jpComp = new JPanSkill(jregion.getPersonnage().getSkills());
 		this.addTab("Compétences", compIcon, jpComp, "Compétences");
 		// Inventaire
 		Icon backpackIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("backpack.png"));
-		jpInv = new JTabInv(jregion.getPersonnage());
+		jpInv = new JPanInventory(jregion.getPersonnage());
 		this.addTab("Inventaire", backpackIcon, jpInv, "Inventaire");
 		// Equipement
 		Icon equipIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("equip.png"));
