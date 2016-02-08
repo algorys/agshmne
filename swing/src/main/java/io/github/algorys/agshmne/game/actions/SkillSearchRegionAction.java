@@ -15,8 +15,8 @@ import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.events.IAdventure;
 import io.github.algorys.agshmne.events.IAdventureFactory;
 import io.github.algorys.agshmne.events.fight.Fight;
+import io.github.algorys.agshmne.events.fight.FightFactory;
 import io.github.algorys.agshmne.events.locality.Locality;
-import io.github.algorys.agshmne.events.locality.LocalityFactory;
 import io.github.algorys.agshmne.events.quest.IQuest;
 import io.github.algorys.agshmne.game.fight.JFightDialog;
 import io.github.algorys.agshmne.game.locality.JLocalityDialog;
@@ -25,7 +25,7 @@ import io.github.algorys.agshmne.game.quest.JQuestDialog;
 @SuppressWarnings("serial")
 public class SkillSearchRegionAction extends AbstractAction implements PropertyChangeListener {
 	private Player pj;
-	private IAdventureFactory adventureFactory = new LocalityFactory();
+	private IAdventureFactory adventureFactory = new FightFactory();
 
 	public SkillSearchRegionAction(Player pj) {
 		super("Fouiller la Région");

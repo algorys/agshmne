@@ -19,6 +19,7 @@ import javax.swing.JProgressBar;
 import javax.swing.border.BevelBorder;
 
 import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.tile.JTile;
 
@@ -120,15 +121,35 @@ public class JPanCharacter extends JPanel {
 			e.printStackTrace();
 		}
 		this.add(jIcon, gbcCharacter);
+
 		gbcCharacter.gridy = 6;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 1;
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlLife = new JLabel("Vie : " + pj.getVital().getVie());
+		JLabel jlLifeTitle = new JLabel("Vie : ");
+		jlLifeTitle.setForeground(Color.white);
+		this.add(jlLifeTitle, gbcCharacter);
+
+		gbcCharacter.gridy = 6;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		final JLabel jlLife = new JLabel(""+pj.getVital().getVie());
 		jlLife.setForeground(Color.white);
 		this.add(jlLife, gbcCharacter);
+
+		pj.getVital().addPropertyChangeListener(Vital.PROPERTY_VIE, new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				if (evt.getNewValue() instanceof Integer) {
+					jlLife.setText(evt.getNewValue().toString());
+				}
+			}
+		});
 
 		// Mana
 		gbcCharacter.gridy = 7;
