@@ -19,8 +19,6 @@ public class ShopRenderer implements ListCellRenderer<Item> {
 
 	public ShopRenderer(ListCellRenderer<Item> other) {
 		this.other = other;
-		jpRenderer.setMinimumSize(new Dimension(290, 15));
-		jpRenderer.setPreferredSize(new Dimension(290, 15));
 		jlPrice.setBackground(Color.black);
 		jlPrice.setForeground(new Color(255, 247, 121));
 		jlPrice.setHorizontalAlignment(JLabel.CENTER);

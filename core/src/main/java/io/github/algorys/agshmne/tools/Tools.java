@@ -12,6 +12,7 @@ public class Tools {
 		return dice;
 	}
 
+	@SafeVarargs
 	public static <T> T random(T... possibles) {
 		return possibles[dice(possibles.length)];
 	}

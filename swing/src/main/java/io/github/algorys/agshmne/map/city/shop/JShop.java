@@ -23,7 +23,6 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
-import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -43,20 +42,6 @@ public class JShop extends JPanel {
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcShop = new GridBagConstraints();
 		gbcShop.insets = new Insets(5, 5, 5, 5);
-		final JLabel gold = new JLabel("Or restant : " + pj.getInventory().getGold());
-		// Margin text
-		Border paddingBorder = BorderFactory.createEmptyBorder(10,10,10,10);
-		gold.setBorder(BorderFactory.createCompoundBorder(null,paddingBorder));
-		gold.setPreferredSize(new Dimension(400, 50));
-		gold.setBackground(Color.black);
-		gold.setForeground(Color.yellow);
-		gold.setOpaque(true);
-		final JLabel output = new JLabel("Aucun objet sélectionné");
-		output.setBorder(BorderFactory.createCompoundBorder(null,paddingBorder));
-		output.setPreferredSize(new Dimension(400, 50));
-		output.setBackground(Color.black);
-		output.setForeground(Color.green);
-		output.setOpaque(true);
 
 		// TITRE
 		gbcShop.gridy = 0;
@@ -65,9 +50,9 @@ public class JShop extends JPanel {
 		gbcShop.gridwidth = 4;
 		gbcShop.anchor = GridBagConstraints.CENTER;
 		gbcShop.fill = GridBagConstraints.NONE;
-		JLabel jpPerso = new JLabel("### MAGASIN ###");
-		jpPerso.setBorder(BorderFactory.createLineBorder(Color.cyan));
-		this.add(jpPerso, gbcShop);
+		JLabel jlTitle = new JLabel("### MAGASIN ###");
+		jlTitle.setBorder(BorderFactory.createLineBorder(Color.cyan));
+		this.add(jlTitle, gbcShop);
 
 		// Nom Vendeur
 		gbcShop.gridy = 1;
@@ -77,6 +62,7 @@ public class JShop extends JPanel {
 		gbcShop.anchor = GridBagConstraints.CENTER;
 		gbcShop.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Commerçant : Robert"), gbcShop);
+
 		// Label Prix
 		gbcShop.gridy = 1;
 		gbcShop.gridheight = 1;
@@ -85,39 +71,161 @@ public class JShop extends JPanel {
 		gbcShop.anchor = GridBagConstraints.EAST;
 		gbcShop.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Prix"), gbcShop);
+
 		// JList SHOP
 		gbcShop.gridy = 2;
 		gbcShop.gridheight = 1;
 		gbcShop.gridx = 0;
 		gbcShop.gridwidth = 2;
 		gbcShop.anchor = GridBagConstraints.EAST;
-		gbcShop.fill = GridBagConstraints.NONE;
+		gbcShop.fill = GridBagConstraints.BOTH;
+		gbcShop.weightx = 1;
+		gbcShop.weighty = 1;
+
 		final JList<Item> shopItem = new JList<Item>(new InventoryListModel(shop.getInventory()));
-		ShopRenderer shopItemRenderer = new ShopRenderer(new InvRenderer());
-		shopItem.setCellRenderer(shopItemRenderer);
+		shopItem.setCellRenderer(new ShopRenderer(new InvRenderer()));
 		shopItem.setBackground(Color.BLACK);
 		shopItem.setForeground(Color.green);
 		shopItem.setVisibleRowCount(10);
 		shopItem.setEnabled(true);
-		JScrollPane scrollShop = new JScrollPane(shopItem);
-		scrollShop.setPreferredSize(new Dimension(400, 300));
-		this.add(scrollShop, gbcShop);
-		shopItem.addListSelectionListener(new ListSelectionListener() {
-			
+		JScrollPane shopScroll = new JScrollPane(shopItem);
+		this.add(shopScroll, gbcShop);
+
+		// Nom Pj
+		gbcShop.gridy = 1;
+		gbcShop.gridheight = 1;
+		gbcShop.gridx = 2;
+		gbcShop.gridwidth = 2;
+		gbcShop.anchor = GridBagConstraints.CENTER;
+		gbcShop.fill = GridBagConstraints.NONE;
+		gbcShop.weightx = 0;
+		gbcShop.weighty = 0;
+		this.add(new JLabel("Acheteur : " + pj.getName()), gbcShop);
+
+		// Label Prix
+		gbcShop.gridy = 1;
+		gbcShop.gridheight = 1;
+		gbcShop.gridx = 3;
+		gbcShop.gridwidth = 1;
+		gbcShop.anchor = GridBagConstraints.EAST;
+		gbcShop.fill = GridBagConstraints.NONE;
+		this.add(new JLabel("Prix"), gbcShop);
+
+		// JList SHOP
+		gbcShop.gridy = 2;
+		gbcShop.gridheight = 1;
+		gbcShop.gridx = 2;
+		gbcShop.gridwidth = 2;
+		gbcShop.anchor = GridBagConstraints.WEST;
+		gbcShop.anchor = GridBagConstraints.EAST;
+		gbcShop.fill = GridBagConstraints.BOTH;
+		gbcShop.weightx = 1;
+		gbcShop.weighty = 1;
+		final JList<Item> pjItem = new JList<Item>(new InventoryListModel(pj.getInventory()));
+		pjItem.setCellRenderer(new ShopRenderer(new InvRenderer()));
+		pjItem.setBackground(Color.BLACK);
+		pjItem.setForeground(Color.green);
+		pjItem.setVisibleRowCount(10);
+		pjItem.setEnabled(true);
+		this.add(new JScrollPane(pjItem), gbcShop);
+
+		// Argent du Joueur
+		gbcShop.gridy = 3;
+		gbcShop.gridheight = 1;
+		gbcShop.gridx = 0;
+		gbcShop.gridwidth = 2;
+		gbcShop.anchor = GridBagConstraints.CENTER;
+		gbcShop.fill = GridBagConstraints.BOTH;
+		gbcShop.weightx = 0;
+		gbcShop.weighty = 0;
+		final JLabel gold = new JLabel("Or restant : " + pj.getInventory().getGold());
+		gold.setPreferredSize(new Dimension(400, 50));
+		gold.setBackground(Color.black);
+		gold.setForeground(Color.yellow);
+		gold.setOpaque(true);
+		this.add(gold, gbcShop);
+
+		// Détail objet
+		gbcShop.gridy = 3;
+		gbcShop.gridheight = 1;
+		gbcShop.gridx = 2;
+		gbcShop.gridwidth = 2;
+		gbcShop.anchor = GridBagConstraints.CENTER;
+		gbcShop.fill = GridBagConstraints.HORIZONTAL;
+		final JLabel output = new JLabel("Aucun objet sélectionné");
+		output.setPreferredSize(new Dimension(400, 50));
+		output.setBackground(Color.black);
+		output.setForeground(Color.green);
+		output.setOpaque(true);
+		this.add(output, gbcShop);
+
+		ListSelectionListener selectionListener = new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				if(e.getValueIsAdjusting()){
-					if(shopItem.getSelectedValue() instanceof IEquipableItem) {
-						IEquipableItem equipItem = (IEquipableItem) shopItem.getSelectedValue();
-						String attribute = getStringAttribute(equipItem.getAttribute());
-						output.setText("<html><body>Nom : " + equipItem.getName() + 
-								"<br>Bonus : " + attribute +
-								"<br>Puissance : "+equipItem.getPuissance()+"</body></html>");
-					} else {
-						output.setText("Détails objet : " + shopItem.getSelectedValue().getName());
+				if(e.getSource() instanceof JList) {
+					@SuppressWarnings("unchecked")
+					JList<Item> currentList = (JList<Item>) e.getSource();
+					if (!e.getValueIsAdjusting()) {
+						if (currentList.getSelectedValue() instanceof IEquipableItem) {
+							IEquipableItem equipItem = (IEquipableItem) currentList.getSelectedValue();
+							String attribute = getStringAttribute(equipItem.getAttribute());
+							output.setText("<html><body>Nom : " + equipItem.getName() + "<br>Bonus : " + attribute
+									+ "<br>Puissance : " + equipItem.getPuissance() + "</body></html>");
+						} else {
+							output.setText("Nom : " + currentList.getSelectedValue().getName());
+						}
 					}
 				}
-				
+			}
+		};
+		shopItem.addListSelectionListener(selectionListener);
+		pjItem.addListSelectionListener(selectionListener);
+
+		pjItem.addMouseListener(new MouseAdapter() {
+			public void mousePressed(final MouseEvent me) {
+				if (me.isPopupTrigger()) {
+					final int index = pjItem.locationToIndex(me.getPoint());
+					JPopupMenu menu = new JPopupMenu();
+					JMenuItem sell = new JMenuItem("Vendre");
+					sell.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							Item selectedItem = pjItem.getModel().getElementAt(index);
+
+							if (selectedItem instanceof IStackableItem) {
+								IStackableItem stackableItem = (IStackableItem) selectedItem;
+								JDialog jdCount = new JDialog(SwingUtilities.getWindowAncestor(JShop.this),
+										"Combien de " + stackableItem.getName() + " voulez vous vendre ?",
+										ModalityType.DOCUMENT_MODAL);
+								jdCount.setSize(300, 150);
+								int maxToSell = stackableItem.getCount();
+								JStackChoice choice = new JStackChoice(stackableItem, maxToSell);
+								jdCount.add(choice);
+								jdCount.setVisible(true);
+								if (choice.getNbToSell() > 0) {
+									shop.buyItem(pj, stackableItem, choice.getNbToSell());
+									gold.setText("Or restant : " + pj.getInventory().getGold());
+									pjItem.invalidate();
+									pjItem.repaint();
+								}
+							} else if (selectedItem instanceof IEquipableItem
+									&& ((IEquipableItem) selectedItem).isEquipped()) {
+								JOptionPane.showMessageDialog(JShop.this,
+										"Vous devez d'abord déséquipper " + selectedItem);
+							} else {
+								JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " vendu(e) !");
+								((InventoryListModel) pjItem.getModel()).removeElementAt(index);
+								shop.buyItem(pj, selectedItem);
+								gold.setText("Or restant : " + pj.getInventory().getGold());
+								pjItem.invalidate();
+								pjItem.repaint();
+							}
+						}
+					});
+					JMenuItem laisser = new JMenuItem("Ne rien faire.");
+					menu.add(sell);
+					menu.add(laisser);
+					menu.show(pjItem, me.getX(), me.getY());
+				}
 			}
 		});
 		shopItem.addMouseListener(new MouseAdapter() {
@@ -171,137 +279,13 @@ public class JShop extends JPanel {
 		pj.addPropertyChangeListener(Player.PROPERTY_POSITION, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-				if(pj.getTile().isCivilized()) {
+				if (pj.getTile().isCivilized()) {
 					shopItem.setModel(new InventoryListModel(pj.getTile().getCity().getShop().getInventory()));
 				}
 			}
 		});
-		// Nom Pj
-		gbcShop.gridy = 1;
-		gbcShop.gridheight = 1;
-		gbcShop.gridx = 2;
-		gbcShop.gridwidth = 2;
-		gbcShop.anchor = GridBagConstraints.CENTER;
-		gbcShop.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Acheteur : " + pj.getName()), gbcShop);
-		// Label Prix
-		gbcShop.gridy = 1;
-		gbcShop.gridheight = 1;
-		gbcShop.gridx = 3;
-		gbcShop.gridwidth = 1;
-		gbcShop.anchor = GridBagConstraints.EAST;
-		gbcShop.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("Prix"), gbcShop);
-		// JList SHOP
-		gbcShop.gridy = 2;
-		gbcShop.gridheight = 1;
-		gbcShop.gridx = 2;
-		gbcShop.gridwidth = 2;
-		gbcShop.anchor = GridBagConstraints.WEST;
-		gbcShop.fill = GridBagConstraints.NONE;
-		final JList<Item> pjItem = new JList<Item>(new InventoryListModel(pj.getInventory()));
-		pjItem.setCellRenderer(shopItemRenderer);
-		pjItem.setBackground(Color.BLACK);
-		pjItem.setForeground(Color.green);
-		pjItem.setVisibleRowCount(10);
-		pjItem.setEnabled(true);
-		JScrollPane scrollPj = new JScrollPane(pjItem);
-		scrollPj.setPreferredSize(new Dimension(400, 300));
-		this.add(scrollPj, gbcShop);
-
-		pjItem.addListSelectionListener(new ListSelectionListener() {
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				if(e.getValueIsAdjusting()){
-					if(pjItem.getSelectedValue() instanceof IEquipableItem) {
-						IEquipableItem equipItem = (IEquipableItem) pjItem.getSelectedValue();
-						String attribute = getStringAttribute(equipItem.getAttribute());
-						output.setText("<html><body>Nom : " + equipItem.getName() + 
-								"<br>Bonus : " + attribute +
-								"<br>Puissance : "+equipItem.getPuissance()+"</body></html>");
-					} else {
-						output.setText("Nom : " + pjItem.getSelectedValue().getName());
-					}
-				}
-			}
-		});
-
-		pjItem.addMouseListener(new MouseAdapter() {
-			public void mousePressed(final MouseEvent me) {
-				if (me.isPopupTrigger()) {
-					final int index = pjItem.locationToIndex(me.getPoint());
-					JPopupMenu menu = new JPopupMenu();
-					JMenuItem sell = new JMenuItem("Vendre");
-					sell.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							Item selectedItem = pjItem.getModel().getElementAt(index);
-
-							if (selectedItem instanceof IStackableItem) {
-								IStackableItem stackableItem = (IStackableItem) selectedItem;
-								JDialog jdCount = new JDialog(SwingUtilities.getWindowAncestor(JShop.this),
-										"Combien de " + stackableItem.getName() + " voulez vous vendre ?",
-										ModalityType.DOCUMENT_MODAL);
-								jdCount.setSize(300, 150);
-								int maxToSell = stackableItem.getCount();
-								JStackChoice choice = new JStackChoice(stackableItem, maxToSell);
-								jdCount.add(choice);
-								jdCount.setVisible(true);
-								if (choice.getNbToSell() > 0) {
-									shop.buyItem(pj, stackableItem, choice.getNbToSell());
-									gold.setText("Or restant : " + pj.getInventory().getGold());
-									pjItem.invalidate();
-									pjItem.repaint();
-								}
-							} else if(selectedItem instanceof IEquipableItem) {
-								IEquipableItem itemEquip = (IEquipableItem) selectedItem;
-								if(itemEquip.isEquipped()){
-									JOptionPane.showMessageDialog(JShop.this,
-											"Vous devez d'abord déséquipper " + itemEquip);
-								} else {
-									JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " vendu(e) !");
-									((InventoryListModel) pjItem.getModel()).removeElementAt(index);
-									shop.buyItem(pj, selectedItem);
-									gold.setText("Or restant : " + pj.getInventory().getGold());
-									pjItem.invalidate();
-									pjItem.repaint();
-								}
-							} else {
-								JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " vendu(e) !");
-								((InventoryListModel) pjItem.getModel()).removeElementAt(index);
-								shop.buyItem(pj, selectedItem);
-								gold.setText("Or restant : " + pj.getInventory().getGold());
-								pjItem.invalidate();
-								pjItem.repaint();
-							}
-						}
-					});
-					JMenuItem laisser = new JMenuItem("Ne rien faire.");
-					menu.add(sell);
-					menu.add(laisser);
-					menu.show(pjItem, me.getX(), me.getY());
-				}
-			}
-		});
-
-		// Argent du Joueur
-		gbcShop.gridy = 3;
-		gbcShop.gridheight = 1;
-		gbcShop.gridx = 0;
-		gbcShop.gridwidth = 2;
-		gbcShop.anchor = GridBagConstraints.CENTER;
-		gbcShop.fill = GridBagConstraints.NONE;
-		this.add(gold, gbcShop);
-		
-		// Détail objet
-		gbcShop.gridy = 3;
-		gbcShop.gridheight = 1;
-		gbcShop.gridx = 2;
-		gbcShop.gridwidth = 2;
-		gbcShop.anchor = GridBagConstraints.CENTER;
-		gbcShop.fill = GridBagConstraints.NONE;
-		this.add(output, gbcShop);
 	}
-	
+
 	public String getStringAttribute(Attribute equip) {
 		int FOR = equip.getFOR();
 		int DEX = equip.getDEX();
