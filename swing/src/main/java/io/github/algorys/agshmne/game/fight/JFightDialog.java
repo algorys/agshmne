@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import io.github.algorys.agshmne.character.opponent.beast.Beast;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.events.fight.Fight;
+import io.github.algorys.agshmne.items.stackable.StackableItem;
 
 @SuppressWarnings("serial")
 public class JFightDialog extends JDialog{
@@ -151,8 +152,11 @@ public class JFightDialog extends JDialog{
 					jbDefense.setEnabled(false);
 
 					// TODO Hériter Fight pour faire un FightPlayer
-					// TODO Calculer le nombre d'XP gagnés
-					pj.getXp().setXp(pj.getXp().getXp() + 10);
+					// TODO Calculer le nombre d'XP gagnés et externaliser les récompenses
+					pj.getXp().setXp(pj.getXp().getXp() + (mob.getLevel() * 50));
+					if(mob instanceof Beast) {
+						pj.getInventory().addItem(new StackableItem("Viande", 1, 5));
+					}
 				}
 			}
 		});
