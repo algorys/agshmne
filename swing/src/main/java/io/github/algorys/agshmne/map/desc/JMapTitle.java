@@ -14,7 +14,7 @@ public class JMapTitle extends JPanel {
 	JLabel title;
 	
 	public JMapTitle(Player pj){
-		this.setPreferredSize(new Dimension(700, 20));
+		this.setPreferredSize(new Dimension(800, 50));
 		this.setBackground(Color.black);
 		title = new JLabel("[REGION] - " + pj.getTile().getType());
 		title.setForeground(Color.magenta);

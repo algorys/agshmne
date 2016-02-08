@@ -16,8 +16,10 @@ public class JMapXY extends JPanel {
 	public JMapXY(Player pj){
 		this.setPreferredSize(new Dimension(700, 20));
 		this.setBackground(Color.black);
-		jlPosition.setForeground(Color.white);
+		jlPosition.setForeground(Color.green);
 		jlPosition.setText("Position : " + pj.getPosition().getX() + ", " + pj.getPosition().getY());
+		
+		this.add(jlPosition);
 	}
 
 	public void setDescPosition(Position position) {

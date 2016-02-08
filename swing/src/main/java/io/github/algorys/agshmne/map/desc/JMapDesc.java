@@ -1,5 +1,6 @@
 package io.github.algorys.agshmne.map.desc;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -16,8 +17,9 @@ public class JMapDesc extends JPanel {
 	private JMapXY xy;
 
 	public JMapDesc(Player pj) {
-		this.setPreferredSize(new Dimension(710, 150));
+		this.setPreferredSize(new Dimension(700, 100));
 		BoxLayout blSouth = new BoxLayout(this, BoxLayout.Y_AXIS);
+		this.setBackground(Color.black);
 		this.setLayout(blSouth);
 
 		// Description Région
@@ -25,8 +27,8 @@ public class JMapDesc extends JPanel {
 		titleHistory.setTitle("Region : " + pj.getTile().getDesc());
 		
 		// Position
-		xy = new JMapXY(pj);
-		xy.setDescPosition(pj.getPosition());
+		this.xy = new JMapXY(pj);
+		this.xy.setDescPosition(pj.getPosition());
 
 		// Région Civilisée
 		this.civilized = new JMapCiv(pj);
