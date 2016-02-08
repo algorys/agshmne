@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
@@ -35,9 +37,9 @@ import io.github.algorys.agshmne.items.equipable.IEquipableItem;
 import io.github.algorys.agshmne.items.stackable.IStackableItem;
 
 @SuppressWarnings("serial")
-public class JShopDialog extends JPanel {
+public class JShop extends JPanel {
 
-	public JShopDialog(final Shop shop, final Player pj) {
+	public JShop(final Shop shop, final Player pj) {
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcShop = new GridBagConstraints();
 		gbcShop.insets = new Insets(5, 5, 5, 5);
@@ -128,11 +130,11 @@ public class JShopDialog extends JPanel {
 						public void actionPerformed(ActionEvent e) {
 							Item selectedItem = shopItem.getModel().getElementAt(index);
 							if (selectedItem.getPrice() > pj.getInventory().getGold()) {
-								JOptionPane.showMessageDialog(JShopDialog.this, "Vous n'avez pas assez d'argent !");
+								JOptionPane.showMessageDialog(JShop.this, "Vous n'avez pas assez d'argent !");
 							} else {
 								if (selectedItem instanceof IStackableItem) {
 									IStackableItem stackableItem = (IStackableItem) selectedItem;
-									JDialog jdCount = new JDialog(SwingUtilities.getWindowAncestor(JShopDialog.this),
+									JDialog jdCount = new JDialog(SwingUtilities.getWindowAncestor(JShop.this),
 											"Combien de " + stackableItem.getName() + " voulez vous acheter ?",
 											ModalityType.DOCUMENT_MODAL);
 									jdCount.setSize(300, 150);
@@ -148,7 +150,7 @@ public class JShopDialog extends JPanel {
 										shopItem.repaint();
 									}
 								} else {
-									JOptionPane.showMessageDialog(JShopDialog.this, "" + selectedItem + " acheté(e) !");
+									JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " acheté(e) !");
 									((InventoryListModel) shopItem.getModel()).removeElementAt(index);
 									shop.sellItem(pj, selectedItem);
 									gold.setText("Or restant : " + pj.getInventory().getGold());
@@ -166,6 +168,14 @@ public class JShopDialog extends JPanel {
 			}
 		});
 
+		pj.addPropertyChangeListener(Player.PROPERTY_POSITION, new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				if(pj.getTile().isCivilized()) {
+					shopItem.setModel(new InventoryListModel(pj.getTile().getCity().getShop().getInventory()));
+				}
+			}
+		});
 		// Nom Pj
 		gbcShop.gridy = 1;
 		gbcShop.gridheight = 1;
@@ -198,9 +208,8 @@ public class JShopDialog extends JPanel {
 		JScrollPane scrollPj = new JScrollPane(pjItem);
 		scrollPj.setPreferredSize(new Dimension(400, 300));
 		this.add(scrollPj, gbcShop);
-		
+
 		pjItem.addListSelectionListener(new ListSelectionListener() {
-			
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				if(e.getValueIsAdjusting()){
@@ -214,7 +223,6 @@ public class JShopDialog extends JPanel {
 						output.setText("Nom : " + pjItem.getSelectedValue().getName());
 					}
 				}
-				
 			}
 		});
 
@@ -227,9 +235,10 @@ public class JShopDialog extends JPanel {
 					sell.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							Item selectedItem = pjItem.getModel().getElementAt(index);
+
 							if (selectedItem instanceof IStackableItem) {
 								IStackableItem stackableItem = (IStackableItem) selectedItem;
-								JDialog jdCount = new JDialog(SwingUtilities.getWindowAncestor(JShopDialog.this),
+								JDialog jdCount = new JDialog(SwingUtilities.getWindowAncestor(JShop.this),
 										"Combien de " + stackableItem.getName() + " voulez vous vendre ?",
 										ModalityType.DOCUMENT_MODAL);
 								jdCount.setSize(300, 150);
@@ -243,8 +252,21 @@ public class JShopDialog extends JPanel {
 									pjItem.invalidate();
 									pjItem.repaint();
 								}
+							} else if(selectedItem instanceof IEquipableItem) {
+								IEquipableItem itemEquip = (IEquipableItem) selectedItem;
+								if(itemEquip.isEquipped()){
+									JOptionPane.showMessageDialog(JShop.this,
+											"Vous devez d'abord déséquipper " + itemEquip);
+								} else {
+									JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " vendu(e) !");
+									((InventoryListModel) pjItem.getModel()).removeElementAt(index);
+									shop.buyItem(pj, selectedItem);
+									gold.setText("Or restant : " + pj.getInventory().getGold());
+									pjItem.invalidate();
+									pjItem.repaint();
+								}
 							} else {
-								JOptionPane.showMessageDialog(JShopDialog.this, "" + selectedItem + " vendu(e) !");
+								JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " vendu(e) !");
 								((InventoryListModel) pjItem.getModel()).removeElementAt(index);
 								shop.buyItem(pj, selectedItem);
 								gold.setText("Or restant : " + pj.getInventory().getGold());
