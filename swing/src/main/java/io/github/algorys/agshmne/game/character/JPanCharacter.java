@@ -21,6 +21,7 @@ import javax.swing.border.BevelBorder;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.PlayerXP;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
@@ -333,13 +334,23 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridy = 17;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 4;
+		gbcCharacter.gridwidth = 2;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlXp = new JLabel("Experience : " + pj.getXp().getXp());
+		JLabel jlXpTitle = new JLabel("Expérience : ");
+		jlXpTitle.setForeground(Color.magenta);
+		this.add(jlXpTitle, gbcCharacter);
+
+		gbcCharacter.gridy = 17;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		final JLabel jlXp = new JLabel(""+pj.getXp().getXp());
 		jlXp.setForeground(Color.magenta);
 		this.add(jlXp, gbcCharacter);
-		
+
 		// Expérience
 		gbcCharacter.gridy = 18;
 		gbcCharacter.gridheight = 1;
@@ -347,12 +358,24 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.HORIZONTAL;
-		JProgressBar xpBar = new JProgressBar();
-		xpBar.setMaximum(pj.getXp().getCurrentStepLevel());
-	    xpBar.setMinimum(pj.getLevel() - 1);
-	    xpBar.setValue(pj.getXp().getXp());
-	    xpBar.setForeground(Color.green);
-	    xpBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
-	    this.add(xpBar, gbcCharacter);
+		final JProgressBar xpBar = new JProgressBar();
+		xpBar.setMaximum(pj.getXp().getCurrentStepLevel()); // TODO Changement de niveau
+		xpBar.setMinimum(0); // TODO Changement de niveau (si on recommence à 0)
+		xpBar.setValue(pj.getXp().getXp());
+		xpBar.setForeground(Color.green);
+		xpBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
+		this.add(xpBar, gbcCharacter);
+
+		pj.getXp().addPropertyChangeListener(PlayerXP.PROPERTY_XP, new PropertyChangeListener() {
+
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				if (evt.getNewValue() instanceof Integer) {
+					Integer newValue = (Integer) evt.getNewValue();
+					jlXp.setText(newValue.toString());
+					xpBar.setValue(newValue);
+				}
+			}
+		});
 	}
 }

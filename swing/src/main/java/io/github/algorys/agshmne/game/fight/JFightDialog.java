@@ -149,6 +149,10 @@ public class JFightDialog extends JDialog{
 
 					jbAttaq.setEnabled(false);
 					jbDefense.setEnabled(false);
+
+					// TODO Hériter Fight pour faire un FightPlayer
+					// TODO Calculer le nombre d'XP gagnés
+					pj.getXp().setXp(pj.getXp().getXp() + 10);
 				}
 			}
 		});
