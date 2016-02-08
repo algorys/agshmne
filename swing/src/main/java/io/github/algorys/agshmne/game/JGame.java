@@ -1,5 +1,6 @@
 package io.github.algorys.agshmne.game;
 
+import java.awt.Container;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -8,8 +9,6 @@ import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.game.character.JPanCharacter;
@@ -32,15 +31,36 @@ public class JGame extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
+		// Ajout Panneau Final
+		Container contentPane = this.getContentPane();
+		contentPane.setLayout(new GridBagLayout());
+		GridBagConstraints gbcGame = new GridBagConstraints();
+		gbcGame.insets = new Insets(5, 5, 5, 5);
+		gbcGame.fill = GridBagConstraints.BOTH;
+		gbcGame.anchor = GridBagConstraints.CENTER;
+		gbcGame.gridheight = 1;
+		gbcGame.gridwidth = 1;
+		gbcGame.gridy = 0;
+
 		// JPanCharacter : Personnage
-		JPanCharacter jpLeft = new JPanCharacter(pj);
-		
-		//JPanMain : Carte, Inventaire, Equipement, Magie, Quêtes, Villes, ...
+		gbcGame.gridx = 0;
+		gbcGame.weightx = 0;
+		gbcGame.weighty = 0;
+		contentPane.add(new JPanCharacter(pj), gbcGame);
+
+		// JPanMain : Carte, Inventaire, Equipement, Magie, Quêtes, Villes, ...
+		gbcGame.gridx = 1;
+		gbcGame.weightx = 1;
+		gbcGame.weighty = 1;
 		final JPanMain mainPan = new JPanMain(this.jregion);
-		
-		//JPanRight : Objets à terres et Actions générales
-		JPanRight tabbedRight = new JPanRight(pj);
-		
+		contentPane.add(mainPan, gbcGame);
+
+		// JPanRight : Objets à terres et Actions générales
+		gbcGame.gridx = 2;
+		gbcGame.weightx = 0;
+		gbcGame.weighty = 0;
+		contentPane.add(new JPanRight(pj), gbcGame);
+
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
 			@Override
 			public boolean dispatchKeyEvent(KeyEvent e) {
@@ -66,37 +86,5 @@ public class JGame extends JFrame {
 
 		});
 		this.setFocusable(true);
-
-		// Ajout Panneau Final
-		JPanel contentPane = new JPanel(new GridBagLayout());
-		GridBagConstraints gbcGame = new GridBagConstraints();
-		gbcGame.insets = new Insets(5, 5, 5, 5);
-		
-		gbcGame.gridy = 0;
-		gbcGame.gridheight = 1;
-		gbcGame.gridx = 0;
-		gbcGame.gridwidth = 1;
-		gbcGame.anchor = GridBagConstraints.CENTER;
-		gbcGame.fill = GridBagConstraints.NONE;
-		contentPane.add(jpLeft);
-		
-		gbcGame.gridy = 0;
-		gbcGame.gridheight = 1;
-		gbcGame.gridx = 1;
-		gbcGame.gridwidth = 2;
-		gbcGame.anchor = GridBagConstraints.CENTER;
-		gbcGame.fill = GridBagConstraints.NONE;
-		contentPane.add(mainPan, gbcGame);
-		
-		gbcGame.gridy = 0;
-		gbcGame.gridheight = 1;
-		gbcGame.gridx = 3;
-		gbcGame.gridwidth = 1;
-		gbcGame.anchor = GridBagConstraints.CENTER;
-		gbcGame.fill = GridBagConstraints.NONE;
-		contentPane.add(tabbedRight, gbcGame);
-		
-		this.setContentPane(contentPane);
-		this.pack();
 	}
 }

@@ -35,7 +35,8 @@ public class JTileInventory extends JPanel implements PropertyChangeListener {
 		groundItem.setBackground(Color.BLACK);
 		groundItem.setForeground(Color.green);
 		groundItem.setVisibleRowCount(10);
-		groundItem.setPreferredSize(new Dimension(400, 300));
+		groundItem.setPreferredSize(new Dimension(300, 300));
+		groundItem.setMinimumSize(new Dimension(300, 300));
 		groundItem.setEnabled(true);
 		this.currentTile = pj.getTile();
 		this.currentTile.addPropertyChangeListener(this);

@@ -1,7 +1,6 @@
 package io.github.algorys.agshmne.game.character;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -33,7 +32,6 @@ public class JPanCharacter extends JPanel {
 	private JLabel jlCha;
 	
 	public JPanCharacter(Player pj) {
-		this.setPreferredSize(new Dimension(300, 1000));
 		this.setBackground(Color.black);
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcCharacter = new GridBagConstraints();
