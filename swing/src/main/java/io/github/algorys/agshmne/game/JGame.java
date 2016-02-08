@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.game.character.JPanCharacter;
@@ -35,7 +36,7 @@ public class JGame extends JFrame {
 		JPanCharacter jpLeft = new JPanCharacter(pj);
 		
 		//JPanMain : Carte, Inventaire, Equipement, Magie, Quêtes, Villes, ...
-		JPanMain mainPan = new JPanMain(this.jregion);
+		final JPanMain mainPan = new JPanMain(this.jregion);
 		
 		//JPanRight : Objets à terres et Actions générales
 		JPanRight tabbedRight = new JPanRight(pj);
@@ -43,7 +44,7 @@ public class JGame extends JFrame {
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
 			@Override
 			public boolean dispatchKeyEvent(KeyEvent e) {
-				if (e.getID() == KeyEvent.KEY_PRESSED) {
+				if (mainPan.getSelectedIndex() == JPanMain.MAP_PANEL_INDEX && e.getID() == KeyEvent.KEY_PRESSED) {
 					System.out.println("Touché!");
 					switch (e.getKeyCode()) {
 					case KeyEvent.VK_LEFT:
