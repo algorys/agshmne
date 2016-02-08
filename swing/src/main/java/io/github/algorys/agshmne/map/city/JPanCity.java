@@ -11,7 +11,7 @@ public class JPanCity extends JTabbedPane{
 
 	public JPanCity(Player pj) {
 		this.setTabPlacement(JTabbedPane.LEFT);
-		Shop shop = new Shop(0);
+		Shop shop = Shop.NONE;
 		if(pj.getTile().getCity() != null) {
 			shop = pj.getTile().getCity().getShop();
 		}

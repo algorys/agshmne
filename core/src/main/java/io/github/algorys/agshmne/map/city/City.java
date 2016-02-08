@@ -4,10 +4,16 @@ import io.github.algorys.agshmne.map.city.factory.CityDescFactory;
 import io.github.algorys.agshmne.map.city.shop.Shop;
 
 public class City {
+	public static City NONE = new City(0);
+	static {
+		NONE.shop = Shop.NONE;
+		NONE.name = "Pas de ville";
+	}
+
 	private String name = new CityDescFactory().randomDesc(getType());
 	private int level;
 	private Shop shop;
-			
+
 
 	public City(int level) {
 		this.level = level;

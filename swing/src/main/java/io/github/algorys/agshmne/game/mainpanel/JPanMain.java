@@ -20,17 +20,16 @@ import io.github.algorys.agshmne.map.desc.JMapDesc;
 
 @SuppressWarnings("serial")
 public class JPanMain extends JTabbedPane implements PropertyChangeListener {
-
+	public static final int MAP_PANEL_INDEX = 0;
+	public static final int CITY_PANEL_INDEX = 6;
 	private JPanel jpMap = new JPanel();
 	private JPanSkill jpComp;
 	private JPanInventory jpInv;
 	private JTabEquip jpEquip;
 	private JPanel jpMagie = new JPanel();
 	private JPanel jpQuest = new JPanel();
-	private JMapRegion jregion;
 
 	public JPanMain(final JMapRegion jregion) {
-		this.jregion = jregion;
 		this.setTabPlacement(JTabbedPane.TOP);
 		this.setPreferredSize(new Dimension(1100, 1000));
 		
@@ -64,20 +63,14 @@ public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 		Icon cityIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("city.png"));
 		JPanCity jpCity = new JPanCity(jregion.getPersonnage());
 		this.addTab("Ville", cityIcon, jpCity, "Ville");
-		if (jregion.getPersonnage().getTile().isCivilized()) {
-			this.setEnabledAt(6, true);
-		} else {
-			this.setEnabledAt(6, false);
-		}
+		this.setEnabledAt(CITY_PANEL_INDEX, jregion.getPersonnage().getTile().isCivilized());
 	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		if (jregion.getPersonnage().getTile().isCivilized()) {
-			this.setEnabledAt(6, true);
-		} else {
-			this.setEnabledAt(6, false);
+		if (evt.getSource() instanceof Player) {
+			Player pj = (Player) evt.getSource();
+			this.setEnabledAt(CITY_PANEL_INDEX, pj.getTile().isCivilized());
 		}
-
 	}
 }

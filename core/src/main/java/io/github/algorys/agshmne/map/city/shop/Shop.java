@@ -7,6 +7,10 @@ import io.github.algorys.agshmne.items.stackable.IStackableItem;
 import io.github.algorys.agshmne.items.stackable.StackableItem;
 
 public class Shop {
+	public final static Shop NONE = new Shop(0);
+	static {
+		NONE.inv = new Inventory();
+	}
 	private Inventory inv;
 	private ShopStockFactory stockFact = new ShopStockFactory();
 

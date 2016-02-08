@@ -24,7 +24,7 @@ public class JCityCenter extends JPanel implements PropertyChangeListener {
 		if(pj.getTile().isCivilized()) {
 			city = pj.getTile().getCity();
 		} else {
-			city = new City(0);
+			city = City.NONE;
 		}
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcCityCenter = new GridBagConstraints();
@@ -84,8 +84,8 @@ public class JCityCenter extends JPanel implements PropertyChangeListener {
 	public void propertyChange(PropertyChangeEvent evt) {
 		if(pj.getTile().isCivilized()) {
 			city = pj.getTile().getCity();
-//		} else {
-//			city = new City(0);
+		} else {
+			city = City.NONE;
 		}
 		jlTitle.setText(city.getName());
 		
