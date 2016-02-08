@@ -24,7 +24,6 @@ public class InvRenderer implements ListCellRenderer<Item> {
 	@Override
 	public Component getListCellRendererComponent(JList<? extends Item> list, Item value, int index, boolean isSelected,
 			boolean cellHasFocus) {
-		rendererComponent.setBackground(Color.black);
 		if (value == null) {
 			rendererComponent.setText("");
 		} else {
@@ -36,14 +35,11 @@ public class InvRenderer implements ListCellRenderer<Item> {
 				}
 				if (currentItem.getPuissance() < 4) {
 					rendererComponent.setForeground(Color.white);
-				}
-				if (currentItem.getPuissance() > 4) {
+				} else if (currentItem.getPuissance() <= 9) {
 					rendererComponent.setForeground(Color.blue);
-				}
-				if (currentItem.getPuissance() > 9) {
+				} else if (currentItem.getPuissance() <= 14) {
 					rendererComponent.setForeground(Color.green);
-				}
-				if (currentItem.getPuissance() > 14) {
+				} else {
 					rendererComponent.setForeground(Color.yellow);
 				}
 			} else if(value instanceof IStackableItem) {
@@ -58,6 +54,8 @@ public class InvRenderer implements ListCellRenderer<Item> {
 		if (isSelected) {
 			rendererComponent.setBackground(list.getSelectionBackground());
 			rendererComponent.setForeground(list.getSelectionForeground());
+		} else {
+			rendererComponent.setBackground(Color.black);
 		}
 
 		rendererComponent.setEnabled(list.isEnabled());
