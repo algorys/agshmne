@@ -2,6 +2,7 @@ package io.github.algorys.agshmne.character.player;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 import java.util.List;
 
 import io.github.algorys.agshmne.character.Attribute;
@@ -35,7 +36,7 @@ public class Player implements Character {
 	private Vital vital;
 	private PlayerXP xp;
 	private SkillFactory skills;
-	private List<IQuest> quests;
+	private List<IQuest> quests = new ArrayList<>();
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	public Player(Region region) {
@@ -139,7 +140,7 @@ public class Player implements Character {
 	public Tile getTile() {
 		return getRegion().getTileFromPosition(getPosition());
 	}
-	public IQuest getFinishesQuest() {
+	public IQuest getFinishedQuest() {
 		IQuest questFinish = null;
 		for(IQuest quest : quests) {
 			if(quest.isFinish()) {

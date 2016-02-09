@@ -14,6 +14,7 @@ import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.game.character.JPanSkill;
 import io.github.algorys.agshmne.game.character.equipment.JTabEquip;
 import io.github.algorys.agshmne.game.character.inventory.JPanInventory;
+import io.github.algorys.agshmne.game.quest.JPanQuest;
 import io.github.algorys.agshmne.map.JMapRegion;
 import io.github.algorys.agshmne.map.city.JPanCity;
 import io.github.algorys.agshmne.map.desc.JMapDesc;
@@ -27,7 +28,7 @@ public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 	private JPanInventory jpInv;
 	private JTabEquip jpEquip;
 	private JPanel jpMagie = new JPanel();
-	private JPanel jpQuest = new JPanel();
+	private JPanQuest jpQuest;
 
 	public JPanMain(final JMapRegion jregion) {
 		this.setTabPlacement(JTabbedPane.TOP);
@@ -58,6 +59,7 @@ public class JPanMain extends JTabbedPane implements PropertyChangeListener {
 		this.addTab("Magie", magieIcon, jpMagie, "Magie");
 		// Quêtes
 		Icon questIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("quest.png"));
+		jpQuest = new JPanQuest(jregion.getPersonnage());
 		this.addTab("Quêtes", questIcon, jpQuest, "Quêtes");
 		// Villes
 		Icon cityIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("city.png"));

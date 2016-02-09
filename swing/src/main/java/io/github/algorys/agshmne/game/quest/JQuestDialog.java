@@ -19,7 +19,7 @@ import io.github.algorys.agshmne.events.quest.IQuest;
 @SuppressWarnings("serial")
 public class JQuestDialog extends JDialog {
 	
-	public JQuestDialog(JFrame topFrame, IQuest quest, Player pj) {
+	public JQuestDialog(JFrame topFrame, final IQuest quest, final Player pj) {
 		super(topFrame, "On vous propose une quête !", true);
 		this.setSize(900, 400);
 		this.setLocationRelativeTo(topFrame);
@@ -84,6 +84,7 @@ public class JQuestDialog extends JDialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				pj.addQuest(quest);
 				JQuestDialog.this.dispose();
 				
 			}
