@@ -6,6 +6,8 @@ import io.github.algorys.agshmne.events.IAdventure;
 public interface IQuest extends IAdventure {
 	public boolean isWin(Player pj);
 	
+	public void accept(Player pj);
+	
 	public boolean isFinish();
 	
 	public void reward(Player pj);

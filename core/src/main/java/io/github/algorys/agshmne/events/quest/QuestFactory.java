@@ -15,7 +15,7 @@ public class QuestFactory implements IAdventureFactory {
 	}
 
 	public IQuest createFetchQuest(Player pj) {
-		return new FetchQuest(pj, new ItemFactory().createStackableItem(), Tools.dice(6));
+		return new FetchQuest(pj, new ItemFactory().createStackableItem(), Tools.dice(5)+1);
 	}
 
 	public IQuest createBringQuest(Player pj) {

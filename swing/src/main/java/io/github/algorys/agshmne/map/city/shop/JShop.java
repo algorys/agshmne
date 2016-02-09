@@ -171,8 +171,11 @@ public class JShop extends JPanel {
 							String attribute = getStringAttribute(equipItem.getAttribute());
 							output.setText("<html><body>Nom : " + equipItem.getName() + "<br>Bonus : " + attribute
 									+ "<br>Puissance : " + equipItem.getPuissance() + "</body></html>");
+						} else if (currentList.getSelectedValue() instanceof Item){
+							Item item = (Item) currentList.getSelectedValue();
+							output.setText("Nom : " + item.getName());
 						} else {
-							output.setText("Nom : " + currentList.getSelectedValue().getName());
+							output.setText("Aucun objet sélectionné");
 						}
 					}
 				}

@@ -11,10 +11,13 @@ public class BringQuestSample {
 		Player pj = new Player(null);
 		BringQuest bringQ = new BringQuest(pj, new GeneralItem("Lettres", 0));
 		Position questDestination = bringQ.getQuestDestination();
+		System.out.println("Destination : " + questDestination);
+		
 		boolean win = bringQ.isWin(pj);
 		System.out.println("Quête finie ? " + win);
 		System.out.println("Inventaire = " + pj.getInventory());
 		// Mouvement vers la destination
+		bringQ.accept(pj);
 		pj.setPosition(questDestination);
 		win = bringQ.isWin(pj);
 		System.out.println("Quête finie ? " + win);

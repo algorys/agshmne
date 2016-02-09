@@ -51,5 +51,9 @@ public class Position {
 			return false;
 		return true;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Position[" + this.x + ", " + this.y + "]";
+	}
 }

@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.map.region.RandomRegionFactory;
 import io.github.algorys.agshmne.map.region.Region;
 
@@ -36,7 +37,7 @@ public class QuestFactoryTest {
 	@Test
 	public void bringQuest() {
 		QuestFactory underTest = new QuestFactory();
-		IQuest quest = underTest.createBringQuest(new Player(null));
+		IQuest quest = underTest.createBringQuest(new PlayerBuilder().create());
 		assertNotNull(quest);
 	}
 }

@@ -6,10 +6,11 @@ import java.util.Map.Entry;
 
 import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.items.Item;
+import io.github.algorys.agshmne.map.region.RandomRegionFactory;
 import io.github.algorys.agshmne.map.region.Region;
 
 public class PlayerBuilder {
-	private Region region;
+	private Region region = new RandomRegionFactory().create();
 	private int FOR = 10;
 	private int DEX = 10;
 	private int CON = 10;
@@ -23,14 +24,15 @@ public class PlayerBuilder {
 	private String history;
 	private Item firstItem;
 	private Item secondItem;
-	
+
 	public PlayerBuilder() {
-		for(SkillType type: SkillType.values()) {
+		for (SkillType type : SkillType.values()) {
 			skills.put(type, 0);
 		}
 	}
+
 	public Player create() {
-		if(region == null) {
+		if (region == null) {
 			throw new RuntimeException("region ne doit pas être null");
 		}
 		Player player = new Player(region);
@@ -47,12 +49,16 @@ public class PlayerBuilder {
 		player.getAttributes().setCHA(CHA);
 		player.initVital();
 		// Init Skills
-		for(Entry<SkillType, Integer> entry: skills.entrySet()) {
+		for (Entry<SkillType, Integer> entry : skills.entrySet()) {
 			player.getSkills().setSkillLevel(entry.getKey(), entry.getValue());
 		}
 		// Init Inventaire
-		player.getInventory().addItem(firstItem);
-		player.getInventory().addItem(secondItem);
+		if (firstItem != null) {
+			player.getInventory().addItem(firstItem);
+		}
+		if (secondItem != null) {
+			player.getInventory().addItem(secondItem);
+		}
 
 		return player;
 	}
@@ -61,12 +67,12 @@ public class PlayerBuilder {
 		this.region = region;
 		return this;
 	}
-	
-	public PlayerBuilder setSkill(SkillType type, int value){
+
+	public PlayerBuilder setSkill(SkillType type, int value) {
 		this.skills.put(type, value);
 		return this;
 	}
-	
+
 	public int getSkillLevel(SkillType type) {
 		return skills.get(type);
 	}
@@ -119,53 +125,66 @@ public class PlayerBuilder {
 	public int getCHA() {
 		return CHA;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public PlayerBuilder setName(String name) {
 		this.name = name;
 		return this;
 	}
+
 	public String getGender() {
 		return gender;
 	}
+
 	public PlayerBuilder setGender(String gender) {
 		this.gender = gender;
 		return this;
 	}
+
 	public String getRace() {
 		return race;
 	}
+
 	public PlayerBuilder setRace(String race) {
 		this.race = race;
 		return this;
 	}
+
 	public String getJob() {
 		return job;
 	}
+
 	public PlayerBuilder setJob(String job) {
 		this.job = job;
 		return this;
 	}
+
 	public String getHistory() {
 		return history;
 	}
+
 	public PlayerBuilder setHistory(String history) {
 		this.history = history;
 		return this;
 	}
+
 	public void setFirstItem(Item firstItem) {
 		this.firstItem = firstItem;
 	}
+
 	public void setSecondItem(Item secondItem) {
 		this.secondItem = secondItem;
 	}
+
 	public Item getFirstItem() {
 		return firstItem;
 	}
+
 	public Item getSecondItem() {
 		return secondItem;
 	}
-	
-	
+
 }

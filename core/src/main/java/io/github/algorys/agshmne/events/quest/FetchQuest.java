@@ -4,6 +4,7 @@ import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.tile.Tile;
+import io.github.algorys.agshmne.tools.Tools;
 
 public class FetchQuest implements IQuest {
 	private Position questPosition;
@@ -29,7 +30,7 @@ public class FetchQuest implements IQuest {
 			pj.getInventory().removeItem(item);
 		}
 		finish = true;
-		// TODO Rajouter une récompense
+		pj.getInventory().setGold(pj.getInventory().getGold() + Tools.dice(10));
 	}
 	@Override
 	public String getName() {
@@ -57,5 +58,10 @@ public class FetchQuest implements IQuest {
 	@Override
 	public boolean isFinish() {
 		return finish;
+	}
+
+	@Override
+	public void accept(Player pj) {
+		pj.addQuest(this);
 	}
 }

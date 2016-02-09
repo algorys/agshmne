@@ -18,13 +18,22 @@ public class QuestRenderer implements ListCellRenderer<IQuest> {
 		if (value == null) {
 			rendererComponent.setText("");
 		} else {
-			rendererComponent.setText(value.getName() + value.getGoal());
+			rendererComponent.setText(value.getName());
 			if(value.isFinish()) {
 				rendererComponent.setForeground(Color.green);
 			} else {
 				rendererComponent.setForeground(Color.cyan);
 			}
 		}
+		if (isSelected) {
+			rendererComponent.setBackground(list.getSelectionBackground());
+			rendererComponent.setForeground(list.getSelectionForeground());
+		} else {
+			rendererComponent.setBackground(Color.black);
+		}
+		rendererComponent.setEnabled(list.isEnabled());
+		rendererComponent.setFont(list.getFont());
+		rendererComponent.setOpaque(true);
 		return this.rendererComponent;
 	}
 

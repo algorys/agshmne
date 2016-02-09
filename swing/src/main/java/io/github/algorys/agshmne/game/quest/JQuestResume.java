@@ -11,19 +11,20 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.events.quest.IQuest;
 
 @SuppressWarnings("serial")
-public class JQuestDialog extends JDialog {
-	
-	public JQuestDialog(JFrame topFrame, final IQuest quest, final Player pj) {
-		super(topFrame, "On vous propose une quête !", true);
+public class JQuestResume extends JDialog {
+
+	public JQuestResume(JFrame topFrame, final IQuest quest, final Player pj) {
+		super(topFrame, quest.getName(), true);
 		this.setSize(900, 400);
 		this.setLocationRelativeTo(topFrame);
-		
+
 		JPanel panEvent = new JPanel();
 		panEvent.setLayout(new GridBagLayout());
 		panEvent.setBackground(Color.black);
@@ -39,7 +40,7 @@ public class JQuestDialog extends JDialog {
 		JLabel title = new JLabel("QUÊTE");
 		title.setForeground(Color.cyan);
 		panEvent.add(title, gbcQuest);
-		
+
 		gbcQuest.gridy = 1;
 		gbcQuest.gridheight = 1;
 		gbcQuest.gridx = 0;
@@ -49,7 +50,7 @@ public class JQuestDialog extends JDialog {
 		JLabel questName = new JLabel("Objectif(s) : " + quest.getName());
 		questName.setForeground(Color.green);
 		panEvent.add(questName, gbcQuest);
-		
+
 		gbcQuest.gridy = 2;
 		gbcQuest.gridheight = 1;
 		gbcQuest.gridx = 0;
@@ -60,7 +61,7 @@ public class JQuestDialog extends JDialog {
 		questDescTitle.setOpaque(false);
 		questDescTitle.setForeground(Color.white);
 		panEvent.add(questDescTitle, gbcQuest);
-		
+
 		gbcQuest.gridy = 3;
 		gbcQuest.gridheight = 1;
 		gbcQuest.gridx = 0;
@@ -71,44 +72,53 @@ public class JQuestDialog extends JDialog {
 		questDesc.setOpaque(false);
 		questDesc.setForeground(Color.white);
 		panEvent.add(questDesc, gbcQuest);
-		
+
 		gbcQuest.gridy = 5;
 		gbcQuest.gridheight = 1;
 		gbcQuest.gridx = 0;
 		gbcQuest.gridwidth = 1;
 		gbcQuest.anchor = GridBagConstraints.EAST;
 		gbcQuest.fill = GridBagConstraints.HORIZONTAL;
-		JButton accept = new JButton("Accepter");
-		
-		accept.addActionListener(new ActionListener() {
-			
+		JButton finish = new JButton("Finir la quête");
+
+		finish.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				quest.accept(pj);
-				JQuestDialog.this.dispose();
-				
+				if (quest.isWin(pj)) {
+					quest.reward(pj);
+					if (quest.isFinish()) {
+						pj.getQuest().remove(quest);
+					}
+					JQuestResume.this.dispose();
+				 } else {
+					 JOptionPane.showMessageDialog(JQuestResume.this,
+							 "Cette quête n'est pas encore finie ou vous n'êtes pas au bon endroit !");
+				 }
+
 			}
 		});
-		panEvent.add(accept, gbcQuest);
-		
+		panEvent.add(finish, gbcQuest);
+
 		gbcQuest.gridy = 5;
 		gbcQuest.gridheight = 1;
 		gbcQuest.gridx = 2;
 		gbcQuest.gridwidth = 1;
 		gbcQuest.anchor = GridBagConstraints.WEST;
 		gbcQuest.fill = GridBagConstraints.HORIZONTAL;
-		JButton decline = new JButton("Refuser");
-		
+		JButton decline = new JButton("Annuler");
+
 		decline.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JQuestDialog.this.dispose();
-				
+				JQuestResume.this.dispose();
+
 			}
 		});
 		panEvent.add(decline, gbcQuest);
-		
+
 		this.add(panEvent);
 	}
+
 }

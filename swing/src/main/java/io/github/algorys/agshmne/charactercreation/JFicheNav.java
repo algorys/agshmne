@@ -60,7 +60,6 @@ public class JFicheNav extends JPanel {
 							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
 							new Object[] { "Oui", "Non" }, "Oui");
 					if (res == JOptionPane.YES_OPTION) {
-						builder.setRegion(new RandomRegionFactory().create());
 						Player pj = builder.create();
 						// Entrée dans le jeu
 						JGame game = new JGame(pj);

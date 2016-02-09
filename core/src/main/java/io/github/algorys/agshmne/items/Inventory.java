@@ -20,6 +20,9 @@ public class Inventory extends Observable {
 	}
 
 	public void addItem(Item item) {
+		if(item == null) {
+			throw new NullPointerException("item must not be null");
+		}
 		boolean added = false;
 		if (item instanceof IStackableItem) {
 			IStackableItem stackToAdd = (IStackableItem) item;
