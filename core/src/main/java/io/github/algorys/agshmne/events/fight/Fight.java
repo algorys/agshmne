@@ -15,30 +15,38 @@ public class Fight implements IAdventure {
 	}
 
 	public void newRound() {
-		System.out.println("----- ROUND " + round + " -----");
 		round += 1;
 	}
 
 	public int pjAttack() {
-		int pjAttack = this.attack(pj.getCurrentAttributes().getDEX(), adv.getLevel());
-		if (pjAttack < 0) {
-			pjAttack = 0;
+		int pjAttack = 0;
+		if(pj.getCurrentAttributes().getDEX() > pj.getCurrentAttributes().getFOR()) {
+			pjAttack = this.attack(pj.getCurrentAttributes().getDEX(), adv.getLevel());
+		}else{
+			pjAttack = this.attack(pj.getCurrentAttributes().getFOR(), adv.getLevel());
+		}
+		if (pjAttack < -5) {
+			pjAttack = -5;
 		}
 		System.out.println("Attaque PJ= " + pjAttack);
 		if (pjAttack > 0) {
 			adv.getVital().setVie(adv.getVital().getVie() - pjAttack);
+		} else if(pjAttack == 0) {
+			adv.getVital().setVie(adv.getVital().getVie() - 1);
 		}
 		return pjAttack;
 	}
 
 	public int mobAttack() {
 		int mobAttack = this.attack(adv.getCurrentAttributes().getDEX(), 10 + pj.getLevel());
-		if (mobAttack < 0) {
-			mobAttack = 0;
+		if (mobAttack < -5) {
+			mobAttack = -5;
 		}
 		System.out.println("Attaque ADV = " + mobAttack);
 		if (mobAttack > 0) {
 			pj.getVital().setVie(pj.getVital().getVie() - mobAttack);
+		} else if(mobAttack == 0) {
+			pj.getVital().setVie(pj.getVital().getVie() - 1);
 		}
 		return mobAttack;
 	}
@@ -49,7 +57,7 @@ public class Fight implements IAdventure {
 
 	private int attack(int carac, int level) {
 		int dice = Tools.dice(20);
-		int difficulty = 10 + level;
+		int difficulty = 10 + (level*2);
 		int attack = dice + (carac / 2) - difficulty;
 		return attack;
 	}
@@ -60,5 +68,9 @@ public class Fight implements IAdventure {
 
 	public Character getRightOpponent() {
 		return adv;
+	}
+
+	public int getRound() {
+		return round;
 	}
 }

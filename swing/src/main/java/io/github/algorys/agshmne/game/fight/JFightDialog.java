@@ -121,12 +121,20 @@ public class JFightDialog extends JDialog{
 		jbAttaq.addActionListener(new ActionListener() {
 			public String stringAttack(int pjDamage, int mobDamage) {
 				String styleAttack;
-				if (pjDamage == mobDamage) {
-					styleAttack = "Match nul !";
-				} else if (pjDamage >= mobDamage) {
-					styleAttack = pj.getName() + " mène une belle attaque...";
+				if(pjDamage < 0 && mobDamage < 0) {
+					styleAttack = "Vous êtes tous les deux aussi nul l'un que l'autre...";
+				} else if(pjDamage < 0 && mobDamage > 0) {
+					styleAttack = mob.getName() + " fait un \"Critique\" ! Vous allez mourir...";
+				} else if(pjDamage > 0 && mobDamage < 0) {
+					styleAttack = "Vous faites un \"Critique\" ! Vous y êtes presque.";
 				} else {
-					styleAttack = mob.getName() + " vous en met plein la tronche !!!";
+					if (pjDamage == mobDamage) {
+						styleAttack = "Match nul !";
+					} else if (pjDamage > mobDamage) {
+						styleAttack = pj.getName() + " mène une belle attaque.";
+					} else {
+						styleAttack = mob.getName() + " vous en met plein la tronche !!!";
+					}
 				}
 				return styleAttack;
 			}

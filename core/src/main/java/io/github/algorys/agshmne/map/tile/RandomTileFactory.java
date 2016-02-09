@@ -41,7 +41,7 @@ public class RandomTileFactory implements TileFactory {
 		Tile currentTile;
 		TileType type = Tools.random(TileType.values());
 		String desc = descFactory.randomDesc(type);
-		if (Math.random() < .25) {
+		if (Math.random() < .1) {
 			currentTile = new Tile(type, desc, cityFactory.createCity(type));
 		} else {
 			currentTile = new Tile(type, desc);

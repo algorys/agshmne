@@ -17,6 +17,7 @@ public class ShopStockFactory {
 		equipableItemFactory.getCloseWeaponFactory(),
 		equipableItemFactory.getArmsFactory(),
 		equipableItemFactory.getChestFactory(),
+		equipableItemFactory.getChestFactory(),
 		equipableItemFactory.getHeadFactory(),
 		equipableItemFactory.getLegsFactory(),
 		equipableItemFactory.getRingFactory(),
@@ -27,16 +28,13 @@ public class ShopStockFactory {
 		itemFactory,
 		itemFactory,
 		itemFactory,
-		itemFactory,
-		itemFactory,
-		itemFactory,
-		itemFactory,
+		
 		};
 	}
 	
 	public Inventory createStock(int level) {
 		Inventory inv = new Inventory();
-		int nbItem = Tools.dice(level * 10) +5;
+		int nbItem = Tools.dice(level * 5) +5;
 		for(int i = 0; i < nbItem; i++) {
 			inv.addItem(Tools.random(itemFactories).createRandom());
 		}
