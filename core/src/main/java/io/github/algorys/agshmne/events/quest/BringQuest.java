@@ -2,9 +2,11 @@ package io.github.algorys.agshmne.events.quest;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.Item;
+import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.tools.RandomCoordinated;
+import io.github.algorys.agshmne.tools.Tools;
 
 public class BringQuest implements IQuest {
 	private Position questDestination;
@@ -51,6 +53,8 @@ public class BringQuest implements IQuest {
 	public void reward(Player pj) {
 		pj.getInventory().removeItem(item);
 		finish = true;
+		pj.getInventory().setGold(pj.getInventory().getGold() + Tools.dice(10));
+		pj.getInventory().addItem(new EquipableItemFactory().createRandom());
 		// TODO prévoir une récompense.
 	}
 	@Override

@@ -2,11 +2,13 @@ package io.github.algorys.agshmne.character.player;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.List;
 
 import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.player.skills.factory.SkillFactory;
+import io.github.algorys.agshmne.events.quest.IQuest;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.IEquipableItem;
@@ -33,6 +35,7 @@ public class Player implements Character {
 	private Vital vital;
 	private PlayerXP xp;
 	private SkillFactory skills;
+	private List<IQuest> quests;
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	public Player(Region region) {
@@ -135,6 +138,21 @@ public class Player implements Character {
 
 	public Tile getTile() {
 		return getRegion().getTileFromPosition(getPosition());
+	}
+	public IQuest getFinishesQuest() {
+		IQuest questFinish = null;
+		for(IQuest quest : quests) {
+			if(quest.isFinish()) {
+				questFinish = quest;
+			}
+		}
+		return questFinish;
+	}
+	public void addQuest(IQuest questAdded) {
+		quests.add(questAdded);
+	}
+	public List<IQuest> getQuest() {
+		return quests;
 	}
 
 	@Override
