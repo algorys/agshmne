@@ -21,7 +21,6 @@ import javax.swing.JPanel;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.game.JGame;
-import io.github.algorys.agshmne.map.region.RandomRegionFactory;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")

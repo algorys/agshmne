@@ -44,31 +44,28 @@ public class JPanInventory extends JPanel {
 
 		invItems.addMouseListener(new MouseAdapter() {
 			public void mousePressed(final MouseEvent me) {
+				final int index = invItems.locationToIndex(me.getPoint());
+				JPopupMenu menu = new JPopupMenu();
+				
 				if (me.isPopupTrigger()) {
-					final int index = invItems.locationToIndex(me.getPoint());
-					JPopupMenu menu = new JPopupMenu();
-
-					JMenuItem deposer = new JMenuItem("Déposer");
-					deposer.addActionListener(new ActionListener() {
+					JMenuItem info = new JMenuItem("Examiner");
+					info.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							Item selectedItem = invItems.getModel().getElementAt(index);
 							if(selectedItem instanceof IEquipableItem) {
-								IEquipableItem itemToGround = (IEquipableItem) selectedItem;
-								if(itemToGround.isEquipped()){
-									JOptionPane.showMessageDialog(JPanInventory.this,
-											"Vous devez d'abord déséquipper " + itemToGround);
-								} else {
-									inv.removeItem(selectedItem);
-									JPanInventory.this.pj.getTile().addItem(selectedItem);
-								}
+								IEquipableItem equip = (IEquipableItem) selectedItem;
+								String bonus = getStringAttribute(equip.getAttribute());
+								JOptionPane.showMessageDialog(JPanInventory.this,
+										"<html><body>Nom " + equip.getName() + "<br>Bonus : " +
+								bonus + "</body></html>");
 							} else {
-								inv.removeItem(selectedItem);
-								JPanInventory.this.pj.getTile().addItem(selectedItem);
+								JOptionPane.showMessageDialog(JPanInventory.this,
+										"<html><body>Nom " + selectedItem.getName());
 							}
 						}
 					});
-					menu.add(deposer);
-
+					menu.add(info);
+					
 					if (invItems.getModel().getElementAt(index) instanceof IEquipableItem) {
 						IEquipableItem current = (IEquipableItem) invItems.getModel().getElementAt(index);
 						final JMenuItem equip;
@@ -103,23 +100,27 @@ public class JPanInventory extends JPanel {
 						}
 						menu.add(equip);
 					}
-					JMenuItem info = new JMenuItem("Examiner");
-					info.addActionListener(new ActionListener() {
+					
+					JMenuItem deposer = new JMenuItem("Déposer");
+					deposer.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							Item selectedItem = invItems.getModel().getElementAt(index);
 							if(selectedItem instanceof IEquipableItem) {
-								IEquipableItem equip = (IEquipableItem) selectedItem;
-								String bonus = getStringAttribute(equip.getAttribute());
-								JOptionPane.showMessageDialog(JPanInventory.this,
-										"<html><body>Nom " + equip.getName() + "<br>Bonus : " +
-								bonus + "</body></html>");
+								IEquipableItem itemToGround = (IEquipableItem) selectedItem;
+								if(itemToGround.isEquipped()){
+									JOptionPane.showMessageDialog(JPanInventory.this,
+											"Vous devez d'abord déséquipper " + itemToGround);
+								} else {
+									inv.removeItem(selectedItem);
+									JPanInventory.this.pj.getTile().addItem(selectedItem);
+								}
 							} else {
-								JOptionPane.showMessageDialog(JPanInventory.this,
-										"<html><body>Nom " + selectedItem.getName());
+								inv.removeItem(selectedItem);
+								JPanInventory.this.pj.getTile().addItem(selectedItem);
 							}
 						}
 					});
-					menu.add(info);
+					menu.add(deposer);
 
 					menu.show(invItems, me.getX(), me.getY());
 				}
