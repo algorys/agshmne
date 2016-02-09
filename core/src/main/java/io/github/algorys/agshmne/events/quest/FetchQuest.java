@@ -22,7 +22,7 @@ public class FetchQuest implements IQuest {
 	
 	@Override
 	public boolean isWin(Player pj) {
-		return (pj.getInventory().count(item) >= count) ;
+		return (pj.getInventory().count(item) >= count && pj.getPosition().equals(questPosition)) ;
 	}
 	@Override
 	public void reward(Player pj) {
@@ -39,7 +39,7 @@ public class FetchQuest implements IQuest {
 	@Override
 	public String getGoal() {
 		StringBuffer sb = new StringBuffer();
-		sb.append("Vous devez trouvez au moins ");
+		sb.append("Une personne a besoin qu'on lui livre au moins ");
 		sb.append(count + " ");
 		sb.append(item.getName());
 		sb.append(" et les rapporter dans la Région : ");
@@ -47,7 +47,7 @@ public class FetchQuest implements IQuest {
 		sb.append("(");
 		sb.append(questPosition.getX() + ",");
 		sb.append(questPosition.getY());
-		sb.append(")");
+		sb.append(").");
 		return sb.toString();
 	}
 
