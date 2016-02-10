@@ -9,7 +9,7 @@ public class LocalitySample {
 	public static void main(String[] args) {
 		String locality = "Une fontaine représentant un ange déversant des flots sur un corps inanimé.";
 		Player pj = new Player(null);
-		Locality underTest = new Locality("Fontaine", new LifeEffect(10), locality);
+		Locality underTest = new Locality("Fontaine", new LifeEffect(10), locality, "Affecte votre vie !");
 		pj.initVital();
 		pj.getVital().setVie(10);
 		System.out.println("Nom : " + underTest.getName());

@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -20,10 +22,11 @@ import io.github.algorys.agshmne.events.locality.Locality;
 @SuppressWarnings("serial")
 public class JLocalityDialog extends JDialog {
 
-	public JLocalityDialog(JFrame topFrame, Locality locality, Player pj) {
+	public JLocalityDialog(JFrame topFrame, final Locality locality, final Player pj) {
 		super(topFrame, "Vous avez découvert un lieu...", true);
 		this.setSize(600, 300);
 		this.setLocationRelativeTo(topFrame);
+		final JLabel effect = new JLabel("");
 
 		JPanel panEvent = new JPanel();
 		panEvent.setLayout(new GridBagLayout());
@@ -84,7 +87,26 @@ public class JLocalityDialog extends JDialog {
 		gbcQuest.anchor = GridBagConstraints.CENTER;
 		gbcQuest.fill = GridBagConstraints.NONE;
 		JButton interact = new JButton("Intéragir");
+		
+		interact.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				locality.interact(pj);
+				effect.setText("Effet : " + locality.getDescEffect());
+				
+			}
+		});
 		panEvent.add(interact, gbcQuest);
+		
+		gbcQuest.gridy = 5;
+		gbcQuest.gridheight = 1;
+		gbcQuest.gridx = 0;
+		gbcQuest.gridwidth = 4;
+		gbcQuest.anchor = GridBagConstraints.CENTER;
+		gbcQuest.fill = GridBagConstraints.NONE;
+		panEvent.add(effect, gbcQuest);
+		
 		this.add(panEvent);
 	}
 }
