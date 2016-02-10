@@ -20,6 +20,17 @@ public class JTile extends JComponent {
 	 * tuile.
 	 */
 	private static Map<TileType, Image> imagePerTileType = new HashMap<>();
+	private static Image cityIcon;
+	static {
+		try {
+			// on essaye de la charger
+			cityIcon = ImageIO.read(JTile.class.getClassLoader().getResource("townhall.png"));
+		} catch (IOException e) {
+			// En cas d'erreur (fichier inexistant ? format illisible ?
+			// etc.)
+			e.printStackTrace();
+		}
+	}
 
 	private Tile model;
 
@@ -85,6 +96,9 @@ public class JTile extends JComponent {
 			// premiers pixels en tous cas
 			//System.out.println(this.getSize());
 			g.drawImage(img, 1, 1, this.getWidth() - 2, this.getHeight() - 2, this);
+		}
+		if(this.model.isCivilized() && cityIcon != null) {
+			g.drawImage(cityIcon, 3, 3, 32, 32, this);
 		}
 	}
 }
