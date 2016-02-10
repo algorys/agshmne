@@ -5,6 +5,7 @@ import java.beans.PropertyChangeSupport;
 
 public class Vital {
 	public final static String PROPERTY_VIE = "vie";
+	public final static String PROPERTY_MANA = "mana";
 	private int vie;
 	private int mana;
 	private int fatigue;
@@ -34,7 +35,9 @@ public class Vital {
 	}
 
 	public void setMana(int mana) {
+		int old = this.mana;
 		this.mana = mana;
+		pcs.firePropertyChange(PROPERTY_MANA, old, mana);
 	}
 
 	public int getFatigue() {

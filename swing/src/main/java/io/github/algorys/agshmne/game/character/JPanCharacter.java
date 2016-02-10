@@ -111,15 +111,14 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jIcon = new JLabel();
-		Image imgLife;
+		JLabel jlLifeIcon = new JLabel();
 		try {
-			imgLife = ImageIO.read(JTile.class.getClassLoader().getResource("life.png"));
-			jIcon.setIcon(new ImageIcon(imgLife));
+			Image imgLife = ImageIO.read(JTile.class.getClassLoader().getResource("life.png"));
+			jlLifeIcon.setIcon(new ImageIcon(imgLife));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.add(jIcon, gbcCharacter);
+		this.add(jlLifeIcon, gbcCharacter);
 
 		gbcCharacter.gridy = 6;
 		gbcCharacter.gridheight = 1;
@@ -157,24 +156,39 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jMana = new JLabel();
-		Image imgMana;
+		JLabel jlManaIcon = new JLabel();
 		try {
-			imgMana = ImageIO.read(JTile.class.getClassLoader().getResource("mana.png"));
-			jMana.setIcon(new ImageIcon(imgMana));
+			Image imgMana = ImageIO.read(JTile.class.getClassLoader().getResource("mana.png"));
+			jlManaIcon.setIcon(new ImageIcon(imgMana));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.add(jMana, gbcCharacter);
+		this.add(jlManaIcon, gbcCharacter);
 		gbcCharacter.gridy = 7;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 1;
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlMana = new JLabel("Mana : " + pj.getVital().getMana());
+		JLabel jlManaTitle = new JLabel("Mana : ");
+		jlManaTitle.setForeground(Color.white);
+		this.add(jlManaTitle, gbcCharacter);
+
+		gbcCharacter.gridy = 7;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		final JLabel jlMana = new JLabel(""+pj.getVital().getMana());
 		jlMana.setForeground(Color.white);
 		this.add(jlMana, gbcCharacter);
+		pj.getVital().addPropertyChangeListener(Vital.PROPERTY_MANA, new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				jlMana.setText(evt.getNewValue().toString());
+			}
+		});
 
 		// Faim
 		gbcCharacter.gridy = 8;
