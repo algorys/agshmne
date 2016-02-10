@@ -8,7 +8,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -26,6 +25,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import io.github.algorys.agshmne.PopupTriggerAdapter;
 import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.design.InvRenderer;
@@ -37,8 +37,24 @@ import io.github.algorys.agshmne.items.stackable.IStackableItem;
 
 @SuppressWarnings("serial")
 public class JShop extends JPanel {
+	private Shop shop;
 
-	public JShop(final Shop shop, final Player pj) {
+	public JShop(final Player pj) {
+		if(pj.getTile().isCivilized()) {
+			shop = pj.getTile().getCity().getShop();
+		} else {
+			shop = Shop.NONE;
+		}
+		pj.addPropertyChangeListener(Player.PROPERTY_POSITION, new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				if(pj.getTile().isCivilized()) {
+					shop = pj.getTile().getCity().getShop();
+				} else {
+					shop = Shop.NONE;
+				}
+			}
+		});
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcShop = new GridBagConstraints();
 		gbcShop.insets = new Insets(5, 5, 5, 5);
@@ -162,7 +178,7 @@ public class JShop extends JPanel {
 		ListSelectionListener selectionListener = new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				if(e.getSource() instanceof JList) {
+				if (e.getSource() instanceof JList) {
 					@SuppressWarnings("unchecked")
 					JList<Item> currentList = (JList<Item>) e.getSource();
 					if (!e.getValueIsAdjusting()) {
@@ -171,7 +187,7 @@ public class JShop extends JPanel {
 							String attribute = getStringAttribute(equipItem.getAttribute());
 							output.setText("<html><body>Nom : " + equipItem.getName() + "<br>Bonus : " + attribute
 									+ "<br>Puissance : " + equipItem.getPuissance() + "</body></html>");
-						} else if (currentList.getSelectedValue() instanceof Item){
+						} else if (currentList.getSelectedValue() instanceof Item) {
 							Item item = (Item) currentList.getSelectedValue();
 							output.setText("Nom : " + item.getName());
 						} else {
@@ -184,98 +200,95 @@ public class JShop extends JPanel {
 		shopItem.addListSelectionListener(selectionListener);
 		pjItem.addListSelectionListener(selectionListener);
 
-		pjItem.addMouseListener(new MouseAdapter() {
-			public void mousePressed(final MouseEvent me) {
-				if (me.isPopupTrigger()) {
-					final int index = pjItem.locationToIndex(me.getPoint());
-					JPopupMenu menu = new JPopupMenu();
-					JMenuItem sell = new JMenuItem("Vendre");
-					sell.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							Item selectedItem = pjItem.getModel().getElementAt(index);
+		pjItem.addMouseListener(new PopupTriggerAdapter() {
+			@Override
+			public void popupTrigger(MouseEvent me) {
+				final int index = pjItem.locationToIndex(me.getPoint());
+				JPopupMenu menu = new JPopupMenu();
+				JMenuItem sell = new JMenuItem("Vendre");
+				sell.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						Item selectedItem = pjItem.getModel().getElementAt(index);
 
-							if (selectedItem instanceof IStackableItem) {
-								IStackableItem stackableItem = (IStackableItem) selectedItem;
-								JDialog jdCount = new JDialog(SwingUtilities.getWindowAncestor(JShop.this),
-										"Combien de " + stackableItem.getName() + " voulez vous vendre ?",
-										ModalityType.DOCUMENT_MODAL);
-								jdCount.setSize(300, 150);
-								int maxToSell = stackableItem.getCount();
-								JStackChoice choice = new JStackChoice(stackableItem, maxToSell);
-								jdCount.add(choice);
-								jdCount.setVisible(true);
-								if (choice.getNbToSell() > 0) {
-									shop.buyItem(pj, stackableItem, choice.getNbToSell());
-									gold.setText("Or restant : " + pj.getInventory().getGold());
-									pjItem.invalidate();
-									pjItem.repaint();
-								}
-							} else if (selectedItem instanceof IEquipableItem
-									&& ((IEquipableItem) selectedItem).isEquipped()) {
-								JOptionPane.showMessageDialog(JShop.this,
-										"Vous devez d'abord déséquipper " + selectedItem);
-							} else {
-								JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " vendu(e) !");
-								((InventoryListModel) pjItem.getModel()).removeElementAt(index);
-								shop.buyItem(pj, selectedItem);
+						if (selectedItem instanceof IStackableItem) {
+							IStackableItem stackableItem = (IStackableItem) selectedItem;
+							JDialog jdCount = new JDialog(SwingUtilities.getWindowAncestor(JShop.this),
+									"Combien de " + stackableItem.getName() + " voulez vous vendre ?",
+									ModalityType.DOCUMENT_MODAL);
+							jdCount.setSize(300, 150);
+							int maxToSell = stackableItem.getCount();
+							JStackChoice choice = new JStackChoice(stackableItem, maxToSell);
+							jdCount.add(choice);
+							jdCount.setVisible(true);
+							if (choice.getNbToSell() > 0) {
+								shop.buyItem(pj, stackableItem, choice.getNbToSell());
 								gold.setText("Or restant : " + pj.getInventory().getGold());
 								pjItem.invalidate();
 								pjItem.repaint();
 							}
+						} else if (selectedItem instanceof IEquipableItem
+								&& ((IEquipableItem) selectedItem).isEquipped()) {
+							JOptionPane.showMessageDialog(JShop.this, "Vous devez d'abord déséquipper " + selectedItem);
+						} else {
+							JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " vendu(e) !");
+							((InventoryListModel) pjItem.getModel()).removeElementAt(index);
+							shop.buyItem(pj, selectedItem);
+							gold.setText("Or restant : " + pj.getInventory().getGold());
+							pjItem.invalidate();
+							pjItem.repaint();
 						}
-					});
-					JMenuItem laisser = new JMenuItem("Ne rien faire.");
-					menu.add(sell);
-					menu.add(laisser);
-					menu.show(pjItem, me.getX(), me.getY());
-				}
+					}
+				});
+				JMenuItem laisser = new JMenuItem("Ne rien faire.");
+				menu.add(sell);
+				menu.add(laisser);
+				menu.show(pjItem, me.getX(), me.getY());
 			}
 		});
-		shopItem.addMouseListener(new MouseAdapter() {
-			public void mousePressed(final MouseEvent me) {
-				if (me.isPopupTrigger()) {
-					final int index = shopItem.locationToIndex(me.getPoint());
-					JPopupMenu menu = new JPopupMenu();
-					final JMenuItem buy = new JMenuItem("Acheter");
-					buy.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							Item selectedItem = shopItem.getModel().getElementAt(index);
-							if (selectedItem.getPrice() > pj.getInventory().getGold()) {
-								JOptionPane.showMessageDialog(JShop.this, "Vous n'avez pas assez d'argent !");
-							} else {
-								if (selectedItem instanceof IStackableItem) {
-									IStackableItem stackableItem = (IStackableItem) selectedItem;
-									JDialog jdCount = new JDialog(SwingUtilities.getWindowAncestor(JShop.this),
-											"Combien de " + stackableItem.getName() + " voulez vous acheter ?",
-											ModalityType.DOCUMENT_MODAL);
-									jdCount.setSize(300, 150);
-									int maxToBuy = pj.getInventory().getGold() / stackableItem.getPrice();
-									System.out.println("Maxx = " + maxToBuy);
-									JStackChoice choice = new JStackChoice(stackableItem, maxToBuy);
-									jdCount.add(choice);
-									jdCount.setVisible(true);
-									if (choice.getNbToSell() > 0) {
-										shop.sellItem(pj, stackableItem, choice.getNbToSell());
-										gold.setText("Or restant : " + pj.getInventory().getGold());
-										shopItem.invalidate();
-										shopItem.repaint();
-									}
-								} else {
-									JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " acheté(e) !");
-									((InventoryListModel) shopItem.getModel()).removeElementAt(index);
-									shop.sellItem(pj, selectedItem);
+		shopItem.addMouseListener(new PopupTriggerAdapter() {
+			@Override
+			public void popupTrigger(MouseEvent me) {
+				final int index = shopItem.locationToIndex(me.getPoint());
+				JPopupMenu menu = new JPopupMenu();
+				final JMenuItem buy = new JMenuItem("Acheter");
+				buy.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						Item selectedItem = shopItem.getModel().getElementAt(index);
+						if (selectedItem.getPrice() > pj.getInventory().getGold()) {
+							JOptionPane.showMessageDialog(JShop.this, "Vous n'avez pas assez d'argent !");
+						} else {
+							if (selectedItem instanceof IStackableItem) {
+								IStackableItem stackableItem = (IStackableItem) selectedItem;
+								JDialog jdCount = new JDialog(SwingUtilities.getWindowAncestor(JShop.this),
+										"Combien de " + stackableItem.getName() + " voulez vous acheter ?",
+										ModalityType.DOCUMENT_MODAL);
+								jdCount.setSize(300, 150);
+								int maxToBuy = pj.getInventory().getGold() / stackableItem.getPrice();
+								System.out.println("Maxx = " + maxToBuy);
+								JStackChoice choice = new JStackChoice(stackableItem, maxToBuy);
+								jdCount.add(choice);
+								jdCount.setVisible(true);
+								if (choice.getNbToSell() > 0) {
+									shop.sellItem(pj, stackableItem, choice.getNbToSell());
 									gold.setText("Or restant : " + pj.getInventory().getGold());
 									shopItem.invalidate();
 									shopItem.repaint();
 								}
+							} else {
+								JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " acheté(e) !");
+								((InventoryListModel) shopItem.getModel()).removeElementAt(index);
+								shop.sellItem(pj, selectedItem);
+								gold.setText("Or restant : " + pj.getInventory().getGold());
+								shopItem.invalidate();
+								shopItem.repaint();
 							}
 						}
-					});
-					JMenuItem laisser = new JMenuItem("Ne rien faire.");
-					menu.add(buy);
-					menu.add(laisser);
-					menu.show(shopItem, me.getX(), me.getY());
-				}
+					}
+				});
+				JMenuItem laisser = new JMenuItem("Ne rien faire.");
+				menu.add(buy);
+				menu.add(laisser);
+				menu.show(shopItem, me.getX(), me.getY());
 			}
 		});
 

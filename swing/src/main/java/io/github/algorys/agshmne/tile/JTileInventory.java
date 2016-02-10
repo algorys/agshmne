@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -15,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
+import io.github.algorys.agshmne.PopupTriggerAdapter;
 import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.design.InvRenderer;
@@ -45,44 +45,42 @@ public class JTileInventory extends JPanel implements PropertyChangeListener {
 
 		this.add(groundItem);
 
-		groundItem.addMouseListener(new MouseAdapter() {
-			public void mousePressed(final MouseEvent me) {
-				if (me.isPopupTrigger()) {
-					final int index = groundItem.locationToIndex(me.getPoint());
-					JPopupMenu menu = new JPopupMenu();
-					JMenuItem ramasser = new JMenuItem("Ramasser");
-					ramasser.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							Item selectedItem = groundItem.getModel().getElementAt(index);
-							JOptionPane.showMessageDialog(JTileInventory.this, "" + selectedItem + " ajouté(e) !");
-							((TileListModel) groundItem.getModel()).removeElementAt(index);
-							JTileInventory.this.pj.getInventory().addItem(selectedItem);
-							groundItem.invalidate();
-							groundItem.repaint();
+		groundItem.addMouseListener(new PopupTriggerAdapter() {
+			@Override
+			public void popupTrigger(MouseEvent me) {
+				final int index = groundItem.locationToIndex(me.getPoint());
+				JPopupMenu menu = new JPopupMenu();
+				JMenuItem ramasser = new JMenuItem("Ramasser");
+				ramasser.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						Item selectedItem = groundItem.getModel().getElementAt(index);
+						JOptionPane.showMessageDialog(JTileInventory.this, "" + selectedItem + " ajouté(e) !");
+						((TileListModel) groundItem.getModel()).removeElementAt(index);
+						JTileInventory.this.pj.getInventory().addItem(selectedItem);
+						groundItem.invalidate();
+						groundItem.repaint();
+					}
+				});
+				JMenuItem info = new JMenuItem("Examiner");
+				info.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						Item selectedItem = groundItem.getModel().getElementAt(index);
+						if (selectedItem instanceof IEquipableItem) {
+							IEquipableItem equip = (IEquipableItem) selectedItem;
+							String bonus = getStringAttribute(equip.getAttribute());
+							JOptionPane.showMessageDialog(JTileInventory.this,
+									"<html><body>Nom " + equip.getName() + "<br>Bonus : " + bonus + "</body></html>");
+						} else {
+							JOptionPane.showMessageDialog(JTileInventory.this,
+									"<html><body>Nom " + selectedItem.getName());
 						}
-					});
-					JMenuItem info = new JMenuItem("Examiner");
-					info.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							Item selectedItem = groundItem.getModel().getElementAt(index);
-							if(selectedItem instanceof IEquipableItem) {
-								IEquipableItem equip = (IEquipableItem) selectedItem;
-								String bonus = getStringAttribute(equip.getAttribute());
-								JOptionPane.showMessageDialog(JTileInventory.this,
-										"<html><body>Nom " + equip.getName() + "<br>Bonus : " +
-								bonus + "</body></html>");
-							} else {
-								JOptionPane.showMessageDialog(JTileInventory.this,
-										"<html><body>Nom " + selectedItem.getName());
-							}
-						}
-					});
-					menu.add(info);
-					JMenuItem laisser = new JMenuItem("Laisser");
-					menu.add(ramasser);
-					menu.add(laisser);
-					menu.show(groundItem, me.getX(), me.getY());
-				}
+					}
+				});
+				menu.add(info);
+				JMenuItem laisser = new JMenuItem("Laisser");
+				menu.add(ramasser);
+				menu.add(laisser);
+				menu.show(groundItem, me.getX(), me.getY());
 			}
 		});
 		this.setFocusable(false);
@@ -99,7 +97,7 @@ public class JTileInventory extends JPanel implements PropertyChangeListener {
 
 		this.currentTile.addPropertyChangeListener(this);
 	}
-	
+
 	public String getStringAttribute(Attribute equip) {
 		int FOR = equip.getFOR();
 		int DEX = equip.getDEX();

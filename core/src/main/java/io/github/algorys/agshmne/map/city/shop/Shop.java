@@ -33,9 +33,11 @@ public class Shop {
 	}
 
 	public void buyItem(Player pj, Item item) {
+		System.out.println(inv);
 		pj.getInventory().removeItem(item);
 		pj.getInventory().setGold(pj.getInventory().getGold() + item.getPrice());
 		inv.addItem(item);
+		System.out.println(inv);
 	}
 
 	public void buyItem(Player pj, IStackableItem item, int nb) {
