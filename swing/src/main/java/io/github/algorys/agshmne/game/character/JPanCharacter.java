@@ -239,24 +239,40 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jTired = new JLabel();
-		Image imgTired;
+		JLabel jlTiredIcon = new JLabel();
 		try {
-			imgTired = ImageIO.read(JTile.class.getClassLoader().getResource("tired.png"));
-			jTired.setIcon(new ImageIcon(imgTired));
+			Image imgTired = ImageIO.read(JTile.class.getClassLoader().getResource("tired.png"));
+			jlTiredIcon.setIcon(new ImageIcon(imgTired));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.add(jTired, gbcCharacter);
+		this.add(jlTiredIcon, gbcCharacter);
+
 		gbcCharacter.gridy = 9;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 1;
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlTired = new JLabel("Fatigue : " + pj.getVital().getFatigue());
+		JLabel jlTiredTitle = new JLabel("Fatigue : ");
+		jlTiredTitle.setForeground(Color.white);
+		this.add(jlTiredTitle, gbcCharacter);
+
+		gbcCharacter.gridy = 9;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		final JLabel jlTired = new JLabel("" + pj.getVital().getFatigue());
 		jlTired.setForeground(Color.white);
 		this.add(jlTired, gbcCharacter);
+		pj.getVital().addPropertyChangeListener(Vital.PROPERTY_FATIGUE, new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				jlTired.setText(evt.getNewValue().toString());
+			}
+		});
 
 		// CARACTERISTIQUES
 		gbcCharacter.gridy = 10;

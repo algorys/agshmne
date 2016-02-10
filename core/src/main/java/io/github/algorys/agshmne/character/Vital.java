@@ -7,6 +7,7 @@ public class Vital {
 	public final static String PROPERTY_VIE = "vie";
 	public final static String PROPERTY_MANA = "mana";
 	public final static String PROPERTY_FAIM = "faim";
+	public final static String PROPERTY_FATIGUE = "fatigue";
 	private int vie;
 	private int mana;
 	private int fatigue;
@@ -46,7 +47,9 @@ public class Vital {
 	}
 
 	public void setFatigue(int fatigue) {
+		int old = this.fatigue;
 		this.fatigue = fatigue;
+		pcs.firePropertyChange(PROPERTY_FATIGUE, old, fatigue);
 	}
 
 	public int getFaim() {
