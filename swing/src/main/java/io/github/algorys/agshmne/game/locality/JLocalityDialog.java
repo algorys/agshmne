@@ -27,6 +27,7 @@ public class JLocalityDialog extends JDialog {
 		this.setSize(600, 300);
 		this.setLocationRelativeTo(topFrame);
 		final JLabel effect = new JLabel("");
+		effect.setForeground(Color.cyan);
 
 		JPanel panEvent = new JPanel();
 		panEvent.setLayout(new GridBagLayout());
