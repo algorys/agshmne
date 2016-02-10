@@ -29,7 +29,7 @@ public class JPanCharacter extends JPanel {
 	private JLabel jlDexCurrent;
 	private JLabel jlConCurrent;
 	private JLabel jlIntCurrent;
-	private JLabel jlCha;
+	private JLabel jlChaCurrent;
 
 	public JPanCharacter(Player pj) {
 		this.setBackground(Color.black);
@@ -414,16 +414,34 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridy = 15;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		jlCha = new JLabel("<html><body>CHA : " + pj.getAttributes().getCHA() + " (<span style=color:#00FF00;>"
-				+ pj.getCurrentAttributes().getCHA() + "</span>)</body></html>");
-		jlCha.setForeground(Color.white);
-		this.add(jlCha, gbcCharacter);
+		JLabel jlChaTitle = new JLabel("CHA : ");
+		jlChaTitle.setForeground(Color.white);
+		this.add(jlChaTitle, gbcCharacter);
+
+		gbcCharacter.gridy = 15;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 1;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		JLabel jlChaBase = new JLabel("" + pj.getAttributes().getCHA());
+		jlChaBase.setForeground(Color.white);
+		this.add(jlChaBase, gbcCharacter);
+
+		gbcCharacter.gridy = 15;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		jlChaCurrent = new JLabel("(" + pj.getCurrentAttributes().getCHA() + ")");
+		jlChaCurrent.setForeground(Color.GREEN);
+		this.add(jlChaCurrent, gbcCharacter);
 
 		pj.addPropertyChangeListener(Character.PROPERTY_CURRENT_ATTRIBUTES, new PropertyChangeListener() {
-
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getSource() instanceof Player) {
@@ -432,10 +450,8 @@ public class JPanCharacter extends JPanel {
 					jlDexCurrent.setText("(" + pj.getCurrentAttributes().getDEX() + ")");
 					jlConCurrent.setText("(" + pj.getCurrentAttributes().getCON() + ")");
 					jlIntCurrent.setText("(" + pj.getCurrentAttributes().getINT() + ")");
-					jlCha.setText("<html><body>CHA : " + pj.getAttributes().getCHA() + " (<span style=color:#00FF00;>"
-							+ pj.getCurrentAttributes().getCHA() + "</span>)</body></html>");
+					jlChaCurrent.setText("(" + pj.getCurrentAttributes().getCHA() + ")");
 				}
-
 			}
 		});
 
