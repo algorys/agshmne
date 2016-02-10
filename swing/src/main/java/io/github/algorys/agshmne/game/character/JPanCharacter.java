@@ -28,7 +28,7 @@ public class JPanCharacter extends JPanel {
 	private JLabel jlForCurrent;
 	private JLabel jlDexCurrent;
 	private JLabel jlConCurrent;
-	private JLabel jlInt;
+	private JLabel jlIntCurrent;
 	private JLabel jlCha;
 
 	public JPanCharacter(Player pj) {
@@ -383,13 +383,33 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridy = 14;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		jlInt = new JLabel("<html><body>INT : " + pj.getAttributes().getINT() + " (<span style=color:#00FF00;>"
-				+ pj.getCurrentAttributes().getINT() + "</span>)</body></html>");
-		jlInt.setForeground(Color.white);
-		this.add(jlInt, gbcCharacter);
+		JLabel jlIntTitle = new JLabel("INT : ");
+		jlIntTitle.setForeground(Color.white);
+		this.add(jlIntTitle, gbcCharacter);
+
+		gbcCharacter.gridy = 14;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 1;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		JLabel jlIntBase = new JLabel("" + pj.getAttributes().getINT());
+		jlIntBase.setForeground(Color.white);
+		this.add(jlIntBase, gbcCharacter);
+
+		gbcCharacter.gridy = 14;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		jlIntCurrent = new JLabel("(" + pj.getCurrentAttributes().getINT() + ")");
+		jlIntCurrent.setForeground(Color.GREEN);
+		this.add(jlIntCurrent, gbcCharacter);
+
 		// CHA
 		gbcCharacter.gridy = 15;
 		gbcCharacter.gridheight = 1;
@@ -411,8 +431,7 @@ public class JPanCharacter extends JPanel {
 					jlForCurrent.setText("(" + pj.getCurrentAttributes().getFOR() + ")");
 					jlDexCurrent.setText("(" + pj.getCurrentAttributes().getDEX() + ")");
 					jlConCurrent.setText("(" + pj.getCurrentAttributes().getCON() + ")");
-					jlInt.setText("<html><body>INT : " + pj.getAttributes().getINT() + " (<span style=color:#00FF00;>"
-							+ pj.getCurrentAttributes().getINT() + "</span>)</body></html>");
+					jlIntCurrent.setText("(" + pj.getCurrentAttributes().getINT() + ")");
 					jlCha.setText("<html><body>CHA : " + pj.getAttributes().getCHA() + " (<span style=color:#00FF00;>"
 							+ pj.getCurrentAttributes().getCHA() + "</span>)</body></html>");
 				}
