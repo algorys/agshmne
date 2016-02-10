@@ -26,7 +26,7 @@ import io.github.algorys.agshmne.tile.JTile;
 @SuppressWarnings("serial")
 public class JPanCharacter extends JPanel {
 	private JLabel jlForCurrent;
-	private JLabel jlDex;
+	private JLabel jlDexCurrent;
 	private JLabel jlCon;
 	private JLabel jlInt;
 	private JLabel jlCha;
@@ -321,13 +321,33 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridy = 12;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		jlDex = new JLabel("<html><body>DEX : " +pj.getAttributes().getDEX() +
-				" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getDEX() + "</span>)</body></html>");
-		jlDex.setForeground(Color.white);
-		this.add(jlDex, gbcCharacter);
+		JLabel jlDexTitle = new JLabel("DEX : ");
+		jlDexTitle.setForeground(Color.white);
+		this.add(jlDexTitle, gbcCharacter);
+
+		gbcCharacter.gridy = 12;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 1;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		JLabel jlDexBase = new JLabel("" + pj.getAttributes().getDEX());
+		jlDexBase.setForeground(Color.white);
+		this.add(jlDexBase, gbcCharacter);
+
+		gbcCharacter.gridy = 12;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		jlDexCurrent = new JLabel("(" + pj.getCurrentAttributes().getDEX() + ")");
+		jlDexCurrent.setForeground(Color.GREEN);
+		this.add(jlDexCurrent, gbcCharacter);
+
 		// CON
 		gbcCharacter.gridy = 13;
 		gbcCharacter.gridheight = 1;
@@ -369,8 +389,7 @@ public class JPanCharacter extends JPanel {
 				if (evt.getSource() instanceof Player) {
 					Player pj = (Player) evt.getSource();
 					jlForCurrent.setText("(" + pj.getCurrentAttributes().getFOR() + ")");
-					jlDex.setText("<html><body>DEX : " +pj.getAttributes().getDEX() +
-							" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getDEX() + "</span>)</body></html>");
+					jlDexCurrent.setText("(" + pj.getCurrentAttributes().getDEX() + ")");
 					jlCon.setText("<html><body>CON : " +pj.getAttributes().getCON() +
 							" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getCON() + "</span>)</body></html>");
 					jlInt.setText("<html><body>INT : " +pj.getAttributes().getINT() +
