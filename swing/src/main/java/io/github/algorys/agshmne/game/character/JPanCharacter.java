@@ -25,7 +25,7 @@ import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
 public class JPanCharacter extends JPanel {
-	private JLabel jlFor;
+	private JLabel jlForCurrent;
 	private JLabel jlDex;
 	private JLabel jlCon;
 	private JLabel jlInt;
@@ -290,13 +290,33 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridy = 11;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		jlFor = new JLabel("<html><body>FOR : " +pj.getAttributes().getFOR() +
-				" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getFOR() + "</span>)</body></html>");
-		jlFor.setForeground(Color.white);
-		this.add(jlFor, gbcCharacter);
+		JLabel jlForBase     = new JLabel("FOR : ");
+		jlForBase.setForeground(Color.white);
+		this.add(jlForBase, gbcCharacter);
+
+		gbcCharacter.gridy = 11;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 1;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		jlForBase = new JLabel("" +pj.getAttributes().getFOR());
+		jlForBase.setForeground(Color.white);
+		this.add(jlForBase, gbcCharacter);
+
+		gbcCharacter.gridy = 11;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		jlForCurrent = new JLabel("(" + pj.getCurrentAttributes().getFOR() + ")");
+		jlForCurrent.setForeground(Color.GREEN);
+		this.add(jlForCurrent, gbcCharacter);
+
 		// DEX
 		gbcCharacter.gridy = 12;
 		gbcCharacter.gridheight = 1;
@@ -348,8 +368,7 @@ public class JPanCharacter extends JPanel {
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getSource() instanceof Player) {
 					Player pj = (Player) evt.getSource();
-					jlFor.setText("<html><body>FOR : " +pj.getAttributes().getFOR() +
-							" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getFOR() + "</span>)</body></html>");
+					jlForCurrent.setText("(" + pj.getCurrentAttributes().getFOR() + ")");
 					jlDex.setText("<html><body>DEX : " +pj.getAttributes().getDEX() +
 							" (<span style=color:#00FF00;>" + pj.getCurrentAttributes().getDEX() + "</span>)</body></html>");
 					jlCon.setText("<html><body>CON : " +pj.getAttributes().getCON() +
