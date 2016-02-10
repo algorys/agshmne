@@ -197,24 +197,40 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jHungry = new JLabel();
-		Image imgFood;
+		JLabel jlHungryIcon = new JLabel();
 		try {
-			imgFood = ImageIO.read(JTile.class.getClassLoader().getResource("meat.png"));
-			jHungry.setIcon(new ImageIcon(imgFood));
+			Image imgFood = ImageIO.read(JTile.class.getClassLoader().getResource("meat.png"));
+			jlHungryIcon.setIcon(new ImageIcon(imgFood));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.add(jHungry, gbcCharacter);
+		this.add(jlHungryIcon, gbcCharacter);
+
 		gbcCharacter.gridy = 8;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 1;
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlHungry = new JLabel("Faim : " + pj.getVital().getFaim());
+		JLabel jlHungryTitle = new JLabel("Faim : ");
+		jlHungryTitle.setForeground(Color.white);
+		this.add(jlHungryTitle, gbcCharacter);
+		
+		gbcCharacter.gridy = 8;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 2;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		final JLabel jlHungry = new JLabel("" + pj.getVital().getFaim());
 		jlHungry.setForeground(Color.white);
 		this.add(jlHungry, gbcCharacter);
+		pj.getVital().addPropertyChangeListener(Vital.PROPERTY_FAIM, new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				jlHungry.setText(evt.getNewValue().toString());
+			}
+		});
 
 		// Fatigue
 		gbcCharacter.gridy = 9;
