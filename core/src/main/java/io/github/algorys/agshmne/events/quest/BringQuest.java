@@ -50,7 +50,7 @@ public class BringQuest implements IQuest {
 	public void reward(Player pj) {
 		pj.getInventory().removeItem(item);
 		finish = true;
-		pj.getInventory().setGold(pj.getInventory().getGold() + Tools.dice(10));
+		pj.getInventory().setGold(pj.getInventory().getGold() + Tools.dice(pj.getLevel() * 5));
 		pj.getInventory().addItem(new EquipableItemFactory().createRandom());
 		// TODO prévoir une récompense.
 	}

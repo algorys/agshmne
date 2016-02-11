@@ -26,8 +26,10 @@ import io.github.algorys.agshmne.tile.JTile;
 @SuppressWarnings("serial")
 public class JPanQuest extends JPanel {
 	private JList<IQuest> quests;
+	private Player pj;
 
 	public JPanQuest(final Player pj) {
+		this.pj = pj;
 		quests = new JList<IQuest>(new QuestListModel(pj.getQuest()));
 
 		quests.setBackground(Color.BLACK);
@@ -54,7 +56,7 @@ public class JPanQuest extends JPanel {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						IQuest selectedQuest = quests.getModel().getElementAt(index);
-						JQuestResume questDialog = new JQuestResume(topFrame, selectedQuest, pj);
+						JQuestResume questDialog = new JQuestResume(topFrame, selectedQuest, JPanQuest.this.pj);
 						questDialog.setVisible(true);
 						quests.invalidate();
 						quests.repaint();

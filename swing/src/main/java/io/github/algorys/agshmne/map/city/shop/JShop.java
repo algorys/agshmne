@@ -31,6 +31,7 @@ import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.design.InvRenderer;
 import io.github.algorys.agshmne.design.ShopRenderer;
 import io.github.algorys.agshmne.game.character.inventory.InventoryListModel;
+import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.IEquipableItem;
 import io.github.algorys.agshmne.items.stackable.IStackableItem;
@@ -160,6 +161,18 @@ public class JShop extends JPanel {
 		gold.setForeground(Color.yellow);
 		gold.setOpaque(true);
 		this.add(gold, gbcShop);
+		
+		pj.getInventory().addPropertyChangeListener(Inventory.PROPERTY_GOLD, new PropertyChangeListener() {
+			
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				if(evt.getNewValue() instanceof Integer) {
+					Integer newValue = (Integer) evt.getNewValue();
+					gold.setText("Or restant : " + newValue);
+				}
+				
+			}
+		});
 
 		// Détail objet
 		gbcShop.gridy = 3;

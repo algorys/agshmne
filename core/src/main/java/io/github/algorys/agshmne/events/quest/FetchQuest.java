@@ -30,7 +30,7 @@ public class FetchQuest implements IQuest {
 			pj.getInventory().removeItem(item);
 		}
 		finish = true;
-		pj.getInventory().setGold(pj.getInventory().getGold() + Tools.dice(10));
+		pj.getInventory().setGold(pj.getInventory().getGold() + Tools.dice(pj.getLevel() * 5));
 	}
 	@Override
 	public String getName() {
