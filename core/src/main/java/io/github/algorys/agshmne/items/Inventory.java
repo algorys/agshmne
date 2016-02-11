@@ -1,5 +1,7 @@
 package io.github.algorys.agshmne.items;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -15,6 +17,8 @@ public class Inventory extends Observable {
 	// TODO gérer les objets de quêtes différement des objets normaux.
 	private List<Item> backpack = new ArrayList<>();
 	private int gold;
+	public static final String PROPERTY_GOLD = "Gold";
+	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 	
 	public Inventory() {
 	}
@@ -139,6 +143,24 @@ public class Inventory extends Observable {
 	}
 
 	public void setGold(int gold) {
+		int old = this.gold;
 		this.gold = gold;
+		pcs.firePropertyChange(PROPERTY_GOLD, old, gold);
+	}
+	
+	public void addPropertyChangeListener(PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(listener);
+	}
+
+	public void removePropertyChangeListener(PropertyChangeListener listener) {
+		pcs.removePropertyChangeListener(listener);
+	}
+
+	public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(propertyName, listener);
+	}
+
+	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+		pcs.removePropertyChangeListener(propertyName, listener);
 	}
 }

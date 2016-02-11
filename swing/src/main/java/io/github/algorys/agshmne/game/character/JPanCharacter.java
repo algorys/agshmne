@@ -21,6 +21,7 @@ import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.PlayerXP;
+import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
@@ -455,8 +456,30 @@ public class JPanCharacter extends JPanel {
 			}
 		});
 
-		// Niveau
+		// Gold
 		gbcCharacter.gridy = 16;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		final JLabel jlGold = new JLabel("Or restant : " + pj.getInventory().getGold());
+		jlGold.setForeground(Color.yellow);
+		this.add(jlGold, gbcCharacter);
+		pj.getInventory().addPropertyChangeListener(Inventory.PROPERTY_GOLD, new PropertyChangeListener() {
+
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				if (evt.getNewValue() instanceof Integer) {
+					Integer newValue = (Integer) evt.getNewValue();
+					jlGold.setText("Or restant : " + newValue);
+				}
+
+			}
+		});
+
+		// Niveau
+		gbcCharacter.gridy = 17;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
@@ -467,7 +490,7 @@ public class JPanCharacter extends JPanel {
 		this.add(jlLevel, gbcCharacter);
 
 		// Expérience
-		gbcCharacter.gridy = 17;
+		gbcCharacter.gridy = 18;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 2;
@@ -477,7 +500,7 @@ public class JPanCharacter extends JPanel {
 		jlXpTitle.setForeground(Color.magenta);
 		this.add(jlXpTitle, gbcCharacter);
 
-		gbcCharacter.gridy = 17;
+		gbcCharacter.gridy = 18;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 2;
 		gbcCharacter.gridwidth = 1;
@@ -488,7 +511,7 @@ public class JPanCharacter extends JPanel {
 		this.add(jlXp, gbcCharacter);
 
 		// Expérience
-		gbcCharacter.gridy = 18;
+		gbcCharacter.gridy = 19;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
