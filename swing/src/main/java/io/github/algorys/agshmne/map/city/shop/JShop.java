@@ -235,7 +235,6 @@ public class JShop extends JPanel {
 							jdCount.setVisible(true);
 							if (choice.getNbToSell() > 0) {
 								shop.buyItem(pj, stackableItem, choice.getNbToSell());
-								gold.setText("Or restant : " + pj.getInventory().getGold());
 								pjItem.invalidate();
 								pjItem.repaint();
 							}
@@ -246,7 +245,6 @@ public class JShop extends JPanel {
 							JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " vendu(e) !");
 							((InventoryListModel) pjItem.getModel()).removeElementAt(index);
 							shop.buyItem(pj, selectedItem);
-							gold.setText("Or restant : " + pj.getInventory().getGold());
 							pjItem.invalidate();
 							pjItem.repaint();
 						}
@@ -283,7 +281,6 @@ public class JShop extends JPanel {
 								jdCount.setVisible(true);
 								if (choice.getNbToSell() > 0) {
 									shop.sellItem(pj, stackableItem, choice.getNbToSell());
-									gold.setText("Or restant : " + pj.getInventory().getGold());
 									shopItem.invalidate();
 									shopItem.repaint();
 								}
@@ -291,7 +288,6 @@ public class JShop extends JPanel {
 								JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " acheté(e) !");
 								((InventoryListModel) shopItem.getModel()).removeElementAt(index);
 								shop.sellItem(pj, selectedItem);
-								gold.setText("Or restant : " + pj.getInventory().getGold());
 								shopItem.invalidate();
 								shopItem.repaint();
 							}
