@@ -6,7 +6,6 @@ import java.awt.Insets;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
@@ -18,7 +17,6 @@ public class JConfirmPanel extends JPanel {
 	private JTextField jtSexe;
 	private JTextField jtRace;
 	private JTextField jtClasse;
-	private JTextArea jtBckgrd;
 	
 	private JTextField jtForce;
 	private JTextField jtDexterite;
@@ -105,16 +103,6 @@ public class JConfirmPanel extends JPanel {
 		jtClasse = new JTextField("Classe : " + builder.getJob());
 		jtClasse.setEditable(false);
 		this.add(jtClasse, gbcConfirm);
-		// Background
-		gbcConfirm.gridy = 6;
-		gbcConfirm.gridheight = 1;
-		gbcConfirm.gridx = 0;
-		gbcConfirm.gridwidth = 1;
-		gbcConfirm.anchor = GridBagConstraints.WEST;
-		gbcConfirm.fill = GridBagConstraints.NONE;
-		jtBckgrd = new JTextArea("Background : " + builder.getHistory());
-		jtBckgrd.setEditable(false);
-		this.add(jtBckgrd, gbcConfirm);
 
 		// CARACTERISTIQUES
 		gbcConfirm.gridy = 7;
@@ -300,7 +288,6 @@ public class JConfirmPanel extends JPanel {
 		jtSexe.setText("Sexe : " + builder.getGender());
 		jtRace.setText("Race : " + builder.getRace());
 		jtClasse.setText("Classe : " + builder.getJob());
-		jtBckgrd.setText("Background : " + builder.getHistory());
 		// Attributs
 		jtForce.setText("Force : " + builder.getFOR());
 		jtDexterite.setText("Dextérité : " + builder.getDEX());

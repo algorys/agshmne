@@ -5,7 +5,6 @@ public class PlayerSocial {
 	private String sexe;
 	private String classe;
 	private String race;
-	private String background;
 	
 	public PlayerSocial() {
 		
@@ -33,14 +32,6 @@ public class PlayerSocial {
 
 	public void setRace(String race) {
 		this.race = race;
-	}
-
-	public String getBackground() {
-		return background;
-	}
-
-	public void setBackground(String background) {
-		this.background = background;
 	}
 
 	public String getSexe() {

@@ -78,20 +78,10 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
+		gbcCharacter.fill = GridBagConstraints.BOTH;
 		JLabel jlJob = new JLabel("Classe : " + pj.getSocial().getClasse());
 		jlJob.setForeground(Color.white);
 		this.add(jlJob, gbcCharacter);
-
-		gbcCharacter.gridy = 4;
-		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlBackGrd = new JLabel("Background : " + pj.getSocial().getBackground());
-		jlBackGrd.setForeground(Color.white);
-		this.add(jlBackGrd, gbcCharacter);
 
 		// Vital
 		gbcCharacter.gridy = 5;

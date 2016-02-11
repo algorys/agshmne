@@ -21,7 +21,6 @@ public class PlayerBuilder {
 	private String gender = "Male";
 	private String race;
 	private String job;
-	private String history;
 	private Item firstItem;
 	private Item secondItem;
 
@@ -40,7 +39,6 @@ public class PlayerBuilder {
 		player.getSocial().setSexe(gender);
 		player.getSocial().setRace(race);
 		player.getSocial().setClasse(job);
-		player.getSocial().setBackground(history);
 		// Init Carac
 		player.getAttributes().setFOR(FOR);
 		player.getAttributes().setDEX(DEX);
@@ -159,15 +157,6 @@ public class PlayerBuilder {
 
 	public PlayerBuilder setJob(String job) {
 		this.job = job;
-		return this;
-	}
-
-	public String getHistory() {
-		return history;
-	}
-
-	public PlayerBuilder setHistory(String history) {
-		this.history = history;
 		return this;
 	}
 
