@@ -2,7 +2,7 @@ package io.github.algorys.agshmne.charactercreation;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Font;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
@@ -24,17 +24,14 @@ public class JWelcome extends JFrame {
 	private JButton btLeft;
 
 	public JWelcome() {
-		setTitle("Agshmne running...");
+		setTitle("Agshmne ALPHA-VERSION-0.0.1 running...");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 		cardPanel = new JPanel();
 		cardPanel.setLayout(cardLayout);
 
-		JPanel jpAccueil = new JPanel();
-		JLabel jlTitle = new JLabel("Agshmne");
-		jlTitle.setFont(new Font("URW Chancery L", Font.PLAIN,70));
-		jpAccueil.add(jlTitle);
+		JWallPaper jpAccueil = new JWallPaper();
 
 		JPanel jpPerso = new JPanel();
 		jpPerso.add(new JLabel("Création Personnage"));
@@ -50,6 +47,7 @@ public class JWelcome extends JFrame {
 		JButton btSettings = new JButton();
 
 		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBackground(Color.black);
 		buttonPanel.add(btLeft);
 		buttonPanel.add(btSettings);
 

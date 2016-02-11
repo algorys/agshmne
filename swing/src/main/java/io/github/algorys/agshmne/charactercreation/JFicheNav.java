@@ -13,6 +13,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -120,10 +121,30 @@ public class JFicheNav extends JPanel {
 
 		cl.show(jpPrincipal, Step.SOCIAL.name());
 
-		JPanel jpButton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		JPanel jpButton = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		jpButton.setOpaque(false);
-		jpButton.add(new JButton(previous));
-		jpButton.add(new JButton(next));
+		JButton jbPrevious = new JButton(previous);
+		JButton jbNext = new JButton(next);
+		jbPrevious.setForeground(Color.red);
+		jbPrevious.setOpaque(false);
+		jbPrevious.setContentAreaFilled(false);
+		jbPrevious.setBorderPainted(false);
+		jbNext.setForeground(Color.red);
+		jbNext.setOpaque(false);
+		jbNext.setContentAreaFilled(false);
+		jbNext.setBorderPainted(false);
+		try {
+			Image img = ImageIO.read(JFicheNav.class.getClassLoader().getResource("button.png"));
+			jbPrevious.setIcon(new ImageIcon(img));
+			jbPrevious.setHorizontalTextPosition(JButton.CENTER);
+			jbPrevious.setVerticalTextPosition(JButton.CENTER);
+			jbNext.setIcon(new ImageIcon(img));
+			jbNext.setHorizontalTextPosition(JButton.CENTER);
+			jbNext.setVerticalTextPosition(JButton.CENTER);
+		} catch (IOException ex) {
+		}
+		jpButton.add(jbPrevious);
+		jpButton.add(jbNext);
 		this.add(jpButton, BorderLayout.SOUTH);
 
 		// Initialisation à Step.Social
@@ -215,8 +236,8 @@ public class JFicheNav extends JPanel {
 		int x = (this.getWidth() - width) / 2;
 		int y = (this.getHeight() - height) / 2;
 		try {
-			Image img = ImageIO.read(JTile.class.getClassLoader().getResource("parchemin.png"));
-			Image imgBack = ImageIO.read(JTile.class.getClassLoader().getResource("table.png"));
+			Image img = ImageIO.read(JFicheNav.class.getClassLoader().getResource("parchemin.png"));
+			Image imgBack = ImageIO.read(JFicheNav.class.getClassLoader().getResource("wallpaper.png"));
 			g.drawImage(imgBack, 0, 0, this.getWidth(), this.getHeight(), this);
 			g.drawImage(img, x, y, width, height, this);
 		} catch (IOException e) {
