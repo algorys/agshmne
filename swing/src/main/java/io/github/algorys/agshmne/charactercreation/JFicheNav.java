@@ -22,7 +22,6 @@ import javax.swing.JPanel;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.game.JGame;
-import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
 public class JFicheNav extends JPanel {
@@ -124,25 +123,10 @@ public class JFicheNav extends JPanel {
 		JPanel jpButton = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		jpButton.setOpaque(false);
 		JButton jbPrevious = new JButton(previous);
+		paintButton(jbPrevious);
 		JButton jbNext = new JButton(next);
-		jbPrevious.setForeground(Color.red);
-		jbPrevious.setOpaque(false);
-		jbPrevious.setContentAreaFilled(false);
-		jbPrevious.setBorderPainted(false);
-		jbNext.setForeground(Color.red);
-		jbNext.setOpaque(false);
-		jbNext.setContentAreaFilled(false);
-		jbNext.setBorderPainted(false);
-		try {
-			Image img = ImageIO.read(JFicheNav.class.getClassLoader().getResource("button.png"));
-			jbPrevious.setIcon(new ImageIcon(img));
-			jbPrevious.setHorizontalTextPosition(JButton.CENTER);
-			jbPrevious.setVerticalTextPosition(JButton.CENTER);
-			jbNext.setIcon(new ImageIcon(img));
-			jbNext.setHorizontalTextPosition(JButton.CENTER);
-			jbNext.setVerticalTextPosition(JButton.CENTER);
-		} catch (IOException ex) {
-		}
+		paintButton(jbNext);
+		
 		jpButton.add(jbPrevious);
 		jpButton.add(jbNext);
 		this.add(jpButton, BorderLayout.SOUTH);
@@ -215,6 +199,19 @@ public class JFicheNav extends JPanel {
 		}
 	}
 
+	private void paintButton(JButton button) {
+		button.setForeground(Color.red);
+		button.setOpaque(false);
+		button.setContentAreaFilled(false);
+		button.setBorderPainted(false);
+		try {
+			Image img = ImageIO.read(JFicheNav.class.getClassLoader().getResource("button.png"));
+			button.setIcon(new ImageIcon(img));
+			button.setHorizontalTextPosition(JButton.CENTER);
+			button.setVerticalTextPosition(JButton.CENTER);
+		} catch (IOException ex) {
+		}
+	}
 	@Override
 	public Dimension getPreferredSize() {
 		Dimension preferredSize = super.getPreferredSize();
