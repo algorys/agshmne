@@ -57,6 +57,7 @@ public class JCityCenter extends JPanel implements PropertyChangeListener {
 		gbcCityCenter.anchor = GridBagConstraints.CENTER;
 		gbcCityCenter.fill = GridBagConstraints.NONE;
 		JButton jbInn = new JButton("Se reposer");
+		jbInn.setEnabled(false);
 		this.add(jbInn, gbcCityCenter);
 		
 		// Taverne
@@ -76,6 +77,7 @@ public class JCityCenter extends JPanel implements PropertyChangeListener {
 		gbcCityCenter.anchor = GridBagConstraints.CENTER;
 		gbcCityCenter.fill = GridBagConstraints.NONE;
 		JButton jbTavern = new JButton("Boire un coup !");
+		jbTavern.setEnabled(false);
 		this.add(jbTavern, gbcCityCenter);
 		
 	}
