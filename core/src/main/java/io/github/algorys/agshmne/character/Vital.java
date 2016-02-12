@@ -8,28 +8,35 @@ public class Vital {
 	public final static String PROPERTY_MANA = "mana";
 	public final static String PROPERTY_FAIM = "faim";
 	public final static String PROPERTY_FATIGUE = "fatigue";
-	private int vie;
+	public static int MAX_LIFE;
+	public static int MAX_MANA;
+	private int life;
 	private int mana;
 	private int fatigue;
-	private int faim;
+	private int hunger;
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
-	public Vital(int vie, int mana, int fatigue, int faim) {
+	public Vital(int life, int mana, int fatigue, int hunger) {
 		super();
-		this.vie = vie;
+		this.life = life;
+		Vital.MAX_LIFE = life;
+		Vital.MAX_MANA = mana;
 		this.mana = mana;
 		this.fatigue = fatigue;
-		this.faim = faim;
+		this.hunger = hunger;
 	}
 
-	public int getVie() {
-		return vie;
+	public int getLife() {
+		return life;
 	}
 
-	public void setVie(int vie) {
-		int old = this.vie;
-		this.vie = vie;
-		pcs.firePropertyChange(PROPERTY_VIE, old, this.vie);
+	public void setLife(int life) {
+		int old = this.life;
+		this.life = life;
+		if(this.life < 1) {
+			this.life = 0;
+		}
+		pcs.firePropertyChange(PROPERTY_VIE, old, this.life);
 	}
 
 	public int getMana() {
@@ -39,6 +46,9 @@ public class Vital {
 	public void setMana(int mana) {
 		int old = this.mana;
 		this.mana = mana;
+		if(this.mana < 1) {
+			this.mana = 0;
+		}
 		pcs.firePropertyChange(PROPERTY_MANA, old, mana);
 	}
 
@@ -52,13 +62,13 @@ public class Vital {
 		pcs.firePropertyChange(PROPERTY_FATIGUE, old, fatigue);
 	}
 
-	public int getFaim() {
-		return faim;
+	public int getHunger() {
+		return hunger;
 	}
 
-	public void setFaim(int faim) {
-		int old = this.faim;
-		this.faim = faim;
+	public void setHunger(int hunger) {
+		int old = this.hunger;
+		this.hunger = hunger;
 		pcs.firePropertyChange(PROPERTY_FAIM, old, PROPERTY_FAIM);
 	}
 

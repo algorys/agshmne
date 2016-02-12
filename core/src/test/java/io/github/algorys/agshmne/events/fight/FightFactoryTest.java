@@ -43,6 +43,6 @@ public class FightFactoryTest {
 		Player pj = new Player(null);
 		pj.initVital();
 		Fight creation = underTest.createAdventure(pj);
-		assertTrue(creation.getRightOpponent().getVital().getVie() > 0);
+		assertTrue(creation.getRightOpponent().getVital().getLife() > 0);
 	}
 }

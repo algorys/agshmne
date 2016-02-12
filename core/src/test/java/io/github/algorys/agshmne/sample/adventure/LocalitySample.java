@@ -11,12 +11,12 @@ public class LocalitySample {
 		Player pj = new Player(null);
 		Locality underTest = new Locality("Fontaine", new LifeEffect(10), locality, "Affecte votre vie !");
 		pj.initVital();
-		pj.getVital().setVie(10);
+		pj.getVital().setLife(10);
 		System.out.println("Nom : " + underTest.getName());
 		System.out.println("Desc : " + underTest.getDesc());
-		System.out.println("Vie PJ : " + pj.getVital().getVie());
+		System.out.println("Vie PJ : " + pj.getVital().getLife());
 		underTest.interact(pj);
-		System.out.println("Vie PJ : " + pj.getVital().getVie());
+		System.out.println("Vie PJ : " + pj.getVital().getLife());
 	}
 
 }

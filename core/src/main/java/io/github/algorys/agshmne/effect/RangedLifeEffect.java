@@ -19,6 +19,6 @@ public class RangedLifeEffect implements IEffect {
 		if(current == 0) {
 			current = Tools.dice(max - min + 1) + min;
 		}
-		pj.getVital().setVie(pj.getVital().getVie() + current);
+		pj.getVital().setLife(pj.getVital().getLife() + current);
 	}
 }

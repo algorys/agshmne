@@ -47,7 +47,7 @@ public class JCharacter extends JPanel {
 
 		gbc.gridx = 1;
 		gbc.anchor = GridBagConstraints.EAST;
-		final JLabel jlVie = new JLabel("" + character.getVital().getVie());
+		final JLabel jlVie = new JLabel("" + character.getVital().getLife());
 		jlVie.setForeground(Color.green);
 		this.add(jlVie, gbc);
 		character.getVital().addPropertyChangeListener(Vital.PROPERTY_VIE, new PropertyChangeListener() {

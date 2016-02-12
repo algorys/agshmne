@@ -163,7 +163,7 @@ public class Player implements Character {
 		sb.append("\n");
 		sb.append("Level : " + this.xp.getLevel());
 		sb.append("\n");
-		sb.append("Vie = " + this.getVital().getVie());
+		sb.append("Vie = " + this.getVital().getLife());
 		sb.append("\n");
 		sb.append("Mana = " + this.getVital().getMana());
 		sb.append("\n");

@@ -127,7 +127,7 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.EAST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		final JLabel jlLife = new JLabel("" + pj.getVital().getVie());
+		final JLabel jlLife = new JLabel("" + pj.getVital().getLife());
 		jlLife.setForeground(Color.white);
 		this.add(jlLife, gbcCharacter);
 
@@ -213,7 +213,7 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.EAST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		final JLabel jlHungry = new JLabel("" + pj.getVital().getFaim());
+		final JLabel jlHungry = new JLabel("" + pj.getVital().getHunger());
 		jlHungry.setForeground(Color.white);
 		this.add(jlHungry, gbcCharacter);
 		pj.getVital().addPropertyChangeListener(Vital.PROPERTY_FAIM, new PropertyChangeListener() {

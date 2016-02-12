@@ -96,10 +96,10 @@ public class EffectFactoryTest {
 		EffectFactory underTest = new EffectFactory();
 		Player pj = new Player(null);
 		pj.initVital();
-		pj.getVital().setVie(10);
-		assertTrue(10 == pj.getVital().getVie());
+		pj.getVital().setLife(10);
+		assertTrue(10 == pj.getVital().getLife());
 		underTest.fromString("LIFE10").apply(pj);
-		assertTrue(20 == pj.getVital().getVie() || 0 == pj.getVital().getVie());
+		assertTrue(20 == pj.getVital().getLife() || 0 == pj.getVital().getLife());
 	}
 
 	@Test
@@ -135,10 +135,10 @@ public class EffectFactoryTest {
 		EffectFactory underTest = new EffectFactory();
 		Player pj = new Player(null);
 		pj.initVital();
-		pj.getVital().setVie(0);
-		assertEquals(0, pj.getVital().getVie());
+		pj.getVital().setLife(0);
+		assertEquals(0, pj.getVital().getLife());
 		underTest.createRandomLifeEffect().apply(pj);
-		assertNotEquals(0, pj.getVital().getVie());
+		assertNotEquals(0, pj.getVital().getLife());
 	}
 	
 	@Test

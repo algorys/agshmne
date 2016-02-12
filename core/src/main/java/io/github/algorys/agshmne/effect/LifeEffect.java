@@ -12,7 +12,7 @@ public class LifeEffect implements IEffect {
 
 	@Override
 	public void apply(Player pj) {
-		pj.getVital().setVie(pj.getVital().getVie() + modifier);
+		pj.getVital().setLife(pj.getVital().getLife() + modifier);
 	}
 
 }

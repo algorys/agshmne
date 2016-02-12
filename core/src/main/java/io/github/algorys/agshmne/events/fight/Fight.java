@@ -28,11 +28,10 @@ public class Fight implements IAdventure {
 		if (pjAttack < -5) {
 			pjAttack = -5;
 		}
-		System.out.println("Attaque PJ= " + pjAttack);
 		if (pjAttack > 0) {
-			adv.getVital().setVie(adv.getVital().getVie() - pjAttack);
+			adv.getVital().setLife(adv.getVital().getLife() - pjAttack);
 		} else if(pjAttack == 0) {
-			adv.getVital().setVie(adv.getVital().getVie() - 1);
+			adv.getVital().setLife(adv.getVital().getLife() - 1);
 		}
 		return pjAttack;
 	}
@@ -42,17 +41,16 @@ public class Fight implements IAdventure {
 		if (mobAttack < -5) {
 			mobAttack = -5;
 		}
-		System.out.println("Attaque ADV = " + mobAttack);
 		if (mobAttack > 0) {
-			pj.getVital().setVie(pj.getVital().getVie() - mobAttack);
+			pj.getVital().setLife(pj.getVital().getLife() - mobAttack);
 		} else if(mobAttack == 0) {
-			pj.getVital().setVie(pj.getVital().getVie() - 1);
+			pj.getVital().setLife(pj.getVital().getLife() - 1);
 		}
 		return mobAttack;
 	}
 
 	public boolean isFinish() {
-		return this.pj.getVital().getVie() <= 0 || this.adv.getVital().getVie() <= 0;
+		return this.pj.getVital().getLife() <= 0 || this.adv.getVital().getLife() <= 0;
 	}
 
 	private int attack(int carac, int level) {
