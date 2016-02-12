@@ -84,21 +84,38 @@ public class JLocalityDialog extends JDialog {
 		gbcQuest.gridy = 4;
 		gbcQuest.gridheight = 1;
 		gbcQuest.gridx = 0;
-		gbcQuest.gridwidth = 4;
-		gbcQuest.anchor = GridBagConstraints.CENTER;
+		gbcQuest.gridwidth = 2;
+		gbcQuest.anchor = GridBagConstraints.WEST;
 		gbcQuest.fill = GridBagConstraints.NONE;
-		JButton interact = new JButton("Intéragir");
+		final JButton yes = new JButton("Oui");
 		
-		interact.addActionListener(new ActionListener() {
+		yes.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				locality.interact(pj);
 				effect.setText("Effet : " + locality.getDescEffect());
-				
+				yes.setEnabled(false);
 			}
 		});
-		panEvent.add(interact, gbcQuest);
+		panEvent.add(yes, gbcQuest);
+		
+		gbcQuest.gridy = 4;
+		gbcQuest.gridheight = 1;
+		gbcQuest.gridx = 2;
+		gbcQuest.gridwidth = 2;
+		gbcQuest.anchor = GridBagConstraints.EAST;
+		gbcQuest.fill = GridBagConstraints.NONE;
+		final JButton no = new JButton("Partir");
+		
+		no.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JLocalityDialog.this.dispose();
+			}
+		});
+		panEvent.add(no, gbcQuest);
 		
 		gbcQuest.gridy = 5;
 		gbcQuest.gridheight = 1;
