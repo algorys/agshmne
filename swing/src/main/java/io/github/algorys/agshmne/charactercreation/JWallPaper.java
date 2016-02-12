@@ -77,7 +77,8 @@ public class JWallPaper extends JPanel {
 				"Pour jouer, vous devez tout d'abord créer votre personnage. Une fois que cela est fait, "
 				+ "vous pouvez vous déplacer sur les différentes cases du jeu avec les touches flechées de votre clavier ou "
 				+ "en cliquant sur les cases autour de vous. Le monde est déjà vaste et vous aurez accès à quelques quêtes,"
-				+ " des combats, divers objets à vendre ou à acheter. "
+				+ " des combats, divers objets à vendre ou à acheter. Les villes sont signalées par des petites icônes sur"
+				+ "la carte. "
 				+ "Amusez vous bien !");
 		howToPlay.setForeground(Color.white);
 		howToPlay.setWrapStyleWord(true);
