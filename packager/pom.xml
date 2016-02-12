@@ -43,6 +43,39 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>de.jutzig</groupId>
+				<artifactId>github-release-plugin</artifactId>
+				<version>1.1.1</version>
+				<configuration>
+					<description>Description of your release</description>
+					<releaseName>${project.scm.tag}</releaseName>
+					<repositoryId>algorys/agshmne</repositoryId>
+					<tag>${project.scm.tag}</tag>
+
+					<!-- If your project has additional artifacts, such as ones produced 
+						by the maven-assembly-plugin, you can define the following (requires version 
+						1.1.1 of the plugin or higher): -->
+					<fileSets>
+						<fileSet>
+							<directory>${project.build.directory}</directory>
+							<includes>
+								<include>*.tar.gz</include>
+								<include>*.zip</include>
+								<include>*.tar.bz2</include>
+							</includes>
+						</fileSet>
+					</fileSets>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>deploy</phase>
+						<goals>
+							<goal>release</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
