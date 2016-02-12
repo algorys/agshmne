@@ -45,22 +45,22 @@ public class JWallPaper extends JPanel {
 		JLabel info = new JLabel("Informations");
 		info.setFont(new Font("Courier New", Font.ITALIC, 20));
 		info.setForeground(Color.white);
-		info.setPreferredSize(new Dimension(700, 400));
+		info.setPreferredSize(new Dimension(700, 200));
 		this.add(info, gbcWall);
 
 		gbcWall.gridy = 2;
 		gbcWall.gridheight = 1;
 		gbcWall.gridx = 0;
-		gbcWall.gridwidth = 2;
+		gbcWall.gridwidth = 4;
 		gbcWall.anchor = GridBagConstraints.WEST;
 		gbcWall.fill = GridBagConstraints.BOTH;
 		JTextArea infoArea = new JTextArea();
 		infoArea.setForeground(Color.white);
 		infoArea.setText(
-				"Bienvenue dans Agshmne, ce jeu n'est encore qu'en phase BETA et il peut subir des changements "
-				+ "radicaux. La plupart des fonctionnalités ne sont donc pas encore implémentées. "
+				"Bienvenue dans Agshmne, ce jeu n'est encore qu'en phase ALPHA de développement et il peut subir "
+				+ "des changements radicaux. La plupart des fonctionnalités ne sont donc pas encore implémentées. "
 				+ "Le jeu n'est également pas encore équilibré et sera ajusté au fur et à mesure du développement. "
-				+ "Le contenu sera aussi étoffé au fur et à mesure des implémentations des fonctionnalités du jeu.");
+				+ "Le contenu sera aussi étoffé par la suite progressivement.");
 		infoArea.setWrapStyleWord(true);
 		infoArea.setLineWrap(true);
 		infoArea.setFont(new Font("Courier New", Font.ITALIC, 14));
@@ -70,7 +70,7 @@ public class JWallPaper extends JPanel {
 		gbcWall.gridy = 3;
 		gbcWall.gridheight = 1;
 		gbcWall.gridx = 0;
-		gbcWall.gridwidth = 2;
+		gbcWall.gridwidth = 4;
 		gbcWall.anchor = GridBagConstraints.WEST;
 		gbcWall.fill = GridBagConstraints.BOTH;
 		JTextArea howToPlay = new JTextArea(
