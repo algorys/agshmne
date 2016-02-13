@@ -242,7 +242,7 @@ public class JShop extends JPanel {
 								&& ((IEquipableItem) selectedItem).isEquipped()) {
 							JOptionPane.showMessageDialog(JShop.this, "Vous devez d'abord déséquipper " + selectedItem);
 						} else {
-							JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " vendu(e) !");
+//							JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " vendu(e) !");
 							((InventoryListModel) pjItem.getModel()).removeElementAt(index);
 							shop.buyItem(pj, selectedItem);
 							pjItem.invalidate();
@@ -285,7 +285,7 @@ public class JShop extends JPanel {
 									shopItem.repaint();
 								}
 							} else {
-								JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " acheté(e) !");
+//								JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " acheté(e) !");
 								((InventoryListModel) shopItem.getModel()).removeElementAt(index);
 								shop.sellItem(pj, selectedItem);
 								shopItem.invalidate();

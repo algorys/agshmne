@@ -54,7 +54,7 @@ public class JTileInventory extends JPanel implements PropertyChangeListener {
 				ramasser.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						Item selectedItem = groundItem.getModel().getElementAt(index);
-						JOptionPane.showMessageDialog(JTileInventory.this, "" + selectedItem + " ajouté(e) !");
+//						JOptionPane.showMessageDialog(JTileInventory.this, "" + selectedItem + " ajouté(e) !");
 						((TileListModel) groundItem.getModel()).removeElementAt(index);
 						JTileInventory.this.pj.getInventory().addItem(selectedItem);
 						groundItem.invalidate();
