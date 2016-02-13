@@ -35,9 +35,9 @@ public class JPanInventory extends JPanel {
 		invItems.setBackground(Color.BLACK);
 		invItems.setForeground(Color.green);
 		invItems.setFixedCellWidth(290);
-		invItems.setFixedCellHeight(15);
-		invItems.setVisibleRowCount(10);
-		invItems.setPreferredSize(new Dimension(400, 300));
+		invItems.setFixedCellHeight(30);
+		invItems.setVisibleRowCount(20);
+		invItems.setPreferredSize(new Dimension(600, 600));
 		invItems.setEnabled(true);
 
 		this.add(invItems);

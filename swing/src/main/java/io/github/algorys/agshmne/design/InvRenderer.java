@@ -24,12 +24,12 @@ public class InvRenderer implements ListCellRenderer<Item> {
 			if (value instanceof IEquipableItem) {
 				IEquipableItem currentItem = (IEquipableItem) value;
 				if (currentItem.isEquipped()) {
-					rendererComponent.setText(currentItem.toString() + " [Equipé]");
+					rendererComponent.setText(currentItem.getName() + " [Equipé]");
 				}
 				if (currentItem.getPuissance() < 4) {
 					rendererComponent.setForeground(Color.white);
 				} else if (currentItem.getPuissance() <= 9) {
-					rendererComponent.setForeground(Color.blue);
+					rendererComponent.setForeground(new Color(0, 128, 255));
 				} else if (currentItem.getPuissance() <= 14) {
 					rendererComponent.setForeground(Color.green);
 				} else {
@@ -37,8 +37,8 @@ public class InvRenderer implements ListCellRenderer<Item> {
 				}
 			} else if(value instanceof IStackableItem) {
 				IStackableItem currentItem = (IStackableItem) value;
-				rendererComponent.setForeground(new Color(255, 255, 204));
-				rendererComponent.setText(currentItem.toString() + " (Qtité : " + currentItem.getCount() + ")");
+				rendererComponent.setForeground(new Color(255, 255, 153));
+				rendererComponent.setText(currentItem.getName() + " (Qtité : " + currentItem.getCount() + ")");
 			} else {
 				rendererComponent.setForeground(Color.lightGray);
 			}
