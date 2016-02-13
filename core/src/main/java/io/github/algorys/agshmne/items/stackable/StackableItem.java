@@ -30,7 +30,7 @@ public class StackableItem implements IStackableItem {
 
 	@Override
 	public boolean isSameType(Item other) {
-		return (other instanceof IStackableItem) && this.name == other.getName();
+		return (other instanceof IStackableItem) && this.name.equals(other.getName());
 	}
 
 	@Override

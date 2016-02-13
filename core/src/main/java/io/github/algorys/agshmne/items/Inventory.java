@@ -31,7 +31,7 @@ public class Inventory extends Observable {
 		if (item instanceof IStackableItem) {
 			IStackableItem stackToAdd = (IStackableItem) item;
 			for (Item inBag : backpack) {
-				if (inBag.isSameType(item) && inBag instanceof IStackableItem) {
+				if (inBag.isSameType(stackToAdd) && inBag instanceof IStackableItem) {
 					IStackableItem stack = (IStackableItem) inBag;
 					stack.addCount(stackToAdd.getCount());
 					added = true;
