@@ -21,7 +21,8 @@ public class BodyPartItemFactory implements IItemFactory {
 		String weapon = Tools.random(descriptions);
 		String[] values = weapon.split(":");
 		String name = values[0];
-		EquipableItem equipableItem = new EquipableItem(name, part, 5);
+		int price = Integer.parseInt(values[2]);
+		EquipableItem equipableItem = new EquipableItem(name, part, price);
 		manageAttribute(values[1], equipableItem.getAttribute());
 		return equipableItem;
 	}

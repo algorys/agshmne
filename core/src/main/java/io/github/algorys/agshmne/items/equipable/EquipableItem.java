@@ -16,10 +16,11 @@ public class EquipableItem extends GeneralItem implements IEquipableItem {
 	public void equip() {
 		this.equipped = true;
 	}
-	
+
 	@Override
 	public int getPuissance() {
-		int puissance = attribute.getFOR() + attribute.getDEX() + attribute.getCON() + attribute.getINT() + attribute.getCHA();
+		int puissance = Math.abs(attribute.getFOR()) + Math.abs(attribute.getDEX()) + Math.abs(attribute.getCON())
+				+ Math.abs(attribute.getINT()) + Math.abs(attribute.getCHA());
 		return puissance;
 	}
 
