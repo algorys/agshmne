@@ -22,7 +22,7 @@ public class ShopRenderer implements ListCellRenderer<Item> {
 		jlPrice.setBackground(Color.black);
 		jlPrice.setForeground(new Color(255, 247, 121));
 		jlPrice.setHorizontalAlignment(JLabel.CENTER);
-		jlPrice.setPreferredSize(new Dimension(30, 15));
+		jlPrice.setPreferredSize(new Dimension(40, 15));
 		jpRenderer.setBackground(Color.BLACK);
 		jpRenderer.add(jlPrice, BorderLayout.EAST);
 		jlPrice.setOpaque(true);
