@@ -30,7 +30,7 @@ public class ItemFactory implements IItemFactory {
 	
 	
 	public Item createItem() {
-		String line = stackableItems.get(Tools.dice(stackableItems.size()));
+		String line = simpleItems.get(Tools.dice(simpleItems.size()));
 		String[] parts = line.split(":");
 		return new GeneralItem(parts[0], Integer.parseInt(parts[1]));
 	}
