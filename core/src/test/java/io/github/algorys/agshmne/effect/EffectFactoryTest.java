@@ -135,10 +135,10 @@ public class EffectFactoryTest {
 		EffectFactory underTest = new EffectFactory();
 		Player pj = new Player(null);
 		pj.initVital();
-		pj.getVital().setLife(0);
-		assertEquals(0, pj.getVital().getLife());
+		pj.getVital().setLife(10);
+		assertEquals(10, pj.getVital().getLife());
 		underTest.createRandomLifeEffect().apply(pj);
-		assertNotEquals(0, pj.getVital().getLife());
+		assertNotEquals(10, pj.getVital().getLife());
 	}
 	
 	@Test
@@ -146,10 +146,10 @@ public class EffectFactoryTest {
 		EffectFactory underTest = new EffectFactory();
 		Player pj = new Player(null);
 		pj.initVital();
-		pj.getVital().setMana(0);
-		assertEquals(0, pj.getVital().getMana());
+		pj.getVital().setMana(10);
+		assertEquals(10, pj.getVital().getMana());
 		underTest.createRandomManaEffect().apply(pj);
-		assertNotEquals(0, pj.getVital().getMana());
+		assertNotEquals(10, pj.getVital().getMana());
 	}
 
 }
