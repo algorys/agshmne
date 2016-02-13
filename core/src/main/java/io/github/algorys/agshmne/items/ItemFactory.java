@@ -14,30 +14,31 @@ public class ItemFactory implements IItemFactory {
 	
 	public ItemFactory() {
 		String[] misc = {
-				"Tonneau","Bouteille","Verre",
-				"Pierre", "gravier"
+				"Tonneau:5","Bouteille:3","Verre:2",
+				"Bougie:2", "assiette:4"
 				};
 		simpleItems.addAll(Arrays.asList(misc));
 		String[] stackies = {
-				"Bois",
-				"Viande", "Poisson", "Cuir",
-				"Minerai:pierre", "Minerai:cuivre","Minerai:fer", "Minerai:Argent", "Minerai:Or", "Minerai:mythril",
-				"Pomme","Orange","Poire","Pêche", "Figue",
-				"Clou", "Rivet", "Caillou", "Lettres", "Feraille"
+				"Bois:5",
+				"Viande:5", "Poisson:5", "Cuir:10",
+				"Minerai,pierre:5", "Minerai,cuivre:7","Minerai,fer:10", "Minerai,Argent:20", "Minerai,Or:50", "Minerai,mythril:100",
+				"Pomme:5","Orange:5","Poire:5","Pêche:5", "Figue:5",
+				"Clou:5", "Rivet:5", "Caillou:0", "Lettres:1", "Feraille:1"
 				};
 		stackableItems.addAll(Arrays.asList(stackies));
 	}
 	
 	
-	public Item createItem() {		
-		return new GeneralItem(Tools.random(simpleItems), Tools.dice(10) +1);
+	public Item createItem() {
+		String line = stackableItems.get(Tools.dice(stackableItems.size()));
+		String[] parts = line.split(":");
+		return new GeneralItem(parts[0], Integer.parseInt(parts[1]));
 	}
 	
 	public IStackableItem createStackableItem() {
-		/*String line = stackableItems.get(Tools.dice(stackableItems.size()));
+		String line = stackableItems.get(Tools.dice(stackableItems.size()));
 		String[] parts = line.split(":");
-		return new StackableItem(parts[0], Integer.parseInt(parts[1]));*/
-		return new StackableItem(Tools.random(stackableItems), 1,  Tools.dice(5) +1);
+		return new StackableItem(parts[0], 1, Integer.parseInt(parts[1]));
 	}
 
 
