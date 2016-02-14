@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.ItemFactory;
+import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
 
 @SuppressWarnings("serial")
 public class JInvPanel extends JLabel {
@@ -52,8 +53,8 @@ public class JInvPanel extends JLabel {
 		ItemFactory itemFact = new ItemFactory();
 		firstObject.addItem(itemFact.createStackableItem());
 		firstObject.addItem(itemFact.createStackableItem());
-		firstObject.addItem(itemFact.createStackableItem());
-		firstObject.addItem(itemFact.createStackableItem());
+		firstObject.addItem(itemFact.createItem());
+		firstObject.addItem(itemFact.createItem());
 		firstObject.addItemListener(new ItemListener() {
 			
 			@Override
@@ -73,11 +74,12 @@ public class JInvPanel extends JLabel {
 		gbcInv.gridwidth = 1;
 		gbcInv.anchor = GridBagConstraints.EAST;
 		gbcInv.fill = GridBagConstraints.NONE;
-		secondObject = new JComboBox<Item>();		
-		secondObject.addItem(itemFact.createItem());
-		secondObject.addItem(itemFact.createItem());
-		secondObject.addItem(itemFact.createItem());
-		secondObject.addItem(itemFact.createItem());
+		secondObject = new JComboBox<Item>();
+		EquipableItemFactory equipFact = new EquipableItemFactory();
+		secondObject.addItem(equipFact.createRandom());
+		secondObject.addItem(equipFact.createRandom());
+		secondObject.addItem(equipFact.createRandom());
+		secondObject.addItem(equipFact.createRandom());
 		secondObject.addItemListener(new ItemListener() {
 			
 			@Override

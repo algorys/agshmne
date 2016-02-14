@@ -95,7 +95,7 @@ public class JLocalityDialog extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				locality.interact(pj);
 				effect.setText("Effet : " + locality.getDescEffect());
-				yes.setEnabled(false);
+				JLocalityDialog.this.dispose();
 			}
 		});
 		panEvent.add(yes, gbcQuest);
