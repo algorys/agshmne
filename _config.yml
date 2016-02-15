@@ -1,0 +1,30 @@
+# ----------------------- #
+#      Main Configs       #
+# ----------------------- #
+
+url: http://algorys.github.io/agshmne
+title: Agshmne
+#email: your-email@domain.com
+author: Algorys
+description: > # "Write an awesome description for your new site here. 
+  TODO RPG
+copyright: 'Copyright &copy; 2016 Algorys. All Rights Reserved.'
+credits: 'Credits: <strong>Agshmne</strong> d Estrada Matthieu est mis à disposition selon les termes de la <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/">licence Creative Commons Attribution - Pas d Utilisation Commerciale - Pas de Modification 4.0 International</a>'
+
+# ----------------------- #
+#    Jekyll & Plugins     #
+# ----------------------- #
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# ----------------------- #
+#   3rd Party Settings    #
+# ----------------------- #
+
+social:
+  - title: github
+    url: https://github.com/algorys
+  - title: twitter
+    url: https://twitter.com/agshmne
