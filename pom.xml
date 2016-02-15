@@ -2,14 +2,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.algorys</groupId>
 	<artifactId>agshmne</artifactId>
-	<version>0.0.1-ALPHA</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<scm>
 		<url>https://github.com/algorys/agshmne.git</url>
 		<connection>scm:git:git@github.com:algorys/agshmne.git</connection>
 		<developerConnection>scm:git:git@github.com:algorys/agshmne.git</developerConnection>
-	  <tag>v0.0.1-ALPHA</tag>
+	  <tag>HEAD</tag>
   </scm>
 	<distributionManagement>
 		<repository>
