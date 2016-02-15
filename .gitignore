@@ -4,3 +4,6 @@ target/
 .classpath
 .project
 .settings/
+_site/
+.bundle/
+*.lock

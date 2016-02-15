@@ -76,6 +76,35 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<version>0.12</version>
+				<configuration>
+					<server>github</server>
+					<repositoryName>agshmne</repositoryName>      <!-- github repo name -->
+					<repositoryOwner>algorys</repositoryOwner>    <!-- github username -->
+				</configuration>
+				<executions>
+					<execution>
+						<id>siteDeployDocs</id>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>deploy</phase>
+						<configuration>
+							<message>Generate website for ${project.version}</message>  <!-- git commit message -->
+							<noJekyll>false</noJekyll>                                  <!-- disable webpage processing -->
+							<outputDirectory>${project.basedir}/site</outputDirectory> <!-- matches distribution management repository url above -->
+							<branch>refs/heads/gh-pages</branch>                       <!-- remote branch name -->
+							<includes>
+								<include>**/*</include>
+							</includes>
+							<merge>false</merge>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
