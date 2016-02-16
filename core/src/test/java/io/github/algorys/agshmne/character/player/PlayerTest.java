@@ -68,16 +68,16 @@ public class PlayerTest {
 
 	@Test
 	public void whenCharacterChangePosition_observersShouldBeNotified() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		MyObserver myObserver = new MyObserver();
-		underTest.addPropertyChangeListener(myObserver);
+		underTest.addPropertyChangeListener(Player.PROPERTY_POSITION, myObserver);
 		underTest.setPosition(new Position(1, 0));
 		assertTrue(myObserver.isCalled());
 	}
 
 	@Test
 	public void whenCharacterSetSamePosition_observersShouldNotBeNotified() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		MyObserver myObserver = new MyObserver();
 		underTest.addPropertyChangeListener(myObserver);
 		underTest.setPosition(new Position(0, 0));
