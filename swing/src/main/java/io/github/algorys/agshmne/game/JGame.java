@@ -57,6 +57,7 @@ public class JGame extends JFrame {
 		gbcGame.weightx = 0;
 		gbcGame.weighty = 0;
 		contentPane.add(new JPanRight(pj), gbcGame);
+		pj.getRegion().newTurn();
 
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
 			@Override
@@ -66,15 +67,19 @@ public class JGame extends JFrame {
 					switch (e.getKeyCode()) {
 					case KeyEvent.VK_LEFT:
 						pj.setPosition(new Position(pj.getPosition().getX() - 1, pj.getPosition().getY()));
+						pj.getRegion().newTurn();
 						return true;
 					case KeyEvent.VK_RIGHT:
 						pj.setPosition(new Position(pj.getPosition().getX() + 1, pj.getPosition().getY()));
+						pj.getRegion().newTurn();
 						return true;
 					case KeyEvent.VK_UP:
 						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() + 1));
+						pj.getRegion().newTurn();
 						return true;
 					case KeyEvent.VK_DOWN:
 						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() - 1));
+						pj.getRegion().newTurn();
 						return true;
 					}
 				}

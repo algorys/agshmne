@@ -36,7 +36,7 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			if (e.getSource() instanceof JTile) {
-				((JTile) e.getSource()).setBorder(new LineBorder(Color.YELLOW));
+				((JTile) e.getSource()).setBorder(new LineBorder(Color.GREEN));
 			}
 		}
 
@@ -51,6 +51,7 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 		public void mouseClicked(MouseEvent e) {
 			JMapRegion.this.personnage.setPosition(new Position(JMapRegion.this.personnage.getPosition().getX() + diffX,
 					JMapRegion.this.personnage.getPosition().getY() + diffY));
+			JMapRegion.this.personnage.getRegion().newTurn();
 		}
 	}
 

@@ -28,7 +28,7 @@ public class JMapDesc extends JPanel {
 		
 		// Position
 		this.xy = new JMapXY(pj);
-		this.xy.setDescPosition(pj.getPosition());
+		this.xy.setDescPosition(pj);
 
 		// Région Civilisée
 		this.civilized = new JMapCiv(pj);
@@ -45,7 +45,7 @@ public class JMapDesc extends JPanel {
 					Player pj = (Player) evt.getSource();
 					titleHistory.setTitle("Region : " + pj.getTile().getDesc());
 					civilized.setCivilized(pj.getTile().isCivilized());
-					xy.setDescPosition(pj.getPosition());
+					xy.setDescPosition(pj);
 				}
 			}
 		});
