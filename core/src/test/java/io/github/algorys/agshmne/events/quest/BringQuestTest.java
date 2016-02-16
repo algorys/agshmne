@@ -20,7 +20,7 @@ public class BringQuestTest {
 		
 		// when
 		Position toGo = new Position(underTest.getQuestDestination().getX(), underTest.getQuestDestination().getY());
-		pj.setPosition(toGo);
+		pj.getGame().setPosition(toGo);
 		
 		boolean res = underTest.isWin(pj);
 		

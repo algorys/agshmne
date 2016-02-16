@@ -62,10 +62,6 @@ public class Player implements Character {
 				((attributes.getCON() + attributes.getFOR()) / 2) + 10, attributes.getCON() + 10);
 	}
 
-	public void setPosition(Position position) {
-		game.setPosition(position);
-	}
-
 	public void equip(IEquipableItem item) {
 		Attribute old = this.getCurrentAttributes();
 		if (this.getInventory().contains(item)) {

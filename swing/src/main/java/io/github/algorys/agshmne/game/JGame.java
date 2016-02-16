@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.game.character.JPanCharacter;
 import io.github.algorys.agshmne.game.mainpanel.JPanMain;
@@ -64,21 +65,22 @@ public class JGame extends JFrame {
 			public boolean dispatchKeyEvent(KeyEvent e) {
 				if (mainPan.getSelectedIndex() == JPanMain.MAP_PANEL_INDEX && e.getID() == KeyEvent.KEY_PRESSED) {
 					System.out.println("Touché!");
+					Game game = pj.getGame();
 					switch (e.getKeyCode()) {
 					case KeyEvent.VK_LEFT:
-						pj.setPosition(new Position(pj.getGame().getPosition().getX() - 1, pj.getGame().getPosition().getY()));
+						game.setPosition(new Position(game.getPosition().getX() - 1, game.getPosition().getY()));
 						pj.getRegion().newTurn();
 						return true;
 					case KeyEvent.VK_RIGHT:
-						pj.setPosition(new Position(pj.getGame().getPosition().getX() + 1, pj.getGame().getPosition().getY()));
+						game.setPosition(new Position(game.getPosition().getX() + 1, game.getPosition().getY()));
 						pj.getRegion().newTurn();
 						return true;
 					case KeyEvent.VK_UP:
-						pj.setPosition(new Position(pj.getGame().getPosition().getX(), pj.getGame().getPosition().getY() + 1));
+						game.setPosition(new Position(game.getPosition().getX(), game.getPosition().getY() + 1));
 						pj.getRegion().newTurn();
 						return true;
 					case KeyEvent.VK_DOWN:
-						pj.setPosition(new Position(pj.getGame().getPosition().getX(), pj.getGame().getPosition().getY() - 1));
+						game.setPosition(new Position(game.getPosition().getX(), game.getPosition().getY() - 1));
 						pj.getRegion().newTurn();
 						return true;
 					}

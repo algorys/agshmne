@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.map.JMapRegion;
 import io.github.algorys.agshmne.map.Position;
@@ -39,25 +40,26 @@ public class JRegionTest {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//System.out.println("Touché!");
+				Game game = personnage.getGame();
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_LEFT:
-					personnage.setPosition(
-							new Position(personnage.getGame().getPosition().getX() - 1, personnage.getGame().getPosition().getY()));
+					game.setPosition(
+							new Position(game.getPosition().getX() - 1, game.getPosition().getY()));
 					System.out.println("-------------------------------------");
 					break;
 				case KeyEvent.VK_RIGHT:
-					personnage.setPosition(
-							new Position(personnage.getGame().getPosition().getX() + 1, personnage.getGame().getPosition().getY()));
+					game.setPosition(
+							new Position(game.getPosition().getX() + 1, game.getPosition().getY()));
 					System.out.println("-------------------------------------");
 					break;
 				case KeyEvent.VK_UP:
-					personnage.setPosition(
-							new Position(personnage.getGame().getPosition().getX(), personnage.getGame().getPosition().getY() + 1));
+					game.setPosition(
+							new Position(game.getPosition().getX(), game.getPosition().getY() + 1));
 					System.out.println("-------------------------------------");
 					break;
 				case KeyEvent.VK_DOWN:
-					personnage.setPosition(
-							new Position(personnage.getGame().getPosition().getX(), personnage.getGame().getPosition().getY() - 1));
+					game.setPosition(
+							new Position(game.getPosition().getX(), game.getPosition().getY() - 1));
 					System.out.println("-------------------------------------");
 					break;
 				}

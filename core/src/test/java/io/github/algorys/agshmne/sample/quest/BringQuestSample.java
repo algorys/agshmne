@@ -18,7 +18,7 @@ public class BringQuestSample {
 		System.out.println("Inventaire = " + pj.getInventory());
 		// Mouvement vers la destination
 		bringQ.accept(pj);
-		pj.setPosition(questDestination);
+		pj.getGame().setPosition(questDestination);
 		win = bringQ.isWin(pj);
 		System.out.println("Quête finie ? " + win);
 		// Validation de la quêtes

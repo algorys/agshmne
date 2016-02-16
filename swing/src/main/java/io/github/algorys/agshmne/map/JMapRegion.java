@@ -15,6 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.region.Region;
@@ -49,8 +50,8 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			JMapRegion.this.personnage.setPosition(new Position(JMapRegion.this.personnage.getGame().getPosition().getX() + diffX,
-					JMapRegion.this.personnage.getGame().getPosition().getY() + diffY));
+			Game game = JMapRegion.this.personnage.getGame();
+			game.setPosition(new Position(game.getPosition().getX() + diffX, game.getPosition().getY() + diffY));
 			JMapRegion.this.personnage.getRegion().newTurn();
 		}
 	}
