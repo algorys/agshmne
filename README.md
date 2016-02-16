@@ -28,7 +28,7 @@ Vous aurez la possibilité de construire vos propres armes, sorts, batiments, sc
 
 ### Installation
 
-(Bientôt disponible)
+Consultez le [site d'Agshmne](http://algorys.github.io/agshmne/#download)
 
 ### Licence
 [![GNU GPL v3.0](http://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl.html)
