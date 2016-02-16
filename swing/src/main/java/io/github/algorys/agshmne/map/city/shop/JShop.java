@@ -35,27 +35,14 @@ import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.IEquipableItem;
 import io.github.algorys.agshmne.items.stackable.IStackableItem;
+import io.github.algorys.agshmne.map.tile.Tile;
 
 @SuppressWarnings("serial")
 public class JShop extends JPanel {
-	private Shop shop;
+	private Shop shop = Shop.NONE;
+	private JList<Item> shopItem;
 
 	public JShop(final Player pj) {
-		if(pj.getTile().isCivilized()) {
-			shop = pj.getTile().getCity().getShop();
-		} else {
-			shop = Shop.NONE;
-		}
-		pj.addPropertyChangeListener(Player.PROPERTY_POSITION, new PropertyChangeListener() {
-			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-				if(pj.getTile().isCivilized()) {
-					shop = pj.getTile().getCity().getShop();
-				} else {
-					shop = Shop.NONE;
-				}
-			}
-		});
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcShop = new GridBagConstraints();
 		gbcShop.insets = new Insets(5, 5, 5, 5);
@@ -99,7 +86,7 @@ public class JShop extends JPanel {
 		gbcShop.weightx = 1;
 		gbcShop.weighty = 1;
 
-		final JList<Item> shopItem = new JList<Item>(new InventoryListModel(shop.getInventory()));
+		shopItem = new JList<Item>(new InventoryListModel(shop.getInventory()));
 		shopItem.setCellRenderer(new ShopRenderer(new InvRenderer()));
 		shopItem.setBackground(Color.BLACK);
 		shopItem.setForeground(Color.green);
@@ -161,16 +148,16 @@ public class JShop extends JPanel {
 		gold.setForeground(Color.yellow);
 		gold.setOpaque(true);
 		this.add(gold, gbcShop);
-		
+
 		pj.getInventory().addPropertyChangeListener(Inventory.PROPERTY_GOLD, new PropertyChangeListener() {
-			
+
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-				if(evt.getNewValue() instanceof Integer) {
+				if (evt.getNewValue() instanceof Integer) {
 					Integer newValue = (Integer) evt.getNewValue();
 					gold.setText("Or restant : " + newValue);
 				}
-				
+
 			}
 		});
 
@@ -242,7 +229,8 @@ public class JShop extends JPanel {
 								&& ((IEquipableItem) selectedItem).isEquipped()) {
 							JOptionPane.showMessageDialog(JShop.this, "Vous devez d'abord déséquipper " + selectedItem);
 						} else {
-//							JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " vendu(e) !");
+							// JOptionPane.showMessageDialog(JShop.this, "" +
+							// selectedItem + " vendu(e) !");
 							((InventoryListModel) pjItem.getModel()).removeElementAt(index);
 							shop.buyItem(pj, selectedItem);
 							pjItem.invalidate();
@@ -285,7 +273,8 @@ public class JShop extends JPanel {
 									shopItem.repaint();
 								}
 							} else {
-//								JOptionPane.showMessageDialog(JShop.this, "" + selectedItem + " acheté(e) !");
+								// JOptionPane.showMessageDialog(JShop.this, ""
+								// + selectedItem + " acheté(e) !");
 								((InventoryListModel) shopItem.getModel()).removeElementAt(index);
 								shop.sellItem(pj, selectedItem);
 								shopItem.invalidate();
@@ -301,14 +290,24 @@ public class JShop extends JPanel {
 			}
 		});
 
-		pj.addPropertyChangeListener(Player.PROPERTY_POSITION, new PropertyChangeListener() {
+		pj.addPropertyChangeListener(Player.PROPERTY_TILE, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-				if (pj.getTile().isCivilized()) {
-					shopItem.setModel(new InventoryListModel(pj.getTile().getCity().getShop().getInventory()));
+				if (evt.getNewValue() instanceof Tile) {
+					updateShop((Tile) evt.getNewValue());
 				}
 			}
 		});
+		updateShop(pj.getTile());
+	}
+
+	private void updateShop(Tile newTile) {
+		if (newTile.isCivilized()) {
+			shop = newTile.getCity().getShop();
+			shopItem.setModel(new InventoryListModel(newTile.getCity().getShop().getInventory()));
+		} else {
+			shop = Shop.NONE;
+		}
 	}
 
 	public String getStringAttribute(Attribute equip) {
