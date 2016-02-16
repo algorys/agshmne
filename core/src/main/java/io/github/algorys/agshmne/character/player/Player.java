@@ -53,10 +53,6 @@ public class Player implements Character {
 		});
 	}
 
-	public Position getPosition() {
-		return game.getPosition();
-	}
-
 	public Region getRegion() {
 		return this.region;
 	}
@@ -141,7 +137,7 @@ public class Player implements Character {
 	}
 
 	public Tile getTile() {
-		return getRegion().getTileFromPosition(getPosition());
+		return getRegion().getTileFromPosition(getGame().getPosition());
 	}
 	public IQuest getFinishedQuest() {
 		IQuest questFinish = null;
@@ -206,5 +202,9 @@ public class Player implements Character {
 
 	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
 		pcs.removePropertyChangeListener(propertyName, listener);
+	}
+
+	public Game getGame() {
+		return game;
 	}
 }

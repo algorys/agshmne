@@ -66,19 +66,19 @@ public class JGame extends JFrame {
 					System.out.println("Touché!");
 					switch (e.getKeyCode()) {
 					case KeyEvent.VK_LEFT:
-						pj.setPosition(new Position(pj.getPosition().getX() - 1, pj.getPosition().getY()));
+						pj.setPosition(new Position(pj.getGame().getPosition().getX() - 1, pj.getGame().getPosition().getY()));
 						pj.getRegion().newTurn();
 						return true;
 					case KeyEvent.VK_RIGHT:
-						pj.setPosition(new Position(pj.getPosition().getX() + 1, pj.getPosition().getY()));
+						pj.setPosition(new Position(pj.getGame().getPosition().getX() + 1, pj.getGame().getPosition().getY()));
 						pj.getRegion().newTurn();
 						return true;
 					case KeyEvent.VK_UP:
-						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() + 1));
+						pj.setPosition(new Position(pj.getGame().getPosition().getX(), pj.getGame().getPosition().getY() + 1));
 						pj.getRegion().newTurn();
 						return true;
 					case KeyEvent.VK_DOWN:
-						pj.setPosition(new Position(pj.getPosition().getX(), pj.getPosition().getY() - 1));
+						pj.setPosition(new Position(pj.getGame().getPosition().getX(), pj.getGame().getPosition().getY() - 1));
 						pj.getRegion().newTurn();
 						return true;
 					}

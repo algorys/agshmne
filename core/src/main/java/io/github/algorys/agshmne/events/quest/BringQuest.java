@@ -15,7 +15,7 @@ public class BringQuest implements IQuest {
 	private String name;
 
 	public BringQuest(Player pj, Item item) {
-		this.initialPos = pj.getPosition();
+		this.initialPos = pj.getGame().getPosition();
 		this.questDestination = this.defineDestination(initialPos);
 		this.item = item;
 		this.name = "Apporter des " + item.getName() + " dans la Région : "
@@ -43,7 +43,7 @@ public class BringQuest implements IQuest {
 
 	@Override
 	public boolean isWin(Player pj) {
-		return pj.getPosition().equals(questDestination) && pj.getInventory().contains(item);
+		return pj.getGame().getPosition().equals(questDestination) && pj.getInventory().contains(item);
 	}
 
 	@Override

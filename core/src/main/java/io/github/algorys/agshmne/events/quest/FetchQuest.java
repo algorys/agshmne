@@ -14,7 +14,7 @@ public class FetchQuest implements IQuest {
 	private boolean finish = false;
 
 	public FetchQuest(Player pj, Item item, int count) {
-		this.questPosition = pj.getPosition();
+		this.questPosition = pj.getGame().getPosition();
 		this.count = count;
 		this.item = item;
 		this.tile = pj.getTile();
@@ -22,7 +22,7 @@ public class FetchQuest implements IQuest {
 	
 	@Override
 	public boolean isWin(Player pj) {
-		return (pj.getInventory().count(item) >= count && pj.getPosition().equals(questPosition)) ;
+		return (pj.getInventory().count(item) >= count && pj.getGame().getPosition().equals(questPosition)) ;
 	}
 	@Override
 	public void reward(Player pj) {

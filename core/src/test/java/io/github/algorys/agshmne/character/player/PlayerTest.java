@@ -63,7 +63,7 @@ public class PlayerTest {
 	@Test
 	public void whenCharacterIsCreated_positionShouldBe00() {
 		Player underTest = new Player(null);
-		assertEquals(new Position(0, 0), underTest.getPosition());
+		assertEquals(new Position(0, 0), underTest.getGame().getPosition());
 	}
 
 	@Test

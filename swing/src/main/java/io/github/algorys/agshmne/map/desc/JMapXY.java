@@ -6,13 +6,11 @@ import java.awt.Image;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.game.mainpanel.JPanMain;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
@@ -34,16 +32,15 @@ public class JMapXY extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		jlPosition.setText("Position : " + pj.getPosition().getX() + ", " + pj.getPosition().getY());
 		jlTurn.setForeground(Color.cyan);
-		jlTurn.setText("Tour " + pj.getRegion().getTurn());
+		setDescPosition(pj);
 		
 		this.add(jlTurn);
 		this.add(jlPosition);
 	}
 
 	public void setDescPosition(Player pj) {
-		jlPosition.setText("Position : " + pj.getPosition().getX() + ", " + pj.getPosition().getY());
+		jlPosition.setText("Position : " + pj.getGame().getPosition().getX() + ", " + pj.getGame().getPosition().getY());
 		jlTurn.setText("Tour " + pj.getRegion().getTurn());
 	}
 }

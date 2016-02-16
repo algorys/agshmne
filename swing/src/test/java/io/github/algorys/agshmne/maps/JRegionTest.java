@@ -42,22 +42,22 @@ public class JRegionTest {
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_LEFT:
 					personnage.setPosition(
-							new Position(personnage.getPosition().getX() - 1, personnage.getPosition().getY()));
+							new Position(personnage.getGame().getPosition().getX() - 1, personnage.getGame().getPosition().getY()));
 					System.out.println("-------------------------------------");
 					break;
 				case KeyEvent.VK_RIGHT:
 					personnage.setPosition(
-							new Position(personnage.getPosition().getX() + 1, personnage.getPosition().getY()));
+							new Position(personnage.getGame().getPosition().getX() + 1, personnage.getGame().getPosition().getY()));
 					System.out.println("-------------------------------------");
 					break;
 				case KeyEvent.VK_UP:
 					personnage.setPosition(
-							new Position(personnage.getPosition().getX(), personnage.getPosition().getY() + 1));
+							new Position(personnage.getGame().getPosition().getX(), personnage.getGame().getPosition().getY() + 1));
 					System.out.println("-------------------------------------");
 					break;
 				case KeyEvent.VK_DOWN:
 					personnage.setPosition(
-							new Position(personnage.getPosition().getX(), personnage.getPosition().getY() - 1));
+							new Position(personnage.getGame().getPosition().getX(), personnage.getGame().getPosition().getY() - 1));
 					System.out.println("-------------------------------------");
 					break;
 				}
