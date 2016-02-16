@@ -16,13 +16,10 @@ import io.github.algorys.agshmne.game.mainpanel.JPanMain;
 import io.github.algorys.agshmne.game.mainpanel.JPanRight;
 import io.github.algorys.agshmne.map.JMapRegion;
 import io.github.algorys.agshmne.map.Position;
-import io.github.algorys.agshmne.map.region.RandomRegionFactory;
-import io.github.algorys.agshmne.map.region.Region;
 
 @SuppressWarnings("serial")
 public class JGame extends JFrame {
-	private Region region = new RandomRegionFactory().create();
-	private Player pj = new Player(region);
+	private Player pj;
 	private final JMapRegion jregion;
 
 	public JGame(Player perso) {
