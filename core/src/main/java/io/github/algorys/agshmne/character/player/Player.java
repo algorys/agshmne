@@ -1,10 +1,12 @@
 package io.github.algorys.agshmne.character.player;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.Vital;
@@ -24,7 +26,7 @@ public class Player implements Character {
 	public final static String PROPERTY_POSITION = "position";
 	public final static String PROPERTY_TILE = "tile";
 
-	private Position position = new Position(0, 0);
+	private Game game = new Game();
 	private Region region;
 	private Inventory inv;
 	private PlayerSocial social;
@@ -42,10 +44,17 @@ public class Player implements Character {
 		xp = new PlayerXP();
 		inv = new Inventory();
 		skills = new SkillFactory();
+		game.addPropertyChangeListener(Game.PROPERTY_POSITION, new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				pcs.firePropertyChange(PROPERTY_POSITION, evt.getOldValue(), evt.getNewValue());
+				pcs.firePropertyChange(PROPERTY_TILE, getRegion().getTileFromPosition((Position)evt.getOldValue()), getTile());
+			}
+		});
 	}
 
 	public Position getPosition() {
-		return position;
+		return game.getPosition();
 	}
 
 	public Region getRegion() {
@@ -58,11 +67,7 @@ public class Player implements Character {
 	}
 
 	public void setPosition(Position position) {
-		Tile oldTile = this.getTile();
-		Position old = this.position;
-		this.position = position;
-		pcs.firePropertyChange(PROPERTY_POSITION, old, this.position);
-		pcs.firePropertyChange(PROPERTY_TILE, oldTile, this.getTile());
+		game.setPosition(position);
 	}
 
 	public void equip(IEquipableItem item) {
