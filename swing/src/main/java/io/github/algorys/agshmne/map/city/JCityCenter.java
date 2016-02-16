@@ -11,25 +11,17 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.map.tile.Tile;
 
 @SuppressWarnings("serial")
-public class JCityCenter extends JPanel implements PropertyChangeListener {
-	private City city;
-	private Player pj;
+public class JCityCenter extends JPanel {
 	private JLabel jlTitle;
-	
+
 	public JCityCenter(Player pj) {
-		this.pj = pj;
-		pj.addPropertyChangeListener(Player.PROPERTY_POSITION, this);
-		if(pj.getTile().isCivilized()) {
-			city = pj.getTile().getCity();
-		} else {
-			city = City.NONE;
-		}
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcCityCenter = new GridBagConstraints();
 		gbcCityCenter.insets = new Insets(5, 5, 5, 5);
-		
+
 		// TITRE
 		gbcCityCenter.gridy = 0;
 		gbcCityCenter.gridheight = 1;
@@ -37,9 +29,9 @@ public class JCityCenter extends JPanel implements PropertyChangeListener {
 		gbcCityCenter.gridwidth = 4;
 		gbcCityCenter.anchor = GridBagConstraints.CENTER;
 		gbcCityCenter.fill = GridBagConstraints.NONE;
-		jlTitle = new JLabel(city.getName());
+		jlTitle = new JLabel();
 		this.add(jlTitle, gbcCityCenter);
-		
+
 		// Auberge
 		gbcCityCenter.gridy = 1;
 		gbcCityCenter.gridheight = 1;
@@ -49,7 +41,7 @@ public class JCityCenter extends JPanel implements PropertyChangeListener {
 		gbcCityCenter.fill = GridBagConstraints.NONE;
 		JLabel jlInn = new JLabel("Auberge");
 		this.add(jlInn, gbcCityCenter);
-		
+
 		gbcCityCenter.gridy = 1;
 		gbcCityCenter.gridheight = 1;
 		gbcCityCenter.gridx = 2;
@@ -59,7 +51,7 @@ public class JCityCenter extends JPanel implements PropertyChangeListener {
 		JButton jbInn = new JButton("Se reposer");
 		jbInn.setEnabled(false);
 		this.add(jbInn, gbcCityCenter);
-		
+
 		// Taverne
 		gbcCityCenter.gridy = 2;
 		gbcCityCenter.gridheight = 1;
@@ -69,7 +61,7 @@ public class JCityCenter extends JPanel implements PropertyChangeListener {
 		gbcCityCenter.fill = GridBagConstraints.NONE;
 		JLabel jlTavern = new JLabel("Taverne");
 		this.add(jlTavern, gbcCityCenter);
-		
+
 		gbcCityCenter.gridy = 2;
 		gbcCityCenter.gridheight = 1;
 		gbcCityCenter.gridx = 2;
@@ -79,17 +71,26 @@ public class JCityCenter extends JPanel implements PropertyChangeListener {
 		JButton jbTavern = new JButton("Boire un coup !");
 		jbTavern.setEnabled(false);
 		this.add(jbTavern, gbcCityCenter);
-		
+
+		pj.addPropertyChangeListener(Player.PROPERTY_TILE, new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				if (evt.getNewValue() instanceof Tile) {
+					updateTitle((Tile) evt.getNewValue());
+				}
+			}
+		});
+		updateTitle(pj.getTile());
 	}
 
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		if(pj.getTile().isCivilized()) {
-			city = pj.getTile().getCity();
+	private void updateTitle(Tile newTile) {
+		final City city;
+		if (newTile.isCivilized()) {
+			city = newTile.getCity();
 		} else {
 			city = City.NONE;
 		}
 		jlTitle.setText(city.getName());
-		
 	}
+
 }
