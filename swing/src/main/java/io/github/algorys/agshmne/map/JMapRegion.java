@@ -87,16 +87,6 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 		return personnage;
 	}
 
-	public void setPersonnage(Player personnage) {
-		if (personnage == null) {
-			throw new NullPointerException("personnage ne doit pas être null");
-		}
-		this.personnage.removePropertyChangeListener(Player.PROPERTY_POSITION, this);
-		this.personnage = personnage;
-		this.personnage.addPropertyChangeListener(Player.PROPERTY_POSITION, this);
-		this.updateDisplay();
-	}
-
 	private void updateDisplay() {
 		Position position = this.personnage.getPosition();
 

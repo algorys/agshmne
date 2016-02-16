@@ -21,16 +21,24 @@ import io.github.algorys.agshmne.events.quest.IQuest;
 import io.github.algorys.agshmne.game.fight.JFightDialog;
 import io.github.algorys.agshmne.game.locality.JLocalityDialog;
 import io.github.algorys.agshmne.game.quest.JQuestDialog;
+import io.github.algorys.agshmne.map.tile.Tile;
 
 @SuppressWarnings("serial")
-public class SkillSearchRegionAction extends AbstractAction implements PropertyChangeListener {
+public class SkillSearchRegionAction extends AbstractAction {
 	private Player pj;
 	private IAdventureFactory adventureFactory = new AdventureFactory();
 
 	public SkillSearchRegionAction(Player pj) {
 		super("Fouiller la Région");
 		this.pj = pj;
-		pj.addPropertyChangeListener(Player.PROPERTY_POSITION, this);
+		pj.addPropertyChangeListener(Player.PROPERTY_TILE, new PropertyChangeListener() {
+			@Override
+			public void propertyChange(PropertyChangeEvent evt) {
+				if(evt.getNewValue() instanceof Tile) {
+					SkillSearchRegionAction.this.setEnabled(!((Tile)evt.getNewValue()).isSearched());
+				}
+			}
+		});
 	}
 
 	@Override
@@ -56,14 +64,6 @@ public class SkillSearchRegionAction extends AbstractAction implements PropertyC
 				JLocalityDialog localityDialog = new JLocalityDialog(topFrame, (Locality) adventure, pj);
 				localityDialog.setVisible(true);
 			}
-		}
-	}
-
-	@Override
-	public void propertyChange(PropertyChangeEvent evt) {
-		if (evt.getSource() instanceof Player) {
-			Player pj = (Player) evt.getSource();
-			this.setEnabled(!pj.getTile().isSearched());
 		}
 	}
 }

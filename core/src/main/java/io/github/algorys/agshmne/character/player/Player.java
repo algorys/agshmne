@@ -22,11 +22,7 @@ import io.github.algorys.agshmne.map.tile.Tile;
  */
 public class Player implements Character {
 	public final static String PROPERTY_POSITION = "position";
-	public final static String PROPERTY_REGION = "position";
-	public final static String PROPERTY_INVENTORY = "inventory";
-	public final static String PROPERTY_SOCIAL = "social";
-	public final static String PROPERTY_XP = "xp";
-	public final static String PROPERTY_SKILLS = "skills";
+	public final static String PROPERTY_TILE = "tile";
 
 	private Position position = new Position(0, 0);
 	private Region region;
@@ -62,9 +58,11 @@ public class Player implements Character {
 	}
 
 	public void setPosition(Position position) {
+		Tile oldTile = this.getTile();
 		Position old = this.position;
 		this.position = position;
 		pcs.firePropertyChange(PROPERTY_POSITION, old, this.position);
+		pcs.firePropertyChange(PROPERTY_TILE, oldTile, this.getTile());
 	}
 
 	public void equip(IEquipableItem item) {
