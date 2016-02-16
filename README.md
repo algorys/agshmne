@@ -31,9 +31,9 @@ Vous aurez la possibilité de construire vos propres armes, sorts, batiments, sc
 (Bientôt disponible)
 
 ### Licence
-[![Licence Creative Commons](https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-nd/4.0/)
+[![GNU GPL v3.0](http://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl.html)
 
-**Agshmne** de *Estrada Matthieu* est mis à disposition selon les termes de la [licence Creative Commons Attribution - Pas d&#39;Utilisation Commerciale - Pas de Modification 4.0 International](http://creativecommons.org/licenses/by-nc-nd/4.0/).
+**Agshmne** de *Estrada Matthieu* est mis à disposition selon les termes de la [licence GNU GPL v3.0](http://www.gnu.org/licenses/gpl-3.0.fr.html).
 
 Fondé(e) sur une œuvre d'Estrada Matthieu, disponible sur [https://github.com/algorys/agshmne](https://github.com/algorys/agshmne).
 
@@ -43,3 +43,5 @@ Images en provenance d'[opengameart.org](http://opengameart.org/) :
 Icônes originales : images de [RavenmoreArt](https://www.facebook.com/RavenmoreArt), ont été modifiées. [Licence Creative Commons CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/fr/)
 
 Tuiles originales : images de [Jinn](http://jinndevil.tumblr.com/), ont été modifiées. [Licence Creative Commons CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/fr/)
+
+Les autres images sont sous la [Licence Creative Commons CC0](https://creativecommons.org/publicdomain/zero/1.0/legalcode)
