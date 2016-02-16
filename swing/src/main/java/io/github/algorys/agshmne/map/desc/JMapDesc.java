@@ -8,6 +8,7 @@ import java.beans.PropertyChangeListener;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.player.Player;
 
 @SuppressWarnings("serial")
@@ -16,7 +17,7 @@ public class JMapDesc extends JPanel {
 	private JMapCiv civilized;
 	private JMapXY xy;
 
-	public JMapDesc(Player pj) {
+	public JMapDesc(final Player pj) {
 		this.setPreferredSize(new Dimension(700, 100));
 		BoxLayout blSouth = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setBackground(Color.black);
@@ -38,11 +39,10 @@ public class JMapDesc extends JPanel {
 		this.add(xy);
 		this.add(civilized);
 
-		pj.addPropertyChangeListener(Player.PROPERTY_POSITION, new PropertyChangeListener() {
+		pj.getGame().addPropertyChangeListener(Game.PROPERTY_POSITION, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getSource() instanceof Player) {
-					Player pj = (Player) evt.getSource();
 					titleHistory.setTitle("Region : " + pj.getTile().getDesc());
 					civilized.setCivilized(pj.getTile().isCivilized());
 					xy.setDescPosition(pj);

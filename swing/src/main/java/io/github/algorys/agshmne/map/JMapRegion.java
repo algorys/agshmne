@@ -65,7 +65,7 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 			throw new NullPointerException("personnage cannot be null");
 		}
 		this.personnage = personnage;
-		this.personnage.addPropertyChangeListener(Player.PROPERTY_POSITION, this);
+		this.personnage.getGame().addPropertyChangeListener(Game.PROPERTY_POSITION, this);
 
 		Position position = personnage.getGame().getPosition();
 
@@ -91,10 +91,10 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 
 	private void updateDisplay() {
 		Position position = this.personnage.getGame().getPosition();
+		Region region = this.personnage.getRegion();
 
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 7; j++) {
-				Region region = this.personnage.getRegion();
 				Position newPosition = new Position(position.getX() + j - 3, position.getY() + (3 - i));
 				Tile tile = region.getTileFromPosition(newPosition);
 				jtiles[i][j].setModel(tile);
@@ -126,7 +126,7 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		if (evt.getSource() == this.personnage) {
+		if (evt.getSource() == this.personnage.getGame()) {
 			this.updateDisplay();
 		}
 	}

@@ -23,7 +23,6 @@ import io.github.algorys.agshmne.map.tile.Tile;
  * Définit le Personnage
  */
 public class Player implements Character {
-	public final static String PROPERTY_POSITION = "position";
 	public final static String PROPERTY_TILE = "tile";
 
 	private Game game = new Game();
@@ -47,7 +46,6 @@ public class Player implements Character {
 		game.addPropertyChangeListener(Game.PROPERTY_POSITION, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-				pcs.firePropertyChange(PROPERTY_POSITION, evt.getOldValue(), evt.getNewValue());
 				pcs.firePropertyChange(PROPERTY_TILE, getRegion().getTileFromPosition((Position)evt.getOldValue()), getTile());
 			}
 		});

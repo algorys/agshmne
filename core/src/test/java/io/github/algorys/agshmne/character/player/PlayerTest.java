@@ -67,24 +67,6 @@ public class PlayerTest {
 	}
 
 	@Test
-	public void whenCharacterChangePosition_observersShouldBeNotified() {
-		Player underTest = new PlayerBuilder().create();
-		MyObserver myObserver = new MyObserver();
-		underTest.addPropertyChangeListener(Player.PROPERTY_POSITION, myObserver);
-		underTest.getGame().setPosition(new Position(1, 0));
-		assertTrue(myObserver.isCalled());
-	}
-
-	@Test
-	public void whenCharacterSetSamePosition_observersShouldNotBeNotified() {
-		Player underTest = new PlayerBuilder().create();
-		MyObserver myObserver = new MyObserver();
-		underTest.addPropertyChangeListener(myObserver);
-		underTest.getGame().setPosition(new Position(0, 0));
-		assertFalse(myObserver.isCalled());
-	}
-
-	@Test
 	public void whenCharacterEquipAnItem() {
 		Player underTest = new Player(null);
 		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD, 10);
