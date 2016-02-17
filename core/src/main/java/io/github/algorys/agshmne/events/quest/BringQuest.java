@@ -19,7 +19,7 @@ public class BringQuest implements IQuest {
 		this.questDestination = this.defineDestination(initialPos);
 		this.item = item;
 		this.name = "Apporter des " + item.getName() + " dans la Région : "
-				+ pj.getRegion().getTileFromPosition(questDestination).getDesc();
+				+ pj.getGame().getRegion().getTileFromPosition(questDestination).getDesc();
 	}
 
 	private Position defineDestination(Position position) {

@@ -52,7 +52,7 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 		public void mouseClicked(MouseEvent e) {
 			Game game = JMapRegion.this.personnage.getGame();
 			game.setPosition(new Position(game.getPosition().getX() + diffX, game.getPosition().getY() + diffY));
-			JMapRegion.this.personnage.getRegion().newTurn();
+			JMapRegion.this.personnage.getGame().getRegion().newTurn();
 		}
 	}
 
@@ -73,7 +73,7 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 		this.setLayout(new GridLayout(7, 7));
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 7; j++) {
-				jtiles[i][j] = new JTile(personnage.getRegion()
+				jtiles[i][j] = new JTile(personnage.getGame().getRegion()
 						.getTileFromPosition(new Position(position.getX() + j - 3, position.getY() + (3 - i))));
 				this.add(jtiles[i][j]);
 			}
@@ -91,7 +91,7 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 
 	private void updateDisplay() {
 		Position position = this.personnage.getGame().getPosition();
-		Region region = this.personnage.getRegion();
+		Region region = this.personnage.getGame().getRegion();
 
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 7; j++) {

@@ -45,13 +45,9 @@ public class Player implements Character {
 		game.addPropertyChangeListener(Game.PROPERTY_POSITION, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-				pcs.firePropertyChange(PROPERTY_TILE, getRegion().getTileFromPosition((Position)evt.getOldValue()), getTile());
+				pcs.firePropertyChange(PROPERTY_TILE, ((Game)evt.getSource()).getRegion().getTileFromPosition((Position)evt.getOldValue()), getTile());
 			}
 		});
-	}
-
-	public Region getRegion() {
-		return this.game.getRegion();
 	}
 
 	public void initVital() {
@@ -130,7 +126,7 @@ public class Player implements Character {
 	}
 
 	public Tile getTile() {
-		return getRegion().getTileFromPosition(getGame().getPosition());
+		return getGame().getRegion().getTileFromPosition(getGame().getPosition());
 	}
 	public IQuest getFinishedQuest() {
 		IQuest questFinish = null;
