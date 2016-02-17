@@ -15,7 +15,6 @@ import io.github.algorys.agshmne.events.quest.IQuest;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.IEquipableItem;
-import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.map.tile.Tile;
 
@@ -26,6 +25,7 @@ public class Player implements Character {
 	public final static String PROPERTY_TILE = "tile";
 
 	private final Game game;
+	private Tile tile;
 	private Inventory inv;
 	private PlayerSocial social;
 	private Attribute attributes;
@@ -45,14 +45,16 @@ public class Player implements Character {
 		game.addPropertyChangeListener(Game.PROPERTY_POSITION, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-				pcs.firePropertyChange(PROPERTY_TILE, ((Game)evt.getSource()).getRegion().getTileFromPosition((Position)evt.getOldValue()), getTile());
+				setTile(getGame().getRegion().getTileFromPosition(getGame().getPosition()));
 			}
 		});
+		this.tile = game.getRegion().getTileFromPosition(getGame().getPosition());
 	}
 
 	public void initVital() {
-		vital = new Vital(attributes.getCON() + 10 + this.getXp().getLevel(), attributes.getINT() + this.getXp().getLevel(),
-				((attributes.getCON() + attributes.getFOR()) / 2) + 10, attributes.getCON() + 10);
+		vital = new Vital(attributes.getCON() + 10 + this.getXp().getLevel(),
+				attributes.getINT() + this.getXp().getLevel(), ((attributes.getCON() + attributes.getFOR()) / 2) + 10,
+				attributes.getCON() + 10);
 	}
 
 	public void equip(IEquipableItem item) {
@@ -126,20 +128,29 @@ public class Player implements Character {
 	}
 
 	public Tile getTile() {
-		return getGame().getRegion().getTileFromPosition(getGame().getPosition());
+		return this.tile;
 	}
+
+	public void setTile(Tile newTile) {
+		Tile old = this.tile;
+		this.tile = newTile;
+		pcs.firePropertyChange(PROPERTY_TILE, old, newTile);
+	}
+
 	public IQuest getFinishedQuest() {
 		IQuest questFinish = null;
-		for(IQuest quest : quests) {
-			if(quest.isFinish()) {
+		for (IQuest quest : quests) {
+			if (quest.isFinish()) {
 				questFinish = quest;
 			}
 		}
 		return questFinish;
 	}
+
 	public void addQuest(IQuest questAdded) {
 		quests.add(questAdded);
 	}
+
 	public List<IQuest> getQuest() {
 		return quests;
 	}

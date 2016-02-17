@@ -8,6 +8,7 @@ import org.hamcrest.core.IsInstanceOf;
 import org.junit.Test;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.events.IAdventureFactory;
 
 public class FightFactoryTest {
@@ -21,7 +22,7 @@ public class FightFactoryTest {
 	@Test
 	public void testDefaultCreatedIsFight() {
 		FightFactory underTest = new FightFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		pj.initVital();
 		Fight creation = underTest.createAdventure(pj);
 		assertThat(creation, IsInstanceOf.instanceOf(Fight.class));
@@ -30,7 +31,7 @@ public class FightFactoryTest {
 	@Test
 	public void testDefaultCreated_hasOpponent() {
 		FightFactory underTest = new FightFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		pj.initVital();
 		Fight creation = underTest.createAdventure(pj);
 		assertNotNull(creation.getLeftOpponent());
@@ -40,7 +41,7 @@ public class FightFactoryTest {
 	@Test
 	public void testDefaultCreated_hasOpponentWithHealth() {
 		FightFactory underTest = new FightFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		pj.initVital();
 		Fight creation = underTest.createAdventure(pj);
 		assertTrue(creation.getRightOpponent().getVital().getLife() > 0);

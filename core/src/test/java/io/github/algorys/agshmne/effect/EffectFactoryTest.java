@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.character.player.skills.SkillType;
 
 public class EffectFactoryTest {
@@ -14,7 +15,7 @@ public class EffectFactoryTest {
 	@Test
 	public void fromStringApplyEffectChangeBoucher() {
 		EffectFactory underTest = new EffectFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		assertTrue(0 == pj.getSkills().getSkillLevel(SkillType.boucherie));
 		underTest.fromString("CBOU1").apply(pj);
 		assertTrue(1 == pj.getSkills().getSkillLevel(SkillType.boucherie)
@@ -24,7 +25,7 @@ public class EffectFactoryTest {
 	@Test
 	public void fromStringApplyEffectChangeBucheron() {
 		EffectFactory underTest = new EffectFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		assertTrue(0 == pj.getSkills().getSkillLevel(SkillType.bucheron));
 		underTest.fromString("CBUC1").apply(pj);
 		assertTrue(1 == pj.getSkills().getSkillLevel(SkillType.bucheron)
@@ -34,7 +35,7 @@ public class EffectFactoryTest {
 	@Test
 	public void fromStringApplyEffectChangeCuisine() {
 		EffectFactory underTest = new EffectFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		assertTrue(0 == pj.getSkills().getSkillLevel(SkillType.cuisine));
 		underTest.fromString("CCUI1").apply(pj);
 		assertTrue(1 == pj.getSkills().getSkillLevel(SkillType.cuisine)
@@ -44,7 +45,7 @@ public class EffectFactoryTest {
 	@Test
 	public void fromStringApplyEffectChangeCultiver() {
 		EffectFactory underTest = new EffectFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		assertTrue(0 == pj.getSkills().getSkillLevel(SkillType.cultiver));
 		underTest.fromString("CCUL1").apply(pj);
 		assertTrue(1 == pj.getSkills().getSkillLevel(SkillType.cultiver)
@@ -54,7 +55,7 @@ public class EffectFactoryTest {
 	@Test
 	public void fromStringApplyEffectChangeFouiller() {
 		EffectFactory underTest = new EffectFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		assertTrue(0 == pj.getSkills().getSkillLevel(SkillType.fouiller));
 		underTest.fromString("CFOU1").apply(pj);
 		assertTrue(1 == pj.getSkills().getSkillLevel(SkillType.fouiller)
@@ -64,7 +65,7 @@ public class EffectFactoryTest {
 	@Test
 	public void fromStringApplyEffectChangeMagie() {
 		EffectFactory underTest = new EffectFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		assertTrue(0 == pj.getSkills().getSkillLevel(SkillType.magie));
 		underTest.fromString("CMAG1").apply(pj);
 		assertTrue(1 == pj.getSkills().getSkillLevel(SkillType.magie)
@@ -74,7 +75,7 @@ public class EffectFactoryTest {
 	@Test
 	public void fromStringApplyEffectChangeMiner() {
 		EffectFactory underTest = new EffectFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		assertTrue(0 == pj.getSkills().getSkillLevel(SkillType.miner));
 		underTest.fromString("CMIN1").apply(pj);
 		assertTrue(1 == pj.getSkills().getSkillLevel(SkillType.miner)
@@ -84,7 +85,7 @@ public class EffectFactoryTest {
 	@Test
 	public void fromStringApplyEffectChangePecher() {
 		EffectFactory underTest = new EffectFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		assertTrue(0 == pj.getSkills().getSkillLevel(SkillType.pecher));
 		underTest.fromString("CPEC1").apply(pj);
 		assertTrue(1 == pj.getSkills().getSkillLevel(SkillType.pecher)
@@ -94,7 +95,7 @@ public class EffectFactoryTest {
 	@Test
 	public void fromStringApplyEffectChangeLife() {
 		EffectFactory underTest = new EffectFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		pj.initVital();
 		pj.getVital().setLife(10);
 		assertTrue(10 == pj.getVital().getLife());
@@ -105,7 +106,7 @@ public class EffectFactoryTest {
 	@Test
 	public void fromStringApplyEffectChangeMana() {
 		EffectFactory underTest = new EffectFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		pj.initVital();
 		pj.getVital().setMana(10);
 		assertTrue(10 == pj.getVital().getMana());
@@ -116,7 +117,7 @@ public class EffectFactoryTest {
 	@Test
 	public void createRandomSkillEffectModifySkills() {
 		EffectFactory underTest = new EffectFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		int oldTotal = 0;
 		int newTotal = 0;
 		for (SkillType type : SkillType.values()) {
@@ -133,7 +134,7 @@ public class EffectFactoryTest {
 	@Test
 	public void createRandomLifeEffectModifyLife() {
 		EffectFactory underTest = new EffectFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		pj.initVital();
 		pj.getVital().setLife(10);
 		assertEquals(10, pj.getVital().getLife());
@@ -144,7 +145,7 @@ public class EffectFactoryTest {
 	@Test
 	public void createRandomManaEffectModifyMana() {
 		EffectFactory underTest = new EffectFactory();
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		pj.initVital();
 		pj.getVital().setMana(10);
 		assertEquals(10, pj.getVital().getMana());
