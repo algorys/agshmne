@@ -45,12 +45,6 @@ public class FetchQuest implements IQuest {
 		sb.append("Une personne a besoin qu'on lui livre au moins ");
 		sb.append(count + " ");
 		sb.append(item.getName());
-		sb.append(" et les rapporter dans la Région : ");
-		sb.append(tile.getDesc());
-		sb.append("(");
-		sb.append(tile.getPosition().getX() + ",");
-		sb.append(tile.getPosition().getY());
-		sb.append(").");
 		return sb.toString();
 	}
 
@@ -66,5 +60,10 @@ public class FetchQuest implements IQuest {
 	@Override
 	public void accept(Player pj) {
 		pj.addQuest(this);
+	}
+	
+	@Override
+	public Tile getDestination() {
+		return this.tile;
 	}
 }

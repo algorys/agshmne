@@ -17,7 +17,7 @@ public class BringQuest implements IQuest {
 	public BringQuest(Item item, Tile destination) {
 		this.destination = destination;
 		this.item = item;
-		this.name = "Apporter des " + item.getName() + " dans la Région : " + destination.getDesc();
+		this.name = "Apporter des " + item.getName();
 	}
 
 	@Override
@@ -47,13 +47,7 @@ public class BringQuest implements IQuest {
 
 	@Override
 	public String getGoal() {
-		StringBuffer sb = new StringBuffer();
-		sb.append(name);
-		sb.append("(");
-		sb.append(destination.getPosition().getX() + ",");
-		sb.append(destination.getPosition().getY());
-		sb.append(")");
-		return sb.toString();
+		return getName();
 	}
 
 	@Override
@@ -68,4 +62,8 @@ public class BringQuest implements IQuest {
 		return this.destination.getPosition();
 	}
 
+	@Override
+	public Tile getDestination() {
+		return this.destination;
+	}
 }
