@@ -4,11 +4,22 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 import io.github.algorys.agshmne.map.Position;
+import io.github.algorys.agshmne.map.region.Region;
 
 public class Game {
 	public static final String PROPERTY_POSITION = "position";
 	private Position position = new Position(0, 0);
+	private final Region region;
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+
+	public Game(Region region) {
+		super();
+		this.region = region;
+	}
+
+	public Region getRegion() {
+		return region;
+	}
 
 	public Position getPosition() {
 		return position;

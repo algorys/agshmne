@@ -25,8 +25,7 @@ import io.github.algorys.agshmne.map.tile.Tile;
 public class Player implements Character {
 	public final static String PROPERTY_TILE = "tile";
 
-	private Game game = new Game();
-	private Region region;
+	private final Game game;
 	private Inventory inv;
 	private PlayerSocial social;
 	private Attribute attributes;
@@ -37,7 +36,7 @@ public class Player implements Character {
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	public Player(Region region) {
-		this.region = region;
+		game = new Game(region);
 		social = new PlayerSocial();
 		attributes = new Attribute();
 		xp = new PlayerXP();
@@ -52,7 +51,7 @@ public class Player implements Character {
 	}
 
 	public Region getRegion() {
-		return this.region;
+		return this.game.getRegion();
 	}
 
 	public void initVital() {
