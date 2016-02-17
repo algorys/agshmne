@@ -12,6 +12,7 @@ public class Game {
 	private Player player;
 	private Position position = new Position(0, 0);
 	private final Region region;
+	private int turn = 1;
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	public Game(Region region) {
@@ -39,6 +40,14 @@ public class Game {
 		Position old = this.position;
 		this.position = position;
 		pcs.firePropertyChange(PROPERTY_POSITION, old, position);
+	}
+
+	public void newTurn() {
+		turn += 1;
+	}
+
+	public int getTurn() {
+		return turn;
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {

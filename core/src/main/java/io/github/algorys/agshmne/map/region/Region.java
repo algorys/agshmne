@@ -11,7 +11,6 @@ public class Region {
 	private final static int HEIGHT = (Position.MAX_Y - Position.MIN_Y + 1);
 	final static int SIZE = WIDTH * HEIGHT;
 	private Tile[] tiles = new Tile[SIZE];
-	private int turn = 1;
 
 	public Region(TileFactory tileFactory) {
 		for (int i = 0; i < SIZE; i++) {
@@ -27,13 +26,5 @@ public class Region {
 	@Override
 	public String toString() {
 		return Arrays.toString(tiles);
-	}
-	
-	public void newTurn() {
-		turn += 1;
-	}
-
-	public int getTurn() {
-		return turn;
 	}
 }

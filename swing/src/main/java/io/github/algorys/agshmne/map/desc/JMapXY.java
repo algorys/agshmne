@@ -41,6 +41,6 @@ public class JMapXY extends JPanel {
 
 	public void setDescPosition(Player pj) {
 		jlPosition.setText("Position : " + pj.getGame().getPosition().getX() + ", " + pj.getGame().getPosition().getY());
-		jlTurn.setText("Tour " + pj.getGame().getRegion().getTurn());
+		jlTurn.setText("Tour " + pj.getGame().getTurn());
 	}
 }

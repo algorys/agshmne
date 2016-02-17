@@ -52,7 +52,7 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 		public void mouseClicked(MouseEvent e) {
 			Game game = JMapRegion.this.personnage.getGame();
 			game.setPosition(new Position(game.getPosition().getX() + diffX, game.getPosition().getY() + diffY));
-			JMapRegion.this.personnage.getGame().getRegion().newTurn();
+			JMapRegion.this.personnage.getGame().newTurn();
 		}
 	}
 
