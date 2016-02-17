@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.region.RandomRegionFactory;
-import io.github.algorys.agshmne.map.region.Region;
 
 public class PlayerBuilder {
-	private Region region = new RandomRegionFactory().create();
+	private Game game = new Game(new RandomRegionFactory().create());
 	private int FOR = 10;
 	private int DEX = 10;
 	private int CON = 10;
@@ -31,10 +31,8 @@ public class PlayerBuilder {
 	}
 
 	public Player create() {
-		if (region == null) {
-			throw new RuntimeException("region ne doit pas être null");
-		}
-		Player player = new Player(region);
+		Player player = new Player(game.getRegion().getTileFromPosition(game.getPosition()));
+		game.setPlayer(player);
 		player.getSocial().setName(name);
 		player.getSocial().setSexe(gender);
 		player.getSocial().setRace(race);
@@ -59,11 +57,6 @@ public class PlayerBuilder {
 		}
 
 		return player;
-	}
-
-	public PlayerBuilder setRegion(Region region) {
-		this.region = region;
-		return this;
 	}
 
 	public PlayerBuilder setSkill(SkillType type, int value) {
@@ -98,10 +91,6 @@ public class PlayerBuilder {
 	public PlayerBuilder setCHA(int cHA) {
 		CHA = cHA;
 		return this;
-	}
-
-	public Region getRegion() {
-		return region;
 	}
 
 	public int getFOR() {
@@ -176,4 +165,7 @@ public class PlayerBuilder {
 		return secondItem;
 	}
 
+	public Game getGame() {
+		return this.game;
+	}
 }

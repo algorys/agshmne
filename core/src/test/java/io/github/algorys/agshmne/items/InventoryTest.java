@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.items.equipable.BodyPart;
 import io.github.algorys.agshmne.items.equipable.EquipableItem;
 import io.github.algorys.agshmne.items.stackable.StackableItem;
@@ -98,7 +99,7 @@ public class InventoryTest {
 
 	@Test
 	public void inventoryCanGiveAllEquippedItem() {
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		Inventory underTest = pj.getInventory();
 		EquipableItem axe = new EquipableItem("Hache", BodyPart.RIGHT_HAND, 10);
 		EquipableItem leatherArmor = new EquipableItem("Armure en cuir", BodyPart.CHEST, 20);
@@ -118,7 +119,7 @@ public class InventoryTest {
 
 	@Test
 	public void inventoryCanKnowAllItemUnequip() {
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		Inventory underTest = pj.getInventory();
 		EquipableItem leatherArmor = new EquipableItem("Armure en cuir", BodyPart.CHEST, 15);
 		EquipableItem helmet = new EquipableItem("Casque", BodyPart.HEAD, 10);

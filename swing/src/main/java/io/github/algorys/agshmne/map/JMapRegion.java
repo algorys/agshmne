@@ -15,8 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.map.Position;
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.tile.JTile;
@@ -49,30 +48,29 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			JMapRegion.this.personnage.setPosition(new Position(JMapRegion.this.personnage.getPosition().getX() + diffX,
-					JMapRegion.this.personnage.getPosition().getY() + diffY));
-			JMapRegion.this.personnage.getRegion().newTurn();
+			game.setPosition(new Position(game.getPosition().getX() + diffX, game.getPosition().getY() + diffY));
+			JMapRegion.this.game.newTurn();
 		}
 	}
 
-	private Player personnage;
+	private Game game;
 	private JTile[][] jtiles;
 
-	public JMapRegion(Player personnage) {
+	public JMapRegion(Game game) {
 		super();
-		if (personnage == null) {
-			throw new NullPointerException("personnage cannot be null");
+		if (game == null) {
+			throw new NullPointerException("game cannot be null");
 		}
-		this.personnage = personnage;
-		this.personnage.addPropertyChangeListener(Player.PROPERTY_POSITION, this);
+		this.game = game;
+		this.game.addPropertyChangeListener(Game.PROPERTY_POSITION, this);
 
-		Position position = personnage.getPosition();
+		Position position = game.getPosition();
 
 		jtiles = new JTile[7][7];
 		this.setLayout(new GridLayout(7, 7));
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 7; j++) {
-				jtiles[i][j] = new JTile(personnage.getRegion()
+				jtiles[i][j] = new JTile(game.getRegion()
 						.getTileFromPosition(new Position(position.getX() + j - 3, position.getY() + (3 - i))));
 				this.add(jtiles[i][j]);
 			}
@@ -84,16 +82,12 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 		this.setFocusable(true);
 	}
 
-	public Player getPersonnage() {
-		return personnage;
-	}
-
 	private void updateDisplay() {
-		Position position = this.personnage.getPosition();
+		Position position = this.game.getPosition();
+		Region region = this.game.getRegion();
 
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 7; j++) {
-				Region region = this.personnage.getRegion();
 				Position newPosition = new Position(position.getX() + j - 3, position.getY() + (3 - i));
 				Tile tile = region.getTileFromPosition(newPosition);
 				jtiles[i][j].setModel(tile);
@@ -125,7 +119,7 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		if (evt.getSource() == this.personnage) {
+		if (evt.getSource() == this.game) {
 			this.updateDisplay();
 		}
 	}

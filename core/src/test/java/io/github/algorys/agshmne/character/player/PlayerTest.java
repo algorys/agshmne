@@ -5,41 +5,23 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-
 import org.junit.Test;
 
 import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.items.equipable.BodyPart;
 import io.github.algorys.agshmne.items.equipable.EquipableItem;
-import io.github.algorys.agshmne.map.Position;
 
 public class PlayerTest {
-
-	private final class MyObserver implements PropertyChangeListener {
-		private int called = 0;
-
-		@Override
-		public void propertyChange(PropertyChangeEvent evt) {
-			called++;
-		}
-
-		public boolean isCalled() {
-			return called > 0;
-		}
-	}
-
 	@Test
 	public void whenCharacterVitalAreInit_VitalShouldNotBeNull() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		underTest.initVital();
 		assertNotNull(underTest.getVital());
 	}
 
 	@Test
 	public void whenCharacterIsCreatedSkillsAreNotNull() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		assertNotNull(underTest.getSkills());
 		for (SkillType type : SkillType.values()) {
 			assertNotNull(underTest.getSkills().getSkillName(type));
@@ -49,44 +31,20 @@ public class PlayerTest {
 
 	@Test
 	public void whenCharacterIsCreatedInventoryIsNotNull() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		assertNotNull(underTest.getInventory());
 	}
 
 	@Test
 	public void whenCharacterIsCreatedLevelShouldBeEqualToOne_AndXPToZero() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		assertEquals(1, underTest.getXp().getLevel());
 		assertEquals(0, underTest.getXp().getXp());
 	}
 
 	@Test
-	public void whenCharacterIsCreated_positionShouldBe00() {
-		Player underTest = new Player(null);
-		assertEquals(new Position(0, 0), underTest.getPosition());
-	}
-
-	@Test
-	public void whenCharacterChangePosition_observersShouldBeNotified() {
-		Player underTest = new PlayerBuilder().create();
-		MyObserver myObserver = new MyObserver();
-		underTest.addPropertyChangeListener(Player.PROPERTY_POSITION, myObserver);
-		underTest.setPosition(new Position(1, 0));
-		assertTrue(myObserver.isCalled());
-	}
-
-	@Test
-	public void whenCharacterSetSamePosition_observersShouldNotBeNotified() {
-		Player underTest = new PlayerBuilder().create();
-		MyObserver myObserver = new MyObserver();
-		underTest.addPropertyChangeListener(myObserver);
-		underTest.setPosition(new Position(0, 0));
-		assertFalse(myObserver.isCalled());
-	}
-
-	@Test
 	public void whenCharacterEquipAnItem() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD, 10);
 		underTest.getInventory().addItem(item);
 		assertTrue(underTest.getInventory().contains(item));
@@ -97,7 +55,7 @@ public class PlayerTest {
 
 	@Test
 	public void whenCharacterEquipAnItemHeDoesNotHave() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD, 10);
 		assertFalse(underTest.getInventory().contains(item));
 		assertFalse(item.isEquipped());
@@ -107,7 +65,7 @@ public class PlayerTest {
 
 	@Test
 	public void whenCharacterEquipASecondItem() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		EquipableItem first = new EquipableItem("Casque", BodyPart.HEAD, 10);
 		EquipableItem second = new EquipableItem("Bottes", BodyPart.LEGS, 15);
 		underTest.getInventory().addItem(first);
@@ -132,7 +90,7 @@ public class PlayerTest {
 
 	@Test
 	public void whenCharacterUnEquipAnItem() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		EquipableItem item = new EquipableItem("Casque", BodyPart.HEAD, 10);
 		underTest.getInventory().addItem(item);
 		underTest.equip(item);
@@ -143,7 +101,7 @@ public class PlayerTest {
 
 	@Test
 	public void whenCharacterEquipASecondItem_sameBodyPart() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		EquipableItem first = new EquipableItem("Casque", BodyPart.HEAD, 10);
 		EquipableItem second = new EquipableItem("Chapeau", BodyPart.HEAD, 7);
 		underTest.getInventory().addItem(first);
@@ -168,7 +126,7 @@ public class PlayerTest {
 
 	@Test
 	public void whenCharacterEquipACloseWeapon_FORisModifed() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		underTest.getAttributes().setFOR(12);
 		assertTrue(underTest.getAttributes().getFOR() == 12);
 		EquipableItem sword = new EquipableItem("Sword", BodyPart.RIGHT_HAND, 15);
@@ -182,7 +140,7 @@ public class PlayerTest {
 
 	@Test
 	public void whenCharacterEquipAChest_CONisModifed() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		underTest.getAttributes().setCON(12);
 		assertTrue(underTest.getAttributes().getCON() == 12);
 		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST, 20);
@@ -198,7 +156,7 @@ public class PlayerTest {
 
 	@Test
 	public void whenCharacterEquipAChestALegsAndArms_CONisModifedWithThreeModifier() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		underTest.getAttributes().setCON(12);
 		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST, 20);
 		armor.getAttribute().setCON(1);
@@ -223,7 +181,7 @@ public class PlayerTest {
 
 	@Test
 	public void whenCharacterEquipAChestALegsAndArms_AndRemoveOne_CONisModifedWithTwoModifier() {
-		Player underTest = new Player(null);
+		Player underTest = new PlayerBuilder().create();
 		underTest.getAttributes().setCON(12);
 		EquipableItem armor = new EquipableItem("Armor", BodyPart.CHEST, 20);
 		armor.getAttribute().setCON(1);

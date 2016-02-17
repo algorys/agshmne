@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.items.GeneralItem;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
@@ -28,7 +29,7 @@ public class ShopTest {
 		Shop underTest = new Shop(1);
 		Item item = new StackableItem("Pomme", 1, 2);
 		underTest.getInventory().addItem(item);
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		Inventory old = underTest.getInventory();
 	
 		underTest.sellItem(pj, item);
@@ -41,7 +42,7 @@ public class ShopTest {
 		Shop underTest = new Shop(1);
 		StackableItem item = new StackableItem("Pomme", 1, 2);
 		underTest.getInventory().addItem(item);
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		Inventory old = underTest.getInventory();
 	
 		underTest.sellItem(pj, item);
@@ -54,7 +55,7 @@ public class ShopTest {
 		Shop underTest = new Shop(1);
 		EquipableItem item = new EquipableItem("Chapeau", BodyPart.HEAD, 15);
 		underTest.getInventory().addItem(item);
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		Inventory old = underTest.getInventory();
 	
 		underTest.sellItem(pj, item);
@@ -68,7 +69,7 @@ public class ShopTest {
 		Shop underTest = new Shop(1);
 		GeneralItem item = new GeneralItem("Bouteille", 3);
 		underTest.getInventory().addItem(item);
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		Inventory old = underTest.getInventory();
 	
 		underTest.sellItem(pj, item);
@@ -80,7 +81,7 @@ public class ShopTest {
 	public void newShopCanBuyStackableItem() {
 		Shop underTest = new Shop(1);
 		StackableItem item = new StackableItem("Pomme", 1, 2);
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		pj.getInventory().addItem(item);
 		Inventory old = underTest.getInventory();
 	
@@ -94,7 +95,7 @@ public class ShopTest {
 	public void newShopCanBuyEquipableItem() {
 		Shop underTest = new Shop(1);
 		EquipableItem item = new EquipableItem("Armure de cuir", BodyPart.CHEST, 2);
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		pj.getInventory().addItem(item);
 		Inventory old = underTest.getInventory();
 	
@@ -109,7 +110,7 @@ public class ShopTest {
 		Shop underTest = new Shop(1);
 		Item item = new GeneralItem("Pomme", 2);
 		underTest.getInventory().addItem(item);
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		pj.getInventory().setGold(10);
 		
 		int old = pj.getInventory().getGold();
@@ -124,7 +125,7 @@ public class ShopTest {
 	public void shopShouldAddGoldWhenPjSellItem() {
 		Shop underTest = new Shop(1);
 		Item item = new GeneralItem("Pomme", 2);
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		pj.getInventory().addItem(item);
 		int old = pj.getInventory().getGold();
 	

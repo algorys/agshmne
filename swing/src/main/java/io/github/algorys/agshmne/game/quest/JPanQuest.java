@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
@@ -44,6 +45,23 @@ public class JPanQuest extends JPanel {
 		this.add(quests);
 
 		final JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+		quests.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(e.getClickCount() >= 2) {
+					System.out.println("Double click");
+					final int index = quests.locationToIndex(e.getPoint());
+					if(index >= 0) {
+						System.out.println("Sur l'index : " + index);
+						IQuest selectedQuest = quests.getModel().getElementAt(index);
+						JQuestResume questDialog = new JQuestResume(topFrame, selectedQuest, JPanQuest.this.pj);
+						questDialog.setVisible(true);
+						quests.invalidate();
+						quests.repaint();
+					}
+				}
+			}
+		});
 		quests.addMouseListener(new PopupTriggerAdapter() {
 			@Override
 			public void popupTrigger(MouseEvent me) {

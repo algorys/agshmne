@@ -4,46 +4,24 @@ import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
 import io.github.algorys.agshmne.map.Position;
-import io.github.algorys.agshmne.tools.RandomCoordinated;
+import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class BringQuest implements IQuest {
-	private Position questDestination;
-	private Position initialPos;
+	private Tile destination;
 	private Item item;
 	private boolean finish = false;
 	private String name;
 
-	public BringQuest(Player pj, Item item) {
-		this.initialPos = pj.getPosition();
-		this.questDestination = this.defineDestination(initialPos);
+	public BringQuest(Item item, Tile destination) {
+		this.destination = destination;
 		this.item = item;
-		this.name = "Apporter des " + item.getName() + " dans la Région : "
-				+ pj.getRegion().getTileFromPosition(questDestination).getDesc();
-	}
-
-	private Position defineDestination(Position position) {
-		int maxX = position.getX() + 10;
-		int minX = position.getX() - 10;
-		int maxY = position.getY() + 10;
-		int minY = position.getY() - 10;
-		RandomCoordinated newY = new RandomCoordinated(maxY, minY);
-		RandomCoordinated newX = new RandomCoordinated(maxX, minX);
-		Position questDestination = new Position(newX.getCoordinated(), newY.getCoordinated());
-		return questDestination;
-	}
-
-	public Position getQuestDestination() {
-		return questDestination;
-	}
-
-	public Position getInitialPos() {
-		return initialPos;
+		this.name = "Apporter des " + item.getName() + " dans la Région : " + destination.getDesc();
 	}
 
 	@Override
 	public boolean isWin(Player pj) {
-		return pj.getPosition().equals(questDestination) && pj.getInventory().contains(item);
+		return pj.getTile().equals(destination) && pj.getInventory().contains(item);
 	}
 
 	@Override
@@ -70,8 +48,8 @@ public class BringQuest implements IQuest {
 		StringBuffer sb = new StringBuffer();
 		sb.append(name);
 		sb.append("(");
-		sb.append(questDestination.getX() + ",");
-		sb.append(questDestination.getY());
+		sb.append(destination.getPosition().getX() + ",");
+		sb.append(destination.getPosition().getY());
 		sb.append(")");
 		return sb.toString();
 	}
@@ -82,6 +60,10 @@ public class BringQuest implements IQuest {
 		// TODO gérer les objets de quêtes différement des objets normaux.
 		pj.getInventory().addItem(item);
 
+	}
+
+	public Position getQuestDestination() {
+		return this.destination.getPosition();
 	}
 
 }

@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.effect.LifeEffect;
 import io.github.algorys.agshmne.effect.ManaEffect;
 
@@ -36,7 +37,7 @@ public class LocalityTest {
 	@Test
 	public void testLocalityShouldChangeLifeWhenInteract() {
 		String locality = "Une statue représentant un ange déversant des flots sur un corps inanimé.";
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		pj.initVital();
 		pj.getVital().setLife(10);
 		Locality underTest = new Locality("Statue", new LifeEffect(10), locality, "Affecte votre vie !");
@@ -49,7 +50,7 @@ public class LocalityTest {
 	@Test
 	public void testLocalityShouldChangeManaWhenInteract() {
 		String locality = "Un verger luxurieux qui semblent vous acceuillir à bras ouvert.";
-		Player pj = new Player(null);
+		Player pj = new PlayerBuilder().create();
 		pj.initVital();
 		pj.getVital().setMana(10);
 		Locality underTest = new Locality("Verger", new ManaEffect(10), locality, "Affecte votre vie !");

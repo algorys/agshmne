@@ -7,35 +7,36 @@ import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class FetchQuest implements IQuest {
-	private Position questPosition;
 	private Tile tile;
 	private Item item;
 	private int count;
 	private boolean finish = false;
 
-	public FetchQuest(Player pj, Item item, int count) {
-		this.questPosition = pj.getPosition();
+	public FetchQuest(Item item, int count, Tile tile) {
 		this.count = count;
 		this.item = item;
-		this.tile = pj.getTile();
+		this.tile = tile;
 	}
-	
+
 	@Override
 	public boolean isWin(Player pj) {
-		return (pj.getInventory().count(item) >= count && pj.getPosition().equals(questPosition)) ;
+		return (pj.getInventory().count(item) >= count && pj.getTile().equals(tile));
 	}
+
 	@Override
 	public void reward(Player pj) {
-		for(int i = 0; i < count; i ++) {
+		for (int i = 0; i < count; i++) {
 			pj.getInventory().removeItem(item);
 		}
 		finish = true;
 		pj.getInventory().setGold(pj.getInventory().getGold() + Tools.dice(pj.getLevel() * 5));
 	}
+
 	@Override
 	public String getName() {
 		return "Trouver des " + item.getName();
 	}
+
 	@Override
 	public String getGoal() {
 		StringBuffer sb = new StringBuffer();
@@ -45,14 +46,14 @@ public class FetchQuest implements IQuest {
 		sb.append(" et les rapporter dans la Région : ");
 		sb.append(tile.getDesc());
 		sb.append("(");
-		sb.append(questPosition.getX() + ",");
-		sb.append(questPosition.getY());
+		sb.append(tile.getPosition().getX() + ",");
+		sb.append(tile.getPosition().getY());
 		sb.append(").");
 		return sb.toString();
 	}
 
 	public Position getQuestPosition() {
-		return questPosition;
+		return tile.getPosition();
 	}
 
 	@Override

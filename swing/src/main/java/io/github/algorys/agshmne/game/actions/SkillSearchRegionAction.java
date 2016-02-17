@@ -9,6 +9,7 @@ import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.skills.SkillTool;
 import io.github.algorys.agshmne.character.player.skills.SkillType;
@@ -25,13 +26,13 @@ import io.github.algorys.agshmne.map.tile.Tile;
 
 @SuppressWarnings("serial")
 public class SkillSearchRegionAction extends AbstractAction {
-	private Player pj;
+	private Game game;
 	private IAdventureFactory adventureFactory = new AdventureFactory();
 
-	public SkillSearchRegionAction(Player pj) {
+	public SkillSearchRegionAction(Game game) {
 		super("Fouiller la Région");
-		this.pj = pj;
-		pj.addPropertyChangeListener(Player.PROPERTY_TILE, new PropertyChangeListener() {
+		this.game = game;
+		game.getPlayer().addPropertyChangeListener(Player.PROPERTY_TILE, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				if(evt.getNewValue() instanceof Tile) {
@@ -43,25 +44,25 @@ public class SkillSearchRegionAction extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (SkillTool.Dice(pj.getSkills().getSkillLevel(SkillType.fouiller), 5)) {
-			this.pj.getTile().setSearched();
+		if (SkillTool.Dice(this.game.getPlayer().getSkills().getSkillLevel(SkillType.fouiller), 5)) {
+			this.game.getPlayer().getTile().setSearched();
 			this.setEnabled(false);
 			JFrame topFrame = null;
 			if (e.getSource() instanceof Component) {
 				Component sourceComponent = (Component) e.getSource();
 				topFrame = (JFrame) SwingUtilities.getWindowAncestor(sourceComponent);
 			}
-			IAdventure adventure = adventureFactory.createAdventure(pj);
+			IAdventure adventure = adventureFactory.createAdventure(game);
 			if (adventure instanceof Fight) {
 				JFightDialog fightDialog = new JFightDialog(topFrame, (Fight) adventure);
 				fightDialog.setVisible(true);
 			}
 			if(adventure instanceof IQuest) {
-				JQuestDialog questDialog = new JQuestDialog(topFrame, (IQuest) adventure, pj);
+				JQuestDialog questDialog = new JQuestDialog(topFrame, (IQuest) adventure, this.game.getPlayer());
 				questDialog.setVisible(true);
 			}
 			if(adventure instanceof Locality) {
-				JLocalityDialog localityDialog = new JLocalityDialog(topFrame, (Locality) adventure, pj);
+				JLocalityDialog localityDialog = new JLocalityDialog(topFrame, (Locality) adventure, this.game.getPlayer());
 				localityDialog.setVisible(true);
 			}
 		}

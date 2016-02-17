@@ -5,9 +5,8 @@ import java.awt.Color;
 import javax.swing.JFrame;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.game.fight.JCharacter;
-import io.github.algorys.agshmne.map.region.Region;
-import io.github.algorys.agshmne.map.tile.RandomTileFactory;
 
 public class JCharacterTest {
 
@@ -15,7 +14,7 @@ public class JCharacterTest {
 		JFrame jf = new JFrame();
 		jf.setSize(300, 300);
 		jf.setBackground(Color.black);
-		Player pj = new Player(new Region(new RandomTileFactory()));
+		Player pj = new PlayerBuilder().create();
 		pj.getSocial().setName("Player");
 		pj.initVital();
 		JCharacter jc = new JCharacter(pj);

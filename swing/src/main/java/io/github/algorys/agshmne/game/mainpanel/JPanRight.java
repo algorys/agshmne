@@ -7,13 +7,13 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.game.actions.ActionCharacter;
 import io.github.algorys.agshmne.tile.JTileInventory;
 
 @SuppressWarnings("serial")
 public class JPanRight extends JPanel {
-	public JPanRight(Player pj) {
+	public JPanRight(Game game) {
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 
@@ -26,11 +26,11 @@ public class JPanRight extends JPanel {
 		gbc.gridy = 0;
 		this.add(new JLabel("Objets au sol : "), gbc);
 		gbc.gridy = 1;
-		this.add(new JTileInventory(pj), gbc);
+		this.add(new JTileInventory(game.getPlayer()), gbc);
 
 		gbc.gridy = 2;
 		this.add(new JLabel("Actions générales"), gbc);
 		gbc.gridy = 3;
-		this.add(new ActionCharacter(pj), gbc);
+		this.add(new ActionCharacter(game), gbc);
 	}
 }

@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.game.character.JPanSkill;
 import io.github.algorys.agshmne.game.character.equipment.JTabEquip;
@@ -31,12 +32,12 @@ public class JPanMain extends JTabbedPane {
 	private JPanel jpMagie = new JPanel();
 	private JPanQuest jpQuest;
 
-	public JPanMain(final JMapRegion jregion) {
+	public JPanMain(Game game, final JMapRegion jregion) {
 		this.setTabPlacement(JTabbedPane.TOP);
 		this.setPreferredSize(new Dimension(1100, 1000));
 
 		// Carte
-		Player pj = jregion.getPersonnage();
+		Player pj = game.getPlayer();
 		pj.addPropertyChangeListener(Player.PROPERTY_TILE, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
@@ -46,7 +47,7 @@ public class JPanMain extends JTabbedPane {
 			}
 		});
 		jpMap.setBackground(Color.BLACK);
-		JMapDesc descGame = new JMapDesc(pj);
+		JMapDesc descGame = new JMapDesc(game);
 		jpMap.add(descGame);
 		jpMap.add(jregion);
 		Icon mapIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("map.png"));

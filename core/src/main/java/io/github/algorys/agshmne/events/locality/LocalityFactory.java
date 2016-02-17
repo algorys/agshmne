@@ -3,7 +3,7 @@ package io.github.algorys.agshmne.events.locality;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.effect.EffectFactory;
 import io.github.algorys.agshmne.events.IAdventureFactory;
 import io.github.algorys.agshmne.tools.Tools;
@@ -30,7 +30,7 @@ public class LocalityFactory implements IAdventureFactory {
 
 	
 	@Override
-	public Locality createAdventure(Player pj) {
+	public Locality createAdventure(Game game) {
 		String[] strToParse = Tools.random(locality).split(":");
 		return new Locality(strToParse[0], effectFactory.fromString(strToParse[1]), strToParse[2], strToParse[3]);
 	}

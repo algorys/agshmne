@@ -5,20 +5,18 @@ import static org.junit.Assert.assertNotSame;
 
 import org.junit.Test;
 
-import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
-import io.github.algorys.agshmne.map.region.RandomRegionFactory;
-import io.github.algorys.agshmne.map.region.Region;
 
 public class QuestFactoryTest {
 
 	@Test
 	public void fetchQuestDifferent() {
 		QuestFactory underTest = new QuestFactory();
-		Region region = new RandomRegionFactory().create();
-		IQuest quest = underTest.createFetchQuest(new Player(region));
+		PlayerBuilder playerBuilder = new PlayerBuilder();
+		playerBuilder.create();
+		IQuest quest = underTest.createFetchQuest(playerBuilder.getGame());
 		assertNotNull(quest);
-		IQuest second = underTest.createFetchQuest(new Player(region));
+		IQuest second = underTest.createFetchQuest(playerBuilder.getGame());
 		assertNotNull(second);
 		assertNotSame(quest, second);
 	}
@@ -26,18 +24,20 @@ public class QuestFactoryTest {
 	@Test
 	public void randomQuestDifferent() {
 		QuestFactory underTest = new QuestFactory();
-		Region region = new RandomRegionFactory().create();
-		IQuest quest = underTest.createAdventure(new Player(region));
+		PlayerBuilder playerBuilder = new PlayerBuilder();
+		playerBuilder.create();
+		IQuest quest = underTest.createAdventure(playerBuilder.getGame());
 		assertNotNull(quest);
-		IQuest second = underTest.createAdventure(new Player(region));
+		IQuest second = underTest.createAdventure(playerBuilder.getGame());
 		assertNotNull(second);
 		assertNotSame(quest, second);
 	}
-	
+
 	@Test
 	public void bringQuest() {
 		QuestFactory underTest = new QuestFactory();
-		IQuest quest = underTest.createBringQuest(new PlayerBuilder().create());
+		PlayerBuilder playerBuilder = new PlayerBuilder();
+		IQuest quest = underTest.createBringQuest(playerBuilder.getGame());
 		assertNotNull(quest);
 	}
 }

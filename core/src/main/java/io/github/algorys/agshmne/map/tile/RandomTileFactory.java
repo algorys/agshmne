@@ -3,6 +3,7 @@ package io.github.algorys.agshmne.map.tile;
 import io.github.algorys.agshmne.items.IItemFactory;
 import io.github.algorys.agshmne.items.ItemFactory;
 import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
+import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.city.factory.CityFactory;
 import io.github.algorys.agshmne.map.region.DescFactory;
 import io.github.algorys.agshmne.tools.Tools;
@@ -37,14 +38,14 @@ public class RandomTileFactory implements TileFactory {
 	 * @see io.github.algorys.agshmne.map.tile.TileFactory#createTile()
 	 */
 	@Override
-	public Tile createTile() {
+	public Tile createTile(Position position) {
 		Tile currentTile;
 		TileType type = Tools.random(TileType.values());
 		String desc = descFactory.randomDesc(type);
 		if (Math.random() < .1) {
-			currentTile = new Tile(type, desc, cityFactory.createCity(type));
+			currentTile = new Tile(position, type, desc, cityFactory.createCity(type));
 		} else {
-			currentTile = new Tile(type, desc);
+			currentTile = new Tile(position, type, desc);
 		}
 		
 		

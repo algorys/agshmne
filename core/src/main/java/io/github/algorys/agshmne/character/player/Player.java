@@ -13,19 +13,15 @@ import io.github.algorys.agshmne.events.quest.IQuest;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.IEquipableItem;
-import io.github.algorys.agshmne.map.Position;
-import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.map.tile.Tile;
 
 /*
  * Définit le Personnage
  */
 public class Player implements Character {
-	public final static String PROPERTY_POSITION = "position";
 	public final static String PROPERTY_TILE = "tile";
 
-	private Position position = new Position(0, 0);
-	private Region region;
+	private Tile tile;
 	private Inventory inv;
 	private PlayerSocial social;
 	private Attribute attributes;
@@ -35,34 +31,19 @@ public class Player implements Character {
 	private List<IQuest> quests = new ArrayList<>();
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
-	public Player(Region region) {
-		this.region = region;
+	public Player(Tile initialTile) {
 		social = new PlayerSocial();
 		attributes = new Attribute();
 		xp = new PlayerXP();
 		inv = new Inventory();
 		skills = new SkillFactory();
-	}
-
-	public Position getPosition() {
-		return position;
-	}
-
-	public Region getRegion() {
-		return this.region;
+		this.tile = initialTile;
 	}
 
 	public void initVital() {
-		vital = new Vital(attributes.getCON() + 10 + this.getXp().getLevel(), attributes.getINT() + this.getXp().getLevel(),
-				((attributes.getCON() + attributes.getFOR()) / 2) + 10, attributes.getCON() + 10);
-	}
-
-	public void setPosition(Position position) {
-		Tile oldTile = this.getTile();
-		Position old = this.position;
-		this.position = position;
-		pcs.firePropertyChange(PROPERTY_POSITION, old, this.position);
-		pcs.firePropertyChange(PROPERTY_TILE, oldTile, this.getTile());
+		vital = new Vital(attributes.getCON() + 10 + this.getXp().getLevel(),
+				attributes.getINT() + this.getXp().getLevel(), ((attributes.getCON() + attributes.getFOR()) / 2) + 10,
+				attributes.getCON() + 10);
 	}
 
 	public void equip(IEquipableItem item) {
@@ -136,20 +117,29 @@ public class Player implements Character {
 	}
 
 	public Tile getTile() {
-		return getRegion().getTileFromPosition(getPosition());
+		return this.tile;
 	}
+
+	public void setTile(Tile newTile) {
+		Tile old = this.tile;
+		this.tile = newTile;
+		pcs.firePropertyChange(PROPERTY_TILE, old, newTile);
+	}
+
 	public IQuest getFinishedQuest() {
 		IQuest questFinish = null;
-		for(IQuest quest : quests) {
-			if(quest.isFinish()) {
+		for (IQuest quest : quests) {
+			if (quest.isFinish()) {
 				questFinish = quest;
 			}
 		}
 		return questFinish;
 	}
+
 	public void addQuest(IQuest questAdded) {
 		quests.add(questAdded);
 	}
+
 	public List<IQuest> getQuest() {
 		return quests;
 	}
