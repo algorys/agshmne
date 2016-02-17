@@ -1,5 +1,6 @@
 package io.github.algorys.agshmne.effect;
 
+import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.player.Player;
 
 public class LifeEffect implements IEffect {
@@ -12,7 +13,8 @@ public class LifeEffect implements IEffect {
 
 	@Override
 	public void apply(Player pj) {
-		pj.getVital().setLife(pj.getVital().getLife() + modifier);
+		Vital vital = pj.getVital();
+		vital.setLife(vital.getLife() + modifier);
 	}
 
 }

@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.events.quest;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
 import io.github.algorys.agshmne.map.Position;
@@ -16,7 +17,7 @@ public class BringQuest implements IQuest {
 	public BringQuest(Item item, Tile destination) {
 		this.destination = destination;
 		this.item = item;
-		this.name = "Apporter des " + item.getName() + " dans la Région : " + destination.getDesc();
+		this.name = "Apporter des " + item.getName();
 	}
 
 	@Override
@@ -26,10 +27,11 @@ public class BringQuest implements IQuest {
 
 	@Override
 	public void reward(Player pj) {
-		pj.getInventory().removeItem(item);
+		Inventory inventory = pj.getInventory();
+		inventory.removeItem(item);
 		finish = true;
-		pj.getInventory().setGold(pj.getInventory().getGold() + Tools.dice(pj.getLevel() * 5));
-		pj.getInventory().addItem(new EquipableItemFactory().createRandom());
+		inventory.setGold(inventory.getGold() + Tools.dice(pj.getLevel() * 5));
+		inventory.addItem(new EquipableItemFactory().createRandom());
 		// TODO prévoir une récompense.
 	}
 
@@ -45,13 +47,7 @@ public class BringQuest implements IQuest {
 
 	@Override
 	public String getGoal() {
-		StringBuffer sb = new StringBuffer();
-		sb.append(name);
-		sb.append("(");
-		sb.append(destination.getPosition().getX() + ",");
-		sb.append(destination.getPosition().getY());
-		sb.append(")");
-		return sb.toString();
+		return getName();
 	}
 
 	@Override
@@ -66,4 +62,8 @@ public class BringQuest implements IQuest {
 		return this.destination.getPosition();
 	}
 
+	@Override
+	public Tile getDestination() {
+		return this.destination;
+	}
 }

@@ -1,5 +1,6 @@
 package io.github.algorys.agshmne.effect;
 
+import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.player.Player;
 
 public class ManaEffect implements IEffect {
@@ -12,7 +13,8 @@ public class ManaEffect implements IEffect {
 
 	@Override
 	public void apply(Player pj) {
-		pj.getVital().setMana(pj.getVital().getMana() + modifier);
+		Vital vital = pj.getVital();
+		vital.setMana(vital.getMana() + modifier);
 	}
 
 }

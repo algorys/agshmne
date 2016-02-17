@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.player.Player;
@@ -31,46 +30,12 @@ public class JQuestDialog extends JDialog {
 		gbcQuest.insets = new Insets(5, 5, 5, 5);
 
 		gbcQuest.gridy = 0;
-		gbcQuest.gridheight = 1;
-		gbcQuest.gridx = 0;
-		gbcQuest.gridwidth = 4;
-		gbcQuest.anchor = GridBagConstraints.CENTER;
-		gbcQuest.fill = GridBagConstraints.NONE;
-		JLabel title = new JLabel("QUÊTE");
-		title.setForeground(Color.cyan);
-		panEvent.add(title, gbcQuest);
-		
-		gbcQuest.gridy = 1;
-		gbcQuest.gridheight = 1;
+		gbcQuest.gridheight = 5;
 		gbcQuest.gridx = 0;
 		gbcQuest.gridwidth = 4;
 		gbcQuest.anchor = GridBagConstraints.CENTER;
 		gbcQuest.fill = GridBagConstraints.HORIZONTAL;
-		JLabel questName = new JLabel("Objectif(s) : " + quest.getName());
-		questName.setForeground(Color.green);
-		panEvent.add(questName, gbcQuest);
-		
-		gbcQuest.gridy = 2;
-		gbcQuest.gridheight = 1;
-		gbcQuest.gridx = 0;
-		gbcQuest.gridwidth = 4;
-		gbcQuest.anchor = GridBagConstraints.WEST;
-		gbcQuest.fill = GridBagConstraints.NONE;
-		JLabel questDescTitle = new JLabel("Description :");
-		questDescTitle.setOpaque(false);
-		questDescTitle.setForeground(Color.white);
-		panEvent.add(questDescTitle, gbcQuest);
-		
-		gbcQuest.gridy = 3;
-		gbcQuest.gridheight = 1;
-		gbcQuest.gridx = 0;
-		gbcQuest.gridwidth = 4;
-		gbcQuest.anchor = GridBagConstraints.WEST;
-		gbcQuest.fill = GridBagConstraints.BOTH;
-		JLabel questDesc = new JLabel(quest.getGoal());
-		questDesc.setOpaque(false);
-		questDesc.setForeground(Color.white);
-		panEvent.add(questDesc, gbcQuest);
+		panEvent.add(new JQuest(quest), gbcQuest);
 		
 		gbcQuest.gridy = 5;
 		gbcQuest.gridheight = 1;

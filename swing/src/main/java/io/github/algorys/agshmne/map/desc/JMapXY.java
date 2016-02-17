@@ -11,16 +11,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.Game;
+import io.github.algorys.agshmne.JPosition;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
 public class JMapXY extends JPanel {
-	JLabel jlPosition = new JLabel("Position inconnue");
-	JLabel jlTurn = new JLabel("Début Campagne");
+	private final JPosition jPosition;
+	private final JLabel jlTurn = new JLabel("Début Campagne");
 
 	public JMapXY(Game game) {
 		this.setPreferredSize(new Dimension(700, 30));
 		this.setBackground(Color.black);
+		JLabel jlPosition = new JLabel("Position : ");
 		jlPosition.setForeground(Color.green);
 		Image img;
 		try {
@@ -33,14 +35,17 @@ public class JMapXY extends JPanel {
 			e.printStackTrace();
 		}
 		jlTurn.setForeground(Color.cyan);
-		setDescPosition(game);
-
+		jPosition = new JPosition(game.getPosition());
+		jPosition.setForeground(Color.green);
 		this.add(jlTurn);
 		this.add(jlPosition);
+		this.add(jPosition);
+
+		setDescPosition(game);
 	}
 
 	public void setDescPosition(Game game) {
-		jlPosition.setText("Position : " + game.getPosition().getX() + ", " + game.getPosition().getY());
+		jPosition.setPosition(game.getPosition());
 		jlTurn.setText("Tour " + game.getTurn());
 	}
 }

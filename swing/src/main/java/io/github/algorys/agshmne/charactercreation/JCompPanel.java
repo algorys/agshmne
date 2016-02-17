@@ -130,212 +130,41 @@ public class JCompPanel extends JPanel {
 		this.add(jlRemaining, gbcComp);
 		
 		// Compétences
-		// Cuisiner
-		gbcComp.gridy = 3;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 0;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.EAST;
-		gbcComp.fill = GridBagConstraints.NONE;
-		JLabel jlCuisiner = new JLabel("Cuisiner : ");
-		jlCuisiner.setForeground(new Color(0x886A08));
-		this.add(jlCuisiner, gbcComp);
-		gbcComp.gridy = 3;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 1;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.CENTER;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;
-		cuisiner.setOpaque(false);
-		this.add(cuisiner, gbcComp);
-		gbcComp.gridy = 3;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 2;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;
-		this.add(new JLabel("Permet de cuisiner de la viandes, poissons..."), gbcComp);
-		
-		// Fouiller
-		gbcComp.gridy = 4;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 0;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.EAST;
-		gbcComp.fill = GridBagConstraints.NONE;
-		JLabel jlFouiller = new JLabel("Fouiller : ");
-		jlFouiller.setForeground(new Color(0x886A08));
-		this.add(jlFouiller, gbcComp);
-		gbcComp.gridy = 4;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 1;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.CENTER;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
-		fouiller.setOpaque(false);
-		this.add(fouiller, gbcComp);		
-		gbcComp.gridy = 4;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 2;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
-		this.add(new JLabel("Voir ce qui est secret, dissimulé, peu visible..."), gbcComp);
-		
-		// Boucherie
-		gbcComp.gridy = 5;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 0;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.EAST;
-		gbcComp.fill = GridBagConstraints.NONE;
-		JLabel jlBoucher = new JLabel("Boucherie : ");
-		jlBoucher.setForeground(new Color(0x886A08));
-		this.add(jlBoucher, gbcComp);
-		gbcComp.gridy = 5;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 1;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.CENTER;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
-		boucherie.setOpaque(false);
-		this.add(boucherie, gbcComp);
-		gbcComp.gridy = 5;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 2;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;
-		this.add(new JLabel("Découper de la viande. Tenir une boucherie ?"), gbcComp);
+		initSkill(gbcComp, 3, "Cuisiner : ", "Permet de cuisiner de la viandes, poissons...", cuisiner);
+		initSkill(gbcComp, 4, "Fouiller : ", "Voir ce qui est secret, dissimulé, peu visible...", fouiller);
+		initSkill(gbcComp, 5, "Boucherie : ", "Découper de la viande. Tenir une boucherie ?", boucherie);
+		initSkill(gbcComp, 6, "Bûcheron : ", "Couper du bois avec une <hache>, ouvrir une scierie ?", bucheron);
+		initSkill(gbcComp, 7, "Miner : ", "Extraire de la roche avec une <pioche>.", miner);
+		initSkill(gbcComp, 8, "Cultiver : ", "Faire pousser tout et n'importe quoi.", cultiver);
+		initSkill(gbcComp, 9, "Pêcher : ", "En bateau ou au bord de la mer.", pecher);
+		initSkill(gbcComp, 10, "Magie : ", "Apprendre durement les arcanes...", magie);
+	}
 
-		// Bucheron
-		gbcComp.gridy = 6;
+	private void initSkill(GridBagConstraints gbcComp, int gridy, String title, String description,
+			JCaracteristic jCaracteristic) {
+		gbcComp.gridy = gridy;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 0;
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.EAST;
 		gbcComp.fill = GridBagConstraints.NONE;
-		JLabel jlBucher = new JLabel("Bûcheron : ");
-		jlBucher.setForeground(new Color(0x886A08));
-		this.add(jlBucher, gbcComp);
-		gbcComp.gridy = 6;
+		JLabel jlCompTitle = new JLabel(title);
+		jlCompTitle.setForeground(new Color(0x886A08));
+		this.add(jlCompTitle, gbcComp);
+		gbcComp.gridy = gridy;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 1;
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.CENTER;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
-		bucheron.setOpaque(false);
-		this.add(bucheron, gbcComp);
-		gbcComp.gridy = 6;
+		gbcComp.fill = GridBagConstraints.HORIZONTAL;
+		jCaracteristic.setOpaque(false);
+		this.add(jCaracteristic, gbcComp);
+		gbcComp.gridy = gridy;
 		gbcComp.gridheight = 1;
 		gbcComp.gridx = 2;
 		gbcComp.gridwidth = 1;
 		gbcComp.anchor = GridBagConstraints.WEST;
 		gbcComp.fill = GridBagConstraints.HORIZONTAL;
-		this.add(new JLabel("Couper du bois avec une <hache>, ouvrir une scierie ?"), gbcComp);
-		
-		// Miner
-		gbcComp.gridy = 7;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 0;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.EAST;
-		gbcComp.fill = GridBagConstraints.NONE;
-		JLabel jlMiner = new JLabel("Miner : ");
-		jlMiner.setForeground(new Color(0x886A08));
-		this.add(jlMiner, gbcComp);
-		gbcComp.gridy = 7;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 1;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.CENTER;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
-		miner.setOpaque(false);
-		this.add(miner, gbcComp);
-		gbcComp.gridy = 7;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 2;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;
-		this.add(new JLabel("Extraire de la roche avec une <pioche>."), gbcComp);
-		
-		// Cultiver
-		gbcComp.gridy = 8;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 0;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.EAST;
-		gbcComp.fill = GridBagConstraints.NONE;
-		JLabel jlCultiver = new JLabel("Cultiver : ");
-		jlCultiver.setForeground(new Color(0x886A08));
-		this.add(jlCultiver, gbcComp);
-		gbcComp.gridy = 8;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 1;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.CENTER;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
-		cultiver.setOpaque(false);
-		this.add(cultiver, gbcComp);
-		gbcComp.gridy = 8;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 2;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;
-		this.add(new JLabel("Faire pousser tout et n'importe quoi."), gbcComp);
-		
-		// Pecher
-		gbcComp.gridy = 9;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 0;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.EAST;
-		gbcComp.fill = GridBagConstraints.NONE;
-		JLabel jlPecher = new JLabel("Pêcher : ");
-		jlPecher.setForeground(new Color(0x886A08));
-		this.add(jlPecher, gbcComp);
-		gbcComp.gridy = 9;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 1;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.CENTER;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
-		pecher.setOpaque(false);
-		this.add(pecher, gbcComp);
-		gbcComp.gridy = 9;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 2;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
-		this.add(new JLabel("En bateau ou au bord de la mer."), gbcComp);
-		
-		// Magie
-		gbcComp.gridy = 10;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 0;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.EAST;
-		gbcComp.fill = GridBagConstraints.NONE;
-		JLabel jlMagie = new JLabel("Magie : ");
-		jlMagie.setForeground(new Color(0x886A08));
-		this.add(jlMagie, gbcComp);
-		gbcComp.gridy = 10;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 1;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.CENTER;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;		
-		magie.setOpaque(false);
-		this.add(magie, gbcComp);
-		gbcComp.gridy = 10;
-		gbcComp.gridheight = 1;
-		gbcComp.gridx = 2;
-		gbcComp.gridwidth = 1;
-		gbcComp.anchor = GridBagConstraints.WEST;
-		gbcComp.fill = GridBagConstraints.HORIZONTAL;
-		this.add(new JLabel("Apprendre durement les arcanes..."), gbcComp);
+		this.add(new JLabel(description), gbcComp);
 	}
 }

@@ -1,6 +1,5 @@
 package io.github.algorys.agshmne.map.city.shop;
 
-import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.stackable.IStackableItem;
@@ -18,32 +17,32 @@ public class Shop {
 		this.inv = stockFact.createStock(level);
 	}
 
-	public void sellItem(Player pj, Item item) {
+	public void sellItem(Inventory playerInventory, Item item) {
 		inv.removeItem(item);
-		pj.getInventory().addItem(item);
-		pj.getInventory().setGold(pj.getInventory().getGold() - item.getPrice());
+		playerInventory.addItem(item);
+		playerInventory.setGold(playerInventory.getGold() - item.getPrice());
 	}
 
-	public void sellItem(Player pj, IStackableItem item, int nb) {
+	public void sellItem(Inventory playerInventory, IStackableItem item, int nb) {
 		// TODO Stackable devrait être scindé au cas où il y aurait d'autre type de Stackable !
-		pj.getInventory().addItem(new StackableItem(item.getName(), nb, item.getPrice()));
+		playerInventory.addItem(new StackableItem(item.getName(), nb, item.getPrice()));
 		inv.removeItem(new StackableItem(item.getName(), nb, item.getPrice()));
 		int price = item.getPrice() * nb;
-		pj.getInventory().setGold(pj.getInventory().getGold() - price);
+		playerInventory.setGold(playerInventory.getGold() - price);
 	}
 
-	public void buyItem(Player pj, Item item) {
-		pj.getInventory().removeItem(item);
-		pj.getInventory().setGold(pj.getInventory().getGold() + item.getPrice());
+	public void buyItem(Inventory playerInventory, Item item) {
+		playerInventory.removeItem(item);
+		playerInventory.setGold(playerInventory.getGold() + item.getPrice());
 		inv.addItem(item);
 	}
 
-	public void buyItem(Player pj, IStackableItem item, int nb) {
+	public void buyItem(Inventory playerInventory, IStackableItem item, int nb) {
 		// TODO Stackable devrait être scindé au cas où il y aurait d'autre type de Stackable !
-		pj.getInventory().removeItem(new StackableItem(item.getName(), nb, item.getPrice()));
+		playerInventory.removeItem(new StackableItem(item.getName(), nb, item.getPrice()));
 		inv.addItem(new StackableItem(item.getName(), nb, item.getPrice()));
 		int price = item.getPrice() * nb;
-		pj.getInventory().setGold(pj.getInventory().getGold() + price);
+		playerInventory.setGold(playerInventory.getGold() + price);
 	}
 
 	public Inventory getInventory() {

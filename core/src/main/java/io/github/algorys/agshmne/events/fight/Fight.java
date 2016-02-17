@@ -1,6 +1,8 @@
 package io.github.algorys.agshmne.events.fight;
 
+import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.Character;
+import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.events.IAdventure;
 import io.github.algorys.agshmne.tools.Tools;
 
@@ -20,18 +22,20 @@ public class Fight implements IAdventure {
 
 	public int pjAttack() {
 		int pjAttack = 0;
-		if(pj.getCurrentAttributes().getDEX() > pj.getCurrentAttributes().getFOR()) {
-			pjAttack = this.attack(pj.getCurrentAttributes().getDEX(), adv.getLevel());
+		Attribute currentAttributes = pj.getCurrentAttributes();
+		if(currentAttributes.getDEX() > currentAttributes.getFOR()) {
+			pjAttack = this.attack(currentAttributes.getDEX(), adv.getLevel());
 		}else{
-			pjAttack = this.attack(pj.getCurrentAttributes().getFOR(), adv.getLevel());
+			pjAttack = this.attack(currentAttributes.getFOR(), adv.getLevel());
 		}
 		if (pjAttack < -5) {
 			pjAttack = -5;
 		}
+		Vital vital = adv.getVital();
 		if (pjAttack > 0) {
-			adv.getVital().setLife(adv.getVital().getLife() - pjAttack);
+			vital.setLife(vital.getLife() - pjAttack);
 		} else if(pjAttack == 0) {
-			adv.getVital().setLife(adv.getVital().getLife() - 1);
+			vital.setLife(vital.getLife() - 1);
 		}
 		return pjAttack;
 	}

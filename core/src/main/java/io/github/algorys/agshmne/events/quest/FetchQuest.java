@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.events.quest;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.tile.Tile;
@@ -25,11 +26,12 @@ public class FetchQuest implements IQuest {
 
 	@Override
 	public void reward(Player pj) {
+		Inventory inventory = pj.getInventory();
 		for (int i = 0; i < count; i++) {
-			pj.getInventory().removeItem(item);
+			inventory.removeItem(item);
 		}
 		finish = true;
-		pj.getInventory().setGold(pj.getInventory().getGold() + Tools.dice(pj.getLevel() * 5));
+		inventory.setGold(inventory.getGold() + Tools.dice(pj.getLevel() * 5));
 	}
 
 	@Override
@@ -43,12 +45,6 @@ public class FetchQuest implements IQuest {
 		sb.append("Une personne a besoin qu'on lui livre au moins ");
 		sb.append(count + " ");
 		sb.append(item.getName());
-		sb.append(" et les rapporter dans la Région : ");
-		sb.append(tile.getDesc());
-		sb.append("(");
-		sb.append(tile.getPosition().getX() + ",");
-		sb.append(tile.getPosition().getY());
-		sb.append(").");
 		return sb.toString();
 	}
 
@@ -64,5 +60,10 @@ public class FetchQuest implements IQuest {
 	@Override
 	public void accept(Player pj) {
 		pj.addQuest(this);
+	}
+	
+	@Override
+	public Tile getDestination() {
+		return this.tile;
 	}
 }
