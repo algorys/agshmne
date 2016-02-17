@@ -6,10 +6,12 @@ import java.beans.PropertyChangeSupport;
 public class Vital {
 	public final static String PROPERTY_VIE = "vie";
 	public final static String PROPERTY_MANA = "mana";
-	public final static String PROPERTY_FAIM = "faim";
+	public final static String PROPERTY_HUNGER = "faim";
 	public final static String PROPERTY_FATIGUE = "fatigue";
 	public static int MAX_LIFE;
 	public static int MAX_MANA;
+	public static int MAX_FATIGUE;
+	public static int MAX_HUNGER;
 	private int life;
 	private int mana;
 	private int fatigue;
@@ -21,9 +23,11 @@ public class Vital {
 		this.life = life;
 		Vital.MAX_LIFE = life;
 		Vital.MAX_MANA = mana;
+		Vital.MAX_FATIGUE = fatigue;
+		Vital.MAX_HUNGER = hunger;
 		this.mana = mana;
-		this.fatigue = fatigue;
-		this.hunger = hunger;
+		this.fatigue = 0;
+		this.hunger = 0;
 	}
 
 	public int getLife() {
@@ -56,20 +60,20 @@ public class Vital {
 		return fatigue;
 	}
 
-	public void setFatigue(int fatigue) {
-		int old = this.fatigue;
-		this.fatigue = fatigue;
-		pcs.firePropertyChange(PROPERTY_FATIGUE, old, fatigue);
-	}
-
 	public int getHunger() {
 		return hunger;
 	}
-
+	
+	public void increaseHunger() {
+		int old = hunger;
+		hunger += 1;
+		pcs.firePropertyChange(PROPERTY_HUNGER, old, hunger);
+	}
+	
 	public void setHunger(int hunger) {
 		int old = this.hunger;
 		this.hunger = hunger;
-		pcs.firePropertyChange(PROPERTY_FAIM, old, PROPERTY_FAIM);
+		pcs.firePropertyChange(PROPERTY_HUNGER, old, PROPERTY_HUNGER);
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -87,5 +91,4 @@ public class Vital {
 	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
 		pcs.removePropertyChangeListener(propertyName, listener);
 	}
-
 }

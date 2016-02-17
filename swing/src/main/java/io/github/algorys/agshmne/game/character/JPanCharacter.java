@@ -216,7 +216,7 @@ public class JPanCharacter extends JPanel {
 		final JLabel jlHungry = new JLabel("" + pj.getVital().getHunger());
 		jlHungry.setForeground(Color.white);
 		this.add(jlHungry, gbcCharacter);
-		pj.getVital().addPropertyChangeListener(Vital.PROPERTY_FAIM, new PropertyChangeListener() {
+		pj.getVital().addPropertyChangeListener(Vital.PROPERTY_HUNGER, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				jlHungry.setText(evt.getNewValue().toString());
