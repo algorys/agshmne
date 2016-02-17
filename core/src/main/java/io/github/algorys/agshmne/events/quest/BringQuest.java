@@ -9,14 +9,12 @@ import io.github.algorys.agshmne.tools.Tools;
 
 public class BringQuest implements IQuest {
 	private Position questDestination;
-	private Position initialPos;
 	private Item item;
 	private boolean finish = false;
 	private String name;
 
 	public BringQuest(Player pj, Item item) {
-		this.initialPos = pj.getGame().getPosition();
-		this.questDestination = this.defineDestination(initialPos);
+		this.questDestination = this.defineDestination(pj.getGame().getPosition());
 		this.item = item;
 		this.name = "Apporter des " + item.getName() + " dans la Région : "
 				+ pj.getGame().getRegion().getTileFromPosition(questDestination).getDesc();
@@ -35,10 +33,6 @@ public class BringQuest implements IQuest {
 
 	public Position getQuestDestination() {
 		return questDestination;
-	}
-
-	public Position getInitialPos() {
-		return initialPos;
 	}
 
 	@Override
