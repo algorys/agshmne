@@ -8,10 +8,9 @@ import javax.swing.JFrame;
 
 import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.map.JMapRegion;
 import io.github.algorys.agshmne.map.Position;
-import io.github.algorys.agshmne.map.region.RandomRegionFactory;
-import io.github.algorys.agshmne.map.region.Region;
 
 public class JRegionTest {
 	public static void main(String[] args) {
@@ -19,8 +18,7 @@ public class JRegionTest {
 		jf.setBackground(Color.BLACK);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		Region region = new RandomRegionFactory().create();
-		final Player personnage = new Player(region);
+		final Player personnage = new PlayerBuilder().create();
 		jf.getContentPane().add(new JMapRegion(personnage));
 		System.out.println("-------------------------------------");
 		jf.addKeyListener(new KeyListener() {

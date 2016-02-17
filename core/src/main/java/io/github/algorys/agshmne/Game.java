@@ -9,19 +9,22 @@ import io.github.algorys.agshmne.map.region.Region;
 
 public class Game {
 	public static final String PROPERTY_POSITION = "position";
-	private final Player player;
+	private Player player;
 	private Position position = new Position(0, 0);
 	private final Region region;
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
-	public Game(Region region, Player player) {
+	public Game(Region region) {
 		super();
 		this.region = region;
-		this.player = player;
 	}
 
 	public Player getPlayer() {
 		return player;
+	}
+	
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 	public Region getRegion() {

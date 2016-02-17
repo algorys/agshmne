@@ -6,25 +6,23 @@ import static org.junit.Assert.assertNotSame;
 import org.junit.Test;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.map.region.RandomRegionFactory;
-import io.github.algorys.agshmne.map.region.Region;
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
 
 public class LocalityFactoryTest {
 
 	@Test
 	public void testLocalityFactory() {
 		LocalityFactory underTest = new LocalityFactory();
-		Region region = new RandomRegionFactory().create();
-		Locality locality = underTest.createAdventure(new Player(region));
+		Locality locality = underTest.createAdventure(new PlayerBuilder().create());
 		assertNotNull(locality);
 	}
 	
 	@Test
 	public void test() {
 		LocalityFactory underTest = new LocalityFactory();
-		Region region = new RandomRegionFactory().create();
-		Locality locality = underTest.createAdventure(new Player(region));
-		Locality second = underTest.createAdventure(new Player(region));
+		Player pj = new PlayerBuilder().create();
+		Locality locality = underTest.createAdventure(pj);
+		Locality second = underTest.createAdventure(pj);
 		assertNotNull(locality);
 		assertNotSame(locality, second);
 	}

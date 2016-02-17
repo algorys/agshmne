@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.region.RandomRegionFactory;
@@ -34,7 +35,9 @@ public class PlayerBuilder {
 		if (region == null) {
 			throw new RuntimeException("region ne doit pas être null");
 		}
-		Player player = new Player(region);
+		Game game = new Game(region);
+		Player player = new Player(game);
+		game.setPlayer(player);
 		player.getSocial().setName(name);
 		player.getSocial().setSexe(gender);
 		player.getSocial().setRace(race);

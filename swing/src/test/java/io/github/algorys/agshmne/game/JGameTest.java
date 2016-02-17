@@ -1,19 +1,17 @@
 package io.github.algorys.agshmne.game;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.items.GeneralItem;
 import io.github.algorys.agshmne.items.equipable.BodyPart;
 import io.github.algorys.agshmne.items.equipable.EquipableItem;
 import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
-import io.github.algorys.agshmne.items.stackable.StackableItem;
-import io.github.algorys.agshmne.map.region.RandomRegionFactory;
-import io.github.algorys.agshmne.map.region.Region;;
+import io.github.algorys.agshmne.items.stackable.StackableItem;;
 
 public class JGameTest {
 
 	public static void main(String[] args) {
-		Region region = new RandomRegionFactory().create();
-		Player pj = new Player(region);
+		Player pj = new PlayerBuilder().create();
 		pj.getSocial().setName("Player Playing");
 		pj.getXp().setXp(125);
 		System.out.println(pj.getXp().getProgress());

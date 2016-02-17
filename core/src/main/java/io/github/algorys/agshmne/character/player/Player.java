@@ -15,7 +15,6 @@ import io.github.algorys.agshmne.events.quest.IQuest;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.IEquipableItem;
-import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.map.tile.Tile;
 
 /*
@@ -35,8 +34,8 @@ public class Player implements Character {
 	private List<IQuest> quests = new ArrayList<>();
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
-	public Player(Region region) {
-		game = new Game(region, this);
+	public Player(Game game) {
+		this.game = game;
 		social = new PlayerSocial();
 		attributes = new Attribute();
 		xp = new PlayerXP();
