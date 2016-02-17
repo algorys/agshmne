@@ -20,6 +20,7 @@ import javax.swing.border.BevelBorder;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.character.player.PlayerSocial;
 import io.github.algorys.agshmne.character.player.PlayerXP;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.tile.JTile;
@@ -69,7 +70,8 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.HORIZONTAL;
-		JLabel jlRace = new JLabel("Race : " + pj.getSocial().getRace() + " (Sexe : " + pj.getSocial().getSexe() + ")");
+		PlayerSocial social = pj.getSocial();
+		JLabel jlRace = new JLabel("Race : " + social.getRace() + " (Sexe : " + social.getSexe() + ")");
 		jlRace.setForeground(Color.white);
 		this.add(jlRace, gbcCharacter);
 
@@ -79,7 +81,7 @@ public class JPanCharacter extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.BOTH;
-		JLabel jlJob = new JLabel("Classe : " + pj.getSocial().getClasse());
+		JLabel jlJob = new JLabel("Classe : " + social.getClasse());
 		jlJob.setForeground(Color.white);
 		this.add(jlJob, gbcCharacter);
 

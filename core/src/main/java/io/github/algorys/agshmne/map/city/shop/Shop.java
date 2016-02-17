@@ -20,30 +20,34 @@ public class Shop {
 
 	public void sellItem(Player pj, Item item) {
 		inv.removeItem(item);
-		pj.getInventory().addItem(item);
-		pj.getInventory().setGold(pj.getInventory().getGold() - item.getPrice());
+		Inventory inventory = pj.getInventory();
+		inventory.addItem(item);
+		inventory.setGold(inventory.getGold() - item.getPrice());
 	}
 
 	public void sellItem(Player pj, IStackableItem item, int nb) {
 		// TODO Stackable devrait être scindé au cas où il y aurait d'autre type de Stackable !
-		pj.getInventory().addItem(new StackableItem(item.getName(), nb, item.getPrice()));
+		Inventory inventory = pj.getInventory();
+		inventory.addItem(new StackableItem(item.getName(), nb, item.getPrice()));
 		inv.removeItem(new StackableItem(item.getName(), nb, item.getPrice()));
 		int price = item.getPrice() * nb;
-		pj.getInventory().setGold(pj.getInventory().getGold() - price);
+		inventory.setGold(inventory.getGold() - price);
 	}
 
 	public void buyItem(Player pj, Item item) {
-		pj.getInventory().removeItem(item);
-		pj.getInventory().setGold(pj.getInventory().getGold() + item.getPrice());
+		Inventory inventory = pj.getInventory();
+		inventory.removeItem(item);
+		inventory.setGold(inventory.getGold() + item.getPrice());
 		inv.addItem(item);
 	}
 
 	public void buyItem(Player pj, IStackableItem item, int nb) {
 		// TODO Stackable devrait être scindé au cas où il y aurait d'autre type de Stackable !
-		pj.getInventory().removeItem(new StackableItem(item.getName(), nb, item.getPrice()));
+		Inventory inventory = pj.getInventory();
+		inventory.removeItem(new StackableItem(item.getName(), nb, item.getPrice()));
 		inv.addItem(new StackableItem(item.getName(), nb, item.getPrice()));
 		int price = item.getPrice() * nb;
-		pj.getInventory().setGold(pj.getInventory().getGold() + price);
+		inventory.setGold(inventory.getGold() + price);
 	}
 
 	public Inventory getInventory() {

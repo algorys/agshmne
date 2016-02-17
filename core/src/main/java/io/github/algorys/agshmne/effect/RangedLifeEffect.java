@@ -1,5 +1,6 @@
 package io.github.algorys.agshmne.effect;
 
+import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.tools.Tools;
 
@@ -19,6 +20,7 @@ public class RangedLifeEffect implements IEffect {
 		if(current == 0) {
 			current = Tools.dice(max - min + 1) + min;
 		}
-		pj.getVital().setLife(pj.getVital().getLife() + current);
+		Vital vital = pj.getVital();
+		vital.setLife(vital.getLife() + current);
 	}
 }

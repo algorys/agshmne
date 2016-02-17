@@ -1,6 +1,7 @@
 package io.github.algorys.agshmne.events.quest;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.tile.Tile;
@@ -25,11 +26,12 @@ public class FetchQuest implements IQuest {
 
 	@Override
 	public void reward(Player pj) {
+		Inventory inventory = pj.getInventory();
 		for (int i = 0; i < count; i++) {
-			pj.getInventory().removeItem(item);
+			inventory.removeItem(item);
 		}
 		finish = true;
-		pj.getInventory().setGold(pj.getInventory().getGold() + Tools.dice(pj.getLevel() * 5));
+		inventory.setGold(inventory.getGold() + Tools.dice(pj.getLevel() * 5));
 	}
 
 	@Override
