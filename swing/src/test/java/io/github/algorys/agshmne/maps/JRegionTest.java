@@ -7,7 +7,6 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 import io.github.algorys.agshmne.Game;
-import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.map.JMapRegion;
 import io.github.algorys.agshmne.map.Position;
@@ -18,8 +17,10 @@ public class JRegionTest {
 		jf.setBackground(Color.BLACK);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		final Player personnage = new PlayerBuilder().create();
-		jf.getContentPane().add(new JMapRegion(personnage));
+		PlayerBuilder playerBuilder = new PlayerBuilder();
+		playerBuilder.create();
+		final Game game = playerBuilder.getGame();
+		jf.getContentPane().add(new JMapRegion(game));
 		System.out.println("-------------------------------------");
 		jf.addKeyListener(new KeyListener() {
 
@@ -38,7 +39,6 @@ public class JRegionTest {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				//System.out.println("Touché!");
-				Game game = personnage.getGame();
 				switch (e.getKeyCode()) {
 				case KeyEvent.VK_LEFT:
 					game.setPosition(

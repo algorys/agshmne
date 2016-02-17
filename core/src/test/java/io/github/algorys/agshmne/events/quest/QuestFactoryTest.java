@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotSame;
 
 import org.junit.Test;
 
-import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
 
 public class QuestFactoryTest {
@@ -13,10 +12,11 @@ public class QuestFactoryTest {
 	@Test
 	public void fetchQuestDifferent() {
 		QuestFactory underTest = new QuestFactory();
-		Player pj = new PlayerBuilder().create();
-		IQuest quest = underTest.createFetchQuest(pj);
+		PlayerBuilder playerBuilder = new PlayerBuilder();
+		playerBuilder.create();
+		IQuest quest = underTest.createFetchQuest(playerBuilder.getGame());
 		assertNotNull(quest);
-		IQuest second = underTest.createFetchQuest(pj);
+		IQuest second = underTest.createFetchQuest(playerBuilder.getGame());
 		assertNotNull(second);
 		assertNotSame(quest, second);
 	}
@@ -24,18 +24,20 @@ public class QuestFactoryTest {
 	@Test
 	public void randomQuestDifferent() {
 		QuestFactory underTest = new QuestFactory();
-		Player pj = new PlayerBuilder().create();
-		IQuest quest = underTest.createAdventure(pj);
+		PlayerBuilder playerBuilder = new PlayerBuilder();
+		playerBuilder.create();
+		IQuest quest = underTest.createAdventure(playerBuilder.getGame());
 		assertNotNull(quest);
-		IQuest second = underTest.createAdventure(pj);
+		IQuest second = underTest.createAdventure(playerBuilder.getGame());
 		assertNotNull(second);
 		assertNotSame(quest, second);
 	}
-	
+
 	@Test
 	public void bringQuest() {
 		QuestFactory underTest = new QuestFactory();
-		IQuest quest = underTest.createBringQuest(new PlayerBuilder().create());
+		PlayerBuilder playerBuilder = new PlayerBuilder();
+		IQuest quest = underTest.createBringQuest(playerBuilder.getGame());
 		assertNotNull(quest);
 	}
 }

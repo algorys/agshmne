@@ -7,12 +7,12 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.Game;
 
 @SuppressWarnings("serial")
 public class ActionCharacter extends JPanel {
 	
-	public ActionCharacter(final Player pj){
+	public ActionCharacter(Game game){
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcActions = new GridBagConstraints();
 		gbcActions.insets = new Insets(5, 5, 5, 5);
@@ -65,10 +65,10 @@ public class ActionCharacter extends JPanel {
 		gbcActions.fill = GridBagConstraints.HORIZONTAL;
 		this.add(searchCity, gbcActions);
 		
-		woodButton.setAction(new SkillCutAction(pj));
-		oreButton.setAction(new SkillMineAction(pj));
-		fishButton.setAction(new SkillFishAction(pj));
-		searchRegion.setAction(new SkillSearchRegionAction(pj));
-		searchCity.setAction(new SkillSearchCityAction(pj));
+		woodButton.setAction(new SkillCutAction(game.getPlayer()));
+		oreButton.setAction(new SkillMineAction(game.getPlayer()));
+		fishButton.setAction(new SkillFishAction(game.getPlayer()));
+		searchRegion.setAction(new SkillSearchRegionAction(game));
+		searchCity.setAction(new SkillSearchCityAction(game.getPlayer()));
 	}
 }

@@ -23,7 +23,6 @@ import io.github.algorys.agshmne.map.tile.Tile;
 public class Player implements Character {
 	public final static String PROPERTY_TILE = "tile";
 
-	private final Game game;
 	private Tile tile;
 	private Inventory inv;
 	private PlayerSocial social;
@@ -34,8 +33,7 @@ public class Player implements Character {
 	private List<IQuest> quests = new ArrayList<>();
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
-	public Player(Game game) {
-		this.game = game;
+	public Player(final Game game) {
 		social = new PlayerSocial();
 		attributes = new Attribute();
 		xp = new PlayerXP();
@@ -44,10 +42,10 @@ public class Player implements Character {
 		game.addPropertyChangeListener(Game.PROPERTY_POSITION, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-				setTile(getGame().getRegion().getTileFromPosition(getGame().getPosition()));
+				setTile(game.getRegion().getTileFromPosition(game.getPosition()));
 			}
 		});
-		this.tile = game.getRegion().getTileFromPosition(getGame().getPosition());
+		this.tile = game.getRegion().getTileFromPosition(game.getPosition());
 	}
 
 	public void initVital() {
@@ -201,9 +199,5 @@ public class Player implements Character {
 
 	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
 		pcs.removePropertyChangeListener(propertyName, listener);
-	}
-
-	public Game getGame() {
-		return game;
 	}
 }

@@ -22,18 +22,20 @@ public class FightFactoryTest {
 	@Test
 	public void testDefaultCreatedIsFight() {
 		FightFactory underTest = new FightFactory();
-		Player pj = new PlayerBuilder().create();
+		PlayerBuilder playerBuilder = new PlayerBuilder();
+		Player pj = playerBuilder.create();
 		pj.initVital();
-		Fight creation = underTest.createAdventure(pj);
+		Fight creation = underTest.createAdventure(playerBuilder.getGame());
 		assertThat(creation, IsInstanceOf.instanceOf(Fight.class));
 	}
 	
 	@Test
 	public void testDefaultCreated_hasOpponent() {
 		FightFactory underTest = new FightFactory();
-		Player pj = new PlayerBuilder().create();
+		PlayerBuilder playerBuilder = new PlayerBuilder();
+		Player pj = playerBuilder.create();
 		pj.initVital();
-		Fight creation = underTest.createAdventure(pj);
+		Fight creation = underTest.createAdventure(playerBuilder.getGame());
 		assertNotNull(creation.getLeftOpponent());
 		assertNotNull(creation.getRightOpponent());
 	}
@@ -41,9 +43,10 @@ public class FightFactoryTest {
 	@Test
 	public void testDefaultCreated_hasOpponentWithHealth() {
 		FightFactory underTest = new FightFactory();
-		Player pj = new PlayerBuilder().create();
+		PlayerBuilder playerBuilder = new PlayerBuilder();
+		Player pj = playerBuilder.create();
 		pj.initVital();
-		Fight creation = underTest.createAdventure(pj);
+		Fight creation = underTest.createAdventure(playerBuilder.getGame());
 		assertTrue(creation.getRightOpponent().getVital().getLife() > 0);
 	}
 }

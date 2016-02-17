@@ -8,24 +8,20 @@ import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class BringQuest implements IQuest {
-	private Position questDestination;
+	private Tile destination;
 	private Item item;
 	private boolean finish = false;
 	private String name;
 
-	public BringQuest(Item item, Position destination, Tile tileDestination) {
-		this.questDestination = destination;
+	public BringQuest(Item item, Tile destination) {
+		this.destination = destination;
 		this.item = item;
-		this.name = "Apporter des " + item.getName() + " dans la Région : " + tileDestination.getDesc();
-	}
-
-	public Position getQuestDestination() {
-		return questDestination;
+		this.name = "Apporter des " + item.getName() + " dans la Région : " + destination.getDesc();
 	}
 
 	@Override
 	public boolean isWin(Player pj) {
-		return pj.getGame().getPosition().equals(questDestination) && pj.getInventory().contains(item);
+		return pj.getTile().equals(destination) && pj.getInventory().contains(item);
 	}
 
 	@Override
@@ -52,8 +48,8 @@ public class BringQuest implements IQuest {
 		StringBuffer sb = new StringBuffer();
 		sb.append(name);
 		sb.append("(");
-		sb.append(questDestination.getX() + ",");
-		sb.append(questDestination.getY());
+		sb.append(destination.getPosition().getX() + ",");
+		sb.append(destination.getPosition().getY());
 		sb.append(")");
 		return sb.toString();
 	}
@@ -64,6 +60,10 @@ public class BringQuest implements IQuest {
 		// TODO gérer les objets de quêtes différement des objets normaux.
 		pj.getInventory().addItem(item);
 
+	}
+
+	public Position getQuestDestination() {
+		return this.destination.getPosition();
 	}
 
 }

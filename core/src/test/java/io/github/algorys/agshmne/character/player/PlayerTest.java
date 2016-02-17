@@ -10,7 +10,6 @@ import org.junit.Test;
 import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.items.equipable.BodyPart;
 import io.github.algorys.agshmne.items.equipable.EquipableItem;
-import io.github.algorys.agshmne.map.Position;
 
 public class PlayerTest {
 	@Test
@@ -41,12 +40,6 @@ public class PlayerTest {
 		Player underTest = new PlayerBuilder().create();
 		assertEquals(1, underTest.getXp().getLevel());
 		assertEquals(0, underTest.getXp().getXp());
-	}
-
-	@Test
-	public void whenCharacterIsCreated_positionShouldBe00() {
-		Player underTest = new PlayerBuilder().create();
-		assertEquals(new Position(0, 0), underTest.getGame().getPosition());
 	}
 
 	@Test

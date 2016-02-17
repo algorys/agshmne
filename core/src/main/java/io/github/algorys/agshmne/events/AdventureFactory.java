@@ -3,7 +3,7 @@ package io.github.algorys.agshmne.events;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.events.fight.FightFactory;
 import io.github.algorys.agshmne.events.locality.LocalityFactory;
 import io.github.algorys.agshmne.events.quest.QuestFactory;
@@ -18,8 +18,9 @@ public class AdventureFactory implements IAdventureFactory {
 		factories.put(AdventureType.LOCALITY, new LocalityFactory());
 	}
 	
-	public IAdventure createAdventure(Player pj) {
-		return factories.get(Tools.random(AdventureType.values())).createAdventure(pj);
+	@Override
+	public IAdventure createAdventure(Game game) {
+		return factories.get(Tools.random(AdventureType.values())).createAdventure(game);
 	}
 
 }

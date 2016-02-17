@@ -6,11 +6,13 @@ import java.util.List;
 
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
+import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.city.City;
 
 public class Tile {
 	public static final String PROPERTY_ITEMS = "items";
 
+	private final Position position;
 	private TileType type;
 	private Inventory inv = new Inventory();
 	private City city;
@@ -19,12 +21,13 @@ public class Tile {
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 	private boolean searched = false;
 
-	public Tile(TileType type, String desc, City city) {
-		this(type, desc);
+	public Tile(Position position, TileType type, String desc, City city) {
+		this(position, type, desc);
 		this.city = city;
 	}
 
-	public Tile(TileType type, String desc) {
+	public Tile(Position position, TileType type, String desc) {
+		this.position = position;
 		this.type = type;
 		this.desc = desc;
 	}
@@ -58,6 +61,10 @@ public class Tile {
 		}
 		sb.append(")");
 		return sb.toString();
+	}
+
+	public Position getPosition() {
+		return position;
 	}
 
 	public City getCity() {

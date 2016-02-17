@@ -1,5 +1,6 @@
 package io.github.algorys.agshmne.game;
 
+import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.items.GeneralItem;
@@ -11,7 +12,9 @@ import io.github.algorys.agshmne.items.stackable.StackableItem;;
 public class JGameTest {
 
 	public static void main(String[] args) {
-		Player pj = new PlayerBuilder().create();
+		PlayerBuilder playerBuilder = new PlayerBuilder();
+		Player pj = playerBuilder.create();
+		Game game = playerBuilder.getGame();
 		pj.getSocial().setName("Player Playing");
 		pj.getXp().setXp(125);
 		System.out.println(pj.getXp().getProgress());
@@ -34,8 +37,8 @@ public class JGameTest {
 		pj.equip(sword);
 		pj.getInventory().addItem(new StackableItem("Clou", 1, 2));
 		pj.initVital();
-		JGame game = new JGame(pj);
-		game.setVisible(true);
+		JGame jgame = new JGame(game);
+		jgame.setVisible(true);
 	}
 
 }

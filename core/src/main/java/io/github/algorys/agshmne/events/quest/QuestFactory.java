@@ -1,7 +1,6 @@
 package io.github.algorys.agshmne.events.quest;
 
 import io.github.algorys.agshmne.Game;
-import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.events.IAdventureFactory;
 import io.github.algorys.agshmne.items.ItemFactory;
 import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
@@ -17,12 +16,11 @@ public class QuestFactory implements IAdventureFactory {
 
 	}
 
-	public IQuest createFetchQuest(Player pj) {
-		return new FetchQuest(pj, new ItemFactory().createStackableItem(), Tools.dice(5)+1);
+	public IQuest createFetchQuest(Game game) {
+		return new FetchQuest(new ItemFactory().createStackableItem(), Tools.dice(5)+1, game.getPlayer().getTile());
 	}
 
-	public BringQuest createBringQuest(Player pj) {
-		Game game = pj.getGame();
+	public BringQuest createBringQuest(Game game) {
 		Position position = game.getPosition();
 		int maxX = position.getX() + 10;
 		int minX = position.getX() - 10;
@@ -31,15 +29,15 @@ public class QuestFactory implements IAdventureFactory {
 		RandomCoordinated newY = new RandomCoordinated(maxY, minY);
 		RandomCoordinated newX = new RandomCoordinated(maxX, minX);
 		Position questDestination = new Position(newX.getCoordinated(), newY.getCoordinated());
-		return new BringQuest(Tools.random(itemFactory, equipableItemFactory).createRandom(), questDestination, game.getRegion().getTileFromPosition(questDestination));
+		return new BringQuest(Tools.random(itemFactory, equipableItemFactory).createRandom(), game.getRegion().getTileFromPosition(questDestination));
 	}
 
 	@Override
-	public IQuest createAdventure(Player pj) {
+	public IQuest createAdventure(Game game) {
 		if(Tools.dice(2) == 1) {
-			return this.createFetchQuest(pj);
+			return this.createFetchQuest(game);
 		} else {
-			return this.createBringQuest(pj);
+			return this.createBringQuest(game);
 		}
 	}
 }

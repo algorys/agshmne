@@ -19,7 +19,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.game.JGame;
 
@@ -59,9 +58,9 @@ public class JFicheNav extends JPanel {
 							JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
 							new Object[] { "Oui", "Non" }, "Oui");
 					if (res == JOptionPane.YES_OPTION) {
-						Player pj = builder.create();
+						builder.create();
 						// Entrée dans le jeu
-						JGame game = new JGame(pj);
+						JGame game = new JGame(builder.getGame());
 						game.setVisible(true);
 						parent.dispose();
 					}
