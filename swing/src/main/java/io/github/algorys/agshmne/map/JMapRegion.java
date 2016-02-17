@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import io.github.algorys.agshmne.Game;
-import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.tile.JTile;
@@ -81,10 +80,6 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 		jtiles[3][2].addMouseListener(new MovePJMouseListener(-1, 0));
 		jtiles[3][4].addMouseListener(new MovePJMouseListener(1, 0));
 		this.setFocusable(true);
-	}
-
-	public Player getPersonnage() {
-		return game.getPlayer();
 	}
 
 	private void updateDisplay() {

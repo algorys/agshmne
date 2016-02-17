@@ -37,7 +37,7 @@ public class JPanMain extends JTabbedPane {
 		this.setPreferredSize(new Dimension(1100, 1000));
 
 		// Carte
-		Player pj = jregion.getPersonnage();
+		Player pj = game.getPlayer();
 		pj.addPropertyChangeListener(Player.PROPERTY_TILE, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
