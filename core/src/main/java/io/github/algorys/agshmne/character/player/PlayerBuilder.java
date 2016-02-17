@@ -31,7 +31,7 @@ public class PlayerBuilder {
 	}
 
 	public Player create() {
-		Player player = new Player(game);
+		Player player = new Player(game.getRegion().getTileFromPosition(game.getPosition()));
 		game.setPlayer(player);
 		player.getSocial().setName(name);
 		player.getSocial().setSexe(gender);

@@ -1,12 +1,10 @@
 package io.github.algorys.agshmne.character.player;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.Vital;
@@ -33,19 +31,13 @@ public class Player implements Character {
 	private List<IQuest> quests = new ArrayList<>();
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
-	public Player(final Game game) {
+	public Player(Tile initialTile) {
 		social = new PlayerSocial();
 		attributes = new Attribute();
 		xp = new PlayerXP();
 		inv = new Inventory();
 		skills = new SkillFactory();
-		game.addPropertyChangeListener(Game.PROPERTY_POSITION, new PropertyChangeListener() {
-			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-				setTile(game.getRegion().getTileFromPosition(game.getPosition()));
-			}
-		});
-		this.tile = game.getRegion().getTileFromPosition(game.getPosition());
+		this.tile = initialTile;
 	}
 
 	public void initVital() {

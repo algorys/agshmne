@@ -39,6 +39,7 @@ public class Game {
 	public void setPosition(Position position) {
 		Position old = this.position;
 		this.position = position;
+		player.setTile(this.getRegion().getTileFromPosition(position));
 		pcs.firePropertyChange(PROPERTY_POSITION, old, position);
 	}
 
