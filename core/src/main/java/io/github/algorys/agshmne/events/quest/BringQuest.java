@@ -4,7 +4,7 @@ import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
 import io.github.algorys.agshmne.map.Position;
-import io.github.algorys.agshmne.tools.RandomCoordinated;
+import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class BringQuest implements IQuest {
@@ -13,22 +13,10 @@ public class BringQuest implements IQuest {
 	private boolean finish = false;
 	private String name;
 
-	public BringQuest(Player pj, Item item) {
-		this.questDestination = this.defineDestination(pj.getGame().getPosition());
+	public BringQuest(Item item, Position destination, Tile tileDestination) {
+		this.questDestination = destination;
 		this.item = item;
-		this.name = "Apporter des " + item.getName() + " dans la Région : "
-				+ pj.getGame().getRegion().getTileFromPosition(questDestination).getDesc();
-	}
-
-	private Position defineDestination(Position position) {
-		int maxX = position.getX() + 10;
-		int minX = position.getX() - 10;
-		int maxY = position.getY() + 10;
-		int minY = position.getY() - 10;
-		RandomCoordinated newY = new RandomCoordinated(maxY, minY);
-		RandomCoordinated newX = new RandomCoordinated(maxX, minX);
-		Position questDestination = new Position(newX.getCoordinated(), newY.getCoordinated());
-		return questDestination;
+		this.name = "Apporter des " + item.getName() + " dans la Région : " + tileDestination.getDesc();
 	}
 
 	public Position getQuestDestination() {
