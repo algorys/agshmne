@@ -46,6 +46,7 @@ public class Game {
 	public void newTurn() {
 		if (turn != 1) {
 			player.getVital().increaseHunger();
+			player.getVital().increaseFatigue();
 		}
 		turn += 1;
 	}

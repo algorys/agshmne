@@ -20,11 +20,11 @@ public class Vital {
 
 	public Vital(int life, int mana, int fatigue, int hunger) {
 		super();
-		this.life = life;
 		Vital.MAX_LIFE = life;
 		Vital.MAX_MANA = mana;
 		Vital.MAX_FATIGUE = fatigue;
 		Vital.MAX_HUNGER = hunger;
+		this.life = life;
 		this.mana = mana;
 		this.fatigue = 0;
 		this.hunger = 0;
@@ -37,7 +37,7 @@ public class Vital {
 	public void setLife(int life) {
 		int old = this.life;
 		this.life = life;
-		if(this.life < 1) {
+		if (this.life < 1) {
 			this.life = 0;
 		}
 		pcs.firePropertyChange(PROPERTY_VIE, old, this.life);
@@ -50,7 +50,7 @@ public class Vital {
 	public void setMana(int mana) {
 		int old = this.mana;
 		this.mana = mana;
-		if(this.mana < 1) {
+		if (this.mana < 1) {
 			this.mana = 0;
 		}
 		pcs.firePropertyChange(PROPERTY_MANA, old, mana);
@@ -60,16 +60,22 @@ public class Vital {
 		return fatigue;
 	}
 
+	public void increaseFatigue() {
+		int old = fatigue;
+		fatigue += 1;
+		pcs.firePropertyChange(PROPERTY_FATIGUE, old, fatigue);
+	}
+
 	public int getHunger() {
 		return hunger;
 	}
-	
+
 	public void increaseHunger() {
 		int old = hunger;
 		hunger += 1;
 		pcs.firePropertyChange(PROPERTY_HUNGER, old, hunger);
 	}
-	
+
 	public void setHunger(int hunger) {
 		int old = this.hunger;
 		this.hunger = hunger;
