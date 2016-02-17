@@ -126,16 +126,6 @@ public class Player implements Character {
 		pcs.firePropertyChange(PROPERTY_TILE, old, newTile);
 	}
 
-	public IQuest getFinishedQuest() {
-		IQuest questFinish = null;
-		for (IQuest quest : quests) {
-			if (quest.isFinish()) {
-				questFinish = quest;
-			}
-		}
-		return questFinish;
-	}
-
 	public void addQuest(IQuest questAdded) {
 		quests.add(questAdded);
 	}
