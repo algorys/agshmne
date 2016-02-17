@@ -7,8 +7,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.items.GeneralItem;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
@@ -23,116 +21,119 @@ public class ShopTest {
 		Shop underTest = new Shop(1);
 		assertNotNull(underTest.getInventory());
 	}
-	
+
 	@Test
 	public void newShopCouldSellAnyItem() {
-		Shop underTest = new Shop(1);
 		Item item = new StackableItem("Pomme", 1, 2);
+		Inventory playerInventory = new Inventory();
+
+		Shop underTest = new Shop(1);
 		underTest.getInventory().addItem(item);
-		Player pj = new PlayerBuilder().create();
+
 		Inventory old = underTest.getInventory();
-	
-		underTest.sellItem(pj, item);
+
+		underTest.sellItem(playerInventory, item);
+
 		assertNotSame(old.getListBackpack(), underTest.getInventory().getListBackpack());
-		assertTrue(pj.getInventory().contains(item));
+		assertTrue(playerInventory.contains(item));
 	}
-	
+
 	@Test
 	public void newShopCouldSellStackableItem() {
 		Shop underTest = new Shop(1);
 		StackableItem item = new StackableItem("Pomme", 1, 2);
 		underTest.getInventory().addItem(item);
-		Player pj = new PlayerBuilder().create();
+		Inventory playerInventory = new Inventory();
 		Inventory old = underTest.getInventory();
-	
-		underTest.sellItem(pj, item);
+
+		underTest.sellItem(playerInventory, item);
 		assertNotSame(old.getListBackpack(), underTest.getInventory().getListBackpack());
-		assertTrue(pj.getInventory().contains(item));
+		assertTrue(playerInventory.contains(item));
 	}
-	
+
 	@Test
 	public void shopCanSellEquipableItem() {
 		Shop underTest = new Shop(1);
 		EquipableItem item = new EquipableItem("Chapeau", BodyPart.HEAD, 15);
 		underTest.getInventory().addItem(item);
-		Player pj = new PlayerBuilder().create();
+		Inventory playerInventory = new Inventory();
 		Inventory old = underTest.getInventory();
-	
-		underTest.sellItem(pj, item);
+
+		underTest.sellItem(playerInventory, item);
 		assertNotSame(old.getListBackpack(), underTest.getInventory().getListBackpack());
 		assertFalse(underTest.getInventory().contains(item));
-		assertTrue(pj.getInventory().contains(item));
+		assertTrue(playerInventory.contains(item));
 	}
-	
+
 	@Test
 	public void shopCanSellGeneralItem() {
 		Shop underTest = new Shop(1);
 		GeneralItem item = new GeneralItem("Bouteille", 3);
 		underTest.getInventory().addItem(item);
-		Player pj = new PlayerBuilder().create();
+		Inventory playerInventory = new Inventory();
 		Inventory old = underTest.getInventory();
-	
-		underTest.sellItem(pj, item);
+
+		underTest.sellItem(playerInventory, item);
 		assertNotSame(old.getListBackpack(), underTest.getInventory().getListBackpack());
-		assertTrue(pj.getInventory().contains(item));
+		assertTrue(playerInventory.contains(item));
 	}
-	
+
 	@Test
 	public void newShopCanBuyStackableItem() {
 		Shop underTest = new Shop(1);
 		StackableItem item = new StackableItem("Pomme", 1, 2);
-		Player pj = new PlayerBuilder().create();
-		pj.getInventory().addItem(item);
+		Inventory playerInventory = new Inventory();
+		playerInventory.addItem(item);
 		Inventory old = underTest.getInventory();
-	
-		underTest.buyItem(pj, item);
+
+		underTest.buyItem(playerInventory, item);
 		assertNotSame(old.getListBackpack(), underTest.getInventory().getListBackpack());
 		assertTrue(underTest.getInventory().contains(item));
-		assertFalse(pj.getInventory().contains(item));
+		assertFalse(playerInventory.contains(item));
 	}
-	
+
 	@Test
 	public void newShopCanBuyEquipableItem() {
 		Shop underTest = new Shop(1);
 		EquipableItem item = new EquipableItem("Armure de cuir", BodyPart.CHEST, 2);
-		Player pj = new PlayerBuilder().create();
-		pj.getInventory().addItem(item);
+		Inventory playerInventory = new Inventory();
+		playerInventory.addItem(item);
 		Inventory old = underTest.getInventory();
-	
-		underTest.buyItem(pj, item);
+
+		underTest.buyItem(playerInventory, item);
 		assertNotSame(old.getListBackpack(), underTest.getInventory().getListBackpack());
 		assertTrue(underTest.getInventory().contains(item));
-		assertFalse(pj.getInventory().contains(item));
+		assertFalse(playerInventory.contains(item));
 	}
-	
-	@Test 
+
+	@Test
 	public void shopShouldRemovePjGoldWhenPjBuyItem() {
 		Shop underTest = new Shop(1);
 		Item item = new GeneralItem("Pomme", 2);
 		underTest.getInventory().addItem(item);
-		Player pj = new PlayerBuilder().create();
-		pj.getInventory().setGold(10);
-		
-		int old = pj.getInventory().getGold();
-	
-		underTest.sellItem(pj, item);
-		assertNotSame(old, pj.getInventory().getGold());
+		Inventory playerInventory = new Inventory();
+		playerInventory.setGold(10);
+
+		int old = playerInventory.getGold();
+
+		underTest.sellItem(playerInventory, item);
+		assertNotSame(old, playerInventory.getGold());
 		assertFalse(underTest.getInventory().contains(item));
-		assertTrue(pj.getInventory().contains(item));
+		assertTrue(playerInventory.contains(item));
 	}
-	
+
 	@Test
 	public void shopShouldAddGoldWhenPjSellItem() {
 		Shop underTest = new Shop(1);
 		Item item = new GeneralItem("Pomme", 2);
-		Player pj = new PlayerBuilder().create();
-		pj.getInventory().addItem(item);
-		int old = pj.getInventory().getGold();
-	
-		underTest.buyItem(pj, item);
-		assertNotSame(old, pj.getInventory().getGold());
+		Inventory playerInventory = new Inventory();
+		playerInventory.addItem(item);
+		int old = playerInventory.getGold();
+
+		underTest.buyItem(playerInventory, item);
+		assertNotSame(old, playerInventory.getGold());
 		assertTrue(underTest.getInventory().contains(item));
-		assertFalse(pj.getInventory().contains(item));
+		assertFalse(playerInventory.contains(item));
 	}
-	
+
 }

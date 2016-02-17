@@ -27,7 +27,6 @@ import javax.swing.event.ListSelectionListener;
 
 import io.github.algorys.agshmne.PopupTriggerAdapter;
 import io.github.algorys.agshmne.character.Attribute;
-import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.design.InvRenderer;
 import io.github.algorys.agshmne.design.ShopRenderer;
 import io.github.algorys.agshmne.game.character.inventory.InventoryListModel;
@@ -35,14 +34,13 @@ import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.IEquipableItem;
 import io.github.algorys.agshmne.items.stackable.IStackableItem;
-import io.github.algorys.agshmne.map.tile.Tile;
 
 @SuppressWarnings("serial")
 public class JShop extends JPanel {
 	private Shop shop = Shop.NONE;
 	private JList<Item> shopItem;
 
-	public JShop(final Player pj) {
+	public JShop(Shop initialShop, final Inventory playerInventory, String playerName) {
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcShop = new GridBagConstraints();
 		gbcShop.insets = new Insets(5, 5, 5, 5);
@@ -104,7 +102,7 @@ public class JShop extends JPanel {
 		gbcShop.fill = GridBagConstraints.NONE;
 		gbcShop.weightx = 0;
 		gbcShop.weighty = 0;
-		this.add(new JLabel("Acheteur : " + pj.getName()), gbcShop);
+		this.add(new JLabel("Acheteur : " + playerName), gbcShop);
 
 		// Label Prix
 		gbcShop.gridy = 1;
@@ -125,7 +123,7 @@ public class JShop extends JPanel {
 		gbcShop.fill = GridBagConstraints.BOTH;
 		gbcShop.weightx = 1;
 		gbcShop.weighty = 1;
-		final JList<Item> pjItem = new JList<Item>(new InventoryListModel(pj.getInventory()));
+		final JList<Item> pjItem = new JList<Item>(new InventoryListModel(playerInventory));
 		pjItem.setCellRenderer(new ShopRenderer(new InvRenderer()));
 		pjItem.setBackground(Color.BLACK);
 		pjItem.setForeground(Color.green);
@@ -142,14 +140,14 @@ public class JShop extends JPanel {
 		gbcShop.fill = GridBagConstraints.BOTH;
 		gbcShop.weightx = 0;
 		gbcShop.weighty = 0;
-		final JLabel gold = new JLabel("Or restant : " + pj.getInventory().getGold());
+		final JLabel gold = new JLabel("Or restant : " + playerInventory.getGold());
 		gold.setPreferredSize(new Dimension(400, 50));
 		gold.setBackground(Color.black);
 		gold.setForeground(Color.yellow);
 		gold.setOpaque(true);
 		this.add(gold, gbcShop);
 
-		pj.getInventory().addPropertyChangeListener(Inventory.PROPERTY_GOLD, new PropertyChangeListener() {
+		playerInventory.addPropertyChangeListener(Inventory.PROPERTY_GOLD, new PropertyChangeListener() {
 
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
@@ -221,7 +219,7 @@ public class JShop extends JPanel {
 							jdCount.add(choice);
 							jdCount.setVisible(true);
 							if (choice.getNbToSell() > 0) {
-								shop.buyItem(pj, stackableItem, choice.getNbToSell());
+								shop.buyItem(playerInventory, stackableItem, choice.getNbToSell());
 								pjItem.invalidate();
 								pjItem.repaint();
 							}
@@ -232,7 +230,7 @@ public class JShop extends JPanel {
 							// JOptionPane.showMessageDialog(JShop.this, "" +
 							// selectedItem + " vendu(e) !");
 							((InventoryListModel) pjItem.getModel()).removeElementAt(index);
-							shop.buyItem(pj, selectedItem);
+							shop.buyItem(playerInventory, selectedItem);
 							pjItem.invalidate();
 							pjItem.repaint();
 						}
@@ -253,7 +251,7 @@ public class JShop extends JPanel {
 				buy.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						Item selectedItem = shopItem.getModel().getElementAt(index);
-						if (selectedItem.getPrice() > pj.getInventory().getGold()) {
+						if (selectedItem.getPrice() > playerInventory.getGold()) {
 							JOptionPane.showMessageDialog(JShop.this, "Vous n'avez pas assez d'argent !");
 						} else {
 							if (selectedItem instanceof IStackableItem) {
@@ -262,13 +260,13 @@ public class JShop extends JPanel {
 										"Combien de " + stackableItem.getName() + " voulez vous acheter ?",
 										ModalityType.DOCUMENT_MODAL);
 								jdCount.setSize(300, 150);
-								int maxToBuy = pj.getInventory().getGold() / stackableItem.getPrice();
+								int maxToBuy = playerInventory.getGold() / stackableItem.getPrice();
 								System.out.println("Maxx = " + maxToBuy);
 								JStackChoice choice = new JStackChoice(stackableItem, maxToBuy);
 								jdCount.add(choice);
 								jdCount.setVisible(true);
 								if (choice.getNbToSell() > 0) {
-									shop.sellItem(pj, stackableItem, choice.getNbToSell());
+									shop.sellItem(playerInventory, stackableItem, choice.getNbToSell());
 									shopItem.invalidate();
 									shopItem.repaint();
 								}
@@ -276,7 +274,7 @@ public class JShop extends JPanel {
 								// JOptionPane.showMessageDialog(JShop.this, ""
 								// + selectedItem + " acheté(e) !");
 								((InventoryListModel) shopItem.getModel()).removeElementAt(index);
-								shop.sellItem(pj, selectedItem);
+								shop.sellItem(playerInventory, selectedItem);
 								shopItem.invalidate();
 								shopItem.repaint();
 							}
@@ -290,24 +288,12 @@ public class JShop extends JPanel {
 			}
 		});
 
-		pj.addPropertyChangeListener(Player.PROPERTY_TILE, new PropertyChangeListener() {
-			@Override
-			public void propertyChange(PropertyChangeEvent evt) {
-				if (evt.getNewValue() instanceof Tile) {
-					updateShop((Tile) evt.getNewValue());
-				}
-			}
-		});
-		updateShop(pj.getTile());
+		setShop(initialShop);
 	}
 
-	private void updateShop(Tile newTile) {
-		if (newTile.isCivilized()) {
-			shop = newTile.getCity().getShop();
-			shopItem.setModel(new InventoryListModel(newTile.getCity().getShop().getInventory()));
-		} else {
-			shop = Shop.NONE;
-		}
+	public void setShop(Shop shop) {
+		this.shop = shop;
+		shopItem.setModel(new InventoryListModel(shop.getInventory()));
 	}
 
 	public String getStringAttribute(Attribute equip) {
