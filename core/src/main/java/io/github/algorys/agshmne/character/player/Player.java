@@ -36,7 +36,7 @@ public class Player implements Character {
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
 	public Player(Region region) {
-		game = new Game(region);
+		game = new Game(region, this);
 		social = new PlayerSocial();
 		attributes = new Attribute();
 		xp = new PlayerXP();
