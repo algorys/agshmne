@@ -169,6 +169,8 @@ public class JPlayerVital extends JPanel {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				jlHungry.setText(evt.getNewValue().toString());
+				int newValue = (Integer) evt.getNewValue();
+				updateColorVital(newValue, Vital.MAX_HUNGER, jlHungry);
 			}
 		});
 		
@@ -221,6 +223,8 @@ public class JPlayerVital extends JPanel {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				jlTired.setText(evt.getNewValue().toString());
+				int newValue = (Integer) evt.getNewValue();
+				updateColorVital(newValue, Vital.MAX_FATIGUE, jlTired);
 			}
 		});
 		
@@ -233,5 +237,18 @@ public class JPlayerVital extends JPanel {
 		JLabel jlTiredMax = new JLabel("/ " + Vital.MAX_FATIGUE);
 		jlTiredMax.setForeground(Color.blue);
 		this.add(jlTiredMax, gbcCharacter);
+	}
+	
+	private void updateColorVital(int newValue, int maxValue, JLabel label) {
+		int critical = maxValue - (maxValue / 4);
+		if(newValue < (maxValue / 2)) {
+			label.setForeground(Color.white);
+		}
+		if(newValue > (maxValue / 2)) {
+			label.setForeground(Color.yellow);
+		} 
+		if (newValue > critical){
+			label.setForeground(Color.red);
+		}
 	}
 }
