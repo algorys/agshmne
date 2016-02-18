@@ -11,13 +11,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.player.Player;
+import io.github.algorys.agshmne.game.actions.CityEatAction;
 import io.github.algorys.agshmne.map.tile.Tile;
 
 @SuppressWarnings("serial")
 public class JCityCenter extends JPanel {
 	private JLabel jlTitle;
 
-	public JCityCenter(Player pj) {
+	public JCityCenter(final Player pj) {
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcCityCenter = new GridBagConstraints();
 		gbcCityCenter.insets = new Insets(5, 5, 5, 5);
@@ -68,8 +69,10 @@ public class JCityCenter extends JPanel {
 		gbcCityCenter.gridwidth = 2;
 		gbcCityCenter.anchor = GridBagConstraints.CENTER;
 		gbcCityCenter.fill = GridBagConstraints.NONE;
-		JButton jbTavern = new JButton("Boire un coup !");
-		jbTavern.setEnabled(false);
+		JButton jbTavern = new JButton("Manger un repas !");
+		// jbTavern.setEnabled(false);
+		jbTavern.setAction(new CityEatAction(pj));
+
 		this.add(jbTavern, gbcCityCenter);
 
 		pj.addPropertyChangeListener(Player.PROPERTY_TILE, new PropertyChangeListener() {

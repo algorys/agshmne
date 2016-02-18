@@ -79,7 +79,7 @@ public class Vital {
 	public void setHunger(int hunger) {
 		int old = this.hunger;
 		this.hunger = hunger;
-		pcs.firePropertyChange(PROPERTY_HUNGER, old, PROPERTY_HUNGER);
+		pcs.firePropertyChange(PROPERTY_HUNGER, old, hunger);
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
