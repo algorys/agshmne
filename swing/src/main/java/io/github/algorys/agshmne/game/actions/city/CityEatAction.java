@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.game.actions;
+package io.github.algorys.agshmne.game.actions.city;
 
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeEvent;

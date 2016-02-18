@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.game.actions.CityEatAction;
+import io.github.algorys.agshmne.game.actions.city.CityEatAction;
 import io.github.algorys.agshmne.map.tile.Tile;
 
 @SuppressWarnings("serial")

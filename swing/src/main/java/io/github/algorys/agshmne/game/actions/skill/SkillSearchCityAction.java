@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.game.actions;
+package io.github.algorys.agshmne.game.actions.skill;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;

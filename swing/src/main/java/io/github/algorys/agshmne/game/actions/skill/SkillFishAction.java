@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.game.actions;
+package io.github.algorys.agshmne.game.actions.skill;
 
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeEvent;
@@ -13,40 +13,41 @@ import io.github.algorys.agshmne.items.stackable.StackableItem;
 import io.github.algorys.agshmne.map.tile.TileType;
 
 @SuppressWarnings("serial")
-final class SkillCutAction extends AbstractAction implements PropertyChangeListener {
+public class SkillFishAction extends AbstractAction implements PropertyChangeListener {
 	private final Player pj;
 
-	public SkillCutAction(Player pj) {
-		super("Couper du bois");
+	public SkillFishAction(Player pj) {
+		super("Pêcher");
 		this.pj = pj;
 		pj.addPropertyChangeListener(this);
 		this.update(pj.getTile().getType());
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent wood) {
-		int mineLevel = pj.getSkills().getSkillLevel(SkillType.bucheron);
+	public void actionPerformed(ActionEvent e) {
+		int mineLevel = pj.getSkills().getSkillLevel(SkillType.pecher);
 		if (SkillTool.Dice(mineLevel, 10)) {
-			pj.getInventory().addItem(new StackableItem("Pin", 1, 5));
+			pj.getInventory().addItem(new StackableItem("Cabillaud", 1, 5));
 		} else {
-			System.out.println("Rien d'exploitable");
+			System.out.println("Ca n'a pas mordu...");
 		}
 	}
 
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
-		TileType tileType = pj.getTile().getType();
-		update(tileType);
+		update(pj.getTile().getType());
 	}
 
 	private void update(TileType tileType) {
 		switch (tileType) {
-		case Wood:
-		case Forest:
+		case Lake:
+		case River:
+		case Sea:
 			this.setEnabled(true);
 			break;
 		default:
 			this.setEnabled(false);
 		}
 	}
+
 }

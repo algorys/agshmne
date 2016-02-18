@@ -8,6 +8,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.Game;
+import io.github.algorys.agshmne.game.actions.skill.SkillFishAction;
+import io.github.algorys.agshmne.game.actions.skill.SkillMineAction;
+import io.github.algorys.agshmne.game.actions.skill.SkillCutAction;
+import io.github.algorys.agshmne.game.actions.skill.SkillSearchCityAction;
+import io.github.algorys.agshmne.game.actions.skill.SkillSearchRegionAction;
 
 @SuppressWarnings("serial")
 public class ActionCharacter extends JPanel {
