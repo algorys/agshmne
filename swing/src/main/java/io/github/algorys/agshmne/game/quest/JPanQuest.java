@@ -20,8 +20,8 @@ import javax.swing.SwingUtilities;
 
 import io.github.algorys.agshmne.PopupTriggerAdapter;
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.design.QuestRenderer;
 import io.github.algorys.agshmne.events.quest.IQuest;
+import io.github.algorys.agshmne.renderer.QuestRenderer;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")

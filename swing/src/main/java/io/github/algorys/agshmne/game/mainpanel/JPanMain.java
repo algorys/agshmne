@@ -20,6 +20,8 @@ import io.github.algorys.agshmne.map.JMapRegion;
 import io.github.algorys.agshmne.map.city.JPanCity;
 import io.github.algorys.agshmne.map.desc.JMapDesc;
 import io.github.algorys.agshmne.map.tile.Tile;
+import io.github.algorys.agshmne.output.JOutput;
+import io.github.algorys.agshmne.output.OutputGame;
 
 @SuppressWarnings("serial")
 public class JPanMain extends JTabbedPane {
@@ -48,8 +50,11 @@ public class JPanMain extends JTabbedPane {
 		});
 		jpMap.setBackground(Color.BLACK);
 		JMapDesc descGame = new JMapDesc(game);
+		OutputGame out = new OutputGame();
+		out.addMessage("Hello");
 		jpMap.add(descGame);
 		jpMap.add(jregion);
+		jpMap.add(new JOutput(out));
 		Icon mapIcon = new ImageIcon(JPanMain.class.getClassLoader().getResource("map.png"));
 		this.addTab("Carte", mapIcon, jpMap, "Carte");
 		// Compétences

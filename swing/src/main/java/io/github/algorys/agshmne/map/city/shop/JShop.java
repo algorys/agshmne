@@ -27,13 +27,13 @@ import javax.swing.event.ListSelectionListener;
 
 import io.github.algorys.agshmne.PopupTriggerAdapter;
 import io.github.algorys.agshmne.character.Attribute;
-import io.github.algorys.agshmne.design.InvRenderer;
-import io.github.algorys.agshmne.design.ShopRenderer;
 import io.github.algorys.agshmne.game.character.inventory.InventoryListModel;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.IEquipableItem;
 import io.github.algorys.agshmne.items.stackable.IStackableItem;
+import io.github.algorys.agshmne.renderer.InvRenderer;
+import io.github.algorys.agshmne.renderer.ShopRenderer;
 
 @SuppressWarnings("serial")
 public class JShop extends JPanel {
