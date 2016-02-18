@@ -4,7 +4,7 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
 public class Vital {
-	public final static String PROPERTY_VIE = "vie";
+	public final static String PROPERTY_LIFE = "vie";
 	public final static String PROPERTY_MANA = "mana";
 	public final static String PROPERTY_HUNGER = "faim";
 	public final static String PROPERTY_FATIGUE = "fatigue";
@@ -40,7 +40,7 @@ public class Vital {
 		if (this.life < 1) {
 			this.life = 0;
 		}
-		pcs.firePropertyChange(PROPERTY_VIE, old, this.life);
+		pcs.firePropertyChange(PROPERTY_LIFE, old, this.life);
 	}
 
 	public int getMana() {
@@ -69,12 +69,12 @@ public class Vital {
 	public void setFatigue(int fatigue) {
 		int old = this.fatigue;
 		this.fatigue = fatigue;
-		if(this.fatigue < 1) {
+		if (this.fatigue < 1) {
 			this.fatigue = 0;
 		}
 		pcs.firePropertyChange(PROPERTY_FATIGUE, old, this.fatigue);
 	}
-	
+
 	public int getHunger() {
 		return hunger;
 	}
@@ -92,6 +92,17 @@ public class Vital {
 			this.hunger = 0;
 		}
 		pcs.firePropertyChange(PROPERTY_HUNGER, old, this.hunger);
+	}
+
+	public void checkVital() {
+		int old = this.life;
+		if (this.fatigue > MAX_FATIGUE) {
+			this.life -= 1;
+		}
+		if (this.hunger > MAX_HUNGER) {
+			this.life -= 1;
+		}
+		pcs.firePropertyChange(PROPERTY_LIFE, old, this.life);
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {

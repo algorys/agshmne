@@ -60,7 +60,7 @@ public class JPlayerVital extends JPanel {
 		jlLife.setForeground(Color.white);
 		this.add(jlLife, gbcCharacter);
 
-		vital.addPropertyChangeListener(Vital.PROPERTY_VIE, new PropertyChangeListener() {
+		vital.addPropertyChangeListener(Vital.PROPERTY_LIFE, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getNewValue() instanceof Integer) {

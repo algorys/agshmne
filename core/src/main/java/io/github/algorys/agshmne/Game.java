@@ -48,6 +48,7 @@ public class Game {
 			player.getVital().increaseHunger();
 			player.getVital().increaseFatigue();
 		}
+		player.getVital().checkVital();
 		turn += 1;
 	}
 
