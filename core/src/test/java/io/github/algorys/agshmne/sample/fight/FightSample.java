@@ -9,7 +9,7 @@ public class FightSample {
 
 	public static void main(String[] args) {
 		Beast wolf = new BeastFactory().createBeast();
-		Player pj = new Player(null);
+		Player pj = new Player(null, null);
 		pj.getSocial().setName("Joueur");
 		pj.getAttributes().setFOR(12);
 		pj.getAttributes().setDEX(12);

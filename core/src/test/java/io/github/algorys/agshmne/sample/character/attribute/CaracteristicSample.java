@@ -5,7 +5,7 @@ import io.github.algorys.agshmne.character.player.Player;;
 public class CaracteristicSample {
 
 	public static void main(String[] args) {
-		Player pj = new Player(null);
+		Player pj = new Player(null, null);
 
 		pj.getAttributes().setFOR(10);
 

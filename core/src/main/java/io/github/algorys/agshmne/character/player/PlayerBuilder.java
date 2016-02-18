@@ -6,6 +6,7 @@ import java.util.Map.Entry;
 
 import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.player.skills.SkillType;
+import io.github.algorys.agshmne.character.player.skills.factory.SkillFactory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.region.RandomRegionFactory;
 
@@ -31,7 +32,8 @@ public class PlayerBuilder {
 	}
 
 	public Player create() {
-		Player player = new Player(game.getRegion().getTileFromPosition(game.getPosition()));
+		SkillFactory skillFact = new SkillFactory();
+		Player player = new Player(game.getRegion().getTileFromPosition(game.getPosition()), skillFact);
 		game.setPlayer(player);
 		player.getSocial().setName(name);
 		player.getSocial().setSexe(gender);

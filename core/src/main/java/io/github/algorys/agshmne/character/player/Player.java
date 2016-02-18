@@ -31,12 +31,12 @@ public class Player implements Character {
 	private List<IQuest> quests = new ArrayList<>();
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
-	public Player(Tile initialTile) {
+	public Player(Tile initialTile, SkillFactory skills) {
 		social = new PlayerSocial();
 		attributes = new Attribute();
 		xp = new PlayerXP();
 		inv = new Inventory();
-		skills = new SkillFactory();
+		this.skills = skills;
 		this.tile = initialTile;
 	}
 

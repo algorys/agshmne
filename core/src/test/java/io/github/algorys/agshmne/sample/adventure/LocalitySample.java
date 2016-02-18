@@ -8,7 +8,7 @@ public class LocalitySample {
 
 	public static void main(String[] args) {
 		String locality = "Une fontaine représentant un ange déversant des flots sur un corps inanimé.";
-		Player pj = new Player(null);
+		Player pj = new Player(null, null);
 		Locality underTest = new Locality("Fontaine", new LifeEffect(10), locality, "Affecte votre vie !");
 		pj.initVital();
 		pj.getVital().setLife(10);
