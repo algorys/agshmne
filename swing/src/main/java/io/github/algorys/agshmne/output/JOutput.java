@@ -20,8 +20,8 @@ public class JOutput extends JPanel {
 		output.setFixedCellWidth(290);
 		output.setFixedCellHeight(20);
 		output.setVisibleRowCount(5);
-		output.setPreferredSize(new Dimension(300, 300));
-		output.setMinimumSize(new Dimension(300, 300));
+		output.setPreferredSize(new Dimension(600, 100));
+		output.setMinimumSize(new Dimension(600, 100));
 		output.setEnabled(true);
 		
 		this.add(output);
