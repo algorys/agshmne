@@ -66,6 +66,15 @@ public class Vital {
 		pcs.firePropertyChange(PROPERTY_FATIGUE, old, fatigue);
 	}
 
+	public void setFatigue(int fatigue) {
+		int old = this.fatigue;
+		this.fatigue = fatigue;
+		if(this.fatigue < 1) {
+			this.fatigue = 0;
+		}
+		pcs.firePropertyChange(PROPERTY_FATIGUE, old, this.fatigue);
+	}
+	
 	public int getHunger() {
 		return hunger;
 	}
@@ -100,4 +109,5 @@ public class Vital {
 	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
 		pcs.removePropertyChangeListener(propertyName, listener);
 	}
+
 }

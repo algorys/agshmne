@@ -12,12 +12,14 @@ import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.game.actions.city.CityEatAction;
+import io.github.algorys.agshmne.game.actions.city.CitySleepAction;
 import io.github.algorys.agshmne.map.tile.Tile;
 
 @SuppressWarnings("serial")
 public class JCityCenter extends JPanel {
 	private JLabel jlTitle;
 	private JLabel jlPriceToEat;
+	private JLabel jlPriceToSleep;
 
 	public JCityCenter(final Player pj) {
 		this.setLayout(new GridBagLayout());
@@ -51,8 +53,17 @@ public class JCityCenter extends JPanel {
 		gbcCityCenter.anchor = GridBagConstraints.CENTER;
 		gbcCityCenter.fill = GridBagConstraints.NONE;
 		JButton jbInn = new JButton("Se reposer");
-		jbInn.setEnabled(false);
+		jbInn.setAction(new CitySleepAction(pj));;
 		this.add(jbInn, gbcCityCenter);
+		
+		gbcCityCenter.gridy = 1;
+		gbcCityCenter.gridheight = 1;
+		gbcCityCenter.gridx = 4;
+		gbcCityCenter.gridwidth = 1;
+		gbcCityCenter.anchor = GridBagConstraints.CENTER;
+		gbcCityCenter.fill = GridBagConstraints.NONE;
+		jlPriceToSleep = new JLabel();
+		this.add(jlPriceToSleep, gbcCityCenter);
 
 		// Taverne
 		gbcCityCenter.gridy = 2;
@@ -104,6 +115,7 @@ public class JCityCenter extends JPanel {
 		}
 		jlTitle.setText(city.getName() + " (Puissance : " + city.getLevel() + ")");
 		jlPriceToEat.setText("Prix : " + city.getPriceToEat());
+		jlPriceToSleep.setText("Prix : " + city.getPriceToSleep());
 	}
 
 }

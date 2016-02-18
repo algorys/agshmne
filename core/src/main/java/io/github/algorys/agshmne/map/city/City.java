@@ -15,16 +15,23 @@ public class City {
 	private int level;
 	private Shop shop;
 	private int priceToEat;
+	private int priceToSleep;
 
 	public City(String name, int level) {
 		this.level = level;
 		this.shop = new Shop(level);
-		this.priceToEat = generatePrice(level);
+		this.priceToEat = generatePriceToEat();
+		this.priceToSleep = generatePriceToSleep();
 		this.name = name;
 	}
 
-	private int generatePrice(int level) {
-		int price = Tools.dice(2) + level;
+	private int generatePriceToEat() {
+		int price = Tools.dice(2) + this.level;
+		return price;
+	}
+
+	private int generatePriceToSleep() {
+		int price = 5 + this.level;
 		return price;
 	}
 
@@ -64,10 +71,21 @@ public class City {
 		return priceToEat;
 	}
 
+	public int getPriceToSleep() {
+		return priceToSleep;
+	}
+
 	public void eat(Player pj) {
 		int newHunger = pj.getVital().getHunger() - this.level;
 		pj.getVital().setHunger(newHunger);
 		int newGold = pj.getInventory().getGold() - this.priceToEat;
+		pj.getInventory().setGold(newGold);
+	}
+
+	public void sleep(Player pj) {
+		int newFatigue = pj.getVital().getFatigue() - (this.level * 4);
+		pj.getVital().setFatigue(newFatigue);
+		int newGold = pj.getInventory().getGold() - this.priceToSleep;
 		pj.getInventory().setGold(newGold);
 	}
 
