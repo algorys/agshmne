@@ -7,6 +7,7 @@ import io.github.algorys.agshmne.tools.Tools;
 public class GeneralCityFactory  implements ICityFactory {
 	private int dieFaces;
 	private int modifier;
+	private final CityDescFactory cityDescFactory = new CityDescFactory();
 
 	public GeneralCityFactory(int dieFaces, int modifier) {
 		super();
@@ -15,6 +16,8 @@ public class GeneralCityFactory  implements ICityFactory {
 	}
 	
 	public City createCity() {
-		return new City(Tools.dice(dieFaces) + modifier);
+		int level = Tools.dice(dieFaces) + modifier;
+		String name = cityDescFactory.randomDesc(City.getTypeFromLevel(level));
+		return new City(name, level);
 	}
 }

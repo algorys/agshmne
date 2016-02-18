@@ -17,6 +17,7 @@ import io.github.algorys.agshmne.map.tile.Tile;
 @SuppressWarnings("serial")
 public class JCityCenter extends JPanel {
 	private JLabel jlTitle;
+	private JLabel jlPriceToEat;
 
 	public JCityCenter(final Player pj) {
 		this.setLayout(new GridBagLayout());
@@ -70,10 +71,17 @@ public class JCityCenter extends JPanel {
 		gbcCityCenter.anchor = GridBagConstraints.CENTER;
 		gbcCityCenter.fill = GridBagConstraints.NONE;
 		JButton jbTavern = new JButton("Manger un repas !");
-		// jbTavern.setEnabled(false);
 		jbTavern.setAction(new CityEatAction(pj));
-
 		this.add(jbTavern, gbcCityCenter);
+
+		gbcCityCenter.gridy = 2;
+		gbcCityCenter.gridheight = 1;
+		gbcCityCenter.gridx = 4;
+		gbcCityCenter.gridwidth = 1;
+		gbcCityCenter.anchor = GridBagConstraints.CENTER;
+		gbcCityCenter.fill = GridBagConstraints.NONE;
+		jlPriceToEat = new JLabel();
+		this.add(jlPriceToEat, gbcCityCenter);
 
 		pj.addPropertyChangeListener(Player.PROPERTY_TILE, new PropertyChangeListener() {
 			@Override
@@ -83,6 +91,7 @@ public class JCityCenter extends JPanel {
 				}
 			}
 		});
+
 		updateTitle(pj.getTile());
 	}
 
@@ -93,7 +102,8 @@ public class JCityCenter extends JPanel {
 		} else {
 			city = City.NONE;
 		}
-		jlTitle.setText(city.getName());
+		jlTitle.setText(city.getName() + " (Puissance : " + city.getLevel() + ")");
+		jlPriceToEat.setText("Prix : " + city.getPriceToEat());
 	}
 
 }

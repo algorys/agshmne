@@ -23,10 +23,7 @@ public class CityEatAction extends AbstractAction implements PropertyChangeListe
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int newHunger = pj.getVital().getHunger() - pj.getTile().getCity().getLevel();
-		pj.getVital().setHunger(newHunger);
-		int newGold = pj.getInventory().getGold() - (pj.getTile().getCity().getLevel() * 2);
-		pj.getInventory().setGold(newGold);
+		pj.getTile().getCity().eat(pj);
 	}
 
 	@Override
@@ -36,7 +33,7 @@ public class CityEatAction extends AbstractAction implements PropertyChangeListe
 
 	private void update(int gold) {
 		if (pj.getTile().isCivilized()) {
-			int price = pj.getTile().getCity().getLevel() * 2;
+			int price = pj.getTile().getCity().getPriceToEat();
 			if (gold < price) {
 				this.setEnabled(false);
 			} else {
