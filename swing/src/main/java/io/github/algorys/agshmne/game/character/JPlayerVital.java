@@ -68,6 +68,16 @@ public class JPlayerVital extends JPanel {
 				}
 			}
 		});
+		
+		gbcCharacter.gridy = 0;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 3;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		JLabel jlLifeMax = new JLabel("/ " + Vital.MAX_LIFE);
+		jlLifeMax.setForeground(Color.blue);
+		this.add(jlLifeMax, gbcCharacter);
 
 		// Mana
 		gbcCharacter.gridy = 1;
@@ -109,6 +119,16 @@ public class JPlayerVital extends JPanel {
 				jlMana.setText(evt.getNewValue().toString());
 			}
 		});
+		
+		gbcCharacter.gridy = 1;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 3;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		JLabel jlManaMax = new JLabel("/ " + Vital.MAX_MANA);
+		jlManaMax.setForeground(Color.blue);
+		this.add(jlManaMax, gbcCharacter);
 
 		// Faim
 		gbcCharacter.gridy = 2;
@@ -151,6 +171,16 @@ public class JPlayerVital extends JPanel {
 				jlHungry.setText(evt.getNewValue().toString());
 			}
 		});
+		
+		gbcCharacter.gridy = 2;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 3;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		JLabel jlHungryMax = new JLabel("/ " + Vital.MAX_HUNGER);
+		jlHungryMax.setForeground(Color.blue);
+		this.add(jlHungryMax, gbcCharacter);
 
 		// Fatigue
 		gbcCharacter.gridy = 3;
@@ -193,5 +223,15 @@ public class JPlayerVital extends JPanel {
 				jlTired.setText(evt.getNewValue().toString());
 			}
 		});
+		
+		gbcCharacter.gridy = 3;
+		gbcCharacter.gridheight = 1;
+		gbcCharacter.gridx = 3;
+		gbcCharacter.gridwidth = 1;
+		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.fill = GridBagConstraints.NONE;
+		JLabel jlTiredMax = new JLabel("/ " + Vital.MAX_FATIGUE);
+		jlTiredMax.setForeground(Color.blue);
+		this.add(jlTiredMax, gbcCharacter);
 	}
 }
