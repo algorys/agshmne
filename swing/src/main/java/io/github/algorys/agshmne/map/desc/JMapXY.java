@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import io.github.algorys.agshmne.Game;
-import io.github.algorys.agshmne.JPosition;
+import io.github.algorys.agshmne.map.JPosition;
 import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")

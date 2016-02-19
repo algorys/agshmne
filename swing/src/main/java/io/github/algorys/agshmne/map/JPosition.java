@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne;
+package io.github.algorys.agshmne.map;
 
 import javax.swing.JLabel;
 
