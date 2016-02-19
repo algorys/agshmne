@@ -90,7 +90,8 @@ public class Fight implements IAdventure, IMessageSender {
 			Player player = (Player) pj;
 			player.getXp().setXp(player.getXp().getXp() + (adv.getLevel() * 50));
 			if (adv instanceof Beast) {
-				player.getTile().addItem(new StackableItem("Viande", 1, 5));
+				player.getTile().addItem(new StackableItem("Corps de bête", 1, 5));
+				sendMessage(new Message(MsgType.INFO, adv.getName() + " peut être dépecé."));
 			}
 		}
 		return this.pj.getVital().getLife() <= 0 || this.adv.getVital().getLife() <= 0;

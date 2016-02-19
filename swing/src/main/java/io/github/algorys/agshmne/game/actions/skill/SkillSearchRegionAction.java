@@ -23,23 +23,29 @@ import io.github.algorys.agshmne.game.fight.JFightDialog;
 import io.github.algorys.agshmne.game.locality.JLocalityDialog;
 import io.github.algorys.agshmne.game.quest.JQuestDialog;
 import io.github.algorys.agshmne.map.tile.Tile;
+import io.github.algorys.agshmne.message.IMessageReceiver;
+import io.github.algorys.agshmne.message.IMessageSender;
+import io.github.algorys.agshmne.message.Message;
+import io.github.algorys.agshmne.message.MsgType;
 
 @SuppressWarnings("serial")
-public class SkillSearchRegionAction extends AbstractAction {
+public class SkillSearchRegionAction extends AbstractAction implements IMessageSender {
 	private Game game;
 	private IAdventureFactory adventureFactory = new AdventureFactory();
+	private IMessageReceiver messageReceiver;
 
-	public SkillSearchRegionAction(Game game) {
+	public SkillSearchRegionAction(Game game, IMessageReceiver MsgRcvr) {
 		super("Fouiller la Région");
 		this.game = game;
 		game.getPlayer().addPropertyChangeListener(Player.PROPERTY_TILE, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-				if(evt.getNewValue() instanceof Tile) {
-					SkillSearchRegionAction.this.setEnabled(!((Tile)evt.getNewValue()).isSearched());
+				if (evt.getNewValue() instanceof Tile) {
+					SkillSearchRegionAction.this.setEnabled(!((Tile) evt.getNewValue()).isSearched());
 				}
 			}
 		});
+		this.setMessageReceiver(MsgRcvr);
 	}
 
 	@Override
@@ -54,15 +60,30 @@ public class SkillSearchRegionAction extends AbstractAction {
 			}
 			IAdventure adventure = adventureFactory.createAdventure(game);
 			if (adventure instanceof Fight) {
+				this.sendMessage(new Message(MsgType.CRITICAL, "Vous êtes attaqué !"));
 				JFightDialog fightDialog = new JFightDialog(topFrame, (Fight) adventure);
 				fightDialog.setVisible(true);
-			} else if(adventure instanceof IQuest) {
+			} else if (adventure instanceof IQuest) {
+				this.sendMessage(new Message(MsgType.INFO, "Quelqu'un vous propose une quête."));
 				JQuestDialog questDialog = new JQuestDialog(topFrame, (IQuest) adventure, this.game.getPlayer());
 				questDialog.setVisible(true);
-			} else if(adventure instanceof Locality) {
-				JLocalityDialog localityDialog = new JLocalityDialog(topFrame, (Locality) adventure, this.game.getPlayer());
+			} else if (adventure instanceof Locality) {
+				this.sendMessage(new Message(MsgType.INFO, "Vous avez découvert un lieu."));
+				JLocalityDialog localityDialog = new JLocalityDialog(topFrame, (Locality) adventure,
+						this.game.getPlayer());
 				localityDialog.setVisible(true);
 			}
+		}
+	}
+
+	@Override
+	public void setMessageReceiver(IMessageReceiver msgRcvr) {
+		this.messageReceiver = msgRcvr;
+	}
+
+	private void sendMessage(Message msg) {
+		if (this.messageReceiver != null) {
+			messageReceiver.sendMessage(msg);
 		}
 	}
 }
