@@ -17,21 +17,21 @@ public class LocalityTest {
 	@Test
 	public void testLocalityNotNull() {
 		String locality = "Une fontaine représentant un ange déversant des flots sur un corps inanimé.";
-		Locality underTest = new Locality("Fontaine", null, locality, "Affecte votre vie !");
+		Locality underTest = new Locality("Fontaine", new LifeEffect(1), locality, "Affecte votre vie !");
 		assertNotNull(underTest);
 	}
 
 	@Test
 	public void testLocalityGetGoodName() {
 		String locality = "Une fontaine représentant un ange déversant des flots sur un corps inanimé.";
-		Locality underTest = new Locality("Fontaine", null, locality, "Affecte votre vie !");
+		Locality underTest = new Locality("Fontaine", new LifeEffect(1), locality, "Affecte votre vie !");
 		assertEquals(underTest.getName(), "Fontaine");
 	}
 
 	@Test
 	public void testLocalityGetGoodDesc() {
 		String locality = "Une statue représentant un ange déversant des flots sur un corps inanimé.";
-		Locality underTest = new Locality("Statue", null, locality, "Affecte votre vie !");
+		Locality underTest = new Locality("Statue", new LifeEffect(1), locality, "Affecte votre vie !");
 		assertEquals(underTest.getDesc(), "Une statue représentant un ange déversant des flots sur un corps inanimé.");
 	}
 

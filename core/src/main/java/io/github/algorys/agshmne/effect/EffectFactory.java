@@ -34,26 +34,6 @@ public class EffectFactory {
 			effectToApply = new LifeEffect(modifier);
 		} else if ("MANA".equals(carac)) {
 			effectToApply = new ManaEffect(modifier);
-		} else if (carac.startsWith("C")) {
-			SkillType skillType = null;
-			if ("CBOU".equals(carac)) {
-				skillType = SkillType.boucherie;
-			} else if ("CBUC".equals(carac)) {
-				skillType = SkillType.bucheron;
-			} else if ("CCUI".equals(carac)) {
-				skillType = SkillType.cuisine;
-			} else if ("CCUL".equals(carac)) {
-				skillType = SkillType.cultiver;
-			} else if ("CFOU".equals(carac)) {
-				skillType = SkillType.fouiller;
-			} else if ("CMAG".equals(carac)) {
-				skillType = SkillType.magie;
-			} else if ("CMIN".equals(carac)) {
-				skillType = SkillType.miner;
-			} else if ("CPEC".equals(carac)) {
-				skillType = SkillType.pecher;
-			}
-			effectToApply = new SkillEffect(skillType, modifier);
 		} else {
 			throw new IllegalArgumentException(String.format("Le paramètre input [%s] n'est pas reconnu", singleCarac));
 		}
