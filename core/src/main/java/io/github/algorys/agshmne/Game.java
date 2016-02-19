@@ -51,8 +51,8 @@ public class Game implements IMessageSender, IMessageReceiver {
 		if (turn != 1) {
 			player.getVital().increaseHunger();
 			player.getVital().increaseFatigue();
+			player.getVital().checkVital();
 		}
-		player.getVital().checkVital();
 		turn += 1;
 	}
 

@@ -13,10 +13,10 @@ public class Vital implements IMessageSender {
 	public final static String PROPERTY_MANA = "mana";
 	public final static String PROPERTY_HUNGER = "faim";
 	public final static String PROPERTY_FATIGUE = "fatigue";
-	public static int MAX_LIFE;
-	public static int MAX_MANA;
-	public static int MAX_FATIGUE;
-	public static int MAX_HUNGER;
+	private final int maxLife;
+	private final int maxMana;
+	private final int maxFatigue;
+	private final int maxHunger;
 	private int life;
 	private int mana;
 	private int fatigue;
@@ -26,10 +26,10 @@ public class Vital implements IMessageSender {
 
 	public Vital(int life, int mana, int fatigue, int hunger) {
 		super();
-		Vital.MAX_LIFE = life;
-		Vital.MAX_MANA = mana;
-		Vital.MAX_FATIGUE = fatigue;
-		Vital.MAX_HUNGER = hunger;
+		this.maxLife = life;
+		this.maxMana = mana;
+		this.maxFatigue = fatigue;
+		this.maxHunger = hunger;
 		this.life = life;
 		this.mana = mana;
 		this.fatigue = 0;
@@ -69,7 +69,7 @@ public class Vital implements IMessageSender {
 	public void increaseFatigue() {
 		int old = fatigue;
 		fatigue += 1;
-		pcs.firePropertyChange(PROPERTY_FATIGUE, old, fatigue);
+		pcs.firePropertyChange(PROPERTY_FATIGUE, old, this.fatigue);
 	}
 
 	public void setFatigue(int fatigue) {
@@ -88,7 +88,7 @@ public class Vital implements IMessageSender {
 	public void increaseHunger() {
 		int old = hunger;
 		hunger += 1;
-		pcs.firePropertyChange(PROPERTY_HUNGER, old, hunger);
+		pcs.firePropertyChange(PROPERTY_HUNGER, old, this.hunger);
 	}
 
 	public void setHunger(int hunger) {
@@ -101,16 +101,16 @@ public class Vital implements IMessageSender {
 	}
 
 	public void checkVital() {
-		int old = this.life;
-		if (this.fatigue > MAX_FATIGUE) {
-			this.life -= 1;
+		int old = life;
+		if (this.fatigue > maxFatigue) {
+			life -= 1;
 			sendMessage(new Message(MsgType.CRITICAL, "Vous perdez un PDV car vous êtes trop fatigué."));
 		}
-		if (this.hunger > MAX_HUNGER) {
-			this.life -= 1;
+		if (this.hunger > maxHunger) {
+			life -= 1;
 			sendMessage(new Message(MsgType.CRITICAL, "Vous perdez un PDV car vous crevez la dalle."));
 		}
-		pcs.firePropertyChange(PROPERTY_LIFE, old, this.life);
+		pcs.firePropertyChange(PROPERTY_LIFE, old, life);
 	}
 
 	private void sendMessage(Message msg) {
@@ -138,5 +138,21 @@ public class Vital implements IMessageSender {
 	@Override
 	public void setMessageReceiver(IMessageReceiver msgRcvr) {
 		this.messageReceiver = msgRcvr;
+	}
+
+	public int getMaxLife() {
+		return maxLife;
+	}
+
+	public int getMaxMana() {
+		return maxMana;
+	}
+
+	public int getMaxFatigue() {
+		return maxFatigue;
+	}
+
+	public int getMaxHunger() {
+		return maxHunger;
 	}
 }

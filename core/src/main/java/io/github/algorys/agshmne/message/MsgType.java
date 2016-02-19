@@ -1,5 +1,5 @@
 package io.github.algorys.agshmne.message;
 
 public enum MsgType {
-	WARNING, CRITICAL, NORMAL 
+	WARNING, CRITICAL, NONE, SUCCESS
 }

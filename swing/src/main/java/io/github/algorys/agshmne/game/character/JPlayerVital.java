@@ -19,7 +19,7 @@ import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
 public class JPlayerVital extends JPanel {
-	public JPlayerVital(Vital vital) {
+	public JPlayerVital(final Vital vital) {
 		super(new GridBagLayout());
 		this.setOpaque(false);
 		GridBagConstraints gbcCharacter = new GridBagConstraints();
@@ -75,7 +75,7 @@ public class JPlayerVital extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.EAST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlLifeMax = new JLabel("/ " + Vital.MAX_LIFE);
+		JLabel jlLifeMax = new JLabel("/ " + vital.getMaxLife());
 		jlLifeMax.setForeground(Color.blue);
 		this.add(jlLifeMax, gbcCharacter);
 
@@ -126,7 +126,7 @@ public class JPlayerVital extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.EAST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlManaMax = new JLabel("/ " + Vital.MAX_MANA);
+		JLabel jlManaMax = new JLabel("/ " + vital.getMaxMana());
 		jlManaMax.setForeground(Color.blue);
 		this.add(jlManaMax, gbcCharacter);
 
@@ -170,7 +170,7 @@ public class JPlayerVital extends JPanel {
 			public void propertyChange(PropertyChangeEvent evt) {
 				jlHungry.setText(evt.getNewValue().toString());
 				int newValue = (Integer) evt.getNewValue();
-				updateColorVital(newValue, Vital.MAX_HUNGER, jlHungry);
+				updateColorVital(newValue, vital.getMaxHunger(), jlHungry);
 			}
 		});
 		
@@ -180,7 +180,7 @@ public class JPlayerVital extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.EAST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlHungryMax = new JLabel("/ " + Vital.MAX_HUNGER);
+		JLabel jlHungryMax = new JLabel("/ " + vital.getMaxHunger());
 		jlHungryMax.setForeground(Color.blue);
 		this.add(jlHungryMax, gbcCharacter);
 
@@ -224,7 +224,7 @@ public class JPlayerVital extends JPanel {
 			public void propertyChange(PropertyChangeEvent evt) {
 				jlTired.setText(evt.getNewValue().toString());
 				int newValue = (Integer) evt.getNewValue();
-				updateColorVital(newValue, Vital.MAX_FATIGUE, jlTired);
+				updateColorVital(newValue, vital.getMaxFatigue(), jlTired);
 			}
 		});
 		
@@ -234,7 +234,7 @@ public class JPlayerVital extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.EAST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlTiredMax = new JLabel("/ " + Vital.MAX_FATIGUE);
+		JLabel jlTiredMax = new JLabel("/ " + vital.getMaxFatigue());
 		jlTiredMax.setForeground(Color.blue);
 		this.add(jlTiredMax, gbcCharacter);
 	}

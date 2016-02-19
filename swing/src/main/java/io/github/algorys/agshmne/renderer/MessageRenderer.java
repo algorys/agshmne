@@ -24,9 +24,9 @@ public class MessageRenderer implements ListCellRenderer<Message> {
 				rendererComponent.setForeground(Color.red);
 			} else if (value.getType() == MsgType.WARNING) {
 				rendererComponent.setForeground(Color.yellow);
-			} else if (value.getType() == MsgType.NORMAL) {
+			} else if (value.getType() == MsgType.SUCCESS) {
 				rendererComponent.setForeground(Color.green);
-			} else {
+			} else if (value.getType() == MsgType.NONE) {
 				rendererComponent.setForeground(Color.white);
 			}
 		}

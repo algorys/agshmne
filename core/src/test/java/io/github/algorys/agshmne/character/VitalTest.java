@@ -12,17 +12,17 @@ public class VitalTest {
 	@Test
 	public void vitalShouldHaveMaxLifeEqualsInitialisation() {
 		Vital underTest = new Vital(15, 15, 10, 10);
-		assertEquals(Vital.MAX_LIFE, underTest.getLife());
+		assertEquals(underTest.getMaxLife(), underTest.getLife());
 		underTest.setLife(underTest.getLife() - 4);
-		assertNotEquals(Vital.MAX_LIFE, underTest.getLife());
+		assertNotEquals(underTest.getMaxLife(), underTest.getLife());
 	}
 
 	@Test
 	public void vitalShouldHaveMaxManaEqualsInitialisation() {
 		Vital underTest = new Vital(15, 15, 10, 10);
-		assertEquals(Vital.MAX_MANA, underTest.getMana());
+		assertEquals(underTest.getMaxMana(), underTest.getMana());
 		underTest.setMana(underTest.getMana() - 4);
-		assertNotEquals(Vital.MAX_MANA, underTest.getMana());
+		assertNotEquals(underTest.getMaxMana(), underTest.getMana());
 	}
 
 	@Test
