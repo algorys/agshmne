@@ -32,22 +32,20 @@ public class Fight implements IAdventure, IMessageSender {
 		}else{
 			pjAttack = this.attack(currentAttributes.getFOR(), adv.getLevel());
 		}
-		if (pjAttack < -5) {
-			pjAttack = -5;
-		}
 		final int perteDeVie;
 		if (pjAttack > 0) {
 			perteDeVie = pjAttack;
-			sendMessage(new Message("Vous portez votre coup, et vous lui faites " + perteDeVie + " dégats."));
+			sendMessage(new Message("Vous portez votre coup, et vous lui faites " + perteDeVie + " de dégats."));
 		} else if(pjAttack == 0) {
 			perteDeVie = 1;
-			sendMessage(new Message("Vous pichenette lui fait perdre 1 pdv."));
+			sendMessage(new Message("Votre pichenette lui fait perdre 1 pdv."));
 		} else {
 			perteDeVie = 0;
 			sendMessage(new Message("Vous échouez lamentablement."));
 		}
 		Vital vital = adv.getVital();
 		vital.setLife(vital.getLife() - perteDeVie);
+		
 		return pjAttack;
 	}
 
@@ -59,18 +57,30 @@ public class Fight implements IAdventure, IMessageSender {
 
 	public int mobAttack() {
 		int mobAttack = this.attack(adv.getCurrentAttributes().getDEX(), 10 + pj.getLevel());
-		if (mobAttack < -5) {
-			mobAttack = -5;
-		}
+		final int perteDeVie;
 		if (mobAttack > 0) {
-			pj.getVital().setLife(pj.getVital().getLife() - mobAttack);
+			perteDeVie = mobAttack;
+			sendMessage(new Message(adv.getName() + " vous porte un coup, et vous fait " + perteDeVie + " de dégats."));
 		} else if(mobAttack == 0) {
-			pj.getVital().setLife(pj.getVital().getLife() - 1);
+			perteDeVie = 1;
+			sendMessage(new Message(adv.getName() + " vous fait une égratignure et vous fait perdre 1 pdv."));
+		} else {
+			perteDeVie = 0;
+			sendMessage(new Message(adv.getName() + " échoue lamentablement."));
 		}
+		Vital vital = pj.getVital();
+		vital.setLife(vital.getLife() - perteDeVie);
+		
 		return mobAttack;
 	}
 
 	public boolean isFinish() {
+		if(pj.getVital().getLife() <= 0) {
+			sendMessage(new Message("Vous êtes MORT !!!"));
+		}
+		if(adv.getVital().getLife() <= 0){
+			sendMessage(new Message("Vous avez tué " + adv.getName()));
+		}
 		return this.pj.getVital().getLife() <= 0 || this.adv.getVital().getLife() <= 0;
 	}
 
