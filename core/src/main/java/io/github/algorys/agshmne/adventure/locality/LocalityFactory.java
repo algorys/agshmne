@@ -23,7 +23,7 @@ public class LocalityFactory implements IAdventureFactory {
 		locality.add("Verger:LIFE10:"
 				+ "Un verger luxurieux qui semblent vous acceuillir à bras ouvert. Manger les fruits du verger ?:Affecte votre vie !");
 		locality.add("Grand Arbre:MANA10:"
-				+ "Cet arbre majestueux semble tellement ancien... et tellement grand ! Toucher l'arbre ?:Affecte votre Mana !");
+				+ "Cet arbre majestueux semble tellement ancien... et tellement grand ! Toucher l'arbre ?:L'énergie de l'arbre se déverse en vous. ");
 		locality.add("Stèle:CFOU1:"
 				+ "Une imposante stèle contenant des gravures anciennes se dresse devant vous. Pousser la stèle ?:Affecte votre compétence \"Fouiller\"");
 	}

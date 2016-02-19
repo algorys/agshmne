@@ -4,16 +4,24 @@ import io.github.algorys.agshmne.adventure.IAdventure;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.effect.IEffect;
 import io.github.algorys.agshmne.message.IMessageReceiver;
+import io.github.algorys.agshmne.message.Message;
 
 public class Locality implements IAdventure {
 	private String name;
 	private IEffect effect;
 	private String desc;
 	private String descEffect;
+	private IMessageReceiver messageReceiver;
 
-	public Locality(String name, IEffect effect, String desc, String descEffect) {
+	public Locality(String name, IEffect effect, String desc, final String descEffect) {
 		this.name = name;
 		this.effect = effect;
+		this.effect.setMessageReceiver(new IMessageReceiver() {
+			@Override
+			public void sendMessage(Message message) {
+				Locality.this.sendMessage(new Message(message.getType(), descEffect + message.getMessage()));
+			}
+		});
 		this.desc = desc;
 		this.descEffect = descEffect;
 	}
@@ -36,6 +44,12 @@ public class Locality implements IAdventure {
 
 	@Override
 	public void setMessageReceiver(IMessageReceiver msgRcvr) {
-		// TODO Auto-generated method stub
+		this.messageReceiver = msgRcvr;
+	}
+
+	private void sendMessage(Message msg) {
+		if (this.messageReceiver != null) {
+			messageReceiver.sendMessage(msg);
+		}
 	}
 }
