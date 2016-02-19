@@ -1,7 +1,7 @@
-package io.github.algorys.agshmne.events.quest;
+package io.github.algorys.agshmne.adventure.quest;
 
 import io.github.algorys.agshmne.Game;
-import io.github.algorys.agshmne.events.IAdventureFactory;
+import io.github.algorys.agshmne.adventure.IAdventureFactory;
 import io.github.algorys.agshmne.items.ItemFactory;
 import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
 import io.github.algorys.agshmne.map.Position;

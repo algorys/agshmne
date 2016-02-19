@@ -1,12 +1,12 @@
-package io.github.algorys.agshmne.events;
+package io.github.algorys.agshmne.adventure;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import io.github.algorys.agshmne.Game;
-import io.github.algorys.agshmne.events.fight.FightFactory;
-import io.github.algorys.agshmne.events.locality.LocalityFactory;
-import io.github.algorys.agshmne.events.quest.QuestFactory;
+import io.github.algorys.agshmne.adventure.fight.FightFactory;
+import io.github.algorys.agshmne.adventure.locality.LocalityFactory;
+import io.github.algorys.agshmne.adventure.quest.QuestFactory;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class AdventureFactory implements IAdventureFactory {

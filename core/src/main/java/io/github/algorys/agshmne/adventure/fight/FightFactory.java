@@ -1,8 +1,8 @@
-package io.github.algorys.agshmne.events.fight;
+package io.github.algorys.agshmne.adventure.fight;
 
 import io.github.algorys.agshmne.Game;
+import io.github.algorys.agshmne.adventure.IAdventureFactory;
 import io.github.algorys.agshmne.character.opponent.beast.BeastFactory;
-import io.github.algorys.agshmne.events.IAdventureFactory;
 
 public class FightFactory implements IAdventureFactory {
 

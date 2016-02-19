@@ -5,11 +5,11 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.algorys.agshmne.adventure.quest.IQuest;
 import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.player.skills.factory.SkillFactory;
-import io.github.algorys.agshmne.events.quest.IQuest;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.IEquipableItem;

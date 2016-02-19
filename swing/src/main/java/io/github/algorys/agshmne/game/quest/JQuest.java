@@ -8,7 +8,7 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import io.github.algorys.agshmne.events.quest.IQuest;
+import io.github.algorys.agshmne.adventure.quest.IQuest;
 import io.github.algorys.agshmne.tile.JTileLabel;
 
 @SuppressWarnings("serial")

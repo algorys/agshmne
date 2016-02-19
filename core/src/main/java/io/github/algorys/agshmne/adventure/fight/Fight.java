@@ -1,11 +1,11 @@
-package io.github.algorys.agshmne.events.fight;
+package io.github.algorys.agshmne.adventure.fight;
 
+import io.github.algorys.agshmne.adventure.IAdventure;
 import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.character.opponent.beast.Beast;
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.events.IAdventure;
 import io.github.algorys.agshmne.items.stackable.StackableItem;
 import io.github.algorys.agshmne.message.IMessageReceiver;
 import io.github.algorys.agshmne.message.IMessageSender;

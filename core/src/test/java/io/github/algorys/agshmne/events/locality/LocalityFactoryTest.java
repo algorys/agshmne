@@ -5,6 +5,9 @@ import static org.junit.Assert.assertNotSame;
 
 import org.junit.Test;
 
+import io.github.algorys.agshmne.adventure.locality.Locality;
+import io.github.algorys.agshmne.adventure.locality.LocalityFactory;
+
 public class LocalityFactoryTest {
 
 	@Test

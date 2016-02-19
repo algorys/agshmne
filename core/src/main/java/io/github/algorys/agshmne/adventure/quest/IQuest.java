@@ -1,7 +1,7 @@
-package io.github.algorys.agshmne.events.quest;
+package io.github.algorys.agshmne.adventure.quest;
 
+import io.github.algorys.agshmne.adventure.IAdventure;
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.events.IAdventure;
 import io.github.algorys.agshmne.map.tile.Tile;
 
 public interface IQuest extends IAdventure {

@@ -1,8 +1,8 @@
 package io.github.algorys.agshmne.sample.adventure;
 
+import io.github.algorys.agshmne.adventure.locality.Locality;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.effect.LifeEffect;
-import io.github.algorys.agshmne.events.locality.Locality;
 
 public class LocalitySample {
 

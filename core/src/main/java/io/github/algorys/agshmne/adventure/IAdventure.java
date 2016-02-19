@@ -1,4 +1,4 @@
-package io.github.algorys.agshmne.events;
+package io.github.algorys.agshmne.adventure;
 
 import io.github.algorys.agshmne.message.IMessageSender;
 

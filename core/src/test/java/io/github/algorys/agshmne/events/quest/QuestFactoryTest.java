@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotSame;
 
 import org.junit.Test;
 
+import io.github.algorys.agshmne.adventure.quest.IQuest;
+import io.github.algorys.agshmne.adventure.quest.QuestFactory;
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
 
 public class QuestFactoryTest {

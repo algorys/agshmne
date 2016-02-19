@@ -1,8 +1,8 @@
-package io.github.algorys.agshmne.events.locality;
+package io.github.algorys.agshmne.adventure.locality;
 
+import io.github.algorys.agshmne.adventure.IAdventure;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.effect.IEffect;
-import io.github.algorys.agshmne.events.IAdventure;
 import io.github.algorys.agshmne.message.IMessageReceiver;
 
 public class Locality implements IAdventure {

@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.swing.AbstractListModel;
 
-import io.github.algorys.agshmne.events.quest.IQuest;
+import io.github.algorys.agshmne.adventure.quest.IQuest;
 
 @SuppressWarnings("serial")
 public class QuestListModel extends AbstractListModel<IQuest> {

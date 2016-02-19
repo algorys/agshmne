@@ -13,9 +13,9 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import io.github.algorys.agshmne.adventure.fight.Fight;
 import io.github.algorys.agshmne.character.opponent.beast.Beast;
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.events.fight.Fight;
 
 @SuppressWarnings("serial")
 public class JFightDialog extends JDialog {

@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import io.github.algorys.agshmne.events.quest.IQuest;
+import io.github.algorys.agshmne.adventure.quest.IQuest;
 
 public class QuestRenderer implements ListCellRenderer<IQuest> {
 	private JLabel rendererComponent = new JLabel();

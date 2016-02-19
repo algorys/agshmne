@@ -1,56 +1,39 @@
-package io.github.algorys.agshmne.events.quest;
+package io.github.algorys.agshmne.adventure.quest;
 
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.items.Inventory;
 import io.github.algorys.agshmne.items.Item;
+import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.message.IMessageReceiver;
 import io.github.algorys.agshmne.tools.Tools;
 
-public class FetchQuest implements IQuest {
-	private Tile tile;
+public class BringQuest implements IQuest {
+	private Tile destination;
 	private Item item;
-	private int count;
 	private boolean finish = false;
+	private String name;
 
-	public FetchQuest(Item item, int count, Tile tile) {
-		this.count = count;
+	public BringQuest(Item item, Tile destination) {
+		this.destination = destination;
 		this.item = item;
-		this.tile = tile;
+		this.name = "Apporter des " + item.getName();
 	}
 
 	@Override
 	public boolean isWin(Player pj) {
-		return (pj.getInventory().count(item) >= count && pj.getTile().equals(tile));
+		return pj.getTile().equals(destination) && pj.getInventory().contains(item);
 	}
 
 	@Override
 	public void reward(Player pj) {
 		Inventory inventory = pj.getInventory();
-		for (int i = 0; i < count; i++) {
-			inventory.removeItem(item);
-		}
+		inventory.removeItem(item);
 		finish = true;
 		inventory.setGold(inventory.getGold() + Tools.dice(pj.getLevel() * 5));
-	}
-
-	@Override
-	public String getName() {
-		return "Trouver des " + item.getName();
-	}
-
-	@Override
-	public String getGoal() {
-		StringBuffer sb = new StringBuffer();
-		sb.append("Une personne a besoin qu'on lui livre au moins ");
-		sb.append(count + " ");
-		sb.append(item.getName());
-		return sb.toString();
-	}
-
-	public Position getQuestPosition() {
-		return tile.getPosition();
+		inventory.addItem(new EquipableItemFactory().createRandom());
+		// TODO prévoir une récompense.
 	}
 
 	@Override
@@ -59,15 +42,32 @@ public class FetchQuest implements IQuest {
 	}
 
 	@Override
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public String getGoal() {
+		return getName();
+	}
+
+	@Override
 	public void accept(Player pj) {
 		pj.addQuest(this);
+		// TODO gérer les objets de quêtes différement des objets normaux.
+		pj.getInventory().addItem(item);
+
 	}
-	
+
+	public Position getQuestDestination() {
+		return this.destination.getPosition();
+	}
+
 	@Override
 	public Tile getDestination() {
-		return this.tile;
+		return this.destination;
 	}
-	
+
 	@Override
 	public void setMessageReceiver(IMessageReceiver msgRcvr) {
 		// TODO Auto-generated method stub

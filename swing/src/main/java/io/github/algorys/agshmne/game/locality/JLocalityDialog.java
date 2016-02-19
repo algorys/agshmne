@@ -16,8 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import io.github.algorys.agshmne.adventure.locality.Locality;
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.events.locality.Locality;
 
 @SuppressWarnings("serial")
 public class JLocalityDialog extends JDialog {

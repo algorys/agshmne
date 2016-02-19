@@ -7,9 +7,11 @@ import static org.junit.Assert.assertTrue;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Test;
 
+import io.github.algorys.agshmne.adventure.IAdventureFactory;
+import io.github.algorys.agshmne.adventure.fight.Fight;
+import io.github.algorys.agshmne.adventure.fight.FightFactory;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
-import io.github.algorys.agshmne.events.IAdventureFactory;
 
 public class FightFactoryTest {
 

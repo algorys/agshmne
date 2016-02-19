@@ -12,8 +12,8 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import io.github.algorys.agshmne.adventure.quest.IQuest;
 import io.github.algorys.agshmne.character.player.Player;
-import io.github.algorys.agshmne.events.quest.IQuest;
 
 @SuppressWarnings("serial")
 public class JQuestDialog extends JDialog {

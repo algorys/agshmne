@@ -1,11 +1,11 @@
-package io.github.algorys.agshmne.events.locality;
+package io.github.algorys.agshmne.adventure.locality;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.github.algorys.agshmne.Game;
+import io.github.algorys.agshmne.adventure.IAdventureFactory;
 import io.github.algorys.agshmne.effect.EffectFactory;
-import io.github.algorys.agshmne.events.IAdventureFactory;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class LocalityFactory implements IAdventureFactory {

@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import io.github.algorys.agshmne.Game;
+import io.github.algorys.agshmne.adventure.quest.BringQuest;
+import io.github.algorys.agshmne.adventure.quest.QuestFactory;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.map.Position;

@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import io.github.algorys.agshmne.adventure.locality.Locality;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.effect.LifeEffect;
