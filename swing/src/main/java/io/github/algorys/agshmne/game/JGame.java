@@ -63,7 +63,6 @@ public class JGame extends JFrame {
 			@Override
 			public boolean dispatchKeyEvent(KeyEvent e) {
 				if (mainPan.getSelectedIndex() == JPanMain.MAP_PANEL_INDEX && e.getID() == KeyEvent.KEY_PRESSED) {
-					System.out.println("Touché!");
 					switch (e.getKeyCode()) {
 					case KeyEvent.VK_LEFT:
 						JGame.this.game.setPosition(new Position(JGame.this.game.getPosition().getX() - 1,

@@ -22,6 +22,7 @@ import io.github.algorys.agshmne.game.character.equipment.JTabEquip;
 import io.github.algorys.agshmne.game.character.inventory.JPanInventory;
 import io.github.algorys.agshmne.game.quest.JPanQuest;
 import io.github.algorys.agshmne.map.JMapRegion;
+import io.github.algorys.agshmne.map.JPanMap;
 import io.github.algorys.agshmne.map.city.JPanCity;
 import io.github.algorys.agshmne.map.desc.JMapDesc;
 import io.github.algorys.agshmne.map.tile.Tile;
@@ -55,11 +56,9 @@ public class JPanMain extends JTabbedPane {
 			}
 		});
 		jpMap.setBackground(Color.BLACK);
-		JMapDesc descGame = new JMapDesc(game);
-		jpMap.add(descGame, BorderLayout.NORTH);
-		jpMap.add(jregion, BorderLayout.CENTER);
+		jpMap.add(new JMapDesc(game), BorderLayout.NORTH);
+		jpMap.add(new JPanMap(jregion), BorderLayout.CENTER);
 
-		
 		MessageListModel messagesModel = new MessageListModel();
 		game.getPlayer().getVital().setMessageReceiver(messagesModel);
 		game.setMessageReceiver(messagesModel);
@@ -71,18 +70,19 @@ public class JPanMain extends JTabbedPane {
 		output.setFixedCellHeight(20);
 		output.setVisibleRowCount(10);
 		output.setEnabled(true);
-		final JScrollPane outputScroll = new JScrollPane(output, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		final JScrollPane outputScroll = new JScrollPane(output, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		messagesModel.addListDataListener(new ListDataListener() {
-			
+
 			@Override
 			public void intervalRemoved(ListDataEvent e) {
 			}
-			
+
 			@Override
 			public void intervalAdded(ListDataEvent e) {
 				output.ensureIndexIsVisible(e.getIndex1());
 			}
-			
+
 			@Override
 			public void contentsChanged(ListDataEvent e) {
 			}
