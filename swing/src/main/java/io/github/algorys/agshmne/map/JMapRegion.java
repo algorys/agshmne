@@ -22,6 +22,8 @@ import io.github.algorys.agshmne.tile.JTile;
 
 @SuppressWarnings("serial")
 public class JMapRegion extends JPanel implements PropertyChangeListener {
+	private final static int SIDE = 7;
+
 	private final class MovePJMouseListener extends MouseAdapter {
 		private int diffX = 0;
 		private int diffY = -1;
@@ -66,10 +68,10 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 
 		Position position = game.getPosition();
 
-		jtiles = new JTile[7][7];
-		this.setLayout(new GridLayout(7, 7));
-		for (int i = 0; i < 7; i++) {
-			for (int j = 0; j < 7; j++) {
+		jtiles = new JTile[SIDE][SIDE];
+		this.setLayout(new GridLayout(SIDE, SIDE));
+		for (int i = 0; i < SIDE; i++) {
+			for (int j = 0; j < SIDE; j++) {
 				jtiles[i][j] = new JTile(game.getRegion()
 						.getTileFromPosition(new Position(position.getX() + j - 3, position.getY() + (3 - i))));
 				this.add(jtiles[i][j]);
@@ -86,8 +88,8 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 		Position position = this.game.getPosition();
 		Region region = this.game.getRegion();
 
-		for (int i = 0; i < 7; i++) {
-			for (int j = 0; j < 7; j++) {
+		for (int i = 0; i < SIDE; i++) {
+			for (int j = 0; j < SIDE; j++) {
 				Position newPosition = new Position(position.getX() + j - 3, position.getY() + (3 - i));
 				Tile tile = region.getTileFromPosition(newPosition);
 				jtiles[i][j].setModel(tile);
@@ -110,7 +112,9 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 			Graphics2D g2 = (Graphics2D) g;
 			g2.setStroke(new BasicStroke(3));
 			g2.setColor(new Color(178, 102, 255));
-			g2.drawRoundRect(300, 300, 100, 100, 5, 5);
+			int width = this.getWidth() / SIDE;
+			int height = this.getHeight() / SIDE;
+			g2.drawRoundRect((SIDE / 2) * width, (SIDE / 2) * height, width, height, 5, 5);
 		} else {
 			g.setColor(Color.BLUE);
 			g.drawRect(150, 150, 130, 130);

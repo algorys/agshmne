@@ -4,12 +4,16 @@ import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.Vital;
 import io.github.algorys.agshmne.events.IAdventure;
+import io.github.algorys.agshmne.message.IMessageReceiver;
+import io.github.algorys.agshmne.message.IMessageSender;
+import io.github.algorys.agshmne.message.Message;
 import io.github.algorys.agshmne.tools.Tools;
 
-public class Fight implements IAdventure {
+public class Fight implements IAdventure, IMessageSender {
 	private int round = 1;
 	private Character pj;
 	private Character adv;
+	private IMessageReceiver messageReceiver;
 
 	public Fight(Character pj, Character adv) {
 		this.pj = pj;
@@ -31,13 +35,26 @@ public class Fight implements IAdventure {
 		if (pjAttack < -5) {
 			pjAttack = -5;
 		}
-		Vital vital = adv.getVital();
+		final int perteDeVie;
 		if (pjAttack > 0) {
-			vital.setLife(vital.getLife() - pjAttack);
+			perteDeVie = pjAttack;
+			sendMessage(new Message("Vous portez votre coup, et vous lui faites " + perteDeVie + " dégats."));
 		} else if(pjAttack == 0) {
-			vital.setLife(vital.getLife() - 1);
+			perteDeVie = 1;
+			sendMessage(new Message("Vous pichenette lui fait perdre 1 pdv."));
+		} else {
+			perteDeVie = 0;
+			sendMessage(new Message("Vous échouez lamentablement."));
 		}
+		Vital vital = adv.getVital();
+		vital.setLife(vital.getLife() - perteDeVie);
 		return pjAttack;
+	}
+
+	private void sendMessage(Message message) {
+		if(messageReceiver != null) {
+			messageReceiver.sendMessage(message);
+		}
 	}
 
 	public int mobAttack() {
@@ -74,5 +91,10 @@ public class Fight implements IAdventure {
 
 	public int getRound() {
 		return round;
+	}
+	
+	@Override
+	public void setMessageReceiver(IMessageReceiver msgRcvr) {
+		this.messageReceiver = msgRcvr;
 	}
 }

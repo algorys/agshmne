@@ -1,5 +1,7 @@
 package io.github.algorys.agshmne.events;
 
-public interface IAdventure {
+import io.github.algorys.agshmne.message.IMessageSender;
+
+public interface IAdventure extends IMessageSender {
 
 }

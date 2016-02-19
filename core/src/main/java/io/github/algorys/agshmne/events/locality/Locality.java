@@ -3,6 +3,7 @@ package io.github.algorys.agshmne.events.locality;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.effect.IEffect;
 import io.github.algorys.agshmne.events.IAdventure;
+import io.github.algorys.agshmne.message.IMessageReceiver;
 
 public class Locality implements IAdventure {
 	private String name;
@@ -31,5 +32,10 @@ public class Locality implements IAdventure {
 
 	public String getDescEffect() {
 		return descEffect;
+	}
+
+	@Override
+	public void setMessageReceiver(IMessageReceiver msgRcvr) {
+		// TODO Auto-generated method stub
 	}
 }

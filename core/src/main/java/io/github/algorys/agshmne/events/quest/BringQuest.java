@@ -6,6 +6,7 @@ import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.tile.Tile;
+import io.github.algorys.agshmne.message.IMessageReceiver;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class BringQuest implements IQuest {
@@ -65,5 +66,10 @@ public class BringQuest implements IQuest {
 	@Override
 	public Tile getDestination() {
 		return this.destination;
+	}
+
+	@Override
+	public void setMessageReceiver(IMessageReceiver msgRcvr) {
+		// TODO Auto-generated method stub
 	}
 }

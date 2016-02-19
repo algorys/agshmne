@@ -3,7 +3,11 @@ package io.github.algorys.agshmne.character;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public class Vital {
+import io.github.algorys.agshmne.message.IMessageReceiver;
+import io.github.algorys.agshmne.message.IMessageSender;
+import io.github.algorys.agshmne.message.Message;
+
+public class Vital implements IMessageSender {
 	public final static String PROPERTY_LIFE = "vie";
 	public final static String PROPERTY_MANA = "mana";
 	public final static String PROPERTY_HUNGER = "faim";
@@ -17,6 +21,7 @@ public class Vital {
 	private int fatigue;
 	private int hunger;
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+	private IMessageReceiver messageReceiver;
 
 	public Vital(int life, int mana, int fatigue, int hunger) {
 		super();
@@ -98,11 +103,19 @@ public class Vital {
 		int old = this.life;
 		if (this.fatigue > MAX_FATIGUE) {
 			this.life -= 1;
+			sendMessage(new Message("Vous perdez un PDV car vous êtes trop fatigué."));
 		}
 		if (this.hunger > MAX_HUNGER) {
 			this.life -= 1;
+			sendMessage(new Message("Vous perdez un PDV car vous crevez la dalle."));
 		}
 		pcs.firePropertyChange(PROPERTY_LIFE, old, this.life);
+	}
+
+	private void sendMessage(Message msg) {
+		if(messageReceiver != null) {
+			messageReceiver.sendMessage(msg);
+		}
 	}
 
 	public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -121,4 +134,8 @@ public class Vital {
 		pcs.removePropertyChangeListener(propertyName, listener);
 	}
 
+	@Override
+	public void setMessageReceiver(IMessageReceiver msgRcvr) {
+		this.messageReceiver = msgRcvr;
+	}
 }

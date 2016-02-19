@@ -56,12 +56,10 @@ public class SkillSearchRegionAction extends AbstractAction {
 			if (adventure instanceof Fight) {
 				JFightDialog fightDialog = new JFightDialog(topFrame, (Fight) adventure);
 				fightDialog.setVisible(true);
-			}
-			if(adventure instanceof IQuest) {
+			} else if(adventure instanceof IQuest) {
 				JQuestDialog questDialog = new JQuestDialog(topFrame, (IQuest) adventure, this.game.getPlayer());
 				questDialog.setVisible(true);
-			}
-			if(adventure instanceof Locality) {
+			} else if(adventure instanceof Locality) {
 				JLocalityDialog localityDialog = new JLocalityDialog(topFrame, (Locality) adventure, this.game.getPlayer());
 				localityDialog.setVisible(true);
 			}

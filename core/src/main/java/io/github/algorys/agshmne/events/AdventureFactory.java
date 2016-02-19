@@ -20,7 +20,9 @@ public class AdventureFactory implements IAdventureFactory {
 	
 	@Override
 	public IAdventure createAdventure(Game game) {
-		return factories.get(Tools.random(AdventureType.values())).createAdventure(game);
+		IAdventure adventure = factories.get(Tools.random(AdventureType.values())).createAdventure(game);
+		adventure.setMessageReceiver(game);
+		return adventure;
 	}
 
 }

@@ -6,14 +6,18 @@ import java.beans.PropertyChangeSupport;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.region.Region;
+import io.github.algorys.agshmne.message.IMessageReceiver;
+import io.github.algorys.agshmne.message.IMessageSender;
+import io.github.algorys.agshmne.message.Message;
 
-public class Game {
+public class Game implements IMessageSender, IMessageReceiver {
 	public static final String PROPERTY_POSITION = "position";
 	private Player player;
 	private Position position = new Position(0, 0);
 	private final Region region;
 	private int turn = 1;
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+	private IMessageReceiver messageReceiver;
 
 	public Game(Region region) {
 		super();
@@ -72,4 +76,14 @@ public class Game {
 		pcs.removePropertyChangeListener(propertyName, listener);
 	}
 
+	@Override
+	public void setMessageReceiver(IMessageReceiver msgRcvr) {
+		this.messageReceiver = msgRcvr;
+	}
+	
+	public void sendMessage(Message message) {
+		if(messageReceiver != null) {
+			messageReceiver.sendMessage(message);
+		}
+	}
 }
