@@ -6,6 +6,7 @@ import java.beans.PropertyChangeSupport;
 import io.github.algorys.agshmne.message.IMessageReceiver;
 import io.github.algorys.agshmne.message.IMessageSender;
 import io.github.algorys.agshmne.message.Message;
+import io.github.algorys.agshmne.message.MsgType;
 
 public class Vital implements IMessageSender {
 	public final static String PROPERTY_LIFE = "vie";
@@ -103,11 +104,11 @@ public class Vital implements IMessageSender {
 		int old = this.life;
 		if (this.fatigue > MAX_FATIGUE) {
 			this.life -= 1;
-			sendMessage(new Message("Vous perdez un PDV car vous êtes trop fatigué."));
+			sendMessage(new Message(MsgType.CRITICAL, "Vous perdez un PDV car vous êtes trop fatigué."));
 		}
 		if (this.hunger > MAX_HUNGER) {
 			this.life -= 1;
-			sendMessage(new Message("Vous perdez un PDV car vous crevez la dalle."));
+			sendMessage(new Message(MsgType.CRITICAL, "Vous perdez un PDV car vous crevez la dalle."));
 		}
 		pcs.firePropertyChange(PROPERTY_LIFE, old, this.life);
 	}

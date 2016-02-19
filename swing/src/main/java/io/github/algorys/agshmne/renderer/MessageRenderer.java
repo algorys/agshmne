@@ -8,6 +8,7 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
 import io.github.algorys.agshmne.message.Message;
+import io.github.algorys.agshmne.message.MsgType;
 
 public class MessageRenderer implements ListCellRenderer<Message> {
 	private JLabel rendererComponent = new JLabel();
@@ -19,7 +20,17 @@ public class MessageRenderer implements ListCellRenderer<Message> {
 			rendererComponent.setText("");
 		} else {
 			rendererComponent.setText(value.getMessage().toString());
+			if(value.getType() == MsgType.CRITICAL) {
+				rendererComponent.setForeground(Color.red);
+			} else if (value.getType() == MsgType.WARNING) {
+				rendererComponent.setForeground(Color.yellow);
+			} else if (value.getType() == MsgType.NORMAL) {
+				rendererComponent.setForeground(Color.green);
+			} else {
+				rendererComponent.setForeground(Color.white);
+			}
 		}
+		
 		if (isSelected) {
 			rendererComponent.setBackground(list.getSelectionBackground());
 			rendererComponent.setForeground(list.getSelectionForeground());
