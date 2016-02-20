@@ -80,7 +80,8 @@ public class JPanMain extends JTabbedPane {
 
 			@Override
 			public void intervalAdded(ListDataEvent e) {
-				output.ensureIndexIsVisible(e.getIndex1());
+				output.invalidate();
+				output.ensureIndexIsVisible(e.getIndex0());
 			}
 
 			@Override
