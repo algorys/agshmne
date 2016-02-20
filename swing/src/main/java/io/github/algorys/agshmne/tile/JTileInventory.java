@@ -64,27 +64,29 @@ public class JTileInventory extends JPanel {
 				JMenuItem ramasser = new JMenuItem("Ramasser");
 				ramasser.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Item selectedItem = groundItem.getModel().getElementAt(index);
-						// JOptionPane.showMessageDialog(JTileInventory.this, ""
-						// + selectedItem + " ajouté(e) !");
-						((TileListModel) groundItem.getModel()).removeElementAt(index);
-						pj.getInventory().addItem(selectedItem);
-						groundItem.invalidate();
-						groundItem.repaint();
+						if(!pj.getTile().getItems().isEmpty()) {
+							Item selectedItem = groundItem.getModel().getElementAt(index);
+							((TileListModel) groundItem.getModel()).removeElementAt(index);
+							pj.getInventory().addItem(selectedItem);
+							groundItem.invalidate();
+							groundItem.repaint();
+						}
 					}
 				});
 				JMenuItem info = new JMenuItem("Examiner");
 				info.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						Item selectedItem = groundItem.getModel().getElementAt(index);
-						if (selectedItem instanceof IEquipableItem) {
-							IEquipableItem equip = (IEquipableItem) selectedItem;
-							String bonus = getStringAttribute(equip.getAttribute());
-							JOptionPane.showMessageDialog(JTileInventory.this,
-									"<html><body>Nom " + equip.getName() + "<br>Bonus : " + bonus + "</body></html>");
-						} else {
-							JOptionPane.showMessageDialog(JTileInventory.this,
-									"<html><body>Nom " + selectedItem.getName());
+						if(!pj.getTile().getItems().isEmpty()) {
+							Item selectedItem = groundItem.getModel().getElementAt(index);
+							if (selectedItem instanceof IEquipableItem) {
+								IEquipableItem equip = (IEquipableItem) selectedItem;
+								String bonus = getStringAttribute(equip.getAttribute());
+								JOptionPane.showMessageDialog(JTileInventory.this,
+										"<html><body>Nom " + equip.getName() + "<br>Bonus : " + bonus + "</body></html>");
+							} else {
+								JOptionPane.showMessageDialog(JTileInventory.this,
+										"<html><body>Nom " + selectedItem.getName());
+							}
 						}
 					}
 				});
