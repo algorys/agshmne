@@ -78,6 +78,7 @@ public class City {
 	public void eat(Player pj) {
 		int newHunger = pj.getVital().getHunger() - this.level;
 		pj.getVital().setHunger(newHunger);
+		pj.getVital().setLife(pj.getVital().getLife() + this.level);
 		int newGold = pj.getInventory().getGold() - this.priceToEat;
 		pj.getInventory().setGold(newGold);
 	}
@@ -85,6 +86,7 @@ public class City {
 	public void sleep(Player pj) {
 		int newFatigue = pj.getVital().getFatigue() - (this.level * 4);
 		pj.getVital().setFatigue(newFatigue);
+		pj.getVital().setLife(pj.getVital().getLife() + this.level);
 		int newGold = pj.getInventory().getGold() - this.priceToSleep;
 		pj.getInventory().setGold(newGold);
 	}

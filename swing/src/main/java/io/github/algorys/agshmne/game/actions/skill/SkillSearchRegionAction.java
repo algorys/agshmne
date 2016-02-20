@@ -52,7 +52,6 @@ public class SkillSearchRegionAction extends AbstractAction implements IMessageS
 	public void actionPerformed(ActionEvent e) {
 		if (SkillTool.Dice(this.game.getPlayer().getSkills().getSkillLevel(SkillType.fouiller), 5)) {
 			this.game.getPlayer().getTile().setSearched();
-			this.setEnabled(false);
 			JFrame topFrame = null;
 			if (e.getSource() instanceof Component) {
 				Component sourceComponent = (Component) e.getSource();
@@ -73,7 +72,10 @@ public class SkillSearchRegionAction extends AbstractAction implements IMessageS
 						this.game.getPlayer());
 				localityDialog.setVisible(true);
 			}
+		} else {
+			this.sendMessage(new Message(MsgType.INFO, "Vous fouillez la région, mais vous ne trouvez rien d'intéressant."));
 		}
+		this.setEnabled(false);
 	}
 
 	@Override

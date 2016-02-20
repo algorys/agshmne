@@ -41,13 +41,13 @@ public class Fight implements IAdventure, IMessageSender {
 		final int perteDeVie;
 		if (pjAttack > 0) {
 			perteDeVie = pjAttack;
-			sendMessage(new Message(MsgType.CRITICAL, "Vous portez un coup, et vous lui faites " + perteDeVie + " de dégats."));
+			sendMessage(new Message(MsgType.SUCCESS, "Vous portez un coup, et vous lui faites " + perteDeVie + " de dégats."));
 		} else if(pjAttack == 0) {
 			perteDeVie = 1;
 			sendMessage(new Message(MsgType.WARNING, "Votre pichenette lui fait perdre 1 pdv."));
 		} else {
 			perteDeVie = 0;
-			sendMessage(new Message(MsgType.NONE, "Vous échouez lamentablement."));
+			sendMessage(new Message(MsgType.WARNING, "Vous échouez lamentablement."));
 		}
 		Vital vital = adv.getVital();
 		vital.setLife(vital.getLife() - perteDeVie);
@@ -62,7 +62,7 @@ public class Fight implements IAdventure, IMessageSender {
 	}
 
 	public int mobAttack() {
-		int mobAttack = this.attack(adv.getCurrentAttributes().getDEX(), 10 + pj.getLevel());
+		int mobAttack = this.attack(adv.getCurrentAttributes().getDEX(), pj.getLevel());
 		final int perteDeVie;
 		if (mobAttack > 0) {
 			perteDeVie = mobAttack;
@@ -72,7 +72,7 @@ public class Fight implements IAdventure, IMessageSender {
 			sendMessage(new Message(MsgType.WARNING, adv.getName() + " vous fait une égratignure. Vous perdez 1 pdv."));
 		} else {
 			perteDeVie = 0;
-			sendMessage(new Message(MsgType.NONE, adv.getName() + " échoue lamentablement."));
+			sendMessage(new Message(MsgType.WARNING, adv.getName() + " échoue lamentablement."));
 		}
 		Vital vital = pj.getVital();
 		vital.setLife(vital.getLife() - perteDeVie);

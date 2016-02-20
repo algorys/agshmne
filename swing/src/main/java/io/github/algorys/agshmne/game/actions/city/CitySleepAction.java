@@ -34,7 +34,7 @@ public class CitySleepAction extends AbstractAction implements PropertyChangeLis
 	private void update(int gold) {
 		if (pj.getTile().isCivilized()) {
 			int price = pj.getTile().getCity().getPriceToSleep();
-			if (gold < price) {
+			if (gold < price || pj.getVital().getFatigue() == 0) {
 				this.setEnabled(false);
 			} else {
 				this.setEnabled(true);

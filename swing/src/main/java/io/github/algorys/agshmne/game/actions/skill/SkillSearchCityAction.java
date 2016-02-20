@@ -36,6 +36,8 @@ public class SkillSearchCityAction extends AbstractAction implements IMessageSen
 			Item item = new ItemFactory().createRandom();
 			pj.getTile().addItem(item);
 			this.sendMessage(new Message(MsgType.SUCCESS, "Vous avez trouvé quelque chose : " + item.getName()));
+		} else {
+			this.sendMessage(new Message(MsgType.INFO, "Il n'y a rien de plus dans " + pj.getTile().getCity().getName()));
 		}
 		this.setEnabled(false);
 	}

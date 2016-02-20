@@ -34,7 +34,7 @@ public class CityEatAction extends AbstractAction implements PropertyChangeListe
 	private void update(int gold) {
 		if (pj.getTile().isCivilized()) {
 			int price = pj.getTile().getCity().getPriceToEat();
-			if (gold < price) {
+			if (gold < price || pj.getVital().getHunger() == 0) {
 				this.setEnabled(false);
 			} else {
 				this.setEnabled(true);
