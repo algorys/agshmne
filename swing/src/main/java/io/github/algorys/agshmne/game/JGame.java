@@ -14,6 +14,7 @@ import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.game.character.JPanCharacter;
 import io.github.algorys.agshmne.game.mainpanel.JPanMain;
 import io.github.algorys.agshmne.game.mainpanel.JPanRight;
+import io.github.algorys.agshmne.game.mainpanel.JPanTabbed;
 import io.github.algorys.agshmne.map.JMapRegion;
 import io.github.algorys.agshmne.map.Position;
 
@@ -62,7 +63,7 @@ public class JGame extends JFrame {
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
 			@Override
 			public boolean dispatchKeyEvent(KeyEvent e) {
-				if (mainPan.getSelectedIndex() == JPanMain.MAP_PANEL_INDEX && e.getID() == KeyEvent.KEY_PRESSED) {
+				if (mainPan.getJPanTabbed().getSelectedIndex() == JPanTabbed.MAP_PANEL_INDEX && e.getID() == KeyEvent.KEY_PRESSED) {
 					switch (e.getKeyCode()) {
 					case KeyEvent.VK_LEFT:
 						JGame.this.game.setPosition(new Position(JGame.this.game.getPosition().getX() - 1,
