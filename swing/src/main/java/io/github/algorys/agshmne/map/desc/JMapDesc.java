@@ -26,7 +26,7 @@ public class JMapDesc extends JPanel {
 
 		// Description Région
 		titleHistory = new JMapTitle(pj);
-		titleHistory.setTitle("Region : " + pj.getTile().getDesc());
+		titleHistory.setTitle(pj.getTile().getDesc());
 		
 		// Position
 		this.xy = new JMapXY(game);
@@ -45,7 +45,7 @@ public class JMapDesc extends JPanel {
 			public void propertyChange(PropertyChangeEvent evt) {
 				if (evt.getSource() instanceof Game) {
 					Game game = (Game)evt.getSource();
-					titleHistory.setTitle("Region : " + game.getPlayer().getTile().getDesc());
+					titleHistory.setTitle(game.getPlayer().getTile().getDesc());
 					civilized.setCivilized(game.getPlayer().getTile().isCivilized());
 					xy.setDescPosition(game);
 				}
