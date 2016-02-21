@@ -9,6 +9,7 @@ import io.github.algorys.agshmne.map.region.Region;
 import io.github.algorys.agshmne.message.IMessageReceiver;
 import io.github.algorys.agshmne.message.IMessageSender;
 import io.github.algorys.agshmne.message.Message;
+import io.github.algorys.agshmne.message.MsgType;
 
 public class Game implements IMessageSender, IMessageReceiver {
 	public static final String PROPERTY_POSITION = "position";
@@ -43,6 +44,9 @@ public class Game implements IMessageSender, IMessageReceiver {
 	public void setPosition(Position position) {
 		Position old = this.position;
 		this.position = position;
+		String tileName = region.getTileFromPosition(position).getDesc();
+		Message msg = new Message(MsgType.HISTORY, "Vous pénétrez dans " + tileName);
+		this.sendMessage(msg);
 		player.setTile(this.getRegion().getTileFromPosition(position));
 		pcs.firePropertyChange(PROPERTY_POSITION, old, position);
 	}
@@ -80,9 +84,9 @@ public class Game implements IMessageSender, IMessageReceiver {
 	public void setMessageReceiver(IMessageReceiver msgRcvr) {
 		this.messageReceiver = msgRcvr;
 	}
-	
+
 	public void sendMessage(Message message) {
-		if(messageReceiver != null) {
+		if (messageReceiver != null) {
 			messageReceiver.sendMessage(message);
 		}
 	}

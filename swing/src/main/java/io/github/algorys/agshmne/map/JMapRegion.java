@@ -23,38 +23,6 @@ import io.github.algorys.agshmne.tile.JTile;
 @SuppressWarnings("serial")
 public class JMapRegion extends JPanel implements PropertyChangeListener {
 	private final static int SIDE = 7;
-
-	private final class MovePJMouseListener extends MouseAdapter {
-		private int diffX = 0;
-		private int diffY = -1;
-
-		public MovePJMouseListener(int diffX, int diffY) {
-			super();
-			this.diffX = diffX;
-			this.diffY = diffY;
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			if (e.getSource() instanceof JTile) {
-				((JTile) e.getSource()).setBorder(new LineBorder(Color.GREEN));
-			}
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			if (e.getSource() instanceof JTile) {
-				((JTile) e.getSource()).setBorder(BorderFactory.createLineBorder(Color.BLACK));
-			}
-		}
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			game.setPosition(new Position(game.getPosition().getX() + diffX, game.getPosition().getY() + diffY));
-			JMapRegion.this.game.newTurn();
-		}
-	}
-
 	private Game game;
 	private JTile[][] jtiles;
 
@@ -97,6 +65,37 @@ public class JMapRegion extends JPanel implements PropertyChangeListener {
 		}
 		this.invalidate();
 		this.repaint();
+	}
+
+	private final class MovePJMouseListener extends MouseAdapter {
+		private int diffX = 0;
+		private int diffY = -1;
+
+		public MovePJMouseListener(int diffX, int diffY) {
+			super();
+			this.diffX = diffX;
+			this.diffY = diffY;
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			if (e.getSource() instanceof JTile) {
+				((JTile) e.getSource()).setBorder(new LineBorder(Color.GREEN));
+			}
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			if (e.getSource() instanceof JTile) {
+				((JTile) e.getSource()).setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			}
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			game.setPosition(new Position(game.getPosition().getX() + diffX, game.getPosition().getY() + diffY));
+			JMapRegion.this.game.newTurn();
+		}
 	}
 
 	@Override

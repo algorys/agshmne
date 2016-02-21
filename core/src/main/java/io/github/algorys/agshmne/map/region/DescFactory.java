@@ -12,15 +12,15 @@ public class DescFactory {
 	private Map<TileType, List<String>> descs = new HashMap<>();;
 
 	public DescFactory() {
-		List<String> descWood = Arrays.asList("Bois", "Forêt", "Jardins", "Jungle", "Sylve", "Bosquet");
-		List<String> descHill = Arrays.asList("Collines", "Plateau", "Grand Tertre", "Buttes");
-		List<String> descDesert = Arrays.asList("Désert", "Désert de Sel", "Steppe", "Toundra");
-		List<String> descSea = Arrays.asList("Mer", "Océan");
-		List<String> descMountain = Arrays.asList("Monts", "Montagnes", "Falaises", "Crevasses", "Canyons");
-		List<String> descPlain = Arrays.asList("Plaines", "Savane", "Terres", "Contrées", "Comté", "Vallée");
-		List<String> descRiver = Arrays.asList("Rivière", "Fleuve", "Côte", "Rivages");
-		List<String> descSwamp = Arrays.asList("Marécage", "Marais", "Tourbière", "Bourbier");
-		List<String> descLake = Arrays.asList("Lacs", "Etangs", "Fontaines", "Cascades", "Chutes");
+		List<String> descWood = Arrays.asList("Le Bois", "La Forêt", "Les Jardins", "La Jungle", "La Sylve", " Le Bosquet");
+		List<String> descHill = Arrays.asList("Les Collines", "Le Plateau", "Le Grand Tertre", "Les Buttes");
+		List<String> descDesert = Arrays.asList("Le Désert", "Le Désert de Sel", "La Steppe", "La Toundra");
+		List<String> descSea = Arrays.asList("La Mer", "L'Océan", "Les Îles");
+		List<String> descMountain = Arrays.asList("Les Monts", "Les Bandes Rocheuses", "Les Falaises", "La Crevasse", "Le Canyon");
+		List<String> descPlain = Arrays.asList("Les Plaines", "La Savane", "Les Terres", "Les Contrées", "Le Comté", "La Vallée");
+		List<String> descRiver = Arrays.asList("Les Rivières", "Le Fleuve", "Les Côtes", "Le Rivage");
+		List<String> descSwamp = Arrays.asList("Les Marécages", "Les Marais", "La Tourbière", "Le Bourbier");
+		List<String> descLake = Arrays.asList("Les Lacs", "Les Étendues", "Les Sources", "Les Cascades", "Les Chutes");
 		descs.put(TileType.Wood, descWood);
 		descs.put(TileType.Forest, descWood);
 		descs.put(TileType.Hill, descHill);
@@ -53,7 +53,18 @@ public class DescFactory {
 				" de Sombre-Nuit",
 				" des Ombres",
 				" d'Agshmne",
-				" de l'Ogre"
+				" de l'Ogre",
+				" de Blanc-Rivage",
+				" de Sarleth",
+				" de la Tarasque",
+				" des Seigneurs Noirs",
+				" du Vieux Sage",
+				" du Dragon Noir",
+				" du Dragon Rouge",
+				" du Serpent Géant",
+				" de l'Or Maudit",
+				" des Sans Voix",
+				" de Gerrie la Maudite",
 		};
 		return Tools.random(namePlace);
 	}
