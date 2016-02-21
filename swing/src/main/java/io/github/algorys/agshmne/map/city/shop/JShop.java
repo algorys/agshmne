@@ -261,7 +261,6 @@ public class JShop extends JPanel {
 										ModalityType.DOCUMENT_MODAL);
 								jdCount.setSize(300, 150);
 								int maxToBuy = playerInventory.getGold() / stackableItem.getPrice();
-								System.out.println("Maxx = " + maxToBuy);
 								JStackChoice choice = new JStackChoice(stackableItem, maxToBuy);
 								jdCount.add(choice);
 								jdCount.setVisible(true);
@@ -271,8 +270,6 @@ public class JShop extends JPanel {
 									shopItem.repaint();
 								}
 							} else {
-								// JOptionPane.showMessageDialog(JShop.this, ""
-								// + selectedItem + " acheté(e) !");
 								((InventoryListModel) shopItem.getModel()).removeElementAt(index);
 								shop.sellItem(playerInventory, selectedItem);
 								shopItem.invalidate();

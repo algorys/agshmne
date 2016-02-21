@@ -36,6 +36,16 @@ public class Vital implements IMessageSender {
 		this.hunger = 0;
 	}
 
+	private int checkVitalLimit(int carac, int max) {
+		if (carac < 1) {
+			carac = 0;
+		}
+		if (carac > max) {
+			carac = max;
+		}
+		return carac;
+	}
+	
 	public int getLife() {
 		return life;
 	}
@@ -43,9 +53,7 @@ public class Vital implements IMessageSender {
 	public void setLife(int life) {
 		int old = this.life;
 		this.life = life;
-		if (this.life < 1) {
-			this.life = 0;
-		}
+		this.life = checkVitalLimit(this.life, this.maxLife);
 		pcs.firePropertyChange(PROPERTY_LIFE, old, this.life);
 	}
 
@@ -56,10 +64,8 @@ public class Vital implements IMessageSender {
 	public void setMana(int mana) {
 		int old = this.mana;
 		this.mana = mana;
-		if (this.mana < 1) {
-			this.mana = 0;
-		}
-		pcs.firePropertyChange(PROPERTY_MANA, old, mana);
+		this.mana = checkVitalLimit(this.mana, this.maxMana);
+		pcs.firePropertyChange(PROPERTY_MANA, old, this.mana);
 	}
 
 	public int getFatigue() {

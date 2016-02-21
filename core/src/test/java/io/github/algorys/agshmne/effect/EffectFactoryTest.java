@@ -28,10 +28,10 @@ public class EffectFactoryTest {
 		EffectFactory underTest = new EffectFactory();
 		Player pj = new PlayerBuilder().create();
 		pj.initVital();
-		pj.getVital().setMana(10);
-		assertTrue(10 == pj.getVital().getMana());
-		underTest.fromString("MANA10").apply(pj);
-		assertTrue(20 == pj.getVital().getMana() || 0 == pj.getVital().getMana());
+		pj.getVital().setMana(5);
+		assertTrue(5 == pj.getVital().getMana());
+		underTest.fromString("MANA5").apply(pj);
+		assertTrue(10 == pj.getVital().getMana() || 0 == pj.getVital().getMana());
 	}
 	
 	@Test

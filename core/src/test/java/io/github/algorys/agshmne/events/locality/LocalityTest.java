@@ -40,12 +40,12 @@ public class LocalityTest {
 		String locality = "Une statue représentant un ange déversant des flots sur un corps inanimé.";
 		Player pj = new PlayerBuilder().create();
 		pj.initVital();
-		pj.getVital().setLife(10);
-		Locality underTest = new Locality("Statue", new LifeEffect(10), locality, "Affecte votre vie !");
+		pj.getVital().setLife(5);
+		Locality underTest = new Locality("Statue", new LifeEffect(5), locality, "Affecte votre vie !");
 		assertEquals(underTest.getDesc(), "Une statue représentant un ange déversant des flots sur un corps inanimé.");
-		assertEquals(pj.getVital().getLife(), 10);
+		assertEquals(pj.getVital().getLife(), 5);
 		underTest.interact(pj);
-		assertTrue(pj.getVital().getLife() == 0 || pj.getVital().getLife() == 20);
+		assertTrue(pj.getVital().getLife() == 0 || pj.getVital().getLife() == 10);
 	}
 	
 	@Test
@@ -53,15 +53,14 @@ public class LocalityTest {
 		String locality = "Un verger luxurieux qui semblent vous acceuillir à bras ouvert.";
 		Player pj = new PlayerBuilder().create();
 		pj.initVital();
-		pj.getVital().setMana(10);
-		Locality underTest = new Locality("Verger", new ManaEffect(10), locality, "Affecte votre vie !");
+		pj.getVital().setMana(5);
+		Locality underTest = new Locality("Verger", new ManaEffect(5), locality, "Affecte votre vie !");
 		
 		assertEquals(underTest.getName(), "Verger");
 		assertEquals(underTest.getDesc(), "Un verger luxurieux qui semblent vous acceuillir à bras ouvert.");
-		assertEquals(pj.getVital().getMana(), 10);
+		assertEquals(pj.getVital().getMaxMana(), 11);
+		assertEquals(pj.getVital().getMana(), 5);
 		underTest.interact(pj);
-		assertTrue(pj.getVital().getMana() == 0 || pj.getVital().getMana() == 20);
+		assertTrue(pj.getVital().getMana() == 0 || pj.getVital().getMana() == 10);
 	}
-
-	// TODO test mana et competences.
 }

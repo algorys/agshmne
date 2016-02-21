@@ -86,7 +86,7 @@ public class City {
 	public void sleep(Player pj) {
 		int newFatigue = pj.getVital().getFatigue() - (this.level * 4);
 		pj.getVital().setFatigue(newFatigue);
-		pj.getVital().setLife(pj.getVital().getLife() + this.level);
+		pj.getVital().setLife(pj.getVital().getLife() + (this.level * 2));
 		int newGold = pj.getInventory().getGold() - this.priceToSleep;
 		pj.getInventory().setGold(newGold);
 	}
