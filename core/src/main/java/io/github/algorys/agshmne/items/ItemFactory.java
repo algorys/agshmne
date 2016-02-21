@@ -23,7 +23,7 @@ public class ItemFactory implements IItemFactory {
 				"Viande:5", "Poisson:5", "Cuir:10",
 				"Minerai,pierre:5", "Minerai,cuivre:7","Minerai,fer:10", "Minerai,Argent:20", "Minerai,Or:50", "Minerai,mythril:100",
 				"Pomme:5","Orange:5","Poire:5","Pêche:5", "Figue:5",
-				"Clou:5", "Rivet:5", "Caillou:0", "Lettres:1", "Feraille:1"
+				"Clou:5", "Rivet:5", "Caillou:1", "Lettres:1", "Feraille:1"
 				};
 		stackableItems.addAll(Arrays.asList(stackies));
 	}

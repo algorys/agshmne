@@ -6,6 +6,8 @@ import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.map.Position;
 import io.github.algorys.agshmne.map.tile.Tile;
 import io.github.algorys.agshmne.message.IMessageReceiver;
+import io.github.algorys.agshmne.message.Message;
+import io.github.algorys.agshmne.message.MsgType;
 import io.github.algorys.agshmne.tools.Tools;
 
 public class FetchQuest implements IQuest {
@@ -13,6 +15,7 @@ public class FetchQuest implements IQuest {
 	private Item item;
 	private int count;
 	private boolean finish = false;
+	private IMessageReceiver messageReceiver;
 
 	public FetchQuest(Item item, int count, Tile tile) {
 		this.count = count;
@@ -32,7 +35,10 @@ public class FetchQuest implements IQuest {
 			inventory.removeItem(item);
 		}
 		finish = true;
-		inventory.setGold(inventory.getGold() + Tools.dice(pj.getLevel() * 5));
+		int gold = 10 + Tools.dice(pj.getLevel() * 5);
+		inventory.setGold(inventory.getGold() + gold);
+		this.sendMessage(new Message(MsgType.SUCCESS, "Vous gagnez " + gold + " pièces d'or."));
+		// TODO Améliorer le système de récompense.
 	}
 
 	@Override
@@ -70,6 +76,12 @@ public class FetchQuest implements IQuest {
 	
 	@Override
 	public void setMessageReceiver(IMessageReceiver msgRcvr) {
-		// TODO Auto-generated method stub
+		this.messageReceiver = msgRcvr;
+	}
+	
+	private void sendMessage(Message msg) {
+		if (this.messageReceiver != null) {
+			messageReceiver.sendMessage(msg);
+		}
 	}
 }

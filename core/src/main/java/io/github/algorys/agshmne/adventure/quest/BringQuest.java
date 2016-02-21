@@ -41,7 +41,7 @@ public class BringQuest implements IQuest {
 		EquipableItem equipItem = new EquipableItemFactory().createRandom();
 		this.sendMessage(new Message(MsgType.SUCCESS, "Vous recevez " + equipItem.getName() + " en récompense."));
 		inventory.addItem(equipItem);
-		// TODO prévoir une récompense.
+		// TODO Améliorer le système de récompense.
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class BringQuest implements IQuest {
 		pj.addQuest(this);
 		// TODO gérer les objets de quêtes différement des objets normaux.
 		pj.getInventory().addItem(item);
-		this.sendMessage(new Message(MsgType.INFO, "On vous a donné " + item.getName() + " pour votre quête."));
+		this.sendMessage(new Message(MsgType.INFO, "Vous avez reçu : " + item.getName() + ", pour votre quête."));
 	}
 
 	public Position getQuestDestination() {
