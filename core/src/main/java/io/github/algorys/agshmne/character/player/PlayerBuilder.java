@@ -19,8 +19,8 @@ public class PlayerBuilder {
 	private int CHA = 10;
 	private Map<SkillType, Integer> skills = new HashMap<>();
 	private String name;
-	private String gender = "Male";
-	private String race;
+	private String gender = "Mâle";
+	private String race = "Humain";
 	private String job;
 	private Item firstItem;
 	private Item secondItem;

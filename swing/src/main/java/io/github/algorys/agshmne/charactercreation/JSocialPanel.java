@@ -5,6 +5,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -33,7 +35,7 @@ public class JSocialPanel extends JPanel {
 		gbcSocial.gridy = 0;
 		gbcSocial.gridheight = 1;
 		gbcSocial.gridx = 0;
-		gbcSocial.gridwidth = 2;
+		gbcSocial.gridwidth = 4;
 		gbcSocial.anchor = GridBagConstraints.CENTER;
 		gbcSocial.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("FICHE PERSONNAGE JOUEUR"), gbcSocial);
@@ -42,7 +44,7 @@ public class JSocialPanel extends JPanel {
 		gbcSocial.gridy = 1;
 		gbcSocial.gridheight = 1;
 		gbcSocial.gridx = 0;
-		gbcSocial.gridwidth = 2;
+		gbcSocial.gridwidth = 4;
 		gbcSocial.anchor = GridBagConstraints.CENTER;
 		gbcSocial.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("- Social -"), gbcSocial);
@@ -52,7 +54,7 @@ public class JSocialPanel extends JPanel {
 		gbcSocial.gridheight = 1;
 		gbcSocial.gridx = 0;
 		gbcSocial.gridwidth = 1;
-		gbcSocial.anchor = GridBagConstraints.EAST;
+		gbcSocial.anchor = GridBagConstraints.WEST;
 		gbcSocial.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Nom"), gbcSocial);
 
@@ -63,6 +65,7 @@ public class JSocialPanel extends JPanel {
 		gbcSocial.anchor = GridBagConstraints.WEST;
 		gbcSocial.fill = GridBagConstraints.HORIZONTAL;
 		jtfName = new JTextField();
+		jtfName.setDocument(new JTextFieldLimit(14));
 		jtfName.getDocument().addDocumentListener(new DocumentListener() {
 
 			@Override
@@ -82,12 +85,15 @@ public class JSocialPanel extends JPanel {
 		});
 		this.add(jtfName, gbcSocial);
 
+		gbcSocial.gridx = 3;
+		this.add(new JLabel("Donnez un nom à votre personnage."), gbcSocial);
+
 		// SEXE
 		gbcSocial.gridy = 3;
 		gbcSocial.gridheight = 1;
 		gbcSocial.gridx = 0;
 		gbcSocial.gridwidth = 1;
-		gbcSocial.anchor = GridBagConstraints.EAST;
+		gbcSocial.anchor = GridBagConstraints.WEST;
 		gbcSocial.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Sexe"), gbcSocial);
 
@@ -98,8 +104,12 @@ public class JSocialPanel extends JPanel {
 		gbcSocial.anchor = GridBagConstraints.WEST;
 		gbcSocial.fill = GridBagConstraints.HORIZONTAL;
 		jcbSexe = new JComboBox<String>();
-		jcbSexe.addItem("Male");
-		jcbSexe.addItem("Femelle");
+
+		List<String> genderPossibilities = Arrays.asList("Mâle", "Femelle");
+		for (String gender : genderPossibilities) {
+			jcbSexe.addItem(gender);
+		}
+		jcbSexe.setSelectedIndex(genderPossibilities.indexOf(builder.getGender()));
 		jcbSexe.addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
@@ -110,12 +120,15 @@ public class JSocialPanel extends JPanel {
 		});
 		this.add(jcbSexe, gbcSocial);
 
+		gbcSocial.gridx = 3;
+		this.add(new JLabel("Choisissez votre sexe."), gbcSocial);
+
 		// RACE
 		gbcSocial.gridy = 4;
 		gbcSocial.gridheight = 1;
 		gbcSocial.gridx = 0;
 		gbcSocial.gridwidth = 1;
-		gbcSocial.anchor = GridBagConstraints.EAST;
+		gbcSocial.anchor = GridBagConstraints.WEST;
 		gbcSocial.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Race"), gbcSocial);
 
@@ -126,10 +139,11 @@ public class JSocialPanel extends JPanel {
 		gbcSocial.anchor = GridBagConstraints.WEST;
 		gbcSocial.fill = GridBagConstraints.HORIZONTAL;
 		jcbRace = new JComboBox<String>();
-		jcbRace.addItem("Humain (+1 compétence)");
-		jcbRace.addItem("Elfe (+1 DEX)");
-		jcbRace.addItem("Demi-Elfe (+1 CHA");
-		jcbRace.addItem("Nain (+1 FOR)");
+		List<String> racePossibilities = Arrays.asList("Humain", "Elfe", "Nain", "Félide", "Yogi", "Valure");
+		for (String race : racePossibilities) {
+			jcbRace.addItem(race);
+		}
+		jcbRace.setSelectedIndex(racePossibilities.indexOf(builder.getRace()));
 		jcbRace.addItemListener(new ItemListener() {
 
 			@Override
@@ -141,12 +155,15 @@ public class JSocialPanel extends JPanel {
 		});
 		this.add(jcbRace, gbcSocial);
 
+		gbcSocial.gridx = 3;
+		this.add(new JLabel("Choisissez votre race. (Sans effet pour le moment)"), gbcSocial);
+
 		// CLASSE
 		gbcSocial.gridy = 5;
 		gbcSocial.gridheight = 1;
 		gbcSocial.gridx = 0;
 		gbcSocial.gridwidth = 1;
-		gbcSocial.anchor = GridBagConstraints.EAST;
+		gbcSocial.anchor = GridBagConstraints.WEST;
 		gbcSocial.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Classe"), gbcSocial);
 
@@ -157,6 +174,7 @@ public class JSocialPanel extends JPanel {
 		gbcSocial.anchor = GridBagConstraints.WEST;
 		gbcSocial.fill = GridBagConstraints.HORIZONTAL;
 		jtfClasse = new JTextField();
+		jtfClasse.setDocument(new JTextFieldLimit(25));
 		jtfClasse.getDocument().addDocumentListener(new DocumentListener() {
 
 			@Override
@@ -175,6 +193,9 @@ public class JSocialPanel extends JPanel {
 			}
 		});
 		this.add(jtfClasse, gbcSocial);
+
+		gbcSocial.gridx = 3;
+		this.add(new JLabel("Définissez votre propre classe."), gbcSocial);
 
 	}
 }
