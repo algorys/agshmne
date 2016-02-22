@@ -7,7 +7,10 @@ import java.util.Map.Entry;
 import io.github.algorys.agshmne.Game;
 import io.github.algorys.agshmne.character.player.skills.SkillType;
 import io.github.algorys.agshmne.character.player.skills.factory.SkillFactory;
+import io.github.algorys.agshmne.items.GeneralItem;
 import io.github.algorys.agshmne.items.Item;
+import io.github.algorys.agshmne.items.equipable.BodyPart;
+import io.github.algorys.agshmne.items.equipable.EquipableItem;
 import io.github.algorys.agshmne.map.region.RandomRegionFactory;
 
 public class PlayerBuilder {
@@ -22,8 +25,8 @@ public class PlayerBuilder {
 	private String gender = "Mâle";
 	private String race = "Humain";
 	private String job;
-	private Item firstItem;
-	private Item secondItem;
+	private Item firstItem = new GeneralItem("Clou", 2);
+	private Item secondItem = new EquipableItem("Gilet en cuir", BodyPart.CHEST, 10);
 
 	public PlayerBuilder() {
 		for (SkillType type : SkillType.values()) {

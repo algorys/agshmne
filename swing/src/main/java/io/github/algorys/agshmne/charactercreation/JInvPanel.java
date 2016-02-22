@@ -5,6 +5,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -12,7 +14,9 @@ import javax.swing.JLabel;
 import io.github.algorys.agshmne.character.player.PlayerBuilder;
 import io.github.algorys.agshmne.items.Item;
 import io.github.algorys.agshmne.items.ItemFactory;
+import io.github.algorys.agshmne.items.equipable.EquipableItem;
 import io.github.algorys.agshmne.items.equipable.EquipableItemFactory;
+import io.github.algorys.agshmne.items.equipable.IEquipableItem;
 
 @SuppressWarnings("serial")
 public class JInvPanel extends JLabel {
@@ -51,10 +55,15 @@ public class JInvPanel extends JLabel {
 		gbcInv.fill = GridBagConstraints.NONE;
 		firstObject = new JComboBox<Item>();
 		ItemFactory itemFact = new ItemFactory();
-		firstObject.addItem(itemFact.createStackableItem());
-		firstObject.addItem(itemFact.createStackableItem());
-		firstObject.addItem(itemFact.createItem());
-		firstObject.addItem(itemFact.createItem());
+		List<Item> itemPossibilities = Arrays.asList(
+				itemFact.createStackableItem(), 
+				itemFact.createStackableItem(), 
+				itemFact.createItem(),
+				itemFact.createItem());
+		for (Item item : itemPossibilities) {
+			firstObject.addItem(item);
+		}
+		firstObject.setSelectedIndex(itemPossibilities.indexOf(builder.getFirstItem()));
 		firstObject.addItemListener(new ItemListener() {
 			
 			@Override
@@ -76,10 +85,15 @@ public class JInvPanel extends JLabel {
 		gbcInv.fill = GridBagConstraints.NONE;
 		secondObject = new JComboBox<Item>();
 		EquipableItemFactory equipFact = new EquipableItemFactory();
-		secondObject.addItem(equipFact.createRandom());
-		secondObject.addItem(equipFact.createRandom());
-		secondObject.addItem(equipFact.createRandom());
-		secondObject.addItem(equipFact.createRandom());
+		List<EquipableItem> equipPossibilities = Arrays.asList(
+				equipFact.createRandom(), 
+				equipFact.createRandom(), 
+				equipFact.createRandom(),
+				equipFact.createRandom());
+		for (IEquipableItem item : equipPossibilities) {
+			secondObject.addItem(item);
+		}
+		secondObject.setSelectedIndex(equipPossibilities.indexOf(builder.getSecondItem()));
 		secondObject.addItemListener(new ItemListener() {
 			
 			@Override
