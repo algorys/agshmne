@@ -15,13 +15,13 @@ import io.github.algorys.agshmne.character.player.PlayerBuilder;
 @SuppressWarnings("serial")
 public class JCaracPanel extends JPanel {
 	private JLabel jlRemaining;
-	
+
 	public JCaracPanel(final PlayerBuilder builder) {
 		super();
 		final int MAX_FOR_ONE = 20;
 		final int total = 60;
-		final JCaracteristic FOR = new JCaracteristic(10, 1, MAX_FOR_ONE);	
-		final JCaracteristic DEX = new JCaracteristic(10, 1, MAX_FOR_ONE);		
+		final JCaracteristic FOR = new JCaracteristic(10, 1, MAX_FOR_ONE);
+		final JCaracteristic DEX = new JCaracteristic(10, 1, MAX_FOR_ONE);
 		final JCaracteristic CON = new JCaracteristic(10, 1, MAX_FOR_ONE);
 		final JCaracteristic INT = new JCaracteristic(10, 1, MAX_FOR_ONE);
 		final JCaracteristic CHA = new JCaracteristic(10, 1, MAX_FOR_ONE);
@@ -44,17 +44,17 @@ public class JCaracPanel extends JPanel {
 				CON.setMaxValue(Math.min(remainingPoints + CON.getValue(), MAX_FOR_ONE));
 				INT.setMaxValue(Math.min(remainingPoints + INT.getValue(), MAX_FOR_ONE));
 				CHA.setMaxValue(Math.min(remainingPoints + CHA.getValue(), MAX_FOR_ONE));
-				jlRemaining.setText(""+remainingPoints);
+				jlRemaining.setText("" + remainingPoints);
 			}
 		};
-		
+
 		// Add listener for each
 		FOR.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		DEX.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		CON.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		INT.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
 		CHA.addPropertyChangeListener(JCaracteristic.PROPERTY_VALUE, pcl);
-		
+
 		// GidBag Layout
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbcCarac = new GridBagConstraints();
@@ -65,16 +65,16 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridy = 0;
 		gbcCarac.gridheight = 1;
 		gbcCarac.gridx = 0;
-		gbcCarac.gridwidth = 2;
+		gbcCarac.gridwidth = 4;
 		gbcCarac.anchor = GridBagConstraints.CENTER;
 		gbcCarac.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("FICHE PERSONNAGE JOUEUR"), gbcCarac);
-		
+
 		// Titre Panel
 		gbcCarac.gridy = 1;
 		gbcCarac.gridheight = 1;
 		gbcCarac.gridx = 0;
-		gbcCarac.gridwidth = 2;
+		gbcCarac.gridwidth = 4;
 		gbcCarac.anchor = GridBagConstraints.CENTER;
 		gbcCarac.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("- Caractéristiques -"), gbcCarac);
@@ -82,21 +82,21 @@ public class JCaracPanel extends JPanel {
 		// POINTS
 		gbcCarac.gridy = 2;
 		gbcCarac.gridheight = 1;
-		gbcCarac.gridx = 0;
-		gbcCarac.gridwidth = 1;
-		gbcCarac.anchor = GridBagConstraints.EAST;
+		gbcCarac.gridx = 1;
+		gbcCarac.gridwidth = 2;
+		gbcCarac.anchor = GridBagConstraints.CENTER;
 		gbcCarac.fill = GridBagConstraints.NONE;
 		this.add(new JLabel("Points à dépenser : "), gbcCarac);
-		
+
 		gbcCarac.gridy = 2;
 		gbcCarac.gridheight = 1;
-		gbcCarac.gridx = 1;
+		gbcCarac.gridx = 3;
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.WEST;
 		gbcCarac.fill = GridBagConstraints.HORIZONTAL;
-		jlRemaining = new JLabel(""+remainingPoints);
+		jlRemaining = new JLabel("" + remainingPoints);
 		this.add(jlRemaining, gbcCarac);
-		
+
 		// CARACTERISTIQUES
 		// FOR
 		gbcCarac.gridy = 3;
@@ -105,8 +105,8 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.EAST;
 		gbcCarac.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("FOR : l'attaque au corps à corps. Pousser, tirer, casser ! "), gbcCarac);
-		
+		this.add(new JLabel("FOR"), gbcCarac);
+
 		gbcCarac.gridy = 3;
 		gbcCarac.gridheight = 1;
 		gbcCarac.gridx = 1;
@@ -115,7 +115,10 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.fill = GridBagConstraints.HORIZONTAL;
 		FOR.setOpaque(false);
 		this.add(FOR, gbcCarac);
-		
+
+		gbcCarac.gridx = 3;
+		this.add(new JLabel("L'attaque au corps à corps. Pousser, tirer, casser !"), gbcCarac);
+
 		// DEX
 		gbcCarac.gridy = 4;
 		gbcCarac.gridheight = 1;
@@ -123,17 +126,20 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.EAST;
 		gbcCarac.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("DEX : attaque à distance et actions délicates"), gbcCarac);
-		
+		this.add(new JLabel("DEX"), gbcCarac);
+
 		gbcCarac.gridy = 4;
 		gbcCarac.gridheight = 1;
 		gbcCarac.gridx = 1;
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.WEST;
-		gbcCarac.fill = GridBagConstraints.HORIZONTAL;		
+		gbcCarac.fill = GridBagConstraints.HORIZONTAL;
 		DEX.setOpaque(false);
 		this.add(DEX, gbcCarac);
-		
+
+		gbcCarac.gridx = 3;
+		this.add(new JLabel("L'attaque à distance et les actions délicates."), gbcCarac);
+
 		// CON
 		gbcCarac.gridy = 5;
 		gbcCarac.gridheight = 1;
@@ -141,16 +147,19 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.EAST;
 		gbcCarac.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("CON : la vie et les résitances aux poisons... "), gbcCarac);
-		
+		this.add(new JLabel("CON"), gbcCarac);
+
 		gbcCarac.gridy = 5;
 		gbcCarac.gridheight = 1;
 		gbcCarac.gridx = 1;
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.WEST;
-		gbcCarac.fill = GridBagConstraints.HORIZONTAL;		
+		gbcCarac.fill = GridBagConstraints.HORIZONTAL;
 		CON.setOpaque(false);
 		this.add(CON, gbcCarac);
+
+		gbcCarac.gridx = 3;
+		this.add(new JLabel("Votre vie et vos résitances aux poisons, attaques,... "), gbcCarac);
 
 		// INT
 		gbcCarac.gridy = 6;
@@ -159,17 +168,20 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.EAST;
 		gbcCarac.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("INT : magie et connaissances"), gbcCarac);
-		
+		this.add(new JLabel("INT"), gbcCarac);
+
 		gbcCarac.gridy = 6;
 		gbcCarac.gridheight = 1;
 		gbcCarac.gridx = 1;
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.WEST;
-		gbcCarac.fill = GridBagConstraints.HORIZONTAL;		
+		gbcCarac.fill = GridBagConstraints.HORIZONTAL;
 		INT.setOpaque(false);
 		this.add(INT, gbcCarac);
-		
+
+		gbcCarac.gridx = 3;
+		this.add(new JLabel("La magie et vos connaissances."), gbcCarac);
+
 		// CHA
 		gbcCarac.gridy = 7;
 		gbcCarac.gridheight = 1;
@@ -177,15 +189,18 @@ public class JCaracPanel extends JPanel {
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.EAST;
 		gbcCarac.fill = GridBagConstraints.NONE;
-		this.add(new JLabel("CHA : la manière dont vous influez le monde."), gbcCarac);
-		
+		this.add(new JLabel("CHA"), gbcCarac);
+
 		gbcCarac.gridy = 7;
 		gbcCarac.gridheight = 1;
 		gbcCarac.gridx = 1;
 		gbcCarac.gridwidth = 1;
 		gbcCarac.anchor = GridBagConstraints.WEST;
-		gbcCarac.fill = GridBagConstraints.HORIZONTAL;		
+		gbcCarac.fill = GridBagConstraints.HORIZONTAL;
 		CHA.setOpaque(false);
 		this.add(CHA, gbcCarac);
+
+		gbcCarac.gridx = 3;
+		this.add(new JLabel("La manière dont vous influez le monde."), gbcCarac);
 	}
 }
