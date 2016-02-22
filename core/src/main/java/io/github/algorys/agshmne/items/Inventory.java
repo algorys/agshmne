@@ -11,13 +11,18 @@ import io.github.algorys.agshmne.items.equipable.EquipableItem;
 import io.github.algorys.agshmne.items.equipable.IEquipableItem;
 import io.github.algorys.agshmne.items.stackable.IStackableItem;
 import io.github.algorys.agshmne.items.stackable.StackableItem;
+import io.github.algorys.agshmne.message.IMessageReceiver;
+import io.github.algorys.agshmne.message.IMessageSender;
+import io.github.algorys.agshmne.message.Message;
+import io.github.algorys.agshmne.message.MsgType;
 
-public class Inventory extends Observable {
+public class Inventory extends Observable implements IMessageSender {
 	// TODO gérer les objets de quêtes différement des objets normaux.
 	private List<Item> backpack = new ArrayList<>();
 	private int gold;
 	public static final String PROPERTY_GOLD = "Gold";
 	private PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+	private IMessageReceiver messageReceiver;
 	
 	public Inventory() {
 	}
@@ -41,7 +46,11 @@ public class Inventory extends Observable {
 		}
 		if (!added) {
 			backpack.add(item);
+			added = true;
 			this.setChanged();
+		}
+		if(added) {
+			this.sendMessage(new Message(MsgType.INFO, item.getName() + " ajouté(e)."));
 		}
 		this.notifyObservers();
 	}
@@ -71,10 +80,14 @@ public class Inventory extends Observable {
 			while (iter.hasNext()) {
 				if (iter.next().isSameType(itemToRemove)) {
 					iter.remove();
+					removed = true;
 					this.setChanged();
 					break;
 				}
 			}
+		}
+		if(removed) {
+			this.sendMessage(new Message(MsgType.INFO, itemToRemove.getName() + " retiré(e)."));
 		}
 		this.notifyObservers();
 	}
@@ -161,5 +174,16 @@ public class Inventory extends Observable {
 
 	public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
 		pcs.removePropertyChangeListener(propertyName, listener);
+	}
+
+	@Override
+	public void setMessageReceiver(IMessageReceiver msgRcvr) {
+		this.messageReceiver = msgRcvr;
+	}
+	
+	private void sendMessage(Message msg) {
+		if(messageReceiver != null) {
+			this.messageReceiver.sendMessage(msg);
+		}
 	}
 }

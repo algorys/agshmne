@@ -29,6 +29,7 @@ public class JPanMain extends JPanel {
 		// Message
 		MessageListModel messagesModel = new MessageListModel();
 		game.getPlayer().getVital().setMessageReceiver(messagesModel);
+		game.getPlayer().getInventory().setMessageReceiver(messagesModel);
 		game.setMessageReceiver(messagesModel);
 		final JList<Message> output = new JList<Message>(messagesModel);
 		output.setCellRenderer(new MessageRenderer());
