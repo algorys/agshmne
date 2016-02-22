@@ -1,12 +1,16 @@
-# Agshmne [![Build Status](https://travis-ci.org/algorys/agshmne.svg?branch=master)](https://travis-ci.org/algorys/agshmne)
+# Agshmne 
+
+[![Build Status](https://travis-ci.org/algorys/agshmne.svg?branch=master)](https://travis-ci.org/algorys/agshmne)
+[![GitHub release](https://img.shields.io/github/release/algorys/agshmne.svg)](https://github.com/algorys/agshmne/releases/latest)
+[![GitHub license](https://img.shields.io/github/license/algorys/agshmne.svg)](https://github.com/algorys/agshmne/blob/master/LICENSE.txt)
 
 ## Informations Générales
 
-> **Nom du Jeu :** Agshmne
-> **Code :** Java <br>
-> **IDE :** Eclipse <br>
+> **Nom du Jeu :** Agshmne<br>
 > **Style :** RPG <br>
 > **Plateformes Envisagées :** Desktop / Android
+> **Langage :** Java <br>
+> **IDE :** Eclipse <br>
 
 > **Background :** ayant joué à de nombreux jeu de rôle sur table (Donjons et Dragons, Cyberpunk, Cthulhu pour ne citer qu'eux), je souhaite réaliser un jeu qui puisse se jouer, se rejouer et se rejouer encore d'où de nombreux côtés aléatoires. J'espère aussi pouvoir apporté du texte fourni mais pas envahissant.
 
@@ -22,7 +26,7 @@ Vous aurez la possibilité de construire vos propres armes, sorts, batiments, sc
 
 ## Etat d'avancement
 
-**Aucune version jouable** pour le moment. Une version ALPHA sera bientôt disponible pour ceux qui sont intéressés.
+Une version ALPHA est disponible sur ce dépôt ou sur le [site]( http://algorys.github.io/agshmne/) du jeu.
 
 > Vous pouvez voir les premiers rendus du jeu [ici !](/doc/rendu.md)
 
