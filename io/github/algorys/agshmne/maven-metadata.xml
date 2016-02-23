@@ -3,10 +3,10 @@
   <groupId>io.github.algorys</groupId>
   <artifactId>agshmne</artifactId>
   <versioning>
-    <release>0.0.1-ALPHA</release>
+    <release>0.0.3-ALPHA</release>
     <versions>
-      <version>0.0.1-ALPHA</version>
+      <version>0.0.3-ALPHA</version>
     </versions>
-    <lastUpdated>20160215161650</lastUpdated>
+    <lastUpdated>20160223135235</lastUpdated>
   </versioning>
 </metadata>
