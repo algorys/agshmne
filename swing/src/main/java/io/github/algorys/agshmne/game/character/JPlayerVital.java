@@ -35,27 +35,19 @@ public class JPlayerVital extends JPanel {
 		gbcCharacter.gridwidth = 1;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlLifeIcon = new JLabel();
-		try {
-			Image imgLife = ImageIO.read(JPlayerVital.class.getClassLoader().getResource("life.png"));
-			jlLifeIcon.setIcon(new ImageIcon(imgLife));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		this.add(jlLifeIcon, gbcCharacter);
-
-		gbcCharacter.gridy = 0;
-		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 1;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
 		JLabel jlLifeTitle = new JLabel("Vie");
 		jlLifeTitle.setForeground(Color.white);
 		this.add(jlLifeTitle, gbcCharacter);
 
 		final JLabel jlLife = new JLabel("" + vital.getLife());
 		jlLife.setForeground(Color.yellow);
+		try {
+			Image imgLife = ImageIO.read(JPlayerVital.class.getClassLoader().getResource("life.png"));
+			Image newImgLife = imgLife.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
+			jlLife.setIcon(new ImageIcon(newImgLife));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		JLabel jlLifeMax = new JLabel("/ " + vital.getMaxLife());
 		jlLifeMax.setForeground(Color.white);
 
@@ -63,7 +55,7 @@ public class JPlayerVital extends JPanel {
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.EAST;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.HORIZONTAL;
 		final JProgressBar jpLife = new JProgressBar();
 		jpLife.setMaximum(vital.getMaxLife());
@@ -89,22 +81,7 @@ public class JPlayerVital extends JPanel {
 		gbcCharacter.gridy = 2;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 1;
-		gbcCharacter.anchor = GridBagConstraints.WEST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlManaIcon = new JLabel();
-		try {
-			Image imgMana = ImageIO.read(JPlayerVital.class.getClassLoader().getResource("mana.png"));
-			jlManaIcon.setIcon(new ImageIcon(imgMana));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		this.add(jlManaIcon, gbcCharacter);
-		
-		gbcCharacter.gridy = 2;
-		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 1;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		JLabel jlManaTitle = new JLabel("Mana");
@@ -113,6 +90,13 @@ public class JPlayerVital extends JPanel {
 
 		final JLabel jlMana = new JLabel("" + vital.getMana());
 		jlMana.setForeground(Color.yellow);
+		try {
+			Image imgMana = ImageIO.read(JPlayerVital.class.getClassLoader().getResource("mana.png"));
+			Image newImgMana = imgMana.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
+			jlMana.setIcon(new ImageIcon(newImgMana));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		JLabel jlManaMax = new JLabel("/ " + vital.getMaxMana());
 		jlManaMax.setForeground(Color.white);
 		
@@ -120,7 +104,7 @@ public class JPlayerVital extends JPanel {
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
 		gbcCharacter.gridwidth = 4;
-		gbcCharacter.anchor = GridBagConstraints.CENTER;
+		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.HORIZONTAL;
 		final JProgressBar jpMana = new JProgressBar();
 		jpMana.setMaximum(vital.getMaxMana());
@@ -265,16 +249,16 @@ public class JPlayerVital extends JPanel {
 	private JLayeredPane layerProgressBar(JProgressBar prBar, JLabel current, JLabel max){
 		JLayeredPane layer = new JLayeredPane();
 		layer.add(prBar, new Integer(1));
-		prBar.setBounds(0, 0, 200, 25);
-		layer.setSize(200, 25);
-		layer.setPreferredSize(new Dimension(200, 25));
+		prBar.setBounds(0, 0, 190, 35);
+		layer.setSize(190, 35);
+		layer.setPreferredSize(new Dimension(190, 35));
 		layer.setOpaque(false);
 		JPanel progressText = new JPanel();
 		progressText.setOpaque(false);
 		progressText.add(current);
 		progressText.add(max);
 		layer.add(progressText, new Integer(2));
-		progressText.setBounds(0, 0, 200, 25);
+		progressText.setBounds(0, 0, 190, 35);
 		return layer;
 	}
 }
