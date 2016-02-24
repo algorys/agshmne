@@ -1,7 +1,7 @@
 # Agshmne 
 
 [![Build Status](https://travis-ci.org/algorys/agshmne.svg?branch=master)](https://travis-ci.org/algorys/agshmne)
-[![GitHub release](https://img.shields.io/badge/release-v0.0.1-blue.svg)](https://github.com/algorys/agshmne/releases/latest)
+[![GitHub release](https://img.shields.io/badge/release-v0.0.3-blue.svg)](https://github.com/algorys/agshmne/releases/latest)
 [![GitHub license](https://img.shields.io/badge/license-GNU%20General%20Public%20License%20v3.0-blue.svg)](https://github.com/algorys/agshmne/blob/master/LICENSE.txt)
 
 ## Informations Générales

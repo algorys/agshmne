@@ -1,0 +1,20 @@
+---
+layout: default
+img: interface.png
+category: News
+title: Version 0.0.3-ALPHA disponible !
+description: v0.0.3-alpha
+---
+
+La deuxième version d'Agshmne est disponible. 
+
+Elle implémente pas mal de nouveautés, ainsi que la correction de pas mal de bugs présents dans la première version.
+
+Voici une liste non-exhaustive des nouveautés :
+
+* Affichage de sortie dynamique : affichant les évènements, les actions du joueurs ou ce qui l'affecte (comme la perte de points de vie par exemple)
+* La gestion de la Faim et de la Fatigue désormais récupérables en ville.
+* Les caractéristiques vitales (Vie, Mana, Faim et Fatigues) ont un minimum et un maximum.
+* Optimisation du code
+
+Dans les prochaines versions, il sera possible de construire ses propres objets et aussi d'utiliser plus de compétences.
