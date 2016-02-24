@@ -11,13 +11,13 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.border.BevelBorder;
 
 import io.github.algorys.agshmne.character.Attribute;
 import io.github.algorys.agshmne.character.Character;
 import io.github.algorys.agshmne.character.player.Player;
 import io.github.algorys.agshmne.character.player.PlayerSocial;
 import io.github.algorys.agshmne.character.player.PlayerXP;
+import io.github.algorys.agshmne.game.character.design.ProgressBarUI;
 import io.github.algorys.agshmne.items.Inventory;
 
 @SuppressWarnings("serial")
@@ -194,8 +194,9 @@ public class JPanCharacter extends JPanel {
 													// de niveau
 		xpBar.setMinimum(0); // TODO Changement de niveau (si on recommence à 0)
 		xpBar.setValue(xp.getXp());
+		xpBar.setBackground(Color.black);
 		xpBar.setForeground(Color.green);
-		xpBar.setBorder(new BevelBorder(BevelBorder.LOWERED));
+		xpBar.setUI(new ProgressBarUI());
 		this.add(xpBar, gbcCharacter);
 
 		xp.addPropertyChangeListener(PlayerXP.PROPERTY_XP, new PropertyChangeListener() {
