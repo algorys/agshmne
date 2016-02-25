@@ -80,7 +80,6 @@ public class JPlayerVital extends JPanel {
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		JLabel jlManaTitle = new JLabel("Mana");
 		jlManaTitle.setForeground(Color.white);
-		this.add(jlManaTitle, gbcCharacter);
 
 		final JLabel jlMana = new JLabel("" + vital.getMana());
 		jlMana.setForeground(Color.yellow);
@@ -112,127 +111,89 @@ public class JPlayerVital extends JPanel {
 		
 		JLayeredPane layerMana = layerProgressBar(jpMana, jlManaTitle, jlMana, jlManaMax);
 		this.add(layerMana, gbcCharacter);
-
-		// Faim
+		
+		// FAIM
 		gbcCharacter.gridy = 4;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 1;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlHungryIcon = new JLabel();
+		JLabel jlFaimTitle = new JLabel("Faim");
+		jlFaimTitle.setForeground(Color.white);
+//		this.add(jlFaimTitle, gbcCharacter);
+
+		final JLabel jlFaim = new JLabel("" + vital.getHunger());
+		jlFaim.setForeground(Color.yellow);
 		try {
-			Image imgFood = ImageIO.read(JPlayerVital.class.getClassLoader().getResource("meat.png"));
-			jlHungryIcon.setIcon(new ImageIcon(imgFood));
+			Image imgFaim = ImageIO.read(JPlayerVital.class.getClassLoader().getResource("meat.png"));
+			Image newImgFaim = imgFaim.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
+			jlFaim.setIcon(new ImageIcon(newImgFaim));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.add(jlHungryIcon, gbcCharacter);
-
-		gbcCharacter.gridy = 4;
+		JLabel jlFaimMax = new JLabel("/ " + vital.getMaxHunger());
+		jlFaimMax.setForeground(Color.white);
+		
+		gbcCharacter.gridy = 5;
 		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 1;
-		gbcCharacter.gridwidth = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlHungryTitle = new JLabel("Faim : ");
-		jlHungryTitle.setForeground(Color.white);
-		this.add(jlHungryTitle, gbcCharacter);
-
-		gbcCharacter.gridy = 4;
-		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 1;
-		gbcCharacter.anchor = GridBagConstraints.EAST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
-		final JLabel jlHungry = new JLabel("" + vital.getHunger());
-		jlHungry.setForeground(Color.white);
-		this.add(jlHungry, gbcCharacter);
+		gbcCharacter.fill = GridBagConstraints.HORIZONTAL;
+		final JProgressBar jProgressHunger = vitalProgressBar(vital.getMaxHunger(), vital.getHunger(), Color.yellow);
+		
 		vital.addPropertyChangeListener(Vital.PROPERTY_HUNGER, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-				jlHungry.setText(evt.getNewValue().toString());
-				int newValue = (Integer) evt.getNewValue();
-				updateColorVital(newValue, vital.getMaxHunger(), jlHungry);
+				jlFaim.setText(evt.getNewValue().toString());
+				jProgressHunger.setValue((Integer)evt.getNewValue());
 			}
 		});
 		
-		gbcCharacter.gridy = 4;
-		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 3;
-		gbcCharacter.gridwidth = 1;
-		gbcCharacter.anchor = GridBagConstraints.EAST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlHungryMax = new JLabel("/ " + vital.getMaxHunger());
-		jlHungryMax.setForeground(Color.blue);
-		this.add(jlHungryMax, gbcCharacter);
-
-		// Fatigue
+		JLayeredPane layerFaim = layerProgressBar(jProgressHunger, jlFaimTitle, jlFaim, jlFaimMax);
+		this.add(layerFaim, gbcCharacter);
+		
+		// FATIGUE
 		gbcCharacter.gridy = 6;
 		gbcCharacter.gridheight = 1;
 		gbcCharacter.gridx = 0;
-		gbcCharacter.gridwidth = 1;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlTiredIcon = new JLabel();
+		JLabel jlFatigTitle = new JLabel("Fatigue");
+		jlFatigTitle.setForeground(Color.white);
+
+		final JLabel jlFatig = new JLabel("" + vital.getFatigue());
+		jlFatig.setForeground(Color.yellow);
 		try {
-			Image imgTired = ImageIO.read(JPlayerVital.class.getClassLoader().getResource("tired.png"));
-			jlTiredIcon.setIcon(new ImageIcon(imgTired));
+			Image imgFatig = ImageIO.read(JPlayerVital.class.getClassLoader().getResource("tired.png"));
+			Image newImgFatig = imgFatig.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
+			jlFatig.setIcon(new ImageIcon(newImgFatig));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		this.add(jlTiredIcon, gbcCharacter);
-
-		gbcCharacter.gridy = 6;
+		JLabel jlFatigMax = new JLabel("/ " + vital.getMaxFatigue());
+		jlFatigMax.setForeground(Color.white);
+		
+		gbcCharacter.gridy = 7;
 		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 1;
-		gbcCharacter.gridwidth = 1;
+		gbcCharacter.gridx = 0;
+		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlTiredTitle = new JLabel("Fatigue : ");
-		jlTiredTitle.setForeground(Color.white);
-		this.add(jlTiredTitle, gbcCharacter);
-
-		gbcCharacter.gridy = 6;
-		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 2;
-		gbcCharacter.gridwidth = 1;
-		gbcCharacter.anchor = GridBagConstraints.EAST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
-		final JLabel jlTired = new JLabel("" + vital.getFatigue());
-		jlTired.setForeground(Color.white);
-		this.add(jlTired, gbcCharacter);
+		gbcCharacter.fill = GridBagConstraints.HORIZONTAL;
+		final JProgressBar jProgressFatig = vitalProgressBar(vital.getMaxFatigue(), vital.getFatigue(), Color.green);
+		
 		vital.addPropertyChangeListener(Vital.PROPERTY_FATIGUE, new PropertyChangeListener() {
 			@Override
 			public void propertyChange(PropertyChangeEvent evt) {
-				jlTired.setText(evt.getNewValue().toString());
-				int newValue = (Integer) evt.getNewValue();
-				updateColorVital(newValue, vital.getMaxFatigue(), jlTired);
+				jlFatig.setText(evt.getNewValue().toString());
+				jProgressFatig.setValue((Integer)evt.getNewValue());
 			}
 		});
 		
-		gbcCharacter.gridy = 6;
-		gbcCharacter.gridheight = 1;
-		gbcCharacter.gridx = 3;
-		gbcCharacter.gridwidth = 1;
-		gbcCharacter.anchor = GridBagConstraints.EAST;
-		gbcCharacter.fill = GridBagConstraints.NONE;
-		JLabel jlTiredMax = new JLabel("/ " + vital.getMaxFatigue());
-		jlTiredMax.setForeground(Color.blue);
-		this.add(jlTiredMax, gbcCharacter);
-	}
-	
-	private void updateColorVital(int newValue, int maxValue, JLabel label) {
-		int critical = maxValue - (maxValue / 4);
-		if(newValue < (maxValue / 2)) {
-			label.setForeground(Color.white);
-		}
-		if(newValue > (maxValue / 2)) {
-			label.setForeground(Color.yellow);
-		} 
-		if (newValue > critical){
-			label.setForeground(Color.red);
-		}
+		JLayeredPane layerFatig = layerProgressBar(jProgressFatig, jlFatigTitle, jlFatig, jlFatigMax);
+		this.add(layerFatig, gbcCharacter);
 	}
 	
 	private JProgressBar vitalProgressBar(int max, int current, Color color) {
