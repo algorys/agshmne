@@ -37,7 +37,7 @@ public class JPlayerVital extends JPanel {
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		JLabel jlLifeTitle = new JLabel("Vie");
 		jlLifeTitle.setForeground(Color.white);
-		this.add(jlLifeTitle, gbcCharacter);
+//		this.add(jlLifeTitle, gbcCharacter);
 
 		final JLabel jlLife = new JLabel("" + vital.getLife());
 		jlLife.setForeground(Color.yellow);
@@ -74,7 +74,7 @@ public class JPlayerVital extends JPanel {
 			}
 		});
 		// LayeredPane pour Life
-		JLayeredPane layerLife = layerProgressBar(jpLife, jlLife, jlLifeMax);
+		JLayeredPane layerLife = layerProgressBar(jpLife, jlLifeTitle, jlLife, jlLifeMax);
 		this.add(layerLife, gbcCharacter);
 		
 		// MANA
@@ -121,7 +121,7 @@ public class JPlayerVital extends JPanel {
 			}
 		});
 		
-		JLayeredPane layerMana = layerProgressBar(jpMana, jlMana, jlManaMax);
+		JLayeredPane layerMana = layerProgressBar(jpMana, jlManaTitle, jlMana, jlManaMax);
 		this.add(layerMana, gbcCharacter);
 
 		// Faim
@@ -246,7 +246,7 @@ public class JPlayerVital extends JPanel {
 		}
 	}
 	
-	private JLayeredPane layerProgressBar(JProgressBar prBar, JLabel current, JLabel max){
+	private JLayeredPane layerProgressBar(JProgressBar prBar, JLabel jlLabelTitle, JLabel current, JLabel max){
 		JLayeredPane layer = new JLayeredPane();
 		layer.add(prBar, new Integer(1));
 		prBar.setBounds(0, 0, 190, 35);
@@ -255,6 +255,7 @@ public class JPlayerVital extends JPanel {
 		layer.setOpaque(false);
 		JPanel progressText = new JPanel();
 		progressText.setOpaque(false);
+		progressText.add(jlLabelTitle);
 		progressText.add(current);
 		progressText.add(max);
 		layer.add(progressText, new Integer(2));
