@@ -12,11 +12,14 @@ public class BeastFactory {
 	private final OpponentVitalFactory beastVitalFact = new OpponentVitalFactory();
 
 	public BeastFactory() {
-		lowMonster.add("Wolf:3");
-		lowMonster.add("Spider:2");
-		lowMonster.add("Vermin:1");
-		lowMonster.add("Jelly:1");
-		lowMonster.add("Goblins:3");
+		lowMonster.add("Loup:2");
+		lowMonster.add("Araignée:2");
+		lowMonster.add("Vermine:1");
+		lowMonster.add("Rat Géant:1");
+		lowMonster.add("Ours:3");
+		lowMonster.add("Serpent:1");
+		lowMonster.add("Ver Géant:2");
+		lowMonster.add("Basilic:4");
 	}
 
 	public Beast createBeast() {
