@@ -37,7 +37,6 @@ public class JPlayerVital extends JPanel {
 		gbcCharacter.fill = GridBagConstraints.NONE;
 		JLabel jlLifeTitle = new JLabel("Vie");
 		jlLifeTitle.setForeground(Color.white);
-//		this.add(jlLifeTitle, gbcCharacter);
 
 		final JLabel jlLife = new JLabel("" + vital.getLife());
 		jlLife.setForeground(Color.yellow);
@@ -57,12 +56,7 @@ public class JPlayerVital extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.HORIZONTAL;
-		final JProgressBar jpLife = new JProgressBar();
-		jpLife.setMaximum(vital.getMaxLife());
-		jpLife.setForeground(Color.red);
-		jpLife.setBackground(Color.BLACK);
-		jpLife.setValue(vital.getLife());
-		jpLife.setUI(new ProgressBarUI());
+		final JProgressBar jpLife = vitalProgressBar(vital.getMaxLife(), vital.getLife(), Color.red);
 		
 		vital.addPropertyChangeListener(Vital.PROPERTY_LIFE, new PropertyChangeListener() {
 			@Override
@@ -73,7 +67,7 @@ public class JPlayerVital extends JPanel {
 				}
 			}
 		});
-		// LayeredPane pour Life
+		
 		JLayeredPane layerLife = layerProgressBar(jpLife, jlLifeTitle, jlLife, jlLifeMax);
 		this.add(layerLife, gbcCharacter);
 		
@@ -106,12 +100,7 @@ public class JPlayerVital extends JPanel {
 		gbcCharacter.gridwidth = 4;
 		gbcCharacter.anchor = GridBagConstraints.WEST;
 		gbcCharacter.fill = GridBagConstraints.HORIZONTAL;
-		final JProgressBar jpMana = new JProgressBar();
-		jpMana.setMaximum(vital.getMaxMana());
-		jpMana.setForeground(new Color(51, 51, 255));
-		jpMana.setBackground(Color.BLACK);
-		jpMana.setValue(vital.getMana());
-		jpMana.setUI(new ProgressBarUI());
+		final JProgressBar jpMana = vitalProgressBar(vital.getMaxMana(), vital.getMana(), new Color(51, 51, 255));
 		
 		vital.addPropertyChangeListener(Vital.PROPERTY_MANA, new PropertyChangeListener() {
 			@Override
@@ -246,6 +235,15 @@ public class JPlayerVital extends JPanel {
 		}
 	}
 	
+	private JProgressBar vitalProgressBar(int max, int current, Color color) {
+		JProgressBar prBar = new JProgressBar();
+		prBar.setMaximum(max);
+		prBar.setForeground(color);
+		prBar.setBackground(Color.BLACK);
+		prBar.setValue(current);
+		prBar.setUI(new ProgressBarUI());
+		return prBar;
+	}
 	private JLayeredPane layerProgressBar(JProgressBar prBar, JLabel jlLabelTitle, JLabel current, JLabel max){
 		JLayeredPane layer = new JLayeredPane();
 		layer.add(prBar, new Integer(1));
