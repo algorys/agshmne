@@ -8,7 +8,7 @@
 
 > **Nom du Jeu :** Agshmne<br>
 > **Style :** RPG <br>
-> **Plateformes Envisagées :** Desktop / Android
+> **Plateformes Envisagées :** Desktop / Android <br>
 > **Langage :** Java <br>
 > **IDE :** Eclipse <br>
 
