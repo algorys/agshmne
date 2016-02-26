@@ -28,7 +28,7 @@ Vous aurez la possibilité de construire vos propres armes, sorts, batiments, sc
 
 Une version ALPHA est disponible sur ce dépôt ou sur le [site]( http://algorys.github.io/agshmne/) du jeu.
 
-> Vous pouvez voir les premiers rendus du jeu [ici !](/doc/rendu.md)
+> Vous pouvez voir les derniers rendus du jeu [ici !](/doc/rendu.md)
 
 ### Installation
 
