@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/algorys/agshmne.svg?branch=master)](https://travis-ci.org/algorys/agshmne)
 [![GitHub release](https://img.shields.io/badge/release-v0.0.3-blue.svg)](https://github.com/algorys/agshmne/releases/latest)
 [![GitHub license](https://img.shields.io/badge/license-GNU%20General%20Public%20License%20v3.0-blue.svg)](https://github.com/algorys/agshmne/blob/master/LICENSE.txt)
+[![Project Status: Suspended – Initial development has started, but there has not yet been a stable, usable release; work has been stopped for the time being but the author(s) intend on resuming work.](http://www.repostatus.org/badges/latest/suspended.svg)](http://www.repostatus.org/#suspended)
 
 ## Informations Générales
 
